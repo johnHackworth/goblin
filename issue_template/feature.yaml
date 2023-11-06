@@ -1,0 +1,61 @@
+name: ✨ Feature Request
+about: Request a Feature
+title: "[Feature]: "
+blank_issues_enabled: true
+contact_links:
+  - name: 💁 Support Matrix
+    url: https://matrix.to/#/%23firefish:matrix.fedibird.com
+    about: Having trouble with deployment? Ask the support chat.
+  - name: 🔒 Resposible Disclosure
+    url: https://git.joinfirefish.org/firefish/firefish/src/branch/develop/SECURITY.md
+    about: Found a security vulnerability? Please disclose it responsibly.
+body:
+  - type: markdown
+    attributes:
+      value: |
+                💖 Thanks for taking the time to fill out this feature request!
+                💁 Having trouble with deployment? [Ask the support chat.](https://matrix.to/#/%23firefish:matrix.fedibird.com)
+                🔒 Found a security vulnerability? [Please disclose it responsibly.](https://git.joinfirefish.org/firefish/firefish/src/branch/develop/SECURITY.md)
+                🤝 By submitting this issue, you agree to follow our [Contribution Guidelines.](https://git.joinfirefish.org/firefish/firefish/src/branch/develop/CONTRIBUTING.md)
+  - type: textarea
+    id: what-feature
+    attributes:
+      label: What feature would you like implemented?
+      description: Please give us a brief description of what you'd like.
+      placeholder: Tell us what you want!
+    validations:
+      required: true
+  - type: textarea
+    id: why-add-feature
+    attributes:
+      label: Why should we add this feature?
+      description: Please give us a brief description of why your feature is important.
+      placeholder: Tell us why you want this feature!
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What version of firefish is your instance running? You can find this by clicking your instance's logo at the bottom left and then clicking instance information.
+      placeholder: Firefish Version 13.1.4.1
+    validations:
+      required: true
+  - type: input
+    id: instance
+    attributes:
+      label: Instance
+      description: What instance of firefish are you using?
+      placeholder: firefish.social
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Contribution Guidelines
+      description: By submitting this issue, you agree to follow our [Contribution Guidelines](https://git.joinfirefish.org/firefish/firefish/src/branch/develop/CONTRIBUTING.md)
+      options:
+        - label: I agree to follow this project's Contribution Guidelines
+          required: true
+        - label: I have searched the issue tracker for similar requests, and this is not a duplicate.
+          required: true

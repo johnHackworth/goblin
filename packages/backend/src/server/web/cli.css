@@ -1,0 +1,92 @@
+html {
+	background: #191724;
+}
+main {
+	background: #1f1d2e;
+	border-radius: 10px;
+}
+#tl > div {
+	border: 1px solid #908caa;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+	width: fit-content;
+}
+#tl > div > header {
+	font-weight: 700;
+	display: inline-flex;
+}
+
+img {
+	border-radius: 10px;
+	margin-right: 10px;
+}
+
+#form {
+	text-align: center;
+}
+
+#firefish_app {
+	display: none !important;
+}
+
+body,
+html {
+	font-family: BIZ UDGothic, Roboto, HelveticaNeue, Arial, sans-serif;
+	background-color: #191724;
+	color: #e0def4;
+	justify-content: center;
+	margin: auto;
+	padding: 10px;
+}
+button {
+	border-radius:999px;
+	padding:0 40px;
+	margin-top: 1rem;
+	border:none;
+	cursor:pointer;
+	margin-bottom:12px;
+	background:linear-gradient(90deg,#9ccfd8,#31748f);
+	line-height:50px;
+	color:#191724;
+	font-weight:700;
+	font-size:20px;
+ }
+button:hover {
+	background: rgb(156, 207, 216);
+}
+a {
+	color: rgb(156, 207, 216);
+	text-decoration: none;
+}
+p,
+li {
+	font-size: 16px;
+}
+
+h1 {
+	font-size: 32px;
+}
+code {
+	font-family: Fira, FiraCode, monospace;
+}
+#text {
+	background-color: #444;
+	border: solid #aaa;
+	border-radius: 10px;
+	color: #e0def4;
+	margin-top: 3rem;
+	width: 20rem;
+	height: 5rem;
+	padding: 0.5rem;
+}
+
+#text:focus {
+	border: solid #eee;
+}
+
+@media screen and (max-width: 500px) {
+  #text {
+    width: 80%
+  }
+}

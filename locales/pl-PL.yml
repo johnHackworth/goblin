@@ -1,0 +1,2032 @@
+_lang_: "Polski"
+headlineMisskey: "Otwartoźródłowa, zdecentralizowana sieć społecznościowa, która zawsze
+  będzie darmowa! 🚀"
+introMisskey: "Hej! Firefish to otwartoźródłowa oraz zdecentralizowana sieć społecznościowa,
+  która zawsze będzie darmowa! 🚀"
+monthAndDay: "{month}-{day}"
+search: "Szukaj"
+notifications: "Powiadomienia"
+username: "Nazwa użytkownika"
+password: "Hasło"
+forgotPassword: "Nie pamiętam hasła"
+fetchingAsApObject: "Pobieranie z Fediwersum"
+ok: "OK"
+gotIt: "Rozumiem!"
+cancel: "Anuluj"
+enterUsername: "Wprowadź nazwę użytkownika"
+renotedBy: "Podbito przez {user}"
+noNotes: "Brak wpisów"
+noNotifications: "Brak powiadomień"
+instance: "Serwer"
+settings: "Ustawienia"
+basicSettings: "Podstawowe ustawienia"
+otherSettings: "Pozostałe ustawienia"
+openInWindow: "Otwórz w oknie"
+profile: "Profil"
+timeline: "Oś czasu"
+noAccountDescription: "Ten użytkownik nie napisał jeszcze swojego opisu."
+login: "Zaloguj się"
+loggingIn: "Logowanie"
+logout: "Wyloguj się"
+signup: "Zarejestruj się"
+uploading: "Wysyłanie..."
+save: "Zapisz"
+users: "Użytkownicy"
+addUser: "Dodaj użytkownika"
+favorite: "Dodaj do ulubionych"
+favorites: "Zakładki"
+unfavorite: "Usuń zakładkę"
+favorited: "Dodano do zakładek."
+alreadyFavorited: "Już jest w zakładkach."
+cantFavorite: "Nie można dodać do zakładek."
+pin: "Przypnij do profilu"
+unpin: "Odepnij z profilu"
+copyContent: "Skopiuj zawartość"
+copyLink: "Skopiuj odnośnik"
+delete: "Usuń"
+deleteAndEdit: "Usuń i edytuj"
+deleteAndEditConfirm: "Czy na pewno chcesz usunąć ten wpis i zedytować go? Utracisz
+  wszystkie reakcje, podbicia i odpowiedzi do tego wpisu."
+addToList: "Dodaj do listy"
+sendMessage: "Wyślij wiadomość"
+copyUsername: "Kopiuj nazwę użytkownika"
+searchUser: "Wyszukiwanie użytkowników"
+reply: "Odpowiedz"
+loadMore: "Załaduj więcej"
+showMore: "Pokaż więcej"
+showLess: "Zamknij"
+youGotNewFollower: "Zaobserwował* Cię"
+receiveFollowRequest: "Otrzymano prośbę o możliwość obserwacji"
+followRequestAccepted: "Zaakceptowano prośbę o możliwość obserwacji"
+mention: "Wspomnij"
+mentions: "Wspomnienia"
+directNotes: "Bezpośrednie wiadomości"
+importAndExport: "Import i eksport danych"
+import: "Importuj"
+export: "Eksportuj"
+files: "Pliki"
+download: "Pobierz"
+driveFileDeleteConfirm: "Czy chcesz usunąć plik \"{name}\"? Wszystkie wpisy zawierające
+  ten plik również zostaną usunięte."
+unfollowConfirm: "Czy na pewno chcesz przestać obserwować {name}?"
+exportRequested: "Zażądałeś eksportu. Może to zająć chwilę. Po zakończeniu eksportu
+  zostanie on dodany do Twojego dysku."
+importRequested: "Zażądano importu. Może to zająć chwilę."
+lists: "Listy"
+noLists: "Nie masz żadnych list"
+note: "Utwórz wpis"
+notes: "Wpisy"
+following: "Obserwowani"
+followers: "Obserwujący"
+followsYou: "Obserwuje Cię"
+createList: "Utwórz listę"
+manageLists: "Zarządzaj listami"
+error: "Błąd"
+somethingHappened: "Coś poszło nie tak"
+retry: "Spróbuj ponownie"
+pageLoadError: "Nie udało się załadować strony."
+pageLoadErrorDescription: "Zwykle jest to spowodowane problemem z siecią lub cache
+  przeglądarki. Spróbuj wyczyścić cache i sprawdź jeszcze raz za chwilę."
+serverIsDead: "Serwer nie odpowiada. Zaczekaj chwilę i spróbuj ponownie."
+youShouldUpgradeClient: "Aby zobaczyć tą stronę, odśwież ją, by zaaktualizować klienta."
+enterListName: "Wpisz nazwę listy"
+privacy: "Prywatność"
+makeFollowManuallyApprove: "Prośby o możliwość obserwacji wymagają zatwierdzenia"
+defaultNoteVisibility: "Domyślna widoczność"
+follow: "Obserwuj"
+followRequest: "Poproś o możliwość obserwacji"
+followRequests: "Prośby o możliwość obserwacji"
+unfollow: "Przestań obserwować"
+followRequestPending: "Oczekująca prośba o możliwość obserwacji"
+enterEmoji: "Wprowadź emoji"
+renote: "Podbij"
+unrenote: "Cofnij podbicie"
+renoted: "Podbito."
+cantRenote: "Ten wpis nie może zostać podbity."
+cantReRenote: "Podbicie nie może zostać podbite."
+quote: "Cytuj"
+pinnedNote: "Przypięty wpis"
+pinned: "Przypnij do profilu"
+you: "Ty"
+clickToShow: "Kliknij, aby wyświetlić"
+sensitive: "NSFW"
+add: "Dodaj"
+reaction: "Reakcja"
+reactionSetting: "Reakcje do pokazania w wyborniku reakcji"
+reactionSettingDescription2: "Przeciągnij aby zmienić kolejność, naciśnij aby usunąć,
+  naciśnij „+” aby dodać."
+rememberNoteVisibility: "Zapamiętuj ustawienia widoczności wpisu"
+attachCancel: "Usuń załącznik"
+markAsSensitive: "Oznacz jako NSFW"
+unmarkAsSensitive: "Cofnij NSFW"
+enterFileName: "Wprowadź nazwę pliku"
+mute: "Wycisz"
+unmute: "Cofnij wyciszenie"
+block: "Zablokuj"
+unblock: "Odblokuj"
+suspend: "Zawieś"
+unsuspend: "Cofnij zawieszenie"
+blockConfirm: "Czy na pewno chcesz zablokować to konto?"
+unblockConfirm: "Czy na pewno chcesz odblokować to konto?"
+suspendConfirm: "Czy na pewno chcesz zawiesić to konto?"
+unsuspendConfirm: "Czy na pewno chcesz cofnąć zawieszenie tego konta?"
+selectList: "Wybierz listę"
+selectAntenna: "Wybierz antenę"
+selectWidget: "Wybierz widżet"
+editWidgets: "Edytuj widżety"
+editWidgetsExit: "Gotowe"
+customEmojis: "Niestandardowe emoji"
+emoji: "Emoji"
+emojis: "Emoji"
+emojiName: "Nazwa emoji"
+emojiUrl: "Adres URL emoji"
+addEmoji: "Dodaj emoji"
+settingGuide: "Proponowana konfiguracja"
+cacheRemoteFiles: "Przechowuj zdalne pliki w pamięci podręcznej"
+cacheRemoteFilesDescription: "Gdy ta opcja jest wyłączona, zdalne pliki są ładowane
+  bezpośrednio ze zdalnego serwera. Wyłączenie tej opcji zmniejszy użycie powierzchni
+  dyskowej, ale zwiększy transfer, ponieważ miniaturki nie będą generowane."
+flagAsBot: "To konto jest botem"
+flagAsBotDescription: "Jeżeli ten kanał jest kontrolowany przez jakiś program, ustaw
+  tę opcję. Jeżeli włączona, będzie działać jako flaga informująca innych programistów,
+  aby zapobiegać nieskończonej interakcji z różnymi botami i dostosowywać wewnętrzne
+  systemy Firefish, traktując konto jako bota."
+flagAsCat: "Czy jesteś kotem? 😺"
+flagAsCatDescription: "Dostaniesz kocie uszka, oraz będziesz mówić jak kot!"
+flagShowTimelineReplies: "Pokazuj odpowiedzi na osi czasu"
+autoAcceptFollowed: "Automatycznie przyjmuj prośby o możliwość obserwacji od użytkowników,
+  których obserwujesz"
+addAccount: "Dodaj konto"
+loginFailed: "Nie udało się zalogować"
+showOnRemote: "Zobacz na zdalnym serwerze"
+general: "Ogólne"
+wallpaper: "Tapeta"
+setWallpaper: "Ustaw tapetę"
+removeWallpaper: "Usuń tapetę"
+searchWith: "Szukaj: {q}"
+youHaveNoLists: "Nie masz żadnej listy"
+followConfirm: "Czy na pewno chcesz zaobserwować {name}?"
+proxyAccount: "Konto proxy"
+host: "Host"
+selectUser: "Wybierz użytkownika"
+recipient: "Odbiorca(-y)"
+annotation: "Komentarze"
+federation: "Federacja"
+instances: "Serwery"
+registeredAt: "Zarejestrowano"
+latestRequestSentAt: "Ostatnie żądanie wysłano o"
+latestRequestReceivedAt: "Ostatnie żądanie otrzymano o"
+latestStatus: "Najnowszy status"
+storageUsage: "Użycie pamięci"
+charts: "Wykresy"
+perHour: "co godzinę"
+perDay: "co dzień"
+stopActivityDelivery: "Przestań przesyłać aktywności"
+blockThisInstance: "Zablokuj ten serwer"
+operations: "Działania"
+software: "Oprogramowanie"
+version: "Wersja"
+metadata: "Metadane"
+monitor: "Monitor"
+jobQueue: "Kolejka zadań"
+cpuAndMemory: "CPU i pamięć"
+network: "Sieć"
+disk: "Dysk"
+instanceInfo: "Informacje o serwerze"
+statistics: "Statystyki"
+clearQueue: "Wyczyść kolejkę"
+clearQueueConfirmTitle: "Czy na pewno chcesz wyczyścić kolejkę?"
+clearQueueConfirmText: "Wszystkie niewysłane wpisy z kolejki nie zostaną wysłane.
+  Zwykle to nie jest konieczne."
+clearCachedFiles: "Wyczyść pamięć podręczną"
+clearCachedFilesConfirm: "Czy na pewno chcesz usunąć wszystkie zdalne pliki z pamięci
+  podręcznej?"
+blockedInstances: "Zablokowane serwery"
+blockedInstancesDescription: "Wypisz nazwy hostów serwerów, które chcesz zablokować.
+  Wymienione serwery nie będą mogły dłużej komunikować się z tym serwerem."
+muteAndBlock: "Wyciszenia i blokady"
+mutedUsers: "Wyciszeni użytkownicy"
+blockedUsers: "Zablokowani użytkownicy"
+noUsers: "Brak użytkowników"
+editProfile: "Edytuj profil"
+noteDeleteConfirm: "Czy na pewno chcesz usunąć ten wpis?"
+pinLimitExceeded: "Nie możesz przypiąć więcej wpisów"
+intro: "Zakończono instalację Firefish! Utwórz konto administratora."
+done: "Gotowe"
+processing: "Przetwarzanie"
+preview: "Podgląd"
+default: "Domyślne"
+defaultValueIs: "Domyślne: {value}"
+noCustomEmojis: "Brak emoji"
+noJobs: "Brak zadań"
+federating: "Federowanie"
+blocked: "Zablokowano"
+suspended: "Zawieszono"
+all: "Wszystkie"
+subscribing: "Subskrybowanie"
+publishing: "Publikowanie"
+notResponding: "Nie odpowiada"
+instanceFollowing: "Obserwowani na serwerze"
+instanceFollowers: "Obserwujący na serwerze"
+instanceUsers: "Użytkownicy tego serwera"
+changePassword: "Zmień hasło"
+security: "Bezpieczeństwo"
+retypedNotMatch: "Wejście nie zgadza się."
+currentPassword: "Obecne hasło"
+newPassword: "Nowe hasło"
+newPasswordRetype: "Powtórz nowe hasło"
+attachFile: "Załącz pliki"
+more: "Więcej!"
+featured: "Wyróżnione"
+usernameOrUserId: "Nazwa lub id użytkownika"
+noSuchUser: "Nie znaleziono użytkownika"
+lookup: "Zapytania"
+announcements: "Ogłoszenia"
+imageUrl: "Adres URL obrazka"
+remove: "Usuń"
+removed: "Pomyślnie usunięto"
+removeAreYouSure: "Czy na pewno chcesz usunąć „{x}”?"
+deleteAreYouSure: "Czy na pewno chcesz usunąć „{x}”?"
+resetAreYouSure: "Czy na pewno chcesz zresetować?"
+saved: "Zapisano"
+messaging: "Wiadomości"
+upload: "Wyślij"
+keepOriginalUploading: "Zachowaj oryginalny obraz"
+fromDrive: "Z dysku"
+fromUrl: "Z adresu URL"
+uploadFromUrl: "Wyślij z adresu URL"
+uploadFromUrlDescription: "Adres URL pliku, który chcesz wysłać"
+uploadFromUrlRequested: "Zażądano wysłania"
+uploadFromUrlMayTakeTime: "Wysyłanie może chwilę potrwać."
+explore: "Eksploruj"
+messageRead: "Przeczytano"
+noMoreHistory: "Nie ma dalszej historii"
+startMessaging: "Rozpocznij czat"
+nUsersRead: "przeczytano przez {n}"
+agreeTo: "Wyrażam zgodę na {0}"
+tos: "Regulamin"
+start: "Rozpocznij"
+home: "Strona główna"
+remoteUserCaution: "Te informacje mogą nie być aktualne, ponieważ użytkownik pochodzi
+  ze zdalnej instancji."
+activity: "Aktywność"
+images: "Zdjęcia"
+birthday: "Data urodzenia"
+yearsOld: "{age} lat"
+registeredDate: "Zarejestrowano"
+location: "Lokalizacja"
+theme: "Motywy"
+themeForLightMode: "Motyw używany w trybie jasnym"
+themeForDarkMode: "Motyw używany w trybie ciemnym"
+light: "Jasny"
+dark: "Ciemny"
+lightThemes: "Jasny motyw"
+darkThemes: "Ciemny motyw"
+syncDeviceDarkMode: "Synchronizuj ciemny motyw z ustawieniami urządzenia"
+drive: "Dysk"
+fileName: "Nazwa pliku"
+selectFile: "Wybierz plik"
+selectFiles: "Wybierz pliki"
+selectFolder: "Wybierz folder"
+selectFolders: "Wybierz foldery"
+renameFile: "Zmień nazwę pliku"
+folderName: "Nazwa katalogu"
+createFolder: "Utwórz katalog"
+renameFolder: "Zmień nazwę katalogu"
+deleteFolder: "Usuń ten katalog"
+addFile: "Dodaj plik"
+emptyDrive: "Dysk jest pusty"
+emptyFolder: "Ten katalog jest pusty"
+unableToDelete: "Nie można usunąć"
+inputNewFileName: "Wprowadź nową nazwę pliku"
+inputNewDescription: "Proszę wpisać nowy napis"
+inputNewFolderName: "Wprowadź nową nazwę katalogu"
+circularReferenceFolder: "Katalog docelowy jest podkatalogiem katalogu, który chcesz
+  przenieść."
+hasChildFilesOrFolders: "Ponieważ ten katalog nie jest pusty, nie może być usunięty."
+copyUrl: "Skopiuj adres URL"
+rename: "Zmień nazwę"
+avatar: "Awatar"
+banner: "Baner"
+nsfw: "NSFW"
+whenServerDisconnected: "Po utracie połączenia z serwerem"
+disconnectedFromServer: "Utracono połączenie z serwerem"
+reload: "Odśwież"
+doNothing: "Ignoruj"
+reloadConfirm: "Czy chcesz odświeżyć oś czasu?"
+watch: "Śledź"
+unwatch: "Przestań śledzić"
+accept: "Akceptuj"
+reject: "Odrzuć"
+normal: "Normalny"
+instanceName: "Nazwa serwera"
+instanceDescription: "Opis serwera"
+maintainerName: "Administrator"
+maintainerEmail: "E-mail administratora"
+tosUrl: "Adres URL regulaminu"
+thisYear: "Rok"
+thisMonth: "Miesiąc"
+today: "Dziś"
+dayX: "{day}"
+monthX: "{month}"
+yearX: "{year}"
+pages: "Strony"
+integration: "Integracje"
+connectService: "Połącz"
+disconnectService: "Rozłącz"
+enableLocalTimeline: "Włącz lokalną oś czasu"
+enableGlobalTimeline: "Włącz globalną oś czasu"
+disablingTimelinesInfo: "Administratorzy i moderatorzy będą zawsze mieć dostęp do
+  wszystkich osi czasu, nawet gdy są one wyłączone."
+registration: "Zarejestruj się"
+enableRegistration: "Włącz rejestrację nowych użytkowników"
+invite: "Zaproś"
+driveCapacityPerLocalAccount: "Powierzchnia dyskowa na lokalnego użytkownika"
+driveCapacityPerRemoteAccount: "Powierzchnia dyskowa na zdalnego użytkownika"
+inMb: "W megabajtach"
+iconUrl: "Adres URL ikony"
+bannerUrl: "Adres URL banera"
+backgroundImageUrl: "Adres URL tła"
+basicInfo: "Podstawowe informacje"
+pinnedUsers: "Przypięty użytkownik"
+pinnedUsersDescription: "Wypisz po jednej nazwie użytkownika w wierszu. Podani użytkownicy
+  zostaną przypięci pod kartą „Eksploruj”."
+pinnedPages: "Przypięte strony"
+pinnedPagesDescription: "Wprowadź ścieżki stron, które chcesz przypiąć do górnej strony
+  tego serwera, oddzielając je znakami końca wiersza."
+pinnedClipId: "ID przypiętego klipu"
+pinnedNotes: "Przypięty wpis"
+hcaptcha: "hCaptcha"
+enableHcaptcha: "Włącz hCaptcha"
+hcaptchaSiteKey: "Klucz strony"
+hcaptchaSecretKey: "Tajny klucz"
+recaptcha: "reCAPTCHA"
+enableRecaptcha: "Włącz reCAPTCHA"
+recaptchaSiteKey: "Klucz strony"
+recaptchaSecretKey: "Tajny klucz"
+avoidMultiCaptchaConfirm: "Używanie wielu Captchy może spowodować zakłócenia. Czy
+  chcesz wyłączyć inną Captchę? Możesz zostawić wiele jednocześnie, klikając Anuluj."
+antennas: "Anteny"
+manageAntennas: "Zarządzaj antenami"
+name: "Nazwa"
+antennaSource: "Źródło anteny"
+antennaKeywords: "Słowa kluczowe do obserwacji"
+antennaExcludeKeywords: "Wykluczone słowa kluczowe"
+antennaKeywordsDescription: "Oddziel spacjami dla warunku AND, albo wymuś koniec linii
+  dla warunku OR."
+notifyAntenna: "Powiadamiaj o nowych wpisach"
+withFileAntenna: "Filtruj tylko wpisy z załączonym plikiem"
+enableServiceworker: "Włącz powiadomienia push dla twojej przeglądarki"
+antennaUsersDescription: "Wypisz po jednej nazwie użytkownika w linii"
+caseSensitive: "Wielkość liter ma znaczenie"
+withReplies: "Uwzględnij odpowiedzi"
+connectedTo: "Następujące konta są połączone"
+notesAndReplies: "Wpisy i odpowiedzi"
+withFiles: "Media"
+silence: "Wycisz"
+silenceConfirm: "Czy na pewno chcesz wyciszyć tego użytkownika?"
+unsilence: "Cofnij wyciszenie"
+unsilenceConfirm: "Czy na pewno chcesz cofnąć wyciszenie tego użytkownika?"
+popularUsers: "Popularni użytkownicy"
+recentlyUpdatedUsers: "Ostatnio aktywni użytkownicy"
+recentlyRegisteredUsers: "Ostatnio zarejestrowani użytkownicy"
+recentlyDiscoveredUsers: "Ostatnio odkryci użytkownicy"
+exploreUsersCount: "Jest {count} użytkowników"
+exploreFediverse: "Eksploruj Fediwersum"
+popularTags: "Tagi na czasie"
+userList: "Listy"
+about: "Informacje"
+aboutFirefish: "O Firefish"
+administrator: "Admin"
+token: "Token"
+twoStepAuthentication: "Uwierzytelnianie dwuskładnikowe"
+moderator: "Moderator"
+moderation: "Moderacja"
+nUsersMentioned: "{n} wspomnianych użytkowników"
+securityKey: "Klucz bezpieczeństwa"
+securityKeyName: "Nazwa klucza"
+registerSecurityKey: "Zarejestruj klucz bezpieczeństwa"
+lastUsed: "Ostatnio używane"
+unregister: "Cofnij rejestrację"
+passwordLessLogin: "Skonfiguruj logowanie bez użycia hasła"
+resetPassword: "Zresetuj hasło"
+newPasswordIs: "Nowe hasło to „{password}”"
+reduceUiAnimation: "Ogranicz animacje w UI"
+share: "Udostępnij"
+notFound: "Nie znaleziono"
+notFoundDescription: "Nie ma strony odpowiadającej określonemu adresowi URL."
+uploadFolder: "Domyślne położenie wysłanych"
+cacheClear: "Wyczyść pamięć podręczną"
+markAsReadAllNotifications: "Oznacz wszystkie powiadomienia jako przeczytane"
+markAsReadAllUnreadNotes: "Oznacz wszystkie wpisy jako przeczytane"
+markAsReadAllTalkMessages: "Oznacz wszystkie wiadomości jako przeczytane"
+help: "Pomoc"
+inputMessageHere: "Wprowadź wiadomość tutaj"
+close: "Zamknij"
+group: "Grupa"
+groups: "Grupy"
+createGroup: "Utwórz grupę"
+ownedGroups: "Posiadane grupy"
+joinedGroups: "Członkostwa w grupach"
+invites: "Zaproś"
+groupName: "Nazwa grupy"
+members: "Członkowie"
+transfer: "Transfer"
+messagingWithUser: "Rozmowy z innym użytkownikiem"
+messagingWithGroup: "Rozmowy wewnątrz grupy"
+title: "Tytuł"
+text: "Tekst"
+enable: "Włącz"
+next: "Dalej"
+retype: "Wprowadź ponownie"
+noteOf: "Wpisy {user}"
+inviteToGroup: "Zaproś do grupy"
+quoteAttached: "Zacytowano"
+quoteQuestion: "Czy na pewno chcesz umieścić cytat?"
+noMessagesYet: "Nie napisano jeszcze wiadomości"
+newMessageExists: "Masz nową wiadomość"
+onlyOneFileCanBeAttached: "Możesz załączyć tylko jeden plik do wiadomości"
+signinRequired: "Proszę się zalogować"
+invitations: "Zaproś"
+invitationCode: "Kod zaproszenia"
+checking: "Sprawdzam..."
+available: "Dostępna"
+unavailable: "Niedostępna"
+usernameInvalidFormat: "Nazwa użytkownika może zawierać litery, cyfry i podkreślniki."
+tooShort: "Zbyt krótka"
+tooLong: "Zbyt długa"
+weakPassword: "Słabe hasło"
+normalPassword: "Dobre hasło"
+strongPassword: "Silne hasło"
+passwordMatched: "Pasuje"
+passwordNotMatched: "Hasła nie pasują do siebie"
+signinWith: "Zaloguj się z {x}"
+signinFailed: "Nie udało się zalogować. Wprowadzona nazwa użytkownika lub hasło są
+  nieprawidłowe."
+tapSecurityKey: "Wybierz swój klucz bezpieczeństwa"
+or: "Lub"
+language: "Język"
+uiLanguage: "Język wyświetlania UI"
+groupInvited: "Zaproszony(-a) do grupy"
+aboutX: "O {x}"
+useOsNativeEmojis: "Używaj natywnych Emoji systemu"
+disableDrawer: "Nie używaj menu w stylu szuflady"
+youHaveNoGroups: "Nie masz żadnych grup"
+joinOrCreateGroup: "Uzyskaj zaproszenie do dołączenia do grupy lub utwórz własną grupę."
+noHistory: "Brak historii"
+signinHistory: "Historia logowania"
+disableAnimatedMfm: "Wyłącz MFM z animacją"
+doing: "Przetwarzanie..."
+category: "Kategoria"
+tags: "Tagi"
+docSource: "Źródło tego dokumentu"
+createAccount: "Utwórz konto"
+existingAccount: "Istniejące konto"
+regenerate: "Wygeneruj ponownie"
+fontSize: "Rozmiar czcionki"
+noFollowRequests: "Nie masz żadnych oczekujących próśb o możliwość obserwacji"
+openImageInNewTab: "Otwórz obraz w nowej karcie"
+dashboard: "Kokpit"
+local: "Lokalne"
+remote: "Zdalny"
+total: "Łącznie"
+weekOverWeekChanges: "Cotygodniowo"
+dayOverDayChanges: "Codziennie"
+appearance: "Wygląd"
+clientSettings: "Ustawienia klienta"
+accountSettings: "Ustawienia konta"
+promotion: "Promowane"
+promote: "Promuj"
+numberOfDays: "Liczba dni"
+hideThisNote: "Ukryj ten wpis"
+showFeaturedNotesInTimeline: "Pokazuj wyróżnione wpisy w osi czasu"
+objectStorage: "Pamięć obiektowa"
+useObjectStorage: "Używaj pamięci obiektowej"
+objectStorageBaseUrl: "Podstawowy URL"
+objectStorageBucket: "Bucket"
+objectStorageBucketDesc: "Podaj nazwę „wiadra” używaną przez konfigurowaną usługę."
+objectStoragePrefix: "Prefiks"
+objectStoragePrefixDesc: "Pliki będą przechowywane w katalogu z tym prefiksem."
+objectStorageEndpoint: "Punkt końcowy"
+objectStorageEndpointDesc: "Pozostaw puste jeżeli używasz AWS S3, w innym wypadku
+  określ punkt końcowy jako '<host>' lub '<host>:<port>' zgodnie z instrukcjami usługi,
+  której używasz."
+objectStorageRegion: "Region"
+objectStorageRegionDesc: "Określ region, np. 'xx-east-1'. Jeżeli usługa której używasz
+  nie zawiera rozróżnienia regionów, pozostaw to pustym lub wprowadź 'us-east-1'."
+objectStorageUseSSL: "Użyj SSL"
+objectStorageUseSSLDesc: "Wyłącz, jeżeli nie zamierzasz używać HTTPS dla połączenia
+  z API"
+objectStorageUseProxy: "Połącz przez proxy"
+objectStorageUseProxyDesc: "Wyłącz, jeżeli nie zamierzasz używać proxy dla połączenia
+  z pamięcią blokową"
+serverLogs: "Dziennik zdarzeń"
+deleteAll: "Usuń wszystkie"
+showFixedPostForm: "Wyświetlaj formularz tworzenia wpisu w górnej części osi czasu"
+newNoteRecived: "Masz nowy wpis"
+sounds: "Dźwięk"
+listen: "Słuchaj"
+none: "Brak"
+showInPage: "Pokaż na stronie"
+popout: "Popout"
+volume: "Głośność"
+masterVolume: "Głośność główna"
+details: "Szczegóły"
+chooseEmoji: "Wybierz emoji"
+unableToProcess: "Nie udało się dokończyć działania"
+recentUsed: "Ostatnio używane"
+install: "Zainstaluj"
+uninstall: "Odinstaluj"
+installedApps: "Autoryzowane aplikacje"
+nothing: "Nie ma tu niczego"
+installedDate: "Autoryzowano"
+lastUsedDate: "Ostatnie użycie"
+state: "Stan"
+sort: "Sortuj"
+ascendingOrder: "Rosnąco"
+descendingOrder: "Malejąco"
+scratchpad: "Brudnopis"
+scratchpadDescription: "Brudnopis to środowisko dla eksperymentów z AiScript. Możesz
+  pisać, wykonywać i sprawdzać wyniki interakcji skryptu z Firefish."
+output: "Wyjście"
+script: "Skrypt"
+disablePagesScript: "Wyłącz AiScript na Stronach"
+updateRemoteUser: "Aktualizuj zdalne dane o użytkowniku"
+deleteAllFiles: "Usuń wszystkie pliki"
+deleteAllFilesConfirm: "Czy na pewno chcesz usunąć wszystkie pliki?"
+removeAllFollowingDescription: "Wykonanie tego polecenia spowoduje usunięcie wszystkich
+  kont z {host}. Zrób to, jeśli serwer np. już nie istnieje."
+userSuspended: "To konto zostało zawieszone."
+userSilenced: "Ten użytkownik został wyciszony."
+yourAccountSuspendedTitle: "To konto jest zawieszone"
+yourAccountSuspendedDescription: "To konto zostało zawieszone z powodu złamania regulaminu
+  serwera lub innych podobnych. Skontaktuj się z administratorem, jeśli chciałbyś
+  poznać bardziej szczegółowy powód. Proszę nie zakładać nowego konta."
+menu: "Menu"
+divider: "Rozdzielacz"
+addItem: "Dodaj element"
+relays: "Przekaźniki"
+addRelay: "Dodaj przekaźnik"
+inboxUrl: "Adres URL skrzynki nadawczej"
+addedRelays: "Dodane przekaźniki"
+serviceworkerInfo: "Musi być włączone dla powiadomień push."
+deletedNote: "Usunięty wpis"
+invisibleNote: "Niewidzialny wpis"
+enableInfiniteScroll: "Włącz nieskończone przewijanie"
+visibility: "Widoczność"
+poll: "Ankieta"
+useCw: "Ukryj zawartość"
+enablePlayer: "Otwórz odtwarzacz wideo"
+disablePlayer: "Zamknij odtwarzacz wideo"
+expandTweet: "Rozwiń tweet"
+themeEditor: "Edytor motywu"
+description: "Opis"
+describeFile: "Dodaj podpis"
+enterFileDescription: "Wprowadź napis"
+author: "Autor"
+leaveConfirm: "Są niezapisane zmiany. Czy chcesz je odrzucić?"
+manage: "Zarządzanie"
+plugins: "Wtyczki"
+deck: "Tablica"
+useBlurEffectForModal: "Używaj efektu rozmycia w modalach"
+useFullReactionPicker: "Używaj pełnowymiarowego wybornika reakcji"
+width: "Szerokość"
+height: "Wysokość"
+large: "Duże"
+medium: "Średnie"
+small: "Małe"
+generateAccessToken: "Generuj token dostępu"
+permission: "Uprawnienia"
+enableAll: "Włącz wszystko"
+disableAll: "Wyłącz wszystko"
+tokenRequested: "Przydziel dostęp do konta"
+pluginTokenRequestedDescription: "Ta wtyczka będzie mogła korzystać z ustawionych
+  tu uprawnień."
+notificationType: "Rodzaj powiadomień"
+edit: "Edytuj"
+emailServer: "Serwer poczty e-mail"
+enableEmail: "Włącz dostarczanie wiadomości e-mail"
+emailConfigInfo: "Wykorzystywany do potwierdzenia adresu e-mail w trakcie rejestracji,
+  lub gdy zapomnisz hasła"
+email: "Adres e-mail"
+emailAddress: "Adres e-mail"
+smtpConfig: "Konfiguracja serwera SMTP"
+smtpHost: "Host"
+smtpPort: "Port"
+smtpUser: "Nazwa użytkownika"
+smtpPass: "Hasło"
+emptyToDisableSmtpAuth: "Pozostaw adres e-mail i hasło puste, aby wyłączyć weryfikację
+  SMTP"
+smtpSecureInfo: "Wyłącz, jeżeli używasz STARTTLS"
+testEmail: "Przetestuj dostarczanie wiadomości e-mail"
+wordMute: "Wyciszenie słowa"
+instanceMute: "Wyciszenie serwera"
+userSaysSomething: "{name} powiedział* coś"
+makeActive: "Aktywuj"
+display: "Wyświetlanie"
+copy: "Kopiuj"
+metrics: "Pomiary"
+overview: "Przegląd"
+logs: "Dzienniki"
+delayed: "Opóźnione"
+database: "Baza danych"
+channel: "Kanały"
+create: "Utwórz"
+notificationSetting: "Ustawienia powiadomień"
+notificationSettingDesc: "Wybierz rodzaj powiadomień do wyświetlania."
+useGlobalSetting: "Użyj globalnych ustawień"
+useGlobalSettingDesc: "Jeżeli włączone, zostaną wykorzystane ustawienia powiadomień
+  Twojego konta. Jeżeli wyłączone, mogą zostać wykonane oddzielne konfiguracje."
+other: "Inne"
+regenerateLoginToken: "Generuj token logowania ponownie"
+regenerateLoginTokenDescription: "Regeneruje token używany wewnętrznie podczas logowania.
+  Zazwyczaj nie jest to konieczne. Po regeneracji wszystkie urządzenia zostaną wylogowane."
+setMultipleBySeparatingWithSpace: "Możesz ustawić wiele, oddzielając je spacjami."
+fileIdOrUrl: "ID pliku albo URL"
+behavior: "Zachowanie"
+sample: "Przykład"
+abuseReports: "Zgłoszenia"
+reportAbuse: "Zgłoś"
+reportAbuseOf: "Zgłoś {name}"
+fillAbuseReportDescription: "Wypełnij szczegóły zgłoszenia. Jeżeli dotyczy ono określonego
+  wpisu, uwzględnij jego adres URL."
+abuseReported: "Twoje zgłoszenie zostało wysłane. Dziękujemy."
+reporteeOrigin: "Pochodzenie osoby zgłoszonej"
+reporterOrigin: "Pochodzenie osoby zgłaszającej"
+forwardReport: "Przekaż zgłoszenie do zdalnego serwera"
+send: "Wyślij"
+abuseMarkAsResolved: "Oznacz zgłoszenie jako rozwiązane"
+openInNewTab: "Otwórz w nowej karcie"
+openInSideView: "Otwórz w bocznym widoku"
+defaultNavigationBehaviour: "Domyślne zachowanie nawigacji"
+editTheseSettingsMayBreakAccount: "Edycja tych ustawień może uszkodzić Twoje konto."
+instanceTicker: "Informacje o wpisach serwera"
+waitingFor: "Oczekiwanie na {x}"
+random: "Losowe"
+system: "System"
+switchUi: "Layout"
+desktop: "Pulpit"
+clip: "Klip"
+createNew: "Utwórz nowy"
+optional: "Nieobowiązkowe"
+createNewClip: "Utwórz nowy klip"
+unclip: "Odczep"
+confirmToUnclipAlreadyClippedNote: "Ten wpis jest już częścią klipu \"{name}\". Czy
+  chcesz ją usunąć z tego klipu?"
+public: "Publiczny"
+i18nInfo: "Firefish jest tłumaczone na wiele języków przez wolontariuszy. Możesz pomóc
+  na {link}."
+manageAccessTokens: "Zarządzaj tokenami dostępu"
+accountInfo: "Informacje o koncie"
+notesCount: "Liczba wpisów"
+repliesCount: "Liczba wysłanych odpowiedzi"
+renotesCount: "Liczba wysłanych podbić"
+repliedCount: "Liczba otrzymanych odpowiedzi"
+renotedCount: "Liczba otrzymanych podbić"
+followingCount: "Liczba obserwowanych kont"
+followersCount: "Liczba obserwujących"
+sentReactionsCount: "Liczba wysłanych reakcji"
+receivedReactionsCount: "Liczba otrzymanych reakcji"
+pollVotesCount: "Liczba wysłanych głosów w ankietach"
+pollVotedCount: "Liczba otrzymanych głosów w ankietach"
+yes: "Tak"
+no: "Nie"
+driveFilesCount: "Liczba plików na dysku"
+driveUsage: "Użycie przestrzeni dyskowej"
+noCrawle: "Odrzuć indeksowanie przez crawlery"
+noCrawleDescription: "Proś wyszukiwarki internetowe, aby nie indeksowały Twojego profilu,
+  wpisów, stron itd."
+lockedAccountInfo: "Dopóki nie ustawisz widoczności wpisu na \"Obserwujący\", twoje
+  wpisy będą mogli widzieć wszyscy, nawet jeśli ustawisz manualne zatwierdzanie obserwujących."
+alwaysMarkSensitive: "Oznacz domyślnie jako NSFW"
+loadRawImages: "Wyświetlaj zdjęcia w załącznikach w całości zamiast miniatur"
+disableShowingAnimatedImages: "Nie odtwarzaj animowanych obrazów"
+verificationEmailSent: "Wiadomość weryfikacyjna została wysłana. Odwiedź uwzględniony
+  odnośnik, aby ukończyć weryfikację."
+notSet: "Nie ustawiono"
+emailVerified: "Adres e-mail został potwierdzony"
+noteFavoritesCount: "Liczba zakładek"
+pageLikesCount: "Liczba otrzymanych polubień stron"
+pageLikedCount: "Liczba polubionych stron"
+contact: "Kontakt"
+useSystemFont: "Używaj domyślnej czcionki systemu"
+clips: "Klipy"
+experimentalFeatures: "Eksperymentalne funkcje"
+developer: "Programista"
+makeExplorable: "Pokazuj konto na stronie „Eksploruj”"
+makeExplorableDescription: "Jeżeli wyłączysz tę opcję, Twoje konto nie będzie wyświetlać
+  się w sekcji „Eksploruj”."
+showGapBetweenNotesInTimeline: "Pokazuj odstęp między wpisami na osi czasu"
+duplicate: "Duplikuj"
+left: "Lewo"
+center: "Wyśrodkuj"
+wide: "Szerokie"
+narrow: "Wąskie"
+reloadToApplySetting: "To ustawienie zostanie zastosowane po odświeżeniu strony. Chcesz
+  odświeżyć?"
+needReloadToApply: "To ustawienie zostanie zastosowane po odświeżeniu strony."
+showTitlebar: "Pokazuj pasek tytułowy"
+clearCache: "Wyczyść pamięć podręczną"
+onlineUsersCount: "{n} osób jest online"
+nUsers: "{n} użytkowników"
+nNotes: "{n} wpisów"
+sendErrorReports: "Wyślij raporty o błędach"
+myTheme: "Mój motyw"
+backgroundColor: "Tło"
+accentColor: "Akcent"
+textColor: "Tekst"
+saveAs: "Zapisz jako…"
+advanced: "Zaawansowane"
+value: "Wartość"
+createdAt: "Utworzono"
+updatedAt: "Zaktualizowano"
+saveConfirm: "Zapisać zmiany?"
+deleteConfirm: "Na pewno usunąć?"
+invalidValue: "Nieprawidłowa wartość."
+registry: "Rejestr"
+closeAccount: "Zamknij konto"
+currentVersion: "Bieżąca wersja"
+latestVersion: "Najnowsza wersja"
+youAreRunningUpToDateClient: "Korzystasz z najnowszej wersji klienta."
+newVersionOfClientAvailable: "Nowsza wersja klienta jest dostępna."
+usageAmount: "Użycie"
+capacity: "Pojemność"
+inUse: "Użyto"
+editCode: "Edytuj kod"
+apply: "Zastosuj"
+receiveAnnouncementFromInstance: "Otrzymuj powiadomienia e-mail z tego serwera"
+emailNotification: "Powiadomienia e-mail"
+publish: "Publikuj"
+inChannelSearch: "Szukaj na kanale"
+useReactionPickerForContextMenu: "Otwórz wybornik reakcji prawym kliknięciem"
+typingUsers: "{users} pisze/ą"
+jumpToSpecifiedDate: "Przejdź do określonej daty"
+showingPastTimeline: "Obecnie wyświetla starą oś czasu"
+clear: "Wróć"
+markAllAsRead: "Oznacz wszystkie jako przeczytane"
+goBack: "Wróć"
+unlikeConfirm: "Na pewno chcesz usunąć polubienie?"
+fullView: "Pełny widok"
+quitFullView: "Opuść pełny widok"
+addDescription: "Dodaj opis"
+userPagePinTip: "Możesz wyświetlać wpisy w tym miejscu po wybraniu \"Przypnij do profilu\"\
+  \ z menu pojedynczego wpisu."
+notSpecifiedMentionWarning: "Ten wpis zawiera wzmianki o użytkownikach niezawartych
+  jako odbiorcy"
+info: "Informacje"
+userInfo: "Informacje o użykowniku"
+unknown: "Nieznane"
+onlineStatus: "Status online"
+hideOnlineStatus: "Ukryj status online"
+hideOnlineStatusDescription: "Ukrywanie statusu online ogranicza wygody niektórych
+  funkcji, takich jak wyszukiwanie."
+online: "Online"
+active: "Aktywny"
+offline: "Offline"
+notRecommended: "Nie zalecane"
+botProtection: "Zabezpieczenie przed botami"
+instanceBlocking: "Zarządzanie federacją"
+selectAccount: "Wybierz konto"
+switchAccount: "Przełącz konto"
+enabled: "Właczono"
+disabled: "Wyłączono"
+quickAction: "Szybkie działania"
+user: "Użytkownicy"
+administration: "Zarządzanie"
+accounts: "Konta"
+switch: "Przełącz"
+noMaintainerInformationWarning: "Informacje o administratorze nie są skonfigurowane."
+noBotProtectionWarning: "Zabezpieczenie przed botami nie jest skonfigurowane."
+configure: "Skonfiguruj"
+postToGallery: "Opublikuj w galerii"
+gallery: "Galeria"
+recentPosts: "Ostatnie wpisy"
+popularPosts: "Popularne wpisy"
+shareWithNote: "Udostępnij z wpisem"
+ads: "Reklamy"
+expiration: "Ankieta kończy się"
+memo: "Notatki"
+priority: "Priorytet"
+high: "Wysoki"
+middle: "Średnie"
+low: "Niski"
+emailNotConfiguredWarning: "Nie podano adresu e-mail."
+ratio: "Stosunek"
+previewNoteText: "Pokaż podgląd"
+customCss: "Własny CSS"
+customCssWarn: "Używaj tego ustawienia tylko wtedy, gdy wiesz co ono robi. Nieprawidłowe
+  wpisy mogą spowodować, że klient przestanie działać poprawnie."
+global: "Globalna"
+squareAvatars: "Wyświetlaj kwadratowe awatary"
+sent: "Wysłane"
+received: "Otrzymane"
+searchResult: "Wyniki wyszukiwania"
+hashtags: "Hashtag"
+troubleshooting: "Rozwiązywanie problemów"
+useBlurEffect: "Użyj efektów rozmycia w UI"
+learnMore: "Dowiedz się więcej"
+misskeyUpdated: "Firefish zostało zaktualizowane!"
+whatIsNew: "Pokaż zmiany"
+translate: "Przetłumacz"
+translatedFrom: "Przetłumaczone z {x}"
+accountDeletionInProgress: "Trwa usuwanie konta"
+usernameInfo: "Nazwa, która identyfikuje Twoje konto spośród innych na tym serwerze.\
+  \  Możesz użyć alfabetu (a~z, A~Z), cyfr (0~9) lub podkreślników (_). Nazwy użytkownika
+  nie mogą być później zmieniane."
+aiChanMode: "Ai-chan w klasycznym interfejsie"
+keepCw: "Zostaw ostrzeżenia o zawartości"
+pubSub: "Konta Pub/Sub"
+resolved: "Rozwiązane"
+unresolved: "Nierozwiązane"
+breakFollow: "Usuń obserwującego"
+itsOn: "Włączone"
+itsOff: "Wyłączone"
+unread: "Nieodczytane"
+filter: "Filtr"
+controlPanel: "Panel sterowania"
+manageAccounts: "Zarządzaj kontami"
+makeReactionsPublic: "Ustaw historię reakcji jako publiczną"
+makeReactionsPublicDescription: "To spowoduje, że lista wszystkich Twoich dotychczasowych
+  reakcji będzie publicznie widoczna."
+classic: "Wyśrodkowany"
+muteThread: "Wycisz wątek"
+unmuteThread: "Wyłącz wyciszenie wątku"
+ffVisibility: "Widoczność obserwowanych/obserwujących"
+ffVisibilityDescription: "Pozwala skonfigurować, kto może zobaczyć, kogo obserwujesz
+  i kto Cię obserwuje."
+continueThread: "Kontynuuj wątek"
+deleteAccountConfirm: "Spowoduje to nieodwracalne usunięcie Twojego konta. Kontynuować?"
+incorrectPassword: "Nieprawidłowe hasło."
+voteConfirm: "Potwierdzić swój głos na \"{choice}\"?"
+hide: "Ukryj"
+leaveGroup: "Opuść grupę"
+leaveGroupConfirm: "Czy na pewno chcesz opuścić \"{name}\"?"
+useDrawerReactionPickerForMobile: "Wyświetlaj wybornik reakcji jako szufladę na urządzeniach
+  mobilnych"
+welcomeBackWithName: "Witaj z powrotem, {name}"
+clickToFinishEmailVerification: "Kliknij [{ok}], aby zakończyć weryfikację e-mail."
+overridedDeviceKind: "Typ urządzenia"
+smartphone: "Smartfon"
+tablet: "Tablet"
+auto: "Automatycznie"
+size: "Rozmiar"
+numberOfColumn: "Liczba kolumn"
+searchByGoogle: "Szukaj"
+indefinitely: "Dożywotnio"
+file: "Pliki"
+logoutConfirm: "Czy na pewno chcesz się wylogować?"
+lastActiveDate: "Ostatnio użyte w"
+statusbar: "Pasek stanu"
+pleaseSelect: "Wybierz opcję"
+reverse: "Odwróć"
+colored: "Kolorowe"
+label: "Etykieta"
+type: "Typ"
+speed: "Prędkość"
+localOnly: "Tylko lokalne"
+failedToUpload: "Przesyłanie nie powiodło się"
+cannotUploadBecauseInappropriate: "Nie można przesłać tego pliku, ponieważ jego części
+  zostały wykryte jako potencjalnie nieodpowiednie."
+cannotUploadBecauseNoFreeSpace: "Przesyłanie nie powiodło się z powodu braku miejsca
+  na dysku."
+beta: "Beta"
+enableAutoSensitive: "Automatyczne oznaczanie NSFW"
+enableAutoSensitiveDescription: "Umożliwia automatyczne wykrywanie i oznaczanie zawartości
+  NSFW za pomocą uczenia maszynowego tam, gdzie to możliwe. Nawet jeśli ta opcja jest
+  wyłączona, może być włączona na całym serwerze."
+navbar: "Pasek nawigacyjny"
+account: "Konta"
+move: "Przenieś"
+_sensitiveMediaDetection:
+  description: "Zmniejsza wysiłek związany z moderacją serwera dzięki automatycznemu
+    rozpoznawaniu zawartości NSFW za pomocą uczenia maszynowego. To nieznacznie zwiększy
+    obciążenie serwera."
+  setSensitiveFlagAutomatically: "Oznacz jako NSFW"
+  sensitivity: Czułość wykrywania
+  analyzeVideosDescription: Analizuje filmy, w dodatku do zdjęć. Zwiększy to nieznacznie
+    zużycie serwera.
+  sensitivityDescription: Zmniejszenie czułości doprowadzi do mniejszej liczby błędnych
+    wykryć (fałszywie pozytywnych), podczas gdy zwiększenie czułości doprowadzi do
+    mniejszej liczby brakujących wykryć (fałszywie negatywnych).
+  setSensitiveFlagAutomaticallyDescription: Wyniki wykrywania wewnętrznego zostaną
+    zachowane, nawet jeśli ta opcja jest wyłączona.
+  analyzeVideos: Włącz analizę filmów
+_emailUnavailable:
+  used: "Ten adres e-mail jest już używany"
+  format: "Format tego adresu e-mail jest nieprawidłowy"
+  disposable: "Nie można używać jednorazowych adresów e-mail"
+  mx: "Ten serwer e-mail jest nieprawidłowy"
+  smtp: "Ten serwer e-mail nie odpowiada"
+_ffVisibility:
+  public: "Publiczne"
+  followers: "Widoczne tylko dla obserwujących"
+  private: "Prywatne"
+_signup:
+  almostThere: "Prawie na miejscu"
+  emailAddressInfo: "Podaj swój adres e-mail. Nie zostanie on upubliczniony."
+  emailSent: "E-mail z potwierdzeniem został wysłany na Twój adres e-mail ({email}).
+    Kliknij dołączony link, aby dokończyć tworzenie konta."
+_accountDelete:
+  accountDelete: "Usuń konto"
+  mayTakeTime: "Ponieważ usuwanie konta jest procesem wymagającym dużej ilości zasobów,
+    jego ukończenie może zająć trochę czasu, w zależności od ilości utworzonej zawartości
+    i liczby przesłanych plików."
+  sendEmail: "Po zakończeniu usuwania konta na adres e-mail zarejestrowany na tym
+    koncie zostanie wysłana wiadomość e-mail."
+  requestAccountDelete: "Poproś o usunięcie konta"
+  started: "Usuwanie się rozpoczęło."
+  inProgress: "Usuwanie jest obecnie w toku"
+_ad:
+  back: "Wróć"
+  reduceFrequencyOfThisAd: "Pokazuj tę reklamę rzadziej"
+_forgotPassword:
+  enterEmail: "Wpisz adres e-mail użyty do rejestracji. Zostanie do niego wysłany
+    link, za pomocą którego możesz zresetować hasło."
+  ifNoEmail: "Jeśli nie użyłeś adresu e-mail podczas rejestracji, skontaktuj się z
+    administratorem serwera."
+  contactAdmin: "Ten serwer nie obsługuje adresów e-mail, zamiast tego skontaktuj
+    się z administratorem serwera, aby zresetować hasło."
+_gallery:
+  my: "Moja galeria"
+  liked: "Polubione wpisy"
+  like: "Polub"
+  unlike: "Cofnij polubienie"
+_email:
+  _follow:
+    title: "Zaobserwował* Cię"
+  _receiveFollowRequest:
+    title: "Otrzymano prośbę o możliwość obserwacji"
+_plugin:
+  install: "Zainstaluj wtyczki"
+  installWarn: "Nie instaluj niezaufanych wtyczek."
+  manage: "Zarządzanie wtyczkami"
+_preferencesBackups:
+  list: "Utworzone kopie zapasowe"
+  saveNew: "Zapisz nową kopię zapasową"
+  loadFile: "Załaduj z pliku"
+  apply: "Zastosuj do tego urządzenia"
+  save: "Zapisz zmiany"
+  inputName: "Proszę podać nazwę dla tej kopii zapasowej"
+  cannotSave: "Zapisanie nie powiodło się"
+  nameAlreadyExists: "Kopia zapasowa o nazwie \"{name}\" już istnieje. Proszę podać
+    inną nazwę."
+  applyConfirm: "Czy na pewno chcesz zastosować kopię zapasową \"{name}\" na tym urządzeniu?
+    Istniejące ustawienia tego urządzenia zostaną nadpisane."
+  saveConfirm: "Zapisać kopię zapasową jako {name}?"
+  deleteConfirm: "Usunąć kopię zapasową {name}?"
+  renameConfirm: "Zmienić nazwę kopii zapasowej z \"{old}\" na \"{new}\"?"
+  createdAt: "Utworzono w: {date} {time}"
+  updatedAt: "Zaktualizowano w: {date} {time}"
+  cannotLoad: "Ładowanie nie powiodło się"
+  invalidFile: "Nieprawidłowy format pliku"
+  noBackups: Nie znaleziono kopii zapasowych. Możesz utworzyć kopię zapasową twoich
+    ustawień klienta na tym serwerze poprzez użycie “Utwórz nową kopię zapasową”.
+_registry:
+  scope: "Zakres"
+  key: "Klucz"
+  keys: "Klucz"
+  domain: "Domena"
+  createKey: "Utwórz klucz"
+_aboutFirefish:
+  about: "Firefish jest forkiem Misskey utworzonym przez ThatOneCalculator, rozwijanym
+    od 2022."
+  contributors: "Główni twórcy"
+  allContributors: "Wszyscy twórcy"
+  source: "Kod źródłowy"
+  translation: "Tłumacz Firefish"
+  donate: "Przekaż darowiznę na Firefish"
+  morePatrons: "Naprawdę doceniam wsparcie ze strony wielu niewymienionych tu osób.
+    Dziękuję! 🥰"
+  patrons: "Wspierający"
+_nsfw:
+  respect: "Ukrywaj media NSFW"
+  ignore: "Nie ukrywaj mediów NSFW"
+  force: "Ukrywaj wszystkie media"
+_mfm:
+  cheatSheet: "Ściąga MFM"
+  intro: "MFM jest językiem składniowym używanym przez m.in. Firefish, forki *key (w
+    tym Firefish), oraz Akkomę, który może być użyty w wielu miejscach. Tu znajdziesz
+    listę wszystkich możliwych elementów składni MFM."
+  dummy: "Firefish rozszerza świat Fediwersum"
+  mention: "Wspomnij"
+  mentionDescription: "Używając znaku @ i nazwy użytkownika, możesz określić danego
+    użytkownika."
+  hashtag: "Hashtag"
+  hashtagDescription: "Używając kratki i tekstu, możesz określić hashtag."
+  url: "Adres URL"
+  urlDescription: "Adresy URL mogą być wyświetlane."
+  link: "Odnośnik"
+  linkDescription: "Określone części tekstu mogą być wyświetlane jako adres URL."
+  bold: "Pogrubienie"
+  boldDescription: "Wyróżnia litery pogrubiając je."
+  small: "Małe"
+  smallDescription: "Wyświetla treść jako małą i cienką."
+  center: "Wyśrodkowanie"
+  centerDescription: "Wyśrodkowuje zawartość."
+  inlineCode: "Kod (w wierszu)"
+  blockCode: "Kod (blok)"
+  blockCodeDescription: "Wyświetla kod z podświetlaną składnią składający się z wielu
+    linii."
+  blockMath: "Matematyka (Blok)"
+  quote: "Cytuj"
+  quoteDescription: "Wyświetla treść jako cytat."
+  emoji: "Niestandardowe emoji"
+  emojiDescription: "Otaczając nazwę niestandardowego emoji dwukropkami, możesz użyć
+    niestandardowego emoji."
+  search: "Szukaj"
+  searchDescription: "Wyświetla pole wyszukiwania z wcześniej wpisanym tekstem."
+  flip: "Odwróć"
+  flipDescription: "Przerzuca treść poziomo lub pionowo."
+  jelly: "Animacja (Galaretka)"
+  jellyDescription: "Nadaje treści galaretowatą animację."
+  tada: "Animacja (Tada)"
+  tadaDescription: "Nadaje treści animację podobną do \"Tada!\"."
+  jump: "Animacja (Skok)"
+  jumpDescription: "Nadaje treści animację skakania."
+  bounce: "Animacja (Odbijanie)"
+  bounceDescription: "Nadaje treści animację odbijania się."
+  shake: "Animacja (Wstrząsanie)"
+  shakeDescription: "Nadaje treści animację wstrząsania."
+  twitch: "Animacja (Drganie)"
+  twitchDescription: "Nadaje treści mocno drgającą animację."
+  spin: "Animacja (Obrót)"
+  spinDescription: "Nadaje treści animację obracania."
+  x2: "Duże"
+  x2Description: "Czyni treść większą."
+  x3: "Bardzo duże"
+  x3Description: "Czyni treść jeszcze większą."
+  x4: "Ogromne"
+  x4Description: "Czyni treść nawet większą niż jeszcze większa."
+  blur: "Rozmycie"
+  blurDescription: "Rozmywa treść. Zostanie wyraźnie wyświetlona po najechaniu."
+  font: "Czcionka"
+  fontDescription: "Wybiera czcionkę do wyświetlania treści."
+  rainbow: "Tęcza"
+  rainbowDescription: "Sprawia, że zawartość pojawia się w kolorach tęczy."
+  sparkle: "Blask"
+  sparkleDescription: "Nadaje zawartości efekt lśniącego brokatu."
+  rotate: "Obrót"
+  rotateDescription: "Obraca zawartość o określony kąt."
+  plain: "Zwyczajny"
+  plainDescription: "Wyłącza efekty wszystkich MFM zawartych w tym efekcie MFM."
+  inlineCodeDescription: Wyświetla podświetlanie składni dla kodu (programu) w linii.
+  inlineMath: Matematyka (Inline)
+  inlineMathDescription: Pokaż formuły matematyczne (KaTeX) w linii
+  blockMathDescription: Pokaż wieloliniowe formuły matematyczne (KaTeX) w bloku
+  background: Kolor tła
+  backgroundDescription: Zmień kolor tła tekstu.
+  foregroundDescription: Zmień kolor pierwszoplanowy tekstu.
+  positionDescription: Przesuń zawartość o określoną wartość.
+  position: Pozycjonuj
+  foreground: Kolor pierwszoplanowy
+  scaleDescription: Skaluj treść o określoną wielkość.
+  scale: Skaluj
+_instanceTicker:
+  none: "Nigdy nie pokazuj"
+  remote: "Pokaż dla zdalnych użytkowników"
+  always: "Zawsze pokazuj"
+_serverDisconnectedBehavior:
+  reload: "Automatycznie odśwież"
+  dialog: "Pokazuj okno ostrzeżenia"
+  quiet: "Pokazuj nieirytujące ostrzeżenia"
+  nothing: Nic nie rób
+_channel:
+  create: "Utwórz kanał"
+  edit: "Edytuj kanał"
+  setBanner: "Ustaw baner"
+  removeBanner: "Usuń baner"
+  featured: "Na czasie"
+  owned: "Własny"
+  following: "Śledzeni"
+  usersCount: "{n} uczestnicy"
+  notesCount: "{n} wpisy"
+  nameAndDescription: Nazwa i opis
+  nameOnly: Tylko nazwa
+_menuDisplay:
+  top: "Góra"
+  hide: "Ukryj"
+  sideFull: Z boku
+  sideIcon: Z boku (tylko ikony)
+_wordMute:
+  muteWords: "Słowo do wyciszenia"
+  muteWordsDescription2: "Otocz słowa kluczowe ukośnikami, aby używać wyrażeń regularnych."
+  soft: "Łagodny"
+  hard: "Twardy"
+  mutedNotes: "Wyciszone wpisy"
+  muteWordsDescription: Rozdzielaj spacją dla kondycji AND, lub przerwaniem wiersza
+    dla kondycji OR.
+  softDescription: Ukryj z osi czasu wpisy, które spełniają podane warunki.
+  hardDescription: Zapobiega dodawania do osi czasu wpisów, które spełniają podane
+    warunki. Dodatkowo, te wpisy nie zostaną dodane do osi czasu, jeśli warunki się
+    zmienią.
+_instanceMute:
+  title: "Ukrywa wpisy z wymienionych instancji."
+  heading: "Lista instancji do wyciszenia"
+  instanceMuteDescription2: Oddzielaj nowymi liniami
+  instanceMuteDescription: Spowoduje to wyciszenie wszystkich wpisów/podbić z podanych
+    instancji, w tym tych od użytkowników odpowiadających na wpisy z wyciszonych instancji.
+_theme:
+  explore: "Przeglądaj motywy"
+  install: "Zainstaluj motyw"
+  manage: "Zarządzanie motywami"
+  code: "Kod motywu"
+  description: "Opis"
+  installed: "Zainstalowano {name}"
+  installedThemes: "Zainstalowane motywy"
+  builtinThemes: "Wbudowane motywy"
+  alreadyInstalled: "Motyw jest już zainstalowany"
+  invalid: "Format motywu jest nieprawidłowy"
+  make: "Utwórz motyw"
+  base: "Podstawowy"
+  addConstant: "Dodaj stałą"
+  constant: "Stała"
+  defaultValue: "Domyślna wartość"
+  color: "Kolor"
+  refProp: "Nawiąż do właściwości"
+  refConst: "Nawiąż do stałej"
+  key: "Klucz"
+  func: "Funkcje"
+  funcKind: "Rodzaj funkcji"
+  argument: "Argument"
+  basedProp: "Nawiązana właściwość"
+  alpha: "Przezroczystość"
+  darken: "Ściemnij"
+  lighten: "Rozjaśnij"
+  inputConstantName: "Wprowadź nazwę stałej"
+  importInfo: "Jeżeli wprowadzisz tu kod motywu, możesz zaimportować go w edytorze
+    motywu"
+  deleteConstantConfirm: "Czy na pewno chcesz usunąć stałą {const}?"
+  keys:
+    accent: "Akcent"
+    bg: "Tło"
+    fg: "Tekst"
+    focus: "Skupienie"
+    indicator: "Wskaźnik"
+    panel: "Panel"
+    shadow: "Cień"
+    header: "Nagłówek"
+    navBg: "Tło paska bocznego"
+    navFg: "Tekst paska bocznego"
+    navHoverFg: "Tekst paska bocznego (zbliżenie)"
+    navActive: "Tekst paska bocznego (aktywny)"
+    navIndicator: "Wskaźnik paska bocznego"
+    link: "Odnośnik"
+    hashtag: "Hashtag"
+    mention: "Wspomnij"
+    mentionMe: "Wspomnienia (ja)"
+    renote: "Podbij"
+    modalBg: "Tło modalu"
+    divider: "Rozdzielacz"
+    scrollbarHandle: "Uchwyt paska przewijania"
+    scrollbarHandleHover: "Uchwyt paska przewijania (po najechaniu)"
+    dateLabelFg: "Tekst z datą"
+    infoBg: "Tło informacji"
+    infoFg: "Tekst informacji"
+    infoWarnBg: "Tło ostrzeżenia"
+    infoWarnFg: "Tekst ostrzeżenia"
+    cwBg: "Tło CW"
+    cwFg: "Tekst CW"
+    cwHoverBg: "Tło CW (po najechaniu)"
+    toastBg: "Tło powiadomień"
+    toastFg: "Tekst powiadomień"
+    buttonBg: "Tło przycisku"
+    buttonHoverBg: "Tło przycisku (po najechaniu)"
+    inputBorder: "Obramowanie pola wejścia"
+    listItemHoverBg: "Tło elementu listy (po najechaniu)"
+    driveFolderBg: "Tło folderu na dysku"
+    wallpaperOverlay: "Nakładka tapety"
+    badge: "Odznaka"
+    messageBg: "Tło czatu"
+    accentDarken: "Akcent (ciemniejszy)"
+    accentLighten: "Akcent (jaśniejszy)"
+    fgHighlighted: "Wyróżniony tekst"
+_sfx:
+  note: "Wpisy"
+  noteMy: "Mój wpis"
+  notification: "Powiadomienia"
+  chat: "Wiadomości"
+  chatBg: "Rozmowy (tło)"
+  antenna: "Anteny"
+  channel: "Powiadomienia kanału"
+_ago:
+  future: "W przyszłości"
+  justNow: "Przed chwilą"
+  secondsAgo: "{n} sek. temu"
+  minutesAgo: "{n} min. temu"
+  hoursAgo: "{n} godz. temu"
+  daysAgo: "{n} dni temu"
+  weeksAgo: "{n} tyg. temu"
+  monthsAgo: "{n} mies. temu"
+  yearsAgo: "{n} lat temu"
+_time:
+  second: "sekunda"
+  minute: "minuta"
+  hour: "godz."
+  day: "dzień"
+_tutorial:
+  title: "Jak korzystać z Firefish"
+  step1_1: "Witamy!"
+  step1_2: "Pozwól, że Cię skonfigurujemy. Będziesz działać w mgnieniu oka!"
+  step2_1: "Najpierw, proszę wypełnij swój profil."
+  step2_2: "Podanie kilku informacji o tym, kim jesteś, ułatwi innym stwierdzenie,
+    czy chcą zobaczyć Twoje wpisy lub śledzić Cię."
+  step3_1: "Pora znaleźć osoby do śledzenia!"
+  step3_2: "Twoje domowe i społeczne linie czasu opierają się na tym, kogo śledzisz,
+    więc spróbuj śledzić kilka kont, aby zacząć.\nKliknij kółko z plusem w prawym
+    górnym rogu profilu, aby go śledzić."
+  step4_1: "Pozwól, że zabierzemy Cię tam."
+  step4_2: "W pierwszym wpisie możesz się przedstawić lub wysłać powitanie - \"Witaj,
+    świecie!\""
+  step5_1: "Osie czasu, wszędzie widzę osie czasu!"
+  step5_2: "Twoja instancja ma włączone {timelines} różne osie czasu."
+  step5_3: "Główna {icon} oś czasu to miejsce, w którym możesz zobaczyć posty od użytkowników
+    których obserwujesz, oraz innych użytkowników z tej instancji. Jeśli wolisz, by
+    główna oś czasu pokazywała tylko posty od użytkowników których obserwujesz, możesz
+    łatwo to zmienić w ustawieniach!"
+  step5_4: "Lokalna {icon} oś czasu to miejsce, w którym możesz zobaczyć posty od
+    wszystkich innych osób na tej instancji."
+  step5_5: "Społeczna {icon} oś czasu to miejsce, gdzie możesz zobaczyć posty z instancji,
+    które admini polecają."
+  step5_6: "Polecana {icon} oś czasu to miejsce, gdzie możesz zobaczyć posty z instancji,
+    które admini polecają."
+  step5_7: "Globalna {icon} oś czasu to miejsce, gdzie możesz zobaczyć posty z każdej
+    innej połączonej instancji."
+  step6_1: "Więc, czym to jest to miejsce?"
+  step6_2: "Cóż, nie dołączył*ś po prostu do Firefish. Dołączył*ś do portalu do Fediverse,
+    połączonej sieci tysięcy serwerów, zwanych instancjami."
+  step6_3: "Każdy serwer działa w inny sposób, i nie wszystkie serwery używają Firefish.
+    Ten jednak używa! Jest to trochę skomplikowane, ale w krótkim czasie załapiesz
+    o co chodzi."
+  step6_4: "A teraz idź, odkrywaj i baw się dobrze!"
+_2fa:
+  alreadyRegistered: "Zarejestrowałeś już urządzenie do uwierzytelniania dwuskładnikowego."
+  registerTOTP: "Zarejestruj nowe urządzenie"
+  registerSecurityKey: "Zarejestruj klucz bezpieczeństwa"
+  step1: "Najpierw, zainstaluj aplikację uwierzytelniającą (taką jak {a} lub {b})
+    na swoim urządzeniu."
+  step2: "Następnie, zeskanuje kod QR z ekranu."
+  step3: "Wprowadź token podany w aplikacji, aby ukończyć konfigurację."
+  step4: "Od teraz, przy każdej próbie logowania otrzymasz prośbę o token logowania."
+  step2Url: 'Możesz też wpisać ten URL jeśli używasz programu komputerowego:'
+  securityKeyInfo: Oprócz uwierzytelnienia odciskiem palców lub PIN, możesz również
+    skonfigurować uwierzytelnienie za pomocą kluczy sprzętowych obsługujących FIDO2,
+    w celu dalszego zabezpieczenia Twojego konta.
+_permissions:
+  "read:account": "Wyświetlanie informacji o twoim koncie"
+  "write:account": "Edycja informacji o twoim koncie"
+  "read:blocks": "Wyświetlanie listy zablokowanych użytkowników"
+  "write:blocks": "Blokowanie i odblokowywanie użytkowników"
+  "read:drive": "Wyświetlanie plików i folderów z twojego Dysku"
+  "write:drive": "Edycja i usuwanie plików i katalogów z Twojego dysku"
+  "read:favorites": "Wyświetlanie Twoich zakładek"
+  "write:favorites": "Edycja Twoich zakładek"
+  "read:following": "Wyświetlanie informacji o obserwowanych"
+  "write:following": "Obserwowanie lub cofanie obserwacji innych kont"
+  "read:messaging": "Wyświetlanie twoich czatów"
+  "read:mutes": "Wyświetlanie listy wyciszonych osób"
+  "write:mutes": "Edycja listy wyciszonych osób"
+  "read:notifications": "Wyświetlanie powiadomień"
+  "write:notifications": "Działanie na powiadomieniach"
+  "read:reactions": "Wyświetlanie reakcji"
+  "write:reactions": "Edycja reakcji"
+  "write:votes": "Głosowanie w ankiecie"
+  "read:pages": "Wyświetlanie Twoich stron"
+  "write:pages": "Edycja i usuwanie Twoich stron"
+  "read:page-likes": "Wyświetlanie polubień na stronach"
+  "write:page-likes": "Edycja polubień na stronach"
+  "read:user-groups": "Wyświetlanie grup użytkownika"
+  "write:user-groups": "Edycja i usuwanie grup użytkownika"
+  "read:channels": "Wyświetlenie Twoich kanałów"
+  "write:channels": "Edycja Twoich kanałów"
+  "read:gallery": "Wyświetlenie Twojej galerii"
+  "write:gallery": "Edycja Twojej galerii"
+  "write:messaging": Tworzenie i usuwanie wiadomości czatu
+  "write:notes": Tworzenie i usuwanie wpisów
+  "read:gallery-likes": Wyświetlenie Twojej listy z polubionymi postami galerii
+  "write:gallery-likes": Edycja Twojej listy z polubionymi postami galerii
+_auth:
+  shareAccess: "Czy chcesz autoryzować „{name}” do dostępu do tego konta?"
+  permissionAsk: "Ta aplikacja wymaga następujących uprawnień:"
+  denied: Odmowa dostępu
+  copyAsk: Proszę wpisz następujący kod autoryzacyjny w aplikacji
+  shareAccessAsk: Czy na pewno chcesz upoważnić tą aplikację do dostępu do Twojego
+    konta?
+  pleaseGoBack: Wróć do aplikacji
+  callback: Wracam do aplikacji
+_weekday:
+  sunday: "Niedziela"
+  monday: "Poniedziałek"
+  tuesday: "Wtorek"
+  wednesday: "Środa"
+  thursday: "Czwartek"
+  friday: "Piątek"
+  saturday: "Sobota"
+_widgets:
+  memo: "Przypięte notatki"
+  notifications: "Powiadomienia"
+  timeline: "Oś czasu"
+  calendar: "Kalendarz"
+  trends: "Na czasie"
+  clock: "Zegar"
+  rss: "Czytnik RSS"
+  activity: "Aktywność"
+  photos: "Zdjęcia"
+  digitalClock: "Zegar cyfrowy"
+  unixClock: "Zegar UNIX"
+  federation: "Federacja"
+  instanceCloud: "Chmura instancji"
+  postForm: "Formularz tworzenia wpisu"
+  slideshow: "Pokaz slajdów"
+  button: "Przycisk"
+  onlineUsers: "Użytkownicy online"
+  jobQueue: "Kolejka zadań"
+  serverMetric: "Metryka serwera"
+  aiscript: "Konsola AiScript"
+  aichan: "Ai"
+  rssTicker: Ticker RSS
+  userList: Lista użytkowników
+  _userList:
+    chooseList: Wybierz listę
+_cw:
+  hide: "Ukryj"
+  show: "Załaduj więcej"
+  chars: "{count} znak(-i/-ów)"
+  files: "{count} plik(-i/-ów)"
+_poll:
+  noOnlyOneChoice: "Wymagane są przynajmniej dwie opcje"
+  choiceN: "Opcja {n}"
+  noMore: "Nie możesz dodać więcej opcji"
+  canMultipleVote: "Pozwól na wiele odpowiedzi"
+  expiration: "Ankieta kończy się"
+  infinite: "Nigdy"
+  at: "Zakończ o…"
+  after: "Zakończ po…"
+  deadlineDate: "Data zakończenia"
+  deadlineTime: "godz."
+  duration: "Czas trwania"
+  votesCount: "{n} głosów"
+  totalVotes: "Łącznie {n} głosów"
+  vote: "Głosowanie w ankiecie"
+  showResult: "Pokaż wyniki"
+  voted: "Zagłosowano"
+  closed: "Zakończono"
+  remainingDays: "Pozostało {d} dni i {h} godzin"
+  remainingHours: "Pozostali {h} godzin i {m} minut"
+  remainingMinutes: "Pozostało {m} minut i {s} sekund"
+  remainingSeconds: "Pozostało {s} sekund"
+_visibility:
+  public: "Publiczny"
+  publicDescription: "Wpis pojawi się u wszystkich"
+  home: "Niewidoczny"
+  followers: "Obserwujący"
+  specified: "Bezpośredni"
+  specifiedDescription: "Napisz tylko określonym użytkownikom"
+  homeDescription: Wpis będzie publiczny ale nie pojawi się na osi czasu instancji
+  followersDescription: Wpis pojawi się tylko na osiach czasu Twoich obserwujących
+  localOnly: Lokalnie
+  localOnlyDescription: Wpis będzie widoczny tylko dla użytkowników tej instancji
+_postForm:
+  _placeholders:
+    a: "Co się dzieje?"
+    b: "Co się wydarzyło?"
+    c: "Co Ci chodzi po głowie?"
+    d: "Czy masz coś do powiedzenia?"
+    e: "Zacznij coś pisać…"
+    f: "Czekamy, aż coś napiszesz."
+  quotePlaceholder: Cytuj ten wpis...
+  channelPlaceholder: Wyślij na kanał...
+  replyPlaceholder: Odpowiedz na ten wpis...
+_profile:
+  name: "Nazwa"
+  username: "Nazwa użytkownika"
+  description: "Opis"
+  youCanIncludeHashtags: "Możesz umieścić hashtagi w swoim opisie."
+  metadata: "Dodatkowe informacje"
+  metadataEdit: "Edytuj dodatkowe informacje"
+  metadataDescription: "Możesz wyświetlać do czterech sekcji dodatkowych informacji
+    na swoim profilu. Możesz dodać tag {a} lub tag {l} z {rel}, aby zweryfikować link w swoim profilu!"
+  metadataLabel: "Etykieta"
+  metadataContent: "Treść"
+  changeAvatar: "Zmień awatar"
+  changeBanner: "Zmień baner"
+  locationDescription: Jeśli wpiszesz z początku swoje miasto, twój czas lokalny będzie
+    się pokazywać innym użytkownikom.
+_exportOrImport:
+  allNotes: "Wszystkie wpisy"
+  followingList: "Obserwowani"
+  muteList: "Wycisz"
+  blockingList: "Zablokuj"
+  userLists: "Listy"
+  excludeMutingUsers: Wyklucz wyciszonych użytkowników
+  excludeInactiveUsers: Wyklucz nieaktywnych użytkowników
+_charts:
+  federation: "Federacja"
+  apRequest: "Żądania"
+  usersTotal: "Łącznie # użytkowników"
+  activeUsers: "Aktywni użytkownicy"
+  storageUsageTotal: Łączne użycie dysku
+  filesIncDec: Różnica w liczbie plików
+  filesTotal: Łączna liczba plików
+  storageUsageIncDec: Różnica w wykorzystaniu miejsca
+  localNotesIncDec: Różnica w liczbie lokalnych wpisów
+  remoteNotesIncDec: Różnica w liczbie zdalnych wpisów
+  notesTotal: Łączna liczba wpisów
+  usersIncDec: Różnica w liczbie użytkowników
+  notesIncDec: Różnica w liczbie wpisów
+_instanceCharts:
+  requests: "Żądania"
+  notesTotal: "Łącznie # wpisów"
+  ff: "Różnica w # obserwujących "
+  ffTotal: "Łączna liczba # obserwujących"
+  cacheSize: "Różnica w rozmiarze pamięci podręcznej"
+  cacheSizeTotal: "Łączny rozmiar pamięci podręcznej"
+  files: "Różnica # plików"
+  filesTotal: "Łącznie # plików"
+  usersTotal: Łączna liczba użytkowników
+  users: Różnica w liczbie użytkowników
+  notes: Różnica w liczbie wpisów
+_timelines:
+  home: "Strona główna"
+  local: "Lokalne"
+  social: "Społeczna"
+  global: "Globalna"
+  recommended: Polecana
+_pages:
+  newPage: "Utwórz stronę"
+  editPage: "Edytuj tę stronę"
+  readPage: "Aktywowano widok źródła"
+  created: "Pomyślnie utworzono stronę"
+  updated: "Pomyślnie zaktualizowano stronę"
+  deleted: "Pomyślnie usunięto stronę"
+  pageSetting: "Ustawienia strony"
+  nameAlreadyExists: "Określony adres URL strony już istnieje"
+  invalidNameTitle: "Podany adres URL strony jest nieprawidłowy"
+  invalidNameText: "Upewnij się, że pole tytułowe strony nie jest puste"
+  editThisPage: "Edytuj tę stronę"
+  viewSource: "Zobacz źródło"
+  viewPage: "Wyświetlanie Twoich stron"
+  like: "Lubię"
+  unlike: "Cofnij polubienie"
+  my: "Moje strony"
+  liked: "Polubione strony"
+  featured: "Popularne"
+  inspector: "Inspektor"
+  contents: "Zawartość"
+  content: "Blok strony"
+  variables: "Zmienne"
+  title: "Tytuł"
+  url: "URL strony"
+  summary: "Podsumowanie strony"
+  alignCenter: "Wyśrodkuj elementy"
+  hideTitleWhenPinned: "Ukryj tytuł strony, gdy przypięta do profilu"
+  font: "Czcionka"
+  fontSerif: "Szeryfowa"
+  fontSansSerif: "Bezszeryfowa"
+  eyeCatchingImageSet: "Ustaw miniaturę"
+  eyeCatchingImageRemove: "Usuń miniaturę"
+  chooseBlock: "Dodaj blok"
+  selectType: "Wybierz typ"
+  enterVariableName: "Wprowadź nazwę dla swojej zmiennej"
+  variableNameIsAlreadyUsed: "Ta nazwa jest już używana przez inną zmienną"
+  contentBlocks: "Zawartość"
+  inputBlocks: "Wejście"
+  specialBlocks: "Specjalne"
+  blocks:
+    text: "Tekst"
+    textarea: "Pole tekstowe"
+    section: "Sekcja"
+    image: "Zdjęcia"
+    button: "Przycisk"
+    if: "Jeżeli"
+    _if:
+      variable: "Zmienna"
+    post: "Utwórz wpis"
+    _post:
+      text: "Treść"
+      attachCanvasImage: Załącz obraz płótna
+      canvasId: ID płótna
+    textInput: "Pole tekstowe"
+    _textInput:
+      name: "Nazwa zmiennej"
+      text: "Tytuł"
+      default: "Domyślna wartość"
+    textareaInput: "Wielowierszowe pole tekstowe"
+    _textareaInput:
+      name: "Nazwa zmiennej"
+      text: "Tytuł"
+      default: "Domyślna wartość"
+    numberInput: "Pole na liczbę"
+    _numberInput:
+      name: "Nazwa zmiennej"
+      text: "Tytuł"
+      default: "Domyślna wartość"
+    _canvas:
+      width: "Szerokość"
+      height: "Wysokość"
+      id: ID płótna
+    note: "Osadzony wpis"
+    _note:
+      id: "ID wpisu"
+      idDescription: "Możesz też wkleić adres URL wpisu, aby go ustawić."
+      detailed: "Szczegółowy widok"
+    switch: "Przełącznik"
+    _switch:
+      name: "Nazwa zmiennej"
+      text: "Tytuł"
+      default: "Domyślna wartość"
+    counter: "Licznik"
+    _counter:
+      name: "Nazwa zmiennej"
+      text: "Tytuł"
+      inc: "Zwiększ o"
+    _button:
+      text: "Tytuł"
+      colored: "Kolorowe"
+      action: "Działanie wykonywane przy naciśnięciu przycisku"
+      _action:
+        dialog: "Pokazuj okno dialogowe"
+        _dialog:
+          content: "Treść"
+        resetRandom: "Resetuj losowe ziarno"
+        pushEvent: "Wyślij zdarzenie"
+        _pushEvent:
+          event: "Nazwa zdarzenia"
+          message: "Wiadomość do wyświetlenia po aktywowaniu"
+          variable: "Zmienna do wysłania"
+          no-variable: "Brak"
+        callAiScript: "Wywołaj AiScript"
+        _callAiScript:
+          functionName: "Nazwa funkcji"
+    radioButton: "Wybór"
+    _radioButton:
+      name: "Nazwa zmiennej"
+      title: "Tytuł"
+      values: "Lista wyborów (oddzielonych znakiem nowego wiersza)"
+      default: "Domyślna wartość"
+    canvas: Płótno
+  script:
+    categories:
+      flow: "Kontrola przepływu"
+      logical: "Operacje logiczne"
+      operation: "Obliczanie"
+      comparison: "Porównanie"
+      random: "Losowe"
+      value: "Wartość"
+      fn: "Funkcje"
+      text: "Działania na tekście"
+      convert: "Transformacja"
+      list: "Listy"
+    blocks:
+      text: "Tekst"
+      multiLineText: "Tekst (w wielu wierszach)"
+      _textList:
+        info: "Oddziel każdy wpis znakiem nowego wiersza"
+      strLen: "Długość tekstu"
+      _strLen:
+        arg1: "Tekst"
+      _strPick:
+        arg1: "Tekst"
+        arg2: "Położenie znaku"
+      strReplace: "Zamiana tekstu"
+      _strReplace:
+        arg1: "Tekst"
+        arg2: "Tekst do zamiany"
+        arg3: "Zamieniono z"
+      _strReverse:
+        arg1: "Tekst"
+      _join:
+        arg1: "Listy"
+        arg2: "Odstęp"
+      add: "Dodaj"
+      _add:
+        arg1: "A"
+        arg2: "B"
+      subtract: "Odejmij"
+      _subtract:
+        arg1: "A"
+        arg2: "B"
+      multiply: "Pomnóż"
+      _multiply:
+        arg1: "A"
+        arg2: "B"
+      divide: "Podziel"
+      _divide:
+        arg1: "A"
+        arg2: "B"
+      mod: "Reszta"
+      _mod:
+        arg1: "A"
+        arg2: "B"
+      _round:
+        arg1: "Liczba"
+      eq: "A i B są sobie równe"
+      _eq:
+        arg1: "A"
+        arg2: "B"
+      notEq: "A i B różnią się"
+      _notEq:
+        arg1: "A"
+        arg2: "B"
+      and: "A I B"
+      _and:
+        arg1: "A"
+        arg2: "B"
+      or: "A LUB B"
+      _or:
+        arg1: "A"
+        arg2: "B"
+      lt: "< A jest mniejsze niż B"
+      _lt:
+        arg1: "A"
+        arg2: "B"
+      gt: "> A jest większe od B"
+      _gt:
+        arg1: "A"
+        arg2: "B"
+      ltEq: "<= A jest mniejsze lub równe B"
+      _ltEq:
+        arg1: "A"
+        arg2: "B"
+      gtEq: ">= A jest większe lub równe B"
+      _gtEq:
+        arg1: "A"
+        arg2: "B"
+      if: "Warunek"
+      _if:
+        arg1: "Jeżeli"
+        arg2: "Wtedy"
+        arg3: Inaczej
+      not: "NIE"
+      _not:
+        arg1: "NIE"
+      random: "Losowe"
+      _random:
+        arg1: "Prawdopodobieństwo"
+      rannum: "Losowa liczba"
+      _rannum:
+        arg1: "Minimalna wartość"
+        arg2: "Maksymalna wartość"
+      randomPick: "Wybierz losowo z listy"
+      _randomPick:
+        arg1: "Listy"
+      dailyRandom: "Losowo (zmienia się raz dziennie dla każdego użytkownika)"
+      _dailyRandom:
+        arg1: "Prawdopodobieństwo"
+      dailyRannum: "Losowa liczba (zmienia się raz dziennie dla każdego użytkownika)"
+      _dailyRannum:
+        arg1: "Minimalna wartość"
+        arg2: "Maksymalna wartość"
+      dailyRandomPick: "Wybierz losowo z listy (zmienia się raz dziennie dla każdegoużytkownika)"
+      _dailyRandomPick:
+        arg1: "Listy"
+      seedRandom: "Losowo (z ziarnem)"
+      _seedRandom:
+        arg1: "Ziarno"
+        arg2: "Prawdopodobieństwo"
+      seedRannum: "Losowa liczba (z ziarnem)"
+      _seedRannum:
+        arg1: "Ziarno"
+        arg2: "Minimalna wartość"
+        arg3: "Maksymalna wartość"
+      seedRandomPick: "Wybierz losowo z listy (z ziarnem)"
+      _seedRandomPick:
+        arg1: "Ziarno"
+        arg2: "Listy"
+      DRPWPM: "Wybierz losowo z ważonej listy (zmienia się raz dziennie dla każdegoużytkownika)"
+      pick: "Wybierz z listy"
+      _pick:
+        arg1: "Listy"
+        arg2: "Położenie"
+      listLen: "Uzyskaj długość listy"
+      _listLen:
+        arg1: "Listy"
+      number: "Liczba"
+      stringToNumber: "Tekst na liczbę"
+      _stringToNumber:
+        arg1: "Tekst"
+      numberToString: "Liczba na tekst"
+      _numberToString:
+        arg1: "Liczba"
+      splitStrByLine: "Rozdziel tekst znakami nowej linii"
+      _splitStrByLine:
+        arg1: "Tekst"
+      ref: "Zmienne"
+      aiScriptVar: "Zmienna AiScript"
+      fn: "Funkcje"
+      _fn:
+        arg1: "Wyjście"
+        slots-info: Oddziel każde gniazdo nową linią
+        slots: Gniazda
+      for: "Powtórzenie"
+      _for:
+        arg1: "Liczba powtórzeń"
+        arg2: "Działanie"
+      textList: Lista tekstowa
+      strPick: Wyciągaczka ciągu znaków
+      strReverse: Odwróć tekst
+      join: Łączenie tekstu
+      round: Zaokrąglanie wartości dziesiętnych
+      _DRPWPM:
+        arg1: Lista tekstowa
+    types:
+      string: "Tekst"
+      number: "Liczba"
+      boolean: "Flaguj"
+      array: "Listy"
+      stringArray: Lista tekstowa
+    enviromentVariables: "Zmienna środowiskowa"
+    pageVariables: "Element strony"
+    argVariables: Gniazda wejściowe
+    typeError: Gniazdo {slot} akceptuje wartości typu “{expect}”, lecz wprowadzona
+      wartość jest typu “{actual}”!
+    thereIsEmptySlot: Gniazdo {slot} jest puste!
+    emptySlot: Puste gniazdo
+_relayStatus:
+  requesting: "Oczekujące"
+  accepted: "Zaakceptowano"
+  rejected: "Odrzucono"
+_notification:
+  fileUploaded: "Pomyślnie wysłano plik"
+  youGotMention: "{name} wspomniał* o Tobie"
+  youGotReply: "{name} odpowiedział* Tobie"
+  youGotQuote: "{name} zacytował* Ciebie"
+  youRenoted: "{name} podbił* Twój wpis"
+  youGotPoll: "{name} zagłosował* w Twojej ankiecie"
+  youGotMessagingMessageFromUser: "{name} wysłał* Ci wiadomość"
+  youGotMessagingMessageFromGroup: "Została wysłana wiadomość do grupy {name}"
+  youWereFollowed: "Zaobserwował* Cię"
+  youReceivedFollowRequest: "Otrzymał*ś prośbę o możliwość obserwacji"
+  yourFollowRequestAccepted: "Twoja prośba o możliwość obserwacji została przyjęta"
+  youWereInvitedToGroup: "{userName} zaprosił* Ciebie do grupy"
+  pollEnded: "Wyniki ankiety stały się dostępne"
+  emptyPushNotificationMessage: "Powiadomienia push zostały zaktualizowane"
+  _types:
+    all: "Wszystkie"
+    follow: "Nowi obserwujący"
+    mention: "Wspomnienia"
+    reply: "Odpowiedzi"
+    renote: "Podbicia"
+    quote: "Cytaty"
+    reaction: "Reakcje"
+    pollVote: "Głosy w ankietach"
+    receiveFollowRequest: "Otrzymane prośby o możliwość obserwacji"
+    followRequestAccepted: "Przyjęte prośby o możliwość obserwacji"
+    groupInvited: "Zaproszenia do grup"
+    app: "Powiadomienia z powiązanych aplikacji"
+    pollEnded: Zakończone ankiety
+  _actions:
+    followBack: "zaobserwował* cię z powrotem"
+    reply: "Odpowiedz"
+    renote: "Podbicia"
+_deck:
+  alwaysShowMainColumn: "Zawsze pokazuj główną kolumnę"
+  columnAlign: "Wyrównaj kolumny"
+  addColumn: "Dodaj kolumnę"
+  configureColumn: "Ustawienia kolumny"
+  swapLeft: "Przesuń w lewo"
+  swapRight: "Przesuń w prawo"
+  swapUp: "Zamień z powyższym"
+  swapDown: "Zamień z poniższym"
+  stackLeft: "Przypnij do lewej"
+  popRight: "Odepnij w prawo"
+  profile: "Przestrzeń"
+  newProfile: "Nowa przestrzeń"
+  deleteProfile: "Usuń przestrzeń"
+  widgetsIntroduction: "Wybierz \"Edytuj widżety\" w menu kolumny i dodaj widżet."
+  _columns:
+    main: "Główna"
+    widgets: "Widżety"
+    notifications: "Powiadomienia"
+    tl: "Oś czasu"
+    antenna: "Anteny"
+    list: "Listy"
+    mentions: "Wspomnienia"
+    direct: "Bezpośrednie wiadomości"
+  introduction2: Kliknij + z prawej strony ekranu, by dodać nowe kolumny kiedy chcesz.
+  introduction: Utwórz idealny dla siebie interfejs, poprzez dowolne ustawianie kolumn!
+  renameProfile: Zmień nazwę przestrzeni
+  nameAlreadyExists: Ta nazwa przestrzeni już istnieje.
+accountMoved: 'Użytkownik przeniósł się na nowe konto:'
+flagShowTimelineRepliesDescription: Jeśli włączone, pokazuje odpowiedzi użytkowników
+  na wpisy innych użytkowników na osi czasu.
+manageGroups: Zarządzaj grupami
+objectStorageSetPublicRead: Ustaw "public-read" podczas wysyłania
+removeAllFollowing: Przestań obserwować wszystkich obserwowanych użytkowników
+smtpSecure: Użyj implicit SSL/TLS dla połączeń SMTP
+secureMode: Tryb bezpieczny (Authorized Fetch)
+instanceSecurity: Bezpieczeństwo serwera
+privateMode: Tryb prywatny
+allowedInstances: Dopuszczone serwery
+recommended: Polecane
+allowedInstancesDescription: Hosty serwerów, które mają być dopuszczone do federacji,
+  każdy oddzielony nowym wierszem (dotyczy tylko trybu prywatnego).
+seperateRenoteQuote: Oddziel przyciski podbicia i cytowania
+refreshInterval: 'Częstotliwość aktualizacji '
+slow: Wolna
+_messaging:
+  dms: Prywatne
+  groups: Grupy
+_antennaSources:
+  all: Wszystkie wpisy
+  users: Wpisy od konkretnych użytkowników
+  homeTimeline: Wpisy od obserwowanych użytkowników
+  userList: Wpisy od użytkowników z konkretnej listy
+  userGroup: Wpisy od użytkowników z konkretnej grupy
+  instances: Wpisy od wszystkich użytkowników na instancji
+enableRecommendedTimeline: Włącz polecaną oś czasu
+recentNDays: Ostatnie {n} dni
+driveCapOverrideCaption: Zresetuj pojemność do domyślnej poprzed wpisanie wartości
+  0 lub mniejszej.
+requireAdminForView: Musisz zalogować się jako administrator, by to zobaczyć.
+replayTutorial: Powtórz samouczek
+migration: Migracja
+moveTo: Przenieś obecne konto do nowego
+moveToLabel: 'Konto na które się przenosisz:'
+moveAccount: Przenieś konto!
+moveAccountDescription: Ten proces jest nieodwracalny. Upewnij się, że utworzył*ś
+  alias dla tego konta na nowym koncie, przed rozpoczęciem. Proszę wpisz tag konta
+  w formacie @osoba@serwer.com
+moveFrom: Przejdź ze starego konta na obecne
+moveFromLabel: 'Konto które przenosisz:'
+showUpdates: Pokaż pop-up po aktualizacji Firefish
+swipeOnDesktop: Zezwól na przeciąganie w stylu mobilnym na desktopie
+moveFromDescription: To utworzy alias twojego starego konta, w celu umożliwienia migracji
+  z tamtego konta na to. Zrób to ZANIM rozpoczniesz przenoszenie się z tamtego konta.
+  Proszę wpisz tag konta w formacie @osoba@serwer.com
+migrationConfirm: "Czy jesteś absolutnie pewn* tego, że chcesz przenieść swoje konto
+  na {account}? Tego działania nie można odwrócić. Nieodwracalnie stracisz możliwość
+  normalnego korzystania z konta.\nUpewnij się, że to konto zostało ustawione jako
+  konto z którego się przenosisz."
+noThankYou: Nie, dziękuję
+addInstance: Dodaj serwer
+renoteMute: Wycisz podbicia
+renoteUnmute: Odcisz podbicia
+flagSpeakAsCat: Mów jak kot
+flagSpeakAsCatDescription: Twoje posty zostaną znya-izowane, gdy w trybie kota
+selectInstance: Wybierz serwer
+noInstances: Brak serwerów
+keepOriginalUploadingDescription: Zapisuje oryginalne zdjęcie. Jeśli wyłączone, wersja
+  do wyświetlania w sieci zostanie wygenerowana podczas wysłania.
+antennaInstancesDescription: Wymień jeden host serwera w każdym wierszu
+regexpError: Błąd regularnego wyrażenia
+regexpErrorDescription: 'Wystąpił błąd w regularnym wyrażeniu znajdującym się w linijce
+  {line} Twoich {tab} wyciszeń słownych:'
+forwardReportIsAnonymous: Zamiast twojego konta, anonimowe konto systemowe będzie
+  wyświetlane jako zgłaszający na zdalnym serwerze.
+breakFollowConfirm: Czy na pewno chcesz usunąć obserwującego?
+instanceDefaultThemeDescription: Wpisz kod motywu w formacie obiektowym.
+mutePeriod: Długość wyciszenia
+tenMinutes: 10 minut
+showLocalPosts: 'Pokaż lokalne wpisy w:'
+socialTimeline: Społeczna oś czasu
+homeTimeline: Główna oś czasu
+reflectMayTakeTime: Może upłynąć trochę czasu, zanim pojawią się zmiany.
+failedToFetchAccountInformation: Nie można uzyskać informacji o koncie
+pushNotification: Powiadomienia push
+subscribePushNotification: Włącz powiadomienia push
+unsubscribePushNotification: Wyłącz powiadomienia push
+pushNotificationAlreadySubscribed: Powiadomienia push są już włączone
+pushNotificationNotSupported: Twoja przeglądarka lub serwer nie obsługuje powiadomień
+  push
+sendPushNotificationReadMessage: Usuń powiadomienia push, gdy odpowiednie powiadomienia
+  lub wiadomości zostaną odczytane
+sendPushNotificationReadMessageCaption: Powiadomienie zawierające tekst "{emptyPushNotificationMessage}"
+  zostanie wyświetlone przez krótką chwilę. Jeśli dotyczy, może to zwiększyć zużycie
+  baterii Twojego urządzenia.
+defaultReaction: Domyślna reakcja emoji dla wychodzących i przychodzących wpisów
+license: Licencja
+indexPosts: Indeksuj wpisy
+indexFrom: Indeksuj wpisy od ID
+indexFromDescription: Zostaw puste dla indeksowania wszystkich wpisów
+indexNotice: Indeksuję. Zapewne zajmie to chwilę, nie restartuj serwera przez co najmniej
+  godzinę.
+customKaTeXMacro: Niestandardowe makra KaTeX
+enableCustomKaTeXMacro: Włącz niestandardowe makra KaTeX
+noteId: ID wpisu
+hiddenTagsDescription: 'Wypisz tagi (bez #) hashtagów które masz zamiar ukryć z "Na
+  czasie" i "Eksploruj". Na ukryte hashtagi można dalej wejść innymi sposobami. Ta
+  lista nie ma wpływu na zablokowane instancje.'
+proxyAccountDescription: Konto proxy jest kontem które w określonych sytuacjach zachowuje
+  się jak zdalny obserwujący. Na przykład, kiedy użytkownik dodaje zdalnego użytkownika
+  do listy, oraz żaden lokalny użytkownik nie obserwuje tego konta, aktywność owego
+  użytkownika nie zostanie dostarczona na oś czasu. W takim razie, użytkownika zaobserwuje
+  konto proxy.
+objectStorageBaseUrlDesc: "URL stosowany jako odniesienie. Podaj URL twojego CDN,
+  albo proxy, jeśli używasz któregokolwiek.\nDla S3 użyj 'https://<bucket>.s3.amazonaws.com',
+  a dla GCS i jego odpowiedników użyj 'https://storage.googleapis.com/<bucket>', itd."
+sendErrorReportsDescription: "Gdy ta opcja jest włączona, szczegółowe informacje o
+  błędach będą udostępnianie z Firefish gdy wystąpi problem, pomagając w ulepszaniu
+  Firefish.\nZawrze to informacje takie jak wersja twojego systemu operacyjnego, przeglądarki,
+  Twoja aktywność na Firefish itd."
+privateModeInfo: Gdy ta opcja jest włączona, tylko serwery z białej listy mogą federować
+  się z twoim serwerem. Wszystkie posty będą ukryte publicznie.
+oneHour: Godzina
+oneDay: Dzień
+oneWeek: Tydzień
+recommendedInstances: Polecane serwery
+recommendedInstancesDescription: Polecane serwery, mające pojawić się w odpowiedniej
+  osi czasu, oddzielane nowymi liniami. NIE dodawaj “https://”, TYLKO samą domenę.
+rateLimitExceeded: Przekroczono ratelimit
+cropImage: Kadruj zdjęcie
+cropImageAsk: Czy chcesz skadrować to zdjęcie?
+recentNHours: Ostatnie {n} godzin
+noEmailServerWarning: Serwer email nie jest skonfigurowany.
+thereIsUnresolvedAbuseReportWarning: Istnieją nierozwiązane zgłoszenia.
+check: Sprawdź
+driveCapOverrideLabel: Zmień pojemność dysku dla tego użytkownika
+isSystemAccount: To konto jest tworzone i automatycznie obsługiwane przez system.
+  Nie moderuj, nie edytuj, nie usuwaj, ani w żaden inny sposób nie ingeruj w to konto,
+  bowiem może to uszkodzić twój serwer.
+typeToConfirm: Wpisz {x} by potwierdzić
+deleteAccount: Usuń konto
+document: Dokumentacja
+numberOfPageCache: Liczba zbuforowanych stron
+numberOfPageCacheDescription: Zwiększenie tej liczby poprawi wygodę użytkowników,
+  ale spowoduje większe zużycie serwera, jak i pamięci.
+fast: Szybka
+sensitiveMediaDetection: Wykrywanie nieodpowiednich multimediów
+remoteOnly: Tylko zdalne
+activeEmailValidationDescription: Włącza ściślejszą walidację adresów e-mail, która
+  obejmuje sprawdzanie adresów jednorazowych oraz tego, czy rzeczywiście można się
+  z nim komunikować. Jeśli wyłączone, walidowany jest tylko format wiadomości e-mail.
+shuffle: Losuj
+showAds: Pokazuj reklamy
+enterSendsMessage: Wciśnij Enter w komunikatorze, by wysłać wiadomość (domyślnie –
+  Ctrl + Enter)
+adminCustomCssWarn: To ustawienie powinno być używane tylko pod warunkiem, że wiesz
+  za co ono odpowiada. Wpisanie niepoprawnych wartości może spowodować niepoprawne
+  działanie klientów KAŻDEGO użytkownika. Proszę upewnij się, że twój CSS działa poprawnie
+  poprzez przetestowanie go w ustawieniach twojego użytkownika.
+customMOTD: Niestandardowe MOTD (wiadomości splash screen)
+customMOTDDescription: Niestandardowe wiadomości dla MOTD (splash screen), oddzielane
+  nowymi liniami, mające pokazywać się za każdym razem gdy użytkownik ładuje/odświeża
+  stronę.
+customSplashIcons: Niestandardowe ikony na splash screenie (URL-e)
+customSplashIconsDescription: URL-e dla niestandardowych ikonych na splash screenie,
+  mające pokazywać się za każdym razem, gdy użytkownik ładuje/odświeża stronę, oddzielane
+  nowymi liniami. Upewnij się, że zdjęcia są na statycznych URL-ach, najlepiej o rozmiarze
+  192x192.
+caption: Auto opis
+splash: Splash screen
+updateAvailable: Może być dostępna aktualizacja!
+logoImageUrl: URL grafiki loga
+showAdminUpdates: Wskaż, że jest dostępna nowa wersja Firefish (tylko dla adminów)
+hiddenTags: Ukryte hashtagi
+userSaysSomethingReason: '{name} powiedział* {reason}'
+customKaTeXMacroDescription: 'Skonfiguruj makra, aby łatwo pisać wyrażenia matematyczne!
+  Notacja jest zgodna z definicjami poleceń LaTeXa i zapisywana jest jako \newcommand{\nazwa}{treść}
+  lub \newcommand{\nazwa}[numer argumentów]{treść}. Na przykład, \newcommand{\add}[2]{#1
+  + #2} rozszerzy \add{3}{foo} do 3 + foo. Nawiasy klamrowe otaczające nazwę makra
+  mogą być zmienione na nawiasy okrągłe lub kwadratowe. Wpłynie to na nawiasy używane
+  dla argumentów. W każdym wierszu można zdefiniować jedno (i tylko jedno) makro i
+  nie można przerwać linii w środku definicji. Nieprawidłowe linie są po prostu ignorowane.
+  Obsługiwane są tylko proste funkcje podstawiania łańcuchów; nie można tu stosować
+  zaawansowanej składni, takiej jak warunkowe rozgałęzienia.'
+secureModeInfo: W przypadku żądań z innych serwerów nie odsyłaj bez dowodu.
+preferencesBackups: Kopie zapasowe ustawień
+undeck: Opuść tablicę
+reporter: Osoba zgłaszająca
+instanceDefaultDarkTheme: Domyślny ciemny motyw serwera
+lastCommunication: Ostatnie połączenie
+emailRequiredForSignup: Wymagaj adresu email przy rejestracji
+themeColor: Kolor znacznika serwera
+instanceDefaultLightTheme: Domyślny jasny motyw serwera
+enableEmojiReactions: Włącz reakcje emoji
+showEmojisInReactionNotifications: Pokazuj emoji w powiadomieniach reakcyjnych
+apps: Aplikacje
+silenceThisInstance: Wycisz ten serwer
+silencedInstances: Wyciszone serwery
+deleted: Usunięte
+editNote: Edytuj wpis
+edited: 'Edytowano o {date} {time}'
+silenced: Wyciszony
+findOtherInstance: Znajdź inny serwer
+userSaysSomethingReasonReply: '{name} odpowiedział na wpis zawierający {reason}'
+userSaysSomethingReasonRenote: '{name} podbił post zawierający {reason}'
+signupsDisabled: Rejestracja na tym serwerze jest obecnie zamknięta, ale zawsze możesz
+  zarejestrować się na innym serwerze! Jeśli masz kod zaproszenia na ten serwer, wpisz
+  go poniżej.
+userSaysSomethingReasonQuote: '{name} zacytował wpis zawierający {reason}'
+silencedInstancesDescription: Wypisz nazwy hostów serwerów, które chcesz wyciszyć.
+  Konta na wymienionych serwerach są traktowane jako "Wyciszone", mogą jedynie wysyłać
+  prośby obserwacji i nie mogą oznaczać we wzmiankach profili lokalnych jeśli nie
+  są obserwowane. To nie będzie miało wpływu na zablokowane serwery.
+cannotUploadBecauseExceedsFileSizeLimit: Ten plik nie mógł być przesłany, ponieważ
+  jego wielkość przekracza dozwolony limit.
+sendModMail: Wyślij Powiadomienie Moderacyjne
+searchPlaceholder: Szukaj Firefish
+jumpToPrevious: Przejdź do poprzedniej sekcji
+listsDesc: Listy umożliwiają tworzenie osi czasu z określonymi użytkownikami. Dostęp
+  do nich można uzyskać na stronie osi czasu.
+accessibility: Dostępność
+selectChannel: Wybierz kanał
+antennasDesc: "Anteny wyświetlają nowe posty spełniające ustawione przez Ciebie kryteria!\n
+  Dostęp do nich można uzyskać ze strony osi czasu."
+expandOnNoteClick: Otwórz post przy kliknięciu
+expandOnNoteClickDesc: Jeśli opcja ta jest wyłączona, nadal będzie można otwierać
+  posty w menu po kliknięciu prawym przyciskiem myszy lub klikając znacznik czasowy.
+channelFederationWarn: Kanały nie są jeszcze federowane z innymi serwerami
+newer: nowsze
+older: starsze
+cw: Ostrzeżenie zawartości
+removeReaction: Usuń reakcję

@@ -1,0 +1,15 @@
+{
+  "tabWidth": 4,
+  "useTabs": true,
+	"singleQuote": false,
+	"vueIndentScriptAndStyle": false,
+	"plugins": ["vue"],
+	"overrides": [
+		{
+			"files": "*.vue",
+			"options": {
+				"parser": "vue"
+			}
+		}
+	]
+}

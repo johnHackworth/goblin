@@ -1,0 +1,51 @@
+{
+	"name": "native-utils",
+	"version": "0.0.0",
+	"main": "built/index.js",
+	"types": "built/index.d.ts",
+	"napi": {
+		"name": "native-utils",
+		"triples": {
+			"additional": [
+				"aarch64-apple-darwin",
+				"aarch64-linux-android",
+				"aarch64-unknown-linux-gnu",
+				"aarch64-unknown-linux-musl",
+				"aarch64-pc-windows-msvc",
+				"armv7-unknown-linux-gnueabihf",
+				"x86_64-unknown-linux-musl",
+				"x86_64-unknown-freebsd",
+				"i686-pc-windows-msvc",
+				"armv7-linux-androideabi",
+				"universal-apple-darwin"
+			]
+		}
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"@napi-rs/cli": "2.16.1",
+		"ava": "5.1.1"
+	},
+	"ava": {
+		"timeout": "3m"
+	},
+	"engines": {
+		"node": ">= 10"
+	},
+	"scripts": {
+		"artifacts": "napi artifacts",
+		"build": "pnpm run build:napi && pnpm run build:migration",
+		"build:napi": "napi build --features napi --platform --release ./built/",
+		"build:migration": "cargo build --locked --release --manifest-path ./migration/Cargo.toml && cp ./target/release/migration ./built/migration",
+		"build:debug": "napi build --platform ./built/ && cargo build --manifest-path ./migration/Cargo.toml",
+		"prepublishOnly": "napi prepublish -t npm",
+		"test": "pnpm run cargo:test && pnpm run build:napi && ava",
+		"universal": "napi universal",
+		"version": "napi version",
+		"format": "cargo fmt --all",
+		"lint": "cargo clippy --fix",
+		"cargo:test": "pnpm run cargo:unit && pnpm run cargo:integration",
+		"cargo:unit": "cargo test unit_test && cargo test -F napi unit_test",
+		"cargo:integration": "cargo test -F noarray int_test -- --test-threads=1"
+	}
+}

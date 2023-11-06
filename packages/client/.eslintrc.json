@@ -1,0 +1,7 @@
+{
+  "extends": ["@eslint-sets/vue3", "@eslint-sets/vue3-ts"],
+	"plugins": ["file-progress", "prettier"],
+	"rules": {
+		"file-progress/activate": 1
+	}
+}

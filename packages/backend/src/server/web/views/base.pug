@@ -1,0 +1,97 @@
+block vars
+
+block loadClientEntry
+	- const clientEntry = getClientEntry();
+
+doctype html
+
+//
+	-
+	 ▄▄▄▄▄▄▄ ▄▄▄ ▄▄▄▄▄▄   ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄ ▄▄▄▄▄▄▄ ▄▄   ▄▄    ◯
+	█       █   █   ▄  █ █       █       █   █       █  █ █  █      ○   ▄    ▄
+	█    ▄▄▄█   █  █ █ █ █    ▄▄▄█    ▄▄▄█   █  ▄▄▄▄▄█  █▄█  █    ⚬     █▄▄  █▄▄
+	█   █▄▄▄█   █   █▄▄█▄█   █▄▄▄█   █▄▄▄█   █ █▄▄▄▄▄█       █      ▄▄▄▄▄▄   ▄
+	█    ▄▄▄█   █    ▄▄  █    ▄▄▄█    ▄▄▄█   █▄▄▄▄▄  █   ▄   █     █      █  █▄▄
+	█   █   █   █   █  █ █   █▄▄▄█   █   █   █▄▄▄▄▄█ █  █ █  █     █ ● ●  █
+	█▄▄▄█   █▄▄▄█▄▄▄█  █▄█▄▄▄▄▄▄▄█▄▄▄█   █▄▄▄█▄▄▄▄▄▄▄█▄▄█ █▄▄█     ▀▄▄▄▄▄▄▀
+
+		Thank you for using Firefish!
+		If you are reading this message... how about joining the development?
+		https://git.joinfirefish.org/firefish/firefish
+
+html
+
+	- var timestamp = Date.now();
+
+	head
+		meta(charset='utf-8')
+		meta(name='application-name' content='Firefish')
+		meta(name='referrer' content='origin')
+		meta(name='darkreader-lock' content='')
+		meta(name='theme-color' content= themeColor || '#31748f')
+		meta(name='theme-color-orig' content= themeColor || '#31748f')
+		meta(property='twitter:card' content='summary')
+		meta(property='og:site_name' content= instanceName || 'Firefish')
+		meta(name='viewport' content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no')
+		link(rel='icon' href= icon || `/favicon.ico?${ timestamp }`)
+		link(rel='apple-touch-icon' href= icon || `/apple-touch-icon.png?${ timestamp }`)
+		link(rel='manifest' href='/manifest.json')
+		link(rel='prefetch' href=`/static-assets/badges/info.png?${ timestamp }`)
+		link(rel='prefetch' href=`/static-assets/badges/not-found.png?${ timestamp }`)
+		link(rel='prefetch' href=`/static-assets/badges/error.png?${ timestamp }`)
+		link(rel='stylesheet' href=`/static-assets/instance.css?${ timestamp }`)
+		link(rel='modulepreload' href=`/assets/${clientEntry.file}`)
+
+		if Array.isArray(clientEntry.css)
+			each href in clientEntry.css
+				link(rel='stylesheet' href=`/assets/${href}`)
+
+		title
+			block title
+				= title || 'Firefish'
+
+		block desc
+			meta(name='description' content=desc || 'An open source, decentralized social media platform that\'s free forever! 🚀')
+
+		block meta
+			if privateMode
+				meta(name='robots' content='noindex')
+
+		block og
+			meta(property='og:title'       content=title || 'Firefish')
+			meta(property='og:description' content=desc || 'An open source, decentralized social media platform that\'s free forever! 🚀')
+			meta(property='og:image'       content=img)
+			meta(property='og:image:alt'   content=alt || 'Pfp')
+
+		style
+			include ../style.css
+
+		script.
+			var VERSION = "#{version}";
+			var CLIENT_ENTRY = "#{clientEntry.file}";
+
+		script
+			include ../boot.js
+
+	body
+		noscript: p
+			| JavaScriptを有効にしてください
+			br
+			| Please turn on your JavaScript
+		div#splash
+			img#splashIcon(src= splashIcon || `/static-assets/splash.svg?${ timestamp }`)
+			span#splashText
+				block randomMOTD
+					= randomMOTD
+			div#splashSpinner
+				<svg class="spinner bg" viewBox="0 0 152 152" xmlns="http://www.w3.org/2000/svg">
+					<g transform="matrix(1,0,0,1,12,12)">
+						<circle cx="64" cy="64" r="64" style="fill:none;stroke:currentColor;stroke-width:24px;"/>
+					</g>
+				</svg>
+				<svg class="spinner fg" viewBox="0 0 152 152" xmlns="http://www.w3.org/2000/svg">
+					<g transform="matrix(1,0,0,1,12,12)">
+						<path d="M128,64C128,28.654 99.346,0 64,0C99.346,0 128,28.654 128,64Z" style="fill:none;stroke:currentColor;stroke-width:24px;"/>
+					</g>
+				</svg>
+		block content

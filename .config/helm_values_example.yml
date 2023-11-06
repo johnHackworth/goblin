@@ -1,0 +1,82 @@
+replicaCount: 1
+
+resources:
+  requests:
+    cpu: 0.5
+    memory: 512Mi
+  limits:
+    cpu: 1
+    memory: 1Gi
+
+firefish:
+  domain: example.tld
+  smtp:
+    from_address: noreply@example.tld
+    port: 587
+    server: smtp.gmail.com
+    useImplicitSslTls: false
+    login: me@example.tld
+    password: CHANGEME
+  objectStorage:
+    baseUrl: https://example-bucket.nyc3.cdn.digitaloceanspaces.com
+    access_key: CHANGEME
+    access_secret: CHANGEME
+    bucket: example-bucket
+    endpoint: nyc3.digitaloceanspaces.com:443
+    region: nyc3
+  allowedPrivateNetworks: []
+
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  hosts:
+    - host: example.tld
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: example-tld-certificate
+      hosts:
+        - example.tld
+
+elasticsearch:
+  enabled: false
+
+postgresql:
+  auth:
+    password: CHANGEME
+    postgresPassword: CHANGEME
+  primary:
+    persistence:
+      enabled: true
+      storageClass: vultr-block-storage
+      size: 25Gi
+    resources:
+      requests:
+        cpu: 0.25
+        memory: 256Mi
+      limits:
+        cpu: 0.5
+        memory: 512Mi
+  metrics:
+    enabled: true
+
+redis:
+  auth:
+    password: CHANGEME
+  master:
+    resources:
+      requests:
+        cpu: 0.25
+        memory: 256Mi
+      limits:
+        cpu: 0.5
+        memory: 256Mi
+    persistence:
+      storageclass: vultr-block-storage
+      size: 10Gi
+  replica:
+    replicaCount: 0
+  metrics:
+    enabled: true

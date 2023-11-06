@@ -1,0 +1,57 @@
+version: "3"
+
+services:
+  web:
+    image: docker.io/thatonecalculator/firefish
+    build: ..
+    container_name: firefish_web
+    restart: always
+    depends_on:
+      - db
+      - redis
+#      - es
+    ports:
+      - "3000:3000"
+    networks:
+      - network
+#      - web
+    volumes:
+      - ../files:/firefish/files
+      - ../.config:/firefish/.config:ro
+
+  redis:
+    restart: always
+    container_name: firefish_redis
+    image: docker.io/redis:7.0-alpine
+    networks:
+      - network
+    volumes:
+      - ../redis:/data
+
+  db:
+    restart: always
+    image: docker.io/postgres:12.2-alpine
+    container_name: firefish_db
+    networks:
+      - network
+    env_file:
+      - ../.config/docker.env
+    volumes:
+      - ../db:/var/lib/postgresql/data
+
+#  es:
+#    restart: always
+#    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.4.2
+#    environment:
+#      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+#      - "TAKE_FILE_OWNERSHIP=111"
+#    networks:
+#      - network
+#    volumes:
+#      - ./elasticsearch:/usr/share/elasticsearch/data
+
+networks:
+  network:
+#  web:
+#    external:
+#      name: web

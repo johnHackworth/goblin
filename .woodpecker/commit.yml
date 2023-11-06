@@ -1,0 +1,22 @@
+pipeline:
+  testCommit:
+    image: node:alpine
+    commands:
+      - apk add --no-cache cargo python3 make g++
+      - cp .config/ci.yml .config/default.yml
+      - corepack enable
+      - corepack prepare pnpm@latest --activate
+      - pnpm i --frozen-lockfile
+      - pnpm run build
+      - pnpm run migrate
+
+services:
+  database:
+    image: postgres:15
+    environment:
+      - POSTGRES_PASSWORD=test
+  redis:
+    image: redis
+
+branches:
+  include: [ main, beta, develop, feature/* ]

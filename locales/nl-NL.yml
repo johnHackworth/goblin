@@ -1,0 +1,684 @@
+_lang_: "Nederlands"
+headlineMisskey: "Een open source, gedecentraliseerd, social media platform dat voor
+  altijd gratis is! 🚀"
+introMisskey: "Welkom! Firefish is een open source, gedecentraliseerde microblogdienst.\n
+  Maak \"notities\" om je gedachten te delen met iedereen om je heen. 📡\nMet \"reacties\"\
+  \ kun je ook snel je mening geven over berichten van anderen. 👍\nLaten we een nieuwe
+  wereld verkennen! 🚀"
+monthAndDay: "{day} {month}"
+search: "Zoeken"
+notifications: "Meldingen"
+username: "Gebruikersnaam"
+password: "Wachtwoord"
+forgotPassword: "Wachtwoord vergeten"
+fetchingAsApObject: "Ophalen vanuit de Fediverse"
+ok: "Ok"
+gotIt: "Begrepen!"
+cancel: "Annuleren"
+enterUsername: "Voer een gebruikersnaam in"
+renotedBy: "Hergedeeld door {user}"
+noNotes: "Geen notities"
+noNotifications: "Geen meldingen"
+instance: "Server"
+settings: "Instellingen"
+basicSettings: "Basisinstellingen"
+otherSettings: "Overige instellingen"
+openInWindow: "In een venster openen"
+profile: "Profiel"
+timeline: "Tijdlijn"
+noAccountDescription: "Deze gebruiker heeft nog geen bio geschreven"
+login: "Inloggen"
+loggingIn: "Aan het inloggen"
+logout: "Afmelden"
+signup: "Registreren"
+uploading: "Bezig met uploaden"
+save: "Opslaan"
+users: "Gebruikers"
+addUser: "Toevoegen gebruiker"
+favorite: "Favorieten"
+favorites: "Toevoegen aan favorieten"
+unfavorite: "Verwijderen uit favorieten"
+favorited: "Toegevoegd aan favorieten."
+alreadyFavorited: "Al toegevoegd aan favorieten"
+cantFavorite: "Kon niet toevoegen aan favorieten"
+pin: "Vastmaken aan profielpagina"
+unpin: "Losmaken van profielpagina"
+copyContent: "Kopiëren inhoud"
+copyLink: "Kopiëren link"
+delete: "Verwijderen"
+deleteAndEdit: "Verwijderen en bewerken"
+deleteAndEditConfirm: "Weet je zeker dat je deze post wilt verwijderen en dan bewerken?
+  Je verliest alle reacties, boosts en antwoorden erop."
+addToList: "Aan lijst toevoegen"
+sendMessage: "Verstuur bericht"
+copyUsername: "Gebruikersnaam kopiëren"
+searchUser: "Zoek een gebruiker"
+reply: "Antwoord"
+loadMore: "Laad meer"
+showMore: "Toon meer"
+youGotNewFollower: "volgt jou"
+receiveFollowRequest: "Volgverzoek ontvangen"
+followRequestAccepted: "Volgverzoek geaccepteerd"
+mention: "Vermelding"
+mentions: "Vermeldingen"
+directNotes: "Directe notities"
+importAndExport: "Import / export"
+import: "Import"
+export: "Export"
+files: "Bestanden"
+download: "Downloaden"
+driveFileDeleteConfirm: "Weet je zeker dat je het bestand \"{name}\" wilt verwijderen?
+  Posts met dit bestand als bijlage worden ook verwijderd."
+unfollowConfirm: "Weet je zeker dat je {name} wilt ontvolgen?"
+exportRequested: "Je hebt een export aangevraagd. Dit kan een tijdje duren. Het wordt
+  toegevoegd aan je Drive zodra het is voltooid."
+importRequested: "Je hebt een import aangevraagd. Dit kan even duren."
+lists: "Lijsten"
+noLists: "Je hebt geen lijsten"
+note: "Notitie"
+notes: "Notities"
+following: "Volgend"
+followers: "Volgers"
+followsYou: "Volgt jou"
+createList: "Creëer lijst"
+manageLists: "Lijsten beheren"
+error: "Fout"
+somethingHappened: "Er is iets misgegaan."
+retry: "Probeer opnieuw"
+pageLoadError: "Pagina laden mislukt"
+pageLoadErrorDescription: "Dit wordt normaal gesproken veroorzaakt door netwerkfouten
+  of door de cache van de browser. Probeer de cache te wissen en probeer het na een
+  tijdje wachten opnieuw."
+serverIsDead: "De server reageert niet. Wacht even en probeer het opnieuw."
+youShouldUpgradeClient: "Werk je client bij om deze pagina te zien."
+enterListName: "Voer de naam van de lijst in"
+privacy: "Privacy"
+makeFollowManuallyApprove: "Volgverzoeken vergen een goedkeuring"
+defaultNoteVisibility: "Standaard zichtbaarheid"
+follow: "Volgen"
+followRequest: "Verzoek om te mogen volgen"
+followRequests: "Volgverzoeken"
+unfollow: "Ontvolgen"
+followRequestPending: "Wachten op goedkeuring volgverzoek"
+enterEmoji: "Voer een emoji in"
+renote: "Boost"
+unrenote: "Boost intrekken"
+renoted: "Boosted."
+cantRenote: "Dit bericht kan niet worden geboost."
+cantReRenote: "Een boost kan niet worden geboost."
+quote: "Quote"
+pinnedNote: "Vastgemaakte post"
+pinned: "Vastmaken aan profielpagina"
+you: "Jij"
+clickToShow: "Klik om te bekijken"
+sensitive: "NSFW"
+add: "Toevoegen"
+reaction: "Reacties"
+reactionSettingDescription2: "Sleep om opnieuw te ordenen, Klik om te verwijderen,
+  Druk op \"+\" om toe te voegen"
+rememberNoteVisibility: "Onthoud post zichtbaarheidsinstellingen"
+attachCancel: "Verwijder bijlage"
+markAsSensitive: "Markeren als NSFW"
+unmarkAsSensitive: "Geen NSFW"
+enterFileName: "Bestandsnaam invoeren"
+mute: "Dempen"
+unmute: "Stop dempen"
+block: "Blokkeren"
+unblock: "Deblokkeren"
+suspend: "Opschorten"
+unsuspend: "Heractiveren"
+blockConfirm: "Weet je zeker dat je dit account wil blokkeren?"
+unblockConfirm: "Ben je zeker dat je deze account wil blokkeren?"
+suspendConfirm: "Ben je zeker dat je deze account wil suspenderen?"
+unsuspendConfirm: "Ben je zeker dat je deze account wil opnieuw aanstellen?"
+flagAsBot: "Markeer dit account als een robot"
+flagAsBotDescription: "Als dit account van een programma wordt beheerd, zet deze vlag
+  aan. Het aanzetten helpt andere ontwikkelaars om bijvoorbeeld onbedoelde feedback
+  loops te doorbreken of om Firefish meer geschikt te maken."
+flagAsCat: "Markeer dit account als een kat."
+flagAsCatDescription: "Zet deze vlag aan als je wilt aangeven dat dit account een
+  kat is."
+flagShowTimelineReplies: "Toon antwoorden op de tijdlijn"
+flagShowTimelineRepliesDescription: "Als je deze vlag aanzet, toont de tijdlijn ook
+  antwoorden op andere en niet alleen jouw eigen post."
+autoAcceptFollowed: "Accepteer verzoeken om jezelf te volgen vanzelf als je de verzoeker
+  al volgt"
+addAccount: "Account toevoegen"
+loginFailed: "Aanmelding mislukt."
+showOnRemote: "Bekijk op de externe server"
+general: "Algemeen"
+wallpaper: "Achtergrond"
+setWallpaper: "Achtergrond instellen"
+removeWallpaper: "Achtergrond verwijderen"
+searchWith: "Zoeken: {q}"
+youHaveNoLists: "Je hebt geen lijsten"
+followConfirm: "Weet je zeker dat je {name} wilt volgen?"
+proxyAccount: "Proxy account"
+proxyAccountDescription: "Een proxy-account is een account dat onder bepaalde voorwaarden
+  fungeert als externe volger voor gebruikers. Als een gebruiker bijvoorbeeld een
+  externe gebruiker aan de lijst toevoegt, wordt de activiteit van de externe gebruiker
+  niet aan de server geleverd als geen lokale gebruiker die gebruiker volgt, dus het
+  proxy-account volgt in plaats daarvan."
+host: "Server"
+selectUser: "Kies een gebruiker"
+recipient: "Ontvanger(s)"
+annotation: "Reacties"
+federation: "Federatie"
+instances: "Servers"
+registeredAt: "Geregistreerd op"
+latestRequestSentAt: "Laatste aanvraag verstuurd"
+latestRequestReceivedAt: "Laatste aanvraag ontvangen"
+latestStatus: "Laatste status"
+storageUsage: "Gebruikte opslagruimte"
+charts: "Grafieken"
+perHour: "Per uur"
+perDay: "Per dag"
+stopActivityDelivery: "Stop met versturen activiteiten"
+blockThisInstance: "Blokkeer deze server"
+operations: "Verwerkingen"
+software: "Software"
+version: "Versie"
+metadata: "Metadata"
+monitor: "Monitor"
+jobQueue: "Job Queue"
+cpuAndMemory: "CPU en geheugen"
+network: "Netwerk"
+disk: "Schijfruimte"
+instanceInfo: "Serverinformatie"
+statistics: "Statistieken"
+clearQueue: "Wachtrij wissen"
+clearQueueConfirmTitle: "Weet je zeker dat je de wachtrji leeg wil maken?"
+clearQueueConfirmText: "Niet-bezorgde posts die nog in de wachtrij staan, worden niet
+  gefedereerd. Meestal is deze operatie niet nodig."
+clearCachedFiles: "Cache opschonen"
+clearCachedFilesConfirm: "Weet je zeker dat je alle externe bestanden in de cache
+  wilt verwijderen?"
+blockedInstances: "Geblokkeerde servers"
+blockedInstancesDescription: "Maak een lijst van de servers die moeten worden geblokkeerd,
+  gescheiden door regeleinden. Geblokkeerde servers kunnen niet meer communiceren
+  met deze server."
+muteAndBlock: "Gedempt en geblokkeerd"
+mutedUsers: "Gedempte gebruikers"
+blockedUsers: "Geblokkeerde gebruikers"
+noUsers: "Er zijn geen gebruikers."
+editProfile: "Bewerk Profiel"
+noteDeleteConfirm: "Ben je zeker dat je deze post wil verwijderen?"
+pinLimitExceeded: "Je kunt geen posts meer vastprikken"
+intro: "Installatie van Firefish geëindigd! Maak nu een beheerder aan."
+done: "Klaar"
+processing: "Bezig met verwerken"
+preview: "Voorbeeld"
+default: "Standaard"
+noCustomEmojis: "Er zijn geen emojis"
+noJobs: "Er zijn geen taken"
+federating: "Federeren"
+blocked: "Geblokkeerd"
+suspended: "Opgeschort"
+all: "Alle"
+subscribing: "Abonneren"
+publishing: "Publiceren"
+notResponding: "Reageert niet"
+instanceFollowing: "Volgend op server"
+instanceFollowers: "Volgers op server"
+instanceUsers: "Gebruikers van deze server"
+changePassword: "Wachtwoord wijzigen"
+security: "Beveiliging"
+retypedNotMatch: "Invoer komt niet overeen"
+currentPassword: "Huidig wachtwoord"
+newPassword: "Nieuwe wachtwoord"
+newPasswordRetype: "Nieuw wachtwoord (herhalen)"
+attachFile: "Bestanden toevoegen"
+more: "Meer!"
+featured: "Uitgelicht"
+usernameOrUserId: "Gebruikersnaam of id"
+noSuchUser: "Gebruiker niet gevonden"
+lookup: "Opzoeken"
+announcements: "Aankondigingen"
+imageUrl: "AfbeeldingsURL"
+remove: "Verwijderen"
+removed: "Succesvol verwijderd"
+removeAreYouSure: "Weet je zeker dat je \"{x}\" wil verwijderen?"
+deleteAreYouSure: "Weet je zeker dat je \"{x}\" wil verwijderen?"
+resetAreYouSure: "Resetten?"
+saved: "Opgeslagen"
+messaging: "Chat"
+upload: "Uploaden"
+keepOriginalUploading: "Origineel beeld behouden."
+keepOriginalUploadingDescription: "Bewaar de originele versie bij het uploaden van
+  afbeeldingen. Indien uitgeschakeld, wordt bij het uploaden een alternatieve versie
+  voor webpublicatie genereert."
+fromDrive: "Van schijf"
+fromUrl: "Van URL"
+uploadFromUrl: "Uploaden vanaf een URL"
+uploadFromUrlDescription: "URL van het bestand dat je wil uploaden"
+uploadFromUrlRequested: "Uploadverzoek"
+uploadFromUrlMayTakeTime: "Het kan even duren voordat het uploaden voltooid is."
+explore: "Verkennen"
+messageRead: "Lezen"
+noMoreHistory: "Er is geen verdere geschiedenis"
+startMessaging: "Start een gesprek"
+nUsersRead: "gelezen door {n}"
+agreeTo: "Ik stem in met {0}"
+tos: "Gebruiksvoorwaarden"
+start: "Aan de slag"
+home: "Startpagina"
+remoteUserCaution: "Aangezien deze gebruiker van een externe server afkomstig is,
+  kan de weergegeven informatie onvolledig zijn."
+activity: "Activiteit"
+images: "Afbeeldingen"
+birthday: "Geboortedatum"
+yearsOld: "{age} jaar"
+registeredDate: "Inschrijvingsdatum"
+location: "Locatie"
+theme: "Thema's"
+themeForLightMode: "Thema voor gebruik in de lichte modus"
+themeForDarkMode: "Thema voor gebruik in de donkere modus"
+light: "Licht"
+dark: "Donker"
+lightThemes: "Licht thema's"
+darkThemes: "Donkere thema's"
+syncDeviceDarkMode: "Synchroniseer donkere modus met je apparaatinstellingen"
+drive: "Schijf"
+fileName: "Bestandsnaam"
+selectFile: "Kies een bestand"
+selectFiles: "Selecteer bestanden"
+selectFolder: "Kies een map"
+selectFolders: "Kies mappen"
+renameFile: "Wijzig bestandsnaam"
+folderName: "Mapnaam"
+createFolder: "Map aanmaken"
+renameFolder: "Map hernoemen"
+deleteFolder: "Map verwijderen"
+addFile: "Bestand toevoegen"
+emptyDrive: "Jouw Drive is leeg."
+emptyFolder: "Deze map is leeg"
+unableToDelete: "Kan niet worden verwijderd"
+inputNewFileName: "Voer een nieuwe naam in"
+copyUrl: "URL kopiëren"
+rename: "Hernoemen"
+avatar: "Avatar"
+banner: "Banner"
+nsfw: "NSFW"
+whenServerDisconnected: "Wanneer de verbinding met de server wordt onderbroken"
+disconnectedFromServer: "Verbinding met de server onderbroken."
+inMb: "in megabytes"
+pinnedNotes: "Vastgemaakte notitie"
+userList: "Lijsten"
+aboutFirefish: "Over Firefish"
+administrator: "Beheerder"
+token: "Token"
+securityKeyName: "Sleutelnaam"
+registerSecurityKey: "Zekerheids-Sleutel registreren"
+lastUsed: "Laatst gebruikt"
+unregister: "Uitschrijven"
+passwordLessLogin: "Inloggen zonder wachtwoord"
+resetPassword: "Wachtwoord terugzetten"
+newPasswordIs: "Het nieuwe wachtwoord is „{password}”."
+reduceUiAnimation: "Verminder beweging in de UI"
+share: "Delen"
+notFound: "Niet gevonden"
+cacheClear: "Cache verwijderen"
+smtpHost: "Server"
+smtpUser: "Gebruikersnaam"
+smtpPass: "Wachtwoord"
+clearCache: "Cache opschonen"
+user: "Gebruikers"
+muteThread: "Discussies dempen "
+unmuteThread: "Dempen van discussie ongedaan maken"
+hide: "Verbergen"
+searchByGoogle: "Zoeken"
+cropImage: "Afbeelding bijsnijden"
+cropImageAsk: "Bijsnijdengevraagd"
+file: "Bestanden"
+_email:
+  _follow:
+    title: "Je hebt een nieuwe volger"
+_mfm:
+  mention: "Vermelding"
+  quote: "Quote"
+  search: "Zoeken"
+_theme:
+  keys:
+    mention: "Vermelding"
+    renote: "Herdelen"
+_sfx:
+  note: "Notities"
+  notification: "Meldingen"
+  chat: "Chat"
+_widgets:
+  notifications: "Meldingen"
+  timeline: "Tijdlijn"
+  activity: "Activiteit"
+  federation: "Federatie"
+  jobQueue: "Job Queue"
+_cw:
+  show: "Laad meer"
+_visibility:
+  home: "Startpagina"
+  followers: "Volgers"
+_profile:
+  username: "Gebruikersnaam"
+_exportOrImport:
+  followingList: "Volgend"
+  muteList: "Dempen"
+  blockingList: "Blokkeren"
+  userLists: "Lijsten"
+  excludeMutingUsers: "Negeer gedempte gebruikers"
+  excludeInactiveUsers: "Negeer inactieve gebruikers"
+_charts:
+  federation: "Federatie"
+_timelines:
+  home: "Startpagina"
+_pages:
+  blocks:
+    image: "Afbeeldingen"
+  script:
+    categories:
+      list: "Lijsten"
+    blocks:
+      _join:
+        arg1: "Lijsten"
+      _randomPick:
+        arg1: "Lijsten"
+      _dailyRandomPick:
+        arg1: "Lijsten"
+      _seedRandomPick:
+        arg2: "Lijsten"
+      _pick:
+        arg1: "Lijsten"
+      _listLen:
+        arg1: "Lijsten"
+    types:
+      array: "Lijsten"
+_notification:
+  youWereFollowed: "volgt jou"
+  _types:
+    follow: "Volgend"
+    mention: "Vermelding"
+    renote: "Herdelen"
+    quote: "Quote"
+    reaction: "Reacties"
+  _actions:
+    reply: "Antwoord"
+    renote: "Herdelen"
+_deck:
+  _columns:
+    notifications: "Meldingen"
+    tl: "Tijdlijn"
+    list: "Lijsten"
+    mentions: "Vermeldingen"
+showLess: Sluiten
+emoji: Emoji
+selectList: Selecteer een lijst
+selectAntenna: Selecteer een antenne
+deleted: Verwijderd
+editNote: Bewerk notitie
+edited: 'Bewerkt om {date} {time}'
+emojis: Emojis
+emojiName: Emoji naam
+emojiUrl: Emoji URL
+addEmoji: Voeg toe
+settingGuide: Aanbevolen instellingen
+flagSpeakAsCat: Praat als een kat
+accountMoved: 'Gebruiker is naar een nieuw account verhuisd:'
+showEmojisInReactionNotifications: Toon emojis in reactie notificaties
+selectWidget: Selecteer een widget
+editWidgetsExit: Klaar
+noThankYou: Nee bedankt
+addInstance: Voeg een server toe
+enableEmojiReactions: Schakel emoji reacties in
+editWidgets: Bewerk widgets
+thisYear: Jaar
+thisMonth: Maand
+registration: Registreren
+_ffVisibility:
+  public: Openbaar
+  private: Privé
+  followers: Alleen zichtbaar voor volgers
+noInstances: Er zijn geen servers
+_signup:
+  almostThere: Bijna klaar
+  emailAddressInfo: Voer je emailadres in. Deze zal niet openbaar gemaakt worden.
+_ad:
+  back: Terug
+  reduceFrequencyOfThisAd: Toon deze advertentie minder
+pushNotificationNotSupported: Je browser of server ondersteunt geen pushmeldingen
+sendPushNotificationReadMessage: Verwijder pushmeldingen wanneer de relevante meldingen
+  of berichten zijn gelezen
+customEmojis: Custom emoji
+cacheRemoteFiles: Cache externe bestanden
+hiddenTags: Verborgen hashtags
+enableRecommendedTimeline: Schakel aanbevolen tijdlijn in
+_forgotPassword:
+  enterEmail: Voer het emailadres in dat je gebruikte om te registreren. Een link
+    waarmee je je wachtwoord opnieuw kunt instellen zal daar naartoe gestuurd worden.
+jumpToReply: Spring naar Antwoord
+newer: nieuwer
+older: ouder
+selectInstance: Kies een server
+defaultValueIs: 'Standaard: {value}'
+reload: Hernieuwen
+doNothing: Negeren
+today: Vandaag
+inputNewDescription: Voer een nieuw onderschrift in
+inputNewFolderName: Voer een nieuwe mapnaam in
+circularReferenceFolder: De bestemmingsmap is een submap van de map die je wil verplaatsen.
+hasChildFilesOrFolders: Omdat deze map niet leeg is, kan deze niet verwijderd worden.
+enableLocalTimeline: Schakel lokale tijdlijn in
+enableGlobalTimeline: Schakel globale tijdlijn in
+enableRegistration: Nieuwe gebruikersregistratie inschakelen
+invite: Uitnodigen
+move: Verplaatsen
+showAds: Toon advertenties
+pushNotification: Pushmeldingen
+_gallery:
+  my: Mijn Gallerij
+reactionSetting: Reacties om te tonen in het reactie selectie menu
+dayX: '{day}'
+renoteMute: Demp boosts
+reloadConfirm: Wil je de tijdlijn hernieuwen?
+watch: Volgen
+unwatch: Ontvolgen
+accept: Accepteren
+reject: Afwijzen
+normal: Normaal
+pages: Pagina's
+integration: Integraties
+connectService: Koppelen
+monthX: '{month}'
+yearX: '{year}'
+instanceName: Servernaam
+instanceDescription: Server omschrijving
+maintainerName: Onderhouder
+maintainerEmail: Onderhouder email
+tosUrl: Algemene Voorwaarden URL
+disconnectService: Ontkoppelen
+unread: Ongelezen
+manageGroups: Beheer groepen
+subscribePushNotification: Pushmeldingen inschakelen
+unsubscribePushNotification: Pushmeldingen uitschakelen
+pushNotificationAlreadySubscribed: Pushmeldingen zijn al ingeschakeld
+antennaSource: Antenne bron
+antennaKeywords: Trefwoorden om naar te luisteren
+antennaExcludeKeywords: Trefwoorden om te negeren
+driveCapacityPerRemoteAccount: Schijfruimte per externe gebruiker
+backgroundImageUrl: Achtergrondafbeelding URL
+basicInfo: Basis informatie
+pinnedUsers: Vastgezette gebruikers
+pinnedPages: Vastgezette Pagina's
+driveCapacityPerLocalAccount: Schijfruimte per lokale gebruiker
+iconUrl: Icoon URL
+bannerUrl: Banner afbeelding URL
+manageAntennas: Beheer Antennes
+name: Naam
+notifyAntenna: Meld nieuwe posts
+withFileAntenna: Alleen posts met bestanden
+enableServiceworker: Schakel pushmeldingen voor je browser in
+renoteUnmute: Ontdemp boosts
+jumpToPrevious: Spring naar vorige
+caseSensitive: Hoofdlettergevoelig
+cw: Inhoudswaarschuwing
+recaptcha: reCAPTCHA
+enableRecaptcha: reCAPTCHA inschakelen
+recaptchaSiteKey: Site sleutel
+notFoundDescription: Een pagina met deze URL kon niet worden gevonden.
+uploadFolder: Standaard map voor uploads
+markAsReadAllNotifications: Markeer alle notificaties als gelezen
+text: Tekst
+enable: Inschakelen
+or: Of
+language: Taal
+securityKey: Veiligheidssleutel
+groupInvited: Je bent voor een groep uitgenodigd
+docSource: Bron van dit document
+createAccount: Maak account aan
+groupName: Groepsnaam
+members: Leden
+messagingWithUser: Privé chat
+messagingWithGroup: Groepschat
+title: Titel
+createGroup: Maak een groep
+ownedGroups: Beheerde groepen
+invites: Uitnodigingen
+useOsNativeEmojis: Gebruik je standaard besturingssysteem Emojis
+disableDrawer: Gebruik niet de lade-stijl menus
+joinOrCreateGroup: Krijg een uitnodiging voor een groep of maak er zelf eentje aan.
+noHistory: Geen geschiedenis beschikbaar
+signinHistory: Inloggeschiedenis
+available: Beschikbaar
+unavailable: Niet beschikbaar
+tooShort: Te kort
+signinFailed: Niet gelukt om in te loggen. Gebruikersnaam of wachtwoord is incorrect.
+tapSecurityKey: Tik je veiligheidssleutel aan
+recaptchaSecretKey: Geheime sleutel
+antennas: Antennes
+antennaUsersDescription: Zet één gebruikersnaam per regel neer
+notesAndReplies: Posts en antwoorden
+withFiles: Met bestanden
+popularUsers: Populaire gebruikers
+recentlyUpdatedUsers: Recente actieve gebruikers
+recentlyRegisteredUsers: Nieuwe gebruikers
+recentlyDiscoveredUsers: Nieuwe ontdekte gebruikers
+exploreUsersCount: Er zijn {count} gebruikers
+about: Over
+exploreFediverse: Ontdek de Fediverse
+popularTags: Populaire labels
+moderation: Moderatie
+nUsersMentioned: Genoemd door {n} gebruikers
+markAsReadAllUnreadNotes: Markeer alle posts als gelezen
+markAsReadAllTalkMessages: Markeer alle berichten als gelezen
+help: Help
+inputMessageHere: Schrijf hier je bericht
+close: Sluiten
+group: Groep
+groups: Groepen
+newMessageExists: Er zijn nieuwe berichten
+next: Volgende
+noteOf: Post door {user}
+inviteToGroup: Nodig uit voor de groep
+quoteAttached: Quote
+noMessagesYet: Nog geen berichten
+weakPassword: Zwak wachtwoord
+normalPassword: Middelmatig wachtwoord
+strongPassword: Sterk wachtwoord
+onlyOneFileCanBeAttached: Je kan maar één bestand toevoegen aan je bericht
+invitationCode: Uitnodigingscode
+checking: Controleren...
+uiLanguage: Gebruikersinterface taal
+aboutX: Over {x}
+youHaveNoGroups: Je hebt geen groepen
+disableAnimatedMfm: Schakel MFM met animaties uit
+passwordMatched: Komt overeen
+passwordNotMatched: Komt niet overeen
+signinWith: Log in met {x}
+fontSize: Tekstgrootte
+openImageInNewTab: Open afbeeldingen in een nieuwe tab
+category: Categorie
+tags: Labels
+existingAccount: Bestaand account
+regenerate: Hernieuwen
+dayOverDayChanges: Verschillen met gisteren
+appearance: Uiterlijk
+local: Lokaal
+remote: Extern
+total: Totaal
+weekOverWeekChanges: Verschillen met vorige week
+hcaptcha: hCaptcha
+enableHcaptcha: hCaptcha inschakelen
+hcaptchaSiteKey: Site sleutel
+hcaptchaSecretKey: Geheime sleutel
+withReplies: Met antwoorden
+twoStepAuthentication: Tweefactorauthenticatie
+moderator: Moderator
+invitations: Uitnodigingen
+tooLong: Te lang
+doing: Verwerken...
+silencedInstances: Gedempte Servers
+cacheRemoteFilesDescription: Als deze instelling is uitgeschakeld, worden externe
+  bestanden direct van de externe server geladen. Het uitschakelen zal opslagruimte
+  verminderen, maar verkeer zal toenemen, omdat er geen thumbnails gemaakt zullen
+  worden.
+flagSpeakAsCatDescription: Je posts zullen worden ge-'nyanified' als je in kat-modus
+  zit
+avoidMultiCaptchaConfirm: Het gebruik van meerdere Captcha systemen kan voor storing
+  zorgen tussen ze. Wil je de andere actieve Captcha systemen uitschakelen? Als je
+  ze ingeschakeld wilt houden, klik op annuleren.
+silence: Dempen
+silenceConfirm: Weet je zeker dat je deze gebruiker wilt dempen?
+unsilence: Ontdempen
+unsilenceConfirm: Weet je zeker dat je het dempen van deze gebruiker ongedaan wilt
+  maken?
+silenceThisInstance: Demp deze server
+silenced: Gedempt
+disablingTimelinesInfo: Beheerders en moderators zullen altijd toegang hebben tot
+  alle tijdlijnen, zelfs als deze uitgeschakeld zijn.
+accountSettings: Account Instellingen
+numberOfDays: Aantal dagen
+hideThisNote: Verberg deze post
+dashboard: Dashboard
+accessibility: Toegankelijkheid
+promotion: Gepromoot
+promote: Promoten
+objectStorage: Objectopslag
+useObjectStorage: Gebruik objectopslag
+objectStorageBaseUrl: Basis -URL
+objectStorageUseSSLDesc: Schakel dit uit als je geen HTTPS voor je API connecties
+  gebruikt
+objectStorageUseProxy: Verbind over Proxy
+objectStorageUseProxyDesc: Schakel dit uit als je geen Proxy voor je API connecties
+  gebruikt
+sounds: Geluiden
+lastUsedDate: Laatst gebruikt op
+installedDate: Geautoriseerd op
+sort: Sorteren
+output: Uitvoer
+script: Script
+popout: Pop-out
+descendingOrder: Aflopend
+showInPage: Toon in de pagina
+chooseEmoji: Kies een emoji
+ascendingOrder: Oplopend
+volume: Volume
+masterVolume: Master volume
+details: Details
+unableToProcess: Deze operatie kon niet worden voltooid
+nothing: Niks te zien hier
+scratchpad: Kladblok
+recentUsed: Recentelijk gebruikt
+install: Installeer
+uninstall: Verwijderen
+installedApps: Geautoriseerde Applicaties
+state: Status
+updateRemoteUser: Update externe gebruikersinformatie
+listen: Luister
+none: Geen
+scratchpadDescription: Het kladblok is een omgeving voor AiScript experimenten. Je
+  kan hier schrijven, uitvoeren, en de resultaten bekijken van de interactie met Firefish.
+disablePagesScript: Zet AiScript op Pages uit
+deleteAllFiles: Verwijder alle bestanden
+deleteAllFilesConfirm: Weet je zeker dat je alle bestanden wil verwijderen?
+removeAllFollowing: Ontvolg alle gevolgde gebruikers
+serverLogs: Server logboek
+deleteAll: Verwijder alles
+showFixedPostForm: Toon het post formulier bovenaan de tijdlijn
+newNoteRecived: Er zijn nieuwe posts

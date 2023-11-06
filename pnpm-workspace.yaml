@@ -1,0 +1,7 @@
+packages:
+ - 'packages/backend'
+ - 'packages/backend/native-utils'
+ - 'packages/client'
+ - 'packages/sw'
+ - 'packages/firefish-js'
+ - 'packages/megalodon'

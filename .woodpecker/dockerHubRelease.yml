@@ -1,0 +1,15 @@
+pipeline:
+  publish-docker-latest:
+    image: plugins/kaniko
+    settings:
+      repo: thatonecalculator/firefish
+      tags: latest
+      dockerfile: Dockerfile
+      username:
+        # Secret 'docker_username' needs to be set in the CI settings
+        from_secret: docker_username
+      password:
+        # Secret 'docker_password' needs to be set in the CI settings
+        from_secret: docker_password
+
+branches: main

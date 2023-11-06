@@ -1,0 +1,2170 @@
+_lang_: "Català"
+headlineMisskey: "Una xarxa social de codi obert, descentralitzada i gratuïta per
+  a sempre! 🚀"
+introMisskey: "Benvinguts! Firefish és una plataforma social de codi obert, descentralitzada
+  i gratuïta per a sempre! 🚀"
+monthAndDay: "{day}/{month}"
+search: "Cerca"
+notifications: "Notificacions"
+username: "Nom d'usuari"
+password: "Contrasenya"
+forgotPassword: "Contrasenya oblidada"
+fetchingAsApObject: "Cercant en el Fediverse"
+ok: "D'acord"
+gotIt: "Ho he entès!"
+cancel: "Cancel·la"
+enterUsername: "Introdueix el teu nom d'usuari"
+renotedBy: "Impulsat per {user}"
+noNotes: "Cap publicació"
+noNotifications: "Cap notificació"
+instance: "Servidor"
+settings: "Preferències"
+basicSettings: "Configuració bàsica"
+otherSettings: "Altres opcions"
+openInWindow: "Obre en una finestra nova"
+profile: "Perfil"
+timeline: "Línia de temps"
+noAccountDescription: "Aquest usuari encara no ha escrit la seva biografia."
+login: "Inicia sessió"
+loggingIn: "Iniciant sessió"
+logout: "Tanca la sessió"
+signup: "Registra'm"
+uploading: "S'està pujant…"
+save: "Desa"
+users: "Usuaris"
+addUser: "Afegeix un usuari"
+favorite: "Afegeix als marcadors"
+favorites: "Marcadors"
+unfavorite: "Elimina dels marcadors"
+favorited: "S'ha afegit el marcador."
+alreadyFavorited: "Ja està afegida als marcadors."
+cantFavorite: "No s'ha pogut afegir als marcadors."
+pin: "Fixa al perfil"
+unpin: "Deixa de fixar al perfil"
+copyContent: "Copia el contingut"
+copyLink: "Copia l'enllaç"
+delete: "Elimina"
+deleteAndEdit: "Elimina i edita"
+deleteAndEditConfirm: "Segur que vols eliminar la publicació i editar-la? Perdràs
+  totes les reaccions, impulsos i respostes."
+addToList: "Afegeix a la llista"
+sendMessage: "Envia un missatge"
+copyUsername: "Copia el nom d'usuari"
+searchUser: "Cerca un usuari"
+reply: "Respon"
+loadMore: "Carrega'n més"
+showMore: "Mostra'n més"
+youGotNewFollower: "t'ha seguit"
+receiveFollowRequest: "Sol·licitud de seguiment rebuda"
+followRequestAccepted: "Sol·licitud de seguiment acceptada"
+mention: "Menció"
+mentions: "Mencions"
+directNotes: "Missatges directes"
+importAndExport: "Importa/exporta dades"
+import: "Importa"
+export: "Exporta"
+files: "Fitxers"
+download: "Baixa"
+driveFileDeleteConfirm: "Segur que vols eliminar el fitxer «{name}»? S'eliminarà de
+  totes les notes que el continguin com a fitxer adjunt."
+unfollowConfirm: "Segur que vols deixar de seguir a {name}?"
+exportRequested: "Has sol·licitat una exportació. Això pot trigar una estona. S'afegirà
+  al teu Disc un cop completada."
+importRequested: "Has sol·licitat una importació. Això pot trigar una estona."
+lists: "Llistes"
+noLists: "No teniu cap llista"
+note: "Publicació"
+notes: "Publicacions"
+following: "Seguint"
+followers: "Seguidors"
+followsYou: "Et segueix"
+createList: "Crea una llista"
+manageLists: "Gestiona les llistes"
+error: "Error"
+somethingHappened: "S'ha produït un error"
+retry: "Torna-ho a intentar"
+pageLoadError: "S'ha produït un error en carregar la pàgina."
+pageLoadErrorDescription: "Això normalment es deu a errors de xarxa o a la memòria
+  cau del navegador. Prova d'esborrar la memòria cau i torna-ho a provar després d'esperar
+  una estona."
+serverIsDead: "Aquest servidor no respon. Espera una estona i torna-ho a provar."
+youShouldUpgradeClient: "Per veure aquesta pàgina, actualitzeu-la per actualitzar
+  el vostre client."
+enterListName: "Introdueix un nom per a la llista"
+privacy: "Privadesa"
+makeFollowManuallyApprove: "Les sol·licituds de seguiment requereixen aprovació"
+defaultNoteVisibility: "Visibilitat per defecte"
+follow: "Segueix"
+followRequest: "Sol·licitud de Seguiment"
+followRequests: "Sol·licituds de seguiment"
+unfollow: "Deixa de seguir"
+followRequestPending: "Sol·licituds de seguiment pendents"
+enterEmoji: "Introdueix un emoji"
+renote: "Impulsa"
+unrenote: "Anul·la l'impuls"
+renoted: "S'ha impulsat."
+cantRenote: "Aquesta publicació no es pot impulsar."
+cantReRenote: "No es pot impulsar un impuls."
+quote: "Cita"
+pinnedNote: "Publicació fixada"
+pinned: "Fixa al perfil"
+you: "Tu"
+clickToShow: "Fes clic per a mostrar"
+sensitive: "NSFW"
+add: "Afegeix"
+reaction: "Reaccions"
+reactionSetting: "Reaccions a mostrar al selector de reaccions"
+reactionSettingDescription2: "Arrossega per reordenar, fes clic per suprimir, prem
+  \"+\" per afegir."
+rememberNoteVisibility: "Recorda la configuració de visibilitat de les notes"
+attachCancel: "Elimina el fitxer adjunt"
+markAsSensitive: "Marca com a NSFW"
+unmarkAsSensitive: "Desmarca com a NSFW"
+enterFileName: "Introdueix un nom de fitxer"
+mute: "Silencia"
+unmute: "Deixa de silenciar"
+block: "Bloqueja"
+unblock: "Desbloqueja"
+suspend: "Suspèn"
+unsuspend: "Treu la suspensió"
+instances: "Servidors"
+remove: "Elimina"
+nsfw: "NSFW"
+pinnedNotes: "Publicacions fixades"
+userList: "Llistes"
+smtpUser: "Nom d'usuari"
+smtpPass: "Contrasenya"
+user: "Usuari"
+searchByGoogle: "Cercar"
+file: "Fitxer"
+_email:
+  _follow:
+    title: "Tens un nou seguidor"
+  _receiveFollowRequest:
+    title: Heu rebut una sol·licitud de seguiment
+_mfm:
+  mention: "Menció"
+  quote: "Citar"
+  search: "Cercar"
+  dummy: Firefish amplia el món del Fediverse
+  hashtag: Etiqueta
+  intro: MFM és un llenguatge de marques utilitzat a Misskey, Firefish, Akkoma i més
+    que es pot utilitzar en molts llocs. Aquí podeu veure una llista de tota la sintaxi
+    MFM disponible.
+  hashtagDescription: Podeu especificar una etiqueta mitjançant un coixinet i un text.
+  url: URL
+  urlDescription: Es poden mostrar URLS.
+  link: Enllaç
+  linkDescription: Parts específiques del text es poden mostrar com a URL.
+  bold: Negreta
+  boldDescription: Ressalta les lletres fent-les més gruixudes.
+  smallDescription: Mostra contingut petit i prim.
+  small: Petit
+  centerDescription: Mostra el contingut centrat.
+  inlineCode: Codi (en línia)
+  inlineMathDescription: Mostra fórmules matemàtiques (KaTeX) en línia
+  blockCode: Codi (Bloc)
+  blockCodeDescription: Mostra el ressaltat de sintaxi per al codi de diverses línies
+    (programa) en un bloc.
+  inlineMath: Matemàtiques (en línia)
+  jellyDescription: Dóna al contingut una animació semblant a una gelatina.
+  bounceDescription: Ofereix al contingut una animació de rebot.
+  jumpDescription: Dóna al contingut una animació de salt.
+  shake: Animació (Shake)
+  shakeDescription: Dóna al contingut una animació tremolosa.
+  bounce: Animació (Bounce)
+  x3Description: Mostra contingut encara més gran.
+  x2Description: Mostra contingut més gran.
+  twitchDescription: Ofereix al contingut una animació fortament convulsa.
+  spin: Animació (Spin)
+  spinDescription: Dóna al contingut una animació giratòria.
+  x2: Gran
+  x3: Molt gran
+  x4: Increïblement gran
+  blur: Desenfocament
+  x4Description: Mostra contingut fins i tot més gran que gran que gran.
+  rainbowDescription: Fa que el contingut aparegui en colors de l'arc de Sant Martí.
+  sparkle: Brillantor
+  sparkleDescription: Dóna al contingut un efecte de partícula brillant.
+  rotate: Girar
+  rotateDescription: Gira el contingut en un angle especificat.
+  positionDescription: Mou el contingut en una quantitat especificada.
+  fontDescription: Estableix el tipus de lletra en què voleu mostrar el contingut.
+  position: Posició
+  rainbow: Arc de Sant Martí
+  jelly: Animació (Jelly)
+  tada: Animació (Tada)
+  tadaDescription: Dóna al contingut una animació tipus "Tada!".
+  jump: Animació (Jump)
+  twitch: Animació (Twitch)
+  blurDescription: Desenfoca el contingut. Es mostrarà clarament quan passeu el cursor
+    per sobre.
+  font: Tipus de lletra
+  cheatSheet: Full de trucs de MFM
+  mentionDescription: Podeu especificar un usuari mitjançant un arrova i un nom d'usuari.
+  center: Centre
+  inlineCodeDescription: Mostra el ressaltat de sintaxi en línia per al codi (de programa).
+  blockMath: Matemàtiques (Bloc)
+  blockMathDescription: Mostra fórmules matemàtiques (KaTeX) en un bloc
+  quoteDescription: Mostra el contingut com una cita.
+  emoji: Emoji personalitzat
+  emojiDescription: Un emoji personalitzat és pot mostrar envoltant el nom amb dos
+    punts.
+  searchDescription: Mostra un quadre de cerca amb el text introduït prèviament.
+  flip: Capgirar
+  flipDescription: Capgira el contingut horitzontalment o verticalment.
+  plainDescription: Desactiva els efectes de tots els MFM continguts en aquest efecte
+    MFM.
+  scale: Escala
+  foreground: Color de primer pla
+  background: Color de fons
+  backgroundDescription: Canvia el color de fons del text.
+  scaleDescription: Escala el contingut en una quantitat especificada.
+  foregroundDescription: Canvia el color de primer pla del text.
+  plain: Pla
+  stop: Parar MFM
+  play: Posar en marxa MFM
+  warn: MFM pot contenir animacions cridaneres o que es mouen ràpidament
+  alwaysPlay: Reprodueix automàticament tots els MFM animats
+  fade: Esvair
+  fadeDescription: Esvaeix el contingut cap a dintre i cap en fora.
+  crop: Retallar
+  advanced: MFM avançat
+  advancedDescription: Si està desactivat, només permet l'etiquetatge bàsic tret que
+    es reproduïnt un MFM animat
+  cropDescription: Retalla el contingut.
+_theme:
+  keys:
+    mention: "Menció"
+    renote: "Impulsar"
+    fg: Text
+    navBg: Fons de la barra lateral
+    navFg: Text de la barra lateral
+    navHoverFg: Text de la barra lateral (Hover)
+    hashtag: Etiquetes
+    mentionMe: Mencions (Jo)
+    infoBg: Fons de l'informació
+    infoFg: Text informatiu
+    toastBg: Fons de notificació
+    listItemHoverBg: Fons de la llista d'elements (Hover)
+    driveFolderBg: Fons de la carpeta Disc
+    wallpaperOverlay: Superposició de fons de pantalla
+    badge: Distintiu
+    accentLighten: Accent (Lluminós)
+    accentDarken: Accent (enfosquit)
+    fgHighlighted: Text ressaltat
+    indicator: Indicador
+    focus: Centrar-se
+    panel: Panell
+    navIndicator: Indicador de la barra lateral
+    accent: Accent
+    header: Encapçalament
+    navActive: Text de la barra lateral (Active)
+    link: Enllaç
+    modalBg: Fons del modal
+    divider: Divisor
+    scrollbarHandle: Mànec de la barra de desplaçament
+    scrollbarHandleHover: Mànec de la barra de desplaçament (Hover)
+    dateLabelFg: Text de l'etiqueta de data
+    infoWarnBg: Fons d'advertència
+    cwBg: Fons del botó CW
+    cwFg: Text del botó CW
+    messageBg: Fons del xat
+    infoWarnFg: Text d'advertència
+    bg: Fons
+    shadow: Ombra
+    cwHoverBg: Fons del botó CW (Hover)
+    toastFg: Text de notificació
+    buttonHoverBg: Fons del botó (Hover)
+    inputBorder: Vora del camp d'entrada
+    buttonBg: Fons del botó
+  description: Descripció
+  installed: "{name} s'ha instal·lat"
+  installedThemes: Temes instal·lats
+  builtinThemes: Temes integrats
+  alreadyInstalled: Aquest tema ja està instal·lat
+  invalid: El format d'aquest tema no és vàlid
+  make: Fes un tema
+  defaultValue: 'Per defecte: {value}'
+  color: Color
+  refProp: Fes referència a una propietat
+  refConst: Fes referència a una constant
+  key: Clau
+  func: Funcions
+  funcKind: Tipus de funció
+  argument: Argument
+  basedProp: Propietat de referència
+  importInfo: Si introdueixes el codi de tema aquí, podeu importar-lo a l'editor de
+    temes
+  inputConstantName: Introdueix un nom per a aquesta constant
+  addConstant: Afegir una constant
+  code: Codi del tema
+  alpha: Opacitat
+  deleteConstantConfirm: De debò vols esborrar la constant {const}?
+  manage: Gestionar temes
+  explore: Explora Temes
+  darken: Enfosquir
+  base: Fundament
+  constant: Constant
+  lighten: Clar
+  install: Instal·lar un tema
+_sfx:
+  note: "Publicació nova"
+  notification: "Notificacions"
+  antenna: Antenes
+  channel: Notificacions del canal
+  noteMy: Publicació propia
+  chat: Xat
+  chatBg: Fons del xat
+_2fa:
+  step2Url: "També pots inserir aquest enllaç i utilitzes una aplicació d'escriptori:"
+  alreadyRegistered: Ja heu registrat un dispositiu d'autenticació de dos factors.
+  registerTOTP: Registrar un dispositiu nou
+  securityKeyInfo: A més de l'autenticació d'empremta digital o PIN, també podeu configurar
+    l'autenticació mitjançant claus de seguretat de maquinari compatibles amb FIDO2
+    per protegir encara més el vostre compte.
+  step4: A partir d'ara, qualsevol intent d'inici de sessió futur demanarà aquest
+    token d'inici de sessió.
+  registerSecurityKey: Registrar una clau de seguretat o d'accés
+  step1: En primer lloc, instal·la una aplicació d'autenticació (com ara {a} o {b})
+    al dispositiu.
+  step2: A continuació, escaneja el codi QR que es mostra en aquesta pantalla.
+  step3: Introdueix el token que t'ha proporcionat l'aplicació per finalitzar la configuració.
+  step3Title: Introduïu un codi d'autenticació
+  chromePasskeyNotSupported: Les claus de pas de Chrome actualment no s'admeten.
+  securityKeyName: Introduïu un nom de clau
+  removeKey: Suprimeix la clau de seguretat
+  removeKeyConfirm: Vols suprimir la clau {name}?
+  renewTOTP: Tornar a configurar l'aplicació d'autenticació
+  renewTOTPOk: Reconfigurar
+  renewTOTPCancel: Cancel·lar
+  step2Click: Fer clic en aquest codi QR us permetrà registrar 2FA a la vostra clau
+    de seguretat o aplicació d'autenticació del telèfon.
+  securityKeyNotSupported: El vostre navegador no admet claus de seguretat.
+  registerTOTPBeforeKey: Configureu una aplicació d'autenticació per registrar una
+    clau de seguretat o de passi.
+  tapSecurityKey: Si us plau, seguiu el vostre navegador per registrar la clau de
+    seguretat o d'accés
+  renewTOTPConfirm: Això farà que els codis de verificació de l'aplicació anterior
+    deixin de funcionar
+  whyTOTPOnlyRenew: L’aplicació d’autenticació no es pot eliminar sempre que es hi
+    hagi una clau de seguretat registrada.
+  token: Token 2FA
+_widgets:
+  notifications: "Notificacions"
+  timeline: "Línia de temps"
+  unixClock: Rellotge d'UNIX
+  federation: Federació
+  instanceCloud: Núvol de servidors
+  trends: Tendència
+  clock: Rellotge
+  calendar: Calendari
+  activity: Activitat
+  photos: Fotos
+  rssTicker: Teletip RSS
+  onlineUsers: Usuaris en línia
+  memo: Notes adhesives
+  digitalClock: Rellotge digital
+  postForm: Formulari per publicar
+  slideshow: Presentació de diapositives
+  serverMetric: Estadístiques del servidor
+  userList: Llista d'usuaris
+  rss: Lector d'RSS
+  jobQueue: Cua de treball
+  _userList:
+    chooseList: Selecciona una llista
+  aiscript: Consola AiScript
+  button: Botó
+  serverInfo: Informació del servidor
+  meiliStatus: Estat del servidor
+  meiliSize: Mida de l'índex
+  meiliIndexCount: Publicacions indexades
+_cw:
+  show: "Carregar més"
+  files: '{count} fitxers'
+  hide: Amaga
+  chars: '{count} caràcters'
+_visibility:
+  followers: "Seguidors"
+  publicDescription: La teva publicació serà visible per a totes les línies de temps
+    públiques
+  localOnly: Només Local
+  specified: Directe
+  home: Sense llistar
+  homeDescription: Publica només a la línea de temps local
+  followersDescription: Fes visible només per als teus seguidors i usuaris mencionats
+  specifiedDescription: Fer visible només per a usuaris determinats
+  public: Públic
+  localOnlyDescription: No és visible per als usuaris remots
+_profile:
+  username: "Nom d'usuari"
+  metadataEdit: Editar informació addicional
+  youCanIncludeHashtags: També pots incloure etiquetes al teu perfil.
+  metadata: Informació adicional
+  description: Perfil
+  metadataLabel: Etiqueta
+  metadataContent: Contingut
+  changeAvatar: Canvia l'avatar
+  changeBanner: Canvia el banner
+  locationDescription: Si primer introduïu la vostra ciutat, es mostrarà l'hora local
+    a altres usuaris.
+  name: Nom
+  metadataDescription: "Fent servir això, podràs mostrar camps d'informació addicionals
+    al vostre perfil. Podeu afegir una etiqueta {a} o una etiqueta {l} amb {rel} per
+    verificar l'enllaç al vostre perfil!"
+_exportOrImport:
+  followingList: "Usuaris que segueixes"
+  muteList: "Silencia"
+  blockingList: "Bloqueja"
+  userLists: "Llistes"
+  excludeMutingUsers: Exclou els usuaris silenciats
+  allNotes: Totes les notes
+  excludeInactiveUsers: Exclou usuaris inactius
+_pages:
+  script:
+    categories:
+      list: "Llistes"
+      flow: Control de flux
+      random: Aleatori
+      value: Valors
+      fn: Funcions
+      text: Operacions de text
+      convert: Transformacions
+      logical: Operació lògica
+      operation: Càlcul
+      comparison: Comparació
+    blocks:
+      _join:
+        arg1: "Llistes"
+        arg2: Separador
+      _randomPick:
+        arg1: "Llistes"
+      _dailyRandomPick:
+        arg1: "Llistes"
+      _seedRandomPick:
+        arg2: "Llistes"
+        arg1: Llavor
+      _pick:
+        arg1: "Llistes"
+        arg2: Posició
+      _listLen:
+        arg1: "Llistes"
+      add: Afegir
+      _subtract:
+        arg1: A
+        arg2: B
+      subtract: Restar
+      _round:
+        arg1: Número
+      eq: A i B són iguals
+      _mod:
+        arg2: B
+        arg1: A
+      round: Arrodoniment decimal
+      _and:
+        arg1: A
+        arg2: B
+      or: A O B
+      _or:
+        arg1: A
+        arg2: B
+      lt: < A és menor que B
+      _lt:
+        arg1: A
+        arg2: B
+      gt: '> A és més gran que B'
+      _gt:
+        arg1: A
+        arg2: B
+      seedRannum: Nombre aleatori (amb llavor)
+      _seedRannum:
+        arg1: Llavor
+        arg2: Valor mínim
+        arg3: Valor màxim
+      _eq:
+        arg1: A
+        arg2: B
+      ltEq: <= A és menor o igual que B
+      _multiply:
+        arg2: B
+        arg1: A
+      divide: Dividir
+      notEq: A i B són diferents
+      _notEq:
+        arg1: A
+        arg2: B
+      and: A I B
+      _ltEq:
+        arg2: B
+        arg1: A
+      gtEq: '>= A és més gran o igual que B'
+      _gtEq:
+        arg1: A
+        arg2: B
+      if: Branca
+      _if:
+        arg1: Si
+        arg2: Aleshores
+        arg3: Altrament
+      not: NO
+      random: Aleatori
+      _dailyRandom:
+        arg1: Probabilitat
+      dailyRannum: Nombre aleatori (canvia un cop al dia per a cada usuari)
+      _add:
+        arg1: A
+        arg2: B
+      _divide:
+        arg1: A
+        arg2: B
+      mod: Resta
+      _not:
+        arg1: NO
+      _random:
+        arg1: Probabilitat
+      rannum: Nombre aleatori
+      _rannum:
+        arg1: Valor mínim
+        arg2: Valor màxim
+      randomPick: Tria aleatòriament de la llista
+      dailyRandom: Aleatori (canvia un cop al dia per a cada usuari)
+      _dailyRannum:
+        arg2: Valor màxim
+        arg1: Valor mínim
+      dailyRandomPick: Tria aleatòriament d'una llista (Canvis un cop al dia per a
+        cada usuari)
+      seedRandom: Aleatori (amb llavor)
+      _seedRandom:
+        arg1: Llavor
+        arg2: Probabilitat
+      seedRandomPick: Tria aleatòriament de la llista (amb llavor)
+      multiply: Multiplicar
+      text: Text
+      _strPick:
+        arg1: Text
+        arg2: Ubicació de la cadena
+      strPick: Extreure cadena
+      strReplace: Cadena de substitució
+      _strReplace:
+        arg1: Text
+        arg3: Substitueix per
+        arg2: Text a substituir
+      strReverse: Voltejar text
+      _strReverse:
+        arg1: Text
+      join: Concatenació de textos
+      pick: Selecciona de la llista
+      listLen: Obtenir la longitud de la llista
+      stringToNumber: Text a número
+      number: Número
+      _stringToNumber:
+        arg1: Text
+      splitStrByLine: Dividir el text per salts de línia
+      _fn:
+        slots: Ranures
+        slots-info: Separa cada ranura amb un salt de línia
+        arg1: Sortida
+      aiScriptVar: Variable AiScript
+      fn: Funció
+      for: Repetir
+      _numberToString:
+        arg1: Número
+      _DRPWPM:
+        arg1: Llista de text
+      numberToString: Número a text
+      _splitStrByLine:
+        arg1: Text
+      ref: Variable
+      DRPWPM: Tria aleatòriament d'una llista ponderada (Canvis un cop al dia per
+        a cada usuari)
+      _for:
+        arg1: Nombre de vegades a repetir
+        arg2: Acció
+      strLen: Longitud del text
+      multiLineText: Text (multilínia)
+      _strLen:
+        arg1: Text
+      textList: Llista de text
+      _textList:
+        info: Separa cada ranura amb un salt de línia
+    types:
+      array: "Llistes"
+      stringArray: Llista de text
+      boolean: Bandera
+      string: Text
+      number: Número
+    emptySlot: Ranura buida
+    enviromentVariables: Variables d'entorn
+    pageVariables: Variables de pàgina
+    argVariables: Ranures d'entrada
+    thereIsEmptySlot: L'espai {slot} està buit!
+    typeError: L'espai {slot} accepta valors del tipus "{expect}", però el valor proporcionat
+      és del tipus "{actual}"!
+  newPage: Crea una pàgina nova
+  editPage: Edita aquesta pàgina
+  readPage: S'està veient la font d'aquesta pàgina
+  created: Pàgina creada correctament
+  updated: Pàgina editada correctament
+  invalidNameText: Assegurat que el títol de la pàgina no estigui buit
+  editThisPage: Edita aquesta pàgina
+  deleted: Pàgina suprimida correctament
+  pageSetting: Configuració de la pàgina
+  nameAlreadyExists: L'URL de la pàgina especificat ja existeix
+  invalidNameTitle: L'URL de la pàgina especificat no és vàlid
+  viewPage: Consulta la teva pàgina
+  like: M'agrada
+  viewSource: Veure la font
+  summary: Resum de la pàgina
+  alignCenter: Centrar elements
+  hideTitleWhenPinned: Amaga el títol de la pàgina quan estigui fixat al perfil
+  font: Tipus de lletra
+  fontSerif: Serif
+  fontSansSerif: Sans Serif
+  eyeCatchingImageSet: Estableix una miniatura
+  eyeCatchingImageRemove: Suprimeix la miniatura
+  chooseBlock: Afegeix un bloc
+  selectType: Selecciona un tipus
+  enterVariableName: Introduïu un nom de variable
+  blocks:
+    section: Secció
+    text: Text
+    textarea: Àrea de text
+    image: Imatges
+    if: Si
+    _if:
+      variable: Variable
+    post: Formulari de notes
+    _post:
+      text: Contingut
+      attachCanvasImage: Adjuntar imatge de llenç
+      canvasId: ID del llenç
+    _textInput:
+      name: Nom de la variable
+      text: Títol
+      default: Valor per defecte
+    textInput: Entrada de text
+    _textareaInput:
+      name: Nom de la variable
+      text: Títol
+      default: Valor per defecte
+    textareaInput: Entrada de text multilínia
+    numberInput: Entrada numèrica
+    _note:
+      id: ID de la publicació
+      idDescription: També podeu enganxar l'URL de la publicació aquí.
+      detailed: Vista detallada
+    switch: Canviar
+    canvas: Llenç
+    _canvas:
+      id: Identificador de llenç
+      width: Amplada
+      height: Alçada
+    note: Publicació incrustada
+    _counter:
+      name: Nom de la variable
+      text: Títol
+      inc: Pas
+    _button:
+      text: Títol
+      colored: De colors
+      action: Comportament quan es prem el botó
+      _action:
+        _dialog:
+          content: Contingut
+        resetRandom: Restableix la llavor aleatòria
+        pushEvent: Envia un esdeveniment
+        _pushEvent:
+          event: Nom de l'esdeveniment
+          message: Missatge que s'ha de mostrar quan s'activa
+          variable: Variable per enviar
+          no-variable: Cap
+        dialog: Mostra un diàleg
+        callAiScript: Invoca AiScript
+        _callAiScript:
+          functionName: Nom de la funció
+    _switch:
+      default: Valor per defecte
+      name: Nom de la variable
+      text: Títol
+    counter: Comptador
+    _numberInput:
+      name: Nom de la variable
+      text: Títol
+      default: Valor per defecte
+    button: Botó
+    _radioButton:
+      name: Nom de la variable
+      title: Títol
+      values: Llista d'opcions separades per salts de línia
+      default: Valor per defecte
+    radioButton: Elecció
+  variableNameIsAlreadyUsed: Aquest nom de variable ja està en ús
+  contentBlocks: Contingut
+  inputBlocks: Entrada
+  specialBlocks: Especial
+  variables: Variables
+  title: Títol
+  url: URL de la pàgina
+  unlike: Elimina m'agrada
+  my: Les meves pàgines
+  liked: Pàgines que m'han agradat
+  content: Bloc de pàgines
+  featured: Popular
+  inspector: Inspector
+  contents: Contingut
+_notification:
+  youWereFollowed: "t'ha seguit"
+  _types:
+    follow: "Nous seguidors"
+    mention: "Menció"
+    renote: "Impulsos"
+    quote: "Citar"
+    reaction: "Reaccions"
+    all: Tots
+    reply: Respostes
+    pollEnded: S'acaben les enquestes
+    receiveFollowRequest: S'han rebut peticions de seguiment
+    followRequestAccepted: Sol·licituds de seguiment acceptades
+    groupInvited: Invitacions per a grups
+    app: Notificacions d'aplicacions enllaçades
+    pollVote: Votacions a les enquestes
+  _actions:
+    reply: "Respondre"
+    renote: "Impulsos"
+    followBack: t'ha tornat el seguiment
+  youGotQuote: "{name} t'ha citat"
+  fileUploaded: El fitxer s'ha penjat correctament
+  youGotMention: "{nom} t'ha esmentat"
+  youGotReply: "{name} t'ha respost"
+  youRenoted: Impuls de {name}
+  youGotPoll: '{name} ha votat a la teva enquesta'
+  youGotMessagingMessageFromUser: "{name} t'ha enviat un missatge de xat"
+  youGotMessagingMessageFromGroup: S'ha enviat un missatge de xat al grup {name}
+  youReceivedFollowRequest: Has rebut una sol·licitud de seguiment
+  yourFollowRequestAccepted: S'ha acceptat la vostra sol·licitud de seguiment
+  pollEnded: Es resultat de la enquesta ja està disponible
+  emptyPushNotificationMessage: Les notificacions push s'han actualitzat
+  youWereInvitedToGroup: "{userName} t'ha convidat a un grup"
+  reacted: Ha reaccionat a la teva publicació
+  renoted: Ha impulsat la teva publicació
+  voted: Ha votat a la teva enquesta
+_deck:
+  _columns:
+    notifications: "Notificacions"
+    tl: "Línia de temps"
+    list: "Llistes"
+    mentions: "Mencions"
+    widgets: Ginys
+    main: Principal
+    antenna: Antena
+    direct: Missatges directes
+    channel: Canal
+  alwaysShowMainColumn: Mostra sempre la columna principal
+  columnAlign: Alinear columnes
+  introduction: Crea la interfície perfecta per a tu organitzant columnes lliurement!
+  swapRight: Canvia amb la columna de la dreta
+  swapUp: Canvia amb la columna de d'alt
+  swapDown: Canvia amb la columna de sota
+  stackLeft: Apilar amb la columna de l'esquerra
+  popRight: Treu a la dreta
+  profile: Espai de treball
+  newProfile: Nou espai de treball
+  deleteProfile: Suprimir l'espai de treball
+  introduction2: Feu clic al + a la dreta de la pantalla per afegir noves columnes
+    sempre que vulgueu.
+  widgetsIntroduction: Selecciona "Editar ginys" al menú de columnes i afegeix un
+    giny.
+  addColumn: Afegeix una columna
+  configureColumn: Configuració de columnes
+  swapLeft: Canvia amb la columna de l'esquerra
+  renameProfile: Canvia el nom de l'espai de treball
+  nameAlreadyExists: Aquest nom d'espai de treball ja existeix.
+blockConfirm: Segur que vols bloquejar aquest compte?
+unsuspendConfirm: Segur que vols treure la suspensió d'aquest compte?
+unblockConfirm: Segur que vols treure el bloqueig d'aquest compte?
+suspendConfirm: Segur que vols suspendre aquest compte?
+selectList: Selecciona una llista
+selectAntenna: Selecciona una antena
+selectWidget: Selecciona un giny
+editWidgets: Edita els ginys
+editWidgetsExit: Fet
+customEmojis: Emojis personalitzats
+cacheRemoteFilesDescription: Quan aquesta opció està desactivada, els fitxers remots
+  es carreguen directament del servidor remot. Desactivar-la farà que baixi l'ús d'emmagatzematge,
+  però incrementa el tràfic, perquè les miniatures no es generaran.
+flagAsBot: Marca aquest compte com a bot
+flagAsBotDescription: Activa aquesta opció si aquest compte és controlat per un programa.
+  Si s'activa, això actuarà com una bandera per a altres desenvolupadors i ajuda a
+  prevenir cadenes de interaccions infinites amb altres bots a més d'ajustar els sistemes
+  interns de Firefish per tractar aquest compte com un bot.
+flagAsCat: Ets un gat? 🐱
+flagShowTimelineReplies: Mostra respostes a la línia de temps
+flagAsCatDescription: Guanyaràs unes orelles de gat i parlares com un gat!
+flagShowTimelineRepliesDescription: Si s'activa, es mostraran les respostes d'usuaris
+  a publicacions d'altres usuaris.
+general: General
+autoAcceptFollowed: Aprova automàticament les peticions de seguiment d'usuaris que
+  segueixes
+accountMoved: "L'usuari s'ha mogut a un compte nou:"
+addAccount: Afegeix un compte
+loginFailed: No s'ha pogut iniciar sessió
+showOnRemote: Obre la pàgina original
+wallpaper: Fons de pantalla
+setWallpaper: Estableix fons de pantalla
+removeWallpaper: Elimina el fons de pantalla
+followConfirm: Segur que vols seguir a {name}?
+proxyAccount: Compte proxy
+proxyAccountDescription: Un compte proxy es un compte que actua com un seguidor remot
+  per a usuaris sota determinades condicions. Per exemple, quant un usuari afegeix
+  un usuari remot a la llista, l'activitat de l'usuari remot no serà entregada al
+  servidor si cap usuari local el segueix, així el compte proxy el seguirà.
+host: Amfitrió
+selectUser: Selecciona un usuari
+latestStatus: Últim estat
+storageUsage: Ús del emmagatzematge
+metadata: Metadades
+monitor: Seguiment
+software: Programari
+version: Versió
+jobQueue: Cua de feina
+cpuAndMemory: CPU i memòria
+network: Xarxa
+disk: Disc
+instanceInfo: Informació del servidor
+statistics: Estadístiques
+clearCachedFiles: Esborra la memòria cau
+clearQueueConfirmText: Qualsevol publicació que continuï a la cua sense entregar no
+  será federada. Normalment aquesta operació no es necessària.
+clearCachedFilesConfirm: Segur que vols esborrar els fitxers remots de la memòria
+  cau?
+blockedUsers: Usuaris blocats
+noUsers: No hi ha cap usuari
+editProfile: Edita el perfil
+noteDeleteConfirm: Segur que vols eliminar la publicació?
+pinLimitExceeded: No pots fixar més notes
+muteAndBlock: Silenciats i blocats
+mutedUsers: Usuaris silenciats
+done: Fet
+preview: Vista prèvia
+default: Per defecte
+intro: La instal·lació de Firefish ha acabat! Crea un compte d'usuari d'administració.
+processing: S'està processant
+noCustomEmojis: No hi ha cap emoji
+noJobs: No hi ha cap feina
+federating: Federant
+blocked: Bloquejat
+subscribing: Subscrivint
+publishing: Publicant
+notResponding: Sense resposta
+instanceUsers: Usuaris d'aquest servidor
+instanceFollowing: Seguint al servidor
+instanceFollowers: Seguidors del servidor
+security: Seguretat
+newPasswordRetype: Torna a entrar la nova contrasenya
+more: Més!
+featured: Destacat
+usernameOrUserId: Nom o ID d'usuari
+noSuchUser: No s'ha trobat l'usuari
+lookup: Cerca
+attachFile: Afegeix un fitxer
+currentPassword: Contrasenya actual
+newPassword: Nova contrasenya
+announcements: Anuncis
+imageUrl: URL de la imatge
+removed: S'ha eliminat correctament
+removeAreYouSure: Segur que vols eliminar «{x}»?
+deleteAreYouSure: Segur que vols eliminar «{x}»?
+resetAreYouSure: Segur que vols restablir?
+fromUrl: Des d'una URL
+saved: S'ha desat
+messaging: Xat
+upload: Puja
+keepOriginalUploading: Desa la imatge original
+keepOriginalUploadingDescription: Desa la imatge original pujada tal com es. Si es
+  desactiva, es generarà una versió per mostrar en la web al pujar.
+fromDrive: Des del Disc
+uploadFromUrl: Puja des d'una adreça URL
+uploadFromUrlDescription: Adreça URL del fitxer que vols pujar
+uploadFromUrlRequested: Pujada demanada
+noMoreHistory: No hi ha més historial
+tos: Condicions d'ús
+start: Comença
+startMessaging: Comença una conversa
+manageGroups: Gestiona els grups
+nUsersRead: llegit per {n}
+agreeTo: Estic d'acord amb {0}
+activity: Activitat
+home: Inici
+remoteUserCaution: La informació dels usuaris remots pot estar incompleta.
+themeForDarkMode: Tema a fer servir en mode fosc
+light: Clar
+registeredDate: Data de registre
+dark: Fosc
+lightThemes: Temes clars
+location: Ubicació
+theme: Temes
+themeForLightMode: Tema a fer servir en mode clar
+drive: Disc
+selectFile: Tria un fitxer
+selectFiles: Tria fitxers
+darkThemes: Temes foscos
+syncDeviceDarkMode: Sincronitza el mode fosc amb la configuració del teu dispositiu
+fileName: Nom del fitxer
+createFolder: Crea una carpeta
+renameFolder: Canvia-li el nom a la carpeta
+deleteFolder: Elimina la carpeta
+selectFolder: Tria una carpeta
+selectFolders: Tria carpetes
+renameFile: Canvia el nom del fitxer
+folderName: Nom de la carpeta
+inputNewFolderName: Escriu un nom de carpeta nou
+addFile: Afegeix un fitxer
+emptyDrive: El teu Disc és buit
+emptyFolder: Aquesta carpeta és buida
+unableToDelete: No es pot eliminar
+inputNewFileName: Escriu un nou nom per al fitxer
+inputNewDescription: Escriu una descripció nova
+circularReferenceFolder: La carpeta de destí és una subcarpeta de la carpeta que vols
+  moure.
+hasChildFilesOrFolders: Aquesta carpeta no es pot eliminar perquè no és buida.
+whenServerDisconnected: Quant es perd la conexió amb el servidor
+disconnectedFromServer: S'ha perdut la conexió al servidor
+reload: Torna a carregar
+avatar: Avatar
+banner: Bàner
+doNothing: Ignora
+reloadConfirm: Vols tornar a carregar la línea temporal?
+watch: Veure
+maintainerName: Administrador
+maintainerEmail: Correu electrònic de l'administrador
+instanceName: Nom del servidor
+instanceDescription: Descripció del servidor
+today: Avui
+dayX: '{day}'
+tosUrl: URL de les Condicions d'ús
+thisYear: Any
+thisMonth: Mes
+integration: Integracions
+driveCapacityPerRemoteAccount: Capacitat del Disc per usuari remot
+inMb: En megabytes
+iconUrl: Adreça URL de la icona
+enableRegistration: Activa el registre d'usuaris nous
+invite: Convidar
+driveCapacityPerLocalAccount: Capacitat del Disc per usuari local
+bannerUrl: Adreça URL del banner
+backgroundImageUrl: Adreça URL del fons de pantalla
+basicInfo: Informació bàsica
+pinnedPages: Pàgines fixades
+pinnedUsersDescription: Llista de noms d'usuaris per fixar a la pestanya "Explorar"
+  Un nom per línea.
+pinnedPagesDescription: Introdueix la ruta a les pàgines que vols fixar a la página
+  principal d'aquest servidor, una ruta per línea.
+pinnedUsers: Usuaris fixats
+enableHcaptcha: Activa hCaptcha
+hcaptchaSiteKey: Clau del lloc
+hcaptchaSecretKey: Clau secreta
+recaptcha: reCAPTCHA
+enableGlobalTimeline: Activa la línia de temps global
+disablingTimelinesInfo: Els Administradors i Moderadors sempre tenen accés a totes
+  les líneas temporals, inclòs si hi són desactivades.
+showLess: Tanca
+clearQueue: Esborra la cua
+uploadFromUrlMayTakeTime: Pot trigar un temps fins que la pujada es completi.
+noThankYou: No, gràcies
+addInstance: Afegeix un servidor
+emoji: Emojis
+emojis: Emojis
+emojiName: Nom del emoji
+emojiUrl: URL de l'emoji
+addEmoji: Afegeix
+settingGuide: Configuració recomenada
+searchWith: 'Cerca: {q}'
+youHaveNoLists: No tens cap llista
+flagSpeakAsCat: Parla com un gat
+selectInstance: Selecciona un servidor
+flagSpeakAsCatDescription: Les teves publicacions es transformaran en miols quan estiguis
+  en mode gat
+recipient: Destinatari(s)
+annotation: Comentaris
+blockedInstances: Servidors bloquejats
+blockedInstancesDescription: Llista les adreces dels servidors que vols bloquejar.
+  Els servidors de la llista no podrán comunicarse amb aquests servidors.
+hiddenTags: Etiquetes amagades
+hiddenTagsDescription: 'Enumereu les etiquetes (sense el #) que voleu ocultar de tendències
+  i explorar. Les etiquetes ocultes encara es poden descobrir per altres mitjans.'
+noInstances: No hi ha cap servidor
+defaultValueIs: 'Per defecte: {value}'
+suspended: Suspès
+all: Tot
+changePassword: Canvia la contrasenya
+clearQueueConfirmTitle: Segur que vols esborrar la cua?
+retypedNotMatch: Els camps no coincideixen.
+normal: Normal
+monthX: '{month}'
+enableRecaptcha: Activa reCAPTCHA
+recaptchaSiteKey: Clau del lloc
+recaptchaSecretKey: Clau secreta
+avoidMultiCaptchaConfirm: Fent servir diferents sistemes de Captcha pot causar interferències
+  entre ells. Vols desactivar els altres sistemes que es troben activats? Si vols
+  deixar-los activats fes clic a cancelar.
+antennas: Antenes
+enableEmojiReactions: Activa reaccions amb emojis
+blockThisInstance: Bloqueja aquest servidor
+registration: Registra't
+showEmojisInReactionNotifications: Mostra els emojis a les notificacions de les reaccions
+renoteMute: Silencia els impulsos
+renoteUnmute: Treu el silenci als impulsos
+cacheRemoteFiles: Fitxers remots a la memòria cau
+federation: Federació
+registeredAt: Registrat a
+latestRequestSentAt: Última petició enviada
+latestRequestReceivedAt: Última petició rebuda
+charts: Gràfics
+perHour: Per hora
+perDay: Per dia
+stopActivityDelivery: Para d'enviar activitats
+operations: Operacions
+explore: Explora
+messageRead: Llegit
+images: Imatges
+birthday: Aniversari
+yearsOld: '{age} anys'
+copyUrl: Copia l'adreça URL
+rename: Renombrar
+unwatch: Deixa de veure
+accept: Accepta
+reject: Rebutja
+yearX: '{year}'
+pages: Pàgines
+disconnectService: Desconnectar
+connectService: Connectar
+enableLocalTimeline: Activa la línea de temps local
+enableRecommendedTimeline: Activa la línea de temps de recomanacions
+pinnedClipId: ID del clip que vols fixar
+hcaptcha: hCaptcha
+manageAntennas: Gestiona les Antenes
+name: Nom
+notesAndReplies: Notes i respostes
+silence: Posa en silenci
+withFiles: Amb fitxers
+popularUsers: Usuaris populars
+exploreUsersCount: Hi han {count} usuaris
+exploreFediverse: Explora el Fesiverse
+popularTags: Etiquetes populars
+about: Sobre
+recentlyUpdatedUsers: Usuaris actius fa poc
+recentlyRegisteredUsers: Usuaris registrats fa poc
+recentlyDiscoveredUsers: Nous suaris descoberts
+administrator: Administrador
+token: Token
+registerSecurityKey: Registreu una clau de seguretat
+securityKeyName: Nom clau
+lastUsed: Feta servir per última vegada
+unregister: Anul·lar el registre
+passwordLessLogin: Identificació sense contrasenya
+share: Comparteix
+notFound: No s'ha trobat
+newPasswordIs: La nova contrasenya és "{password}"
+notFoundDescription: No es pot trobar cap pàgina que correspongui a aquesta adreça
+  URL.
+uploadFolder: Carpeta per defecte per pujar arxius
+cacheClear: Netejar la memòria cau
+markAsReadAllNotifications: Marca totes les notificacions com llegides
+markAsReadAllUnreadNotes: Marca totes les notes com a llegides
+markAsReadAllTalkMessages: Marca tots els missatges com llegits
+help: Ajuda
+inputMessageHere: Escriu aquí el missatge
+close: Tancar
+group: Grup
+groups: Grups
+createGroup: Crea un grup
+ownedGroups: Grups que et pertanyen
+joinedGroups: Grups als que t'has unit
+groupName: Nom del grup
+members: Membres
+transfer: Transferir
+messagingWithUser: Conversa privada
+title: Títol
+text: Text
+enable: Activar
+next: Següent
+retype: Torna a entrar
+noteOf: Publicació de {user}
+inviteToGroup: Invitar a un grup
+quoteAttached: Cita
+quoteQuestion: Adjuntar com a cita?
+noMessagesYet: Encara no hi han missatges
+signinRequired: Si us plau registrat o inicia sessió per continuar
+invitations: Invitacions
+invitationCode: Codi d'invitació
+checking: Comprovant...
+usernameInvalidFormat: Pots fer servir lletres en majúscules o minúscules, nombres
+  i guions baixos.
+tooShort: Massa curt
+tooLong: Massa llarg
+weakPassword: Contrasenya amb seguretat feble
+strongPassword: Contrasenya amb seguretat forta
+passwordMatched: Coincidències
+signinWith: Inicieu sessió com {x}
+signinFailed: No es pot iniciar sessió. El nom d'usuari o la contrasenya són incorrectes.
+or: O
+language: Idioma
+uiLanguage: Idioma de la interfície d'usuari
+groupInvited: T'han invitat a un grup
+aboutX: Sobre {x}
+youHaveNoGroups: No tens grups
+disableDrawer: No facis servir els menús amb estil de calaix
+noHistory: No hi ha historial disponible
+signinHistory: Historial d'inicis de sessió
+disableAnimatedMfm: Desactiva les animacions amb MFM
+doing: Processant...
+category: Categoría
+existingAccount: El compte ja existeix
+regenerate: Regenerar
+docSource: Font d'aquest document
+createAccount: Crear compte
+fontSize: Mida del text
+noFollowRequests: No tens cap sol·licitud de seguiment per aprovar
+openImageInNewTab: Obre les imatges en una pestanya nova
+dashboard: Panell
+local: Local
+remote: Remot
+total: Total
+weekOverWeekChanges: Canvis d'ençà la passada setmana
+dayOverDayChanges: Canvis d'ençà ahir
+appearance: Aparença
+clientSettings: Configuració del client
+accountSettings: Configuració del compte
+promotion: Promogut
+promote: Promoure
+numberOfDays: Nombre de dies
+objectStorageBaseUrl: Adreça URL base
+hideThisNote: Amaga aquesta publicació
+showFeaturedNotesInTimeline: Mostra les notes destacades a les líneas de temps
+objectStorage: Emmagatzematge d'objectes
+useObjectStorage: Fes servir l'emmagatzema d'objectes
+expandTweet: Amplia el tuit
+themeEditor: Editor de temes
+description: Descripció
+leaveConfirm: Hi han canvis que no s'han desat. Els vols descartar?
+manage: Administració
+plugins: Afegits
+preferencesBackups: Preferències de còpies de seguretat
+undeck: Treure el Taulell
+useBlurEffectForModal: Fes servir efectes de difuminació en les finestres modals
+useFullReactionPicker: Fes servir el selector de reaccions a tamany complert
+deck: Taulell
+width: Amplada
+generateAccessToken: Genera un token d'accés
+medium: Mitja
+small: Petit
+permission: Permisos
+enableAll: Activa tots
+tokenRequested: Garantir accés al compte
+pluginTokenRequestedDescription: Aquest afegit podrà fer servir els permisos configurats
+  aquí.
+emailServer: Servidor de correu electrònic
+notificationType: Tipus de notificació
+edit: Editar
+emailAddress: Adreça de Correu electrònic
+smtpConfig: Configuració del servidor SMTP
+smtpHost: Host
+enableEmail: Activa la distribució de correu electrònic
+smtpPort: Port
+emailConfigInfo: Fet servir per confirmar les adreçats de correu electrònic al registrar-se
+  o si s'oblida la contrasenya
+email: Correu electrònic
+smtpSecure: Fes servir SSL/TLS implícit per connectar-se per SMTP
+emptyToDisableSmtpAuth: Deixa el nom d'usuari i la contrasenya sense emplenar per
+  desactivar la verificació SMTP
+smtpSecureInfo: Desactiva això quant facis servir STARTTLS
+testEmail: Envia un correu electrònic de verificació
+wordMute: Silenciar paraules
+regexpError: Error a la Expressió Regular
+regexpErrorDescription: 'Hi ha un error a la expressió regular a la línea {line} de
+  la teva {tab} de paraules silenciades:'
+userSaysSomething: '{name} va dir alguna cosa'
+instanceMute: Silenciar servidor
+logs: Registres
+copy: Copiar
+delayed: Retardat
+metrics: Mètriques
+overview: Vista general
+database: Base de dades
+regenerateLoginToken: Regenera el token d'inici de sessió
+reduceUiAnimation: Redueix les animacions de la UI
+messagingWithGroup: Conversa en grup
+invites: Invitacions
+unavailable: No disponible
+newMessageExists: Tens nous missatges
+onlyOneFileCanBeAttached: Només pots adjuntar un fitxer per missatge
+normalPassword: Contrasenya amb seguretat mitjana
+passwordNotMatched: No hi han coincidències
+useOsNativeEmojis: Fes servir els emojis per defecte del Sistema Operatiu
+joinOrCreateGroup: Fes que et convidin a un grup o crea el teu propi.
+objectStorageBaseUrlDesc: "Es l'adreça URL que serveix com a referència. Específica
+  la adreça URL del CDN o Proxy si fas servir.\nPer fer servir S3 'https://<bucket>.s3.amazonaws.com'
+  i per GCS o serveis semblants 'https://storage.googleapis.com/<bucket>', etc."
+height: Alçada
+large: Gran
+notificationSetting: Preferències de notificacions
+makeActive: Activar
+notificationSettingDesc: Tria el tipus de notificació que es veure.
+notifyAntenna: Notificar publicacions noves
+withFileAntenna: Només notes amb fitxers
+enableServiceworker: Activa les notificacions push per al teu navegador
+antennaUsersDescription: Escriu un nom d'usuari per línea
+antennaInstancesDescription: Escriu la adreça d'un servidor per línea
+tags: Etiquetes
+antennaSource: Font de la antena
+antennaKeywords: Paraules claus a escoltar
+antennaExcludeKeywords: Paraules clau a excluir
+antennaKeywordsDescription: Separades amb espais per fer una condició AND i amb una
+  línea nova per fer una condició OR.
+caseSensitive: Sensible a majúscules i minúscules
+withReplies: Inclou respostes
+connectedTo: Aquest(s) compte(s) estan connectats
+silenceConfirm: Segur que vols posa en silenci aquest usuari?
+unsilence: Desfés posar en silenci
+unsilenceConfirm: Segur que vols treure el silenci a aquest usuari?
+aboutFirefish: Sobre Firefish
+twoStepAuthentication: Autentificació de dos factors
+moderator: Moderador
+moderation: Moderació
+available: Disponible
+tapSecurityKey: Escriu la teva clau de seguretat
+nUsersMentioned: Esmentat per {n} usuari(s)
+securityKey: Clau de seguretat
+resetPassword: Restablir contrasenya
+describeFile: Afegeix una descripció
+enterFileDescription: Entra una descripció
+author: Autor
+disableAll: Desactiva tots
+userSaysSomethingReason: '{name} va dir {reason}'
+display: Visualització
+channel: Canals
+create: Crear
+useGlobalSetting: Fes servir els ajusts globals
+useGlobalSettingDesc: Si s'activa, es faran servir els ajusts de notificacions del
+  teu compte. Si es desactiva , es poden fer configuracions individuals.
+other: Altres
+menu: Menú
+addItem: Afegeix un element
+divider: Divisor
+relays: Relés
+addRelay: Afegeix un Relé
+inboxUrl: Adreça de la safata d'entrada
+addedRelays: Relés afegits
+serviceworkerInfo: Ha de estar activat per les notificacions push.
+poll: Enquesta
+deletedNote: Publicació esborrada
+disablePlayer: Tancar el reproductor de vídeo
+fileIdOrUrl: ID o adreça URL del fitxer
+behavior: Comportament
+regenerateLoginTokenDescription: Regenera el token que es fa servir de manera interna
+  durant l'inici de sessió. Normalment això no és necessari. Si es torna a genera
+  el token, es tancarà la sessió a tots els dispositius.
+setMultipleBySeparatingWithSpace: Separa diferents entrades amb espais.
+reportAbuseOf: Informa d'un abús de {name}
+sample: Exemple
+abuseReports: Informes
+reportAbuse: Informe
+reporter: Informador
+reporterOrigin: Origen informador
+forwardReport: Envia l'informe a un servidor remot
+abuseReported: El teu informe ha sigut enviat. Moltes gràcies.
+reporteeOrigin: Origen de l'informe
+send: Enviar
+abuseMarkAsResolved: Marcar l'informe com a resolt
+visibility: Visibilitat
+useCw: Amaga el contingut
+enablePlayer: Obre el reproductor de vídeo
+yourAccountSuspendedDescription: Aquest compte ha sigut suspès per no seguir els termes
+  de servei d'aquest servidor o quelcom similar. Contacte amb l'administrador si vols
+  conèixer la raó amb més detall. Si us plau no facis un compte nou.
+invisibleNote: Publicació oculta
+enableInfiniteScroll: Carregar més de forma automàtica
+fillAbuseReportDescription: Si us plau omple els detalls sobre aquest informe. Si
+  es sobre una publicació en concret, si us plau, inclou l'adreça URL.
+forwardReportIsAnonymous: Com a informador el servidor remot no veure el teu compte,
+  si no un compte anònim.
+openInNewTab: Obrir en una pestanya nova
+openInSideView: Obrir a la vista lateral
+defaultNavigationBehaviour: Navegació per defecte
+editTheseSettingsMayBreakAccount: Si edites aquestes configuracions pots fer mal bé
+  el teu compte.
+userSilenced: Aquest usuari ha sigut silenciat.
+instanceTicker: Informació de notes del servidor
+waitingFor: Esperant a {x}
+random: Aleatori
+system: Sistema
+switchUi: Interfície d'usuari
+createNewClip: Crear un clip nou
+unclip: Treure clip
+public: Públic
+renotesCount: Nombre d'impulsos fets
+sentReactionsCount: Nombre de reaccions fetes
+receivedReactionsCount: Nombre de reaccions rebudes
+pollVotesCount: Nombre de vots fets en enquestes
+pollVotedCount: Nombre de vots rebuts en enquestes
+yes: Sí
+no: No
+noCrawle: Rebutjar la indexació dels restrejadors
+driveUsage: Espai fet servir al Disk
+noCrawleDescription: No permetre que els buscadors guardin la informació de les pàgines
+  de perfil, notes, Pàgines, etc.
+alwaysMarkSensitive: Marcar per defecte com a NSFW
+lockedAccountInfo: Si has configurat la visibilitat del compte per "Només seguidors"
+  les teves notes no seren visibles per a ningú més, inclús si has d'aprovar els teus
+  seguidors manualment.
+disableShowingAnimatedImages: No reproduir les imatges animades
+verificationEmailSent: S'ha enviat correu electrònic de verificació. Si us plau segueix
+  les instruccions per completar la verificació.
+notSet: Sense especificar
+emailVerified: El correu electrònic s'ha verificat
+loadRawImages: Carregar les imatges originals en comptes de mostrar les miniatures
+noteFavoritesCount: Nombre de notes afegides a favorits
+useSystemFont: Fes servir la font per defecte del sistema
+contact: Contacte
+clips: Retalls
+experimentalFeatures: Característiques experimentals
+developer: Desenvolupador
+makeExplorableDescription: Si desactives aquesta funció el teu compte no sortirà a
+  la secció "Explora".
+showGapBetweenNotesInTimeline: Mostra un espai entre notes a la línea de temps
+makeExplorable: Fes el compte visible a "Explora"
+duplicate: Duplicar
+left: Esquerra
+wide: Ample
+narrow: Estret
+reloadToApplySetting: Aquesta configuració només sortirà efecte després de recarregar
+  la pàgina. Vols fer-ho ara?
+needReloadToApply: Es requereix recarregar la pàgina perquè això surti efecte.
+showTitlebar: Mostrar la barra de títol
+onlineUsersCount: Hi han {n} usuaris connectats
+nUsers: '{n} Usuaris'
+nNotes: '{n} Notes'
+sendErrorReports: Enviar informe d'error
+clearCache: Netejar memòria cau
+switchAccount: Canvia de compte
+enabled: Activat
+configure: Configurar
+noBotProtectionWarning: La protecció contra bots no està configurada.
+ads: Publicitat
+ratio: Ràtio
+global: Global
+sent: Enviat
+received: Rebut
+whatIsNew: Mostra els canvis
+usernameInfo: Un nom que identifica el vostre compte d'altres en aquest servidor.
+  Podeu utilitzar l'alfabet (a~z, A~Z), els dígits (0~9) o el guió baix (_). Els noms
+  d'usuari no es poden canviar més tard.
+breakFollow: Suprimeix el seguidor
+makeReactionsPublicDescription: Això farà que la llista de totes les vostres reaccions
+  passades sigui visible públicament.
+hide: Amagar
+leaveGroupConfirm: Estàs segur que vols deixar "{name}"?
+voteConfirm: Vols confirmar el teu vot per a "{choice}"?
+leaveGroup: Sortir del grup
+rateLimitExceeded: S'ha excedit el límit proporcionat
+cropImage: Retalla la imatge
+cropImageAsk: Vols retallar aquesta imatge?
+failedToFetchAccountInformation: No s'ha pogut obtenir la informació del compte
+driveCapOverrideCaption: Restableix la capacitat per defecte introduint un valor de
+  0 o inferior.
+type: Tipus
+label: Etiqueta
+beta: Beta
+navbar: Barra de navegació
+adminCustomCssWarn: Aquesta configuració només s'ha d'utilitzar si sabeu què fa. La
+  introducció de valors inadequats pot fer que els clients de TOTS deixin de funcionar
+  amb normalitat. Assegureu-vos que el vostre CSS funcioni correctament provant-lo
+  a la configuració de l'usuari.
+showUpdates: Mostra una finestra emergent quan Firefish s'actualitzi
+recommendedInstances: Servidors recomanats
+recommendedInstancesDescription: Servidors recomanats separats per salts de línia
+  que apareixen a la línia de temps recomanada.
+caption: Descripció Automàtica
+splash: Pantalla de Benvinguda
+swipeOnDesktop: Permet lliscar a l'estil del mòbil a l'escriptori
+updateAvailable: Pot ser que hi hagi una actualització disponible!
+logoImageUrl: URL de la imatge del logotip
+showAdminUpdates: Indica que hi ha disponible una versió nova de Firefish (només per
+  a administradors)
+replayTutorial: Repetició del tutorial
+migration: Migració
+moveAccountDescription: Aquest procés és irreversible. Assegureu-vos que hàgiu configurat
+  un àlies per a aquest compte al vostre compte nou abans de moure's. Introduïu l'etiqueta
+  del compte amb el format @persona@servidor.com
+moveToLabel: 'Compte al qual us moveu:'
+moveAccount: Mou el compte!
+moveFromDescription: Això establirà un àlies del vostre compte antic perquè pugueu
+  passar d'aquest compte a aquest actual. Feu això ABANS de moure's del vostre compte
+  anterior. Introduïu l'etiqueta del compte amb el format @persona@servidor.com
+_sensitiveMediaDetection:
+  description: Redueix l'esforç de moderació del servidor mitjançant el reconeixement
+    automàtic dels mitjans NSFW mitjançant l'aprenentatge automàtic. Això augmentarà
+    lleugerament la càrrega al servidor.
+  setSensitiveFlagAutomaticallyDescription: Els resultats de la detecció interna es
+    conservaran encara que aquesta opció estigui desactivada.
+  analyzeVideos: Activa l'anàlisi de vídeos
+  analyzeVideosDescription: Analitza vídeos a més d'imatges. Això augmentarà lleugerament
+    la càrrega al servidor.
+  setSensitiveFlagAutomatically: Marca com a NSFW
+  sensitivity: Sensibilitat de detecció
+  sensitivityDescription: La reducció de la sensibilitat comportarà menys deteccions
+    errònies (falsos positius), mentre que augmentar-la comportarà menys deteccions
+    falses (falsos negatius).
+_emailUnavailable:
+  used: Aquesta adreça de correu electrònic ja s'està utilitzant
+  format: El format d'aquesta adreça de correu electrònic no és vàlid
+  disposable: Les adreces de correu electrònic d'un sol ús no es poden utilitzar
+  mx: Aquest servidor de correu electrònic no és vàlid
+  smtp: Aquest servidor de correu electrònic no respon
+_ffVisibility:
+  public: Públic
+  followers: Visible només per als seguidors
+  private: Privat
+_signup:
+  emailAddressInfo: Introduïu la vostra adreça de correu electrònic. No es farà públic.
+  almostThere: Gairebé està
+  emailSent: S'ha enviat un correu electrònic de confirmació a la vostra adreça electrònica
+    ({email}). Feu clic a l'enllaç inclòs per completar la creació del compte.
+_accountDelete:
+  started: S'ha iniciat la supressió.
+  accountDelete: Suprimeix el compte
+  mayTakeTime: Com que la supressió del compte és un procés que requereix molts recursos,
+    pot ser que trigui algun temps a completar-se en funció de la quantitat de contingut
+    que hàgiu creat i de quants fitxers hàgiu penjat.
+  sendEmail: Un cop s'hagi completat la supressió del compte, s'enviarà un correu
+    electrònic a l'adreça de correu electrònic registrada en aquest compte.
+  inProgress: La supressió del compte està en curs
+  requestAccountDelete: Sol·licitar la supressió del compte
+_ad:
+  back: Enrera
+  reduceFrequencyOfThisAd: Mostrar aquest anunci menys
+_gallery:
+  my: La meva Galeria
+  liked: Notes que m'han agradat
+  unlike: Elimina m'agrada
+  like: M'agrada
+_forgotPassword:
+  contactAdmin: Aquest servidor no admet l'ús d'adreces de correu electrònic; poseu-vos
+    en contacte amb l'administrador del servidor per restablir la contrasenya.
+  ifNoEmail: Si no heu utilitzat cap correu electrònic durant el registre, poseu-vos
+    en contacte amb l'administrador del servidor.
+  enterEmail: Introduïu l'adreça de correu electrònic que heu utilitzat per registrar-vos.
+    A continuació, se li enviarà un enllaç amb el qual podeu restablir la vostra contrasenya.
+_plugin:
+  install: Instal·leu connectors
+  installWarn: Si us plau, no instal·leu connectors que no siguin fiables.
+  manage: Gestionar els connectors
+_preferencesBackups:
+  saveNew: Desa una còpia de seguretat nova
+  apply: Aplicar a aquest dispositiu
+  loadFile: Carrega des del fitxer
+  save: Desa els canvis
+  nameAlreadyExists: Ja existeix una còpia de seguretat anomenada "{name}". Introduïu
+    un nom diferent.
+  renameConfirm: Canviar el nom d'aquesta còpia de seguretat de "{old}" a "{new}"?
+  noBackups: No existeixen còpies de seguretat. Podeu fer una còpia de seguretat de
+    la configuració del vostre client en aquest servidor utilitzant "Crea una còpia
+    de seguretat nova".
+  deleteConfirm: Vols suprimir la còpia de seguretat anomanada {name}?
+  updatedAt: 'Actualitzat el: {time} {date}'
+  createdAt: 'Creat el: {time} {date}'
+  cannotLoad: No s'ha pogut carregar
+  inputName: Introduïu un nom per a aquesta còpia de seguretat
+  saveConfirm: Deseu la còpia de seguretat com a {name}?
+  invalidFile: Format de fitxer no vàlid
+  applyConfirm: Realment voleu aplicar la còpia de seguretat "{name}" a aquest dispositiu?
+    La configuració existent d'aquest dispositiu es sobreescriurà.
+  list: Còpies de seguretat creades
+  cannotSave: S'ha produït un error en desar
+_registry:
+  domain: Domini
+  createKey: Crea la clau
+  scope: Àmbit
+  key: Clau
+  keys: Claus
+silenced: Silenciat
+objectStorageUseSSL: Fes servir SSL
+yourAccountSuspendedTitle: Aquest compte està suspès
+i18nInfo: Firefish està sent traduït a diversos idiomes per voluntaris. Pots ajudar
+  {link}.
+manageAccessTokens: Administrar tokens d'accés
+accountInfo: Informació del compte
+pageLikedCount: Nombre de m'agrada rebuts a Pàgines
+center: Centre
+registry: Registre
+closeAccount: Tancar el compte
+currentVersion: Versió actual
+latestVersion: Versió més nova
+newVersionOfClientAvailable: Aquesta és la versió del client més nova disponible.
+usageAmount: Ús
+capacity: Capacitat
+editCode: Editar codi
+apply: Aplicar
+repliesCount: Nombre de contestacions fetes
+repliedCount: Nombre de respostes rebudes
+renotedCount: Nombre d'impulsos rebuts
+followingCount: Nombre de comptes seguits
+followersCount: Nombre de seguidors
+goBack: Enrera
+quitFullView: Sortí de la vista complerta
+addDescription: Afegeix una descripció
+notSpecifiedMentionWarning: Aquesta publicació conté mencions a usuaris no inclosos
+  com a destinataris
+info: Sobre
+hideOnlineStatus: Amagar l'estat de conexió
+onlineStatus: Estat de conexió
+online: En línea
+offline: Desconectat
+notRecommended: No recomanat
+botProtection: Protecció contra Bots
+instanceBlocking: Gestió de la federació
+selectAccount: Seleccionar un compte
+disabled: Desactivat
+quickAction: Accions ràpides
+administration: Administració
+switch: Canviar
+gallery: Galeria
+popularPosts: Pàgines populars
+shareWithNote: Comparteix amb una publicació
+expiration: Data límit
+memo: Recordatori
+priority: Prioritat
+high: Alta
+middle: Mitjana
+low: Baixa
+emailNotConfiguredWarning: L'adreça de correu electrònic no està definida.
+instanceSecurity: Seguretat del servidor
+privateMode: Mode Privat
+allowedInstances: Servidors a la llista blanca
+allowedInstancesDescription: Llista blanca de Hosts amb qui federar, cadascún separat
+  per una línia nova (només s'aplica en mode privat).
+previewNoteText: Mostra la vista prèvia
+customCss: CSS personalitzat
+recommended: Recomanat
+seperateRenoteQuote: Botons d'impuls i de citació separats
+searchResult: Resultats de la cerca
+hashtags: Etiquetes
+troubleshooting: Resolució de problemes
+learnMore: Més informació
+misskeyUpdated: Firefish s'ha actualitzat!
+translate: Tradueix
+translatedFrom: Traduït per {x}
+aiChanMode: Ai-chan a la interfície d'usuari clàssica
+keepCw: Mantenir els avisos de contingut
+pubSub: Comptes Pub/Sub
+lastCommunication: Última comunicació
+breakFollowConfirm: Confirmes que vols eliminar el seguidor?
+itsOn: Activat
+itsOff: Desactivat
+emailRequiredForSignup: Requereix una adreça de correu electrònic per registrar-te
+unread: Sense llegir
+controlPanel: Tauler de control
+manageAccounts: Gestionar comptes
+makeReactionsPublic: Estableix l'historial de reaccions com a públic
+classic: Centrat
+muteThread: Silenciar el fil
+ffVisibility: Visibilitat dels Seguiments/Seguidors
+incorrectPassword: Contrasenya incorrecta.
+clickToFinishEmailVerification: Feu clic a [{ok}] per completar la verificació del
+  correu electrònic.
+overridedDeviceKind: Tipus de dispositiu
+smartphone: Telèfon intel·ligent
+tablet: Tauleta
+auto: Automàtic
+recentNHours: Últimes {n} hores
+recentNDays: Últims {n} dies
+noEmailServerWarning: El servidor de correu electrònic no està configurat.
+check: Comprovar
+fast: Ràpida
+sensitiveMediaDetection: Detecció de mitjans NSFW
+remoteOnly: Només remotes
+failedToUpload: S'ha produït un error en la càrrega
+cannotUploadBecauseInappropriate: Aquest fitxer no s'ha pogut carregar perquè s'han
+  detectat parts d'aquest com a potencialment NSFW.
+cannotUploadBecauseNoFreeSpace: La pujada ha fallat a causa de la manca d'espai al
+  Disc.
+enableAutoSensitive: Marcatge automàtic NSFW
+moveTo: Mou el compte actual al compte nou
+customKaTeXMacro: Macros KaTeX personalitzats
+_aboutFirefish:
+  contributors: Col·laboradors principals
+  allContributors: Tots els col·laboradors
+  donate: Fes una donació a Firefish
+  source: Codi font
+  translation: Tradueix Firefish
+  about: Firefish és una bifurcació de Misskey feta per ThatOneCalculator, que està
+    en desenvolupament des del 2022.
+  morePatrons: També agraïm el suport de molts altres ajudants que no figuren aquí.
+    Gràcies! 🥰
+  patrons: Mecenes de Firefish
+  patronsList: Llistats cronològicament, no per la quantitat donada. Fes una donació
+    amb l'enllaç de dalt per veure el teu nom aquí!
+  donateTitle: T'agrada Firefish?
+  pleaseDonateToFirefish: Penseu en fer una donació a Firefish per donar suport al seu
+    desenvolupament.
+  pleaseDonateToHost: Penseu també en fer una donació a la vostre instància, {host},
+    per ajudar-lo a suportar els costos de funcionament.
+  donateHost: Fes una donació a {host}
+  sponsors: Patrocinadors de Calckey
+unknown: Desconegut
+pageLikesCount: Nombre de pàgines amb M'agrada
+youAreRunningUpToDateClient: Estás fent servir la versió del client més nova.
+unlikeConfirm: Vols treure el teu m'agrada?
+fullView: Vista complerta
+desktop: Escritori
+notesCount: Nombre de notes
+confirmToUnclipAlreadyClippedNote: Aquesta publicació ja és al clip "{name}". La vols
+  treure d'aquest clip?
+driveFilesCount: Nombre de fitxers al Disk
+silencedInstances: Servidors silenciats
+silenceThisInstance: Silencia el servidor
+silencedInstancesDescription: Llista amb els noms dels servidors que vols silenciar.
+  Els comptes als servidors silenciats seran tractades com "Silenciades", només poden
+  fer sol·licituds de seguiments, i no poden mencionar comptes locals si no les segueixen.
+  Això no afectarà els servidors bloquejats.
+objectStorageEndpointDesc: Deixa això buit si fas servir AWS, S3, d'una altre manera
+  específica un "endpoint" com a '<host>' o '<host>:<port>', depend del proveïdor
+  que facis servir.
+objectStorageRegionDesc: Especifica una regió com a 'xx-east-1'. Si el teu proveïdor
+  no distingeix entre regions, deixa això en buit o pots escriure 'us-east-1'.
+userPagePinTip: Pots mostrar publicacions aquí escollint "Fixar al perfil" dintre
+  del menú de cada publicació.
+userInfo: Informació d'usuari
+hideOnlineStatusDescription: Amagant el teu estat en línea redueix la comoditat d'ús
+  d'algunes característiques com ara la recerca.
+active: Actiu
+accounts: Comptes
+postToGallery: Crea una publicació nova a la galeria
+secureMode: Mode segur (Recuperació Autoritzada)
+customCssWarn: Aquesta configuració només s'ha d'utilitzar si sabeu què fa. La introducció
+  de valors indeguts pot provocar que el client deixi de funcionar amb normalitat.
+squareAvatars: Mostra avatars quadrats
+secureModeInfo: Quan es faci una solicitut d'altres servidors no contestar sense una
+  prova.
+privateModeInfo: Quan està activat, només els servidors a la llista blanca es poden
+  federar amb el vostre servidor. Totes les publicacions s'amagaran al públic.
+useBlurEffect: Utilitzeu efectes de desenfocament a la interfície d'usuari
+accountDeletionInProgress: La supressió del compte està en curs
+unmuteThread: Desfés el silenci al fil
+deleteAccountConfirm: Això suprimirà el vostre compte de manera irreversible. Procedir?
+requireAdminForView: Heu d'iniciar sessió amb un compte d'administrador per veure-ho.
+enableAutoSensitiveDescription: Permet la detecció i el marcatge automàtics dels mitjans
+  NSFW mitjançant Machine Learning sempre que sigui possible. Fins i tot si aquesta
+  opció està desactivada, és possible que estigui habilitada a tot el servidor.
+localOnly: Només local
+customKaTeXMacroDescription: "Configura macros per escriure expressions matemàtiques
+  fàcilment! La notació s'ajusta a les definicions de l'ordre LaTeX i s'escriu com
+  a \\newcommand{\\ name}{content} o \\newcommand{\\name}[nombre d'arguments]{content}.
+  Per exemple, \\newcommand{\\add}[2]{#1 + #2} ampliarà \\add{3}{foo} a 3 + foo. Els
+  claudàtors que envolten el nom de la macro es poden canviar per claudàtors rodons
+  o quadrats. Això afecta els claudàtors utilitzats per als arguments. Es pot definir
+  una (i només una) macro per línia, i no podeu trencar la línia al mig de la definició.
+  Les línies no vàlides simplement s'ignoren. Només s'admeten funcions de substitució
+  de cadenes senzilles; La sintaxi avançada, com ara la ramificació condicional, no
+  es pot utilitzar aquí."
+objectStorageRegion: Regió
+objectStoragePrefix: Prefix
+objectStoragePrefixDesc: Els fitxers es guardaran dins de carpetes amb aquest prefix.
+objectStorageEndpoint: Extrem
+newNoteRecived: Hi han notes noves
+sounds: Sons
+listen: Escoltar
+none: Res
+showInPage: Mostrar a la página
+popout: Apareixa
+volume: Volum
+objectStorageUseSSLDesc: Desactiva això si no fas servir HTTPS per les connexions
+  API
+objectStorageUseProxy: Connectar-se mitjançant un Proxy
+objectStorageUseProxyDesc: Desactiva això si no faràs servir un servidor Proxy per
+  conexions amb l'API
+objectStorageSetPublicRead: Fixar com a "public-read" al pujar
+serverLogs: Registres del servidor
+deleteAll: Esborrar tot
+showFixedPostForm: Mostrar el formulari de notes al principi de la línia de temps
+unableToProcess: Aquesta operació no es pot acabar
+recentUsed: Fet servir fa poc
+install: Instal·lar
+masterVolume: Volum principal
+uninstall: Desinstal·lar
+installedApps: Aplicacions autoritzades
+nothing: No hi a res per veure
+installedDate: Data d'autorització
+details: Detalls
+chooseEmoji: Selecciona un emoji
+removeAllFollowingDescription: Fent això deixes de seguir tots els comptes de {host}.
+  Si us plau fes servir això sí, per exemple, el servidor deixa d'existir.
+userSuspended: Aquest usuari ha sigut suspès.
+lastUsedDate: Data d'últim ús
+state: Estat
+sort: Ordenar
+ascendingOrder: Ascendent
+descendingOrder: Descendent
+scratchpad: Bloc de notes
+scratchpadDescription: El bloc de notes proporciona un entorn per experiments amb
+  AiScript. Pots escriure, executar i comprovar els resultats interactuant amb Firefish.
+output: Sortida
+script: Script
+disablePagesScript: Desactivar AiScript a les pàgines
+updateRemoteUser: Actualitzar la informació de l'usuari remot
+deleteAllFiles: Esborrar tots els fitxers
+deleteAllFilesConfirm: Segur que vols esborrar tots els fitxers?
+removeAllFollowing: Deixar de seguir a tots els usuaris que segueixes
+accentColor: Color principal
+textColor: Color del text
+value: Valor
+sendErrorReportsDescription: "Quan està activat, quan es produeixi un problema la
+  informació detallada d'errors es compartirà amb Firefish, ajudant a millorar la qualitat
+  de Firefish.\nAixò inclourà informació com la versió del vostre sistema operatiu,
+  quin navegador utilitzeu, la vostra activitat a Firefish, etc."
+myTheme: El meu tema
+backgroundColor: Color de fons
+saveAs: Desa com...
+advanced: Avançat
+invalidValue: Valor invàlid.
+createdAt: Data de creació
+updatedAt: Data d'actualització
+saveConfirm: Desa canvis?
+deleteConfirm: De veritat ho vols esborrar?
+receiveAnnouncementFromInstance: Rep notificacions d'aquest servidor
+emailNotification: Notificacions per correu electrònic
+publish: Publicar
+inChannelSearch: Buscar al canal
+useReactionPickerForContextMenu: Obrir el selector de reaccions al fer click esquerra
+typingUsers: L'{users} està escrivint
+oneDay: Un dia
+instanceDefaultLightTheme: Tema de llum predeterminat per a tot el servidor
+instanceDefaultDarkTheme: Tema fosc predeterminat per tot el servidor
+instanceDefaultThemeDescription: Introduïu el codi del tema en format d'objecte.
+mutePeriod: Durada del silenci
+indefinitely: Permanentment
+tenMinutes: 10 minuts
+oneHour: Una hora
+oneWeek: Una setmana
+reflectMayTakeTime: Pot trigar una mica a reflectir-se.
+thereIsUnresolvedAbuseReportWarning: Hi ha informes sense resoldre.
+driveCapOverrideLabel: Canvieu la capacitat del disc per a aquest usuari
+isSystemAccount: Aquest compte és creat i operat automàticament pel sistema. Si us
+  plau, no modereu, editeu, suprimiu o modifiqueu aquest compte de cap forma, o podria
+  trencar el vostre servidor.
+typeToConfirm: Introduïu {x} per confirmar
+deleteAccount: Suprimeix el compte
+document: Documentació
+sendPushNotificationReadMessage: Suprimeix les notificacions push un cop s'hagin llegit
+  les notificacions o missatges rellevants
+sendPushNotificationReadMessageCaption: Es mostrarà una notificació amb el text "{emptyPushNotificationMessage}"
+  durant un breu temps. Això pot augmentar l'ús de la bateria del vostre dispositiu,
+  si escau.
+showAds: Mostrar publicitat
+enterSendsMessage: Pren retorn al formulari del missatge per enviar (quant no s'activa
+  es Ctrl + Return)
+customMOTD: MOTD personalitzat (missatges de la pantalla de benvinguda)
+customMOTDDescription: Missatges personalitzats per al MOTD (pantalla de benvinguda)
+  separats per salts de línia, es mostraran aleatòriament cada vegada que un usuari
+  carrega/recarrega la pàgina.
+customSplashIcons: Icones personalitzades de la pantalla de benvinguda (urls)
+customSplashIconsDescription: Les URLS de les icones personalitzades a la pantalla
+  de benvinguda separades per salts de línia. Es mostraran aleatòriament cada vegada
+  que un usuari carrega/recarrega la pàgina. Si us plau, assegureu-vos que les imatges
+  estiguin en una URL estàtica, preferiblement amb imatges amb la de 192 x 192.
+moveFrom: Mou a aquest compte des d'un compte anterior
+moveFromLabel: 'Compte des del qual us moveu:'
+migrationConfirm: "Esteu absolutament segur que voleu migrar el vostre compte a {account}?
+  Un cop ho feu, no podreu revertir-ho i no podreu tornar a utilitzar el vostre compte
+  amb normalitat.\nA més, assegureu-vos d'haver configurat aquest compte actual com
+  el compte del qual us moveu."
+defaultReaction: Reacció d'emoji predeterminada per a notes sortints i entrants
+enableCustomKaTeXMacro: Activa les macros KaTeX personalitzades
+noteId: ID de la publicació
+_nsfw:
+  respect: Amaga els mitjans NSFW
+  ignore: No amagueu els mitjans NSFW
+  force: Amaga tots els mitjans
+inUse: Utilitzat
+ffVisibilityDescription: Et permet configurar qui pot veure a qui segueixes i qui
+  et segueix.
+continueThread: Continuar el fil
+reverse: Revés
+objectStorageBucket: Cubell
+objectStorageBucketDesc: Si us plau específica el nom del cubell que faràs servir
+  al teu proveïdor.
+clip: Retall
+createNew: Crear una nova
+optional: Opcional
+jumpToSpecifiedDate: Vés a una data concreta
+showingPastTimeline: Ara es mostra un línea de temps antiga
+clear: Netejar
+markAllAsRead: Marcar tot com a llegit
+recentPosts: Pàgines recents
+noMaintainerInformationWarning: La informació de l'administrador no està configurada.
+resolved: Resolt
+unresolved: Sense resoldre
+filter: Filtre
+slow: Lenta
+useDrawerReactionPickerForMobile: Mostra el selector de reaccions com a calaix al
+  mòbil
+welcomeBackWithName: Benvingut de nou, {name}
+showLocalPosts: 'Mostra les notes locals a:'
+homeTimeline: Línea de temps Inicial
+socialTimeline: Línea de temps Social
+themeColor: Color del Teletip del servidor
+size: Mida
+numberOfColumn: Nombre de columnes
+numberOfPageCache: Nombre de pàgines emmagatzemades a la memòria cau
+numberOfPageCacheDescription: L'augment d'aquest nombre millorarà la comoditat dels
+  usuaris, però provocarà més càrrega del servidor i utilitzarà més memòria.
+logoutConfirm: Vols tancar la sessió?
+lastActiveDate: Data d'últim ús
+statusbar: Barra d'estat
+pleaseSelect: Selecciona una opció
+colored: Color
+refreshInterval: "Interval d'actualització "
+speed: Velocitat
+cannotUploadBecauseExceedsFileSizeLimit: Aquest fitxer no s'ha pogut carregar perquè
+  supera la mida màxima permesa.
+activeEmailValidationDescription: Permet una validació més estricta de les adreces
+  de correu electrònic, que inclou la comprovació d'adreces d'un sol ús i si realment
+  es pot comunicar amb elles. Quan no està marcat, només es valida el format del correu
+  electrònic.
+shuffle: Barrejar
+account: Compte
+move: Moure
+pushNotification: Notificacions push
+subscribePushNotification: Activar les notificacions push
+unsubscribePushNotification: Desactivar les notificacions push
+pushNotificationAlreadySubscribed: Les notificacions push ja estan activades
+pushNotificationNotSupported: El vostre navegador o servidor no admet notificacions
+  push
+license: Llicència
+indexPosts: Índex de notes
+indexFrom: Índex a partir de l'ID de Publicacions
+indexFromDescription: Deixeu en blanc per indexar cada publicació
+indexNotice: Ara indexant. Això probablement trigarà una estona, si us plau, no reinicieu
+  el servidor durant almenys una hora.
+_instanceTicker:
+  none: No mostrar mai
+  remote: Mostra per a usuaris remots
+  always: Mostra sempre
+_serverDisconnectedBehavior:
+  nothing: No fer res
+  quiet: Mostra un avís discret
+  reload: Torna a carregar automàticament
+  dialog: Mostra el diàleg d'avís
+_channel:
+  create: Crea un canal
+  edit: Edita el canal
+  setBanner: Establir bàner
+  removeBanner: Suprimeix el bàner
+  featured: Tendència
+  owned: Propietari
+  usersCount: '{n} Participants'
+  following: Seguit per
+  notesCount: '{n} Notes'
+  nameAndDescription: Nom i descripció
+  nameOnly: Només nom
+_instanceMute:
+  instanceMuteDescription: Això silenciara les publicacions o els impulsos dels servidors
+    indicats, incloses les dels usuaris que responguin a un usuari des d'un servidor
+    silenciat.
+  title: Amaga les publicacions dels servidors a la llista.
+  instanceMuteDescription2: Separar amb noves línies
+  heading: Llista de servidors que cal silenciar
+_ago:
+  future: Futur
+  justNow: Ara mateix
+  minutesAgo: Fa {n}m
+  hoursAgo: Fa {n}h
+  daysAgo: Fa {n}d
+  secondsAgo: Fa {n}s
+  weeksAgo: Fa {n}set
+  monthsAgo: Fa {n}me
+  yearsAgo: Fa {n}a
+_time:
+  second: Segon(s)
+  minute: Minut(s)
+  hour: Hora(s)
+  day: Dia(s)
+_tutorial:
+  step5_4: La línea de temps Local {icon} és on pots veure les publicacions de tots
+    els altres usuaris d'aquest servidor.
+  step5_2: El teu servidor té activades {timelines} diferents.
+  step5_3: La línea de temps d'inici {icon} es on pots veure les publicacions dels
+    comptes que segueixes.
+  step5_6: La línia de temps de Recomanats {icon} és on pots veure les publicacions
+    dels servidors que recomanen els administradors.
+  step5_7: La línia de temps Global {icon} és on pots veure les publicacions de tots
+    els servidors connectats.
+  step6_1: Aleshores, què és aquest lloc?
+  step6_4: Ara ves, explora i diverteix-te!
+  step1_2: Anem a fer la configuració. Estaràs en funcionament en un tres i no res!
+  title: Com utilitzar Firefish
+  step1_1: Benvingut!
+  step2_1: En primer lloc, empleneu el vostre perfil.
+  step4_1: Anem a treure't allà fora.
+  step5_5: La línea de temps Social {icon} és una combinació de les línies de temps
+    d'Inici i Local.
+  step6_3: Cada servidor funciona de diferents maneres, i no tots els servidors executen
+    Firefish. Aquest sí que sí! És una mica complicat, però ho aconseguiràs en poc
+    temps.
+  step2_2: Proporcionar informació sobre qui sou facilitarà que altres puguin saber
+    si volen veure les vostres notes o seguir-vos.
+  step3_1: Ara toca seguir a algunes persones!
+  step3_2: "Les teves líneas de temps d'inici i social es basen en qui seguiu, així
+    que proveu de seguir un parell de comptes per començar.\nFeu clic al cercle més
+    situat a la part superior dreta d'un perfil per seguir-los."
+  step4_2: A algunes persones els agrada fer una publicació de {introduction} o un
+    senzill "Hola món!"
+  step5_1: Línies de temps, línies de temps a tot arreu!
+  step6_2: Bé, no només t'has unit a Firefish. T'has unit a un portal al Fediverse,
+    una xarxa interconnectada de milers de servidors.
+_permissions:
+  "read:account": Consulta la informació del teu compte
+  "read:blocks": Consulta la teva llista d'usuaris bloquejats
+  "write:account": Editar la informació del compte
+  "read:drive": Accedir als fitxers i carpetes del Disc
+  "read:messaging": Consulta els teus xats
+  "write:following": Segueix o deixa de seguir altres comptes
+  "write:mutes": Editar la teva llista d'usuaris silenciats
+  "read:notifications": Consulta les teves notificacions
+  "write:notifications": Gestiona les teves notificacions
+  "write:user-groups": Editar o suprimir grups d'usuaris
+  "write:blocks": Editar la llista d'usuaris bloquejats
+  "write:notes": Redactar o suprimir notes
+  "write:channels": Editar els teus canals
+  "read:gallery-likes": Consulta la llista de notes que t'agraden de la galeria
+  "write:drive": Editar o suprimir fitxers i carpetes del Disc
+  "read:favorites": Consulta la teva llista d'adreces d'interès
+  "write:favorites": Editeu la teva llista d'adreces d'interès
+  "write:messaging": Escriu o suprimeix missatges de xat
+  "read:mutes": Consulta la teva llista d'usuaris silenciats
+  "write:reactions": Edita les teves reaccions
+  "write:votes": Vota en una enquesta
+  "write:pages": Edita o suprimeix la teva pàgina
+  "write:page-likes": Editar les pàgines que t'agraden
+  "read:user-groups": Consulta els teus grups d'usuaris
+  "read:channels": Consulta els teus canals
+  "read:gallery": Consulta la teva galeria
+  "write:gallery": Edita la teva galeria
+  "write:gallery-likes": Edita la llista de notes que t'agraden de la galeria
+  "read:following": Consulta la informació sobre a qui segueixes
+  "read:reactions": Consulta les teves reaccions
+  "read:pages": Consulta la teva pàgina
+  "read:page-likes": Veure les pàgines que t'agraden
+_poll:
+  noOnlyOneChoice: Calen almenys dues opcions
+  canMultipleVote: Permet seleccionar diverses opcions
+  expiration: Finalitzar l'enquesta
+  after: Acaba després...
+  duration: Durada
+  votesCount: '{n} vots'
+  totalVotes: '{n} vots en total'
+  showResult: Veure resultats
+  choiceN: Opció {n}
+  noMore: No es poden afegir més opcions
+  infinite: Mai
+  at: Acaba el...
+  deadlineDate: Data de finalització
+  deadlineTime: Temps
+  remainingHours: Queden {h} hora(s) {m} minut(s)
+  remainingDays: Queden {d} dia(s) {h} hores
+  remainingMinutes: Queden {m} minut(s) {s} segons
+  voted: Votat
+  closed: S'ha acabat
+  remainingSeconds: Queden {s} segons
+  vote: Vota
+_postForm:
+  _placeholders:
+    d: Què vols dir?
+    e: Comença a escriure...
+    f: Esperant que escriguis...
+    b: Què passa al teu voltant?
+    c: En què penses?
+    a: Què et portes entre mans?
+  quotePlaceholder: Cita aquesta publicació...
+  replyPlaceholder: Respon a aquesta publicació...
+  channelPlaceholder: Publica en un canal...
+_charts:
+  federation: Federació
+  usersIncDec: Diferència en el nombre d'usuaris
+  apRequest: Sol·licituds
+  usersTotal: Nombre total d'usuaris
+  activeUsers: Usuaris actius
+  notesIncDec: Diferència en el nombre de notes
+  localNotesIncDec: Diferència en el nombre de notes locals
+  remoteNotesIncDec: Diferència en el nombre de notes remotes
+  notesTotal: Nombre total de notes
+  filesIncDec: Diferència en el nombre de fitxers
+  filesTotal: Nombre total de fitxers
+  storageUsageTotal: Ús total d'emmagatzematge
+  storageUsageIncDec: Diferència en l'ús d'emmagatzematge
+_instanceCharts:
+  requests: Sol·licituds
+  users: Diferència en el nombre d'usuaris
+  usersTotal: Nombre acumulat d'usuaris
+  notes: Diferència en el nombre de notes
+  ffTotal: Nombre acumulat d'usuaris que segueixes/et segueixen
+  cacheSize: Diferència en la mida de la memòria cau
+  cacheSizeTotal: Mida total acumulada de la memòria cau
+  files: Diferència en el nombre de fitxers
+  filesTotal: Nombre acumulat de fitxers
+  notesTotal: Nombre acumulat de notes
+  ff: "Diferència en el nombre d'usuaris que segueixes/que et segueixen "
+_timelines:
+  home: Inici
+  local: Local
+  recommended: Recomanat
+  social: Social
+  global: Global
+_menuDisplay:
+  hide: Amagar
+  top: Superior
+  sideFull: Costat
+  sideIcon: Costat (Icones)
+_wordMute:
+  muteWords: Paraules silenciades
+  muteWordsDescription: Separeu amb espais per a una condició AND o amb salts de línia
+    per a una condició OR.
+  soft: Suau
+  hard: Dur
+  muteWordsDescription2: Envolta les paraules clau amb barres inclinades per utilitzar
+    expressions regulars.
+  softDescription: Amaga les notes que compleixen les condicions establertes de la
+    línia de temps.
+  hardDescription: Evita que les notes que compleixin les condicions establertes s'afegeixin
+    a la línia de temps. A més, aquestes notes no s'afegiran a la línia de temps encara
+    que es modifiquin les condicions.
+  mutedNotes: Notes silenciades
+_auth:
+  shareAccessAsk: Estàs segur que vols autoritzar aquesta aplicació per accedir al
+    teu compte?
+  shareAccess: Vols autoritzar "{name}" per accedir a aquest compte?
+  permissionAsk: 'Aquesta aplicació sol·licita els següents permisos:'
+  callback: Tornant a l'aplicació
+  denied: Accés denegat
+  pleaseGoBack: Si us plau, torneu a l'aplicació
+  copyAsk: "Posa el següent codi d'autorització a l'aplicació:"
+  allPermissions: Accés complet al compte
+_weekday:
+  wednesday: Dimecres
+  saturday: Dissabte
+  monday: Dilluns
+  tuesday: Dimarts
+  friday: Divendres
+  sunday: Diumenge
+  thursday: Dijous
+_messaging:
+  groups: Grups
+  dms: Privat
+_antennaSources:
+  all: Totes les notes
+  homeTimeline: Publicacions dels usuaris que segueixes
+  users: Notes d'usuaris concrets
+  userGroup: Notes d'usuaris d'un grup determinat
+  userList: Notes d'una llista determinada d'usuaris
+  instances: Publicacions de tots els usuaris d'un servidor
+_relayStatus:
+  requesting: Pendent
+  accepted: Acceptat
+  rejected: Rebutjat
+deleted: Eliminat
+editNote: Edita la nota
+edited: 'Editat a {date} {time}'
+findOtherInstance: Cercar un altre servidor
+signupsDisabled: Actualment, les inscripcions en aquest servidor estan desactivades,
+  però sempre podeu registrar-vos en un altre servidor. Si teniu un codi d'invitació
+  per a aquest servidor, introduïu-lo a continuació.
+userSaysSomethingReasonQuote: '{name} ha citat una publicació que conté {reason}'
+userSaysSomethingReasonReply: '{name} ha respost a una publicació que conté {reason}'
+userSaysSomethingReasonRenote: '{name} ha impulsat una publicació que conté {reason}'
+highlightCw: Ressalta el contingut de les publicacions advertides
+apps: Aplicacions
+sendModMail: Envia avís de moderació
+preventAiLearning: Evita l'indexació dels bots
+preventAiLearningDescription: Sol·liciteu que els models de llenguatge d'IA de tercers
+  no estudiïn el contingut que pengeu, com ara publicacions i imatges.
+pwa: Instal·lar PWA
+_experiments:
+  alpha: Alfa
+  beta: Beta
+  release: Publicà
+  title: Experiments
+  enablePostImports: Activar l'importació de publicacions
+  postImportsCaption: Permet els usuaris importar publicacions desde comptes a Firefish,
+    Misskey, Mastodon, Akkoma i Pleroma. Pot fer que el servidor vagi més lent durant
+    la càrrega si tens un coll d'ampolla a la cua.
+noGraze: Si us plau, desactiva l'extensió del navegador "Graze for Mastodon", ja que
+  interfereix amb Firefish.
+accessibility: Accessibilitat
+jumpToReply: Vés a la resposta
+newer: Més nou
+older: Més antic
+silencedWarning: S'està mostrant aquesta pàgina per què aquest usuari és d'un servidor
+  que l'administrador a silenciat, així que pot ser spam.
+jumpToPrevious: Vés a l'anterior
+cw: Avís de contingut
+antennasDesc: "Les antenes mostren publicacions noves que coincideixen amb els criteris
+  establerts!\nS'hi pot accedir des de la pàgina de línies de temps."
+expandOnNoteClick: Obre la publicació amb un clic
+expandOnNoteClickDesc: Si està desactivat, encara pots obrir les publicacions al menú
+  del botó dret o fent clic a la marca de temps.
+channelFederationWarn: Els canals encara no es federen amb altres servidors
+searchPlaceholder: Cerca a Firefish
+listsDesc: Les llistes et permeten crear línies de temps amb usuaris específics. Es
+  pot accedir des de la pàgina de línies de temps.
+clipsDesc: Els clips són com marcadors categoritzats que es poden compartir. Podeu
+  crear clips des del menú de publicacions individuals.
+selectChannel: Selecciona un canal
+isLocked: Aquest compte té les següents aprovacions
+isPatron: Mecenes de Calkey
+isBot: Aquest compte és un bot
+isModerator: Moderador
+isAdmin: Administrador
+_filters:
+  fromDomain: Des del domini
+  notesBefore: Publicacions anteriors
+  notesAfter: Publicacions posteriors
+  followingOnly: Només seguint
+  followersOnly: Només seguidors
+  withFile: Amb arxiu
+  fromUser: De l'usuari
+image: Imatge
+video: Vídeo
+audio: Àudio
+_dialog:
+  charactersExceeded: "S'han superat el màxim de caràcters! Actual: {current}/Límit:
+    {max}"
+  charactersBelow: 'No hi ha caràcters suficients! Corrent: {current}/Limit: {min}'
+removeReaction: Elimina la teva reacció
+reactionPickerSkinTone: To de pell d'emoji preferit
+alt: ALT
+_skinTones:
+  light: Clar
+  mediumLight: Clar Mitx
+  medium: Mitx
+  mediumDark: Fosc Mitx
+  dark: Fosc
+  yellow: Groc
+swipeOnMobile: Permet lliscar entre pàgines
+enableIdenticonGeneration: Habilitar la generació d'Identicon
+enableServerMachineStats: Habilitar les estadístiques del maquinari del servidor
+showPopup: Notificar els usuaris amb una finestra emergent
+showWithSparkles: Mostra amb espurnes
+youHaveUnreadAnnouncements: Tens anuncis sense llegir
+xl: XL
+donationLink: Enllaç a la pàgina de donacions
+neverShow: No tornis a mostrar
+remindMeLater: Potser després
+removeMember: Elimina el membre
+removeQuote: Elimina la cita
+removeRecipient: Elimina el destinatari
+verifiedLink: Enllaç verificat
+_feeds:
+  rss: RSS
+  atom: Atom
+  jsonFeed: Feed JSON
+  copyFeed: Copiar feed

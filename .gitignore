@@ -1,0 +1,74 @@
+# Visual Studio Code
+/.vscode
+!/.vscode/extensions.json
+
+# Intelij-IDEA
+/.idea
+packages/backend/.idea/backend.iml
+packages/backend/.idea/modules.xml
+packages/backend/.idea/vcs.xml
+
+# Node.js
+node_modules
+report.*.json
+
+# Cypress
+cypress/screenshots
+cypress/videos
+
+# Coverage
+coverage
+
+# config
+/.config/*
+!/.config/example.yml
+!/.config/devenv.yml
+!/.config/docker_example.env
+!/.config/helm_values_example.yml
+!/.config/LICENSE
+
+# docker dev config
+/dev/docker-compose.yml
+
+# misskey
+built
+db
+elasticsearch
+redis
+npm-debug.log
+*.pem
+run.bat
+api-docs.json
+*.log
+*.code-workspace
+.DS_Store
+files
+ormconfig.json
+packages/backend/assets/instance.css
+packages/backend/assets/sounds/None.mp3
+packages/backend/assets/LICENSE
+
+!/packages/backend/queue/processors/db
+!packages/backend/src/db
+
+packages/megalodon/lib
+packages/megalodon/.idea
+
+# blender backups
+*.blend1
+*.blend2
+*.blend3
+*.blend4
+*.blend5
+
+# old yarn
+.yarn
+yarn*
+
+# Nix Development shell items
+.devenv
+.direnv
+
+# Cargo cache for Docker
+/.cargo-cache
+/.cargo-target

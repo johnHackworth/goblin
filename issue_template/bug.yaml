@@ -1,0 +1,136 @@
+name: 🐛 Bug Report
+about: File a bug report
+title: "[Bug]: "
+blank_issues_enabled: true
+contact_links:
+  - name: 💁 Support Matrix
+    url: https://matrix.to/#/%23firefish:matrix.fedibird.com
+    about: Having trouble with deployment? Ask the support chat.
+  - name: 🔒 Resposible Disclosure
+    url: https://git.joinfirefish.org/firefish/firefish/src/branch/develop/SECURITY.md
+    about: Found a security vulnerability? Please disclose it responsibly.
+body:
+  - type: markdown
+    attributes:
+      value: |
+                💖 Thanks for taking the time to fill out this bug report!
+                💁 Having trouble with deployment? [Ask the support chat.](https://matrix.to/#/%23firefish:matrix.fedibird.com)
+                🔒 Found a security vulnerability? [Please disclose it responsibly.](https://git.joinfirefish.org/firefish/firefish/src/branch/develop/SECURITY.md)
+                🤝 By submitting this issue, you agree to follow our [Contribution Guidelines.](https://git.joinfirefish.org/firefish/firefish/src/branch/develop/CONTRIBUTING.md)
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Please give us a brief description of what happened.
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+  - type: textarea
+    id: what-is-expected
+    attributes:
+      label: What did you expect to happen?
+      description: Please give us a brief description of what you expected to happen.
+      placeholder: Tell us what you wish happened!
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What version of firefish is your instance running? You can find this by clicking your instance's logo at the bottom left and then clicking instance information.
+      placeholder: v13.1.4.1
+    validations:
+      required: true
+  - type: input
+    id: instance
+    attributes:
+      label: Instance
+      description: What instance of firefish are you using?
+      placeholder: firefish.social
+    validations:
+      required: false
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: What type of issue is this?
+      description: If this happens on your device and has to do with the user interface, it's client-side. If this happens on either with the API or the backend, or you got a server-side error in the client, it's server-side.
+      multiple: false
+      options:
+        - Client-side
+        - Server-side
+        - Other (Please Specify)
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browser are you using? (Client-side issues only)
+      multiple: false
+      options:
+        - N/A
+        - Firefox
+        - Chrome
+        - Brave
+        - Librewolf
+        - Chromium
+        - Safari
+        - Microsoft Edge
+        - Other (Please Specify)
+  - type: dropdown
+    id: device
+    attributes:
+      label: What operating system are you using? (Client-side issues only)
+      multiple: false
+      options:
+        - N/A
+        - Windows
+        - MacOS
+        - Linux
+        - Android
+        - iOS
+        - Other (Please Specify)
+  - type: dropdown
+    id: deplotment-method
+    attributes:
+      label: How do you deploy Firefish on your server? (Server-side issues only)
+      multiple: false
+      options:
+        - N/A
+        - Manual
+        - Ubuntu Install Script
+        - Docker Compose
+        - Docker Prebuilt Image
+        - Helm Chart
+        - YunoHost
+        - AUR Package
+        - Other (Please Specify)
+  - type: dropdown
+    id: operating-system
+    attributes:
+      label: What operating system are you using? (Server-side issues only)
+      multiple: false
+      options:
+        - N/A
+        - Ubuntu >= 22.04
+        - Ubuntu < 22.04
+        - Debian
+        - Arch
+        - RHEL (CentOS/AlmaLinux/Rocky Linux)
+        - FreeBSD
+        - OpenBSD
+        - Android
+        - Other (Please Specify)
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. You can find your log by inspecting the page, and going to the "console" tab. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Contribution Guidelines
+      description: By submitting this issue, you agree to follow our [Contribution Guidelines](https://git.joinfirefish.org/firefish/firefish/src/branch/develop/CONTRIBUTING.md)
+      options:
+        - label: I agree to follow this project's Contribution Guidelines
+          required: true
+        - label: I have searched the issue tracker for similar issues, and this is not a duplicate.
+          required: true

@@ -1,0 +1,970 @@
+_lang_: "Suomi"
+username: Käyttäjänimi
+fetchingAsApObject: Hae Fedeversestä
+gotIt: Selvä!
+cancel: Peruuta
+enterUsername: Anna käyttäjänimi
+renotedBy: Buustannut {user}
+noNotes: Ei lähetyksiä
+noNotifications: Ei ilmoituksia
+instance: Instanssi
+settings: Asetukset
+basicSettings: Perusasetukset
+otherSettings: Muut asetukset
+openInWindow: Avaa ikkunaan
+profile: Profiili
+timeline: Aikajana
+noAccountDescription: Käyttäjä ei ole vielä kirjoittanut kuvaustaan vielä.
+login: Kirjaudu sisään
+loggingIn: Kirjautuu sisään
+logout: Kirjaudu ulos
+uploading: Tallentaa ylös...
+save: Tallenna
+favorites: Kirjanmerkit
+unfavorite: Poista kirjanmerkeistä
+favorited: Lisätty kirjanmerkkeihin.
+alreadyFavorited: Lisätty jo kirjanmerkkeihin.
+cantFavorite: Ei voitu lisätä kirjanmerkkeihin.
+pin: Kiinnitä profiiliin
+unpin: Irroita profiilista
+delete: Poista
+forgotPassword: Unohtunut salasana
+search: Etsi
+notifications: Ilmoitukset
+password: Salasana
+ok: OK
+noThankYou: Ei kiitos
+signup: Rekisteröidy
+users: Käyttäjät
+addUser: Lisää käyttäjä
+addInstance: Lisää instanssi
+favorite: Lisää kirjanmerkkeihin
+copyContent: Kopioi sisältö
+deleteAndEdit: Poista ja muokkaa
+copyLink: Kopioi linkki
+makeFollowManuallyApprove: Seuraajapyyntö vaatii hyväksymistä
+follow: Seuraa
+pinned: Kiinnitä profiiliin
+followRequestPending: Seuraajapyyntö odottaa
+you: Sinä
+unrenote: Peruuta buustaus
+reaction: Reaktiot
+reactionSettingDescription2: Vedä uudelleenjärjestelläksesi, napsauta poistaaksesi,
+  paina "+" lisätäksesi.
+attachCancel: Poista liite
+enterFileName: Anna tiedostonimi
+mute: Hiljennä
+unmute: Poista hiljennys
+headlineMisskey: Avoimen lähdekoodin, hajautettu sosiaalisen median alusta, joka on
+  ikuisesti ilmainen! 🚀
+monthAndDay: '{day}/{month}'
+deleteAndEditConfirm: Oletko varma, että haluat poistaa tämän lähetyksen ja muokata
+  sitä? Menetät kaikki reaktiot, buustaukset ja vastaukset lähetyksestäsi.
+addToList: Lisää listaan
+sendMessage: Lähetä viesti
+reply: Vastaa
+loadMore: Lataa enemmän
+showMore: Näytä enemmän
+receiveFollowRequest: Seuraajapyyntö vastaanotettu
+followRequestAccepted: Seuraajapyyntö hyväksytty
+mentions: Maininnat
+importAndExport: Tuo/Vie Tietosisältö
+import: Tuo
+export: Vie
+files: Tiedostot
+download: Lataa
+unfollowConfirm: Oletko varma, ettet halua seurata enää käyttäjää {name}?
+noLists: Sinulla ei ole listoja
+note: Viesti
+notes: Viestit
+following: Seuraa
+createList: Luo lista
+manageLists: Hallitse listoja
+error: Virhe
+somethingHappened: On tapahtunut virhe
+retry: Yritä uudelleen
+pageLoadError: Virhe ladattaessa sivua.
+serverIsDead: Tämä palvelin ei vastaa. Yritä hetken kuluttua uudelleen.
+youShouldUpgradeClient: Nähdäksesi tämän sivun, virkistä päivittääksesi asiakasohjelmasi.
+privacy: Tietosuoja
+defaultNoteVisibility: Oletusnäkyvyys
+followRequest: Seuraajapyyntö
+followRequests: Seuraajapyynnöt
+unfollow: Poista seuraaminen
+enterEmoji: Syötä emoji
+renote: Buustaa
+renoted: Buustattu.
+cantRenote: Tätä lähetystä ei voi buustata.
+cantReRenote: Buustausta ei voi buustata.
+quote: Lainaus
+pinnedNote: Lukittu lähetys
+clickToShow: Napsauta nähdäksesi
+sensitive: Herkkää sisältöä (NSFW)
+add: Lisää
+enableEmojiReactions: Ota käyttöön emoji-reaktiot
+showEmojisInReactionNotifications: Näytä emojit reaktioilmoituksissa
+reactionSetting: Reaktiot näytettäväksi reaktiovalitsimessa
+rememberNoteVisibility: Muista lähetyksen näkyvyysasetukset
+markAsSensitive: Merkitse herkäksi sisällöksi (NSFW)
+unmarkAsSensitive: Poista merkintä herkkää sisältöä (NSFW)
+renoteMute: Hiljennä buustit
+renoteUnmute: Poista buustien hiljennys
+block: Estä
+unblock: Poista esto
+unsuspend: Poista keskeytys
+suspend: Keskeytys
+blockConfirm: Oletko varma, että haluat estää tämän tilin?
+unblockConfirm: Oletko varma, että haluat poistaa tämän tilin eston?
+selectAntenna: Valitse antenni
+selectWidget: Valitse vimpain
+editWidgets: Muokkaa vimpaimia
+editWidgetsExit: Valmis
+emoji: Emoji
+emojis: Emojit
+emojiName: Emojin nimi
+emojiUrl: Emojin URL-linkki
+cacheRemoteFiles: Taltioi etätiedostot välimuistiin
+flagAsBot: Merkitse tili botiksi
+flagAsBotDescription: Ota tämä vaihtoehto käyttöön, jos tätä tiliä ohjaa ohjelma.
+  Jos se on käytössä, se toimii lippuna muille kehittäjille, jotta estetään loputtomat
+  vuorovaikutusketjut muiden bottien kanssa ja säädetään Firefishn sisäiset järjestelmät
+  käsittelemään tätä tiliä botina.
+flagAsCat: Oletko kissa? 🐱
+flagAsCatDescription: Saat kissan korvat ja puhut kuin kissa!
+flagSpeakAsCat: Puhu kuin kissa
+flagShowTimelineReplies: Näytä vastaukset aikajanalla
+addAccount: Lisää tili
+loginFailed: Kirjautuminen epäonnistui
+showOnRemote: Katsele etäinstanssilla
+general: Yleistä
+accountMoved: 'Käyttäjä on muuttanut uuteen tiliin:'
+wallpaper: Taustakuva
+setWallpaper: Aseta taustakuva
+searchWith: 'Etsi: {q}'
+youHaveNoLists: Sinulla ei ole listoja
+followConfirm: Oletko varma, että haluat seurata käyttäjää {name}?
+host: Isäntä
+selectUser: Valitse käyttäjä
+annotation: Kommentit
+registeredAt: Rekisteröity
+latestRequestReceivedAt: Viimeisin pyyntö vastaanotettu
+latestRequestSentAt: Viimeisin pyyntö lähetetty
+storageUsage: Tallennustilan käyttö
+charts: Kaaviot
+stopActivityDelivery: Lopeta toimintojen lähettäminen
+blockThisInstance: Estä tämä instanssi
+operations: Toiminnot
+metadata: Metatieto
+monitor: Seuranta
+jobQueue: Työjono
+cpuAndMemory: Prosessori ja muisti
+network: Verkko
+disk: Levy
+clearCachedFiles: Tyhjennä välimuisti
+clearCachedFilesConfirm: Oletko varma, että haluat tyhjentää kaikki välimuistiin tallennetut
+  etätiedostot?
+blockedInstances: Estetyt instanssit
+hiddenTags: Piilotetut asiatunnisteet
+mention: Maininta
+copyUsername: Kopioi käyttäjänimi
+searchUser: Etsi käyttäjää
+showLess: Sulje
+youGotNewFollower: seurasi sinua
+directNotes: Yksityisviestit
+driveFileDeleteConfirm: Oletko varma, että haluat poistaa tiedoston " {name}"? Se
+  poistetaan kaikista viesteistä, jotka sisältävät sen liitetiedostona.
+importRequested: Olet pyytänyt viemistä. Tämä voi viedä hetken.
+exportRequested: Olet pyytänyt tuomista. Tämä voi viedä hetken. Se lisätään asemaan
+  kun tuonti valmistuu.
+lists: Listat
+followers: Seuraajat
+followsYou: Seuraa sinua
+pageLoadErrorDescription: Tämä yleensä johtuu verkkovirheistä tai selaimen välimuistista.
+  Kokeile tyhjentämällä välimuisti ja yritä sitten hetken kuluttua uudelleen.
+enterListName: Anna listalle nimi
+instanceInfo: Instanssin tiedot
+clearQueue: Tyhjennä jono
+suspendConfirm: Oletko varma, että haluat keskeyttää tämän tilin?
+unsuspendConfirm: Oletko varma, että haluat poistaa tämän tilin keskeytyksen?
+selectList: Valitse lista
+customEmojis: Kustomoitu Emoji
+addEmoji: Lisää
+settingGuide: Suositellut asetukset
+cacheRemoteFilesDescription: Kun tämä asetus ei ole käytössä, etätiedostot on ladattu
+  suoraan etäinstanssilta. Asetuksen poistaminen käytöstä vähentää tallennustilan
+  käyttöä, mutta lisää verkkoliikennettä kun pienoiskuvat eivät muodostu.
+flagSpeakAsCatDescription: Lähetyksesi nyanifioidaan, kun olet kissatilassa
+flagShowTimelineRepliesDescription: Näyttää käyttäjien vastaukset muiden käyttäjien
+  lähetyksiin aikajanalla, jos se on päällä.
+autoAcceptFollowed: Automaattisesti hyväksy seuraamispyynnöt käyttäjiltä, joita seuraat
+perHour: Tunnissa
+removeWallpaper: Poista taustakuva
+recipient: Vastaanottaja(t)
+federation: Federaatio
+software: Ohjelmisto
+proxyAccount: Proxy-tili
+proxyAccountDescription: Välitystili (Proxy-tili) on tili, joka toimii käyttäjien
+  etäseuraajana tietyin edellytyksin. Kun käyttäjä esimerkiksi lisää etäkäyttäjän
+  luetteloon, etäkäyttäjän toimintaa ei toimiteta instanssiin, jos yksikään paikallinen
+  käyttäjä ei seuraa kyseistä käyttäjää, joten välitystili seuraa sen sijaan.
+latestStatus: Viimeisin tila
+selectInstance: Valitse instanssi
+instances: Instanssit
+perDay: Päivässä
+version: Versio
+statistics: Tilastot
+clearQueueConfirmTitle: Oletko varma, että haluat tyhjentää jonon?
+introMisskey: Tervetuloa! Firefish on avoimen lähdekoodin, hajautettu sosiaalisen median
+  alusta, joka on ikuisesti ilmainen! 🚀
+clearQueueConfirmText: Mitkään välittämättömät lähetykset, jotka ovat jonossa, eivät
+  federoidu. Yleensä tätä toimintoa ei tarvita.
+blockedInstancesDescription: Lista instanssien isäntänimistä, jotka haluat estää.
+  Listatut instanssit eivät kykene kommunikoimaan enää tämän instanssin kanssa.
+security: Turvallisuus
+retypedNotMatch: Syöte ei kelpaa.
+fromDrive: Asemasta
+keepOriginalUploading: Säilytä alkuperäinen kuva
+uploadFromUrlDescription: Tiedoston URL, jonka haluat ylösladata
+themeForLightMode: Teema vaaleassa tilassa
+theme: Teemat
+themeForDarkMode: Teema tummassa tilassa
+drive: Asema
+darkThemes: Tummat teemat
+copyUrl: Kopioi URL-linkki
+rename: Uudelleennimeä
+maintainerName: Ylläpitäjä
+maintainerEmail: Ylläpitäjän sähköposti
+tosUrl: Palvelun ehdot URL-linkki
+thisYear: Vuosi
+backgroundImageUrl: Taustakuvan URL-linkki
+basicInfo: Perustiedot
+pinnedPagesDescription: Kirjoita niiden sivujen polut, jotka haluat liittää tämän
+  instanssin yläsivulle rivinvaihdoin erotettuna.
+hcaptchaSiteKey: Sivuston avain
+hcaptchaSecretKey: Salausavain
+silencedInstances: Hiljennetyt instanssit
+muteAndBlock: Hiljennykset ja estetyt
+mutedUsers: Hiljennetyt käyttäjät
+blockedUsers: Estetyt käyttäjät
+noUsers: Ei yhtään käyttäjää
+noInstances: Ei yhtään instanssia
+editProfile: Muokkaa profiilia
+noteDeleteConfirm: Oletko varma, että haluat poistaa tämän viestin?
+pinLimitExceeded: Et voi kiinnittää enempää viestejä
+intro: Firefish -asennus valmis! Ole hyvä ja luo admin-käyttäjä.
+done: Valmis
+processing: Suorittaa
+preview: Esikatselu
+default: Oletus
+defaultValueIs: 'Oletus: {value}'
+noCustomEmojis: Ei emojia
+noJobs: Ei töitä
+federating: Federoi
+blocked: Estetty
+silenced: Hiljennetty
+suspended: Keskeytetty
+all: Kaikki
+publishing: Julkaisee
+subscribing: Tilaa
+notResponding: Ei vastaa
+instanceFollowing: Seuraa instanssia
+instanceFollowers: Instanssin seuraajat
+instanceUsers: Instanssin käyttäjät
+changePassword: Muuta salasana
+newPasswordRetype: Uudelleensyötä uusi salasana
+more: Lisää!
+featured: Esillä
+usernameOrUserId: Käyttäjänimi tai käyttäjä id
+noSuchUser: Käyttäjää ei löydy
+lookup: Hae
+announcements: Tiedoitteet
+imageUrl: Kuva URL-linkki
+removed: Onnistuneesti poistettu
+removeAreYouSure: Oletko varma, että haluat poistaa " {x}"?
+resetAreYouSure: Haluatko nollata?
+saved: Tallennettu
+messaging: Juttele
+upload: Lataa ylös
+fromUrl: URL:stä
+uploadFromUrl: Ylöslataa URL:stä
+uploadFromUrlRequested: Ylöslataus pyydetty
+uploadFromUrlMayTakeTime: Voi viedä hetki, kun ylöslataus on valmis.
+explore: Tutustu
+messageRead: Lue
+noMoreHistory: Ei lisää historiaa
+startMessaging: Aloita uusi juttelu
+manageGroups: Hallitse ryhmiä
+nUsersRead: lukenut {n}
+agreeTo: Hyväksyn {0}
+tos: Palvelun ehdot
+start: Aloita
+home: Koti
+remoteUserCaution: Etäkäyttäjän tiedot saattavat olla puutteellisia.
+light: Vaalea
+dark: Tumma
+lightThemes: Vaaleat teemat
+syncDeviceDarkMode: Synkronoi tumma tila laitteen asetuksen mukaan
+fileName: Tiedostonimi
+selectFile: Valitse tiedosto
+selectFiles: Valitse tiedostot
+selectFolder: Valitse kansio
+selectFolders: Valitse kansiot
+renameFile: Uudelleennimeä tiedosto
+folderName: Kansionimi
+createFolder: Luo kansio
+renameFolder: Uudelleennimeä kansio
+deleteFolder: Poista kansio
+addFile: Lisää tiedosto
+emptyDrive: Asemasi on tyhjä
+emptyFolder: Tämä kansio on tyhjä
+unableToDelete: Ei voitu poistaa
+inputNewFileName: Syötä uusi tiedostonimi
+inputNewDescription: Syötä uusi kuvateksti
+inputNewFolderName: Syötä uusi kansionimi
+hasChildFilesOrFolders: Koska kansio ei ole tyhjä, sitä ei voi poistaa.
+avatar: Kuvake
+banner: Banneri
+nsfw: Herkkää sisältöä (NSFW)
+whenServerDisconnected: Kun yhteys palvelimeen menetetään
+disconnectedFromServer: Yhteys palvelimeen katkennut
+reload: Päivitä
+doNothing: Hylkää
+reloadConfirm: Haluaisitko päivittää aikajanan?
+unwatch: Lopeta katselu
+watch: Katsele
+accept: Hyväksy
+reject: Hylkää
+normal: Normaali
+instanceName: Instanssin nimi
+thisMonth: Kuukausi
+today: Tänään
+monthX: '{month}'
+connectService: Yhdistä
+disconnectService: Katkaise yhteys
+enableLocalTimeline: Ota käyttöön paikallinen aikajana
+enableGlobalTimeline: Ota käyttöön globaali aikajana
+enableRecommendedTimeline: Ota käyttöön suositellut -aikajana
+registration: Rekisteröinti
+enableRegistration: Ota käyttöön uuden käyttäjän rekisteröinti
+driveCapacityPerLocalAccount: Aseman kapasiteetti paikallista käyttäjää kohti
+driveCapacityPerRemoteAccount: Aseman kapasiteetti etäkäyttäjää kohti
+inMb: megatavuissa
+bannerUrl: Bannerikuvan URL-linkki
+pinnedUsers: Kiinnitetyt käyttäjät
+pinnedPages: Kiinnitetyt sivut
+pinnedClipId: Kiinnitettävän leikkeen ID
+enableHcaptcha: Ota käyttöön hCaptcha-tunnistus
+recaptcha: CAPTCHA uudelleen
+enableRecaptcha: Ota käyttöön CAPTCHA uudelleen
+recaptchaSiteKey: Sivuston avain
+recaptchaSecretKey: Salausavain
+silenceThisInstance: Hiljennä tämä instanssi
+silencedInstancesDescription: Lista isäntänimistä, joka haluat hiljentää. Tilejä listassa
+  kohdellaan "hiljennettynä", ne voivat tehdä seuraajapyyntöjä ja eivät voi tehdä
+  mainintoja paikallistileistä jossei seurattu. Tämä ei vaikuta estettyihin instansseihin.
+hiddenTagsDescription: 'Listaa aihetunnisteet (ilman #-merkkiä) aihetunnisteet, jotka
+  haluat piilottaa trendaavista ja Tutustu-osiosta. Piilotetut aihetunnisteet ovat
+  kuitenkin löydettävissä muilla keinoilla. Estetyt instanssit eivät vaikuta, vaikka
+  listattu tähän.'
+currentPassword: Nykyinen salasana
+newPassword: Uusi salasana
+attachFile: Liitetyt tiedostot
+keepOriginalUploadingDescription: Tallentaa alkuperäisen kuvan sellaisenaan. Jos kytketty
+  päältä, webissä näytettävä versio luodaan ylöslatauksen yhteydessä.
+remove: Poista
+circularReferenceFolder: Kohdekansio on kansion alikansio, jonka haluat siirtää.
+deleteAreYouSure: Oletko varma, että haluat poistaa kokonaan" {x}"?
+yearsOld: '{age} vuotias'
+activity: Aktiivisuus
+images: Kuvat
+birthday: Syntymäpäivä
+registeredDate: Liittynyt
+location: Sijainti
+disablingTimelinesInfo: Järjestelmänvalvojilla ja moderaattoreilla on aina pääsy kaikille
+  aikajanoille, vaikka olisikin poistettu käytöstä.
+dayX: '{day}'
+yearX: '{year}'
+pages: Sivut
+integration: Integraatiot
+instanceDescription: Instanssin kuvaus
+invite: Kutsu
+iconUrl: Ikoni URL-linkki
+pinnedUsersDescription: Listaa käyttäjänimet eroteltuna rivivaihdoin kiinnittääksesi
+  ne "Tutustu" välilehteen.
+pinnedNotes: Kiinnitetyt viestit
+hcaptcha: hCaptcha-tunnistus
+antennaSource: Antennin lähde
+invitationCode: Kutsukoodi
+checking: Tarkistetaan...
+passwordNotMatched: Ei vastaa
+doing: Käsittelee...
+category: Kategoria
+tags: Tagit
+disableAnimatedMfm: Poista MFM -animaatiot käytöstä
+openImageInNewTab: Avaa kuvat uuteen välilehteen
+dashboard: Kojelauta
+local: Paikallinen
+remote: Etä
+total: Yhteensä
+weekOverWeekChanges: Muutokset viime viikkoon
+objectStorageRegion: Alue
+popout: Ulosvedettävä
+volume: Äänenvoimakkuus
+masterVolume: Master äänenvoimakkuus
+details: Yksityiskohdat
+chooseEmoji: Valitse emoji
+descendingOrder: Laskevasti
+scratchpad: Raaputusalusta
+output: Ulostulo
+invisibleNote: Näkymätön viesti
+enableInfiniteScroll: Lataa enemmän automaattisesti
+visibility: Näkyvyys
+useCw: Piilota sisältö
+poll: Kysely
+enablePlayer: Avaa videotoistimeen
+enterFileDescription: Syötä tiedostokuvaus
+author: Kirjoittaja
+manage: Hallinta
+description: Kuvaus
+describeFile: Lisää tiedostokuvaus
+height: Korkeus
+large: Suuri
+medium: Keskikokoinen
+small: Pieni
+other: Muu
+create: Luo
+regenerateLoginTokenDescription: Luo uudelleen kirjautumisen aikana sisäisesti käytettävän
+  tunnuksen. Normaalisti tämä toiminto ei ole tarpeen. Jos tunniste luodaan uudelleen,
+  kaikki laitteet kirjautuvat ulos.
+setMultipleBySeparatingWithSpace: Erottele useat merkinnät välilyönneillä.
+fileIdOrUrl: Tiedosto ID tai URL-linkki
+behavior: Käytös
+instanceTicker: Viestejä koskevat instanssitiedot
+waitingFor: Odottaa {x}
+random: Satunnainen
+system: Järjestelmä
+switchUi: Ulkoasu
+createNew: Luo uusi
+followersCount: Seuraajien määrä
+renotedCount: Saatujen buustausten määrä
+followingCount: Seurattujen tilien määrä
+notSet: Ei asetettu
+nUsers: '{n} Käyttäjää'
+nNotes: '{n} Viestiä'
+sendErrorReports: Lähetä virheraportteja
+backgroundColor: Taustaväri
+accentColor: Korostusväri
+textColor: Tekstin väri
+advanced: Edistynyt
+saveAs: Tallenna nimellä...
+invalidValue: Epäkelpo arvo.
+registry: Rekisteri
+closeAccount: Sulje tili
+currentVersion: Nykyinen versio
+capacity: Kapasiteetti
+clear: Palaa
+_theme:
+  explore: Tutustu teemoihin
+silenceConfirm: Oletko varma, että haluat hiljentää tämän käyttäjän?
+notesAndReplies: Viestit ja vastaukset
+withFiles: Tiedostot sisältyvät
+silence: Hiljennä
+popularTags: Suositut tagit
+userList: Listat
+about: Tietoja
+aboutFirefish: Tietoja Firefishstä
+exploreFediverse: Tutustu fediverseen
+recentlyUpdatedUsers: Vastikään lisätyt käyttäjät
+recentlyRegisteredUsers: Uudet liittyneet jäyttäjät
+recentlyDiscoveredUsers: Vastikään löydetyt käyttäjät
+exploreUsersCount: Täällä on {count} käyttäjää
+share: Jaa
+moderation: Sisällön valvonta
+nUsersMentioned: Mainittu {n} käyttäjältä
+securityKey: Turva-avain
+securityKeyName: Avainnimi
+registerSecurityKey: Rekisteröi turva-avain
+lastUsed: Viimeksi käytetty
+unregister: Poista rekisteröinti
+passwordLessLogin: Salasanaton sisäänkirjautuminen
+cacheClear: Tyhjennä välimuisti
+markAsReadAllNotifications: Merkitse kaikki ilmoitukset luetuksi
+markAsReadAllUnreadNotes: Merkitse kaikki viestit luetuiksi
+uploadFolder: Oletuskansio ylöslatauksille
+createGroup: Luo ryhmä
+group: Ryhmä
+groups: Ryhmät
+ownedGroups: Omistetut ryhmät
+help: Apua
+inputMessageHere: Syötä viesti tähän
+close: Sulje
+joinedGroups: Liittyneet ryhmät
+invites: Kutsut
+groupName: Ryhmänimi
+members: Jäsenet
+language: Kieli
+signinHistory: Kirjautumishistoria
+docSource: Tämän dokumentin lähde
+createAccount: Luo tili
+existingAccount: Olemassa oleva tili
+promotion: Edistetty
+promote: Edistää
+numberOfDays: Päivien määrä
+accountSettings: Tilin asetukset
+objectStorage: Objektitallennus
+useObjectStorage: Käytä objektitallennusta
+objectStorageBaseUrl: Perus URL-linkki
+objectStorageBaseUrlDesc: "Viitteenä käytetty URL-linkki. Määritä CDN:n tai välityspalvelimen\
+  \ URL-linkki, jos käytät kumpaakin.\nKäytä S3:lle 'https://<bucket>.s3.amazonaws.com'\
+  \ ja GCS:lle tai vastaaville palveluille 'https://storage.googleapis.com/<bucket>'\
+  \ jne."
+objectStorageBucket: Kauha
+newNoteRecived: Uusia viestejä
+smtpPort: Portti
+instanceMute: Instanssin mykistys
+repliesCount: Lähetettyjen vastausten määrä
+updatedAt: Päivitetty
+notFound: Ei löydy
+useOsNativeEmojis: Käytä käyttöjärjestelmän natiivi-Emojia
+joinOrCreateGroup: Tule kutsutuksi ryhmään tai luo oma ryhmä.
+text: Teksti
+usernameInvalidFormat: Käytä isoja ja pieniä kirjaimia, numeroita ja erikoismerkkejä.
+unsilenceConfirm: Oletko varma, että haluat poistaa käyttäjän hiljennyksen?
+popularUsers: Suositut käyttäjät
+moderator: Moderaattori
+twoStepAuthentication: Kaksivaiheinen tunnistus
+notFoundDescription: URL-linkkiin liittyvää sivua ei löytynyt.
+antennaKeywords: Kuunneltavat avainsanat
+antennaExcludeKeywords: Poislasketut avainsanat
+antennaKeywordsDescription: Erottele välilyönneillä AND-ehtoa varten tai rivinvaihdolla
+  OR-ehtoa varten.
+notifyAntenna: Ilmoita uusista viesteistä
+withFileAntenna: Vain viestit tiedoston kanssa
+enableServiceworker: Ota käyttöön Push-notifikaatiot selaimessasi
+antennaUsersDescription: Luettele yksi käyttäjänimi rivi kohti
+antennaInstancesDescription: Luettele yksi instanssi riviä kohti
+caseSensitive: Isot ja pienet kirjaimet
+withReplies: Sisällytä vastaukset
+connectedTo: Seuraavat tili(t) on yhdistetty
+unsilence: Poista hiljennys
+administrator: Järjestelmänvalvoja
+token: Merkki
+resetPassword: Resetoi salasana
+reduceUiAnimation: Vähennä käyttöliittymän animaatioita
+transfer: Siirrä
+messagingWithUser: Yksityisjuttelu
+title: Otsikko
+enable: Ota käyttöön
+next: Seuraava
+retype: Syötä uudelleen
+noteOf: Lähettänyt {user}
+inviteToGroup: Kutsu ryhmään
+quoteAttached: Lainaus
+quoteQuestion: Liitä lainauksena?
+noMessagesYet: Ei vielä viestejä
+newMessageExists: Uusia viestejä
+onlyOneFileCanBeAttached: Voit liittää vain yhden tiedoston viestiin
+signinRequired: Ole hyvä ja rekisteröidy tai kirjaudu sisään jatkaaksesi
+invitations: Kutsut
+available: Saatavilla
+unavailable: Ei saatavissa
+tooShort: Liian lyhyt
+tooLong: Liian pitkä
+weakPassword: Heikko salasana
+normalPassword: Kohtalainen salasana
+strongPassword: Vahva salasana
+passwordMatched: Vastaa
+signinWith: Kirjaudu sisään {x}
+signinFailed: Ei voitu kirjautua sisään. Annettu käyttäjänimi tai salasana virheellinen.
+tapSecurityKey: Napsauta turva-avaintasi
+or: Tai
+uiLanguage: Anna käyttöliittymän kieli
+groupInvited: Sinut on kutsuttu ryhmään
+aboutX: Tietoja {x}
+disableDrawer: Älä käytä laatikkotyyppisiä valikoita
+youHaveNoGroups: Sinulla ei ole ryhmiä
+noHistory: Ei historiaa saatavilla
+regenerate: Uudelleenluo
+fontSize: Kirjasinkoko
+dayOverDayChanges: Muutokset eiliseen
+clientSettings: Asiakkaan asetukset
+hideThisNote: Piilota tämä viesti
+showFeaturedNotesInTimeline: Näytä esillä olevat viestit aikajanalla
+objectStorageBucketDesc: Määritä palveluntarjoajasi käyttämä kauhan nimi.
+objectStoragePrefix: Etuliite
+objectStorageEndpoint: Päätepiste
+objectStorageRegionDesc: Määritä alue, kuten "xx-east-1". Jos palvelusi ei tee eroa
+  alueiden välillä, jätä tämä kohta tyhjäksi tai kirjoita "us-east-1".
+objectStorageUseSSL: Käytä SSL-salausta
+objectStorageUseSSLDesc: Poista tämä käytöstä, jos et aio käyttää HTTPS:ää API-yhteyksissä
+objectStorageUseProxy: Yhdistä välityspalvelimen kautta
+objectStorageUseProxyDesc: Poista tämä käytöstä, jos et aio käyttää välityspalvelinta
+  API-yhteyksiä varten
+objectStorageSetPublicRead: Aseta "public-read" ylöslataukseen
+serverLogs: Palvelimen lokit
+deleteAll: Poista kaikki
+showFixedPostForm: Näytä viesti-ikkuna aikajanan yläpuolella
+sounds: Äänet
+listen: Kuuntele
+none: Ei mitään
+showInPage: Näytä sivulla
+recentUsed: Vastikään käytetty
+install: Asenna
+uninstall: Poista asennus
+installedApps: Hyväksytyt sovellukset
+nothing: Ei nähtävää täällä
+state: Tila
+sort: Järjestä
+ascendingOrder: Nousevasti
+scratchpadDescription: Raaputusalusta tarjoaa ympäristön AiScript-kokeiluja varten.
+  Voit kirjoittaa, suorittaa ja tarkistaa sen tulokset vuorovaikutuksessa siinä olevan
+  Firefishn kanssa.
+script: Skripti
+disablePagesScript: Poista AiScript käytöstä sivuilla
+updateRemoteUser: Päivitä etäkäyttäjän tiedot
+deleteAllFiles: Poista kaikki tiedostot
+deleteAllFilesConfirm: Oletko varma, että haluat poistaa kaikki tiedostot?
+removeAllFollowing: Poista seuraaminen kaikista seuratuista käyttäjistä
+removeAllFollowingDescription: Tämän suorittaminen poistaa kaikki {host}:n tilit.
+  Suorita tämä, jos instanssia ei esimerkiksi enää ole olemassa.
+userSuspended: Tämä käyttäjä on hyllytetty.
+userSilenced: Tämä käyttäjä on hiljennetty.
+yourAccountSuspendedTitle: Tämä tili on hyllytetty
+yourAccountSuspendedDescription: Tämä tili on hyllytetty palvelimen palveluehtojen
+  tai vastaavien rikkomisen vuoksi. Ota yhteyttä ylläpitäjään, jos haluat tietää tarkemman
+  syyn. Älä luo uutta tiliä.
+menu: Valikko
+divider: Jakaja
+addItem: Lisää kohde
+relays: Releet
+addRelay: Lisää rele
+inboxUrl: Saavuneen postin URL
+addedRelays: Lisätyt releet
+serviceworkerInfo: Pitää ottaa käyttöön Push-notifikaatioissa.
+deletedNote: Poistetut viestit
+disablePlayer: Sulje videotoistin
+expandTweet: Laajenna twiittiä
+themeEditor: Teemaeditori
+leaveConfirm: Tallentamattomia muutoksia olemassa. Hylätäänkö ne?
+plugins: Liitännäiset
+preferencesBackups: Asetusten varmuuskopiot
+deck: Kansi
+undeck: Jätä kansi
+useBlurEffectForModal: Käytä blur-efektiä modaaleissa
+useFullReactionPicker: Käytä täysikokoista reaktiovalitsinta
+width: Leveys
+generateAccessToken: Luo käyttöoikeustunniste
+enableAll: Ota käyttöön kaikki
+disableAll: Poista käytöstä kaikki
+tokenRequested: Myönnä oikeus tiliin
+notificationType: Ilmoituksen tyyppi
+edit: Muokkaa
+emailServer: Sähköpostipalvelin
+enableEmail: Ota sähköpostin jakelu käyttöön
+emailConfigInfo: Käytetään vahvistamaan sähköpostiosoitteesi rekisteröitymisen yhteydessä
+  tai jos unohdat salasanasi
+email: Sähköposti
+smtpHost: Isäntä
+smtpUser: Käyttäjänimi
+smtpPass: Salasana
+emptyToDisableSmtpAuth: Jätä käyttäjänimi ja salasana tyhjäksi ohittaaksesi SMTP verifioinnin
+smtpSecureInfo: Kytke tämä päältä kun käytät STARTTLS
+testEmail: Kokeile email-lähetystä
+wordMute: Sanan hiljennys
+regexpError: Säännöllinen lausekevirhe
+userSaysSomething: '{name} sanoi jotakin'
+userSaysSomethingReason: '{name} sanoi {reason}'
+makeActive: Aktivoi
+display: Näyttö
+copy: Kopioi
+metrics: Mittarit
+overview: Yleiskatsaus
+logs: Lokit
+delayed: Viivästynyt
+database: Tietokanta
+channel: Kanavat
+notificationSetting: Ilmoitusasetukset
+notificationSettingDesc: Valitse näytettävät ilmoitustyypit.
+useGlobalSetting: Käytä globaaleja asetuksia
+regenerateLoginToken: Luo kirjautumistunniste uudelleen
+sample: Näyte
+abuseReports: Raportit
+reportAbuse: Raportti
+reportAbuseOf: Raportti {name}
+fillAbuseReportDescription: Täytä tätä raporttia koskevat tiedot. Jos se koskee tiettyä
+  viestiä, ilmoita sen URL-linkki.
+abuseReported: Raporttisi on lähetetty. Kiitoksia paljon.
+reporter: Raportoija
+reporteeOrigin: Ilmoittajan alkuperä
+reporterOrigin: Raportoijan alkuperä
+forwardReport: Välitä raportti etäinstanssille
+forwardReportIsAnonymous: Tilisi sijasta anonyymi järjestelmätili näytetään toimittajana
+  etäinstanssissa.
+send: Lähetä
+abuseMarkAsResolved: Merkitse raportti ratkaistuksi
+openInNewTab: Avaa uuteen välilehteen
+openInSideView: Avaa sivunäkymään
+defaultNavigationBehaviour: Navigoinnin oletuskäyttäytyminen
+editTheseSettingsMayBreakAccount: Näiden asetusten muuttaminen voi vahingoittaa tiliäsi.
+desktop: Työpöytä
+clip: Leike
+optional: Vaihtoehtoinen
+createNewClip: Luo uusi leike
+unclip: Poista leike
+confirmToUnclipAlreadyClippedNote: Tämä viesti on jo osa "{name}"-leikettä. Haluatko
+  sen sijaan poistaa sen tästä leikkeestä?
+manageAccessTokens: Hallitse käyttöoikeuskoodeja
+accountInfo: Tilin tiedot
+notesCount: Viestien määrä
+renotesCount: Lähetettyjen buustausten määrä
+repliedCount: Saatujen vastausten määrä
+sentReactionsCount: Lähetettyjen reaktioiden määrä
+receivedReactionsCount: Saatujen reaktioiden määrä
+pollVotesCount: Lähetettyjen kyselyäänien määrä
+pollVotedCount: Saatujen kyselyäänien määrä
+yes: Kyllä
+no: Ei
+driveFilesCount: Tiedostojen määrä asemalla
+driveUsage: Aseman tilankäyttö
+noCrawle: Hylkää hakukoneindeksointi
+noCrawleDescription: Pyydä hakukoneita olemaan indeksoimatta profiilisivuasi, viestejäsi,
+  sivujasi jne.
+alwaysMarkSensitive: Merkitse oletusarvoisesti herkäksi sisällöksi (NSFW)
+loadRawImages: Alkuperäisten kuvien lataaminen pikkukuvien näyttämisen sijaan
+disableShowingAnimatedImages: Älä näytä animoituja kuvia
+verificationEmailSent: Vahvistussähköposti on lähetetty. Seuraa mukana olevaa linkkiä
+  suorittaaksesi vahvistuksen loppuun.
+emailVerified: Sähköposti on vahvistettu
+noteFavoritesCount: Kirjanmerkittyjen viestien määrä
+pageLikedCount: Saatujen Sivu-tykkäysten määrä
+pageLikesCount: Sivut-tykkäysten määrä
+contact: Yhteystieto
+useSystemFont: Käytä järjestelmän oletuskirjasinta
+clips: Leikkeet
+experimentalFeatures: Kokeiluluontoiset ominaisuudet
+developer: Kehittäjä
+makeExplorable: Tee tili näkyväksi osiossa "Tutustu"
+makeExplorableDescription: Jos otat tämän pois käytöstä, tilisi ei näy "Tutustu"-osiossa.
+showGapBetweenNotesInTimeline: Näytä väli viestien välissä aikajanalla
+duplicate: Monista
+left: Vasen
+center: Keskellä
+wide: Leveä
+narrow: Kapea
+reloadToApplySetting: Asetus otetaan käyttöön vain uudelleenladattaessa. Ladataanko
+  uudelleen nyt?
+showTitlebar: Näytä otsikkorivi
+clearCache: Tyhjennä välimuisti
+onlineUsersCount: '{n} käyttäjää online-tilassa'
+myTheme: Minun teemani
+value: Arvo
+saveConfirm: Tallenna muutokset?
+deleteConfirm: Poistetaanko tosiaan?
+latestVersion: Uusin versio
+newVersionOfClientAvailable: Asiakasohjelmiston uudempi versio saatavilla.
+usageAmount: Käyttö
+inUse: Käytetty
+editCode: Muokkaa koodia
+apply: Käytä
+receiveAnnouncementFromInstance: Vastaanota ilmoituksia tästä instanssista
+emailNotification: Sähköposti-ilmoitukset
+publish: Julkaise
+inChannelSearch: Etsi kanavalta
+useReactionPickerForContextMenu: Avaa reaktiovalitsin napsauttamalla oikeaa
+typingUsers: '{users} kirjoittaa'
+jumpToSpecifiedDate: Hyppää tiettyyn päivään
+markAllAsRead: Merkitse kaikki luetuksi
+goBack: Takaisin
+unlikeConfirm: Poistatko todella tykkäyksesi?
+fullView: Täysi koko
+quitFullView: Poistu täydestä koosta
+addDescription: Lisää kuvaus
+markAsReadAllTalkMessages: Merkitse kaikki yksityisviestit luetuiksi
+appearance: Ulkonäkö
+messagingWithGroup: Ryhmäjuttelu
+newPasswordIs: Uusi salasana on "{password}"
+noFollowRequests: Sinulla ei ole odottavia seuraajapyyntöjä
+objectStoragePrefixDesc: Tiedostot tallennetaan hakemistoihin tällä etuliitteellä.
+objectStorageEndpointDesc: Jätä tämä tyhjäksi, jos käytät AWS S3:a. Muuten määritä
+  päätepisteeksi '<host>' tai '<host>:<port>' käyttämästäsi palvelusta riippuen.
+unableToProcess: Toimenpidettä ei voida suorittaa loppuun
+installedDate: Hyväksynyt
+lastUsedDate: Viimeksi käytetty
+pluginTokenRequestedDescription: Tämä litännäinen voi käyttää tässä asetettuja käyttöoikeuksia.
+permission: Oikeudet
+smtpConfig: Lähtevän sähköpostin palvelimen (SMTP) asetukset
+regexpErrorDescription: 'Säännöllisessä lausekkeessa tapahtui virhe rivillä {line}
+  sanan {tab} sanan mykistäminen rivillä {line}:'
+emailAddress: Sähköpostiosoite
+smtpSecure: Käytä implisiittistä SSL/TLS:ää SMTP-yhteyksissä
+useGlobalSettingDesc: Jos se on päällä, käytetään tilisi ilmoitusasetuksia. Jos se
+  on pois päältä, voit tehdä yksilöllisiä asetuksia.
+public: Julkinen
+i18nInfo: Vapaaehtoiset kääntävät Firefishta eri kielille. Voit auttaa osoitteessa
+  {link}.
+lockedAccountInfo: Ellet aseta postauksen näkyvyydeksi "Vain seuraajille", postauksesi
+  näkyvät kaikille, vaikka vaatisitkin seuraajilta manuaalista hyväksyntää.
+sendErrorReportsDescription: "Kun tämä on päällä, yksityiskohtaiset virhetiedot jaetaan\
+  \ Firefishn kanssa ongelman ilmetessä, mikä auttaa parantamaan Firefishn laatua.\n\
+  Näihin tietoihin sisältyy esimerkiksi käyttöjärjestelmäversio, käyttämäsi selain,\
+  \ toimintasi Firefishssä jne."
+createdAt: Luotu
+youAreRunningUpToDateClient: Käytössäsi on asiakasohjelman uusin versio.
+needReloadToApply: Uudelleenlataus vaaditaan, jotta tämä näkyy.
+showingPastTimeline: Näytetään parhaillaan vanhaa aikajanaa
+userPagePinTip: Voit näyttää viestit täällä valitsemalla yksittäisten viestien valikosta
+  "Kiinnitä profiiliin".
+notSpecifiedMentionWarning: Tämä viesti sisältää mainintoja käyttäjistä, joita ei
+  ole mainittu vastaanottajina
+name: Nimi
+allowedInstances: Sallitut (whitelisted) instanssit
+hashtags: Aihetunnisteet
+troubleshooting: Vianetsintä
+received: Vastaanotettu
+searchResult: Hakutulokset
+filter: Suodatin
+antennas: Antennit
+noMaintainerInformationWarning: Ylläpitäjän tietoja ei ole konfiguroitu.
+controlPanel: Hallintapaneeli
+manageAccounts: Hallitse tilejä
+makeReactionsPublic: Aseta reaktiohistoria julkiseksi
+unread: Lukematon
+deleted: Poistettu
+editNote: Muokkaa viestiä
+edited: 'Muokattu klo {date} {time}'
+avoidMultiCaptchaConfirm: Useiden Captcha-järjestelmien käyttö voi aiheuttaa häiriöitä
+  niiden välillä. Haluatko poistaa käytöstä muut tällä hetkellä käytössä olevat Captcha-järjestelmät?
+  Jos haluat, että ne pysyvät käytössä, paina peruutusnäppäintä.
+manageAntennas: Hallitse antenneja
+info: Tietoja
+userInfo: Käyttäjätiedot
+unknown: Tuntematon
+onlineStatus: Online-tila
+hideOnlineStatus: Piilota Online-tila
+hideOnlineStatusDescription: Online-tilasi piilottaminen vähentää joidenkin toimintojen,
+  kuten haun, käyttömukavuutta.
+online: Online
+active: Aktiivinen
+offline: Offline
+botProtection: Botti-suojaus
+instanceBlocking: Federaatio Esto/Hiljennys
+enabled: Otettu käyttöön
+quickAction: Pikatoiminnot
+user: Käyttäjä
+accounts: Tilit
+switch: Vaihda
+noBotProtectionWarning: Botti-suojausta ei ole konfiguroitu.
+configure: Konfiguroi
+postToGallery: Luo uusi galleriaviesti
+gallery: Galleria
+recentPosts: Viimeaikaiset sivut
+popularPosts: Suositut sivut
+ads: Mainokset
+expiration: Aikaraja
+memo: Muistio
+priority: Prioriteetti
+high: Korkea
+middle: Keskitaso
+low: Alhainen
+emailNotConfiguredWarning: Sähköpostiosoitetta ei ole asetettu.
+ratio: Suhde
+secureMode: Suojattu moodi (Valtuutettu nouto)
+instanceSecurity: Instanssiturvallisuus
+allowedInstancesDescription: Federaatiota varten sallitulle listalle (whitelisted)
+  otettavien instanssien isännät, kukin erotettuna uudella rivillä (sovelletaan vain
+  yksityisessä tilassa).
+previewNoteText: Näytä esikatselu
+customCss: Kustomoitu CSS
+customCssWarn: Tätä asetusta tulisi käyttää vain, jos tiedät, mitä se tekee. Vääränlaisten
+  arvojen syöttäminen voi aiheuttaa sen, että asiakasohjelma lakkaa toimimasta normaalisti.
+recommended: Suositeltu
+squareAvatars: Näytä neliön malliset kuvakkeet
+seperateRenoteQuote: Erilliset buustaa ja lainaa -napit
+sent: Lähetetty
+useBlurEffect: Käytä blur-efektejä käyttöliittymässä
+misskeyUpdated: Firefish on päivitetty!
+whatIsNew: Näytä muutokset
+translate: Käännä
+translatedFrom: Käännetty kielestä {x}
+accountDeletionInProgress: Tilin poistaminen on parhaillaan menossa
+usernameInfo: Nimi, joka erottaa tilisi muista tällä palvelimella olevista tileistä.  Voit
+  käyttää aakkosia (a~z, A~Z), numeroita (0~9) tai alaviivoja (_). Käyttäjätunnuksia
+  ei voi muuttaa myöhemmin.
+aiChanMode: Ai-chan klassisessa käyttöliittymässä
+keepCw: Pidä sisältövaroitukset
+pubSub: Pub/Sub tilit
+lastCommunication: Viimeisin kommunikaatio
+unresolved: Ratkaisematon
+breakFollow: Poista seuraaja
+breakFollowConfirm: Oletko varma, että haluat poistaa seuraajan?
+itsOn: Otettu käyttöön
+itsOff: Poistettu käytöstä
+emailRequiredForSignup: Vaadi sähköpostiosoitetta sisäänkirjautumiseen
+makeReactionsPublicDescription: Tämä laittaa viimeisimmät reaktiosi julkisesti näkyväksi.
+classic: Klassinen
+muteThread: Mykistä lanka
+unmuteThread: Poista langan mykistys
+ffVisibility: Seurataan/Seurattavien näkyvyys
+notRecommended: Ei suositeltu
+disabled: Poistettu käytöstä
+selectAccount: Valitse tili
+switchAccount: Vaihda tili
+administration: Hallinta
+shareWithNote: Jaa viestin kanssa
+secureModeInfo: Kun pyydät muista instansseista, älä lähetä takaisin ilman todisteita.
+privateMode: Yksityinen moodi
+privateModeInfo: Kun tämä on käytössä, vain sallittujen (whitelisted) luetteloon merkityt
+  instanssit voivat liittyä instansseihisi. Kaikki viestit piilotetaan yleisöltä.
+global: Globaali
+resolved: Ratkaistu
+learnMore: Opi lisää
+continueThread: Jatka lankaa
+file: Tiedosto
+cropImageAsk: Haluatko rajata tätä kuvaa?
+recentNHours: Viimeiset {n} tuntia
+rateLimitExceeded: Nopeusraja ylittynyt
+cropImage: Rajaa kuvaa
+socialTimeline: Sosiaalinen aikajana
+themeColor: Instanssi Ticker Väri
+check: Tarkista
+ffVisibilityDescription: Antaa sinun konfiguroida, kuka voi nähdä ketä seuraat ja
+  kuka seuraa sinua.
+homeTimeline: Koti aikajana
+size: Koko
+showLocalPosts: 'Näytä paikalliset viestit:'
+oneDay: Päivä
+instanceDefaultDarkTheme: Instanssikattava tumma oletusteema
+recentNDays: Viimeiset {n} päivää
+reflectMayTakeTime: Voi kestää jonkin aikaa, ennen kuin tämä näkyy.
+failedToFetchAccountInformation: Ei voitu hakea tietoja
+requireAdminForView: Sinun tulee kirjautua järjestelmänvalvojana nähdäksesi tämän.
+driveCapOverrideCaption: Resetoi oletusarvoon syöttämällä arvo 0 tai alempi.
+isSystemAccount: Järjestelmän luoma ja automaattisesti käyttämä tili.
+userSaysSomethingReasonReply: '{name} vastasi viestiin sisältäen {reason}'
+userSaysSomethingReasonRenote: '{name} buustasi viestiin sisältäen {reason}'
+voteConfirm: Vahvista äänesi vaihtoehdolle "{choice}"?
+hide: Piilota
+leaveGroup: Poistu ryhmästä
+leaveGroupConfirm: Oletko varma, että haluat poistua ryhmästä "{name}"?
+welcomeBackWithName: Tervetuloa takaisin, {name}
+clickToFinishEmailVerification: Klikkaa [{ok}] viimeistelläksesi sähköpostivahvistuksen.
+overridedDeviceKind: Laitetyyppi
+tablet: Tabletti
+numberOfColumn: Sarakkeiden määrä
+searchByGoogle: Etsi
+mutePeriod: Vaiennuksen kesto
+indefinitely: Pysyvästi
+tenMinutes: 10 minuuttia
+oneHour: Tunti
+thereIsUnresolvedAbuseReportWarning: On ratkaisemattomia raportteja.
+driveCapOverrideLabel: Muuta aseman kapasiteetti tälle käyttäjälle
+userSaysSomethingReasonQuote: '{name} lainasi viestiä sisältäen {reason}'
+deleteAccountConfirm: Tämä peruuttamattomasti poistaa tilisi. Jatketaanko?
+incorrectPassword: Väärä salasana.
+useDrawerReactionPickerForMobile: Näytä reaktiovalitsin mobiilissa laatikkomallisena
+smartphone: Älypuhelin
+auto: Automaattinen
+oneWeek: Viikko
+instanceDefaultLightTheme: Instanssin kattava vaalea oletusteema
+instanceDefaultThemeDescription: Anna teemakoodi objektiformaatille.
+noEmailServerWarning: Sähköpostipalvelinta ei konfiguroituna.

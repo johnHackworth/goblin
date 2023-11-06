@@ -1,0 +1,11 @@
+pipeline:
+  docker-build:
+    image: plugins/kaniko
+    settings:
+      repo: thatonecalculator/firefish
+      tags: test
+      dockerfile: Dockerfile
+      no_push: true
+
+branches:
+  include: [ main, develop, beta ]

@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1792 1792">
+
+  <style>
+    /* Eyes */
+    @keyframes firefish-logo-blink {
+      95% {
+        transform: scaleY(1);
+      }
+
+      97.5% {
+        transform: scaleY(0);
+      }
+
+      100% {
+        transform: scaleY(1);
+      }
+    }
+
+    #firefish-logo-eye-l,
+    #firefish-logo-eye-r {
+      transform-origin: center;
+      transform-box: fill-box;
+      animation-name: firefish-logo-blink;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+
+    /* Bubbles */
+    @keyframes firefish-logo-bloop {
+      0% {
+        transform: translateY(400px);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 0;
+      }
+
+      30% {
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(-400px);
+      }
+    }
+
+    .firefish-logo-bubble {
+      animation-name: firefish-logo-bloop;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-duration: 2s;
+      animation-timing-function: ease-out;
+      fill: #31748f;
+      opacity: 0;
+    }
+
+    #firefish-logo-bubble-1 {
+      animation-delay: 0s;
+    }
+
+    #firefish-logo-bubble-2 {
+      animation-delay: .2s;
+    }
+
+    #firefish-logo-bubble-3 {
+      animation-delay: .6s;
+    }
+
+    #firefish-logo-bubble-4 {
+      animation-delay: .8s;
+    }
+
+    #firefish-logo-bubble-5 {
+      animation-delay: 1s;
+    }
+  </style>
+
+  <defs>
+    <linearGradient id="firefish-logo-linear-gradient" x1="26.41" y1="1765.71" x2="1492.49" y2="299.62"
+      gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ec476d" />
+      <stop offset="1" stop-color="#f6ae4a" />
+    </linearGradient>
+    <linearGradient id="firefish-logo-linear-gradient-purple" x1="512" y1="1788" x2="512" y2="1398.68"
+      gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#db44db" stop-opacity=".3" />
+      <stop offset=".11" stop-color="#db44db" stop-opacity=".21" />
+      <stop offset=".27" stop-color="#db44db" stop-opacity=".12" />
+      <stop offset=".44" stop-color="#db44db" stop-opacity=".05" />
+      <stop offset=".65" stop-color="#db44db" stop-opacity=".01" />
+      <stop offset="1" stop-color="#db44db" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="firefish-logo-linear-gradient-3" x1="-351.25" y1="1382.82" x2="1150.74" y2="-119.17"
+      xlink:href="#firefish-logo-linear-gradient" />
+    <linearGradient id="firefish-logo-linear-gradient-4" x1="412.3" y1="2147.8" x2="1915.31" y2="644.8"
+      xlink:href="#firefish-logo-linear-gradient" />
+    <linearGradient id="firefish-logo-linear-gradient-5" x1="28.25" y1="1763.75" x2="1531.25" y2="260.75"
+      xlink:href="#firefish-logo-linear-gradient" />
+  </defs>
+
+  <!-- Bubbles -->
+  <circle id="firefish-logo-bubble-1" class="firefish-logo-bubble" cx="205" cy="500" r="40" />
+  <circle id="firefish-logo-bubble-2" class="firefish-logo-bubble" cx="140" cy="500" r="80" />
+  <circle id="firefish-logo-bubble-3" class="firefish-logo-bubble" cx="95" cy="500" r="70" />
+  <circle id="firefish-logo-bubble-4" class="firefish-logo-bubble" cx="200" cy="500" r="40" />
+  <circle id="firefish-logo-bubble-5" class="firefish-logo-bubble" cx="95" cy="500" r="20" />
+
+  <g id="firefish-logo-firefish">
+    <g id="firefish-logo-fish">
+      <g id="firefish-logo-body">
+        <path
+          d="m928,768.11H96c-53.02,0-96,42.98-96,96v832c0,53.02,42.98,96,96,96h832c53.02,0,96-42.98,96-96v-832c0-53.02-42.98-96-96-96Z"
+          fill="url(#firefish-logo-linear-gradient)" />
+      </g>
+      <g id="firefish-logo-body-purple-grad">
+        <path
+          d="m928,768.11H96C42.98,768.11,0,811.09,0,864.11v832c0,53.02,42.98,96,96,96h832c53.02,0,96-42.98,96-96v-832c0-53.02-42.98-96-96-96Z"
+          fill="url(#firefish-logo-linear-gradient-purple)" />
+      </g>
+      <g id="firefish-logo-fin-l">
+        <path
+          d="m927.66,639.79h-439.94c-52.98,0-95.94-42.95-95.94-95.94V103.91c0-85.47,103.34-128.27,163.77-67.84l439.94,439.94c60.44,60.44,17.63,163.77-67.84,163.77Z"
+          fill="url(#firefish-logo-linear-gradient-3)" />
+      </g>
+      <g id="firefish-logo-fin-b">
+        <path
+          d="m1694.66,1408.11h-445.51c-53.65,0-97.15-43.5-97.15-97.15v-445.51c0-86.55,104.64-129.9,165.84-68.7l445.51,445.51c61.2,61.2,17.86,165.84-68.7,165.84Z"
+          fill="url(#firefish-logo-linear-gradient-4)" />
+      </g>
+      <g id="firefish-logo-fin-r">
+        <path
+          d="m1694.66,640h-445.51c-53.65,0-97.15-43.5-97.15-97.15V97.34c0-86.55,104.64-129.9,165.84-68.7l445.51,445.51c61.2,61.2,17.86,165.84-68.7,165.84Z"
+          fill="url(#firefish-logo-linear-gradient-5)" />
+      </g>
+      <g id="firefish-logo-eye-l">
+        <circle cx="256" cy="1408.11" r="128" fill="#fff" />
+      </g>
+      <g id="firefish-logo-eye-r">
+        <circle cx="576" cy="1408.11" r="128" fill="#fff" />
+      </g>
+    </g>
+  </g>
+</svg>

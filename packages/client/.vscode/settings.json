@@ -1,0 +1,15 @@
+{
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"path-intellisense.mappings": {
+		"@": "${workspaceRoot}/packages/client/src/"
+	},
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		"**/_client_dist_": true
+	}
+}

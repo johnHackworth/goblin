@@ -1,0 +1,166 @@
+# All the changes to Firefish from stock Misskey
+
+> **Warning**
+> This list is incomplete. Please check the [Releases](https://git.joinfirefish.org/firefish/firefish/releases) and [Changelog](https://git.joinfirefish.org/firefish/firefish/src/branch/develop/CHANGELOG.md) for a more complete list of changes. There have been [>4000 commits (laggy link)](https://git.joinfirefish.org/firefish/firefish/compare/700a7110f7e34f314b070987aa761c451ec34efc...develop) since we forked Misskey!
+
+## Planned
+
+- Stucture
+  - Rewrite backend in Rust and [Rocket](https://rocket.rs/)
+- Function
+  - User "choices" (recommended users) and featured hashtags like Mastodon and Soapbox
+  - Join Reason system like Mastodon/Pleroma
+  - Option to publicize server blocks
+  - More antenna options
+  - Groups
+
+## Work in progress
+
+- Better Messaging UI
+- Better API Documentation
+- Remote follow button
+- Improve accesibility
+- Timeline filters
+- Events
+- Fully revamp non-logged-in screen
+- Optionally use [ScyllaDB](https://www.scylladb.com/open-source-nosql-database/) for storing notes
+
+## Implemented
+
+- A lot of general bugfixes
+- pnpm instead of yarn
+  - Fix Dockerfile @hanna
+  - Upgrade packages with security vunrabilities
+- Saner defaults
+- Fediverse account migration
+- Recommended servers timeline
+- OCR image captioning
+- Improve mobile UX
+  - Swipe through pages on mobile
+  - Redesigned mobile bottom nav bar
+  - Post button on TL
+- Star as default reaction
+- Like/star button
+- Rosé Pine by default (+ non-themable elements made Rosé Pine)
+- Better sidebar/navbar
+- Better intro tutorial/onboarding
+- Add back groups
+  - Integrate groups UI into chats UI
+- MOTD (customizable by admins!)
+- Custom randomized splash icons
+- Self hosted, newly designed error images
+  - Illustrated by [Henki](https://www.youtube.com/c/Henkiwashere)!
+  - Licensed under the CC-BY-SA 4.0.
+- Better timeline top bar
+- Improved note style
+  - Make more of the post clickable like every other SNS
+  - No more details tag for reply attachments
+  - Better CW button
+- Mark as read from notifications widget
+- Less cluttered notification summary
+- Better welcome screen (not logged in)
+- vue-plyr as video/audio player
+- Ability to turn off "Connection lost" message
+- Raw server info only for moderators
+- New spinner animation
+- Spinner instead of "Loading..."
+- Always signToActivityPubGet
+- Spacing on group items
+- Quotes have solid border
+- Reply limit bug fixed
+- Make showing the update popup optional
+- Improve PWA manifest
+- Fix incoming chat scrolling globally
+- Update notifier
+- Allow admins to set logo URL via admin settings
+- Allow importing follows from Pixelfed
+- Phosphor icons instead of FontAwesome
+- Fully deprecate MkEmojiPickerWindow in favor of MkEmojiPickerDialog
+- Link hover effect
+- Replace all `$ts` with i18n
+- AVIF support
+- Page drafts
+- Patron list
+- Animations respect reduced motion
+- Undo renote button inside original note
+- Custom locales
+- Obliteration of Ai-chan
+- Switch to [Firefish.js](https://git.joinfirefish.org/firefish/firefish.js)
+- Woozy mode 🥴
+- Improve blocking servers
+- Release notes
+- New post style
+- Admins set default reaction emoji
+  - Allows custom emoji
+- Fix lint errors
+- Use Rome instead of ESLint
+- Mastodon API support
+- More antenna options
+- New dashboard
+- Backfill follower counts
+- Compile time compression
+- Sonic search
+- Popular color schemes, including Nord, Gruvbox, and Catppuccin
+- Non-nyaify cat mode
+- Post imports from other Firefish/Misskey/Mastodon/Pleroma/Akkoma servers
+- Improve Classic mode
+- Proper Helm/Kubernetes config
+- Multiple boost visibilities
+- Improve system emails
+- Mod mail
+- Focus trapping and button labels
+- Meilisearch with filters
+- Post editing
+- Display remaining time on rate-limits
+- Proper 2FA input dialog
+- Let moderators see moderation nodes
+- Non-mangled unicode emojis
+  - Skin tone selection support
+- [DragonflyDB](https://dragonflydb.io/) support as a Redis alternative
+- Link verification
+- Importing posts from other Firefish/Misskey/Mastodon/Akkoma/Pleroma instances
+
+## Implemented (remote)
+
+- MissV: [fix Misskey Forkbomb](https://code.vtopia.live/Vtopia/MissV/commit/40b23c070bd4adbb3188c73546c6c625138fb3c1)
+- [Make showing ads optional](https://github.com/misskey-dev/misskey/pull/8996)
+- [Tapping avatar in mobile opens account modal](https://github.com/misskey-dev/misskey/pull/9056)
+- [OAuth bearer token authentication](https://github.com/misskey-dev/misskey/pull/9021)
+- [Styled Repair Tools](https://github.com/misskey-dev/misskey/pull/8956)
+- [Option to make enter send message](https://github.com/misskey-dev/misskey/pull/8954)
+- [Autocomplete in messaging](https://github.com/misskey-dev/misskey/pull/8955)
+- [Profile background as banner](https://codeberg.org/Freeplay/Misskey-Tweaks/src/branch/main/snippets/profile-background.styl)
+- [Star is generic like/favorite](https://github.com/JakeMBauer/Misskey-Extras/blob/master/patches/star-is-like.patch)
+  - 👍 also triggers generic like/favorite
+- [Add additional background for acrylic popups if backdrop-filter is unsupported](https://github.com/misskey-dev/misskey/pull/8671)
+- [Add parameters to MFM rotate](https://github.com/misskey-dev/misskey/pull/8549)
+- Many changes from [FoundKey](https://akkoma.dev/FoundKeyGang/FoundKey)
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/0ece67b04c3f0365057624c1068808276ccab981: refactor pages/auth.form.vue to composition API
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/4bc9610d8bf5af736b5e89e4782395705de45d7d: remove unnecessary joins
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/9ee609d70082f7a6dc119a5d83c0e7c5e1208676: enhance privacy of notes
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/0fec6e10477b1c1b95d9469fbaf4e249a3722f12: remove ms dependency
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/46fff77accbe8bf0fd3cc88170d67b997bf2bdc3:  client uses new API for child notes depth
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/c35372a20d22cddb75e93a0b407f2b652cd7faf0:  pack children without detail
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/aca724e0bfff3e58b4d273f3ee744e3f3aa9c39b: enable to fetch replies recursively
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/2fe64c11502fd8d89c126558cd715e095c83754e: Refactor components/page/page.textarea.vue to composition API
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/6d3181f9835955e5b79bde5484c74bd70e7f9535: Refactor components/page/page.text.vue to composition API
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/b630cd7eacd695bb705e6748c87f38425ec4ed45:  refactor: add NoteReactions.packMany
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/3fe351df6d4e21f7748c46adfa6ca165abd030c0: fix: catch errors from packing with detail
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/63591da33e233b2ed0ab331ae6bb3c9eff5020ae: refactor: colours in queue chart
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/0f6d94f1e7e1f58cfbf8d07e5f835f8de626842e: backend: improve mutes and blocks
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/e2bf2715a6462ed377b033956d65260157f042ea: fix spelling error
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/09a7eabda137e77f81ab31f65d69329670693c8d: backend: fix lint "no-throw-literal"
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/4fbe2e065e75ed3e5b4dfdfd4be3baa03cc447c3: client: fix lint "quotes"
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/585e4f5c42cfafb6cdf7eb601ab435d6a4d85a96: fix textarea not updating properly
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/30d8bc9259cb6b72ed76d67b21dbb4cdceca8327: refactor: welcome.setup.vue to composition api
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/751921e24f37ed707fe44a40d88eebb1299efa35: make emoji picker case insensitive
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/298febeb9c9501e3e3df16982c08657d1da474e0: enhance: add re-collapsing to quoted notes
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/b0fdedb264db87575063abed45e52ad71ce4a6af: fix lints in folder.vue
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/6fed87f85d132304eb84b0a59b84dce299a1822f: fix pagination.vue lints
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/384e8c49b738f576ba8843296de6cebf01c1b247: server: allow to like own gallery posts
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/4c5aa9e53887cca5561fcec6ab0754e018f589a5: server: allow to like own pages
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/923c93da1228458dd65be47483c198a1a9191bcf: use await for notes.countBy
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/ca90cedba0a0704b503c2778694230f5a7dfbace: server: reduce dead instance detection to 7 days
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/e9ab42c10afb4e27516c2d2b5e3e06630efe9edd: Alt text in image viewer
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/ed9d4023d41bba7c4ac53a1a3422246feed37de2: add argon2 support
+	- https://akkoma.dev/FoundKeyGang/FoundKey/commit/c414f24a2c123774246c7eca65edda4d3afaf8b3: feat: per-user renote muting

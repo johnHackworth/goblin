@@ -1,0 +1,41 @@
+diff --git a/packages/backend/migration/1661376843000-remove-mentioned-remote-users-column.js b/packages/backend/migration/1661376843000-remove-mentioned-remote-users-column.js
+index 42d79b5b5..1fd5e0f10 100644
+--- a/packages/backend/migration/1661376843000-remove-mentioned-remote-users-column.js
++++ b/packages/backend/migration/1661376843000-remove-mentioned-remote-users-column.js
+@@ -7,6 +7,22 @@ export class removeMentionedRemoteUsersColumn1661376843000 {
+ 
+ 	async down(queryRunner) {
+ 		await queryRunner.query(`ALTER TABLE "note" ADD "mentionedRemoteUsers" TEXT NOT NULL DEFAULT '[]'::text`);
+-		await queryRunner.query(`UPDATE "note" SET "mentionedRemoteUsers" = (SELECT COALESCE(json_agg(row_to_json("data"))::text, '[]') FROM (SELECT "url", "uri", "username", "host" FROM "user" JOIN "user_profile" ON "user"."id" = "user_profile". "userId" WHERE "user"."host" IS NOT NULL AND "user"."id" = ANY("note"."mentions")) AS "data")`);
++		await queryRunner.query(`
++			CREATE TEMP TABLE IF NOT EXISTS "temp_mentions" AS
++				SELECT "id", "url", "uri", "username", "host"
++				FROM "user"
++				JOIN "user_profile" ON "user"."id" = "user_profile"."userId" WHERE "user"."host" IS NOT NULL
++		`);
++
++		await queryRunner.query(`
++			CREATE UNIQUE INDEX "temp_mentions_id" ON "temp_mentions"("id")
++		`);
++
++		await queryRunner.query(`
++			UPDATE "note" SET "mentionedRemoteUsers" = (
++				SELECT COALESCE(json_agg(row_to_json("data")::jsonb - 'id')::text, '[]') FROM "temp_mentions" AS "data"
++				WHERE "data"."id" = ANY("note"."mentions")
++			)
++		`);
+ 	}
+ }
+diff --git a/packages/backend/migration/1663399074403-resize-comments-drive-file.js b/packages/backend/migration/1663399074403-resize-comments-drive-file.js
+index a037f1655..0873aec9b 100644
+--- a/packages/backend/migration/1663399074403-resize-comments-drive-file.js
++++ b/packages/backend/migration/1663399074403-resize-comments-drive-file.js
+@@ -9,6 +9,6 @@ export class resizeCommentsDriveFile1663399074403 {
+     }
+ 
+     async down(queryRunner) {
+-        await queryRunner.query(`ALTER TABLE "drive_file" ALTER COLUMN "comment" TYPE character varying(512)`);
+-    }
++		console.log('This migration cannot be reverted, skipping...');
++	}
+ }

@@ -1,0 +1,44 @@
+# Visual Studio Code
+.vscode
+
+# Intelij-IDEA
+.idea
+
+# Node.js
+node_modules
+**/node_modules
+report.*.json
+
+# Rust
+packages/backend/native-utils/target
+
+# Cypress
+cypress/screenshots
+cypress/videos
+
+# Coverage
+coverage
+
+# config
+/.config
+
+# misskey
+built
+db
+elasticsearch
+redis
+npm-debug.log
+*.pem
+run.bat
+api-docs.json
+*.log
+*.code-workspace
+.DS_Store
+files
+ormconfig.json
+packages/backend/assets/instance.css
+
+# dockerignore custom
+.git
+Dockerfile
+docker-compose.yml

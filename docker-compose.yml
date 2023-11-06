@@ -1,0 +1,74 @@
+version: "3"
+
+services:
+  web:
+    image: goblin
+    container_name: firefish_web
+    restart: unless-stopped
+    depends_on:
+      - db
+      - redis
+### Uncomment one of the following to use a search engine
+#     - meilisearch
+#     - sonic
+    ports:
+      - "3000:3000"
+    networks:
+      - calcnet
+#     - web
+    environment:
+      NODE_ENV: production
+    volumes:
+      - ./files:/firefish/files
+      - ./.config:/firefish/.config:ro
+
+  redis:
+    restart: unless-stopped
+    image: docker.io/redis:7.0-alpine
+    container_name: firefish_redis
+    networks:
+      - calcnet
+    volumes:
+      - ./redis:/data
+
+  db:
+    restart: unless-stopped
+    image: docker.io/postgres:12.2-alpine
+    container_name: firefish_db
+    networks:
+      - calcnet
+    env_file:
+      - .config/docker.env
+    volumes:
+      - ./db:/var/lib/postgresql/data
+
+### Only one of the below should be used.
+### Meilisearch is better overall, but resource-intensive. Sonic is a very light full text search engine.
+
+#  meilisearch:
+#    container_name: meilisearch
+#    image: getmeili/meilisearch:v1.1.1
+#    environment:
+#      - MEILI_ENV=${MEILI_ENV:-development}
+#    ports:
+#      - "7700:7700"
+#    networks:
+#      - calcnet
+#    volumes:
+#      - ./meili_data:/meili_data
+#    restart: unless-stopped
+
+#  sonic:
+#    restart: unless-stopped
+#    image: docker.io/valeriansaliou/sonic:v1.4.0
+#    networks:
+#      - calcnet
+#    volumes:
+#      - ./sonic:/var/lib/sonic/store
+#      - ./sonic/config.cfg:/etc/sonic.cfg
+
+networks:
+  calcnet:
+  #  web:
+  #    external:
+  #      name: web

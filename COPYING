@@ -1,0 +1,33 @@
+Unless specified otherwise, the entirety of this repository is subject to the following:
+Copyright © 2014-2023 syuilo and contributors
+Copyright © 2022-2023 Kainoa Kanter and contributors
+
+And is distributed under The GNU Affero General Public License Version 3, you should have received a copy of the license file as LICENSE.
+
+---
+
+These specific configuration directories:
+
+- .config/
+- custom/assets/
+
+and their contents are
+Copyright © 2022-2023 Kainoa Kanter and contributors
+
+And are distributed under The Apache License, Version 2.0, you should have received a copy of the license file as LICENSE in each specified directory.
+
+---
+
+Firefish includes several third-party open-source softwares and software libraries.
+
+RsaSignature2017 implementation by Transmute Industries Inc
+License: MIT
+https://github.com/transmute-industries/RsaSignature2017/blob/master/LICENSE
+
+Machine learning model for sensitive images by Infinite Red, Inc.
+License: MIT
+https://github.com/infinitered/nsfwjs/blob/master/LICENSE
+
+Licenses for all softwares and software libraries installed via the Node Package Manager ("npm") can be found by running the following shell command in the root directory of this repository:
+
+pnpm licenses list

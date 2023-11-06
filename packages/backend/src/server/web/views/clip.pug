@@ -1,0 +1,37 @@
+extends ./base
+
+block vars
+	- const user = clip.user;
+	- const title = privateMode ? instanceName : clip.name;
+	- const url = `${config.url}/clips/${clip.id}`;
+
+block title
+	= `${title} | ${instanceName}`
+
+block desc
+	unless privateMode
+		meta(name='description' content= clip.description)
+
+block og
+	unless privateMode
+		meta(property='og:type' content='article')
+		meta(property='og:title'       content= title)
+		meta(property='og:description' content= clip.description)
+		meta(property='og:url'         content= url)
+		meta(property='og:image'       content= avatarUrl)
+
+block meta
+	unless privateMode
+		if profile.noCrawle
+			meta(name='robots' content='noindex')
+		if profile.preventAiLearning
+			meta(name='robots' content='noai')
+			meta(name='robots' content='noimageai')
+
+		meta(name='misskey:user-username' content=user.username)
+		meta(name='misskey:user-id' content=user.id)
+		meta(name='misskey:clip-id' content=clip.id)
+
+		// todo
+		if user.twitter
+			meta(name='twitter:creator' content=`@${user.twitter.screenName}`)

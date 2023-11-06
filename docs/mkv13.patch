@@ -1,0 +1,45 @@
+diff --git a/packages/backend/migration/1672704017999-remove-lastCommunicatedAt.js b/packages/backend/migration/1672704017999-remove-lastCommunicatedAt.js
+index 38a676985..c4ae690e0 100644
+--- a/packages/backend/migration/1672704017999-remove-lastCommunicatedAt.js
++++ b/packages/backend/migration/1672704017999-remove-lastCommunicatedAt.js
+@@ -6,6 +6,8 @@ export class removeLastCommunicatedAt1672704017999 {
+     }
+ 
+     async down(queryRunner) {
+-        await queryRunner.query(`ALTER TABLE "instance" ADD "lastCommunicatedAt" TIMESTAMP WITH TIME ZONE NOT NULL`);
++        await queryRunner.query(`ALTER TABLE "instance" ADD "lastCommunicatedAt" TIMESTAMP WITH TIME ZONE`);
++        await queryRunner.query(`UPDATE "instance" SET "lastCommunicatedAt" = COALESCE("infoUpdatedAt", "caughtAt")`);
++        await queryRunner.query(`ALTER TABLE "instance" ALTER COLUMN "lastCommunicatedAt" SET NOT NULL`);
+     }
+ }
+diff --git a/packages/backend/migration/1673336077243-PollChoiceLength.js b/packages/backend/migration/1673336077243-PollChoiceLength.js
+index 810c626e0..5809528cb 100644
+--- a/packages/backend/migration/1673336077243-PollChoiceLength.js
++++ b/packages/backend/migration/1673336077243-PollChoiceLength.js
+@@ -6,6 +6,6 @@ export class PollChoiceLength1673336077243 {
+     }
+ 
+     async down(queryRunner) {
+-			await queryRunner.query(`ALTER TABLE "poll" ALTER COLUMN "choices" TYPE character varying(128) array`);
++			//await queryRunner.query(`ALTER TABLE "poll" ALTER COLUMN "choices" TYPE character varying(128) array`);
+     }
+ }
+diff --git a/packages/backend/migration/1674118260469-achievement.js b/packages/backend/migration/1674118260469-achievement.js
+index 131ab96f8..57a922f83 100644
+--- a/packages/backend/migration/1674118260469-achievement.js
++++ b/packages/backend/migration/1674118260469-achievement.js
+@@ -18,12 +18,13 @@ export class achievement1674118260469 {
+ 
+     async down(queryRunner) {
+         await queryRunner.query(`CREATE TYPE "public"."user_profile_mutingnotificationtypes_enum_old" AS ENUM('follow', 'mention', 'reply', 'renote', 'quote', 'reaction', 'pollVote', 'receiveFollowRequest', 'followRequestAccepted', 'groupInvited', 'app', 'pollEnded')`);
++        await queryRunner.query(`CREATE TYPE "public"."notification_type_enum_old" AS ENUM('follow', 'mention', 'reply', 'renote', 'quote', 'reaction', 'pollVote', 'pollEnded', 'receiveFollowRequest', 'followRequestAccepted', 'groupInvited', 'app')`);
+         await queryRunner.query(`ALTER TABLE "user_profile" ALTER COLUMN "mutingNotificationTypes" DROP DEFAULT`);
+         await queryRunner.query(`ALTER TABLE "user_profile" ALTER COLUMN "mutingNotificationTypes" TYPE "public"."user_profile_mutingnotificationtypes_enum_old"[] USING "mutingNotificationTypes"::"text"::"public"."user_profile_mutingnotificationtypes_enum_old"[]`);
+         await queryRunner.query(`ALTER TABLE "user_profile" ALTER COLUMN "mutingNotificationTypes" SET DEFAULT '{}'`);
+         await queryRunner.query(`DROP TYPE "public"."user_profile_mutingnotificationtypes_enum"`);
+         await queryRunner.query(`ALTER TYPE "public"."user_profile_mutingnotificationtypes_enum_old" RENAME TO "user_profile_mutingnotificationtypes_enum"`);
+-        await queryRunner.query(`CREATE TYPE "public"."notification_type_enum_old" AS ENUM('follow', 'mention', 'reply', 'renote', 'quote', 'reaction', 'pollVote', 'pollEnded', 'receiveFollowRequest', 'followRequestAccepted', 'groupInvited', 'app')`);
++        await queryRunner.query(`DELETE FROM "public"."notification" WHERE "type" = 'achievementEarned'`);
+         await queryRunner.query(`ALTER TABLE "notification" ALTER COLUMN "type" TYPE "public"."notification_type_enum_old" USING "type"::"text"::"public"."notification_type_enum_old"`);
+         await queryRunner.query(`DROP TYPE "public"."notification_type_enum"`);
+         await queryRunner.query(`ALTER TYPE "public"."notification_type_enum_old" RENAME TO "notification_type_enum"`);

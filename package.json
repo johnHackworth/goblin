@@ -1,0 +1,64 @@
+{
+	"name": "firefish",
+	"version": "1.0.3",
+	"codename": "aqua",
+	"repository": {
+		"type": "git",
+		"url": "https://git.joinfirefish.org/firefish/firefish.git"
+	},
+	"packageManager": "pnpm@8.6.9",
+	"private": true,
+	"scripts": {
+		"rebuild": "pnpm run clean && pnpm node ./scripts/build-greet.js && pnpm -r --parallel run build && pnpm run gulp",
+		"build": "pnpm node ./scripts/build-greet.js && pnpm -r --parallel run build && pnpm run gulp",
+		"start": "pnpm --filter backend run start",
+		"start:test": "pnpm --filter backend run start:test",
+		"init": "pnpm run migrate",
+		"migrate": "pnpm --filter backend run migrate",
+		"revertmigration": "pnpm --filter backend run revertmigration",
+		"migrateandstart": "pnpm run migrate && pnpm run start",
+		"gulp": "gulp build",
+		"watch": "pnpm run dev",
+		"dev": "pnpm node ./scripts/dev.js",
+		"dev:staging": "NODE_OPTIONS=--max_old_space_size=3072 NODE_ENV=development pnpm run build && pnpm run start",
+		"lint": "pnpm -r --parallel run lint",
+		"cy:open": "cypress open --browser --e2e --config-file=cypress.config.ts",
+		"cy:run": "cypress run",
+		"e2e": "start-server-and-test start:test http://localhost:61812 cy:run",
+		"mocha": "pnpm --filter backend run mocha",
+		"test": "pnpm run mocha",
+		"format": "pnpm -r --parallel run format",
+		"clean": "pnpm node ./scripts/clean.js",
+		"clean-all": "pnpm node ./scripts/clean-all.js",
+		"cleanall": "pnpm run clean-all"
+	},
+	"resolutions": {
+		"chokidar": "^3.3.1"
+	},
+	"dependencies": {
+		"@bull-board/api": "5.6.0",
+		"@bull-board/ui": "5.6.0",
+		"@napi-rs/cli": "^2.16.1",
+		"@tensorflow/tfjs": "^3.21.0",
+		"js-yaml": "4.1.0",
+		"seedrandom": "^3.0.5"
+	},
+	"devDependencies": {
+		"@types/gulp": "4.0.13",
+		"@types/gulp-rename": "2.0.2",
+		"@types/node": "20.4.1",
+		"chalk": "4.1.2",
+		"cross-env": "7.0.3",
+		"cypress": "10.11.0",
+		"execa": "5.1.1",
+		"gulp": "4.0.2",
+		"gulp-cssnano": "2.1.3",
+		"gulp-rename": "2.0.0",
+		"gulp-replace": "1.1.4",
+		"gulp-terser": "2.1.0",
+		"install-peers": "^1.0.4",
+		"rome": "^v12.1.3-nightly.f65b0d9",
+		"start-server-and-test": "1.15.2",
+		"typescript": "5.1.6"
+	}
+}
