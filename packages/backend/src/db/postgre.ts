@@ -77,7 +77,6 @@ import { entities as charts } from "@/services/chart/entities.js";
 import { envOption } from "../env.js";
 import { dbLogger } from "./logger.js";
 import { redisClient } from "./redis.js";
-import { nativeInitDatabase } from "native-utils/built/index.js";
 
 const sqlLogger = dbLogger.createSubLogger("sql", "gray", false);
 
@@ -221,11 +220,17 @@ export const db = new DataSource({
 });
 
 export async function initDb(force = false) {
-	await nativeInitDatabase(
-		`postgres://${config.db.user}:${encodeURIComponent(config.db.pass)}@${
-			config.db.host
-		}:${config.db.port}/${config.db.db}`,
-	);
+	const nativeInitDatabase = () => {
+		const client = new pg.Client({
+  		host: config.db.host,
+  		port: config.db.port,
+  		database: config.db.db,
+  		user: config.db.user,
+  		password: config.db.pass,
+		})
+		return client.connect();
+	}
+
 	if (force) {
 		if (db.isInitialized) {
 			await db.destroy();
