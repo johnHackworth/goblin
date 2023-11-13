@@ -1,14 +1,16 @@
 This is very much a work in progress.
 
-How to set the ball rolling:
-============================
 
 You need:
 - Node (min 18.16)
 - Redis
 - Postgresql
+- cargo
+- node-typescript
 - pnpm
 
+How to get the ball rolling:
+============================
 
 
 - Create your database (ex: `CREATE DATABASE firefish WITH encoding = 'UTF8';`, make sure whatever user you are going to use have access to the new db)
