@@ -449,6 +449,7 @@ defineExpose({
 		display: flex;
 		margin: 0 auto;
 		height: 100%;
+		color: #FFF;
 
 		> .nav {
 			width: 32%;
