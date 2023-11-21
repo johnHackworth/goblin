@@ -105,13 +105,6 @@
 					class="info"
 				>
 					<MkA
-						v-if="detailedView"
-						class="created-at"
-						:to="notePage(appearNote)"
-					>
-						<MkTime :time="appearNote.createdAt" mode="absolute" />
-					</MkA>
-					<MkA
 						v-if="appearNote.channel && !inChannel"
 						class="channel"
 						:to="`/channels/${appearNote.channel.id}`"
@@ -126,18 +119,6 @@
 						ref="reactionsViewer"
 						:note="appearNote"
 					/>
-					<button
-						v-tooltip.noDelay.bottom="i18n.ts.reply"
-						class="button _button"
-						@click.stop="reply()"
-					>
-						<i class="ph-arrow-u-up-left ph-bold ph-lg"></i>
-						<template
-							v-if="appearNote.repliesCount > 0 && !detailedView"
-						>
-							<p class="count">{{ appearNote.repliesCount }}</p>
-						</template>
-					</button>
 					<XRenoteButton
 						ref="renoteButton"
 						class="button"
@@ -166,30 +147,6 @@
 						class="button"
 						:note="appearNote"
 					/>
-					<button
-						v-if="
-							enableEmojiReactions &&
-							appearNote.myReaction == null
-						"
-						ref="reactButton"
-						v-tooltip.noDelay.bottom="i18n.ts.reaction"
-						class="button _button"
-						@click.stop="react()"
-					>
-						<i class="ph-smiley ph-bold ph-lg"></i>
-					</button>
-					<button
-						v-if="
-							enableEmojiReactions &&
-							appearNote.myReaction != null
-						"
-						ref="reactButton"
-						class="button _button reacted"
-						@click.stop="undoReact(appearNote)"
-						v-tooltip.noDelay.bottom="i18n.ts.removeReaction"
-					>
-						<i class="ph-minus ph-bold ph-lg"></i>
-					</button>
 					<XQuoteButton class="button" :note="appearNote" />
 					<button
 						ref="menuButton"

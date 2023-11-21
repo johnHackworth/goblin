@@ -18,6 +18,7 @@ function select(
 			const input = document.createElement("input");
 			input.type = "file";
 			input.multiple = multiple;
+			input.accept = ".jpg,.jpeg,.png,.gif";
 			input.onchange = () => {
 				const promises = Array.from(input.files).map((file) =>
 					uploadFile(

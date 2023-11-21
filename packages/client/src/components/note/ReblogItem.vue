@@ -31,7 +31,7 @@ const props = defineProps<{
 .reblog-item {
   margin: 0;
   padding: 8px 32px;
-  width: 100%;
+  width: calc(100% - 64px);;
   display: flex;
   flex-direction: column;
 

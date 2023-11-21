@@ -10,9 +10,6 @@
 		@drop.stop="onDrop"
 	>
 		<header>
-			<button v-if="!fixed" class="cancel _button" @click="cancel">
-				<i class="ph-x ph-bold ph-lg" :aria-label="i18n.t('close')"></i>
-			</button>
 			<button
 				v-if="$props.editId == null"
 				v-click-anime
@@ -20,14 +17,12 @@
 				class="account _button"
 				@click="openAccountMenu"
 			>
-				<MkAvatar :user="postAccount ?? $i" class="avatar" />
+				<span class="username">{{ postAccount ? postAccount.username : $i.username }} </span><Caret />
 			</button>
+			<span v-if="$props.renote" class="reblog-header">
+				<Reblog /> <span class="reblog-username">{{ $props.renote.user.username }}</span>
+			</span>
 			<div class="right">
-				<span
-					class="text-count"
-					:class="{ over: textLength > maxTextLength }"
-					>{{ maxTextLength - textLength }}</span
-				>
 				<span v-if="localOnly" class="local-only"
 					><i class="ph-hand-fist ph-bold ph-lg"></i
 				></span>
@@ -51,47 +46,18 @@
 						><i class="ph-envelope-simple-open ph-bold ph-lg"></i
 					></span>
 				</button>
-				<button
-					v-tooltip="i18n.ts.previewNoteText"
-					class="_button preview"
-					:class="{ active: showPreview }"
-					@click="showPreview = !showPreview"
-				>
-					<i class="ph-binoculars ph-bold ph-lg"></i>
-				</button>
-				<button
-					class="submit _buttonGradate"
-					:disabled="!canPost"
-					data-cy-open-post-form-submit
-					@click="post"
-				>
-					{{ submitText
-					}}<i
-						:class="
-							reply
-								? 'ph-arrow-u-up-left ph-bold ph-lg'
-								: renote
-								? 'ph-quotes ph-bold ph-lg'
-								: 'ph-paper-plane-tilt ph-bold ph-lg'
-						"
-					></i>
+				<button v-if="!fixed" class="cancel _button" @click="cancel">
+					<i class="ph-x ph-bold ph-lg" :aria-label="i18n.t('close')"></i>
 				</button>
 			</div>
 		</header>
 		<div class="form" :class="{ fixed }">
-			<XNoteSimple v-if="reply" class="preview" :note="reply" />
-			<XNoteSimple v-if="renote" class="preview" :note="renote" />
-			<div v-if="quoteId" class="with-quote">
-				<i class="ph-quotes ph-bold ph-lg"></i>
-				{{ i18n.ts.quoteAttached
-				}}<button
-					class="_button"
-					@click="quoteId = null"
-					:aria-label="i18n.t('removeQuote')"
-				>
-					<i class="ph-x ph-bold ph-lg"></i>
-				</button>
-			</div>
+			<div v-for="(trailNote, index) in reblogtrail" :key="index">
+    		<div class="reblog">
+      		<ReblogItem :note="trailNote" />
+    		</div>
+  		</div>
+
 			<div v-if="visibility === 'specified'" class="to-specified">
 				<span style="margin-right: 8px">{{ i18n.ts.recipient }}</span>
 				<div class="visibleUsers">
@@ -127,113 +93,33 @@
 				:placeholder="i18n.ts.annotation"
 				@keydown="onKeydown"
 			/>
-			<textarea
+			<Tiptap
+				@update="updateTiptap"
+				@post="onEditorPostClick"
 				ref="textareaEl"
 				v-model="text"
 				class="text"
 				:class="{ withCw: useCw }"
-				:disabled="posting"
 				:placeholder="placeholder"
 				data-cy-post-form-text
 				@keydown="onKeydown"
 				@paste="onPaste"
 				@compositionupdate="onCompositionUpdate"
 				@compositionend="onCompositionEnd"
-			/>
-			<input
-				v-show="withHashtags"
-				ref="hashtagsInputEl"
-				v-model="hashtags"
-				class="hashtags"
-				:placeholder="i18n.ts.hashtags"
-				list="hashtags"
-			/>
-			<XPostFormAttaches
-				class="attaches"
-				:files="files"
-				@updated="updateFiles"
-				@detach="detachFile"
-				@changeSensitive="updateFileSensitive"
-				@changeName="updateFileName"
+				:submitText="submitText"
+				:canPost="canPost"
+				:reply="!!props.reply"
+				:renote="!!props.renote"
 			/>
 			<XPollEditor v-if="poll" v-model="poll" @destroyed="poll = null" />
 			<XNotePreview v-if="showPreview" class="preview" :text="text" />
-			<footer>
-				<button
-					v-tooltip="i18n.ts.attachFile"
-					class="_button"
-					@click="chooseFileFrom"
-				>
-					<i class="ph-upload ph-bold ph-lg"></i>
-				</button>
-				<button
-					v-tooltip="i18n.ts.poll"
-					class="_button"
-					:class="{ active: poll }"
-					@click="togglePoll"
-				>
-					<i class="ph-microphone-stage ph-bold ph-lg"></i>
-				</button>
-				<button
-					v-tooltip="i18n.ts.useCw"
-					class="_button"
-					:class="{ active: useCw }"
-					@click="useCw = !useCw"
-				>
-					<i class="ph-eye-slash ph-bold ph-lg"></i>
-				</button>
-				<button
-					v-tooltip="i18n.ts.mention"
-					class="_button"
-					@click="insertMention"
-				>
-					<i class="ph-at ph-bold ph-lg"></i>
-				</button>
-				<button
-					v-tooltip="i18n.ts.hashtags"
-					class="_button"
-					:class="{ active: withHashtags }"
-					@click="withHashtags = !withHashtags"
-				>
-					<i class="ph-hash ph-bold ph-lg"></i>
-				</button>
-				<button
-					v-tooltip="i18n.ts.emoji"
-					class="_button"
-					@click="insertEmoji"
-				>
-					<i class="ph-smiley ph-bold ph-lg"></i>
-				</button>
-				<button
-					v-if="postFormActions.length > 0"
-					v-tooltip="i18n.ts.plugin"
-					class="_button"
-					@click="showActions"
-				>
-					<i class="ph-plug ph-bold ph-lg"></i>
-				</button>
-				<!--	v-if="showMfmCheatsheet" -->
-				<button
-					v-tooltip="i18n.ts._mfm.cheatSheet"
-					class="_button right"
-					@click="openCheatSheet"
-				>
-					<i class="ph-question ph-bold ph-lg"></i>
-				</button>
-			</footer>
-			<datalist id="hashtags">
-				<option
-					v-for="hashtag in recentHashtags"
-					:key="hashtag"
-					:value="hashtag"
-				/>
-			</datalist>
 		</div>
 	</section>
 </template>
 
 <script lang="ts" setup>
 import { inject, watch, nextTick, onMounted, defineAsyncComponent } from "vue";
+import Tiptap from '@/components/editor/index.vue'
 import * as mfm from "mfm-js";
 import * as misskey from "firefish-js";
 import insertTextAtCursor from "insert-text-at-cursor";
@@ -245,6 +131,10 @@ import XNoteSimple from "@/components/MkNoteSimple.vue";
 import XNotePreview from "@/components/MkNotePreview.vue";
 import XPostFormAttaches from "@/components/MkPostFormAttaches.vue";
 import XPollEditor from "@/components/MkPollEditor.vue";
+import ReblogItem from "@/components/note/ReblogItem.vue";
+import Caret from "@/components/icons/caret.vue";
+import Reblog from "@/components/icons/reblog.vue";
+
 import { host, url } from "@/config";
 import { erase, unique } from "@/scripts/array";
 import { extractMentions } from "@/scripts/extract-mentions";
@@ -310,6 +200,15 @@ const visibilityButton = $ref<HTMLElement | null>(null);
 let posting = $ref(false);
 let text = $ref(props.initialText ?? "");
 let files = $ref(props.initialFiles ?? []);
+let reblogtrail = $ref(props.renote?.reblogtrail?.length ? props.renote.reblogtrail : []);
+if(props.renote) {
+	let cloneNote = deepClone(props.renote);
+	delete cloneNote.reblogtrail;
+	reblogtrail.push(cloneNote);
+}
+
+console.log('**************', reblogtrail)
+
 let poll = $ref<{
 	choices: string[];
 	multiple: boolean;
@@ -324,6 +223,7 @@ let localOnly = $ref<boolean>(
 		? defaultStore.state.localOnly
 		: defaultStore.state.defaultNoteLocalOnly,
 );
+let isEditorEmpty = $ref(true);
 let visibility = $ref(
 	props.initialVisibility ??
 		((defaultStore.state.rememberNoteVisibility
@@ -339,14 +239,9 @@ let autocomplete = $ref(null);
 let draghover = $ref(false);
 let quoteId = $ref(null);
 let hasNotSpecifiedMentions = $ref(false);
+let canPost = $ref(false);
 let recentHashtags = $ref(JSON.parse(localStorage.getItem("hashtags") || "[]"));
 let imeText = $ref("");
-
-const typing = throttle(3000, () => {
-	if (props.channel) {
-		stream.send("typingOnChannel", { channel: props.channel.id });
-	}
-});
 
 const draftKey = $computed((): string => {
 	if (props.editId) {
@@ -386,7 +281,7 @@ const placeholder = $computed((): string => {
 	}
 });
 
-const submitText = $computed((): string => {
+const computedText = $computed((): string => {
 	return props.editId
 		? i18n.ts.edit
 		: props.renote
@@ -396,6 +291,7 @@ const submitText = $computed((): string => {
 		: i18n.ts.note;
 });
 
+const submitText = $ref(computedText);
 const textLength = $computed((): number => {
 	return length((preprocess(text) + imeText).trim());
 });
@@ -404,14 +300,21 @@ const maxTextLength = $computed((): number => {
 	return instance ? instance.maxNoteTextLength : 3000;
 });
 
-const canPost = $computed((): boolean => {
+const computedCanPost = $computed((): boolean => {
+	console.log('computing can post)')
 	return (
 		!posting &&
-		(1 <= textLength || 1 <= files.length || !!poll || !!props.renote) &&
-		textLength <= maxTextLength &&
+		!isEditorEmpty &&
 		(!poll || poll.choices.length >= 2)
 	);
 });
+
+watch($$(computedCanPost), () => {
+	console.log('aaaaa', computedCanPost);
+	canPost = computedCanPost;
+} )
+
+console.log('can', canPost);
 
 const withHashtags = $computed(
 	defaultStore.makeGetterSetter("postFormWithHashtags"),
@@ -690,20 +593,23 @@ function clear() {
 	quoteId = null;
 }
 
+function onEditorPostClick() {
+	console.log('post!');
+	post();
+}
+
 function onKeydown(ev: KeyboardEvent) {
 	if (
 		(ev.which === 10 || ev.which === 13) &&
 		(ev.ctrlKey || ev.metaKey) &&
 		canPost
-	)
+	) {
 		post();
-	if (ev.which === 27) emit("esc");
-	typing();
+	}
 }
 
 function onCompositionUpdate(ev: CompositionEvent) {
 	imeText = ev.data;
-	typing();
 }
 
 function onCompositionEnd(ev: CompositionEvent) {
@@ -868,16 +774,8 @@ async function post() {
 			postData = await interruptor.handler(deepClone(postData));
 		}
 	}
-	console.log(props);
-	console.log(11111111111)
-	console.log(props.renote?.reblogtrail);
-	postData.reblogtrail = props.renote?.reblogtrail?.length ? props.renote.reblogtrail : [];
-	if(props.renote) {
-		let cloneNote = deepClone(props.renote);
-		delete cloneNote.reblogtrail;
-		postData.reblogtrail.push(cloneNote);
-	}
 
+	postData.reblogtrail = reblogtrail;
 	let token = undefined;
 
 	if (postAccount) {
@@ -918,7 +816,17 @@ async function post() {
 		});
 }
 
+function updateTiptap( editorValue ) {
+	text = editorValue;
+	if(editorValue==="<p></p>") {
+		isEditorEmpty = true;
+	} else {
+		isEditorEmpty = false;
+	}
+}
+
 function cancel() {
+	console.log('CANCEL')
 	emit("cancel");
 }
 
@@ -1043,10 +951,9 @@ onMounted(() => {
 }
 .gafaadew {
 	position: relative;
-
 	&.modal {
 		width: 100%;
-		max-width: 520px;
+		max-width: 720px;
 	}
 
 	> header {
@@ -1054,6 +961,7 @@ onMounted(() => {
 		flex-wrap: wrap;
 		z-index: 1000;
 		height: 66px;
+		border-bottom: 1px solid #C1C1C1;
 
 		> .cancel {
 			padding: 0;
@@ -1062,11 +970,41 @@ onMounted(() => {
 			line-height: 66px;
 		}
 
-		> .account {
+		> .reblog-header {
+			svg {
+				fill: #555;
+				width: 12px;
+			}
+
 			height: 100%;
-			aspect-ratio: 1/1;
+			color: #555;
 			display: inline-flex;
 			vertical-align: bottom;
+			align-items: center;
+
+			.reblog-username {
+				margin-left: 12px;
+				font-weight: bold;
+			}
+		}
+
+		> .account {
+			height: 100%;
+			margin-left: 32px;
+			margin-right: 12px;
+			display: inline-flex;
+			vertical-align: bottom;
+			align-items: center;
+
+			.username {
+				font-weight: bold;
+				margin-right: 4px;
+			}
+
+			svg {
+				fill: #222;
+				width: 16px;
+			}
 
 			> .avatar {
 				width: 28px;
@@ -1078,7 +1016,7 @@ onMounted(() => {
 		> .right {
 			position: absolute;
 			top: 0;
-			right: 0;
+			right: 16px;
 
 			> .text-count {
 				opacity: 0.7;
@@ -1088,7 +1026,12 @@ onMounted(() => {
 			> .visibility {
 				height: 34px;
 				width: 34px;
-				margin: 0 0 0 8px;
+				margin: 16px;
+
+				.ph-planet {
+					font-size: 18px;
+					color: RGB(0, 207, 53);
+				}
 
 				& + .localOnly {
 					margin-left: 0 !important;
@@ -1245,7 +1188,7 @@ onMounted(() => {
 		> .text {
 			max-width: 100%;
 			min-width: 100%;
-			min-height: 90px;
+			min-height: 280px;
 
 			&.withCw {
 				padding-top: 8px;
@@ -1254,6 +1197,17 @@ onMounted(() => {
 
 		> footer {
 			padding: 0 16px 16px 16px;
+			svg {
+				width: 28px;
+				height: 28px;
+
+			}
+			.photo svg {
+				fill: rgb(255, 73, 48);
+			}
+			.video svg {
+				fill: RGB(255, 98, 206);
+			}
 
 			> button {
 				display: inline-block;
@@ -1326,6 +1280,26 @@ onMounted(() => {
 				}
 			}
 		}
+	}
+}
+</style>
+
+
+<style lang="scss">
+.gafaadew {
+	.reblog {
+		border-bottom: 1px solid #e1e1e1;
+		width: calc(100% - 32px);
+
+		.reblog-item {
+			padding: 0 24px;
+			margin-top: 4px;
+
+			div.reblog-item-content {
+				margin: 4px 0;
+			}
+		}
+
 	}
 }
 </style>

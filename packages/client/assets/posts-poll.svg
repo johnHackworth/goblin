@@ -1,0 +1,23 @@
+<svg id="managed-icon__posts-poll" viewBox="0 0 24 24" fill="none">
+  <path
+    fill="var(--icon-color-primary, #b4b4b4)"
+    fillRule="evenodd"
+    clipRule="evenodd"
+    d="M10.2595 8.23379C10.7032 8.60349 10.7485 9.27619 10.3511 9.69523L5.85591 14.4358C5.48386 14.8281 4.86733 14.8537 4.46409 14.4935L2.3333 12.5901C1.92033 12.2212 1.8867 11.5859 2.25713 11.1743C2.62488 10.7657 3.25443 10.7295 3.66544 11.0946L4.62713 11.9488C4.82589 12.1253 5.12804 12.1155 5.31487 11.9264L8.90264 8.29478C9.26777 7.92519 9.86041 7.90119 10.2595 8.23379Z"
+  />
+  <rect fill="var(--icon-color-primary, #b4b4b4)" x="10" y="4" width="12" height="2" rx="1" />
+  <rect fill="var(--icon-color-primary, #b4b4b4)" x="12" y="11" width="10" height="2" rx="1" />
+  <rect fill="var(--icon-color-primary, #b4b4b4)" x="10" y="18" width="12" height="2" rx="1" />
+  <path
+    fill="var(--icon-color-primary, #b4b4b4)"
+    fillRule="evenodd"
+    clipRule="evenodd"
+    d="M6 5C6 4.44772 5.55228 4 5 4C4.44772 4 4 4.44772 4 5C4 5.55228 4.44772 6 5 6C5.55228 6 6 5.55228 6 5ZM4 2C2.89543 2 2 2.89543 2 4V6C2 7.10457 2.89543 8 4 8H6C7.10457 8 8 7.10457 8 6V4C8 2.89543 7.10457 2 6 2H4Z"
+  />
+  <path
+    fill="var(--icon-color-primary, #b4b4b4)"
+    fillRule="evenodd"
+    clipRule="evenodd"
+    d="M6 19C6 18.4477 5.55228 18 5 18C4.44772 18 4 18.4477 4 19C4 19.5523 4.44772 20 5 20C5.55228 20 6 19.5523 6 19ZM4 16C2.89543 16 2 16.8954 2 18V20C2 21.1046 2.89543 22 4 22H6C7.10457 22 8 21.1046 8 20V18C8 16.8954 7.10457 16 6 16H4Z"
+  />
+</svg>

@@ -2,7 +2,7 @@
 	<MkModal
 		ref="modal"
 		:prefer-type="'dialog'"
-		@click="modal.close()"
+		@click="noop"
 		@closed="onModalClosed()"
 	>
 		<MkPostForm
@@ -53,6 +53,10 @@ function onPosted() {
 	modal.close({
 		useSendAnimation: true,
 	});
+}
+
+function noop() {
+
 }
 
 function onModalClosed() {

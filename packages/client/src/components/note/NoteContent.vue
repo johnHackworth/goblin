@@ -37,6 +37,12 @@
       >
         <template v-if="!note.cw">
           <Reblogtrail :reblogtrail="note.reblogtrail" />
+          <template v-if="note.reblogtrail && note.reblogtrail.length">
+            <div class="header-container">
+              <MkAvatar class="avatar" :user="note.user" />
+              <NoteHeader class="header" :note="note" />
+            </div>
+          </template>
         </template>
         <div class="noteText">
           <div v-html="note.text" />
@@ -58,6 +64,7 @@ import * as mfm from "mfm-js";
 import * as os from "@/os";
 import XCwButton from "@/components/MkCwButton.vue";
 import MkButton from "@/components/MkButton.vue";
+import NoteHeader from "@/components/note/Header.vue";
 import { notePage } from "@/filters/note";
 import { extractUrlFromMfm } from "@/scripts/extract-url-from-mfm";
 import { extractMfmWithAnimation } from "@/scripts/extract-mfm";
@@ -136,17 +143,6 @@ function focusFooter(ev) {
   z-index: 2;
 }
 
-.noteContent {
-  .noteText {
-    padding: 0 32px;
-
-    img {
-      max-width: 500px;
-    }
-  }
-
-
-}
 .reply-icon {
   display: inline-block;
   border-radius: 6px;
@@ -306,6 +302,41 @@ function focusFooter(ev) {
       mask: linear-gradient(to top, var(--gradient));
       -webkit-mask: linear-gradient(to top, var(--gradient));
       transition: background 0.2s;
+    }
+  }
+
+}
+
+.header-container {
+  display: flex;
+  position: relative;
+  z-index: 2;
+  padding: 0 32px 16px;
+
+  > .avatar {
+    flex-shrink: 0;
+    display: block;
+    margin: 0 14px 0 0;
+    width: var(--avatarSize);
+    height: var(--avatarSize);
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  > .header {
+    width: 0;
+    flex-grow: 1;
+  }
+}
+</style>
+<style lang="scss">
+.noteContent {
+  .noteText {
+    padding: 0 32px;
+
+    img {
+      width: calc(100% + 64px);
+      margin-left: -32px;
     }
   }
 }

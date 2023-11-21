@@ -86,7 +86,7 @@ export default defineConfig(({ command, mode }) => {
 			outDir: `${__dirname}/../../built/_client_dist_`,
 			assetsDir: ".",
 			emptyOutDir: false,
-			sourcemap: process.env.NODE_ENV === "development",
+			sourcemap: process.env.NODE_ENV != "production",
 			reportCompressedSize: false,
 			commonjsOptions: {
 				include: [/firefish-js/, /node_modules/],

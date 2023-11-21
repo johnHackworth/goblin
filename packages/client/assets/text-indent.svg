@@ -1,0 +1,4 @@
+<svg id="managed-icon__text-indent" fill="var(--icon-color-primary, #01CF35)" viewBox="0 0 24 24">
+  <path
+    d="M4 4a1 1 0 00-1 1v14a1 1 0 102 0V5a1 1 0 00-1-1zm5 2a1 1 0 000 2h11a1 1 0 100-2H9zm0 5a1 1 0 100 2h11a1 1 0 100-2H9zm-1 6a1 1 0 011-1h4a1 1 0 110 2H9a1 1 0 01-1-1z" />
+</svg>

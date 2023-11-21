@@ -1,0 +1,5 @@
+<svg id="managed-icon__npf-read-more" fill="var(--icon-color-primary, rgba(var(--black), 0.65))" viewBox="0 0 22 12">
+  <path fill-rule="evenodd"
+    d="M1.467 0C.657 0 0 .657 0 1.467v8.8c0 .81.657 1.466 1.467 1.466h19.066c.81 0 1.467-.656 1.467-1.466v-8.8C22 .657 21.343 0 20.533 0H1.467zm6.355 4.889H5.378v2.444h2.444V4.89zm1.956 0h2.444v2.444H9.778V4.89zm6.844 0h-2.444v2.444h2.444V4.89z"
+    clip-rule="evenodd" />
+</svg>

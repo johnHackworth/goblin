@@ -47,6 +47,7 @@ ormconfig.json
 packages/backend/assets/instance.css
 packages/backend/assets/sounds/None.mp3
 packages/backend/assets/LICENSE
+packages/client/src/components/icons/managed-icons/*
 
 !packages/backend/src/queue/processors/db
 !packages/backend/src/db

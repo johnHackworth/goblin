@@ -109,23 +109,9 @@
 						<i class="ph-arrow-bend-left-up ph-bold ph-lg"></i>
 					</MkA>
 				</template>
-				<Mfm
-					v-if="note.text"
-					:text="note.text"
-					:author="note.user"
-					:i="$i"
-					:custom-emojis="note.emojis"
-				/>
-				<MkA
-					v-if="!detailed && note.renoteId"
-					class="rp"
-					:to="`/notes/${note.renoteId}`"
-					>{{ i18n.ts.quoteAttached }}: ...</MkA
-				>
-				<XMediaList
-					v-if="note.files.length > 0"
-					:media-list="note.files"
-				/>
+				<div class="noteText">
+          <div v-html="note.text" />
+        </div>
 				<XPoll v-if="note.poll" :note="note" class="poll" />
 
 				<div
@@ -420,6 +406,12 @@ function focusFooter(ev) {
 			-webkit-mask: linear-gradient(to top, var(--gradient));
 			transition: background 0.2s;
 		}
+	}
+	.noteText {
+		img {
+      width: calc(100% + 64px);
+      margin-left: -32px;
+    }
 	}
 }
 </style>

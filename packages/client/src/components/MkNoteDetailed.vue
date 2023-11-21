@@ -43,13 +43,12 @@
 		></MkNote>
 
 		<MkTab v-model="tab" :style="'underline'" @update:modelValue="loadTab">
-			<option value="replies">
-				<!-- <i class="ph-arrow-u-up-left ph-bold ph-lg"></i> -->
-				<span v-if="note.repliesCount > 0" class="count">{{
+<!--			<option value="replies">
+					<span v-if="note.repliesCount > 0" class="count">{{
 					note.repliesCount
 				}}</span>
 				{{ i18n.ts._notification._types.reply }}
-			</option>
+			</option>-->
 			<option value="renotes" v-if="note.renoteCount > 0">
 				<!-- <i class="ph-repeat ph-bold ph-lg"></i> -->
 				<span class="count">{{ note.renoteCount }}</span>
