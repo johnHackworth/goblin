@@ -1,6 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1792 1792">
-
-  <style>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 1792 1792"
+   version="1.1"
+   id="svg1873"
+   sodipodi:docname="animated.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata1877">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1744"
+     inkscape:window-height="1109"
+     id="namedview1875"
+     showgrid="false"
+     inkscape:zoom="0.45254834"
+     inkscape:cx="1188.7159"
+     inkscape:cy="949.71804"
+     inkscape:window-x="72"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg1873" />
+  <style
+     id="style1820">
     /* Eyes */
     @keyframes firefish-logo-blink {
       95% {
@@ -84,70 +129,118 @@
       animation-delay: 1s;
     }
   </style>
-
-  <defs>
-    <linearGradient id="firefish-logo-linear-gradient" x1="26.41" y1="1765.71" x2="1492.49" y2="299.62"
-      gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ec476d" />
-      <stop offset="1" stop-color="#f6ae4a" />
+  <defs
+     id="defs1843">
+    <linearGradient
+       id="firefish-logo-linear-gradient"
+       x1="26.41"
+       y1="1765.71"
+       x2="1492.49"
+       y2="299.62"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#ec476d"
+         id="stop1822" />
+      <stop
+         offset="1"
+         stop-color="#f6ae4a"
+         id="stop1824" />
     </linearGradient>
-    <linearGradient id="firefish-logo-linear-gradient-purple" x1="512" y1="1788" x2="512" y2="1398.68"
-      gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#db44db" stop-opacity=".3" />
-      <stop offset=".11" stop-color="#db44db" stop-opacity=".21" />
-      <stop offset=".27" stop-color="#db44db" stop-opacity=".12" />
-      <stop offset=".44" stop-color="#db44db" stop-opacity=".05" />
-      <stop offset=".65" stop-color="#db44db" stop-opacity=".01" />
-      <stop offset="1" stop-color="#db44db" stop-opacity="0" />
+    <linearGradient
+       id="firefish-logo-linear-gradient-purple"
+       x1="512"
+       y1="1788"
+       x2="512"
+       y2="1398.68"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#db44db"
+         stop-opacity=".3"
+         id="stop1827" />
+      <stop
+         offset=".11"
+         stop-color="#db44db"
+         stop-opacity=".21"
+         id="stop1829" />
+      <stop
+         offset=".27"
+         stop-color="#db44db"
+         stop-opacity=".12"
+         id="stop1831" />
+      <stop
+         offset=".44"
+         stop-color="#db44db"
+         stop-opacity=".05"
+         id="stop1833" />
+      <stop
+         offset=".65"
+         stop-color="#db44db"
+         stop-opacity=".01"
+         id="stop1835" />
+      <stop
+         offset="1"
+         stop-color="#db44db"
+         stop-opacity="0"
+         id="stop1837" />
     </linearGradient>
-    <linearGradient id="firefish-logo-linear-gradient-3" x1="-351.25" y1="1382.82" x2="1150.74" y2="-119.17"
-      xlink:href="#firefish-logo-linear-gradient" />
-    <linearGradient id="firefish-logo-linear-gradient-4" x1="412.3" y1="2147.8" x2="1915.31" y2="644.8"
-      xlink:href="#firefish-logo-linear-gradient" />
-    <linearGradient id="firefish-logo-linear-gradient-5" x1="28.25" y1="1763.75" x2="1531.25" y2="260.75"
-      xlink:href="#firefish-logo-linear-gradient" />
+    <linearGradient
+       id="firefish-logo-linear-gradient-3"
+       x1="-351.25"
+       y1="1382.82"
+       x2="1150.74"
+       y2="-119.17"
+       xlink:href="#firefish-logo-linear-gradient" />
+    <linearGradient
+       id="firefish-logo-linear-gradient-4"
+       x1="412.3"
+       y1="2147.8"
+       x2="1915.31"
+       y2="644.8"
+       xlink:href="#firefish-logo-linear-gradient" />
+    <linearGradient
+       id="firefish-logo-linear-gradient-5"
+       x1="28.25"
+       y1="1763.75"
+       x2="1531.25"
+       y2="260.75"
+       xlink:href="#firefish-logo-linear-gradient" />
   </defs>
-
   <!-- Bubbles -->
-  <circle id="firefish-logo-bubble-1" class="firefish-logo-bubble" cx="205" cy="500" r="40" />
-  <circle id="firefish-logo-bubble-2" class="firefish-logo-bubble" cx="140" cy="500" r="80" />
-  <circle id="firefish-logo-bubble-3" class="firefish-logo-bubble" cx="95" cy="500" r="70" />
-  <circle id="firefish-logo-bubble-4" class="firefish-logo-bubble" cx="200" cy="500" r="40" />
-  <circle id="firefish-logo-bubble-5" class="firefish-logo-bubble" cx="95" cy="500" r="20" />
-
-  <g id="firefish-logo-firefish">
-    <g id="firefish-logo-fish">
-      <g id="firefish-logo-body">
-        <path
-          d="m928,768.11H96c-53.02,0-96,42.98-96,96v832c0,53.02,42.98,96,96,96h832c53.02,0,96-42.98,96-96v-832c0-53.02-42.98-96-96-96Z"
-          fill="url(#firefish-logo-linear-gradient)" />
-      </g>
-      <g id="firefish-logo-body-purple-grad">
-        <path
-          d="m928,768.11H96C42.98,768.11,0,811.09,0,864.11v832c0,53.02,42.98,96,96,96h832c53.02,0,96-42.98,96-96v-832c0-53.02-42.98-96-96-96Z"
-          fill="url(#firefish-logo-linear-gradient-purple)" />
-      </g>
-      <g id="firefish-logo-fin-l">
-        <path
-          d="m927.66,639.79h-439.94c-52.98,0-95.94-42.95-95.94-95.94V103.91c0-85.47,103.34-128.27,163.77-67.84l439.94,439.94c60.44,60.44,17.63,163.77-67.84,163.77Z"
-          fill="url(#firefish-logo-linear-gradient-3)" />
-      </g>
-      <g id="firefish-logo-fin-b">
-        <path
-          d="m1694.66,1408.11h-445.51c-53.65,0-97.15-43.5-97.15-97.15v-445.51c0-86.55,104.64-129.9,165.84-68.7l445.51,445.51c61.2,61.2,17.86,165.84-68.7,165.84Z"
-          fill="url(#firefish-logo-linear-gradient-4)" />
-      </g>
-      <g id="firefish-logo-fin-r">
-        <path
-          d="m1694.66,640h-445.51c-53.65,0-97.15-43.5-97.15-97.15V97.34c0-86.55,104.64-129.9,165.84-68.7l445.51,445.51c61.2,61.2,17.86,165.84-68.7,165.84Z"
-          fill="url(#firefish-logo-linear-gradient-5)" />
-      </g>
-      <g id="firefish-logo-eye-l">
-        <circle cx="256" cy="1408.11" r="128" fill="#fff" />
-      </g>
-      <g id="firefish-logo-eye-r">
-        <circle cx="576" cy="1408.11" r="128" fill="#fff" />
-      </g>
-    </g>
-  </g>
+  <circle
+     id="firefish-logo-bubble-1"
+     class="firefish-logo-bubble"
+     cx="205"
+     cy="500"
+     r="40" />
+  <circle
+     id="firefish-logo-bubble-2"
+     class="firefish-logo-bubble"
+     cx="140"
+     cy="500"
+     r="80" />
+  <circle
+     id="firefish-logo-bubble-3"
+     class="firefish-logo-bubble"
+     cx="95"
+     cy="500"
+     r="70" />
+  <circle
+     id="firefish-logo-bubble-4"
+     class="firefish-logo-bubble"
+     cx="200"
+     cy="500"
+     r="40" />
+  <circle
+     id="firefish-logo-bubble-5"
+     class="firefish-logo-bubble"
+     cx="95"
+     cy="500"
+     r="20" />
+  <path
+     style="fill:#f96a74;stroke-width:19.00196648;fill-opacity:1"
+     inkscape:connector-curvature="0"
+     d="m 436.93152,802.84551 a 11.40118,11.5912 55.3 0 0 3.8023,-20.52212 C 180.40686,597.62427 280.16719,247.03817 557.02585,149.93755 Q 823.81347,56.258225 1068.9388,191.3624 a 15.011554,14.821534 30.2 0 0 19.762,-5.12787 c 54.9157,-87.408863 163.037,-164.747244 268.4979,-130.733343 107.7411,34.58358 120.2824,201.990913 5.5105,240.374313 -39.9041,13.49178 -96.72,1.70828 -148.2153,12.92153 a 18.431908,18.431908 0 0 0 -11.7812,27.93308 c 134.914,216.05218 -7.6008,448.82665 -228.40369,517.61366 q -164.93703,51.30493 -325.50366,18.05149 -48.64503,-10.07104 -69.73721,34.96419 l -3.04032,6.0831 q -21.09218,45.03504 27.93289,53.39553 249.68581,42.75442 484.93019,72.96762 157.3363,20.1421 259.7569,98.0501 c 140.2345,106.6011 118.9523,317.3329 -19.192,425.264 -218.7127,171.0177 -785.16126,194.9602 -1020.2156,34.7736 -206.17134,-140.8045 -47.31489,-298.5209 106.79106,-365.4078 a 2.0902166,2.0902166 0 0 0 0,-3.7985 C 296.88892,1172.0613 196.1785,1074.2011 283.20751,936.24624 q 15.58161,-24.70275 60.61627,-58.33604 c 31.73329,-23.75246 52.06539,-64.22653 93.10964,-75.05747 z M 879.86734,626.88749 c 54.91568,-43.89474 57.956,-161.70712 34.01352,-220.61341 Q 895.06891,360.09987 875.49688,348.88833 C 563.2946,171.79038 520.54018,768.83161 835.02269,665.27089 c 16.3417,-5.32188 32.11333,-28.12272 44.84465,-38.3834 z m 216.62246,826.39531 c 78.2881,-70.4973 -37.4339,-116.102 -88.1692,-123.3228 q -186.59925,-27.1728 -373.5786,-52.2554 -8.93093,-1.1401 -15.96165,4.1804 c -93.10964,71.0674 -122.37267,170.6377 19.00196,205.7913 115.72198,28.693 362.74749,51.8754 458.70749,-34.3935 z"
+     id="path869" />
 </svg>
