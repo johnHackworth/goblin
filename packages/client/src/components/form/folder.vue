@@ -25,6 +25,7 @@ defineProps<{
 
 <style lang="scss" scoped>
 .dwzlatin {
+	color: #000;
 	display: block;
 	overflow: clip;
 	border-radius: 6px;

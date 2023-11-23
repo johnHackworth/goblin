@@ -114,6 +114,7 @@ definePageMetadata({
 
 <style lang="scss" scoped>
 .relaycxt {
+	color: #000;
 	> .status {
 		margin: 8px 0;
 
