@@ -392,6 +392,7 @@ useTooltip(reactionRef, (showing) => {
 	overflow-wrap: break-word;
 	display: flex;
 	contain: content;
+	margin-bottom: 16px;
 
 	&.max-width_500px {
 		padding-block: 16px;

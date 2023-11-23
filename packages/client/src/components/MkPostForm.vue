@@ -735,16 +735,24 @@ function deleteDraft() {
 async function post() {
 	const processedText = preprocess(text);
 
+
+	let renoteId = props.renote
+			? props.renote.id
+			: quoteId
+			? quoteId
+			: undefined;
+	if(reblogtrail.length) {
+		console.log(renoteId, reblogtrail[0].id)
+		 console.log(reblogtrail[0]);
+		renoteId = reblogtrail[0].id
+	}
+
 	let postData = {
 		editId: props.editId ? props.editId : undefined,
 		text: processedText === "" ? undefined : processedText,
 		fileIds: files.length > 0 ? files.map((f) => f.id) : undefined,
 		replyId: props.reply ? props.reply.id : undefined,
-		renoteId: props.renote
-			? props.renote.id
-			: quoteId
-			? quoteId
-			: undefined,
+		renoteId: renoteId,
 		channelId: props.channel ? props.channel.id : undefined,
 		poll: poll,
 		cw: useCw ? cw || "" : undefined,
