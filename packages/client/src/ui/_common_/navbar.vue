@@ -2,6 +2,9 @@
 	<header class="mvcprjjd sidebar" :class="{ iconOnly }">
 		<div class="body">
 			<div class="top">
+				<div class="logo">
+					<Logo />
+				</div>
 				<div
 					class="banner"
 					:user="$i"
@@ -149,6 +152,7 @@
 import { computed, defineAsyncComponent, ref, watch } from "vue";
 import * as os from "@/os";
 import { navbarItemDef } from "@/navbar";
+import Logo from "@/components/icons/logo.vue";
 import { $i, openAccountMenu as openAccountMenu_ } from "@/account";
 import { openHelpMenu_ } from "@/scripts/helpMenu";
 import { defaultStore } from "@/store";
@@ -641,6 +645,22 @@ function more(ev: MouseEvent) {
 		outline: none;
 		&:focus-visible:before {
 			outline: auto;
+		}
+	}
+
+	.logo {
+		text-align: center;
+		margin: -24px auto 32px;
+		padding-top: 16px;
+		border-bottom: 0.5px solid var(--divider);
+		border-right: 0.5px solid var(--divider);
+
+		svg {
+			width: 60px;
+		  margin-bottom: 8px;
+		  height: 20px;
+			--logo-color: white;
+  		--logo-line: transparenet;
 		}
 	}
 }

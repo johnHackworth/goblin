@@ -591,6 +591,7 @@ console.log(mainRouter.currentRoute.value.name);
 	}
 
 	> .widgets-container {
+		display: none;
 		position: sticky;
 		top: 0;
 		max-height: 100vh;
