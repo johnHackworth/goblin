@@ -95,6 +95,7 @@
 			/>
 			<Tiptap
 				@update="updateTiptap"
+				@updateTags="updateTiptapTags"
 				@post="onEditorPostClick"
 				ref="textareaEl"
 				v-model="text"
@@ -199,15 +200,15 @@ const visibilityButton = $ref<HTMLElement | null>(null);
 
 let posting = $ref(false);
 let text = $ref(props.initialText ?? "");
+let tags = $ref(props.initialTags ?? []);
 let files = $ref(props.initialFiles ?? []);
 let reblogtrail = $ref(props.renote?.reblogtrail?.length ? props.renote.reblogtrail : []);
 if(props.renote) {
 	let cloneNote = deepClone(props.renote);
 	delete cloneNote.reblogtrail;
+	cloneNote.text = cloneNote.text.split('<!-- tags -->')[0];
 	reblogtrail.push(cloneNote);
 }
-
-console.log('**************', reblogtrail)
 
 let poll = $ref<{
 	choices: string[];
@@ -310,11 +311,8 @@ const computedCanPost = $computed((): boolean => {
 });
 
 watch($$(computedCanPost), () => {
-	console.log('aaaaa', computedCanPost);
 	canPost = computedCanPost;
 } )
-
-console.log('can', canPost);
 
 const withHashtags = $computed(
 	defaultStore.makeGetterSetter("postFormWithHashtags"),
@@ -764,15 +762,18 @@ async function post() {
 				: undefined,
 	};
 
+	const wrapTag = (tag) => {
+		const tagWithHash = tag.startsWith("#") ? tag : "#" + tag;
 
-	if (withHashtags && hashtags && hashtags.trim() !== "") {
-		const hashtags_ = hashtags
-			.trim()
-			.split(" ")
-			.map((x) => (x.startsWith("#") ? x : "#" + x))
+		return '<a href="/tags/' + tag + '" class="tagLink">' + tagWithHash + '</a>';
+	}
+
+	if (tags.length > 0) {
+		const hashtags_ = tags
+			.map(wrapTag)
 			.join(" ");
 		postData.text = postData.text
-			? `${postData.text} ${hashtags_}`
+			? `${postData.text} <!-- tags --> <span class="noteTags">${hashtags_}</span>`
 			: hashtags_;
 	}
 
@@ -832,6 +833,11 @@ function updateTiptap( editorValue ) {
 		isEditorEmpty = false;
 	}
 }
+
+function updateTiptapTags( tagsValue ) {
+	tags = tagsValue;
+}
+
 
 function cancel() {
 	console.log('CANCEL')
@@ -1196,7 +1202,6 @@ onMounted(() => {
 		> .text {
 			max-width: 100%;
 			min-width: 100%;
-			min-height: 280px;
 
 			&.withCw {
 				padding-top: 8px;

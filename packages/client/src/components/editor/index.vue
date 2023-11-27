@@ -1,7 +1,6 @@
 <template>
   <div class="block-editor" >
     <div class="editor-area">
-
       <div v-if="editor">
        <div v-if="isSelecting">
           <button @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
@@ -20,6 +19,20 @@
         </div>
       </div>
       <editor-content :editor="editor" />
+      <div class="tagsContainer">        <div class="currentTags">
+          <span contenteditable class="tag" v-for="(tag, index) in tags" :key="index" @blur="updateTag" :data-index="index">
+            {{ tag }}
+          </span>
+        </div>
+
+        <div class="tagEditor">
+          <div class="tagInput"
+            :class="{ hasTags: tags.length > 0 }"
+            ref="tagsElement"
+            contenteditable
+            @keydown.enter="validateTag" />
+        </div>
+      </div>
     </div>
     <footer>
       <button
@@ -96,6 +109,7 @@
 
 
 <script lang="ts" setup>
+import { ref } from 'vue'
 import StarterKit from '@tiptap/starter-kit';
 import { useEditor, EditorContent } from '@tiptap/vue-3';
 import Youtube from '@tiptap/extension-youtube'
@@ -117,6 +131,9 @@ import QuoteIcon from "@/components/icons/quote.vue";
 import BulletListIcon from "@/components/icons/bullet-list.vue";
 import OrderedListIcon from "@/components/icons/ordered-list.vue";
 import WarningIcon from "@/components/icons/warning.vue";
+
+let tags = $ref([])
+const tagsElement = $ref(null)
 
 const props = withDefaults(
   defineProps<{
@@ -140,15 +157,40 @@ const props = withDefaults(
 
 
 let isSelecting = $ref(false);
-const emit = defineEmits(['update', 'post'])
+const emit = defineEmits(['update', 'updateTags', 'post'])
 
 const update = ( { editor } ) => {
   emit('update', editor.getHTML());
 }
 
+const updateTags = () => {
+  emit('updateTags', tags);
+}
+
 const post = ( ev ) => {
   emit('post');
 }
+
+const updateTag = ( event ) => {
+  const index = event.target.dataset.index;
+  if(!event.target.innerText) {
+    tags.splice( index, 1);
+  } else {
+    tags[index] = event.target.innerText;
+  }
+  updateTags();
+}
+
+const validateTag = (event : Event) => {
+  var newTag = tagsElement.innerText.trim()
+  tags.push(newTag);
+  tagsElement.innerHTML = '';
+  updateTags();
+  event.stopPropagation();
+  event.preventDefault();
+  return false;
+}
+
 
 const selectionChange = ( { editor } ) => {
   const selection = editor.state.selection;
@@ -198,6 +240,8 @@ const addVideo = (ev) => {
 <style lang="scss">
 /* Basic editor styles */
 .tiptap {
+  min-height: 128px;
+
   > * + * {
     margin-top: 0.75em;
   }
@@ -347,6 +391,55 @@ const addVideo = (ev) => {
     color: #adb5bd;
     pointer-events: none;
     height: 0;
+  }
+
+  .tag {
+    background-color: #d1f1d1;
+    display: inline-block;
+    padding: 4px 8px;
+    margin-right: 8px;
+    min-width: 16px;
+    min-height: 16px;
+    margin-top: 4px;
+    border-radius: 8px;
+    outline: none;
+  }
+
+  .tag::before {
+    content: '#';
+    margin-right: 2px;
+  }
+
+  .currentTags {
+    width: 100%;
+    margin-bottom: 8px;
+    min-height: 32px;
+  }
+
+  .tagEditor {
+    width: 100%;
+    margin-bottom: 8px;
+    outline: none;
+  }
+
+  .tagInput:empty:before {
+    content: "#Tag or talk or tag and talk";
+  }
+
+  .tagInput.hasTags:empty:before {
+    content: "#anything else?"
+  }
+
+  .tagInput {
+    outline: none;
+    background-color: #f1f1f1;
+    color: #555;
+    display: inline-block;
+    padding: 4px 8px;
+    margin-right: 8px;
+    min-height: 16px;
+    margin-top: 4px;
+    border-radius: 8px;
   }
 }
 

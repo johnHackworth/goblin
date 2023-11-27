@@ -334,6 +334,16 @@ function focusFooter(ev) {
   .noteText {
     padding: 0 32px;
 
+    .noteTags {
+      top: 16px;
+      position: relative;
+
+      .tagLink {
+        color: rgba(0, 0, 0, 0.65);
+      }
+
+    }
+
     img {
       width: calc(100% + 64px);
       margin-left: -32px;
