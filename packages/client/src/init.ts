@@ -30,6 +30,7 @@ import {
 import { compareVersions } from "compare-versions";
 
 import widgets from "@/widgets";
+import filters from '@/filters';
 import directives from "@/directives";
 import components from "@/components";
 import { version, ui, lang, host } from "@/config";
@@ -205,6 +206,7 @@ function checkForSplash() {
 		$instance: instance,
 		$t: i18n.t,
 		$ts: i18n.ts,
+		$filters: filters
 	};
 
 	widgets(app);

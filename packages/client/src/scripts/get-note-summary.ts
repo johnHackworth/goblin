@@ -1,5 +1,6 @@
 import * as misskey from "firefish-js";
 import { i18n } from "@/i18n";
+import filters from '@/filters';
 
 /**
  * 投稿を表す文字列を取得します。
@@ -18,7 +19,7 @@ export const getNoteSummary = (note: misskey.entities.Note): string => {
 	if (note.cw != null) {
 		summary += note.cw;
 	} else {
-		summary += note.text ? note.text : "";
+		summary += note.text ? filters.onlyText( note.text ) : "";
 	}
 
 	// ファイルが添付されているとき

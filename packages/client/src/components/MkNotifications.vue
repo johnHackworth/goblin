@@ -16,24 +16,9 @@
 				v-slot="{ item: notification }"
 				class="elsfgstc"
 				:items="notifications"
-				:no-gap="true"
+				:no-gap="false"
 			>
-				<XNote
-					v-if="
-						['reply', 'quote', 'mention'].includes(
-							notification.type,
-						)
-					"
-					:key="notification.id"
-					:note="notification.note"
-					:collapsedReply="
-						notification.type === 'reply' ||
-						(notification.type === 'mention' &&
-							notification.note.replyId != null)
-					"
-				/>
 				<XNotification
-					v-else
 					:key="notification.id"
 					:notification="notification"
 					:with-time="true"
@@ -147,7 +132,7 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .elsfgstc {
-	background: var(--panel);
+	background: transparent;
 	border-radius: var(--radius);
 }
 </style>

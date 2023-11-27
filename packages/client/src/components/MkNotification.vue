@@ -5,270 +5,270 @@
 		class="qglefbjs notification"
 		:class="notification.type"
 	>
-		<div class="head">
-			<MkAvatar
-				v-if="notification.type === 'pollEnded'"
-				class="icon"
-				:user="notification.note.user"
-			/>
-			<MkAvatar
-				v-else-if="notification.user"
-				class="icon"
-				:user="notification.user"
-			/>
-			<img
-				v-else-if="notification.icon"
-				class="icon"
-				:src="notification.icon"
-				alt=""
-			/>
-			<div class="sub-icon" :class="notification.type">
-				<i
-					v-if="notification.type === 'follow'"
-					class="ph-hand-waving ph-bold"
-				></i>
-				<i
-					v-else-if="notification.type === 'receiveFollowRequest'"
-					class="ph-clock ph-bold"
-				></i>
-				<i
-					v-else-if="notification.type === 'followRequestAccepted'"
-					class="ph-check ph-bold"
-				></i>
-				<i
-					v-else-if="notification.type === 'groupInvited'"
-					class="ph-identification-card ph-bold"
-				></i>
-				<i
-					v-else-if="notification.type === 'renote'"
-					class="ph-repeat ph-bold"
-				></i>
-				<i
-					v-else-if="notification.type === 'reply'"
-					class="ph-arrow-bend-up-left ph-bold"
-				></i>
-				<i
-					v-else-if="notification.type === 'mention'"
-					class="ph-at ph-bold"
-				></i>
-				<i
-					v-else-if="notification.type === 'quote'"
-					class="ph-quotes ph-bold"
-				></i>
-				<i
-					v-else-if="notification.type === 'pollVote'"
-					class="ph-microphone-stage ph-bold"
-				></i>
-				<i
-					v-else-if="notification.type === 'pollEnded'"
-					class="ph-microphone-stage ph-bold"
-				></i>
-				<!-- notification.reaction が null になることはまずないが、ここでoptional chaining使うと一部ブラウザで刺さるので念の為 -->
-				<XReactionIcon
-					v-else-if="
-						showEmojiReactions && notification.type === 'reaction'
-					"
-					ref="reactionRef"
-					:reaction="
-						notification.reaction
-							? notification.reaction.replace(
-									/^:(\w+):$/,
-									':$1@.:',
-							  )
-							: notification.reaction
-					"
-					:custom-emojis="notification.note.emojis"
-					:no-style="true"
+			<div class="head">
+				<MkAvatar
+					v-if="notification.type === 'pollEnded'"
+					class="icon"
+					:user="notification.note.user"
 				/>
-				<XReactionIcon
-					v-else-if="
-						!showEmojiReactions && notification.type === 'reaction'
-					"
-					:reaction="defaultReaction"
-					:no-style="true"
-				/>
-			</div>
-		</div>
-		<div class="tail">
-			<header>
-				<span v-if="notification.type === 'pollEnded'">{{
-					i18n.ts._notification.pollEnded
-				}}</span>
-				<MkA
+				<MkAvatar
 					v-else-if="notification.user"
-					v-user-preview="notification.user.id"
-					class="name"
-					:to="userPage(notification.user)"
-					><MkUserName :user="notification.user"
-				/></MkA>
-				<span v-else>{{ notification.header }}</span>
-				<MkTime
-					v-if="withTime"
-					:time="notification.createdAt"
-					class="time"
+					class="icon"
+					:user="notification.user"
 				/>
-			</header>
-			<MkA
-				v-if="notification.type === 'reaction'"
-				class="text"
-				:to="notePage(notification.note)"
-				:title="getNoteSummary(notification.note)"
-			>
-				<span>{{ i18n.ts._notification.reacted }}</span>
-				<i class="ph-quotes ph-fill ph-lg"></i>
-				<Mfm
-					:text="getNoteSummary(notification.note)"
-					:plain="true"
-					:nowrap="!full"
-					:custom-emojis="notification.note.emojis"
+				<img
+					v-else-if="notification.icon"
+					class="icon"
+					:src="notification.icon"
+					alt=""
 				/>
-				<i class="ph-quotes ph-fill ph-lg"></i>
-			</MkA>
-			<MkA
-				v-if="notification.type === 'renote'"
-				class="text"
-				:to="notePage(notification.note)"
-				:title="getNoteSummary(notification.note.renote)"
-			>
-				<span>{{ i18n.ts._notification.renoted }}</span>
-				<i class="ph-quotes ph-fill ph-lg"></i>
-				<Mfm
-					:text="getNoteSummary(notification.note.renote)"
-					:plain="true"
-					:nowrap="!full"
-					:custom-emojis="notification.note.renote.emojis"
-				/>
-				<i class="ph-quotes ph-fill ph-lg"></i>
-			</MkA>
-			<MkA
-				v-if="notification.type === 'reply'"
-				class="text"
-				:to="notePage(notification.note)"
-				:title="getNoteSummary(notification.note)"
-			>
-				<Mfm
-					:text="getNoteSummary(notification.note)"
-					:plain="true"
-					:nowrap="!full"
-					:custom-emojis="notification.note.emojis"
-				/>
-			</MkA>
-			<MkA
-				v-if="notification.type === 'mention'"
-				class="text"
-				:to="notePage(notification.note)"
-				:title="getNoteSummary(notification.note)"
-			>
-				<Mfm
-					:text="getNoteSummary(notification.note)"
-					:plain="true"
-					:nowrap="!full"
-					:custom-emojis="notification.note.emojis"
-				/>
-			</MkA>
-			<MkA
-				v-if="notification.type === 'quote'"
-				class="text"
-				:to="notePage(notification.note)"
-				:title="getNoteSummary(notification.note)"
-			>
-				<Mfm
-					:text="getNoteSummary(notification.note)"
-					:plain="true"
-					:nowrap="!full"
-					:custom-emojis="notification.note.emojis"
-				/>
-			</MkA>
-			<MkA
-				v-if="notification.type === 'pollVote'"
-				class="text"
-				:to="notePage(notification.note)"
-				:title="getNoteSummary(notification.note)"
-			>
-				<span>{{ i18n.ts._notification.voted }}</span>
-				<i class="ph-quotes ph-fill ph-lg"></i>
-				<Mfm
-					:text="getNoteSummary(notification.note)"
-					:plain="true"
-					:nowrap="!full"
-					:custom-emojis="notification.note.emojis"
-				/>
-				<i class="ph-quotes ph-fill ph-lg"></i>
-			</MkA>
-			<MkA
-				v-if="notification.type === 'pollEnded'"
-				class="text"
-				:to="notePage(notification.note)"
-				:title="getNoteSummary(notification.note)"
-			>
-				<i class="ph-quotes ph-fill ph-lg"></i>
-				<Mfm
-					:text="getNoteSummary(notification.note)"
-					:plain="true"
-					:nowrap="!full"
-					:custom-emojis="notification.note.emojis"
-				/>
-				<i class="ph-quotes ph-fill ph-lg"></i>
-			</MkA>
-			<span
-				v-if="notification.type === 'follow'"
-				class="text"
-				style="opacity: 0.7"
-				>{{ i18n.ts.youGotNewFollower }}
-				<div v-if="full">
-					<MkFollowButton
-						:user="notification.user"
-						:full="true"
-						:hideMenu="true"
-					/></div
-			></span>
-			<span
-				v-if="notification.type === 'followRequestAccepted'"
-				class="text"
-				style="opacity: 0.7"
-				>{{ i18n.ts.followRequestAccepted }}</span
-			>
-			<span
-				v-if="notification.type === 'receiveFollowRequest'"
-				class="text"
-				style="opacity: 0.7"
-				>{{ i18n.ts.receiveFollowRequest }}
-				<div v-if="full && !followRequestDone">
-					<button class="_textButton" @click="acceptFollowRequest()">
-						{{ i18n.ts.accept }}
-					</button>
-					|
-					<button class="_textButton" @click="rejectFollowRequest()">
-						{{ i18n.ts.reject }}
-					</button>
-				</div></span
-			>
-			<span
-				v-if="notification.type === 'groupInvited'"
-				class="text"
-				style="opacity: 0.7"
-				>{{ i18n.ts.groupInvited }}:
-				<b>{{ notification.invitation.group.name }}</b>
-				<div v-if="full && !groupInviteDone">
-					<button
-						class="_textButton"
-						@click="acceptGroupInvitation()"
-					>
-						{{ i18n.ts.accept }}
-					</button>
-					|
-					<button
-						class="_textButton"
-						@click="rejectGroupInvitation()"
-					>
-						{{ i18n.ts.reject }}
-					</button>
-				</div></span
-			>
-			<span v-if="notification.type === 'app'" class="text">
-				<Mfm :text="notification.body" :nowrap="!full" />
-			</span>
-		</div>
+				<div class="sub-icon" :class="notification.type">
+					<i
+						v-if="notification.type === 'follow'"
+						class="ph-hand-waving ph-bold"
+					></i>
+					<i
+						v-else-if="notification.type === 'receiveFollowRequest'"
+						class="ph-clock ph-bold"
+					></i>
+					<i
+						v-else-if="notification.type === 'followRequestAccepted'"
+						class="ph-check ph-bold"
+					></i>
+					<i
+						v-else-if="notification.type === 'groupInvited'"
+						class="ph-identification-card ph-bold"
+					></i>
+					<i
+						v-else-if="notification.type === 'renote'"
+						class="ph-repeat ph-bold"
+					></i>
+					<i
+						v-else-if="notification.type === 'reply'"
+						class="ph-arrow-bend-up-left ph-bold"
+					></i>
+					<i
+						v-else-if="notification.type === 'mention'"
+						class="ph-at ph-bold"
+					></i>
+					<i
+						v-else-if="notification.type === 'quote'"
+						class="ph-quotes ph-bold"
+					></i>
+					<i
+						v-else-if="notification.type === 'pollVote'"
+						class="ph-microphone-stage ph-bold"
+					></i>
+					<i
+						v-else-if="notification.type === 'pollEnded'"
+						class="ph-microphone-stage ph-bold"
+					></i>
+					<!-- notification.reaction が null になることはまずないが、ここでoptional chaining使うと一部ブラウザで刺さるので念の為 -->
+					<XReactionIcon
+						v-else-if="
+							showEmojiReactions && notification.type === 'reaction'
+						"
+						ref="reactionRef"
+						:reaction="
+							notification.reaction
+								? notification.reaction.replace(
+										/^:(\w+):$/,
+										':$1@.:',
+								  )
+								: notification.reaction
+						"
+						:custom-emojis="notification.note.emojis"
+						:no-style="true"
+					/>
+					<XReactionIcon
+						v-else-if="
+							!showEmojiReactions && notification.type === 'reaction'
+						"
+						:reaction="defaultReaction"
+						:no-style="true"
+					/>
+				</div>
+			</div>
+			<div class="tail">
+				<header>
+					<span v-if="notification.type === 'pollEnded'">{{
+						i18n.ts._notification.pollEnded
+					}}</span>
+					<MkA
+						v-else-if="notification.user"
+						v-user-preview="notification.user.id"
+						class="name"
+						:to="userPage(notification.user)"
+						><MkUserName :user="notification.user"
+					/></MkA>
+					<span v-else>{{ notification.header }}</span>
+					<MkTime
+						v-if="withTime"
+						:time="notification.createdAt"
+						class="time"
+					/>
+				</header>
+				<MkA
+					v-if="notification.type === 'reaction'"
+					class="text"
+					:to="notePage(notification.note)"
+					:title="getNoteSummary(notification.note)"
+				>
+					<span>{{ i18n.ts._notification.reacted }}</span>
+					<i class="ph-quotes ph-fill ph-lg"></i>
+					<Mfm
+						:text="getNoteSummary(notification.note)"
+						:plain="true"
+						:nowrap="!full"
+						:custom-emojis="notification.note.emojis"
+					/>
+					<i class="ph-quotes ph-fill ph-lg"></i>
+				</MkA>
+				<MkA
+					v-if="notification.type === 'renote'"
+					class="text"
+					:to="notePage(notification.note)"
+					:title="getNoteSummary(notification.note.renote)"
+				>
+					<span>{{ i18n.ts._notification.renoted }}</span>
+					<i class="ph-quotes ph-fill ph-lg"></i>
+					<Mfm
+						:text="getNoteSummary(notification.note.renote)"
+						:plain="true"
+						:nowrap="!full"
+						:custom-emojis="notification.note.renote.emojis"
+					/>
+					<i class="ph-quotes ph-fill ph-lg"></i>
+				</MkA>
+				<MkA
+					v-if="notification.type === 'reply'"
+					class="text"
+					:to="notePage(notification.note)"
+					:title="getNoteSummary(notification.note)"
+				>
+					<Mfm
+						:text="getNoteSummary(notification.note)"
+						:plain="true"
+						:nowrap="!full"
+						:custom-emojis="notification.note.emojis"
+					/>
+				</MkA>
+				<MkA
+					v-if="notification.type === 'mention'"
+					class="text"
+					:to="notePage(notification.note)"
+					:title="getNoteSummary(notification.note)"
+				>
+					<Mfm
+						:text="getNoteSummary(notification.note)"
+						:plain="true"
+						:nowrap="!full"
+						:custom-emojis="notification.note.emojis"
+					/>
+				</MkA>
+				<MkA
+					v-if="notification.type === 'quote'"
+					class="text"
+					:to="notePage(notification.note)"
+					:title="getNoteSummary(notification.note)"
+				>
+					<Mfm
+						:text="getNoteSummary(notification.note)"
+						:plain="true"
+						:nowrap="!full"
+						:custom-emojis="notification.note.emojis"
+					/>
+				</MkA>
+				<MkA
+					v-if="notification.type === 'pollVote'"
+					class="text"
+					:to="notePage(notification.note)"
+					:title="getNoteSummary(notification.note)"
+				>
+					<span>{{ i18n.ts._notification.voted }}</span>
+					<i class="ph-quotes ph-fill ph-lg"></i>
+					<Mfm
+						:text="getNoteSummary(notification.note)"
+						:plain="true"
+						:nowrap="!full"
+						:custom-emojis="notification.note.emojis"
+					/>
+					<i class="ph-quotes ph-fill ph-lg"></i>
+				</MkA>
+				<MkA
+					v-if="notification.type === 'pollEnded'"
+					class="text"
+					:to="notePage(notification.note)"
+					:title="getNoteSummary(notification.note)"
+				>
+					<i class="ph-quotes ph-fill ph-lg"></i>
+					<Mfm
+						:text="getNoteSummary(notification.note)"
+						:plain="true"
+						:nowrap="!full"
+						:custom-emojis="notification.note.emojis"
+					/>
+					<i class="ph-quotes ph-fill ph-lg"></i>
+				</MkA>
+				<span
+					v-if="notification.type === 'follow'"
+					class="text"
+					style="opacity: 0.7"
+					>{{ i18n.ts.youGotNewFollower }}
+					<div v-if="full">
+						<MkFollowButton
+							:user="notification.user"
+							:full="true"
+							:hideMenu="true"
+						/></div
+				></span>
+				<span
+					v-if="notification.type === 'followRequestAccepted'"
+					class="text"
+					style="opacity: 0.7"
+					>{{ i18n.ts.followRequestAccepted }}</span
+				>
+				<span
+					v-if="notification.type === 'receiveFollowRequest'"
+					class="text"
+					style="opacity: 0.7"
+					>{{ i18n.ts.receiveFollowRequest }}
+					<div v-if="full && !followRequestDone">
+						<button class="_textButton" @click="acceptFollowRequest()">
+							{{ i18n.ts.accept }}
+						</button>
+						|
+						<button class="_textButton" @click="rejectFollowRequest()">
+							{{ i18n.ts.reject }}
+						</button>
+					</div></span
+				>
+				<span
+					v-if="notification.type === 'groupInvited'"
+					class="text"
+					style="opacity: 0.7"
+					>{{ i18n.ts.groupInvited }}:
+					<b>{{ notification.invitation.group.name }}</b>
+					<div v-if="full && !groupInviteDone">
+						<button
+							class="_textButton"
+							@click="acceptGroupInvitation()"
+						>
+							{{ i18n.ts.accept }}
+						</button>
+						|
+						<button
+							class="_textButton"
+							@click="rejectGroupInvitation()"
+						>
+							{{ i18n.ts.reject }}
+						</button>
+					</div></span
+				>
+				<span v-if="notification.type === 'app'" class="text">
+					<Mfm :text="notification.body" :nowrap="!full" />
+				</span>
+			</div>
 	</div>
 </template>
 
@@ -393,6 +393,7 @@ useTooltip(reactionRef, (showing) => {
 	display: flex;
 	contain: content;
 	margin-bottom: 16px;
+	background: white;
 
 	&.max-width_500px {
 		padding-block: 16px;
