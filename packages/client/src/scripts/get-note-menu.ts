@@ -268,25 +268,7 @@ export function getNoteMenu(props: {
 						null,
 				  ]
 				: []),
-			statePromise.then((state) =>
-				state?.isFavorited
-					? {
-							icon: "ph-bookmark-simple ph-bold ph-lg",
-							text: i18n.ts.unfavorite,
-							action: () => toggleFavorite(false),
-					  }
-					: {
-							icon: "ph-bookmark-simple ph-bold ph-lg",
-							text: i18n.ts.favorite,
-							action: () => toggleFavorite(true),
-					  },
-			),
-			{
-				icon: "ph-paperclip ph-bold ph-lg",
-				text: i18n.ts.clip,
-				action: () => clip(),
-			},
-			!isAppearAuthor
+				!isAppearAuthor
 				? statePromise.then((state) =>
 						state.isWatching
 							? {
@@ -327,53 +309,6 @@ export function getNoteMenu(props: {
 							action: () => togglePin(true),
 					  }
 				: undefined,
-			instance.translatorAvailable
-				? {
-						icon: "ph-translate ph-bold ph-lg",
-						text: i18n.ts.translate,
-						action: translate,
-				  }
-				: undefined,
-			appearNote.url || appearNote.uri
-				? {
-						icon: "ph-arrow-square-out ph-bold ph-lg",
-						text: i18n.ts.showOnRemote,
-						action: () => {
-							window.open(appearNote.url || appearNote.uri, "_blank");
-						},
-				  }
-				: undefined,
-			{
-				type: "parent",
-				icon: "ph-share-network ph-bold ph-lg",
-				text: i18n.ts.share,
-				children: [
-					{
-						icon: "ph-clipboard-text ph-bold ph-lg",
-						text: i18n.ts.copyContent,
-						action: copyContent,
-					},
-					{
-						icon: "ph-link-simple ph-bold ph-lg",
-						text: i18n.ts.copyLink,
-						action: copyLink,
-					},
-					appearNote.url || appearNote.uri
-						? {
-								icon: "ph-link-simple ph-bold ph-lg",
-								text: `${i18n.ts.copyLink} (${i18n.ts.remote})`,
-								action: copyOriginal,
-						  }
-						: undefined,
-					shareAvailable()
-						? {
-								icon: "ph-share-network ph-bold ph-lg",
-								text: i18n.ts.share,
-								action: share,
-						  }
-						: undefined,
-				],
-			},
 			/*
 		...($i.isModerator || $i.isAdmin ? [
 			null,
@@ -432,14 +367,6 @@ export function getNoteMenu(props: {
 				  }
 				: undefined,
 			!isAppearAuthor ? null : undefined,
-			!isAppearAuthor
-				? {
-						type: "parent",
-						icon: "ph-user ph-bold ph-lg",
-						text: i18n.ts.user,
-						children: getUserMenu(appearNote.user),
-				  }
-				: undefined,
 		].filter((x) => x !== undefined);
 	} else {
 		menu = [
