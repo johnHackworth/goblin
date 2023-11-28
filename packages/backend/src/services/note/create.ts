@@ -140,7 +140,7 @@ type Option = {
 	name?: string | null;
 	text?: string | null;
 	reply?: Note | null;
-	reblogtrail?: object[];
+	reblogtrail?: Note[];
 	renote?: Note | null;
 	files?: DriveFile[] | null;
 	poll?: IPoll | null;
@@ -572,6 +572,21 @@ export default async (
 				nmRelatedPromises.push(
 					notifyToWatchersOfRenotee(data.renote, user, nm, type),
 				);
+				if( data.reblogtrail && data.reblogtrail.length > 1 ) {
+					for(let i = 0; i < data.reblogtrail.length; i++) {
+						const rebloggedPost = data.reblogtrail[i];
+						if (rebloggedPost.user && rebloggedPost.user.host === null) {
+							const threadMuted = await NoteThreadMutings.findOneBy({
+								userId: rebloggedPost.userId,
+								threadId: rebloggedPost.id
+							});
+
+							if (!threadMuted) {
+								nm.push(rebloggedPost.userId, type);
+							}
+						}
+					}
+				}
 
 				// Publish event
 				if (user.id !== data.renote.userId && data.renote.userHost === null) {

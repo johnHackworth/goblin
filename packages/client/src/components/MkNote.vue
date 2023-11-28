@@ -114,17 +114,29 @@
 					>
 				</div>
 				<footer ref="footerEl" class="footer" tabindex="-1">
-					<XReactionsViewer
-						v-if="enableEmojiReactions"
-						ref="reactionsViewer"
-						:note="appearNote"
-					/>
+					<button
+						v-tooltip.noDelay.bottom="i18n.ts.reply"
+						class="button _button"
+						@click.stop="reply()"
+					>
+						<i class="ph-arrow-u-up-left ph-bold ph-lg"></i>
+						<template
+							v-if="appearNote.repliesCount > 0 && !detailedView"
+						>
+							<p class="count">{{ appearNote.repliesCount }}</p>
+						</template>
+					</button>
 					<XRenoteButton
 						ref="renoteButton"
 						class="button"
 						:note="appearNote"
 						:count="appearNote.renoteCount"
 						:detailedView="detailedView"
+					/>
+					<XReactionsViewer
+						v-if="enableEmojiReactions"
+						ref="reactionsViewer"
+						:note="appearNote"
 					/>
 					<XStarButtonNoEmoji
 						v-if="!enableEmojiReactions"

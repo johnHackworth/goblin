@@ -20,3 +20,4 @@ How to get the ball rolling:
 - pnpm build
 - pnpm run dev <- stats the development sever
 - go to http://localhost:3000 and you are done
+- For push notifications, run npx web-push generate-vapid-keys, then put the public and private keys into Control Panel > General > ServiceWorker.

@@ -3,7 +3,7 @@
 		<template #header>
 			<MkTab v-model="include" :class="$style.tab">
 				<option :value="null">{{ i18n.ts.notes }}</option>
-<!--				<option value="replies">{{ i18n.ts.notesAndReplies }}</option> -->
+				<option value="replies">{{ i18n.ts.notesAndReplies }}</option>
 				<option value="files">{{ i18n.ts.withFiles }}</option>
 			</MkTab>
 		</template>

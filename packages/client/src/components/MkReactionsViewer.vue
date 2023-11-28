@@ -35,24 +35,9 @@ const isMe = computed(() => $i && $i.id === props.note.userId);
 
 <style lang="scss" scoped>
 .reactions-list {
-	margin-top: 0.2em;
-	width: 100%;
+	margin: 0 8px;
 	display: flex;
 	overflow-x: auto;
-	margin-inline: -24px;
-	padding-inline: 22px 160px;
-	mask: linear-gradient(
-		to right,
-		transparent,
-		black 24px calc(100% - 160px),
-		transparent
-	);
-	-webkit-mask: linear-gradient(
-		to right,
-		transparent,
-		black 24px calc(100% - 160px),
-		transparent
-	);
 	scrollbar-width: none;
 	pointer-events: none;
 	:deep(*) {

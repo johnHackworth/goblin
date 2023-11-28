@@ -57,11 +57,6 @@
 					</div>
 				</div>
 				<footer ref="footerEl" class="footer" tabindex="-1">
-					<XReactionsViewer
-						v-if="enableEmojiReactions"
-						ref="reactionsViewer"
-						:note="appearNote"
-					/>
 					<button
 						v-tooltip.noDelay.bottom="i18n.ts.reply"
 						class="button _button"
@@ -77,6 +72,11 @@
 						class="button"
 						:note="appearNote"
 						:count="appearNote.renoteCount"
+					/>
+					<XReactionsViewer
+						v-if="enableEmojiReactions"
+						ref="reactionsViewer"
+						:note="appearNote"
 					/>
 					<XStarButtonNoEmoji
 						v-if="!enableEmojiReactions"
@@ -110,18 +110,6 @@
 						@click.stop="react()"
 					>
 						<i class="ph-smiley ph-bold ph-lg"></i>
-					</button>
-					<button
-						v-if="
-							enableEmojiReactions &&
-							appearNote.myReaction != null
-						"
-						ref="reactButton"
-						class="button _button reacted"
-						@click.stop="undoReact(appearNote)"
-						v-tooltip.noDelay.bottom="i18n.ts.removeReaction"
-					>
-						<i class="ph-minus ph-bold ph-lg"></i>
 					</button>
 					<XQuoteButton class="button" :note="appearNote" />
 					<button
