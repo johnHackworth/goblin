@@ -12,14 +12,14 @@
 		</template>
 
 		<template #default="{ items: notes }">
-			<div class="giivymft" :class="{ noGap }" ref="tlEl">
+			<div class="giivymft" ref="tlEl">
 				<XList
 					ref="notes"
 					v-slot="{ item: note }"
 					:items="notes"
 					:direction="pagination.reversed ? 'up' : 'down'"
 					:reversed="pagination.reversed"
-					:no-gap="noGap"
+					:no-gap="false"
 					:ad="true"
 					class="notes"
 				>
