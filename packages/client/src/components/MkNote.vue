@@ -66,6 +66,12 @@
 			}"
 		>
 			<div class="main">
+				<div v-if="renotedBy" class="renoteHeader">
+					<MkA
+					:to="`/@${renotedBy.username}`">
+						{{ renotedBy.username }} <ReblogIcon /> reblogged (<MkTime :time="note.createdAt" />)
+					</MkA>
+				</div>
 				<div class="header-container">
 					<MkAvatar class="avatar" :user="appearNote.user" />
 					<XNoteHeader class="header" :note="appearNote" />
@@ -214,6 +220,7 @@ import XStarButtonNoEmoji from "@/components/MkStarButtonNoEmoji.vue";
 import XQuoteButton from "@/components/MkQuoteButton.vue";
 import MkUrlPreview from "@/components/MkUrlPreview.vue";
 import MkVisibility from "@/components/MkVisibility.vue";
+import ReblogIcon from "@/components/icons/reblog.vue";
 import copyToClipboard from "@/scripts/copy-to-clipboard";
 import { url } from "@/config";
 import { pleaseLogin } from "@/scripts/please-login";
@@ -282,6 +289,7 @@ const reactButton = ref<HTMLElement>();
 let appearNote = $computed(() =>
 	isRenote ? (note.renote as misskey.entities.Note) : note,
 );
+const renotedBy = isRenote ? note.user : null;
 const isMyRenote = $i && $i.id === note.userId;
 const showContent = ref(false);
 const isDeleted = ref(false);
@@ -350,7 +358,7 @@ const currentClipPage = inject<Ref<misskey.entities.Clip> | null>(
 	"currentClipPage",
 	null,
 );
-
+console.log(1111111111111, appearNote);
 function onContextmenu(ev: MouseEvent): void {
 	const isLink = (el: HTMLElement) => {
 		if (el.tagName === "A") return true;
@@ -894,7 +902,6 @@ defineExpose({
 			}
 			> .main > .header-container > .avatar {
 				margin-right: 10px;
-				// top: calc(14px + var(--stickyTop, 0px));
 			}
 		}
 	}
@@ -902,6 +909,32 @@ defineExpose({
 	&.max-width_300px {
 		--avatarSize: 40px;
 	}
+}
+
+.renoteHeader {
+	display: flex;
+	color: #555;
+	padding: 0 32px 8px;
+  margin-top: -16px;
+  border-bottom: 0.5px dotted var(--fgTransparent);
+  margin-bottom: 8px;
+	font-size: 12px;
+
+	a {
+		display: flex;
+		height: 16px;
+		align-items: center;
+	}
+
+  time {
+  	font-size: 10px;
+  }
+
+  svg {
+  	margin: 0 8px;
+		fill: #555;
+		width: 10px;
+  }
 }
 
 .muted {
