@@ -64,6 +64,7 @@ export default defineComponent({
 		padding: 10px 8px;
 		margin: 0 8px;
 		border-radius: var(--radius);
+		color: var(--accent);
 
 		&:disabled {
 			opacity: 1 !important;
@@ -71,7 +72,7 @@ export default defineComponent({
 		}
 
 		&[aria-selected="true"] {
-			color: var(--accent);
+			color: var(--panelHighlight);
 			background: var(--accentedBg) !important;
 		}
 

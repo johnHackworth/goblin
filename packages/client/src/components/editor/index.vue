@@ -2,52 +2,57 @@
   <div class="block-editor" >
     <div class="editor-area">
       <div v-if="editor">
-       <div v-if="isSelecting">
-          <button @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
-          <BoldIcon />
-          </button>
-          <button @click="editor.chain().focus().toggleItalic().run()" :disabled="!editor.can().chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">
-            <ItalicIcon />
-          </button>
-          <button @click="editor.chain().focus().toggleStrike().run()" :disabled="!editor.can().chain().focus().toggleStrike().run()" :class="{ 'is-active': editor.isActive('strike') }">
-            <StrikeIcon />
-          </button>
-          <button @click="editor.chain().focus().toggleCodeBlock().run()" :class="{ 'is-active': editor.isActive('codeBlock') }">
-            code block
-          </button>
+        <editor-content :editor="editor" />
+        <div class="tagsContainer">        <div class="currentTags">
+            <span contenteditable class="tag" v-for="(tag, index) in tags" :key="index" @blur="updateTag" :data-index="index">
+              {{ tag }}
+            </span>
+          </div>
 
-        </div>
-      </div>
-      <editor-content :editor="editor" />
-      <div class="tagsContainer">        <div class="currentTags">
-          <span contenteditable class="tag" v-for="(tag, index) in tags" :key="index" @blur="updateTag" :data-index="index">
-            {{ tag }}
-          </span>
-        </div>
-
-        <div class="tagEditor">
-          <div class="tagInput"
-            :class="{ hasTags: tags.length > 0 }"
-            ref="tagsElement"
-            contenteditable
-            @keydown.enter="validateTag" />
+          <div class="tagEditor">
+            <div class="tagInput"
+              :class="{ hasTags: tags.length > 0 }"
+              ref="tagsElement"
+              contenteditable
+              @keydown.enter="validateTag" />
+          </div>
         </div>
       </div>
     </div>
     <footer>
-      <button
-        v-tooltip="i18n.ts.attachFile"
-        class="_button photo"
-        @click="addImage"
-      >
-        <PhotoIcon />
-      </button>
-      <button
-        class="_button video"
-        @click="addVideo"
-      >
-        <VideoIcon />
-      </button>
+      <span v-if="isSelecting" class="formatting">
+        <button @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().chain().focus().toggleBold().run()" class="_button"  :class="{ 'is-active': editor.isActive('bold') }">
+        <BoldIcon />
+        </button>
+        <button @click="editor.chain().focus().toggleItalic().run()" :disabled="!editor.can().chain().focus().toggleItalic().run()"   class="_button" :class="{ 'is-active': editor.isActive('italic') }">
+          <ItalicIcon />
+        </button>
+        <button @click="editor.chain().focus().toggleStrike().run()" :disabled="!editor.can().chain().focus().toggleStrike().run()"  class="_button" :class="{ 'is-active': editor.isActive('strike') }">
+          <StrikeIcon />
+        </button>
+        <button @click="setLink" class="_button" :class="{ 'is-active': editor.isActive('link') }">
+          <LinkIcon />
+        </button>
+        <button @click="editor.chain().focus().toggleSubscript().run()" class="_button" :class="{ 'is-active': editor.isActive('link') }">
+          <SmallIcon />
+        </button>
+
+      </span>
+      <span v-if="!isSelecting" class="formatting">
+        <button
+          v-tooltip="i18n.ts.attachFile"
+          class="_button photo"
+          @click="addImage"
+        >
+          <PhotoIcon />
+        </button>
+        <button
+          class="_button video"
+          @click="addVideo"
+        >
+          <VideoIcon />
+        </button>
+      </span>
       <button
         class="_button quote"
         @click="editor.chain().focus().toggleBlockquote().run()" :class="{ 'is-active': editor.isActive('blockquote') }"
@@ -118,7 +123,11 @@ import Dropcursor from '@tiptap/extension-dropcursor';
 import Image from '@tiptap/extension-image';
 import Paragraph from '@tiptap/extension-paragraph';
 import Text from '@tiptap/extension-text';
-import Placeholder from '@tiptap/extension-placeholder'
+import BubbleMenu from '@tiptap/extension-bubble-menu';
+import Placeholder from '@tiptap/extension-placeholder';
+import Link from '@tiptap/extension-link';
+import Subscript from '@tiptap/extension-subscript';
+
 import { selectFiles } from "@/scripts/select-file";
 import { i18n } from "@/i18n";
 
@@ -128,6 +137,8 @@ import StrikeIcon from '@/components/icons/strike';
 import PhotoIcon from "@/components/icons/photo.vue";
 import VideoIcon from "@/components/icons/video.vue";
 import QuoteIcon from "@/components/icons/quote.vue";
+import LinkIcon from "@/components/icons/link.vue";
+import SmallIcon from "@/components/icons/small.vue";
 import BulletListIcon from "@/components/icons/bullet-list.vue";
 import OrderedListIcon from "@/components/icons/ordered-list.vue";
 import WarningIcon from "@/components/icons/warning.vue";
@@ -207,7 +218,12 @@ const editor = useEditor({
     }),
     Placeholder.configure({
       placeholder: props.placeholder
-    })
+    }),
+    Link.configure({
+      protocols: ['ftp', 'mailto', 'http', 'https'],
+      autolink: true,
+    }),
+    Subscript
   ],
   onUpdate: update,
   onSelectionUpdate: selectionChange,
@@ -223,6 +239,38 @@ const addImage = (ev) => {
       }
     },
   );
+};
+
+const setLink = () => {
+  const previousUrl = editor.value.getAttributes('link').href;
+  const url = window.prompt('URL', previousUrl)
+
+  // cancelled
+  if (url === null) {
+    return
+  }
+
+  // empty
+  if (url === '') {
+    editor
+      .value
+      .chain()
+      .focus()
+      .extendMarkRange('link')
+      .unsetLink()
+      .run()
+
+    return
+  }
+
+  // update link
+  editor
+    .value
+    .chain()
+    .focus()
+    .extendMarkRange('link')
+    .setLink({ href: url })
+    .run()
 };
 
 const addVideo = (ev) => {
@@ -340,6 +388,22 @@ const addVideo = (ev) => {
       height: 28px;
 
     }
+
+    .formatting {
+      ._button {
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+
+        &.is-active {
+          svg {
+            --icon-color-primary: RGB(0, 184, 255);
+          }
+        }
+      }
+    }
+
     .photo svg {
       fill: rgb(255, 73, 48);
     }
@@ -393,6 +457,13 @@ const addVideo = (ev) => {
     height: 0;
   }
 
+  .tiptap {
+    p > a {
+      text-decoration: underline;
+      color: #226;
+    }
+  }
+
   .tag {
     background-color: #d1f1d1;
     display: inline-block;
@@ -440,6 +511,48 @@ const addVideo = (ev) => {
     min-height: 16px;
     margin-top: 4px;
     border-radius: 8px;
+  }
+}
+.bubble-menu {
+  display: flex;
+  background-color: #0D0D0D;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+
+  button {
+    border: none;
+    background: none;
+    color: #FFF;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0 0.2rem;
+    opacity: 0.6;
+
+    &:hover,
+    &.is-active {
+      opacity: 1;
+    }
+  }
+}
+
+.floating-menu {
+  display: flex;
+  background-color: #0D0D0D10;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+
+  button {
+    border: none;
+    background: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0 0.2rem;
+    opacity: 0.6;
+
+    &:hover,
+    &.is-active {
+      opacity: 1;
+    }
   }
 }
 

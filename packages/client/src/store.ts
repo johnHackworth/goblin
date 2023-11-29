@@ -13,8 +13,8 @@ const menuOptions = [
 	"followRequests",
 	"messaging",
 	"explore",
-	"favorites",
-	"channels",
+	//"favorites",
+	//"channels",
 	"search",
 ];
 
