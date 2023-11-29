@@ -76,7 +76,7 @@
         v-tooltip="i18n.ts.useCw"
         class="_button content-warning"
         :class="{ active: useCw }"
-        @click="useCw = !useCw"
+        @click="onEnableContentWarning"
       >
         <WarningIcon />
       </button>
@@ -173,13 +173,15 @@ let tags = $ref(props.initialTags)
 const tagsElement = $ref(null)
 
 let isSelecting = $ref(false);
-const emit = defineEmits(['update', 'updateTags', 'post'])
+const emit = defineEmits(['update', 'updateTags', 'post', 'enableContentWarning'])
 
 const update = ( { editor } ) => {
   emit('update', editor.getHTML());
 }
 
-console.log('-................', props.initialText, props.tags)
+const onEnableContentWarning = () => {
+  emit('enableContentWarning');
+}
 
 const updateTags = () => {
   emit('updateTags', tags);

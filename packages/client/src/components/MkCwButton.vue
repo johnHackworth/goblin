@@ -58,8 +58,10 @@ defineExpose({
 
 <style lang="scss" scoped>
 ._button {
-	font-weight: 700;
-	z-index: 5;
+	width: 100%;
+	position: sticky;
+	bottom: calc(var(--stickyBottom) - 64px);
+
 	> span {
 		background: var(--cwBg) !important;
 		color: var(--cwFg);
@@ -83,12 +85,8 @@ defineExpose({
 	}
 
 	&.fade {
-		display: block;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
 		> span {
+			color: #FFF;
 			display: inline-block;
 			background: var(--panel);
 			padding: 0.4em 1em;
@@ -105,10 +103,11 @@ defineExpose({
 	&.showLess {
 		width: 100%;
 		position: sticky;
-		bottom: calc(var(--stickyBottom) - 1em);
+		bottom: calc(var(--stickyBottom) - 64px);
 		padding: 20px;
 
 		> span {
+			color: #FFF;
 			display: inline-block;
 			background: var(--panel);
 			padding: 6px 10px;

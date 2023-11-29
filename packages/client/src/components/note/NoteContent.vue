@@ -1,6 +1,6 @@
 <template>
   <div class="noteContent">
-    <p v-if="note.cw != null" class="cw">
+    <p v-if="note.cw != null && !showContent" class="cw">
       <Mfm
         v-if="note.cw != ''"
         class="text"
@@ -35,7 +35,7 @@
           tabindex: !showContent ? '-1' : null,
         }"
       >
-        <template v-if="!note.cw">
+        <template v-if="!note.cw || showContent">
           <Reblogtrail :reblogtrail="note.reblogtrail" />
           <template v-if="note.reblogtrail && note.reblogtrail.length">
             <div class="header-container">
@@ -43,25 +43,25 @@
               <NoteHeader class="header" :note="note" />
             </div>
           </template>
-        </template>
-        <div class="noteText">
-          <div v-html="note.text" />
-          <div v-if="note.files && note.files.length" class="noteFiles">
-            <div v-for="(file, index) in note.files" :key="index">
-              <div v-if="file.type.startsWith('image')" class="noteImage">
-                <img :src="file.url" :alt="file.comment"/>
-              </div>
-              <div v-else-if="file.type.startsWith('video')" class="noteImage">
-                <video width="100%" controls>
-                  <source :src="file.url" :type="file.type">
-                </video>
-              </div>
-              <div v-else class="noteFile">
-                <a :href="file.url">{{ file.name }} {{ file.comment }} </a>
+          <div class="noteText">
+            <div v-html="note.text" />
+            <div v-if="note.files && note.files.length" class="noteFiles">
+              <div v-for="(file, index) in note.files" :key="index">
+                <div v-if="file.type.startsWith('image')" class="noteImage">
+                  <img :src="file.url" :alt="file.comment"/>
+                </div>
+                <div v-else-if="file.type.startsWith('video')" class="noteImage">
+                  <video width="100%" controls>
+                    <source :src="file.url" :type="file.type">
+                  </video>
+                </div>
+                <div v-else class="noteFile">
+                  <a :href="file.url">{{ file.name }} {{ file.comment }} </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </template>
       </div>
       <XCwButton
         v-if="note.cw && showContent"
@@ -117,7 +117,6 @@ const urls = props.note.text
   : null;
 
 let showContent = $ref(false);
-
 const mfms = props.note.text
   ? extractMfmWithAnimation(mfm.parse(props.note.text))
   : null;
@@ -172,14 +171,10 @@ function focusFooter(ev) {
 }
 .cw {
   cursor: default;
-  display: block;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 10px;
-  overflow-wrap: break-word;
-  > .text {
-    margin-right: 8px;
-  }
+  padding: 16px;
+  text-align: center;
+  border: 1px dashed;
+  margin: 32px;
 }
 
 .wrmlmaau {

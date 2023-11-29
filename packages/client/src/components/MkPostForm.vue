@@ -90,7 +90,7 @@
 				ref="cwInputEl"
 				v-model="cw"
 				class="cw"
-				:placeholder="i18n.ts.annotation"
+				placeholder="Add your content warning here"
 				@keydown="onKeydown"
 			/>
 			<Tiptap
@@ -105,8 +105,7 @@
 				data-cy-post-form-text
 				@keydown="onKeydown"
 				@paste="onPaste"
-				@compositionupdate="onCompositionUpdate"
-				@compositionend="onCompositionEnd"
+				@enableContentWarning="enableContentWarning"
 				:submitText="submitText"
 				:canPost="canPost"
 				:reply="!!props.reply"
@@ -269,6 +268,10 @@ const draftKey = $computed((): string => {
 
 	return key;
 });
+
+const enableContentWarning = () => {
+	useCw = true;
+}
 
 const placeholder = $computed((): string => {
 	if (props.renote) {
@@ -1194,8 +1197,9 @@ onMounted(() => {
 
 		> .cw {
 			z-index: 1;
-			padding-bottom: 8px;
-			border-bottom: solid 0.5px var(--divider);
+			padding: 16px;
+			margin-bottom:16px;
+			border-bottom: 0.5px solid var(--accent);
 		}
 
 		> .hashtags {
