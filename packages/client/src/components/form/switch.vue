@@ -40,6 +40,7 @@ function toggle(x) {
 	position: relative;
 	display: flex;
 	transition: all 0.2s ease;
+	color: var(--panelHighlight);
 
 	> * {
 		user-select: none;
@@ -96,7 +97,7 @@ function toggle(x) {
 		margin-top: 2px;
 		display: block;
 		transition: inherit;
-		color: var(--fg);
+		color: var(--panelHighlight);
 
 		> span {
 			display: block;
@@ -107,7 +108,7 @@ function toggle(x) {
 
 		> .caption {
 			margin: 8px 0 0 0;
-			color: var(--fgTransparentWeak);
+			color: var(--panelHighlight);
 			font-size: 0.85em;
 
 			&:empty {
