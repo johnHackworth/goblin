@@ -7,8 +7,8 @@
 		v-hotkey="keymap"
 		v-size="{ max: [500, 350] }"
 		class="tkcbzcuz note-container"
-		:tabindex="!isDeleted ? '-1' : null"
-		:class="{ renote: isRenote }"
+		:tabindex="!isDeleted ? '-1' : 10"
+		:class="{ renote: isRenote, private: note.visibility !== 'public'  }"
 		:id="appearNote.id"
 	>
 		<MkNoteSub
@@ -555,13 +555,9 @@ defineExpose({
 	contain: content;
 	-webkit-tap-highlight-color: transparent;
 
-	// これらの指定はパフォーマンス向上には有効だが、ノートの高さは一定でないため、
-	// 下の方までスクロールすると上のノートの高さがここで決め打ちされたものに変化し、表示しているノートの位置が変わってしまう
-	// ノートがマウントされたときに自身の高さを取得し contain-intrinsic-size を設定しなおせばほぼ解決できそうだが、
-	// 今度はその処理自体がパフォーマンス低下の原因にならないか懸念される。また、被リアクションでも高さは変化するため、やはり多少のズレは生じる
-	// 一度レンダリングされた要素はブラウザがよしなにサイズを覚えておいてくれるような実装になるまで待った方が良さそう(なるのか？)
-	//content-visibility: auto;
-	//contain-intrinsic-size: 0 128px;
+	&.private {
+		background-image: linear-gradient(to bottom, #f8b3b3, #f9c6d3, #f6daeb, #f6edf9, #ffffff, #ffffff, #ffffff);
+	}
 
 	&:focus-visible {
 		outline: none;

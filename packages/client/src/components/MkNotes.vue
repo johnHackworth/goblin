@@ -75,6 +75,10 @@ defineExpose({
 			.qtqtichx {
 				background: var(--panel);
 				border-radius: var(--radius);
+
+				&.private {
+					background-image: linear-gradient(to bottom, #f8b3b3, #f9c6d3, #f6daeb, #f6edf9, #ffffff, #ffffff, #ffffff);
+				}
 			}
 		}
 	}
