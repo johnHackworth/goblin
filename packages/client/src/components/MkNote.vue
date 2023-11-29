@@ -11,7 +11,6 @@
 		:class="{ renote: isRenote }"
 		:id="appearNote.id"
 	>
-	{{ JSON.stringify(note) }}
 		<MkNoteSub
 			v-if="appearNote.reply && !detailedView && !collapsedReply"
 			:note="appearNote.reply"
