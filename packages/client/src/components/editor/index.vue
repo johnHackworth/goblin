@@ -143,8 +143,7 @@ import BulletListIcon from "@/components/icons/bullet-list.vue";
 import OrderedListIcon from "@/components/icons/ordered-list.vue";
 import WarningIcon from "@/components/icons/warning.vue";
 
-let tags = $ref([])
-const tagsElement = $ref(null)
+
 
 const props = withDefaults(
   defineProps<{
@@ -158,14 +157,20 @@ const props = withDefaults(
     canPost?: boolean;
     reply?: boolean;
     renote?: boolean;
+    initialTags?: string[];
   }>(),
   {
-    initialContent: '',
+    initialText: '',
+    initialTags: [],
+    text: '',
+    tags: '',
     submitText: 'Post',
     placeholder: 'Go ahead, put anything',
   },
 );
 
+let tags = $ref(props.initialTags)
+const tagsElement = $ref(null)
 
 let isSelecting = $ref(false);
 const emit = defineEmits(['update', 'updateTags', 'post'])
@@ -173,6 +178,8 @@ const emit = defineEmits(['update', 'updateTags', 'post'])
 const update = ( { editor } ) => {
   emit('update', editor.getHTML());
 }
+
+console.log('-................', props.initialText, props.tags)
 
 const updateTags = () => {
   emit('updateTags', tags);
@@ -209,7 +216,7 @@ const selectionChange = ( { editor } ) => {
 }
 
 const editor = useEditor({
-  content: props.initialContent,
+  content: props.initialText,
   extensions: [
     StarterKit,
     Image,

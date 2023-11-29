@@ -111,6 +111,8 @@
 				:canPost="canPost"
 				:reply="!!props.reply"
 				:renote="!!props.renote"
+				:initialTags="props.initialNote ? props.initialNote.tags : []"
+				:initialText="props.initialNote ? removeTagsFromTextContent(props.initialNote.text) : ''"
 			/>
 			<XPollEditor v-if="poll" v-model="poll" @destroyed="poll = null" />
 			<XNotePreview v-if="showPreview" class="preview" :text="text" />
@@ -158,6 +160,10 @@ import { deepClone } from "@/scripts/clone";
 import XCheatSheet from "@/components/MkCheatSheetDialog.vue";
 import { preprocess } from "@/scripts/preprocess";
 
+const removeTagsFromTextContent = ( content ) => {
+	return content.split('<!-- tags -->')[0]
+}
+
 const modal = inject("modal");
 
 const props = withDefaults(
@@ -187,6 +193,8 @@ const props = withDefaults(
 	},
 );
 
+console.log(props);
+
 const emit = defineEmits<{
 	(ev: "posted"): void;
 	(ev: "cancel"): void;
@@ -206,7 +214,7 @@ let reblogtrail = $ref(props.renote?.reblogtrail?.length ? props.renote.reblogtr
 if(props.renote) {
 	let cloneNote = deepClone(props.renote);
 	delete cloneNote.reblogtrail;
-	cloneNote.text = cloneNote.text.split('<!-- tags -->')[0];
+	cloneNote.text = removeTagsFromTextContent(cloneNote.text);
 	reblogtrail.push(cloneNote);
 }
 
@@ -740,8 +748,6 @@ async function post() {
 			? quoteId
 			: undefined;
 	if(reblogtrail.length) {
-		console.log(renoteId, reblogtrail[0].id)
-		 console.log(reblogtrail[0]);
 		renoteId = reblogtrail[0].id
 	}
 
