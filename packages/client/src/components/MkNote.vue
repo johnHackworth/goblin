@@ -8,7 +8,7 @@
 		v-size="{ max: [500, 350] }"
 		class="tkcbzcuz note-container"
 		:tabindex="!isDeleted ? '-1' : 10"
-		:class="{ renote: isRenote, private: note.visibility !== 'public'  }"
+		:class="{ renote: isRenote, private: note.visibility !== 'public', unlisted: note.visibility == 'unlisted'  }"
 		:id="appearNote.id"
 	>
 		<MkNoteSub
@@ -557,6 +557,10 @@ defineExpose({
 
 	&.private {
 		background-image: linear-gradient(to bottom, #f8b3b3, #f9c6d3, #f6daeb, #f6edf9, #ffffff, #ffffff, #ffffff);
+	}
+
+	&.unlisted {
+		 background-image: linear-gradient(to bottom, #f8f5b3, #ffecca, #ffeeed, #fff7ff, #ffffff);
 	}
 
 	&:focus-visible {
