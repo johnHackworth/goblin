@@ -1,5 +1,5 @@
 <template>
-  <div class="noteContent">
+  <div class="noteContent" :class="props.class">
     <p v-if="note.cw != null && !showContent" class="cw">
       <Mfm
         v-if="note.cw != ''"
@@ -94,6 +94,7 @@ const props = defineProps<{
   conversation?;
   detailed?: boolean;
   detailedView?: boolean;
+  class?: string;
 }>();
 
 const emit = defineEmits<{

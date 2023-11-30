@@ -47,10 +47,10 @@
 				<template #icon
 					><i class="ph-download-simple ph-bold ph-lg"></i
 				></template>
-				<FormSwitch v-model="excludeMutingUsers" class="_formBlock">
+				<FormSwitch v-model="excludeMutingUsers" class="_formBlock clearBackground">
 					{{ i18n.ts._exportOrImport.excludeMutingUsers }}
 				</FormSwitch>
-				<FormSwitch v-model="excludeInactiveUsers" class="_formBlock">
+				<FormSwitch v-model="excludeInactiveUsers" class="_formBlock clearBackground">
 					{{ i18n.ts._exportOrImport.excludeInactiveUsers }}
 				</FormSwitch>
 				<MkButton

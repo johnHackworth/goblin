@@ -7,30 +7,14 @@
 		>
 			<div v-for="note in notes" class="note">
 				<div class="content _panel" v-if="note.cw == null">
-					<div class="body">
-						<MkA
-							v-if="note.replyId"
-							class="reply"
-							:to="`/notes/${note.replyId}`"
-							><i class="ph-arrow-bend-up-left ph-bold ph-lg"></i
-						></MkA>
-						<Mfm
-							v-if="note.text"
-							:text="note.text"
-							:author="note.user"
-							:i="$i"
-							:custom-emojis="note.emojis"
-						/>
+							<NoteContent
+								v-if="note.text"
+							class="welcomeNote"
+							:note="note"
+							:detailed="false"
+							:parentId="note.parentId"></NoteContent>
 						<!-- <MkA v-if="note.renoteId" class="rp" :to="`/notes/${note.renoteId}`">RN: ...</MkA> -->
-					</div>
-					<div v-if="note.files.length > 0" class="richcontent">
-						<XMediaList :media-list="note.files" />
-					</div>
-					<div v-if="note.poll">
-						<XPoll :note="note" :readOnly="true" />
-					</div>
 				</div>
-				<XReactionsViewer ref="reactionsViewer" :note="note" />
 			</div>
 		</div>
 	</div>
@@ -40,6 +24,7 @@
 import { defineComponent } from "vue";
 import XReactionsViewer from "@/components/MkReactionsViewer.vue";
 import XMediaList from "@/components/MkMediaList.vue";
+import NoteContent from "@/components/note/NoteContent.vue";
 import XPoll from "@/components/MkPoll.vue";
 import * as os from "@/os";
 
@@ -48,6 +33,7 @@ export default defineComponent({
 		XReactionsViewer,
 		XMediaList,
 		XPoll,
+		NoteContent,
 	},
 
 	data() {
@@ -100,8 +86,8 @@ export default defineComponent({
 
 			> .content {
 				padding: 16px;
-				margin: 0 0 0 auto;
-				max-width: max-content;
+				margin: 0;
+				max-width: 100%;
 				border-radius: 16px;
 
 				> .richcontent {

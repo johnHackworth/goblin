@@ -5,42 +5,16 @@
 			<XTimeline class="tl" />
 			<div class="shape1"></div>
 			<div class="shape2"></div>
-			<img src="/client-assets/misskey.svg" class="misskey" />
-			<div class="emojis">
-				<MkEmoji :normal="true" :no-style="true" emoji="⭐" />
-				<MkEmoji :normal="true" :no-style="true" emoji="❤️" />
-				<MkEmoji :normal="true" :no-style="true" emoji="😆" />
-				<MkEmoji :normal="true" :no-style="true" emoji="🤔" />
-				<MkEmoji :normal="true" :no-style="true" emoji="😮" />
-				<MkEmoji :normal="true" :no-style="true" emoji="🎉" />
-				<MkEmoji :normal="true" :no-style="true" emoji="💢" />
-				<MkEmoji :normal="true" :no-style="true" emoji="😥" />
-				<MkEmoji :normal="true" :no-style="true" emoji="😇" />
-				<MkEmoji :normal="true" :no-style="true" emoji="🥴" />
-				<MkEmoji :normal="true" :no-style="true" emoji="🍮" />
+			<div class="logo">
+				<Logo />
 			</div>
 			<div class="main">
-				<img
-					:src="
-						$instance.iconUrl ||
-						$instance.faviconUrl ||
-						'/favicon.ico'
-					"
-					alt=""
-					class="icon"
-				/>
 				<button class="_button _acrylic menu" @click="showMenu">
 					<i class="ph-dots-three-outline ph-bold ph-lg"></i>
 				</button>
 				<div class="fg">
 					<h1>
-						<img
-							class="logo"
-							v-if="meta.logoImageUrl"
-							:src="meta.logoImageUrl"
-							alt="logo"
-						/>
-						<span v-else class="text">{{ instanceName }}</span>
+						<span class="text">{{ instanceName }}</span>
 					</h1>
 					<div class="about">
 						<div
@@ -106,6 +80,7 @@ import XSigninDialog from "@/components/MkSigninDialog.vue";
 import XSignupDialog from "@/components/MkSignupDialog.vue";
 import MkButton from "@/components/MkButton.vue";
 import XNote from "@/components/MkNote.vue";
+import Logo from "@/components/icons/logo.vue";
 import MkFeaturedPhotos from "@/components/MkFeaturedPhotos.vue";
 import { host, instanceName } from "@/config";
 import * as os from "@/os";
@@ -191,6 +166,17 @@ function showMenu(ev) {
 
 <style lang="scss" scoped>
 .rsqzvsbo {
+	.logo svg {
+		width: 300px;
+	  height: 100px;
+	  --logo-color: white;
+	  --logo-line: transparenet;
+	  z-index: 999999;
+	  position: absolute;
+	  left: 216px;
+	  top: 80px;
+	}
+
 	> .top {
 		display: flex;
 		text-align: center;
