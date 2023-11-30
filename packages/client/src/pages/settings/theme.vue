@@ -27,7 +27,7 @@
 				</div>
 			</div>
 			<div class="sync">
-				<FormSwitch v-model="syncDeviceDarkMode">{{
+				<FormSwitch v-model="syncDeviceDarkMode" class="clearBackground">{{
 					i18n.ts.syncDeviceDarkMode
 				}}</FormSwitch>
 			</div>

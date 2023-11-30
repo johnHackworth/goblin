@@ -98,6 +98,7 @@ export default defineComponent({
 
 				&:hover,
 				&:focus-visible {
+					color: var(--fg);
 					text-decoration: none;
 					background: var(--panelHighlight);
 				}

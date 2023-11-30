@@ -43,6 +43,8 @@ const copy_ = () => {
 
 <style lang="scss" scoped>
 .alqyeyti {
+	color: var(--panelHighlight);
+
 	> .key {
 		font-size: 0.85em;
 		padding: 0 0 0.25em 0;

@@ -30,6 +30,14 @@ defineProps<{
 	overflow: clip;
 	border-radius: 6px;
 
+	.ziffeomt {
+		> .label {
+			span.internalLabel {
+				color: var('--panelHighlight');
+			}
+		}
+	}
+
 	> .header {
 		display: flex;
 		align-items: center;

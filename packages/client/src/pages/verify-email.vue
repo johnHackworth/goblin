@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="processingMsg">
 		{{ i18n.ts.processing }}
 	</div>
 </template>
@@ -37,3 +37,11 @@ definePageMetadata({
 	icon: "ph-user ph-bold ph-lg",
 });
 </script>
+
+<style lang="scss">
+.processingMsg {
+	font-size: 18px;
+	color: var(--fg);
+	padding: 64px;
+}
+</style>

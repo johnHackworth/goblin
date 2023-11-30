@@ -11,7 +11,7 @@
 		</div>
 		<span class="label">
 			<!-- TODO: 無名slotの方は廃止 -->
-			<span><slot name="label"></slot><slot></slot></span>
+			<span class="internalLabel"><slot name="label"></slot><slot></slot></span>
 			<p class="caption"><slot name="caption"></slot></p>
 		</span>
 	</label>
@@ -114,6 +114,12 @@ function toggle(x) {
 			&:empty {
 				display: none;
 			}
+		}
+	}
+
+	&.clearBackground {
+		> .label {
+			color: var(--fg);
 		}
 	}
 

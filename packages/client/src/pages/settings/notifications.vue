@@ -5,11 +5,11 @@
 			>{{ i18n.ts.notificationSetting }}</FormButton
 		>
 		<FormSection>
-			<ForFormButtonmLink
+			<FormButton
 				class="_formBlock"
 				@click="readAllNotifications"
-				>{{ i18n.ts.markAsReadAllNotifications }}</ForFormButtonmLink
-			>
+				>{{ i18n.ts.markAsReadAllNotifications }}
+			</FormButton>
 			<FormButton class="_formBlock" @click="readAllUnreadNotes">{{
 				i18n.ts.markAsReadAllUnreadNotes
 			}}</FormButton>

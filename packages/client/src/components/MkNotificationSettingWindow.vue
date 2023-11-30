@@ -31,6 +31,7 @@
 					v-for="ntype in notificationTypes"
 					:key="ntype"
 					v-model="typesMap[ntype]"
+					class="clearBackground"
 					>{{ i18n.t(`_notification._types.${ntype}`) }}</MkSwitch
 				>
 			</div>
