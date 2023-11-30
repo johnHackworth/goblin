@@ -118,6 +118,7 @@ export default defineComponent({
 
 	> header {
 		display: flex;
+		color: var(--accent);
 		position: relative;
 		z-index: 10;
 		position: sticky;

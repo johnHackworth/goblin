@@ -68,24 +68,24 @@ export const navbarItemDef = reactive({
 		to: '/my/groups',
 	},
 	*/
-	antennas: {
+	/* antennas: {
 		title: "antennas",
 		icon: "ph-flying-saucer ph-bold ph-lg",
 		show: computed(() => $i != null),
 		to: "/my/antennas",
-	},
-	favorites: {
+	},*/
+	/* favorites: {
 		title: "favorites",
 		icon: "ph-bookmark-simple ph-bold ph-lg",
 		show: computed(() => $i != null),
 		to: "/my/favorites",
-	},
+	},*/
 	pages: {
 		title: "pages",
 		icon: "ph-file-text ph-bold ph-lg",
 		to: "/pages",
 	},
-	gallery: {
+	/*  gallery: {
 		title: "gallery",
 		icon: "ph-image-square ph-bold ph-lg",
 		to: "/gallery",
@@ -95,17 +95,17 @@ export const navbarItemDef = reactive({
 		icon: "ph-paperclip ph-bold ph-lg",
 		show: computed(() => $i != null),
 		to: "/my/clips",
-	},
-	channels: {
+	}, */
+	/* channels: {
 		title: "channel",
 		icon: "ph-television ph-bold ph-lg",
 		to: "/channels",
 	},
-	groups: {
+	/* groups: {
 		title: "groups",
 		icon: "ph-users-three ph-bold ph-lg",
 		to: "/my/groups",
-	},
+	},*/
 	ui: {
 		title: "switchUi",
 		icon: "ph-layout ph-bold ph-lg",

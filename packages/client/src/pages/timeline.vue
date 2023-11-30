@@ -207,14 +207,15 @@ const headerActions = $computed(() => [
 		text: i18n.ts.lists,
 		iconOnly: true,
 		handler: chooseList,
-	},
-	{
+	}
+	/* {
 		icon: "ph-flying-saucer ph-bold ph-lg",
 		title: i18n.ts.antennas,
 		text: i18n.ts.antennas,
 		iconOnly: true,
 		handler: chooseAntenna,
-	} /* **TODO: fix timetravel** {
+	} */
+	 /* **TODO: fix timetravel** {
 	icon: 'ph-calendar-blank ph-bold ph-lg',
 	title: i18n.ts.jumpToSpecifiedDate,
 	iconOnly: true,

@@ -802,6 +802,7 @@ defineExpose({
 				}
 			}
 			> .info {
+				padding: 0 32px;
 				display: flex;
 				justify-content: space-between;
 				flex-wrap: wrap;
