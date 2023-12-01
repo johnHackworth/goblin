@@ -10,6 +10,7 @@ import renderEmoji from "./emoji.js";
 import renderMention from "./mention.js";
 import renderHashtag from "./hashtag.js";
 import renderDocument from "./document.js";
+import { fromHtml } from "../../../mfm/from-html.js";
 
 export default async function renderNote(
 	note: Note,
@@ -93,7 +94,7 @@ export default async function renderNote(
 
 	const files = await getPromisedFiles(note.fileIds);
 
-	const text = note.text ?? "";
+	const text = note.text ? fromHtml(note.text) : "";
 	let poll: Poll | null = null;
 
 	if (note.hasPoll) {
