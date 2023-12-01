@@ -173,7 +173,7 @@ let tags = $ref(props.initialTags)
 const tagsElement = $ref(null)
 
 let isSelecting = $ref(false);
-const emit = defineEmits(['update', 'updateTags', 'post', 'enableContentWarning'])
+const emit = defineEmits(['update', 'updateTags', 'post', 'addedImage', 'enableContentWarning'])
 
 const update = ( { editor } ) => {
   emit('update', editor.getHTML());
@@ -243,6 +243,8 @@ const addImage = (ev) => {
     (files_) => {
       for (const file of files_) {
         if(file.url) {
+          console.log('emitint', file)
+          emit('addedImage', file);
           editor.value.chain().focus().setImage({ src: file.url }).createParagraphNear().run();
         }
       }

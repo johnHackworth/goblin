@@ -47,17 +47,19 @@
             <div v-html="note.text" />
             <div v-if="note.files && note.files.length" class="noteFiles">
               <div v-for="(file, index) in note.files" :key="index">
-                <div v-if="file.type.startsWith('image')" class="noteImage">
-                  <img :src="file.url" :alt="file.comment"/>
-                </div>
-                <div v-else-if="file.type.startsWith('video')" class="noteImage">
-                  <video width="100%" controls>
-                    <source :src="file.url" :type="file.type">
-                  </video>
-                </div>
-                <div v-else class="noteFile">
-                  <a :href="file.url">{{ file.name }} {{ file.comment }} </a>
-                </div>
+                <span v-if="note.text.indexOf(file.url) <0">
+                  <div v-if="file.type.startsWith('image')" class="noteImage">
+                    <img :src="file.url" :alt="file.comment"/>
+                  </div>
+                  <div v-else-if="file.type.startsWith('video')" class="noteImage">
+                    <video width="100%" controls>
+                      <source :src="file.url" :type="file.type">
+                    </video>
+                  </div>
+                  <div v-else class="noteFile">
+                    <a :href="file.url">{{ file.name }} {{ file.comment }} </a>
+                  </div>
+                </span>
               </div>
             </div>
           </div>

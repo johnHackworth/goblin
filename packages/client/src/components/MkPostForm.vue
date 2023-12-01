@@ -97,6 +97,7 @@
 				@update="updateTiptap"
 				@updateTags="updateTiptapTags"
 				@post="onEditorPostClick"
+				@addedImage="onEditorImageAdd"
 				ref="textareaEl"
 				v-model="text"
 				class="text"
@@ -510,6 +511,12 @@ function focus() {
 	}
 }
 
+function onEditorImageAdd(file) {
+	console.log(file);
+	files.push(file);
+	console.log('fiules', files)
+}
+
 function chooseFileFrom(ev) {
 	selectFiles(ev.currentTarget ?? ev.target, i18n.ts.attachFile).then(
 		(files_) => {
@@ -744,6 +751,23 @@ function deleteDraft() {
 async function post() {
 	const processedText = preprocess(text);
 
+	const usedFiles = []
+
+	console.log('FFFFFFF', files);
+	console.log('TTTTTT', processedText);
+
+	files.forEach( (file) => {
+		console.log(file, file.url);
+		console.log(file.toRaw)
+		if(file.url) {
+			console.log('a')
+			if(processedText.indexOf(file.url)>=0) {
+				console.log('added¡')
+				usedFiles.push(file);
+			}
+		}
+	});
+		console.log('usedFiles', usedFiles)
 
 	let renoteId = props.renote
 			? props.renote.id
@@ -757,7 +781,7 @@ async function post() {
 	let postData = {
 		editId: props.editId ? props.editId : undefined,
 		text: processedText === "" ? undefined : processedText,
-		fileIds: files.length > 0 ? files.map((f) => f.id) : undefined,
+		fileIds: usedFiles.length > 0 ? usedFiles.map((f) => f.id) : undefined,
 		replyId: props.reply ? props.reply.id : undefined,
 		renoteId: renoteId,
 		channelId: props.channel ? props.channel.id : undefined,
