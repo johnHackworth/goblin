@@ -1,5 +1,5 @@
 <template>
-  <div class="block-editor" >
+  <div class="block-editor" :onPaste="handlePaste" >
     <div class="editor-area">
       <div v-if="editor">
         <editor-content :editor="editor" />
@@ -127,6 +127,7 @@ import BubbleMenu from '@tiptap/extension-bubble-menu';
 import Placeholder from '@tiptap/extension-placeholder';
 import Link from '@tiptap/extension-link';
 import Subscript from '@tiptap/extension-subscript';
+import { formatTimeString } from "@/scripts/format-time-string";
 
 import { selectFiles } from "@/scripts/select-file";
 import { i18n } from "@/i18n";
@@ -158,6 +159,7 @@ const props = withDefaults(
     reply?: boolean;
     renote?: boolean;
     initialTags?: string[];
+    upload: (file: File, name?: string) =>void;
   }>(),
   {
     initialText: '',
@@ -189,6 +191,27 @@ const updateTags = () => {
 
 const post = ( ev ) => {
   emit('post');
+}
+
+const handlePaste = async (ev) => {
+  for (const { item, i } of Array.from(ev.clipboardData.items).map(
+    (item, i) => ({ item, i }),
+  )) {
+    if (item.kind === "file") {
+      const file = item.getAsFile();
+      const lio = file.name.lastIndexOf(".");
+      const ext = lio >= 0 ? file.name.slice(lio) : "";
+      const formatted = `${formatTimeString(
+        new Date(file.lastModified),
+        'file',
+      ).replace(/{{number}}/g, `${i + 1}`)}${ext}`;
+      props.upload(file, formatted).then( (res) => {
+        console.log(res,'¡¡¡¡¡¡¡¡¡¡¡');
+        emit('addedImage', res);
+        editor.value.chain().focus().setImage({ src: res.url }).createParagraphNear().run();
+      });
+    }
+  }
 }
 
 const updateTag = ( event ) => {

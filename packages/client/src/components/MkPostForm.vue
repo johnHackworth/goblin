@@ -105,10 +105,10 @@
 				:placeholder="placeholder"
 				data-cy-post-form-text
 				@keydown="onKeydown"
-				@paste="onPaste"
 				@enableContentWarning="enableContentWarning"
 				:submitText="submitText"
 				:canPost="canPost"
+				:upload="upload"
 				:reply="!!props.reply"
 				:renote="!!props.renote"
 				:initialTags="props.initialNote ? props.initialNote.tags : []"
@@ -512,9 +512,7 @@ function focus() {
 }
 
 function onEditorImageAdd(file) {
-	console.log(file);
 	files.push(file);
-	console.log('fiules', files)
 }
 
 function chooseFileFrom(ev) {
@@ -543,10 +541,9 @@ function updateFileName(file, name) {
 	files[files.findIndex((x) => x.id === file.id)].name = name;
 }
 
-function upload(file: File, name?: string) {
-	uploadFile(file, defaultStore.state.uploadFolder, name).then((res) => {
-		files.push(res);
-	});
+function upload(file: File, name?: string): Promise<any> {
+	console.log('uploading', file)
+	return uploadFile(file, defaultStore.state.uploadFolder, name);
 }
 
 function setVisibility() {
@@ -632,40 +629,6 @@ function onCompositionEnd(ev: CompositionEvent) {
 	imeText = "";
 }
 
-async function onPaste(ev: ClipboardEvent) {
-	for (const { item, i } of Array.from(ev.clipboardData.items).map(
-		(item, i) => ({ item, i }),
-	)) {
-		if (item.kind === "file") {
-			const file = item.getAsFile();
-			const lio = file.name.lastIndexOf(".");
-			const ext = lio >= 0 ? file.name.slice(lio) : "";
-			const formatted = `${formatTimeString(
-				new Date(file.lastModified),
-				defaultStore.state.pastedFileName,
-			).replace(/{{number}}/g, `${i + 1}`)}${ext}`;
-			upload(file, formatted);
-		}
-	}
-
-	const paste = ev.clipboardData.getData("text");
-
-	if (!props.renote && !quoteId && paste.startsWith(url + "/notes/")) {
-		ev.preventDefault();
-
-		os.yesno({
-			type: "info",
-			text: i18n.ts.quoteQuestion,
-		}).then(({ canceled }) => {
-			if (canceled) {
-				insertTextAtCursor(textareaEl, paste);
-				return;
-			}
-
-			quoteId = paste.substr(url.length).match(/^\/notes\/(.+?)\/?$/)[1];
-		});
-	}
-}
 
 function onDragover(ev) {
 	if (!ev.dataTransfer.items[0]) return;
