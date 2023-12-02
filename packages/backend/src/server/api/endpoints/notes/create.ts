@@ -1,3 +1,4 @@
+import { sanitize } from "@/misc/html/index.js";
 import { In } from "typeorm";
 import create from "@/services/note/create.js";
 import type { User } from "@/models/entities/user.js";
@@ -284,15 +285,7 @@ export default define(meta, paramDef, async (ps, user) => {
 			throw new ApiError(meta.errors.noSuchChannel);
 		}
 	}
- 	const logger = apiLogger;
 
- 	logger.info('****************************************+');
- 	logger.info('****************************************+');
- 	logger.info('****************************************+');
- 	logger.info('****************************************+');
- 	logger.info('****************************************+');
- 	logger.info(JSON.stringify(ps));
-	// Create a post
 	const note = await create(user, {
 		createdAt: new Date(),
 		files: files,
@@ -303,7 +296,7 @@ export default define(meta, paramDef, async (ps, user) => {
 					expiresAt: ps.poll.expiresAt ? new Date(ps.poll.expiresAt) : null,
 			  }
 			: undefined,
-		text: ps.text || undefined,
+			text: ps.text ? sanitize(ps.text) : undefined,
 		reblogtrail: ps.reblogtrail,
 		reply,
 		renote,

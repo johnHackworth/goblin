@@ -1,4 +1,5 @@
 import { In } from "typeorm";
+import { sanitize } from "@/misc/html/index.js";
 import create, { index } from "@/services/note/create.js";
 import type { IRemoteUser, User } from "@/models/entities/user.js";
 import {
@@ -354,7 +355,7 @@ export default define(meta, paramDef, async (ps, user) => {
 	}
 
 	if (ps.text) {
-		ps.text = ps.text.trim();
+		ps.text = sanitize(ps.text.trim());
 	} else {
 		ps.text = null;
 	}
@@ -514,7 +515,7 @@ export default define(meta, paramDef, async (ps, user) => {
 
 	const update: Partial<Note> = {};
 	if (ps.text !== note.text) {
-		update.text = ps.text;
+		update.text = ps.text ? sanitize(ps.text) : '';
 	}
 	if (ps.cw !== note.cw || (ps.cw && !note.cw)) {
 		update.cw = ps.cw;
@@ -577,7 +578,7 @@ export default define(meta, paramDef, async (ps, user) => {
 		await NoteEdits.insert({
 			id: genId(),
 			noteId: note.id,
-			text: ps.text || undefined,
+			text: ps.text ? sanitize(ps.text) : undefined,
 			cw: ps.cw,
 			fileIds: ps.fileIds,
 			updatedAt: new Date(),
