@@ -47,7 +47,7 @@
             <div v-html="note.text" />
             <div v-if="note.files && note.files.length" class="noteFiles">
               <div v-for="(file, index) in note.files" :key="index">
-                <span v-if="note.text.indexOf(file.url) <0">
+                <span v-if="!note.text || note.text.indexOf(file.url) <0">
                   <div v-if="file.type.startsWith('image')" class="noteImage">
                     <img :src="file.url" :alt="file.comment"/>
                   </div>
