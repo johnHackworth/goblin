@@ -15,7 +15,7 @@
 		<MkInput
 			v-if="instance.disableRegistration"
 			v-model="invitationCode"
-			class="_formBlock"
+			class="_formBlock clear"
 			type="text"
 			:spellcheck="false"
 			required
@@ -33,7 +33,7 @@
 		>
 			<MkInput
 				v-model="username"
-				class="_formBlock"
+				class="_formBlock clear"
 				type="text"
 				pattern="^[a-zA-Z0-9_]{1,20}$"
 				:spellcheck="false"
@@ -99,7 +99,7 @@
 			<MkInput
 				v-if="instance.emailRequiredForSignup"
 				v-model="email"
-				class="_formBlock"
+				class="_formBlock clear"
 				:debounce="true"
 				type="email"
 				:spellcheck="false"
@@ -177,7 +177,7 @@
 			</MkInput>
 			<MkInput
 				v-model="password"
-				class="_formBlock"
+				class="_formBlock clear"
 				type="password"
 				autocomplete="new-password"
 				required
@@ -211,7 +211,7 @@
 			</MkInput>
 			<MkInput
 				v-model="retypedPassword"
-				class="_formBlock"
+				class="_formBlock clear"
 				type="password"
 				autocomplete="new-password"
 				required
@@ -242,7 +242,7 @@
 			<MkSwitch
 				v-if="instance.tosUrl"
 				v-model="ToSAgreement"
-				class="_formBlock tou"
+				class="_formBlock clear tou"
 			>
 				<I18n :src="i18n.ts.agreeTo">
 					<template #0>
@@ -259,7 +259,7 @@
 				v-if="instance.enableHcaptcha"
 				ref="hcaptcha"
 				v-model="hCaptchaResponse"
-				class="_formBlock captcha"
+				class="_formBlock clear captcha"
 				provider="hcaptcha"
 				:sitekey="instance.hcaptchaSiteKey"
 			/>
@@ -267,12 +267,12 @@
 				v-if="instance.enableRecaptcha"
 				ref="recaptcha"
 				v-model="reCaptchaResponse"
-				class="_formBlock captcha"
+				class="_formBlock clear captcha"
 				provider="recaptcha"
 				:sitekey="instance.recaptchaSiteKey"
 			/>
 			<MkButton
-				class="_formBlock"
+				class="_formBlock clear"
 				type="submit"
 				:disabled="shouldDisableSubmitting"
 				gradate
@@ -503,5 +503,7 @@ function onSubmit(): void {
 	.captcha {
 		margin: 16px 0;
 	}
+
+	color: var(--fg);
 }
 </style>

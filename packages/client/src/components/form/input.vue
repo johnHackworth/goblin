@@ -1,5 +1,5 @@
 <template>
-	<div class="matxzzsk">
+	<div class="matxzzsk" :class="props.class">
 		<label>
 			<div class="label"><slot name="label"></slot></div>
 			<div class="input" :class="{ inline, disabled, focused }">
@@ -86,6 +86,7 @@ const props = defineProps<{
 	manualSave?: boolean;
 	small?: boolean;
 	large?: boolean;
+	class?: string;
 }>();
 
 const emit = defineEmits<{
@@ -302,6 +303,27 @@ defineExpose({
 
 	> .save {
 		margin: 8px 0 0 0;
+	}
+
+	&.clear {
+		> label {
+			> .label {
+				color: var(--fg);
+			}
+
+			> .caption {
+				color: var(--fg);
+			}
+
+			> .input {
+				> input {
+					color: var(--fg);
+					background: var(--panel);
+					border: solid 1px var(--X8);
+					border-color: var(--X8) !important;
+				}
+			}
+		}
 	}
 }
 </style>

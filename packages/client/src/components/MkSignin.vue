@@ -19,7 +19,7 @@
 			<div v-if="!totpLogin" class="normal-signin">
 				<MkInput
 					v-model="username"
-					class="_formBlock"
+					class="_formBlock clear"
 					:placeholder="i18n.ts.username"
 					type="text"
 					pattern="^[a-zA-Z0-9_]+$"
@@ -35,7 +35,7 @@
 				<MkInput
 					v-if="!user || (user && !user.usePasswordLessLogin)"
 					v-model="password"
-					class="_formBlock"
+					class="_formBlock clear"
 					:placeholder="i18n.ts.password"
 					type="password"
 					:with-password-toggle="true"
