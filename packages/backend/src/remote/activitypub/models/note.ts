@@ -389,6 +389,7 @@ export async function createNote(
 			poll,
 			uri: note.id,
 			url: url,
+			reblogtrail: note.reblogtrail,
 		},
 		silent,
 	);

@@ -153,6 +153,7 @@ export default async function renderNote(
 		attributedTo,
 		summary,
 		content,
+		reblogtrail: note.reblogtrail,
 		_misskey_content: text,
 		source: {
 			content: text,
