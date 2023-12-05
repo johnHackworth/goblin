@@ -23,8 +23,9 @@
 				<Reblog /> <span class="reblog-username">{{ $props.renote.user.username }}</span>
 			</span>
 			<div class="right">
-				<span v-if="$i.integrations.tumblr && !$props.renote && !props.reply && $props.editId==null">
-					Post to: <select
+				<span class="tumblrIntegration" v-if="$i.integrations.tumblr && !$props.renote && !props.reply && $props.editId==null">
+					xpost to tumblr:
+					<select
 	      		class="blogSelector"
 	      		v-model="defaultTumblrBlog"
 	      		ref="tumblrBlogSelector"
@@ -1310,6 +1311,24 @@ onMounted(() => {
 				}
 			}
 		}
+	}
+}
+
+.blogSelector {
+	background: #00b8ff;
+  border: none;
+  max-width: 130px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: var(--panelHighlight);
+}
+
+.tumblrIntegration {
+	font-size: 0.9em;
+	opacity: 0.5;
+	transition: opacity 0.5s;
+	&:hover {
+		opacity: 1;
 	}
 }
 </style>

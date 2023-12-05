@@ -248,7 +248,7 @@ apiLogger.warn('11');
     if (link == null) {
       ctx.throw(
         404,
-        `@${result.name}と連携しているMisskeyアカウントはありませんでした...`,
+        `@${result.name} Can't be found...`,
       );
       return;
     }
@@ -298,7 +298,7 @@ apiLogger.warn('11');
       },
     });
 
-    ctx.body = wrapBodyMessages(`tumblr: @${name} connected toMisskey: @${user.username} successfully!`);
+    ctx.body = wrapBodyMessages(`tumblr: @${name} connected to Goblin: @${user.username} successfully!`);
 
     // Publish i updated event
     publishMainStream(
