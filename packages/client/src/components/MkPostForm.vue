@@ -23,6 +23,24 @@
 				<Reblog /> <span class="reblog-username">{{ $props.renote.user.username }}</span>
 			</span>
 			<div class="right">
+				<span v-if="$i.integrations.tumblr && !!props.renote && !!props.reply && props.editId==null">
+					Post to: <select
+	      		class="blogSelector"
+	      		v-model="defaultTumblrBlog"
+	      		ref="tumblrBlogSelector"
+	      	>
+	      		<option
+	      			v-for="name in $i.integrations.tumblr.blogs"
+	      			:value="name"
+	      			>
+	      			{{name}}
+	      		</option>
+	      		<option value=''>
+	      			Don't post to tumblr
+	      		</option>
+	      	</select>
+				</span>
+
 				<span v-if="localOnly" class="local-only"
 					><i class="ph-hand-fist ph-bold ph-lg"></i
 				></span>
@@ -159,6 +177,16 @@ import { uploadFile } from "@/scripts/upload";
 import { deepClone } from "@/scripts/clone";
 import XCheatSheet from "@/components/MkCheatSheetDialog.vue";
 import { preprocess } from "@/scripts/preprocess";
+import { postToTumblr } from "@/scripts/tumblr";
+
+
+const getDefaultTumblrBlog = () => {
+	const stored = localStorage.getItem("defaultTumblrBlog");
+	const integration = $i!.integrations.tumblr? $i!.integrations.tumblr.primary : null;
+	return stored && stored !== ''? stored : integration;
+}
+
+let defaultTumblrBlog = $ref(getDefaultTumblrBlog());
 
 const removeTagsFromTextContent = ( content ) => {
 	return content.split('<!-- tags -->')[0]
@@ -193,8 +221,6 @@ const props = withDefaults(
 	},
 );
 
-console.log(props);
-
 const emit = defineEmits<{
 	(ev: "posted"): void;
 	(ev: "cancel"): void;
@@ -205,6 +231,7 @@ const textareaEl = $ref<HTMLTextAreaElement | null>(null);
 const cwInputEl = $ref<HTMLInputElement | null>(null);
 const hashtagsInputEl = $ref<HTMLInputElement | null>(null);
 const visibilityButton = $ref<HTMLElement | null>(null);
+const tumblrBlogSelector = $ref<HTMLElement | null>(null);
 
 let posting = $ref(false);
 let text = $ref(props.initialText ?? "");
@@ -314,7 +341,6 @@ const maxTextLength = $computed((): number => {
 });
 
 const computedCanPost = $computed((): boolean => {
-	console.log('computing can post)')
 	return (
 		!posting &&
 		!isEditorEmpty &&
@@ -542,7 +568,6 @@ function updateFileName(file, name) {
 }
 
 function upload(file: File, name?: string): Promise<any> {
-	console.log('uploading', file)
 	return uploadFile(file, defaultStore.state.uploadFolder, name);
 }
 
@@ -607,7 +632,6 @@ function clear() {
 }
 
 function onEditorPostClick() {
-	console.log('post!');
 	post();
 }
 
@@ -716,21 +740,13 @@ async function post() {
 
 	const usedFiles = []
 
-	console.log('FFFFFFF', files);
-	console.log('TTTTTT', processedText);
-
 	files.forEach( (file) => {
-		console.log(file, file.url);
-		console.log(file.toRaw)
 		if(file.url) {
-			console.log('a')
 			if(processedText.indexOf(file.url)>=0) {
-				console.log('added¡')
 				usedFiles.push(file);
 			}
 		}
 	});
-		console.log('usedFiles', usedFiles)
 
 	let renoteId = props.renote
 			? props.renote.id
@@ -773,6 +789,10 @@ async function post() {
 			: hashtags_;
 	}
 
+	if($i.integrations.tumblr && tumblrBlogSelector.value && tumblrBlogSelector.value != '') {
+		postData.postToTumblr = tumblrBlogSelector.value;
+	}
+
 	// plugin
 	if (notePostInterruptors.length > 0) {
 		for (const interruptor of notePostInterruptors) {
@@ -795,6 +815,7 @@ async function post() {
 			nextTick(() => {
 				deleteDraft();
 				emit("posted");
+
 				if (postData.text && postData.text !== "") {
 					const hashtags_ = mfm
 						.parse(postData.text)
@@ -836,7 +857,6 @@ function updateTiptapTags( tagsValue ) {
 
 
 function cancel() {
-	console.log('CANCEL')
 	emit("cancel");
 }
 

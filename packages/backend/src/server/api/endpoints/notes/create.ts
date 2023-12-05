@@ -18,8 +18,7 @@ import { ApiError } from "../../error.js";
 import define from "../../define.js";
 import { HOUR } from "@/const.js";
 import { getNote } from "../../common/getters.js";
-
-import { apiLogger } from "../../logger.js";
+import { postToTumblr } from "@/services/tumblr/index.js";
 
 export const meta = {
 	tags: ["notes"],
@@ -310,7 +309,13 @@ export default define(meta, paramDef, async (ps, user) => {
 		apEmojis: ps.noExtractEmojis ? [] : undefined,
 	});
 
+	const newNote = await Notes.pack(note, user);
+
+	if(ps.postToTumblr) {
+		postToTumblr(user, note, ps.postToTumblr);
+	}
+
 	return {
-		createdNote: await Notes.pack(note, user),
+		createdNote: newNote,
 	};
 });

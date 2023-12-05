@@ -251,3 +251,10 @@ reservedUsernames: [
 
 # Seriously. Do NOT fill out the above settings if you're self-hosting.
 # They're much better off being set from the control panel.
+
+
+# if you want to allow connecting goblin accounts to tumblr for auto-sharing post, you need
+# to create an tumblr API app and fill the tokens here
+#tumblr:
+#  key: your-tumblr-app-key
+#  secret: your-tumblr-app-secret

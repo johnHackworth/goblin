@@ -57,6 +57,10 @@ export type Source = {
 		apiKey?: string;
 		ssl: boolean;
 	};
+	tumblr: {
+		key: string;
+		secret: string;
+	}
 
 	proxy?: string;
 	proxySmtp?: string;

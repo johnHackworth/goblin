@@ -22,6 +22,7 @@ import signin from "./private/signin.js";
 import signupPending from "./private/signup-pending.js";
 import verifyEmail from "./private/verify-email.js";
 import discord from "./service/discord.js";
+import tumblr from "./service/tumblr.js";
 import github from "./service/github.js";
 import twitter from "./service/twitter.js";
 import { koaBody } from "koa-body";
@@ -182,6 +183,7 @@ router.post("/signup-pending", signupPending);
 router.post("/verify-email", verifyEmail);
 
 router.use(discord.routes());
+router.use(tumblr.routes());
 router.use(github.routes());
 router.use(twitter.routes());
 
