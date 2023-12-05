@@ -23,7 +23,7 @@
 				<Reblog /> <span class="reblog-username">{{ $props.renote.user.username }}</span>
 			</span>
 			<div class="right">
-				<span v-if="$i.integrations.tumblr && !!props.renote && !!props.reply && props.editId==null">
+				<span v-if="$i.integrations.tumblr && !!$props.renote && !!$props.reply && $props.editId==null">
 					Post to: <select
 	      		class="blogSelector"
 	      		v-model="defaultTumblrBlog"
