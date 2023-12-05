@@ -2,7 +2,7 @@
 	<div class="integrations _formRoot clear clearBackground">
 		<div class="title">Connected Apps</div>
 
-		<FormSection>
+		<FormSection >
 	    <template #label>
 	    	<i class="ph-tumblr-logo ph-bold ph-lg"></i>
 	    	Tumblr
@@ -62,7 +62,7 @@ const githubForm = ref<Window | null>(null);
 const integrations = computed(() => $i!.integrations);
 
 const getDefaultTumblrBlog = () => {
-	const stored = localStorage.getItem("defaultTumblrBlog");
+	const stored = localStorage.getItem("defaultTumblrBlog-" + $i.username);
 	const integration = $i!.integrations.tumblr? $i!.integrations.tumblr.primary : null;
 	return stored && stored !== ''? stored : integration;
 }
@@ -132,7 +132,7 @@ onMounted(() => {
 });
 
 const changeDefaultTumblrBlog = async ( ev ) => {
-	localStorage.setItem("defaultTumblrBlog", ev.target.value);
+	localStorage.setItem("defaultTumblrBlog-" + $i.username, ev.target.value);
 	defaultTumblrBlog = ev.target.value;
 }
 

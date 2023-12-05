@@ -182,7 +182,7 @@ import { postToTumblr } from "@/scripts/tumblr";
 
 
 const getDefaultTumblrBlog = () => {
-	const stored = localStorage.getItem("defaultTumblrBlog");
+	const stored = localStorage.getItem("defaultTumblrBlog-" + $i.username);
 	const integration = $i!.integrations.tumblr? $i!.integrations.tumblr.primary : null;
 	return stored && stored !== ''? stored : integration;
 }
