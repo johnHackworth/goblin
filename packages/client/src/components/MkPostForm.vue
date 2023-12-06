@@ -790,7 +790,7 @@ async function post() {
 			: hashtags_;
 	}
 
-	if($i.integrations.tumblr && tumblrBlogSelector.value && tumblrBlogSelector.value != '') {
+	if($i.integrations.tumblr && tumblrBlogSelector && tumblrBlogSelector.value != '') {
 		postData.postToTumblr = tumblrBlogSelector.value;
 	}
 
