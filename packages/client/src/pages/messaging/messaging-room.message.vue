@@ -111,7 +111,7 @@ function del(): void {
 
 <style lang="scss" scoped>
 .thvuemwp {
-	$me-balloon-color: var(--accent);
+ 	$me-balloon-color: var(--accent);
 	--plyr-color-main: var(--accent);
 
 	position: relative;
@@ -261,7 +261,7 @@ function del(): void {
 			padding-right: 32px;
 
 			> .balloon {
-				$color: var(--X4);
+				$color: var(--X16);
 				background: $color;
 
 				&.noText {
