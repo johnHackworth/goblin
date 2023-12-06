@@ -117,9 +117,13 @@ function toggle(x) {
 		}
 	}
 
-	&.clearBackground {
+	&.clearBackground, &.clear, .clear & {
 		> .label {
 			color: var(--fg);
+		}
+
+		.button {
+			border-color: var(--fgTransparent) !important;
 		}
 	}
 

@@ -9,7 +9,7 @@
 
 		<div class="_monolithic_">
 			<div class="_section">
-				<div class="tbkwesmv">
+				<div class="tbkwesmv clear">
 					<div class="_footer navigation">
 						<div class="step">
 							<button

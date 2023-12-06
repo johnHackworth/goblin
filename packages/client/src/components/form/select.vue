@@ -312,6 +312,29 @@ function show(ev: MouseEvent) {
 			}
 		}
 	}
+	&.clear, .clear & {
+		> .label {
+	    color: var(--fg);
+		}
+
+		> .caption {
+			color: var(--fg);
+		}
+
+		> .input {
+			&:hover {
+				> .select {
+					border-color: var(--accent) !important;
+				}
+			}
+
+			> .select {
+				color: var(--fg);
+				background: var(--panel);
+				border: solid 1px var(--accent) !important;
+			}
+		}
+	}
 }
 </style>
 

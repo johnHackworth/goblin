@@ -305,7 +305,7 @@ defineExpose({
 		margin: 8px 0 0 0;
 	}
 
-	&.clear {
+	&.clear, .clear & {
 		> label {
 			> .label {
 				color: var(--fg);

@@ -278,5 +278,24 @@ export default defineComponent({
 	> .save {
 		margin: 8px 0 0 0;
 	}
+
+	&.clear, .clear & {
+		> label {
+			> .label {
+				color: var(--fg);
+			}
+			> .caption {
+				color: var(--fg);
+
+			}
+			> .input {
+				> textarea {
+					color: var(--fg);
+					background: var(--panel);
+					border: solid 1px var(--accent) !important;
+				}
+			}
+		}
+	}
 }
 </style>
