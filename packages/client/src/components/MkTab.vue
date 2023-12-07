@@ -58,6 +58,7 @@ export default defineComponent({
 	font-size: 90%;
 	border-radius: var(--radius);
 	padding: 10px 8px;
+	border-bottom: 1px solid var(--fgTransparent);
 
 	> button {
 		flex: 1;
@@ -72,7 +73,6 @@ export default defineComponent({
 		}
 
 		&[aria-selected="true"] {
-			color: var(--panelHighlight);
 			background: var(--accentedBg) !important;
 		}
 

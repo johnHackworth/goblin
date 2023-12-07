@@ -43,31 +43,26 @@
 		></MkNote>
 
 		<MkTab v-model="tab" :style="'underline'" @update:modelValue="loadTab">
-<!--			<option value="replies">
+			<option value="replies">
 					<span v-if="note.repliesCount > 0" class="count">{{
 					note.repliesCount
 				}}</span>
 				{{ i18n.ts._notification._types.reply }}
-			</option>-->
+			</option>
 			<option value="renotes" v-if="note.renoteCount > 0">
-				<!-- <i class="ph-repeat ph-bold ph-lg"></i> -->
+				 <i class="ph-repeat ph-bold ph-lg"></i>
 				<span class="count">{{ note.renoteCount }}</span>
-				{{ i18n.ts._notification._types.renote }}
+				Reblogs
 			</option>
 			<option value="reactions" v-if="reactionsCount > 0">
-				<!-- <i class="ph-smiley ph-bold ph-lg"></i> -->
+				<i class="ph-smiley ph-bold ph-lg"></i>
 				<span class="count">{{ reactionsCount }}</span>
 				{{ i18n.ts.reaction }}
 			</option>
 			<option value="quotes" v-if="directQuotes?.length > 0">
-				<!-- <i class="ph-quotes ph-bold ph-lg"></i> -->
+				<i class="ph-quotes ph-bold ph-lg"></i>
 				<span class="count">{{ directQuotes.length }}</span>
 				{{ i18n.ts._notification._types.quote }}
-			</option>
-			<option value="clips" v-if="clips?.length > 0">
-				<!-- <i class="ph-paperclip ph-bold ph-lg"></i> -->
-				<span class="count">{{ clips.length }}</span>
-				{{ i18n.ts.clips }}
 			</option>
 		</MkTab>
 
@@ -95,13 +90,29 @@
 		/>
 		<MkLoading v-else-if="tab === 'quotes' && directQuotes.length > 0" />
 
-		<!-- <MkPagination
+		<MkPagination
 			v-if="tab === 'renotes'"
 			v-slot="{ items }"
 			ref="pagingComponent"
 			:pagination="pagination"
-		> -->
-		<!-- </MkPagination> -->
+			class="reblogs"
+		>
+			<div
+				v-for="(reblog, i) in items"
+				:key="`reblog-$(i)`">
+				<div v-if="reblog.text === null" class="rebloggedBy">
+						<img :src="reblog.user.avatarUrl" />
+						<a :href="'/' + (reblog.user.host ?
+							reblog.user.username + '@' + reblog.user.host :
+							reblog.user.username)">
+							@{{ reblog.user.host ?
+							reblog.user.username + '@' + reblog.user.host :
+							reblog.user.username }}
+						</a>
+				</div>
+			</div>
+
+		</MkPagination>
 		<MkLoading v-else-if="tab === 'renotes' && note.renoteCount > 0" />
 
 		<div v-if="tab === 'clips' && clips.length > 0" class="_content clips">
@@ -368,20 +379,15 @@ if (note.replyId) {
 	});
 }
 
-clips = null;
-os.api("notes/clips", {
-	noteId: note.id,
-}).then((res) => {
-	clips = res;
-});
+const pagination = {
+	endpoint: "notes/renotes",
+	params: {
+		noteId: note.id,
+		limit: 10,
+	}
+};
 
-// const pagination = {
-// 	endpoint: "notes/renotes",
-// 	noteId: note.id,
-// 	limit: 10,
-// };
-
-// const pagingComponent = $ref<InstanceType<typeof MkPagination>>();
+const pagingComponent = $ref<InstanceType<typeof MkPagination>>();
 
 renotes = null;
 function loadTab() {
@@ -390,6 +396,7 @@ function loadTab() {
 			noteId: note.id,
 			limit: 100,
 		}).then((res) => {
+			console.log(res)
 			renotes = res;
 		});
 	}
@@ -684,6 +691,21 @@ onUnmounted(() => {
 				width: $height;
 				height: $height;
 			}
+		}
+	}
+}
+
+.reblogs {
+	padding: 24px;
+
+	.rebloggedBy {
+		display: flex;
+		font-weight: bold;
+
+		img {
+			width: 32px;
+			height: 32px;
+			margin-right: 16px;
 		}
 	}
 }
