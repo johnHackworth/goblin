@@ -89,6 +89,7 @@ const updateTags = () => {
 
 const post = ( ev ) => {
   emit('post');
+  setTimeout(() => { editor.value.commands.clearContent(true); }, 100);
 }
 
 const handlePaste = async (ev) => {
