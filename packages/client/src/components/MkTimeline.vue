@@ -23,6 +23,7 @@
 		ref="tlComponent"
 		:no-gap="!$store.state.showGapBetweenNotesInTimeline"
 		:pagination="pagination"
+		noReplies
 		@queue="(x) => (queue = x)"
 	/>
 </template>
@@ -104,7 +105,7 @@ if (props.src === "antenna") {
 } else if (props.src === "home") {
 	endpoint = "notes/timeline";
 	query = {
-		withReplies: defaultStore.state.showTimelineReplies,
+		withReplies: false,
 	};
 	connection = stream.useChannel("homeTimeline", {
 		withReplies: defaultStore.state.showTimelineReplies,

@@ -27,6 +27,7 @@
 						:key="note._featuredId_ || note._prId_ || note.id"
 						class="qtqtichx"
 						:note="note"
+						v-if="!noReplies || !note.replyId"
 					/>
 				</XList>
 			</div>
@@ -48,6 +49,7 @@ const tlEl = ref<HTMLElement>();
 const props = defineProps<{
 	pagination: Paging;
 	noGap?: boolean;
+	noReplies?: boolean;
 }>();
 
 const pagingComponent = ref<InstanceType<typeof MkPagination>>();
