@@ -2,7 +2,7 @@
 	<section
 		v-size="{ max: [310, 500] }"
 		class="gafaadew"
-		:class="{ modal, _popup: modal }"
+		:class="{ modal, _popup: modal, isReply }"
 		:aria-label="i18n.ts._pages.blocks.post"
 		@dragover.stop="onDragover"
 		@dragenter="onDragenter"
@@ -112,7 +112,20 @@
 				placeholder="Add your content warning here"
 				@keydown="onKeydown"
 			/>
+			<ReplyEditor
+				v-if="isReply"
+				@update="updateTiptap"
+				@post="onEditorPostClick"
+				ref="textareaEl"
+				v-model="text"
+				data-cy-post-form-text
+				@keydown="onKeydown"
+				:submitText="submitText"
+				:canPost="canPost"
+				:reply="true"
+			/>
 			<Tiptap
+				v-else
 				@update="updateTiptap"
 				@updateTags="updateTiptapTags"
 				@post="onEditorPostClick"
@@ -141,7 +154,8 @@
 
 <script lang="ts" setup>
 import { inject, watch, nextTick, onMounted, defineAsyncComponent } from "vue";
-import Tiptap from '@/components/editor/index.vue'
+import Tiptap from '@/components/editor/index.vue';
+import ReplyEditor from '@/components/editor/reply.vue'
 import * as mfm from "mfm-js";
 import * as misskey from "firefish-js";
 import insertTextAtCursor from "insert-text-at-cursor";
@@ -197,6 +211,7 @@ const modal = inject("modal");
 
 const props = withDefaults(
 	defineProps<{
+		isReply?: boolean;
 		reply?: misskey.entities.Note;
 		renote?: misskey.entities.Note;
 		reblogtrail?: misskey.entities.Note[];
@@ -380,7 +395,7 @@ if (props.mention) {
 }
 
 if (
-	props.reply &&
+	props.reply && props.reply.user &&
 	(props.reply.user.username !== $i.username ||
 		(props.reply.user.host != null && props.reply.user.host !== host))
 ) {
@@ -1349,6 +1364,12 @@ onMounted(() => {
 			}
 		}
 
+	}
+
+	&.isReply {
+		header {
+			display: none;
+		}
 	}
 }
 </style>

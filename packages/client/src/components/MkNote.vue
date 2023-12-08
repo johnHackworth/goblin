@@ -289,6 +289,8 @@ const reactButton = ref<HTMLElement>();
 let appearNote = $computed(() =>
 	isRenote ? (note.renote as misskey.entities.Note) : note,
 );
+let reactionCount = ref();
+reactionCount = appearNote.repliesCount + appearNote.renoteCount + appearNote.reactions.length;
 const renotedBy = isRenote ? note.user : null;
 const isMyRenote = $i && $i.id === note.userId;
 const showContent = ref(false);
@@ -318,15 +320,14 @@ useNoteCapture({
 
 function reply(viaKeyboard = false): void {
 	pleaseLogin();
-	os.post(
-		{
-			reply: appearNote,
-			animation: !viaKeyboard,
-		},
-		() => {
-			focus();
-		},
-	);
+	if(props.detailedView) {
+		document.querySelector('.tiptap').focus();
+	} else {
+		router.push(notePage(appearNote));
+		setTimeout( () => {
+			document.querySelector('.tiptap').focus();
+		},500);
+	}
 }
 
 function react(viaKeyboard = false): void {
@@ -816,8 +817,8 @@ defineExpose({
 				z-index: 2;
 				display: flex;
 				flex-wrap: wrap;
-				margin-top: 2em;
-				margin-left: 16px;
+				margin: 2em 16px 0;
+				justify-content: flex-end;
 				> :deep(.button) {
 					position: relative;
 					margin: 0;

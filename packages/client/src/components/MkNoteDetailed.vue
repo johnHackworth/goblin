@@ -66,6 +66,14 @@
 			</option>
 		</MkTab>
 
+		<div class="editor" v-if="tab === 'replies'"	>
+			<XPostForm
+				class="post-form _block"
+				:reply="noteToReplyTo"
+				fixed
+				isReply
+			/>
+		</div>
 		<MkNoteSub
 			v-if="directReplies && tab === 'replies'"
 			v-for="note in directReplies"
@@ -195,6 +203,8 @@ import { stream } from "@/stream";
 import { NoteUpdatedEvent } from "firefish-js/built/streaming.types";
 import appear from "@/directives/appear";
 
+import XPostForm from "@/components/MkPostForm.vue";
+
 const props = defineProps<{
 	note: misskey.entities.Note;
 	pinned?: boolean;
@@ -243,6 +253,16 @@ let clips = $ref();
 let renotes = $ref();
 let isScrolling;
 
+let noteToReplyTo = $ref<misskye.entities.Note>()
+
+if(note.reply) {
+	noteToReplyTo = note.reply;
+} else if (note.quote) {
+	noteToReplyTo = note.quote;
+} else {
+	noteToReplyTo = note;
+}
+
 const reactionsCount = Object.values(props.note.reactions).reduce(
 	(x, y) => x + y,
 	0,
@@ -265,12 +285,7 @@ useNoteCapture({
 
 function reply(viaKeyboard = false): void {
 	pleaseLogin();
-	os.post({
-		reply: note,
-		animation: !viaKeyboard,
-	}).then(() => {
-		focus();
-	});
+	document.querySelector('.tiptap').focus();
 }
 
 function react(viaKeyboard = false): void {
@@ -701,6 +716,7 @@ onUnmounted(() => {
 	.rebloggedBy {
 		display: flex;
 		font-weight: bold;
+		margin-bottom: 8px;
 
 		img {
 			width: 32px;
