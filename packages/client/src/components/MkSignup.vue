@@ -487,12 +487,12 @@ function onSubmit(): void {
 		})
 		.catch(() => {
 			submitting = false;
-			hcaptcha.reset?.();
-			recaptcha.reset?.();
+			hcaptcha && hcaptcha.reset?.();
+			recaptcha && recaptcha.reset?.();
 
 			os.alert({
 				type: "error",
-				text: i18n.ts.somethingHappened,
+				text: "oh oh, there seem to be some error",
 			});
 		});
 }
