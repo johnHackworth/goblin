@@ -1,12 +1,12 @@
 {
-	"name": "firefish",
+	"name": "goblin",
 	"version": "1.0.3",
-	"codename": "aqua",
+	"codename": "kungpow",
 	"repository": {
 		"type": "git",
-		"url": "https://git.joinfirefish.org/firefish/firefish.git"
+		"url": "https://github.com/johnHackworth/goblin.git"
 	},
-	"packageManager": "pnpm@8.6.9",
+	"packageManager": "pnpm@8.12.0+sha256.553e4eb0e2a2c9abcb419b3262bdc7aee8ae3c42e2301a1807d44575786160c9",
 	"private": true,
 	"scripts": {
 		"rebuild": "pnpm run clean && pnpm node ./scripts/build-greet.js && pnpm -r --parallel run build && pnpm run gulp",
@@ -49,7 +49,7 @@
 		"@types/node": "20.4.1",
 		"chalk": "4.1.2",
 		"cross-env": "7.0.3",
-		"cypress": "10.11.0",
+		"cypress": "13.6.1",
 		"execa": "5.1.1",
 		"gulp": "4.0.2",
 		"gulp-cssnano": "2.1.3",
