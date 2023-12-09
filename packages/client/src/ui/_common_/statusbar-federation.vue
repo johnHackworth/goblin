@@ -40,7 +40,7 @@
 
 <script lang="ts" setup>
 import { computed, defineAsyncComponent, ref, toRef, watch } from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import MarqueeText from "@/components/MkMarquee.vue";
 import * as os from "@/os";
 import { useInterval } from "@/scripts/use-interval";

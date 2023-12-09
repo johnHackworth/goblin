@@ -29,7 +29,7 @@
 
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import PhotoSwipe from "photoswipe";
 import "photoswipe/style.css";

@@ -179,7 +179,7 @@ import {
 	reactive,
 	ref,
 } from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import MkTab from "@/components/MkTab.vue";
 import MkNote from "@/components/MkNote.vue";
 import MkNoteSub from "@/components/MkNoteSub.vue";
@@ -200,7 +200,7 @@ import { getNoteMenu } from "@/scripts/get-note-menu";
 import { useNoteCapture } from "@/scripts/use-note-capture";
 import { deepClone } from "@/scripts/clone";
 import { stream } from "@/stream";
-import { NoteUpdatedEvent } from "firefish-js/built/streaming.types";
+import { NoteUpdatedEvent } from "goblin-js/built/streaming.types";
 import appear from "@/directives/appear";
 
 import XPostForm from "@/components/MkPostForm.vue";

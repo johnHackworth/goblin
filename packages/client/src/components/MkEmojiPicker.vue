@@ -164,7 +164,7 @@
 
 <script lang="ts" setup>
 import { ref, computed, watch, onMounted } from "vue";
-import * as Misskey from "firefish-js";
+import * as Misskey from "goblin-js";
 import XSection from "@/components/MkEmojiPicker.section.vue";
 import {
 	emojilist,

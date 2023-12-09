@@ -98,8 +98,8 @@
 
 <script lang="ts" setup>
 import { computed, watch, onMounted, nextTick, onBeforeUnmount } from "vue";
-import * as Misskey from "firefish-js";
-import * as Acct from "firefish-js/built/acct";
+import * as Misskey from "goblin-js";
+import * as Acct from "goblin-js/built/acct";
 import XMessage from "./messaging-room.message.vue";
 import XForm from "./messaging-room.form.vue";
 import XList from "@/components/MkDateSeparatedList.vue";

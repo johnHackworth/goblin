@@ -1,5 +1,5 @@
 import { reactive, ref } from "vue";
-import * as Misskey from "firefish-js";
+import * as Misskey from "goblin-js";
 import { readAndCompressImage } from "browser-image-resizer";
 import { defaultStore } from "@/store";
 import { apiUrl } from "@/config";

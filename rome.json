@@ -8,7 +8,7 @@
   },
 	"formatter": {
 		"ignore": [
-			"packages/firefish-js/api-extractor.json",
+			"packages/goblin-js/api-extractor.json",
 			"packages/*/tsconfig.json",
 			"packages/*/built",
 			"packages/megalodon/lib",

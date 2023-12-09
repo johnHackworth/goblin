@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import { DriveFile } from "firefish-js/built/entities";
+import { DriveFile } from "goblin-js/built/entities";
 import * as os from "@/os";
 import { stream } from "@/stream";
 import { i18n } from "@/i18n";

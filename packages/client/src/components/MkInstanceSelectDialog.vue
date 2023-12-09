@@ -60,7 +60,7 @@ import MkInput from "@/components/form/input.vue";
 import XModalWindow from "@/components/MkModalWindow.vue";
 import * as os from "@/os";
 import { i18n } from "@/i18n";
-import { Instance } from "firefish-js/built/entities";
+import { Instance } from "goblin-js/built/entities";
 
 const emit = defineEmits<{
 	(ev: "ok", selected: Instance): void;

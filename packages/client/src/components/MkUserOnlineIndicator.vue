@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 import {} from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import { i18n } from "@/i18n";
 
 const props = defineProps<{

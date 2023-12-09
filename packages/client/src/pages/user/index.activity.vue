@@ -30,7 +30,7 @@
 
 <script lang="ts" setup>
 import {} from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import MkContainer from "@/components/MkContainer.vue";
 import MkChart from "@/components/MkChart.vue";
 import * as os from "@/os";

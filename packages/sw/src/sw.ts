@@ -1,5 +1,5 @@
 import { get } from "idb-keyval";
-import * as Acct from "firefish-js/built/acct";
+import * as Acct from "goblin-js/built/acct";
 import type { PushNotificationDataMap } from "@/types";
 import {
 	createEmptyNotification,

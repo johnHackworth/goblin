@@ -340,7 +340,7 @@
 
 <script lang="ts" setup>
 import { computed, watch } from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import MkChart from "@/components/MkChart.vue";
 import MkObjectView from "@/components/MkObjectView.vue";
 import FormTextarea from "@/components/form/textarea.vue";

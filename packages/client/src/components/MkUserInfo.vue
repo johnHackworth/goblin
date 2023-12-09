@@ -86,7 +86,7 @@
 </template>
 
 <script lang="ts" setup>
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import MkFollowButton from "@/components/MkFollowButton.vue";
 import XShowMoreButton from "@/components/MkShowMoreButton.vue";
 import MkNumber from "@/components/MkNumber.vue";

@@ -40,7 +40,7 @@ const execa = require("execa");
 	})}, 1);
 
 
-	execa("pnpm", ["--filter", "firefish-js", "watch"], {
+	execa("pnpm", ["--filter", "goblin-js", "watch"], {
 		cwd: __dirname + "/../",
 		stdout: process.stdout,
 		stderr: process.stderr,

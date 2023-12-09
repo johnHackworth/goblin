@@ -274,7 +274,7 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted, watch } from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import XReactionIcon from "@/components/MkReactionIcon.vue";
 import MkFollowButton from "@/components/MkFollowButton.vue";
 import XReactionTooltip from "@/components/MkReactionTooltip.vue";

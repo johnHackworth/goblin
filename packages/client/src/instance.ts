@@ -1,6 +1,6 @@
 import { computed, reactive } from "vue";
 import { api } from "./os";
-import type * as Misskey from "firefish-js";
+import type * as Misskey from "goblin-js";
 
 // TODO: 他のタブと永続化されたstateを同期
 

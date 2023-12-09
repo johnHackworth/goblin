@@ -38,7 +38,7 @@
 
 <script lang="ts" setup>
 import { computed, defineAsyncComponent, ref } from "vue";
-import * as Misskey from "firefish-js";
+import * as Misskey from "goblin-js";
 import * as os from "@/os";
 import { i18n } from "@/i18n";
 import { defaultStore } from "@/store";

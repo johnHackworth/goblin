@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
 import {} from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import Pfp from "@/components/note/Pfp.vue";
 import Header from "@/components/note/Header.vue";
 import NoteContent from "@/components/note/NoteContent.vue";

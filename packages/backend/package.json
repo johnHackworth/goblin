@@ -63,7 +63,7 @@
 		"escape-regexp": "0.0.1",
 		"feed": "4.2.2",
 		"file-type": "17.1.6",
-		"firefish-js": "workspace:*",
+		"goblin-js": "workspace:*",
 		"fluent-ffmpeg": "2.1.2",
 		"got": "12.5.3",
 		"gunzip-maybe": "^1.4.2",

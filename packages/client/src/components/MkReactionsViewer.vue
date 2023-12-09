@@ -18,7 +18,7 @@
 
 <script lang="ts" setup>
 import { computed, ref } from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import { $i } from "@/account";
 import XReaction from "@/components/MkReactionsViewer.reaction.vue";
 

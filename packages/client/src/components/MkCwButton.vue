@@ -15,7 +15,7 @@
 <script lang="ts" setup>
 import { computed, ref } from "vue";
 import { length } from "stringz";
-import type * as misskey from "firefish-js";
+import type * as misskey from "goblin-js";
 import { concat } from "@/scripts/array";
 import { i18n } from "@/i18n";
 

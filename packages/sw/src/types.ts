@@ -1,4 +1,4 @@
-import * as Misskey from "firefish-js";
+import * as Misskey from "goblin-js";
 
 export type SwMessageOrderType = "post" | "push";
 

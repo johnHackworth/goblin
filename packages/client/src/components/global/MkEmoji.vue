@@ -22,7 +22,7 @@
 
 <script lang="ts" setup>
 import { computed, ref, watch } from "vue";
-import type { CustomEmoji } from "firefish-js/built/entities";
+import type { CustomEmoji } from "goblin-js/built/entities";
 import { getStaticImageUrl } from "@/scripts/get-static-image-url";
 import { char2filePath } from "@/scripts/twemoji-base";
 import { defaultStore } from "@/store";

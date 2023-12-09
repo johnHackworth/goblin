@@ -1,4 +1,4 @@
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import { i18n } from "@/i18n";
 import filters from '@/filters';
 

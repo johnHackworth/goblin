@@ -54,7 +54,7 @@
 import { computed, ref, watch } from "vue";
 import { Virtual } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { notificationTypes } from "firefish-js";
+import { notificationTypes } from "goblin-js";
 import XNotifications from "@/components/MkNotifications.vue";
 import XNotes from "@/components/MkNotes.vue";
 import * as os from "@/os";

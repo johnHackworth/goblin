@@ -42,7 +42,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import type { Note } from "firefish-js/built/entities";
+import type { Note } from "goblin-js/built/entities";
 import Ripple from "@/components/MkRipple.vue";
 import XDetails from "@/components/MkUsersTooltip.vue";
 import { pleaseLogin } from "@/scripts/please-login";

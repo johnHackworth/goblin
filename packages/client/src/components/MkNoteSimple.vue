@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 import {} from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import XNoteHeader from "@/components/MkNoteHeader.vue";
 import NoteContent from "@/components/note/NoteContent.vue";
 

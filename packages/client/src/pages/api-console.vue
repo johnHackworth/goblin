@@ -46,7 +46,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import JSON5 from "json5";
-import { Endpoints } from "firefish-js";
+import { Endpoints } from "goblin-js";
 import MkButton from "@/components/MkButton.vue";
 import MkInput from "@/components/form/input.vue";
 import MkTextarea from "@/components/form/textarea.vue";

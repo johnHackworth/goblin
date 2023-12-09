@@ -37,7 +37,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import * as Misskey from "firefish-js";
+import * as Misskey from "goblin-js";
 import XDrive from "@/components/MkDrive.vue";
 import XModalWindow from "@/components/MkModalWindow.vue";
 import number from "@/filters/number";

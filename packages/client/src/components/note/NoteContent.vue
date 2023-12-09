@@ -76,7 +76,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import * as mfm from "mfm-js";
 import * as os from "@/os";
 import XCwButton from "@/components/MkCwButton.vue";

@@ -41,7 +41,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type * as Misskey from "firefish-js";
+import type * as Misskey from "goblin-js";
 import XWindow from "@/components/MkWindow.vue";
 import MkTextarea from "@/components/form/textarea.vue";
 import MkButton from "@/components/MkButton.vue";

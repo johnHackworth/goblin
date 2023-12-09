@@ -205,7 +205,7 @@
 import { computed, inject, onMounted, onUnmounted, reactive, ref } from "vue";
 import * as mfm from "mfm-js";
 import type { Ref } from "vue";
-import type * as misskey from "firefish-js";
+import type * as misskey from "goblin-js";
 import MkNoteSub from "@/components/MkNoteSub.vue";
 import NoteContent from "./note/NoteContent.vue";
 import XNoteHeader from "@/components/MkNoteHeader.vue";
