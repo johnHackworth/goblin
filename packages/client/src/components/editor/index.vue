@@ -190,7 +190,8 @@ const updateTags = () => {
 }
 
 const post = ( ev ) => {
-  emit('post');
+  validateTag()
+  setTimeout(() => { emit('post') }, 100);
 }
 
 const handlePaste = async (ev) => {
@@ -224,13 +225,13 @@ const updateTag = ( event ) => {
   updateTags();
 }
 
-const validateTag = (event : Event) => {
+const validateTag = (event? : Event) => {
   var newTag = tagsElement.innerText.trim()
   tags.push(newTag);
   tagsElement.innerHTML = '';
   updateTags();
-  event.stopPropagation();
-  event.preventDefault();
+  event && event.stopPropagation();
+  event && event.preventDefault();
   return false;
 }
 
