@@ -67,51 +67,6 @@
 							<p class="count">{{ appearNote.repliesCount }}</p>
 						</template>
 					</button>
-					<XRenoteButton
-						ref="renoteButton"
-						class="button"
-						:note="appearNote"
-						:count="appearNote.renoteCount"
-					/>
-					<XReactionsViewer
-						v-if="enableEmojiReactions"
-						ref="reactionsViewer"
-						:note="appearNote"
-					/>
-					<XStarButtonNoEmoji
-						v-if="!enableEmojiReactions"
-						class="button"
-						:note="appearNote"
-						:count="
-							Object.values(appearNote.reactions).reduce(
-								(partialSum, val) => partialSum + val,
-								0,
-							)
-						"
-						:reacted="appearNote.myReaction != null"
-					/>
-					<XStarButton
-						v-if="
-							enableEmojiReactions &&
-							appearNote.myReaction == null
-						"
-						ref="starButton"
-						class="button"
-						:note="appearNote"
-					/>
-					<button
-						v-if="
-							enableEmojiReactions &&
-							appearNote.myReaction == null
-						"
-						ref="reactButton"
-						v-tooltip.noDelay.bottom="i18n.ts.reaction"
-						class="button _button"
-						@click.stop="react()"
-					>
-						<i class="ph-smiley ph-bold ph-lg"></i>
-					</button>
-					<XQuoteButton class="button" :note="appearNote" />
 					<button
 						ref="menuButton"
 						v-tooltip.noDelay.bottom="i18n.ts.more"
@@ -134,7 +89,7 @@
 				:conversation="conversation"
 				:depth="replies.length == 1 ? depth : depth + 1"
 				:replyLevel="replyLevel + 1"
-				:parentId="appearNote.id"
+				:parentId="appearNote.reply ? appearNote.reply.id : appearNote.id"
 				:detailedView="detailedView"
 			/>
 			<div v-else-if="replies.length > 0" class="more">
@@ -170,11 +125,6 @@ import type { Ref } from "vue";
 import * as misskey from "firefish-js";
 import XNoteHeader from "@/components/MkNoteHeader.vue";
 import MkSubNoteContent from "@/components/MkSubNoteContent.vue";
-import XReactionsViewer from "@/components/MkReactionsViewer.vue";
-import XStarButton from "@/components/MkStarButton.vue";
-import XStarButtonNoEmoji from "@/components/MkStarButtonNoEmoji.vue";
-import XRenoteButton from "@/components/MkRenoteButton.vue";
-import XQuoteButton from "@/components/MkQuoteButton.vue";
 import copyToClipboard from "@/scripts/copy-to-clipboard";
 import { url } from "@/config";
 import { pleaseLogin } from "@/scripts/please-login";
@@ -190,6 +140,7 @@ import { i18n } from "@/i18n";
 import { useNoteCapture } from "@/scripts/use-note-capture";
 import { defaultStore } from "@/store";
 import { deepClone } from "@/scripts/clone";
+import { globalEvents } from "@/events";
 
 const router = useRouter();
 
@@ -261,12 +212,8 @@ useNoteCapture({
 
 function reply(viaKeyboard = false): void {
 	pleaseLogin();
-	os.post({
-		reply: appearNote,
-		animation: !viaKeyboard,
-	}).then(() => {
-		focus();
-	});
+	globalEvents.emit('reply', { note: appearNote })
+	console.log('emit', { note: appearNote })
 }
 
 function react(viaKeyboard = false): void {
@@ -393,8 +340,6 @@ function blur() {
 function noteClick(e) {
 	if (document.getSelection().type === "Range" || !expandOnNoteClick) {
 		e.stopPropagation();
-	} else {
-		router.push(notePage(props.note));
 	}
 }
 </script>

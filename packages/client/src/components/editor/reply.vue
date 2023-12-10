@@ -20,6 +20,10 @@
 
 
 <script lang="ts" setup>
+import {
+  onBeforeUnmount,
+  onMounted,
+} from "vue";
 import StarterKit from '@tiptap/starter-kit';
 import { useEditor, EditorContent } from '@tiptap/vue-3';
 import Youtube from '@tiptap/extension-youtube'
@@ -48,8 +52,7 @@ import SmallIcon from "@/components/icons/small.vue";
 import BulletListIcon from "@/components/icons/bullet-list.vue";
 import OrderedListIcon from "@/components/icons/ordered-list.vue";
 import WarningIcon from "@/components/icons/warning.vue";
-
-
+import { globalEvents } from "@/events";
 
 const props = withDefaults(
   defineProps<{
@@ -63,74 +66,41 @@ const props = withDefaults(
     canPost?: boolean;
     reply?: boolean;
     renote?: boolean;
-    initialTags?: string[];
     upload: (file: File, name?: string) =>void;
   }>(),
   {
     initialText: '',
-    initialTags: [],
     text: '',
-    tags: '',
     submitText: 'Post',
     placeholder: 'Go ahead, put anything',
   },
 );
 
-const emit = defineEmits(['update', 'updateTags', 'post', 'addedImage', 'enableContentWarning'])
+onMounted(() => {
+  globalEvents.on('reply', initFromReply);
+});
+
+onBeforeUnmount(() => {
+  globalEvents.off('reply', initFromReply);
+});
+
+const emit = defineEmits(['update', 'post'])
 
 const update = ( { editor } ) => {
   emit('update', editor.getHTML());
 }
 
-
-const updateTags = () => {
-  emit('updateTags', tags);
+const initFromReply = ( { note } ) => {
+  let mention = '@' + note.user.username;
+  if(note.user.host) {
+    mention += '@' + note.user.host
+  }
+  editor.value.chain().insertContent(mention + ': ').focus().run();
 }
 
 const post = ( ev ) => {
   emit('post');
   setTimeout(() => { editor.value.commands.clearContent(true); }, 100);
-}
-
-const handlePaste = async (ev) => {
-  for (const { item, i } of Array.from(ev.clipboardData.items).map(
-    (item, i) => ({ item, i }),
-  )) {
-    if (item.kind === "file") {
-      const file = item.getAsFile();
-      const lio = file.name.lastIndexOf(".");
-      const ext = lio >= 0 ? file.name.slice(lio) : "";
-      const formatted = `${formatTimeString(
-        new Date(file.lastModified),
-        'file',
-      ).replace(/{{number}}/g, `${i + 1}`)}${ext}`;
-      props.upload(file, formatted).then( (res) => {
-        console.log(res,'¡¡¡¡¡¡¡¡¡¡¡');
-        emit('addedImage', res);
-        editor.value.chain().focus().setImage({ src: res.url }).createParagraphNear().run();
-      });
-    }
-  }
-}
-
-const updateTag = ( event ) => {
-  const index = event.target.dataset.index;
-  if(!event.target.innerText) {
-    tags.splice( index, 1);
-  } else {
-    tags[index] = event.target.innerText;
-  }
-  updateTags();
-}
-
-const validateTag = (event : Event) => {
-  var newTag = tagsElement.innerText.trim()
-  tags.push(newTag);
-  tagsElement.innerHTML = '';
-  updateTags();
-  event.stopPropagation();
-  event.preventDefault();
-  return false;
 }
 
 const editor = useEditor({
@@ -152,20 +122,6 @@ const editor = useEditor({
   ],
   onUpdate: update
 })
-
-const addImage = (ev) => {
-  selectFiles(ev.currentTarget ?? ev.target, i18n.ts.attachFile).then(
-    (files_) => {
-      for (const file of files_) {
-        if(file.url) {
-          console.log('emitint', file)
-          emit('addedImage', file);
-          editor.value.chain().focus().setImage({ src: file.url }).createParagraphNear().run();
-        }
-      }
-    },
-  );
-};
 
 const setLink = () => {
   const previousUrl = editor.value.getAttributes('link').href;

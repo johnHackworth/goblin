@@ -773,11 +773,27 @@ async function post() {
 		renoteId = reblogtrail[0].id
 	}
 
+	const getOriginalPost = ( note ) => {
+		if(note.reblogtrail && note.reblogtrail.length) {
+			return getOriginalPost(note.reblogtrail[0]);
+		}
+		if(note.reply) {
+			return getOriginalPost(note.reply);
+		}
+		return note;
+	}
+
+	// if we are replying a reply, we set the parent as the original post if there's one.
+	console.log(props);
+	let replyId = props.reply ?
+		getOriginalPost(props.reply).id
+		: undefined;
+
 	let postData = {
 		editId: props.editId ? props.editId : undefined,
 		text: processedText === "" ? undefined : processedText,
 		fileIds: usedFiles.length > 0 ? usedFiles.map((f) => f.id) : undefined,
-		replyId: props.reply ? props.reply.id : undefined,
+		replyId: replyId,
 		renoteId: renoteId,
 		channelId: props.channel ? props.channel.id : undefined,
 		poll: poll,

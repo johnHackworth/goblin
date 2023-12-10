@@ -127,43 +127,43 @@
 					>
 						<i class="ph-arrow-u-up-left ph-bold ph-lg"></i>
 						<template
-							v-if="appearNote.repliesCount > 0 && !detailedView"
+							v-if="parentNote.repliesCount > 0 && !detailedView"
 						>
-							<p class="count">{{ appearNote.repliesCount }}</p>
+							<p class="count">{{ parentNote.repliesCount }}</p>
 						</template>
 					</button>
 					<XRenoteButton
 						ref="renoteButton"
 						class="button"
-						:note="appearNote"
-						:count="appearNote.renoteCount"
+						:note="parentNote"
+						:count="parentNote.renoteCount"
 						:detailedView="detailedView"
 					/>
 					<XReactionsViewer
 						v-if="enableEmojiReactions"
 						ref="reactionsViewer"
-						:note="appearNote"
+						:note="parentNote"
 					/>
 					<XStarButtonNoEmoji
 						v-if="!enableEmojiReactions"
 						class="button"
-						:note="appearNote"
+						:note="parentNote"
 						:count="
-							Object.values(appearNote.reactions).reduce(
+							Object.values(parentNote.reactions).reduce(
 								(partialSum, val) => partialSum + val,
 								0,
 							)
 						"
-						:reacted="appearNote.myReaction != null"
+						:reacted="parentNote.myReaction != null"
 					/>
 					<XStarButton
 						v-if="
 							enableEmojiReactions &&
-							appearNote.myReaction == null
+							parentNote.myReaction == null
 						"
 						ref="starButton"
 						class="button"
-						:note="appearNote"
+						:note="parentNote"
 					/>
 					<XQuoteButton class="button" :note="appearNote" />
 					<button
@@ -289,6 +289,17 @@ const reactButton = ref<HTMLElement>();
 let appearNote = $computed(() =>
 	isRenote ? (note.renote as misskey.entities.Note) : note,
 );
+
+const getParentNote = ( note ) => {
+	return note.renote ?
+		getParentNote( note.renote ) :
+		note.reply ?
+		getParentNote( note.reply ) :
+		note;
+}
+
+
+let parentNote = $computed(() => getParentNote(note));
 let reactionCount = ref();
 reactionCount = appearNote.repliesCount + appearNote.renoteCount + appearNote.reactions.length;
 const renotedBy = isRenote ? note.user : null;
@@ -359,7 +370,7 @@ const currentClipPage = inject<Ref<misskey.entities.Clip> | null>(
 	"currentClipPage",
 	null,
 );
-console.log(1111111111111, appearNote);
+
 function onContextmenu(ev: MouseEvent): void {
 	const isLink = (el: HTMLElement) => {
 		if (el.tagName === "A") return true;
