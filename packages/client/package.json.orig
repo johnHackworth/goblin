@@ -53,9 +53,15 @@
 		"eventemitter3": "5.0.1",
 		"fast-blurhash": "^1.1.2",
 		"goblin-js": "workspace:*",
+<<<<<<< Updated upstream
+		"focus-trap": "^7.5.2",
+		"focus-trap-vue": "^4.0.2",
+		"gsap": "^3.12.2",
+=======
 		"focus-trap": "^7.5.4",
 		"focus-trap-vue": "^4.0.3",
 		"gsap": "^3.12.3",
+>>>>>>> Stashed changes
 		"idb-keyval": "6.2.1",
 		"insert-text-at-cursor": "0.3.0",
 		"json5": "2.2.3",

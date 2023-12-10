@@ -60,7 +60,6 @@ COPY --chown=goblin:goblin packages/backend/native-utils/npm/linux-arm64-musl/pa
 RUN corepack install -g pnpm@8.12.0
 # && corepack use pnpm@8.12.0
 RUN pnpm i --frozen-lockfile
-# --frozen-lockfile
 
 # Copy in the rest of the native-utils rust files
 COPY --chown=goblin:goblin packages/backend/native-utils packages/backend/native-utils/
@@ -76,7 +75,7 @@ RUN env NODE_ENV=production sh -c "pnpm run --filter '!native-utils' build && pn
 RUN pnpm i --prod --frozen-lockfile
 
 
-############################# Runtime container
+####################### Runtime container #######################
 FROM debian:bookworm-20231120
 ENV PATH="${PATH}:/home/goblin/.npm/bin:/home/goblin/nodejs/bin"
 
@@ -89,25 +88,25 @@ RUN groupadd --gid 1000 goblin \
     && apt-get install -y --no-install-recommends \
         ca-certificates \
         curl \
+        htop \
         less \
         mc \
         nano \
         vim \
         procps \
-        libc6 \
+        libvips-dev  \
+        zip  \
+        unzip  \
+        tini  \
+        ffmpeg \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-#RUN apt update && apt install -y --no-install-recommends \
-#    ffmpeg  \
-#    vips-dev  \ #TODO
-#    zip  \
-#    unzip  \
-#    nodejs-current #TODO
 
 COPY . ./
 
-COPY --from=build /home/goblin/ /home/goblin/
+COPY --from=build /home/goblin/nodejs/bin /home/goblin/nodejs/bin
+COPY --from=build /home/goblin/nodejs/lib /home/goblin/nodejs/lib
 COPY --from=build /goblin/packages/megalodon /goblin/packages/megalodon
 
 # Copy node modules
@@ -123,9 +122,10 @@ COPY --from=build /goblin/packages/backend/built /goblin/packages/backend/built
 COPY --from=build /goblin/packages/backend/assets/instance.css /goblin/packages/backend/assets/instance.css
 COPY --from=build /goblin/packages/backend/native-utils/built /goblin/packages/backend/native-utils/built
 
+# todo is this necessary for runtime?
 RUN corepack enable \
     && corepack install -g pnpm@8.12.0
 ENV NODE_ENV=production
 VOLUME "/goblin/files"
-ENTRYPOINT [ "/sbin/bash", "--" ]
+ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "pnpm", "run", "build" ]

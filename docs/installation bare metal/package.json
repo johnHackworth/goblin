@@ -1,0 +1,16 @@
+{
+  "name": "installation-bare-metal",
+  "version": "1.0.0",
+  "description": "All your metal are belong to you know what yeah it is kinda old",
+  "main": "setup.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Milan",
+  "license": "OSL-3.0",
+  "dependencies": {
+    "@kubernetes/client-node": "^0.20.0",
+    "terminal-kit": "^3.0.1",
+    "zx": "^7.2.3"
+  }
+}
