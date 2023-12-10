@@ -227,9 +227,11 @@ const updateTag = ( event ) => {
 
 const validateTag = (event? : Event) => {
   var newTag = tagsElement.innerText.trim()
-  tags.push(newTag);
+  if(newTag && newTag !== '') {
+    tags.push(newTag);
+    updateTags();
+  }
   tagsElement.innerHTML = '';
-  updateTags();
   event && event.stopPropagation();
   event && event.preventDefault();
   return false;
