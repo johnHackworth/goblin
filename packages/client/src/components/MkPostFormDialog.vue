@@ -20,7 +20,7 @@
 
 <script lang="ts" setup>
 import {} from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import MkModal from "@/components/MkModal.vue";
 import MkPostForm from "@/components/MkPostForm.vue";
 

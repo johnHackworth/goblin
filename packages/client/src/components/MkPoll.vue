@@ -53,7 +53,7 @@
 
 <script lang="ts" setup>
 import { computed, ref } from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import { sum } from "@/scripts/array";
 import { pleaseLogin } from "@/scripts/please-login";
 import * as os from "@/os";

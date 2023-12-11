@@ -38,11 +38,11 @@ const { join } = require("node:path");
 		recursive: true,
 		force: true,
 	});
-	fs.rmSync(join(__dirname, "/../packages/firefish-js/built"), {
+	fs.rmSync(join(__dirname, "/../packages/goblin-js/built"), {
 		recursive: true,
 		force: true,
 	});
-	fs.rmSync(join(__dirname, "/../packages/firefish-js/node_modules"), {
+	fs.rmSync(join(__dirname, "/../packages/goblin-js/node_modules"), {
 		recursive: true,
 		force: true,
 	});

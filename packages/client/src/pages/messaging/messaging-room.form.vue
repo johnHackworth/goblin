@@ -56,7 +56,7 @@
 
 <script lang="ts" setup>
 import { onMounted, watch } from "vue";
-import * as Misskey from "firefish-js";
+import * as Misskey from "goblin-js";
 import autosize from "autosize";
 //import insertTextAtCursor from 'insert-text-at-cursor';
 import { throttle } from "throttle-debounce";

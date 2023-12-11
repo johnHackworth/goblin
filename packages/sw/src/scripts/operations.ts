@@ -2,7 +2,7 @@
  * Operations
  * 各種操作
  */
-import * as Misskey from "firefish-js";
+import * as Misskey from "goblin-js";
 import type { SwMessage, SwMessageOrderType } from "@/types";
 import { getAccountFromId } from "@/scripts/get-account-from-id";
 import { getUrlWithLoginId } from "@/scripts/login-id";

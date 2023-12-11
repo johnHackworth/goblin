@@ -10,7 +10,7 @@
 
 <script lang="ts" setup>
 import {} from "vue";
-import type * as misskey from "firefish-js";
+import type * as misskey from "goblin-js";
 
 const props = withDefaults(
 	defineProps<{

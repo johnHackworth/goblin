@@ -70,7 +70,7 @@
 
 <script lang="ts" setup>
 import { computed, defineComponent, watch } from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import XNoteDetailed from "@/components/MkNoteDetailed.vue";
 import XNotes from "@/components/MkNotes.vue";
 import MkRemoteCaution from "@/components/MkRemoteCaution.vue";

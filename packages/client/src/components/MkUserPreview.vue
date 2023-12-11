@@ -30,8 +30,8 @@
 <script lang="ts" setup>
 import { onMounted } from "vue";
 import MkUserInfo from "@/components/MkUserInfo.vue";
-import * as Acct from "firefish-js/built/acct";
-import type * as misskey from "firefish-js";
+import * as Acct from "goblin-js/built/acct";
+import type * as misskey from "goblin-js";
 import * as os from "@/os";
 
 const props = defineProps<{

@@ -27,7 +27,7 @@
 
 <script lang="ts" setup>
 import {} from "vue";
-import type * as misskey from "firefish-js";
+import type * as misskey from "goblin-js";
 import bytes from "@/filters/bytes";
 import number from "@/filters/number";
 import MkModal from "@/components/MkModal.vue";

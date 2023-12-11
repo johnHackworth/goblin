@@ -9,7 +9,7 @@
  </template>
 
 <script lang="ts" setup>
-import type * as misskey from "firefish-js";
+import type * as misskey from "goblin-js";
 import { acct, userPage } from "@/filters/user";
 
 const props = withDefaults(

@@ -1,4 +1,4 @@
-import * as Misskey from "firefish-js";
+import * as Misskey from "goblin-js";
 import { Ref } from "vue";
 
 export type MenuAction = (ev: MouseEvent) => void;

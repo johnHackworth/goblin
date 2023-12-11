@@ -25,7 +25,7 @@
 
 <script lang="ts" setup>
 import { computed } from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import MkPagination from "@/components/MkPagination.vue";
 
 const props = defineProps<{

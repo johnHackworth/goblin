@@ -58,7 +58,7 @@
 <script lang="ts" setup>
 import { onMounted } from "vue";
 import VuePlyr from "vue-plyr";
-import type * as misskey from "firefish-js";
+import type * as misskey from "goblin-js";
 import { ColdDeviceStorage } from "@/store";
 import "vue-plyr/dist/vue-plyr.css";
 import { i18n } from "@/i18n";

@@ -44,7 +44,7 @@
 
 <script lang="ts" setup>
 import {} from "vue";
-import { permissions as kinds } from "firefish-js";
+import { permissions as kinds } from "goblin-js";
 import MkInput from "./form/input.vue";
 import MkSwitch from "./form/switch.vue";
 import MkButton from "./MkButton.vue";

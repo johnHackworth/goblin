@@ -1,7 +1,5 @@
-# Visual Studio Code
+# IDEs
 .vscode
-
-# Intelij-IDEA
 .idea
 
 # Node.js
@@ -42,3 +40,4 @@ packages/backend/assets/instance.css
 .git
 Dockerfile
 docker-compose.yml
+docs

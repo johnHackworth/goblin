@@ -22,7 +22,7 @@
 
 <script lang="ts" setup>
 import { computed, ref } from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import XDetails from "@/components/MkReactionsViewer.details.vue";
 import XReactionIcon from "@/components/MkReactionIcon.vue";
 import * as os from "@/os";

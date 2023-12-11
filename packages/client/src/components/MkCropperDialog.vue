@@ -37,7 +37,7 @@
 
 <script lang="ts" setup>
 import { nextTick, onMounted } from "vue";
-import type * as misskey from "firefish-js";
+import type * as misskey from "goblin-js";
 import Cropper from "cropperjs";
 import tinycolor from "tinycolor2";
 import XModalWindow from "@/components/MkModalWindow.vue";

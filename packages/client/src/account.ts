@@ -1,5 +1,5 @@
 import { defineAsyncComponent, reactive } from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import { i18n } from "./i18n";
 import { del, get, set } from "@/scripts/idb-proxy";
 import { apiUrl } from "@/config";

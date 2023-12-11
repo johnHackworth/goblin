@@ -140,7 +140,7 @@ import {
 	ref,
 	watch,
 } from "vue";
-import * as Misskey from "firefish-js";
+import * as Misskey from "goblin-js";
 import MkButton from "./MkButton.vue";
 import XNavFolder from "@/components/MkDrive.navFolder.vue";
 import XFolder from "@/components/MkDrive.folder.vue";

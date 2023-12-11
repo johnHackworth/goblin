@@ -24,7 +24,7 @@
 
 <script lang="ts" setup>
 import { computed } from "vue";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import MkUserInfo from "@/components/MkUserInfo.vue";
 import MkPagination from "@/components/MkPagination.vue";
 

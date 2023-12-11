@@ -59,7 +59,7 @@ import * as os from "@/os";
 import { i18n } from "@/i18n";
 import { definePageMetadata } from "@/scripts/page-metadata";
 import { $i } from "@/account";
-import { toString } from "firefish-js/built/acct";
+import { toString } from "goblin-js/built/acct";
 
 let moveToAccount = $ref("");
 let accountAlias = $ref([""]);

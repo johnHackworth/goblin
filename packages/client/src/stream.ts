@@ -1,4 +1,4 @@
-import * as Misskey from "firefish-js";
+import * as Misskey from "goblin-js";
 import { markRaw } from "vue";
 import { $i } from "@/account";
 import { url } from "@/config";

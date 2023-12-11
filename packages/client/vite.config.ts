@@ -89,7 +89,7 @@ export default defineConfig(({ command, mode }) => {
 			sourcemap: process.env.NODE_ENV != "production",
 			reportCompressedSize: false,
 			commonjsOptions: {
-				include: [/firefish-js/, /node_modules/],
+				include: [/goblin-js/, /node_modules/],
 			},
 		},
 		optimizeDeps: {

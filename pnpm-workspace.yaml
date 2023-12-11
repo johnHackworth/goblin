@@ -3,5 +3,5 @@ packages:
  - 'packages/backend/native-utils'
  - 'packages/client'
  - 'packages/sw'
- - 'packages/firefish-js'
+ - 'packages/goblin-js'
  - 'packages/megalodon'

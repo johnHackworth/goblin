@@ -29,7 +29,7 @@
 
 <script lang="ts" setup>
 import { computed, watch, provide } from "vue";
-import type * as misskey from "firefish-js";
+import type * as misskey from "goblin-js";
 import XNotes from "@/components/MkNotes.vue";
 import { $i } from "@/account";
 import { i18n } from "@/i18n";

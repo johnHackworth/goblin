@@ -39,7 +39,7 @@
 
 <script lang="ts" setup>
 import { computed, defineAsyncComponent, ref } from "vue";
-import * as Misskey from "firefish-js";
+import * as Misskey from "goblin-js";
 import copyToClipboard from "@/scripts/copy-to-clipboard";
 import MkDriveFileThumbnail from "@/components/MkDriveFileThumbnail.vue";
 import bytes from "@/filters/bytes";

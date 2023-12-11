@@ -1,6 +1,6 @@
 import { throttle } from "throttle-debounce";
 import { markRaw } from "vue";
-import { notificationTypes } from "firefish-js";
+import { notificationTypes } from "goblin-js";
 import { Storage } from "../../pizzax";
 import { i18n } from "@/i18n";
 import { api } from "@/os";

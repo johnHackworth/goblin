@@ -27,7 +27,7 @@
 
 
 <script lang="ts" setup>
-import type * as misskey from "firefish-js";
+import type * as misskey from "goblin-js";
 import MkVisibility from "@/components/MkVisibility.vue";
 import { notePage } from "@/filters/note";
 import { userPage } from "@/filters/user";

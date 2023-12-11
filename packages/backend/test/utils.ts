@@ -6,7 +6,7 @@ import * as childProcess from "child_process";
 import * as http from "node:http";
 import { SIGKILL } from "constants";
 import WebSocket from "ws";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import fetch from "node-fetch";
 import FormData from "form-data";
 import { DataSource } from "typeorm";

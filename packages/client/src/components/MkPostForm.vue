@@ -157,11 +157,11 @@ import { inject, watch, nextTick, onMounted, defineAsyncComponent } from "vue";
 import Tiptap from '@/components/editor/index.vue';
 import ReplyEditor from '@/components/editor/reply.vue'
 import * as mfm from "mfm-js";
-import * as misskey from "firefish-js";
+import * as misskey from "goblin-js";
 import insertTextAtCursor from "insert-text-at-cursor";
 import { length } from "stringz";
 import { toASCII } from "punycode/";
-import * as Acct from "firefish-js/built/acct";
+import * as Acct from "goblin-js/built/acct";
 import { throttle } from "throttle-debounce";
 import XNoteSimple from "@/components/MkNoteSimple.vue";
 import XNotePreview from "@/components/MkNotePreview.vue";

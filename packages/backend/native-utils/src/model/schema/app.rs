@@ -18,7 +18,7 @@ pub struct App {
     pub is_authorized: Option<bool>,
 }
 
-/// This represents `permissions` in `packages/firefish-js/src/consts.ts`.
+/// This represents `permissions` in `packages/goblin-js/src/consts.ts`.
 #[derive(Clone, Debug, PartialEq, Eq, JsonSchema, ToSchema)]
 pub enum AppPermission {
     #[serde(rename = "read:account")]

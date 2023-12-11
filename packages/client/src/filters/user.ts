@@ -1,5 +1,5 @@
-import * as misskey from "firefish-js";
-import * as Acct from "firefish-js/built/acct";
+import * as misskey from "goblin-js";
+import * as Acct from "goblin-js/built/acct";
 import { url } from "@/config";
 
 export const acct = (user: misskey.Acct) => {
