@@ -135,7 +135,7 @@
 					<XRenoteButton
 						ref="renoteButton"
 						class="button"
-						:note="parentNote"
+						:note="appearNote"
 						:count="parentNote.renoteCount"
 						:detailedView="detailedView"
 					/>
@@ -163,9 +163,8 @@
 						"
 						ref="starButton"
 						class="button"
-						:note="parentNote"
+						:note="appearNote"
 					/>
-					<XQuoteButton class="button" :note="appearNote" />
 					<button
 						ref="menuButton"
 						v-tooltip.noDelay.bottom="i18n.ts.more"
