@@ -412,10 +412,14 @@ export default async (
 		// この投稿を除く指定したユーザーによる指定したノートのリノートが存在しないとき
 		if (
 			data.renote &&
-			!user.isBot &&
-			(await countSameRenotes(user.id, data.renote.id, note.id)) === 0
+			!user.isBot
 		) {
 			incRenoteCount(data.renote);
+		}
+
+		if (
+			data.renote && (data.text ) && !user.isBot ) {
+			incQuoteCount(data.renote);
 		}
 
 		if (data.poll?.expiresAt) {
@@ -700,6 +704,19 @@ function incRenoteCount(renote: Note) {
 		.where("id = :id", { id: renote.id })
 		.execute();
 }
+
+
+function incQuoteCount(renote: Note) {
+	Notes.createQueryBuilder()
+		.update()
+		.set({
+			quoteCount: () => '"quoteCount" + 1',
+			score: () => '"score" + 1',
+		})
+		.where("id = :id", { id: renote.id })
+		.execute();
+}
+
 
 async function insertNote(
 	user: { id: User["id"]; host: User["host"] },

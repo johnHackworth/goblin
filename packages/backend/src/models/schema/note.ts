@@ -175,6 +175,11 @@ export const packedNoteSchema = {
 			optional: false,
 			nullable: false,
 		},
+		quoteCount: {
+			type: "number",
+			optional: true,
+			nullable: true,
+		},
 		repliesCount: {
 			type: "number",
 			optional: false,

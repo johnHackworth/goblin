@@ -1,5 +1,5 @@
-export class Goblin1700000000000 {
-  name = "Goblin1700000000000";
+export class Quote1689957900000 {
+  name = "Quote1689957900000";
 
   async up(queryRunner) {
       await queryRunner.query(`ALTER TABLE "note" ADD "quoteCount" smallint NULL default 0`);

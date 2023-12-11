@@ -104,6 +104,12 @@ export class Note {
 	@Column("smallint", {
 		default: 0,
 	})
+	public quoteCount: number;
+
+
+	@Column("smallint", {
+		default: 0,
+	})
 	public repliesCount: number;
 
 	@Column("jsonb", {

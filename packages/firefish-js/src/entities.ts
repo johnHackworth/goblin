@@ -153,6 +153,7 @@ export type Note = {
 	myReaction?: string;
 	reactions: Record<string, number>;
 	renoteCount: number;
+	quoteCount: number;
 	repliesCount: number;
 	poll?: {
 		expiresAt: DateString | null;

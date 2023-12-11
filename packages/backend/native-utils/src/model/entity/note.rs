@@ -26,6 +26,8 @@ pub struct Model {
     pub local_only: bool,
     #[sea_orm(column_name = "renoteCount")]
     pub renote_count: i16,
+    #[sea_orm(column_name = "quoteCount")]
+    pub quote_count: i16,
     #[sea_orm(column_name = "repliesCount")]
     pub replies_count: i16,
     #[sea_orm(column_type = "JsonBinary")]

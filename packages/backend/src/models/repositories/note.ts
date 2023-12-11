@@ -216,6 +216,7 @@ export const NoteRepository = db.getRepository(Note).extend({
 			visibleUserIds:
 				note.visibility === "specified" ? note.visibleUserIds : undefined,
 			renoteCount: note.renoteCount,
+			quoteCount: note.quoteCount,
 			repliesCount: note.repliesCount,
 			reactions: convertLegacyReactions(note.reactions),
 			reblogtrail: note.reblogtrail,
