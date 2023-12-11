@@ -80,8 +80,17 @@ os.api("notes/renotes", {
 });
 
 const renote = (viaKeyboard = false, ev?: MouseEvent) => {
-	pleaseLogin();
+	if(ev && ev.ctrlKey) {
+		return directRenote(viaKeyboard, ev);
+	} else {
+		pleaseLogin();
+		os.post({
+			renote: props.note,
+		});
+	}
+}
 
+const directRenote  = (viaKeyboard = false, ev?: MouseEvent) => {
 	let buttonActions: Array<MenuItem> = [];
 
 	if (props.note.visibility === "public") {

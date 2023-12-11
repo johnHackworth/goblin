@@ -139,7 +139,7 @@
 				@keydown="onKeydown"
 				@enableContentWarning="enableContentWarning"
 				:submitText="submitText"
-				:canPost="canPost"
+				:canPost="true"
 				:upload="upload"
 				:reply="!!props.reply"
 				:renote="!!props.renote"
@@ -753,6 +753,17 @@ function deleteDraft() {
 
 async function post() {
 	const processedText = preprocess(text);
+
+	if(!props.isReply && !canPost && reblogtrail.length > 0 ) {
+		os.api("notes/create", {
+			renoteId: props.renote.id,
+			visibility: visibility,
+		});
+		deleteDraft();
+		emit("posted");
+		return;
+	}
+
 
 	const usedFiles = []
 
