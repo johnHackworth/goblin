@@ -44,14 +44,14 @@
 
 		<MkTab v-model="tab" :style="'underline'" @update:modelValue="loadTab">
 			<option value="replies">
-					<span v-if="note.repliesCount > 0" class="count">{{
-					note.repliesCount
+					<span v-if="repliesCount > 0" class="count">{{
+					repliesCount
 				}}</span>
 				{{ i18n.ts._notification._types.reply }}
 			</option>
-			<option value="renotes" v-if="note.renoteCount > 0">
+			<option value="renotes" v-if="renoteCount > 0">
 				 <i class="ph-repeat ph-bold ph-lg"></i>
-				<span class="count">{{ note.renoteCount }}</span>
+				<span class="count">{{ renoteCount }}</span>
 				Reblogs
 			</option>
 			<option value="reactions" v-if="reactionsCount > 0">
@@ -70,6 +70,7 @@
 			<XPostForm
 				class="post-form _block"
 				:reply="noteToReplyTo"
+				@posted="onPosted"
 				fixed
 				isReply
 			/>
@@ -84,7 +85,7 @@
 			:detailedView="true"
 			:parentId="note.id"
 		/>
-		<MkLoading v-else-if="tab === 'replies' && note.repliesCount > 0" />
+		<MkLoading v-else-if="tab === 'replies' && repliesCount > 0" />
 
 		<MkNoteSub
 			v-if="directQuotes && tab === 'quotes'"
@@ -121,7 +122,7 @@
 			</div>
 
 		</MkPagination>
-		<MkLoading v-else-if="tab === 'renotes' && note.renoteCount > 0" />
+		<MkLoading v-else-if="tab === 'renotes' && renoteCount > 0" />
 
 		<div v-if="tab === 'clips' && clips.length > 0" class="_content clips">
 			<MkA
@@ -253,15 +254,21 @@ let clips = $ref();
 let renotes = $ref();
 let isScrolling;
 
-let noteToReplyTo = $ref<misskye.entities.Note>()
+let rootNote = $ref<misskye.entities.Note>();
+let noteToReplyTo = $ref<misskye.entities.Note>();
 
 if(note.reply) {
-	noteToReplyTo = note.reply;
-} else if (note.quote) {
-	noteToReplyTo = note.quote;
+	rootNote = note.reply;
+} else if (note.renote) {
+	rootNote = note.renote;
 } else {
-	noteToReplyTo = note;
+	rootNote = note;
 }
+noteToReplyTo = rootNote
+
+
+let repliesCount = $ref(rootNote.repliesCount);
+let renoteCount = $ref(rootNote.renoteCount);
 
 const reactionsCount = Object.values(props.note.reactions).reduce(
 	(x, y) => x + y,
@@ -365,23 +372,33 @@ function blur() {
 }
 
 directReplies = null;
-os.api("notes/children", {
-	noteId: note.id,
-	limit: 30,
-	depth: 12,
-}).then((res) => {
-	res = res.reduce((acc, resNote) => {
-		if (resNote.userId == note.userId) {
-			return [...acc, resNote];
-		}
-		return [resNote, ...acc];
-	}, []);
-	replies.value = res;
-	directReplies = res
-		.filter((resNote) => resNote.replyId === note.id)
-		.reverse();
-	directQuotes = res.filter((resNote) => resNote.renoteId === note.id);
-});
+const onPosted = () => {
+	repliesCount++;
+	updateNoteChildren();
+}
+
+const updateNoteChildren = () => {
+	os.api("notes/children", {
+		noteId: note.reply? note.reply.id : note.renote ? note.renote.id : note.id,
+		limit: 30,
+		depth: 12,
+	}).then((res) => {
+		res = res.reduce((acc, resNote) => {
+			if (resNote.userId == note.userId) {
+				return [...acc, resNote];
+			}
+			return [resNote, ...acc];
+		}, []);
+		replies.value = res;
+		directReplies = res
+			.filter( (note) => !!note.replyId )
+			.reverse();
+		directQuotes = res.filter( (note) => !!note.renoteId );
+	});
+}
+
+
+updateNoteChildren();
 
 conversation = null;
 if (note.replyId) {
@@ -411,7 +428,6 @@ function loadTab() {
 			noteId: note.id,
 			limit: 100,
 		}).then((res) => {
-			console.log(res)
 			renotes = res;
 		});
 	}
@@ -419,9 +435,9 @@ function loadTab() {
 
 async function onNoteUpdated(noteData: NoteUpdatedEvent): Promise<void> {
 	const { type, id, body } = noteData;
-
+	const relevantNoteId = note.reply ? note.reply.id : note.renote ? note.renote.id : note.id;
 	let found = -1;
-	if (id === note.id) {
+	if (id === relevantNoteId ) {
 		found = 0;
 	} else {
 		for (let i = 0; i < replies.value.length; i++) {
