@@ -363,6 +363,18 @@ function focusFooter(ev) {
     }
   }
 
+  .noteFiles {
+    img {
+      max-width: 100%;
+      margin: 8px 0;
+    }
+
+    video {
+      max-width: 100%;
+      margin: 8px 0;
+    }
+  }
+
   .noteTags {
     padding: 0 32px;
 
