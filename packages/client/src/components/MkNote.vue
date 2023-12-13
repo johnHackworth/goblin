@@ -119,6 +119,15 @@
 						{{ appearNote.channel.name }}</MkA
 					>
 				</div>
+				<div class="previews" v-if="urls && urls.length > 0">
+					<MkUrlPreview
+						v-for="url in urls"
+						:key="url"
+						:url="url"
+						detail="true"
+						class="urlPreview"
+					/>
+				</div>
 				<footer ref="footerEl" class="footer" tabindex="-1">
 					<button
 						v-tooltip.noDelay.bottom="i18n.ts.reply"
@@ -250,6 +259,13 @@ const props = defineProps<{
 const inChannel = inject("inChannel", null);
 
 let note = $ref(deepClone(props.note));
+const extratedUrls = note.text.match(/\b((https?|http?):\/\/|(www|ftp)\.)[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/ig);
+const urls = $ref( extratedUrls && extratedUrls.length ?
+	extratedUrls.filter(
+		(item, index) => extratedUrls.indexOf(item) === index
+	) :
+	[]
+);
 
 const softMuteReasonI18nSrc = (what?: string) => {
 	if (what === "note") return i18n.ts.userSaysSomethingReason;
@@ -960,6 +976,16 @@ defineExpose({
 	}
 	&:active ._blur_text {
 		filter: blur(0px);
+	}
+}
+
+.previews {
+	padding: 0 32px;
+	border-top: .5px dashed var(--panelHeaderFg);
+	border-bottom: .5px dashed var(--panelHeaderFg);
+
+	> * {
+		margin: 8px 0;
 	}
 }
 </style>

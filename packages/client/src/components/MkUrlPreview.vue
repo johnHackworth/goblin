@@ -191,7 +191,7 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 .url-preview {
 	border: 1px solid var(--divider);
-	border-radius: var(--radius);
+	margin: 8px 0;
 	overflow: hidden;
 	> a {
 		display: flex;
@@ -199,7 +199,8 @@ onUnmounted(() => {
 		text-decoration: none;
 		> div:first-child:not(:last-child) {
 			position: relative;
-			width: 90px;
+			width: 144px;
+			height: 144px;
 			overflow: hidden;
 			display: flex;
 			justify-content: center;
@@ -261,9 +262,7 @@ onUnmounted(() => {
 			margin-bottom: -0.5em;
 			> span {
 				display: -webkit-inline-box;
-				font-size: 0.8em;
-				-webkit-line-clamp: 2;
-				-webkit-box-orient: vertical;
+				font-size: 0.9em;
 				overflow: hidden;
 				> span {
 					font-weight: 600;
