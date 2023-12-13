@@ -45,22 +45,25 @@
           </template>
           <div class="noteText">
             <div v-html="note.text" />
-            <div v-if="note.files && note.files.length" class="noteFiles">
-              <div v-for="(file, index) in note.files" :key="index">
-                <span v-if="!note.text || note.text.indexOf(file.url) <0">
-                  <div v-if="file.type.startsWith('image')" class="noteImage">
-                    <img :src="file.url" :alt="file.comment"/>
-                  </div>
-                  <div v-else-if="file.type.startsWith('video')" class="noteImage">
-                    <video width="100%" controls>
-                      <source :src="file.url" :type="file.type">
-                    </video>
-                  </div>
-                  <div v-else class="noteFile">
-                    <a :href="file.url">{{ file.name }} {{ file.comment }} </a>
-                  </div>
-                </span>
-              </div>
+          </div>
+          <div v-if="note.tags" class="noteTags">
+            <a class="noteTag" v-for="tag in note.tags" :href="`/tag/${tag}`">#{{tag}}</a>
+          </div>
+          <div v-if="note.files && note.files.length" class="noteFiles">
+            <div v-for="(file, index) in note.files" :key="index">
+              <span v-if="!note.text || note.text.indexOf(file.url) <0">
+                <div v-if="file.type.startsWith('image')" class="noteImage">
+                  <img :src="file.url" :alt="file.comment"/>
+                </div>
+                <div v-else-if="file.type.startsWith('video')" class="noteImage">
+                  <video width="100%" controls>
+                    <source :src="file.url" :type="file.type">
+                  </video>
+                </div>
+                <div v-else class="noteFile">
+                  <a :href="file.url">{{ file.name }} {{ file.comment }} </a>
+                </div>
+              </span>
             </div>
           </div>
         </template>
@@ -98,7 +101,7 @@ const props = defineProps<{
   detailedView?: boolean;
   class?: string;
 }>();
-
+console.log(props.note)
 const emit = defineEmits<{
   (ev: "push", v): void;
   (ev: "focusfooter"): void;
@@ -347,19 +350,24 @@ function focusFooter(ev) {
   .noteText {
     padding: 0 32px;
 
-    .noteTags {
-      top: 16px;
-      position: relative;
-
-      .tagLink {
-        color: rgba(0, 0, 0, 0.65);
-      }
-
+    a {
+      color: #006;
+      text-decoration: underline;
     }
 
     img {
       width: calc(100% + 64px);
       margin-left: -32px;
+    }
+  }
+
+  .noteTags {
+    padding: 0 32px;
+
+    .noteTag {
+      color: #09A;
+      font-weight: 600;
+      margin-right: 16px;
     }
   }
 }
