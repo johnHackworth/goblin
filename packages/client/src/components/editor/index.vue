@@ -100,10 +100,12 @@
       >
         {{ props.submitText }}<i
           :class="
-            props.reply
-              ? 'ph-arrow-u-up-left ph-bold ph-lg'
-              : props.renote
-              ? 'ph-quotes ph-bold ph-lg'
+            props.reply ?
+              'ph-arrow-u-up-left ph-bold ph-lg' :
+              props.renote ?
+              isEmpty ?
+              'ph-repeat ph-bold ph-lg' :
+              'ph-quotes ph-bold ph-lg'
               : 'ph-paper-plane-tilt ph-bold ph-lg'
           "
         ></i>
@@ -175,10 +177,18 @@ let tags = $ref(props.initialTags)
 const tagsElement = $ref(null)
 
 let isSelecting = $ref(false);
+let isEmpty = $ref(true);
+
 const emit = defineEmits(['update', 'updateTags', 'post', 'addedImage', 'enableContentWarning'])
 
 const update = ( { editor } ) => {
-  emit('update', editor.getHTML());
+  const editorValue = editor.getHTML();
+  emit('update', editorValue);
+  if(editorValue==="<p></p>") {
+    isEmpty = true;
+  } else {
+    isEmpty = false;
+  }
 }
 
 const onEnableContentWarning = () => {

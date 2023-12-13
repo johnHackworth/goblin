@@ -46,7 +46,7 @@
           <div class="noteText">
             <div v-html="removeMeta(note.text)" />
           </div>
-          <div v-if="note.tags" class="noteTags">
+          <div v-if="!props.hideTags && note.tags" class="noteTags">
             <a class="noteTag" v-for="tag in note.tags" :href="`/tag/${tag}`">#{{tag}}</a>
           </div>
           <div v-if="notEmbedFiles.length" class="noteFiles">
@@ -101,6 +101,7 @@ const props = defineProps<{
   detailed?: boolean;
   detailedView?: boolean;
   class?: string;
+  hideTags?: boolean;
 }>();
 
 const emit = defineEmits<{

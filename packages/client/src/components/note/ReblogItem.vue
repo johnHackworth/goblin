@@ -13,7 +13,8 @@
         class="welcomeNote"
         :note="note"
         :detailed="false"
-        :parentId="note.parentId">
+        :parentId="note.parentId"
+        hideTags>
       </NoteContent>
     </div>
   </div>

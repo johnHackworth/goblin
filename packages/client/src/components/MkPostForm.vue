@@ -332,17 +332,21 @@ const placeholder = $computed((): string => {
 	}
 });
 
-const computedText = $computed((): string => {
-	return props.editId
-		? i18n.ts.edit
-		: props.renote
-		? i18n.ts.quote
-		: props.reply
-		? i18n.ts.reply
-		: i18n.ts.note;
-});
+const getSubmitText = () => {
+	if(props.editId) {
+		return i18n.ts.edit;
+	}
+	else if(props.renote) {
+		return isEditorEmpty? "Reblog" : i18.ts.quote;
+	}
+	else if(props.reply) {
+		return i18n.ts.reply;
+	} else{
+		return i18n.ts.note;
+	}
+}
 
-const submitText = $ref(computedText);
+let submitText = $ref(getSubmitText());
 const textLength = $computed((): number => {
 	return length((preprocess(text) + imeText).trim());
 });
@@ -747,7 +751,14 @@ function deleteDraft() {
 }
 
 async function post() {
-	const processedText = preprocess(removeMeta(text));
+	let processedText = preprocess(removeMeta(text));
+
+	if(
+		(!processedText || processedText=== '') &&
+		tags.length > 0 ) {
+		canPost = true;
+		processedText = ' ';
+	}
 
 	if(!props.isReply && !canPost && reblogtrail.length > 0 ) {
 		os.api("notes/create", {
@@ -872,6 +883,8 @@ function updateTiptap( editorValue ) {
 	} else {
 		isEditorEmpty = false;
 	}
+
+	submitText = getSubmitText();
 }
 
 function updateTiptapTags( tagsValue ) {
