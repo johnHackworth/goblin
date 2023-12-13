@@ -144,7 +144,7 @@
 				:reply="!!props.reply"
 				:renote="!!props.renote"
 				:initialTags="props.initialNote ? props.initialNote.tags : []"
-				:initialText="props.initialNote ? removeTagsFromTextContent(props.initialNote.text) : ''"
+				:initialText="props.initialNote ? removeMeta(props.initialNote.text) : ''"
 			/>
 			<XPollEditor v-if="poll" v-model="poll" @destroyed="poll = null" />
 			<XNotePreview v-if="showPreview" class="preview" :text="text" />
@@ -192,8 +192,7 @@ import { uploadFile } from "@/scripts/upload";
 import { deepClone } from "@/scripts/clone";
 import XCheatSheet from "@/components/MkCheatSheetDialog.vue";
 import { preprocess } from "@/scripts/preprocess";
-import { postToTumblr } from "@/scripts/tumblr";
-
+import { removeMeta, getTags } from "@/helpers/note/note-content"
 
 const getDefaultTumblrBlog = () => {
 	const stored = localStorage.getItem("defaultTumblrBlog-" + $i.username);
@@ -202,10 +201,6 @@ const getDefaultTumblrBlog = () => {
 }
 
 let defaultTumblrBlog = $ref(getDefaultTumblrBlog());
-
-const removeTagsFromTextContent = ( content ) => {
-	return content.split('<!-- tags -->')[0]
-}
 
 const modal = inject("modal");
 
@@ -257,7 +252,7 @@ let reblogtrail = $ref(props.renote?.reblogtrail?.length ? props.renote.reblogtr
 if(props.renote) {
 	let cloneNote = deepClone(props.renote);
 	delete cloneNote.reblogtrail;
-	cloneNote.text = removeTagsFromTextContent(cloneNote.text);
+	cloneNote.text = removeMeta(cloneNote.text);
 	reblogtrail.push(cloneNote);
 }
 
@@ -752,7 +747,7 @@ function deleteDraft() {
 }
 
 async function post() {
-	const processedText = preprocess(text);
+	const processedText = preprocess(removeMeta(text));
 
 	if(!props.isReply && !canPost && reblogtrail.length > 0 ) {
 		os.api("notes/create", {
@@ -795,7 +790,6 @@ async function post() {
 	}
 
 	// if we are replying a reply, we set the parent as the original post if there's one.
-	console.log(props);
 	let replyId = props.reply ?
 		getOriginalPost(props.reply).id
 		: undefined;
@@ -810,27 +804,13 @@ async function post() {
 		poll: poll,
 		cw: useCw ? cw || "" : undefined,
 		localOnly: localOnly,
+		tags: tags,
 		visibility: visibility,
 		visibleUserIds:
 			visibility === "specified"
 				? visibleUsers.map((u) => u.id)
 				: undefined,
 	};
-
-	const wrapTag = (tag) => {
-		const tagWithHash = tag.startsWith("#") ? tag : "#" + tag;
-
-		return '<a href="/tags/' + tag + '" class="tagLink">' + tagWithHash + '</a>';
-	}
-
-	if (tags.length > 0) {
-		const hashtags_ = tags
-			.map(wrapTag)
-			.join(" ");
-		postData.text = postData.text
-			? `${postData.text} <!-- tags --> <span class="noteTags">${hashtags_}</span>`
-			: hashtags_;
-	}
 
 	if($i.integrations.tumblr && tumblrBlogSelector && tumblrBlogSelector.value != '') {
 		postData.postToTumblr = tumblrBlogSelector.value;

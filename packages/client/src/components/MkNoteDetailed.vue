@@ -9,7 +9,6 @@
 		:tabindex="!isDeleted ? '-1' : null"
 		:class="{ renote: isRenote }"
 	>
-
 		<MkUserCardMini
 			v-if="tab === 'renotes' && renotes"
 			v-for="item in renotes"
@@ -33,7 +32,6 @@
 			class="reply-to"
 			:detailedView="true"
 		/>
-
 		<MkNote
 			ref="noteEl"
 			@contextmenu.stop="onContextmenu"
@@ -41,7 +39,6 @@
 			:note="note"
 			detailedView
 		></MkNote>
-
 		<MkTab v-model="tab" :style="'underline'" @update:modelValue="loadTab">
 			<option value="replies">
 					<span v-if="repliesCount > 0" class="count">{{

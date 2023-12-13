@@ -18,7 +18,7 @@ import { ApiError } from "../../error.js";
 import define from "../../define.js";
 import { HOUR } from "@/const.js";
 import { getNote } from "../../common/getters.js";
-import { postToTumblr } from "@/services/tumblr/index.js";
+import { postToTumblr }  from "@/services/tumblr/index.js";
 
 export const meta = {
 	tags: ["notes"],
@@ -300,12 +300,12 @@ export default define(meta, paramDef, async (ps, user) => {
 		reply,
 		renote,
 		cw: ps.cw,
+		apHashtags: ps.tags ?? [],
 		localOnly: ps.localOnly,
 		visibility: ps.visibility,
 		visibleUsers,
 		channel,
 		apMentions: ps.noExtractMentions ? [] : undefined,
-		apHashtags: ps.noExtractHashtags ? [] : undefined,
 		apEmojis: ps.noExtractEmojis ? [] : undefined,
 	});
 

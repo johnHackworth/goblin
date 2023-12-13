@@ -8,7 +8,6 @@
 			<div v-for="note in notes" class="note">
 				<div class="content _panel" v-if="note.cw == null">
 							<NoteContent
-								v-if="note.text"
 							class="welcomeNote"
 							:note="note"
 							:detailed="false"

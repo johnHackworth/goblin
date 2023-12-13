@@ -9,7 +9,12 @@
       </div>
     </div>
     <div class="reblog-item-content">
-        <span v-html="note.text" />
+      <NoteContent
+        class="welcomeNote"
+        :note="note"
+        :detailed="false"
+        :parentId="note.parentId">
+      </NoteContent>
     </div>
   </div>
 </template>

@@ -44,13 +44,13 @@
             </div>
           </template>
           <div class="noteText">
-            <div v-html="note.text" />
+            <div v-html="removeMeta(note.text)" />
           </div>
           <div v-if="note.tags" class="noteTags">
             <a class="noteTag" v-for="tag in note.tags" :href="`/tag/${tag}`">#{{tag}}</a>
           </div>
-          <div v-if="note.files && note.files.length" class="noteFiles">
-            <div v-for="(file, index) in note.files" :key="index">
+          <div v-if="notEmbedFiles.length" class="noteFiles">
+            <div v-for="(file, index) in notEmbedFiles" :key="index">
               <span v-if="!note.text || note.text.indexOf(file.url) <0">
                 <div v-if="file.type.startsWith('image')" class="noteImage">
                   <img :src="file.url" :alt="file.comment"/>
@@ -92,6 +92,7 @@ import { i18n } from "@/i18n";
 import { defaultStore } from "@/store";
 
 import Reblogtrail from "@/components/note/Reblogtrail";
+import { removeMeta, getNotEmbedFiles } from "@/helpers/note/note-content"
 
 const props = defineProps<{
   note: misskey.entities.Note;
@@ -101,7 +102,7 @@ const props = defineProps<{
   detailedView?: boolean;
   class?: string;
 }>();
-console.log(props.note)
+
 const emit = defineEmits<{
   (ev: "push", v): void;
   (ev: "focusfooter"): void;
@@ -109,7 +110,7 @@ const emit = defineEmits<{
 }>();
 
 const cwButton = ref<HTMLElement>();
-
+const notEmbedFiles = ref(getNotEmbedFiles(props.note));
 const isLong =
   !props.detailedView &&
   props.note.cw == null &&

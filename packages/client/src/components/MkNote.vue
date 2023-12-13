@@ -3,7 +3,7 @@
 		:aria-label="accessibleLabel"
 		v-if="!muted.muted"
 		v-show="!isDeleted"
-		ref="el"
+		:ref="el"
 		v-hotkey="keymap"
 		v-size="{ max: [500, 350] }"
 		class="tkcbzcuz note-container"
@@ -84,27 +84,8 @@
 						:detailedView="detailedView"
 						:parentId="appearNote.parentId"
 						@push="(e) => router.push(notePage(e))"
-						@focusfooter="footerEl.focus()"
 						@expanded="(e) => setPostExpanded(e)"
 					></NoteContent>
-					<div v-if="translating || translation" class="translation">
-						<MkLoading v-if="translating" mini />
-						<div v-else class="translated">
-							<b
-								>{{
-									i18n.t("translatedFrom", {
-										x: translation.sourceLang,
-									})
-								}}:
-							</b>
-							<Mfm
-								:text="translation.text"
-								:author="appearNote.user"
-								:i="$i"
-								:custom-emojis="appearNote.emojis"
-							/>
-						</div>
-					</div>
 				</div>
 				<div
 					v-if="detailedView || (appearNote.channel && !inChannel)"
@@ -259,7 +240,7 @@ const props = defineProps<{
 const inChannel = inject("inChannel", null);
 
 let note = $ref(deepClone(props.note));
-const extratedUrls = note.text.match(/\b((https?|http?):\/\/|(www|ftp)\.)[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/ig);
+const extratedUrls = note.text ? note.text.match(/\b((https?|http?):\/\/|(www|ftp)\.)[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/ig) : [];
 const urls = $ref( extratedUrls && extratedUrls.length ?
 	extratedUrls.filter(
 		(item, index) => extratedUrls.indexOf(item) === index
@@ -843,7 +824,7 @@ defineExpose({
 				z-index: 2;
 				display: flex;
 				flex-wrap: wrap;
-				margin: 2em 16px 0;
+				margin: 8px 16px 0;
 				justify-content: flex-end;
 				> :deep(.button) {
 					position: relative;
