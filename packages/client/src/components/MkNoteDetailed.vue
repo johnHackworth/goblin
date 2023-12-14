@@ -7,7 +7,7 @@
 		v-size="{ max: [500, 350, 300] }"
 		class="lxwezrsl _block"
 		:tabindex="!isDeleted ? '-1' : null"
-		:class="{ renote: isRenote }"
+		:class="{ renote: isRenote, isClosed: props.hideTabs }"
 	>
 		<MkUserCardMini
 			v-if="tab === 'renotes' && renotes"
@@ -38,116 +38,99 @@
 			tabindex="-1"
 			:note="note"
 			detailedView
+			@toggle="toggle"
+			:hideNotesCounter="!props.showNotesCounter"
+			:showCloseButton="!props.hideTabs"
 		></MkNote>
-		<MkTab v-model="tab" :style="'underline'" @update:modelValue="loadTab">
-			<option value="replies">
-					<span v-if="repliesCount > 0" class="count">{{
-					repliesCount
-				}}</span>
-				{{ i18n.ts._notification._types.reply }}
-			</option>
-			<option value="renotes" v-if="renoteCount > 0">
-				 <i class="ph-repeat ph-bold ph-lg"></i>
-				<span class="count">{{ renoteCount }}</span>
-				Reblogs
-			</option>
-			<option value="reactions" v-if="reactionsCount > 0">
-				<i class="ph-smiley ph-bold ph-lg"></i>
-				<span class="count">{{ reactionsCount }}</span>
-				{{ i18n.ts.reaction }}
-			</option>
-			<option value="quotes" v-if="directQuotes?.length > 0">
-				<i class="ph-quotes ph-bold ph-lg"></i>
-				<span class="count">{{ directQuotes.length }}</span>
-				{{ i18n.ts._notification._types.quote }}
-			</option>
-		</MkTab>
+		<div class="bottomSection" v-if="!hideTabs">
+			<div class="separator" />
+			<MkTab v-model="tab" :style="'underline'" @update:modelValue="loadTab">
+				<option value="replies">
+						<span v-if="repliesCount > 0" class="count">{{
+						repliesCount
+					}}</span>
+					{{ i18n.ts._notification._types.reply }}
+				</option>
+				<option value="renotes" v-if="renoteCount > 0">
+					 <i class="ph-repeat ph-bold ph-lg"></i>
+					<span class="count">{{ renoteCount }}</span>
+					Reblogs
+				</option>
+				<option value="reactions" v-if="reactionsCount > 0">
+					<i class="ph-smiley ph-bold ph-lg"></i>
+					<span class="count">{{ reactionsCount }}</span>
+					{{ i18n.ts.reaction }}
+				</option>
+				<option value="quotes" v-if="directQuotes?.length > 0">
+					<i class="ph-quotes ph-bold ph-lg"></i>
+					<span class="count">{{ directQuotes.length }}</span>
+					{{ i18n.ts._notification._types.quote }}
+				</option>
+			</MkTab>
 
-		<div class="editor" v-if="tab === 'replies'"	>
-			<XPostForm
-				class="post-form _block"
-				:reply="noteToReplyTo"
-				@posted="onPosted"
-				fixed
-				isReply
-			/>
-		</div>
-		<MkNoteSub
-			v-if="directReplies && tab === 'replies'"
-			v-for="note in directReplies"
-			:key="note.id"
-			:note="note"
-			class="reply"
-			:conversation="replies"
-			:detailedView="true"
-			:parentId="note.id"
-		/>
-		<MkLoading v-else-if="tab === 'replies' && repliesCount > 0" />
-
-		<MkNoteSub
-			v-if="directQuotes && tab === 'quotes'"
-			v-for="note in directQuotes"
-			:key="note.id"
-			:note="note"
-			class="reply"
-			:conversation="replies"
-			:detailedView="true"
-			:parentId="note.id"
-		/>
-		<MkLoading v-else-if="tab === 'quotes' && directQuotes.length > 0" />
-
-		<MkPagination
-			v-if="tab === 'renotes'"
-			v-slot="{ items }"
-			ref="pagingComponent"
-			:pagination="pagination"
-			class="reblogs"
-		>
-			<div
-				v-for="(reblog, i) in items"
-				:key="`reblog-$(i)`">
-				<div v-if="reblog.text === null" class="rebloggedBy">
-						<img :src="reblog.user.avatarUrl" />
-						<a :href="'/' + (reblog.user.host ?
-							reblog.user.username + '@' + reblog.user.host :
-							reblog.user.username)">
-							@{{ reblog.user.host ?
-							reblog.user.username + '@' + reblog.user.host :
-							reblog.user.username }}
-						</a>
-				</div>
+			<div class="editor" v-if="tab === 'replies'"	>
+				<XPostForm
+					class="post-form _block"
+					:reply="noteToReplyTo"
+					@posted="onPosted"
+					fixed
+					isReply
+				/>
 			</div>
+			<MkNoteSub
+				v-if="directReplies && tab === 'replies'"
+				v-for="note in directReplies"
+				:key="note.id"
+				:note="note"
+				class="reply"
+				:conversation="replies"
+				:detailedView="true"
+				:parentId="note.id"
+			/>
+			<MkLoading v-else-if="tab === 'replies' && repliesCount > 0" />
 
-		</MkPagination>
-		<MkLoading v-else-if="tab === 'renotes' && renoteCount > 0" />
+			<MkNoteSub
+				v-if="directQuotes && tab === 'quotes'"
+				v-for="note in directQuotes"
+				:key="note.id"
+				:note="note"
+				class="reply"
+				:conversation="replies"
+				:detailedView="true"
+				:parentId="note.id"
+			/>
+			<MkLoading v-else-if="tab === 'quotes' && directQuotes.length > 0" />
 
-		<div v-if="tab === 'clips' && clips.length > 0" class="_content clips">
-			<MkA
-				v-for="item in clips"
-				:key="item.id"
-				:to="`/clips/${item.id}`"
-				class="item _panel"
+			<MkPagination
+				v-if="tab === 'renotes'"
+				v-slot="{ items }"
+				ref="pagingComponent"
+				:pagination="pagination"
+				class="reblogs"
 			>
-				<b>{{ item.name }}</b>
-				<div v-if="item.description" class="description">
-					{{ item.description }}
+				<div
+					v-for="(reblog, i) in items"
+					:key="`reblog-$(i)`">
+					<div v-if="reblog.text === null" class="rebloggedBy">
+							<img :src="reblog.user.avatarUrl" />
+							<a :href="'/' + (reblog.user.host ?
+								reblog.user.username + '@' + reblog.user.host :
+								reblog.user.username)">
+								@{{ reblog.user.host ?
+								reblog.user.username + '@' + reblog.user.host :
+								reblog.user.username }}
+							</a>
+					</div>
 				</div>
-				<div class="user">
-					<MkAvatar
-						:user="item.user"
-						class="avatar"
-						:show-indicator="true"
-					/>
-					<MkUserName :user="item.user" :nowrap="false" />
-				</div>
-			</MkA>
-		</div>
-		<MkLoading v-else-if="tab === 'clips' && clips.length > 0" />
 
-		<MkReactedUsers
-			v-if="tab === 'reactions' && reactionsCount > 0"
-			:note-id="note.id"
-		></MkReactedUsers>
+			</MkPagination>
+			<MkLoading v-else-if="tab === 'renotes' && renoteCount > 0" />
+
+			<MkReactedUsers
+				v-if="tab === 'reactions' && reactionsCount > 0"
+				:note-id="note.id"
+			></MkReactedUsers>
+		</div>
 	</div>
 	<div v-else class="_panel muted" @click="muted.muted = false">
 		<I18n :src="softMuteReasonI18nSrc(muted.what)" tag="small">
@@ -204,13 +187,24 @@ import appear from "@/directives/appear";
 import XPostForm from "@/components/MkPostForm.vue";
 
 const props = defineProps<{
+	key?: string;
+	parentKey?: string;
 	note: misskey.entities.Note;
 	pinned?: boolean;
+	hideTabs?: boolean;
+	showCloseButton?: boolean;
+	showNotesCounter?: boolean;
 }>();
 
 let tab = $ref("replies");
 
 let note = $ref(deepClone(props.note));
+
+const emit = defineEmits(['toggle']);
+
+const toggle = (noteId) => {
+	emit('toggle', props.parentKey);
+}
 
 const softMuteReasonI18nSrc = (what?: string) => {
 	if (what === "note") return i18n.ts.userSaysSomethingReason;
@@ -504,6 +498,10 @@ onUnmounted(() => {
 	transition: box-shadow 0.1s ease;
 	contain: content;
 
+	&.isClosed {
+		padding-bottom: 16px;
+	}
+
 	&:focus-visible {
 		outline: none;
 
@@ -737,5 +735,13 @@ onUnmounted(() => {
 			margin-right: 16px;
 		}
 	}
+}
+
+.separator {
+	width: 100%;
+	height: 1px;
+	background: rgb(2,0,36);
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(19,55,73,1) 49%, rgba(28,66,36,1) 62%, rgba(146,161,23,1) 76%, rgba(255,255,255,1) 100%);
+	opacity: 0.5;
 }
 </style>

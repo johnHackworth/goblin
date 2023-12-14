@@ -23,11 +23,16 @@
 					:ad="true"
 					class="notes"
 				>
-					<XNote
+					<XNoteDetailed
 						:key="note._featuredId_ || note._prId_ || note.id"
+						:parentKey="note._featuredId_ || note._prId_ || note.id"
 						class="qtqtichx"
 						:note="note"
 						v-if="!noReplies || !note.replyId"
+						@toggle="toggleNote"
+						:showCloseButton="true"
+						:showNotesCounter="true"
+						:hideTabs="!expandedNotes[ note._featuredId_ || note._prId_ || note.id ]"
 					/>
 				</XList>
 			</div>
@@ -39,12 +44,14 @@
 import { ref } from "vue";
 import type { Paging } from "@/components/MkPagination.vue";
 import XNote from "@/components/MkNote.vue";
+import XNoteDetailed from "@/components/MkNoteDetailed.vue";
 import XList from "@/components/MkDateSeparatedList.vue";
 import MkPagination from "@/components/MkPagination.vue";
 import { i18n } from "@/i18n";
 import { scroll } from "@/scripts/scroll";
 
 const tlEl = ref<HTMLElement>();
+const expandedNotes = ref({});
 
 const props = defineProps<{
 	pagination: Paging;
@@ -58,9 +65,13 @@ function scrollTop() {
 	scroll(tlEl.value, { top: 0, behavior: "smooth" });
 }
 
+function toggleNote( noteId ) {
+	expandedNotes.value[ noteId ] = !expandedNotes.value[ noteId ]
+	console.log(expandedNotes);
+}
 defineExpose({
 	pagingComponent,
-	scrollTop,
+	scrollTop
 });
 </script>
 

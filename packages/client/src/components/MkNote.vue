@@ -19,7 +19,6 @@
 		<div
 			v-if="!detailedView"
 			class="note-context"
-			@click="noteClick"
 			:class="{
 				collapsedReply: collapsedReply && appearNote.reply,
 			}"
@@ -60,10 +59,6 @@
 		<article
 			class="article"
 			@contextmenu.stop="onContextmenu"
-			@click="noteClick"
-			:style="{
-				cursor: expandOnNoteClick && !detailedView ? 'pointer' : '',
-			}"
 		>
 			<div class="main">
 				<div v-if="renotedBy" class="renoteHeader">
@@ -72,7 +67,7 @@
 						{{ renotedBy.username }} <ReblogIcon /> reblogged (<MkTime :time="note.createdAt" />)
 					</MkA>
 				</div>
-				<div class="header-container">
+				<div class="header-container" @click="noteLink">
 					<MkAvatar class="avatar" :user="appearNote.user" />
 					<XNoteHeader class="header" :note="appearNote" />
 				</div>
@@ -110,6 +105,21 @@
 					/>
 				</div>
 				<footer ref="footerEl" class="footer" tabindex="-1">
+					<button
+						ref="menuButton"
+						v-tooltip.noDelay.bottom="Notes"
+						class="button _button noteCount"
+						v-if="!props.hideNotesCounter"
+						@click="noteClick"
+					>
+						<template v-if="props.showCloseButton">
+							<i class="ph-x-circle ph-bold ph-lg"></i> Close notes
+						</template>
+						<template v-else>
+							<b>{{noteCount}}</b> Notes
+						</template>
+					</button>
+
 					<button
 						v-tooltip.noDelay.bottom="i18n.ts.reply"
 						class="button _button"
@@ -153,7 +163,7 @@
 						"
 						ref="starButton"
 						class="button"
-						:note="appearNote"
+						:note="parentNote"
 					/>
 					<button
 						ref="menuButton"
@@ -200,6 +210,7 @@ import NoteContent from "./note/NoteContent.vue";
 import XNoteHeader from "@/components/MkNoteHeader.vue";
 import XNoteSimple from "@/components/MkNoteSimple.vue";
 import XMediaList from "@/components/MkMediaList.vue";
+import XNoteDetailed from "@/components/MkNoteDetailed.vue";
 import XCwButton from "@/components/MkCwButton.vue";
 import XPoll from "@/components/MkPoll.vue";
 import XRenoteButton from "@/components/MkRenoteButton.vue";
@@ -235,9 +246,14 @@ const props = defineProps<{
 	pinned?: boolean;
 	detailedView?: boolean;
 	collapsedReply?: boolean;
+	showCloseButton?: boolean;
+	hideNotesCounter?: boolean;
+	parentKey?: string;
 }>();
+const emit = defineEmits(['toggle']);
 
 const inChannel = inject("inChannel", null);
+let detailedView = $ref(props.detailedView);
 
 let note = $ref(deepClone(props.note));
 const extratedUrls = note.text ? note.text.match(/\b((https?|http?):\/\/|(www|ftp)\.)[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/ig) : [];
@@ -296,8 +312,16 @@ const getParentNote = ( note ) => {
 
 
 let parentNote = $computed(() => getParentNote(note));
-let reactionCount = ref();
-reactionCount = appearNote.repliesCount + appearNote.renoteCount + appearNote.reactions.length;
+
+let reactionCount = 0;
+for(let reaction in parentNote.reactions) {
+	if (! isNaN(parentNote.reactions[reaction] + reactionCount ) ) {
+		reactionCount += parentNote.reactions[reaction]
+	}
+}
+let noteCount = ref(0);
+noteCount = parentNote.repliesCount + parentNote.renoteCount + reactionCount;
+
 const renotedBy = isRenote ? note.user : null;
 const isMyRenote = $i && $i.id === note.userId;
 const showContent = ref(false);
@@ -495,16 +519,14 @@ function scrollIntoView() {
 	el.value.scrollIntoView();
 }
 
+function noteLink(e) {
+	router.push(notePage(appearNote));
+}
+
 function noteClick(e) {
-	if (
-		document.getSelection().type === "Range" ||
-		props.detailedView ||
-		!expandOnNoteClick
-	) {
-		e.stopPropagation();
-	} else {
-		router.push(notePage(appearNote));
-	}
+	console.log(props.key);
+	console.log(props)
+	emit('toggle', props.parentKey)
 }
 
 function readPromo() {
@@ -764,6 +786,7 @@ defineExpose({
 			position: relative;
 			z-index: 2;
 			padding: 0 32px 16px;
+			cursor: pointer;
 
 			border-bottom: 0.5px solid var(--accent);
 
@@ -862,6 +885,22 @@ defineExpose({
 					}
 					&:hover {
 						color: var(--fgHighlighted);
+					}
+
+					&.noteCount {
+						margin-right: auto;
+						padding: 0 16px;
+						border-radius: 32px;
+						margin-left: 0;
+
+						transition:
+							background 0.3s ease,
+							color 0.3s ease;
+
+						&:hover {
+							background: var(--navHoverFg);
+							color: var(--navFg);
+						}
 					}
 
 					> i {
@@ -968,5 +1007,10 @@ defineExpose({
 	> * {
 		margin: 8px 0;
 	}
+}
+
+.noteCount {
+	margin-right: auto;
+	margin-left: 8px;
 }
 </style>
