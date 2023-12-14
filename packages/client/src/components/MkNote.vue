@@ -256,7 +256,14 @@ const inChannel = inject("inChannel", null);
 let detailedView = $ref(props.detailedView);
 
 let note = $ref(deepClone(props.note));
-const extratedUrls = note.text ? note.text.match(/\b((https?|http?):\/\/|(www|ftp)\.)[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/ig) : [];
+
+const getPlainText = (text) => {
+	const div = document.createElement("div");
+	div.innerHTML = text;
+	return div.textContent || div.innerText || "";
+}
+
+const extratedUrls = note.text ? getPlainText(note.text).match(/\b((https?|http?):\/\/|(www|ftp)\.)[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/ig) : [];
 const urls = $ref( extratedUrls && extratedUrls.length ?
 	extratedUrls.filter(
 		(item, index) => extratedUrls.indexOf(item) === index
