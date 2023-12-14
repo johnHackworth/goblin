@@ -34,7 +34,6 @@
 		/>
 		<MkNote
 			ref="noteEl"
-			@contextmenu.stop="onContextmenu"
 			tabindex="-1"
 			:note="note"
 			detailedView

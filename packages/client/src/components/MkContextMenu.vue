@@ -4,7 +4,6 @@
 			ref="rootEl"
 			class="nvlagfpb"
 			:style="{ zIndex }"
-			@contextmenu.prevent.stop="() => {}"
 		>
 			<MkMenu :items="items" :align="'left'" @close="$emit('closed')" />
 		</div>

@@ -66,7 +66,6 @@
 			class="widget"
 			:widget="widget"
 			@updateProps="updateWidget(widget.id, $event)"
-			@contextmenu.stop="onContextmenu(widget, $event)"
 		/>
 	</div>
 </template>

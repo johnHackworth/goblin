@@ -6,7 +6,6 @@
 			class="canvas"
 			:width="width"
 			height="300"
-			@contextmenu.prevent="() => {}"
 		></canvas>
 		<div :id="idForTags" ref="tagsEl" class="tags">
 			<ul>

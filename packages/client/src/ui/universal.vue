@@ -13,7 +13,6 @@
 				id="maincontent"
 				style="min-width: 0"
 				:style="{ background: pageMetadata?.value?.bg }"
-				@contextmenu.stop="onContextmenu"
 			>
 				<RouterView />
 			</main>

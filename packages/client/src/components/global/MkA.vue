@@ -2,7 +2,6 @@
 	<a
 		:href="to"
 		:class="active ? activeClass : null"
-		@contextmenu.prevent.stop="onContextmenu"
 		@click.stop="nav"
 	>
 		<slot></slot>

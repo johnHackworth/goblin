@@ -3,7 +3,6 @@
 		ref="rootEl"
 		class="swhvrteh _popup _shadow"
 		:style="{ zIndex }"
-		@contextmenu.prevent="() => {}"
 	>
 		<ol v-if="type === 'user'" ref="suggests" class="users">
 			<li

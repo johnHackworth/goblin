@@ -1,7 +1,7 @@
 <template>
 	<div class="yfudmmck">
 		<nav>
-			<div class="path" @contextmenu.prevent.stop="() => {}">
+			<div class="path">
 				<XNavFolder
 					:class="{ current: folder == null }"
 					:parent-folder="folder"
@@ -42,7 +42,6 @@
 			@dragenter="onDragenter"
 			@dragleave="onDragleave"
 			@drop.prevent.stop="onDrop"
-			@contextmenu.stop="onContextmenu"
 		>
 			<div ref="contents" class="contents">
 				<div

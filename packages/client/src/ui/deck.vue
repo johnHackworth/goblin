@@ -8,7 +8,6 @@
 				ref="columnsEl"
 				class="columns"
 				:class="deckStore.reactiveState.columnAlign.value"
-				@contextmenu.self.prevent="onContextmenu"
 				@wheel.self="onWheel"
 			>
 				<template v-for="ids in layout">

@@ -11,7 +11,6 @@
 			singleStart: replies.length == 1,
 			firstColumn: depth == 1 && conversation,
 		}"
-		@contextmenu.stop="onContextmenu"
 	>
 		<div v-if="conversation && depth > 1" class="line"></div>
 		<div

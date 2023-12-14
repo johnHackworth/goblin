@@ -58,7 +58,6 @@
 					:style="{ zIndex }"
 					@click="onBgClick"
 					@mousedown="onBgClick"
-					@contextmenu.prevent.stop="() => {}"
 				></div>
 				<div
 					ref="content"

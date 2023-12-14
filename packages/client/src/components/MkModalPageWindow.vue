@@ -8,7 +8,7 @@
 				height: height ? `min(${height}px, 100%)` : '100%',
 			}"
 		>
-			<div class="header" @contextmenu="onContextmenu">
+			<div class="header">
 				<button
 					v-if="history.length > 0"
 					v-tooltip="i18n.ts.goBack"

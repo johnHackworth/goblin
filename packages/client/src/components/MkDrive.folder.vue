@@ -5,7 +5,6 @@
 		draggable="true"
 		:title="title"
 		@click="onClick"
-		@contextmenu.stop="onContextmenu"
 		@mouseover="onMouseover"
 		@mouseout="onMouseout"
 		@dragover.prevent.stop="onDragover"

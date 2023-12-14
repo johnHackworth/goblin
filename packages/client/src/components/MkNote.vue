@@ -58,7 +58,6 @@
 		</div>
 		<article
 			class="article"
-			@contextmenu.stop="onContextmenu"
 		>
 			<div class="main">
 				<div v-if="renotedBy" class="renoteHeader">
@@ -181,7 +180,6 @@
 		v-else
 		class="muted _button"
 		@click="muted.muted = false"
-		@contextmenu.stop.prevent
 	>
 		<I18n :src="softMuteReasonI18nSrc(muted.what)" tag="small">
 			<template #name>

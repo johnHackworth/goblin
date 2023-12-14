@@ -7,7 +7,6 @@
 		:title="self ? props.url.substring(local.length) : props.url"
 		:rel="rel"
 		:target="target"
-		@contextmenu.stop="() => {}"
 		@click.stop
 	>
 		<template v-if="!self">

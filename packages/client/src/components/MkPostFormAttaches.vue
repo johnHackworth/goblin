@@ -12,7 +12,6 @@
 				v-for="element in _files"
 				:key="element.id"
 				@click="showFileMenu(element, $event)"
-				@contextmenu.prevent="showFileMenu(element, $event)"
 			>
 				<MkDriveFileThumbnail
 					:data-id="element.id"

@@ -18,7 +18,6 @@
 					class="_formBlock _panel"
 					:class="$style.profile"
 					@click="($event) => menu($event, id)"
-					@contextmenu.prevent.stop="($event) => menu($event, id)"
 				>
 					<div :class="$style.profileName">{{ profile.name }}</div>
 					<div :class="$style.profileTime">

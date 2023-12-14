@@ -19,7 +19,6 @@
 				<div
 					class="header"
 					:class="{ mini }"
-					@contextmenu.prevent.stop="onContextmenu"
 				>
 					<span class="left">
 						<button

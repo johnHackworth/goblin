@@ -52,7 +52,6 @@
 					:aria-label="media.comment"
 					preload="none"
 					controls
-					@contextmenu.stop
 				>
 					<source :src="media.url" :type="mediaType" />
 				</video>

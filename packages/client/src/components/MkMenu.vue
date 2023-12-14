@@ -14,7 +14,6 @@
 					width: width && !asDrawer ? width + 'px' : '',
 					maxHeight: maxHeight ? maxHeight + 'px' : '',
 				}"
-				@contextmenu.self="(e) => e.preventDefault()"
 				tabindex="-1"
 			>
 				<template v-for="(item, i) in items2">

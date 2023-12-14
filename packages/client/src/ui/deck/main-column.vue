@@ -15,7 +15,7 @@
 			</template>
 		</template>
 
-		<RouterView @contextmenu.stop="onContextmenu" />
+		<RouterView />
 	</XColumn>
 </template>
 

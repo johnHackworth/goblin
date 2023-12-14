@@ -22,7 +22,6 @@
 			@click="goTop"
 			@dragstart="onDragstart"
 			@dragend="onDragend"
-			@contextmenu.prevent.stop="onContextmenu"
 			@wheel="emit('headerWheel', $event)"
 		>
 			<button
