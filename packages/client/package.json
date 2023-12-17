@@ -99,8 +99,9 @@
 		"vue-prism-editor": "2.0.0-alpha.2"
 	},
 	"dependencies": {
-		"@automattic/isolated-block-editor": "^2.28.0",
+		"@tiptap/core": "^2.1.13",
 		"@tiptap/extension-bubble-menu": "^2.1.12",
+		"@tiptap/extension-color": "^2.1.13",
 		"@tiptap/extension-document": "^2.1.12",
 		"@tiptap/extension-dropcursor": "^2.1.12",
 		"@tiptap/extension-image": "^2.1.12",
@@ -109,6 +110,7 @@
 		"@tiptap/extension-placeholder": "^2.1.12",
 		"@tiptap/extension-subscript": "^2.1.12",
 		"@tiptap/extension-text": "^2.1.12",
+		"@tiptap/extension-text-style": "^2.1.13",
 		"@tiptap/extension-youtube": "^2.1.12",
 		"@tiptap/pm": "^2.1.12",
 		"@tiptap/starter-kit": "^2.1.12",

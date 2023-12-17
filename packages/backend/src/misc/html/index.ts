@@ -15,7 +15,8 @@ export const params = {
     "iframe": [ 'width', 'height', 'allowfullscreen', 'autoplay', 'disablekbcontrols',
       'enableiframeapi', 'endtime', 'ivloadpolicy', 'loop', 'modestbranding', 'origin',
       'playlist', 'src', 'start'
-    ]
+    ],
+    "span": ["style"]
   },
   "selfClosing": ["img","br","hr","area","base","basefont","input","link","meta"],
   "allowedSchemes": ["http","https","ftp","mailto","tel"],

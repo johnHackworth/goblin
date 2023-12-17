@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div class="block-editor" :onPaste="handlePaste" >
     <div class="editor-area">
       <div v-if="editor">
@@ -20,7 +20,10 @@
       </div>
     </div>
     <footer>
-      <span v-if="isSelecting" class="formatting">
+      <span v-if="isSelecting && isColorMenuVisible" class="formatting">
+        <ColorMenu @close="toggleColorMenu" :editor="editor" @color="applyColor" />
+      </span>
+      <span v-if="isSelecting && !isColorMenuVisible" class="formatting">
         <button @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().chain().focus().toggleBold().run()" class="_button"  :class="{ 'is-active': editor.isActive('bold') }">
         <BoldIcon />
         </button>
@@ -35,6 +38,9 @@
         </button>
         <button @click="editor.chain().focus().toggleSubscript().run()" class="_button" :class="{ 'is-active': editor.isActive('link') }">
           <SmallIcon />
+        </button>
+        <button @click="toggleColorMenu" class="_button" :class="{ 'is-active': isColorMenuVisible }">
+          <ColorIcon />
         </button>
 
       </span>
@@ -73,6 +79,7 @@
       </button>
 
       <button
+        v-if="!isSelecting"
         v-tooltip="i18n.ts.useCw"
         class="_button content-warning"
         :class="{ active: useCw }"
@@ -125,10 +132,11 @@ import Dropcursor from '@tiptap/extension-dropcursor';
 import Image from '@tiptap/extension-image';
 import Paragraph from '@tiptap/extension-paragraph';
 import Text from '@tiptap/extension-text';
-import BubbleMenu from '@tiptap/extension-bubble-menu';
 import Placeholder from '@tiptap/extension-placeholder';
 import Link from '@tiptap/extension-link';
 import Subscript from '@tiptap/extension-subscript';
+import TextStyle from '@tiptap/extension-text-style'
+import { Color } from '@tiptap/extension-color'
 import { formatTimeString } from "@/scripts/format-time-string";
 
 import { selectFiles } from "@/scripts/select-file";
@@ -145,7 +153,10 @@ import SmallIcon from "@/components/icons/small.vue";
 import BulletListIcon from "@/components/icons/bullet-list.vue";
 import OrderedListIcon from "@/components/icons/ordered-list.vue";
 import WarningIcon from "@/components/icons/warning.vue";
+import ColorIcon from "@/components/icons/color.vue";
+import { Gradient } from "./color-gradient.ts";
 
+import ColorMenu from './color-menu.vue';
 
 
 const props = withDefaults(
@@ -178,6 +189,7 @@ const tagsElement = $ref(null)
 
 let isSelecting = $ref(false);
 let isEmpty = $ref(true);
+let isColorMenuVisible = $ref(false);
 
 const emit = defineEmits(['update', 'updateTags', 'post', 'addedImage', 'enableContentWarning'])
 
@@ -204,6 +216,12 @@ const post = ( ev ) => {
   setTimeout(() => { emit('post') }, 100);
 }
 
+const applyColor = ( color ) => {
+  console.log(color);
+  editor.value.can().chain().focus()
+    .extendMarkRange('link').setColor(color).run()
+}
+
 const handlePaste = async (ev) => {
   for (const { item, i } of Array.from(ev.clipboardData.items).map(
     (item, i) => ({ item, i }),
@@ -217,12 +235,15 @@ const handlePaste = async (ev) => {
         'file',
       ).replace(/{{number}}/g, `${i + 1}`)}${ext}`;
       props.upload(file, formatted).then( (res) => {
-        console.log(res,'¡¡¡¡¡¡¡¡¡¡¡');
         emit('addedImage', res);
         editor.value.chain().focus().setImage({ src: res.url }).createParagraphNear().run();
       });
     }
   }
+}
+
+const toggleColorMenu = () => {
+  isColorMenuVisible = !isColorMenuVisible;
 }
 
 const updateTag = ( event ) => {
@@ -268,7 +289,10 @@ const editor = useEditor({
       protocols: ['ftp', 'mailto', 'http', 'https'],
       autolink: true,
     }),
-    Subscript
+    Subscript,
+    TextStyle,
+    Color,
+    Gradient
   ],
   onUpdate: update,
   onSelectionUpdate: selectionChange,
@@ -425,6 +449,7 @@ const addVideo = (ev) => {
     position: absolute;
     bottom: 0px;
     width: calc( 100% - 32px);
+    display: flex;
 
     button {
       margin-right: 16px;
@@ -479,6 +504,7 @@ const addVideo = (ev) => {
     display: inline-flex;
     align-items: center;
     margin: 2px;
+    margin-left: auto;
     padding: 8px 32px;
     font-weight: bold;
     vertical-align: center;
