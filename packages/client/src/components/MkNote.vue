@@ -8,7 +8,8 @@
 		v-size="{ max: [500, 350] }"
 		class="tkcbzcuz note-container"
 		:tabindex="!isDeleted ? '-1' : 10"
-		:class="{ renote: isRenote, private: note.visibility !== 'public', unlisted: note.visibility == 'unlisted'  }"
+		:class="{ renote: isRenote }"
+		:data-visibility="note.visibility"
 		:id="appearNote.id"
 	>
 		<MkNoteSub
@@ -356,12 +357,12 @@ useNoteCapture({
 
 function reply(viaKeyboard = false): void {
 	pleaseLogin();
-	if(props.detailedView) {
-		document.querySelector('.tiptap').focus();
+	if(props.showCloseButton) {
+		document.getElementById(appearNote.id).parentElement.querySelector('.tiptap').focus();
 	} else {
-		router.push(notePage(appearNote));
+		noteClick()
 		setTimeout( () => {
-			document.querySelector('.tiptap').focus();
+			document.getElementById(appearNote.id).parentElement.querySelector('.tiptap').focus();
 		},500);
 	}
 }
@@ -590,12 +591,16 @@ defineExpose({
 	contain: content;
 	-webkit-tap-highlight-color: transparent;
 
-	&.private {
+	&[data-visibility="specified"] {
 		background-image: linear-gradient(to bottom, #f8b3b3, #f9c6d3, #f6daeb, #f6edf9, #ffffff, #ffffff, #ffffff);
 	}
 
-	&.unlisted {
+	&[data-visibility="followers"] {
 		 background-image: linear-gradient(to bottom, #f8f5b3, #ffecca, #ffeeed, #fff7ff, #ffffff);
+	}
+
+	&[data-visibility="home"] {
+		 background-image: linear-gradient(to bottom, var(--X10), #efefef, #ffffff, #fff7ff, #ffffff);
 	}
 
 	&:focus-visible {

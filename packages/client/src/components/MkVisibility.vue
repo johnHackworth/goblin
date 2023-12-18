@@ -1,27 +1,29 @@
 <template>
 	<span v-if="note.visibility !== 'public'" :class="$style.visibility">
-		<i
-			v-if="note.visibility === 'home'"
-			class="ph-house ph-bold ph-lg"
-			v-tooltip="i18n.ts._visibility.home"
-		></i>
-		<i
-			v-else-if="note.visibility === 'followers'"
-			class="ph-lock ph-bold ph-lg"
-			v-tooltip="i18n.ts._visibility.followers"
-		></i>
-		<i
-			v-else-if="note.visibility === 'specified'"
-			ref="specified"
-			class="ph-envelope-simple-open ph-bold ph-lg"
-		></i>
+		<span	v-if="note.visibility === 'home'">
+			<i
+				class="ph-house ph-bold ph-lg"
+				v-tooltip="i18n.ts._visibility.home"
+			></i>
+		</span>
+		<span	v-else-if="note.visibility === 'followers'">
+			<i
+				class="ph-lock ph-bold ph-lg"
+				v-tooltip="i18n.ts._visibility.followers"
+			></i><span class="visibilityNote"> Only followers can see this post</span>
+		</span>
+		<span	v-else-if="note.visibility === 'specified'">
+			<i
+				ref="specified"
+				class="ph-envelope-simple-open ph-bold ph-lg"
+			></i> <span class="visibilityNote"> Only mentioned people can see this post</span>
+		</span>
+		<span v-if="note.localOnly" :class="$style.localOnly">
+			<i
+				class="ph-hand-fist ph-bold ph-lg"
+				v-tooltip="i18n.ts._visibility.localOnly"></i>
+		</span>
 	</span>
-	<span v-if="note.localOnly" :class="$style.localOnly"
-		><i
-			class="ph-hand-fist ph-bold ph-lg"
-			v-tooltip="i18n.ts._visibility.localOnly"
-		></i
-	></span>
 </template>
 
 <script lang="ts" setup>
