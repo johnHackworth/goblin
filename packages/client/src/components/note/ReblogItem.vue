@@ -41,6 +41,10 @@ const props = defineProps<{
   display: flex;
   flex-direction: column;
 
+  @media (max-width: 500px) {
+    padding: 8px 8px;
+    width: calc(100% - 16px);;
+  }
 
   .reblog-item-header {
     display: flex;

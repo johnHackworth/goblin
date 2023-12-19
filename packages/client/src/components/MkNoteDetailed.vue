@@ -520,6 +520,10 @@ onUnmounted(() => {
 			border: solid 1px var(--focus);
 			border-radius: var(--radius);
 			box-sizing: border-box;
+
+			&.max-width_500px {
+				border-radius: 3px;
+			}
 		}
 	}
 

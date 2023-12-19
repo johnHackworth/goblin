@@ -677,6 +677,10 @@ console.log(mainRouter.currentRoute.value.name);
 			transition: background 0.6s;
 			color: var(--fg);
 
+			.isMobile & {
+				color: var(--bg);
+			}
+
 			&:active {
 				background-color: var(--accentedBg);
 				background-size: 100%;
@@ -770,6 +774,27 @@ console.log(mainRouter.currentRoute.value.name);
 		overflow: auto;
 		overscroll-behavior: contain;
 		background: var(--navBg);
+	}
+
+	&.isMobile {
+		> .buttons {
+			> .button {
+				color: var(--navFg);
+
+				> .button-wrapper {
+					&.on {
+						transform: none;
+						background-color: var(--navFg);
+						color: var(--fg);
+						height: 100%;
+						i {
+							display: flex;
+							align-items: center;
+						}
+					}
+				}
+			}
+		}
 	}
 }
 </style>

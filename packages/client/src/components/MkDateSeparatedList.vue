@@ -171,7 +171,7 @@ export default defineComponent({
 			line-height: 32px;
 			text-align: center;
 			font-size: 12px;
-			color: var(--dateLabelFg);
+			color: var(--header);
 
 			> span {
 				&:first-child {

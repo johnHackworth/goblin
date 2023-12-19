@@ -859,6 +859,11 @@ defineExpose({
 				flex-wrap: wrap;
 				margin: 8px 16px 0;
 				justify-content: flex-end;
+
+				@media (max-width: 500px) {
+					margin: 8px 4px 0;
+				}
+
 				> :deep(.button) {
 					position: relative;
 					margin: 0;
@@ -907,6 +912,10 @@ defineExpose({
 							background 0.3s ease,
 							color 0.3s ease;
 
+						@media (max-width: 500px) {
+							padding: 0 0;
+						}
+
 						&:hover {
 							background: var(--navHoverFg);
 							color: var(--navFg);
@@ -953,11 +962,15 @@ defineExpose({
 			}
 		}
 		> .article {
-			padding: 18px 16px 8px;
+			padding: 18px 4px 8px;
 			&:first-child,
 			&:nth-child(2) {
 				padding-top: 104px;
 			}
+			.header-container {
+				padding: 0 4px 16px;
+			}
+
 			> .main > .header-container > .avatar {
 				margin-right: 10px;
 			}

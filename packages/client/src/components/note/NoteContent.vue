@@ -331,6 +331,10 @@ function focusFooter(ev) {
   z-index: 2;
   padding: 0 32px 16px;
 
+  @media (max-width: 500px) {
+    padding: 0 8px 16px;
+  }
+
   > .avatar {
     flex-shrink: 0;
     display: block;
@@ -351,6 +355,10 @@ function focusFooter(ev) {
 .noteContent {
   .noteText {
     padding: 0 32px;
+
+    @media (max-width: 500px) {
+      padding: 0 4px;
+    }
 
     a {
       color: #006;

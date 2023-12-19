@@ -81,6 +81,10 @@ defineExpose({
 		> .notes {
 			background: var(--panel) !important;
 			border-radius: var(--radius);
+
+			&.max-width_500px {
+				border-radius: 3px;
+			}
 		}
 	}
 	&:not(.noGap) {
@@ -88,6 +92,10 @@ defineExpose({
 			.qtqtichx {
 				background: var(--panel);
 				border-radius: var(--radius);
+
+				&.max-width_500px {
+					border-radius: 5px;
+				}
 
 				&.private {
 					background-image: linear-gradient(to bottom, #f8b3b3, #f9c6d3, #f6daeb, #f6edf9, #ffffff, #ffffff, #ffffff);

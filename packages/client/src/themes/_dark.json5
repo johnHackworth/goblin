@@ -49,7 +49,7 @@
     modalBg: 'rgba(0, 0, 0, 0.5)',
     scrollbarHandle: 'rgba(255, 255, 255, 0.2)',
     scrollbarHandleHover: 'rgba(255, 255, 255, 0.4)',
-    dateLabelFg: '@fg',
+    dateLabelFg: '#fff',
     infoBg: '#253142',
     infoFg: '#fff',
     infoWarnBg: '#42321c',
