@@ -378,7 +378,7 @@ function focusFooter(ev) {
     }
 
     video {
-      max-width: 100%;
+      width: 100%;
       margin: 8px 0;
     }
   }
