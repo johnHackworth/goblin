@@ -728,6 +728,34 @@ async function insertNote(
 	if (data.createdAt === null || data.createdAt === undefined) {
 		data.createdAt = new Date();
 	}
+
+	const blazeTrail = ( tree ) => {
+		let store = [];
+		if(tree.reply) {
+			 store = blazeTrail(tree.reply);
+		}
+		if(tree.renote) {
+			 store = blazeTrail(tree.renote);
+		}
+		store.push(tree)
+		return store;
+	}
+
+	if(!!data.reply && !!user.host) {
+		// it's a reply created by a user in other server
+		// so we want to convert it to a reblog format
+		data.renote = data.reply;
+		data.reply = null;
+
+		if(data.renote.reblogtrail) {
+			data.reblogtrail = data.renote.reblogtrail;
+			data.reblogtrail.push(data.renote)
+		} else {
+			data.reblogtrail = blazeTrail(data.renote)
+		}
+
+	}
+
 	const insert = new Note({
 		id: genId(data.createdAt),
 		createdAt: data.createdAt,
