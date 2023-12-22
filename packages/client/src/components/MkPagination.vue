@@ -144,8 +144,7 @@ const bringReblogs = async (item) => {
 	const reblogtrail = await fetch(`${apiUrl}/note/reblogtrail?noteId=${item.id}`, {
 		method: "GET"
 	});
-	console.log(reblogtrail);
-	return reblogtrail;
+	return await reblogtrail.json();
 }
 
 const init = async (): Promise<void> => {
@@ -165,7 +164,6 @@ const init = async (): Promise<void> => {
 		})
 		.then(
 			async (res) => {
-				console.log('pagination');
 				for (let i = 0; i < res.length; i++) {
 					const item = res[i];
 					if(item.replyId && (item.userHost || item.user.host) && !item.reblogtrail.length) {
@@ -222,7 +220,6 @@ const refresh = async (): void => {
 		})
 		.then(
 			async (res) => {
-				console.log('refresh')
 				let ids = items.value.reduce(
 					(a, b) => {
 						a[b.id] = true;
@@ -286,10 +283,8 @@ const fetchMore = async (): Promise<void> => {
 		})
 		.then(
 			async (res) => {
-				console.log('more');
 				for (let i = 0; i < res.length; i++) {
 					const item = res[i];
-					console.log(item.replyId, item.user.host, item.reblogtrail);
 					if(item.replyId && (item.userHost || item.user.host) && !item.reblogtrail.length) {
 						item.reblogtrail = await bringReblogs(item)
 					}
@@ -352,7 +347,6 @@ const fetchMoreAhead = async (): Promise<void> => {
 		})
 		.then(
 			(res) => {
-				console.log('ahead');
 				if (res.length > SECOND_FETCH_LIMIT) {
 					res.pop();
 					items.value = props.pagination.reversed
@@ -375,7 +369,6 @@ const fetchMoreAhead = async (): Promise<void> => {
 };
 
 const prepend = (item: Item): void => {
-	console.log('prepend')
 	if (props.pagination.reversed) {
 		if (rootEl.value) {
 			const container = getScrollContainer(rootEl.value);

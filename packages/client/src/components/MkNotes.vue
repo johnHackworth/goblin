@@ -75,6 +75,10 @@ const props = defineProps<{
 const pagingComponent = ref<InstanceType<typeof MkPagination>>();
 
 function convertRemoteReplyToReblog( note ) {
+	if(note.reblogtrail.length) {
+		return note;
+	}
+
 	note.renote = note.reply;
 	note.reply = null;
 	note.renoteId = note.replyId;
