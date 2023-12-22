@@ -307,8 +307,48 @@ namespace MisskeyAPI {
 			};
 		};
 
+		convertQuoteToReply = (n: Entity.Note, host: string): MegalodonEntity.Status => {
+			return {
+				id: n.id,
+				uri: n.uri ? n.uri : `https://${host}/notes/${n.id}`,
+				url: n.uri ? n.uri : `https://${host}/notes/${n.id}`,
+				account: this.user(n.user),
+				in_reply_to_id: n.renoteId,
+				in_reply_to_account_id: n.renote?.userId ?? null,
+				reblog: null,
+				content: n.text ? this.escapeMFM(n.text) : "",
+				plain_content: n.text ? n.text : null,
+				created_at: n.createdAt,
+				emojis: n.emojis.map((e) => this.emoji(e)),
+				replies_count: n.repliesCount,
+				reblogs_count: n.renoteCount,
+				favourites_count: this.getTotalReactions(n.reactions),
+				reblogged: false,
+				favourited: !!n.myReaction,
+				muted: false,
+				sensitive: n.files ? n.files.some((f) => f.isSensitive) : false,
+				spoiler_text: n.cw ? n.cw : "",
+				visibility: this.visibility(n.visibility),
+				media_attachments: n.files ? n.files.map((f) => this.file(f)) : [],
+				mentions: [],
+				tags: [],
+				card: null,
+				poll: n.poll ? this.poll(n.poll, n.id) : null,
+				application: null,
+				language: null,
+				pinned: null,
+				emoji_reactions: this.mapReactions(n.reactions, n.myReaction),
+				bookmarked: false,
+				quote: null,
+			};
+		};
+
 		note = (n: Entity.Note, host: string): MegalodonEntity.Status => {
 			host = host.replace("https://", "");
+
+			if(n.renote && n.text) {
+				return this.convertQuoteToReply(n, host);
+			}
 
 			return {
 				id: n.id,
