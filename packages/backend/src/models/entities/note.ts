@@ -121,7 +121,7 @@ export class Note {
 	@Column("json", {
 		default: [],
 	})
-	public reblogtrail: object | null;
+	public reblogtrail: Note[] | null;
 
 	/**
 	 * public ... 公開

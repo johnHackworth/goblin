@@ -253,6 +253,7 @@ import * as ep___notes_hybridTimeline from "./endpoints/notes/hybrid-timeline.js
 import * as ep___notes_localTimeline from "./endpoints/notes/local-timeline.js";
 import * as ep___notes_recommendedTimeline from "./endpoints/notes/recommended-timeline.js";
 import * as ep___notes_mentions from "./endpoints/notes/mentions.js";
+import * as ep___notes_reblogtrail from "./endpoints/notes/reblogtrail.js";
 import * as ep___notes_polls_recommendation from "./endpoints/notes/polls/recommendation.js";
 import * as ep___notes_polls_vote from "./endpoints/notes/polls/vote.js";
 import * as ep___notes_reactions from "./endpoints/notes/reactions.js";
@@ -346,7 +347,11 @@ import * as ep___admin_driveCapOverride from "./endpoints/admin/drive-capacity-o
 import * as ep___i_move from "./endpoints/i/move.js";
 import * as ep___i_known_as from "./endpoints/i/known-as.js";
 
-const eps = [
+const getEps = [
+  ["note/reblogtrail", ep___notes_reblogtrail],
+];
+
+const postEps = [
 	["admin/meta", ep___admin_meta],
 	["admin/abuse-user-reports", ep___admin_abuseUserReports],
 	["admin/accounts/create", ep___admin_accounts_create],
@@ -799,15 +804,30 @@ export interface IEndpoint {
 	exec: any; // TODO: may be obosolete @ThatOneCalculator
 	meta: IEndpointMeta;
 	params: Schema;
+  method: 'POST' | 'GET' | 'PUT' | 'DELETE';
 }
 
-const endpoints: IEndpoint[] = (eps as [string, any]).map(([name, ep]) => {
+const postEndpoints: IEndpoint[] = (postEps as [string, any]).map(([name, ep]) => {
 	return {
 		name: name,
 		exec: ep.default,
 		meta: ep.meta ?? {},
 		params: ep.paramDef,
+    method: 'POST',
 	};
 });
 
-export default endpoints;
+
+const getEndpoints: IEndpoint[] = (getEps as [string, any]).map(([name, ep]) => {
+  return {
+    name: name,
+    exec: ep.default,
+    meta: ep.meta ?? {},
+    params: ep.paramDef,
+    method: 'GET',
+  };
+});
+
+
+
+export default postEndpoints.concat(getEndpoints);

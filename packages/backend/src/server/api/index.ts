@@ -147,32 +147,37 @@ for (const endpoint of [...endpoints, ...compatibility]) {
 		);
 	} else {
 		// 後方互換性のため
-		if (endpoint.name.includes("-")) {
-			router.post(
-				`/${endpoint.name.replace(/-/g, "_")}`,
-				handler.bind(null, endpoint),
-			);
-
-			if (endpoint.meta.allowGet) {
-				router.get(
+		if (endpoint.method === 'POST') {
+			if (endpoint.name.includes("-")) {
+				router.post(
 					`/${endpoint.name.replace(/-/g, "_")}`,
 					handler.bind(null, endpoint),
 				);
+
+				if (endpoint.meta.allowGet) {
+					router.get(
+						`/${endpoint.name.replace(/-/g, "_")}`,
+						handler.bind(null, endpoint),
+					);
+				} else {
+					router.get(`/${endpoint.name.replace(/-/g, "_")}`, async (ctx) => {
+						ctx.status = 405;
+					});
+				}
+			}
+
+			router.post(`/${endpoint.name}`, handler.bind(null, endpoint));
+
+			if (endpoint.meta.allowGet) {
+				router.get(`/${endpoint.name}`, handler.bind(null, endpoint));
 			} else {
-				router.get(`/${endpoint.name.replace(/-/g, "_")}`, async (ctx) => {
+				router.get(`/${endpoint.name}`, async (ctx) => {
 					ctx.status = 405;
 				});
 			}
-		}
-
-		router.post(`/${endpoint.name}`, handler.bind(null, endpoint));
-
-		if (endpoint.meta.allowGet) {
+		} else if (endpoint.method === 'GET') {
+			// first step to start migrating endpoints here
 			router.get(`/${endpoint.name}`, handler.bind(null, endpoint));
-		} else {
-			router.get(`/${endpoint.name}`, async (ctx) => {
-				ctx.status = 405;
-			});
 		}
 	}
 }
