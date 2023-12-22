@@ -141,10 +141,23 @@ const empty = computed(() => items.value.length === 0);
 const error = ref(false);
 
 const bringReblogs = async (item) => {
-	const reblogtrail = await fetch(`${apiUrl}/note/reblogtrail?noteId=${item.id}`, {
+	const reblogtrailResponse = await fetch(`${apiUrl}/note/reblogtrail?noteId=${item.id}`, {
 		method: "GET"
 	});
-	return await reblogtrail.json();
+	const reblogtrail = await reblogtrailResponse.json();
+	return await reblogtrail.map(async (post) => {
+		if(post.replyId) {
+			post.renoteId = replyId;
+			post.renote = post.reply;
+			post.threadId = null;
+		}
+		if(!post.user) {
+			post.user = await os.api("users/show", {
+				userId: post.userId,
+			})
+		}
+		return post;
+	})
 }
 
 const init = async (): Promise<void> => {
