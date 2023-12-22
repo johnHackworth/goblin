@@ -147,7 +147,7 @@ const bringReblogs = async (item) => {
 	const reblogtrail = await reblogtrailResponse.json();
 	return await reblogtrail.map(async (post) => {
 		if(post.replyId) {
-			post.renoteId = replyId;
+			post.renoteId = post.replyId;
 			post.renote = post.reply;
 			post.threadId = null;
 		}
