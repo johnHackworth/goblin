@@ -168,7 +168,7 @@ const init = async (): Promise<void> => {
 				console.log('pagination');
 				for (let i = 0; i < res.length; i++) {
 					const item = res[i];
-					if(item.replyId && (item.userHost || item.user.host) && !item.reblogtrail) {
+					if(item.replyId && (item.userHost || item.user.host) && !item.reblogtrail.length) {
 						item.reblogtrail = await bringReblogs(item)
 					}
 					if (props.pagination.reversed) {
@@ -233,7 +233,7 @@ const refresh = async (): void => {
 
 				for (let i = 0; i < res.length; i++) {
 					const item = res[i];
-					if(item.replyId && (item.userHost || item.user.host) && !item.reblogtrail) {
+					if(item.replyId && (item.userHost || item.user.host) && !item.reblogtrail.length) {
 						item.reblogtrail = await bringReblogs(item)
 					}
 					if (!updateItem(item.id, (old) => item)) {
@@ -290,7 +290,7 @@ const fetchMore = async (): Promise<void> => {
 				for (let i = 0; i < res.length; i++) {
 					const item = res[i];
 					console.log(item.replyId, item.user.host, item.reblogtrail);
-					if(item.replyId && (item.userHost || item.user.host) && !item.reblogtrail) {
+					if(item.replyId && (item.userHost || item.user.host) && !item.reblogtrail.length) {
 						item.reblogtrail = await bringReblogs(item)
 					}
 					if (props.pagination.reversed) {
