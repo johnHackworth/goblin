@@ -341,7 +341,6 @@ const expandOnNoteClick = defaultStore.state.expandOnNoteClick;
 const keymap = {
 	r: () => reply(true),
 	"e|a|plus": () => react(true),
-	q: () => renoteButton.value.renote(true),
 	"up|k": focusBefore,
 	"down|j": focusAfter,
 	esc: blur,
@@ -522,7 +521,7 @@ function focusAfter() {
 }
 
 function scrollIntoView() {
-	el.value.scrollIntoView();
+	if(el && el.value) el.value.scrollIntoView();
 }
 
 function noteLink(e) {
