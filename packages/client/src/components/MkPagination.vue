@@ -140,6 +140,14 @@ const isBackTop = ref(false);
 const empty = computed(() => items.value.length === 0);
 const error = ref(false);
 
+const bringReblogs = async (item) => {
+	const reblogtrail = await fetch(`${apiUrl}/note/reblogtrail?noteId=${item.id}`, {
+		method: "GET"
+	});
+	console.log(reblogtrail);
+	return reblogtrail;
+}
+
 const init = async (): Promise<void> => {
 	queue.value = [];
 	fetching.value = true;
@@ -157,16 +165,13 @@ const init = async (): Promise<void> => {
 		})
 		.then(
 			async (res) => {
+				console.log('pagination');
 				for (let i = 0; i < res.length; i++) {
 					const item = res[i];
-					if(item.replyId) { console.log(item) };
+					if(item.replyId || item.renoteId || item.reply) { console.log(item) };
 					if(item.replyId && item.userHost && !item.reblogtrail) {
-						const reblogtrail = await fetch(`${apiUrl}/note/reblogtrail?noteId=${item.id}`, {
-							method: "GET"
-						});
-						console.log(reblogtrail);
+						item.reblogtrail = await bringReblogs(item)
 					}
-
 					if (props.pagination.reversed) {
 						if (i === res.length - 2) item._shouldInsertAd_ = true;
 					} else {
@@ -217,7 +222,8 @@ const refresh = async (): void => {
 			offset: 0,
 		})
 		.then(
-			(res) => {
+			async (res) => {
+				console.log('refresh')
 				let ids = items.value.reduce(
 					(a, b) => {
 						a[b.id] = true;
@@ -228,6 +234,10 @@ const refresh = async (): void => {
 
 				for (let i = 0; i < res.length; i++) {
 					const item = res[i];
+					if(item.replyId || item.renoteId || item.reply) { console.log(item) };
+					if(item.replyId && item.userHost && !item.reblogtrail) {
+						item.reblogtrail = await bringReblogs(item)
+					}
 					if (!updateItem(item.id, (old) => item)) {
 						append(item);
 					}
@@ -277,9 +287,14 @@ const fetchMore = async (): Promise<void> => {
 				  }),
 		})
 		.then(
-			(res) => {
+			async (res) => {
+				console.log('more');
 				for (let i = 0; i < res.length; i++) {
 					const item = res[i];
+					if(item.replyId || item.renoteId || item.reply) { console.log(item) };
+					if(item.replyId && item.userHost && !item.reblogtrail) {
+						item.reblogtrail = await bringReblogs(item)
+					}
 					if (props.pagination.reversed) {
 						if (i === res.length - 9) item._shouldInsertAd_ = true;
 					} else {
@@ -339,6 +354,7 @@ const fetchMoreAhead = async (): Promise<void> => {
 		})
 		.then(
 			(res) => {
+				console.log('ahead');
 				if (res.length > SECOND_FETCH_LIMIT) {
 					res.pop();
 					items.value = props.pagination.reversed
@@ -361,6 +377,7 @@ const fetchMoreAhead = async (): Promise<void> => {
 };
 
 const prepend = (item: Item): void => {
+	console.log('prepend')
 	if (props.pagination.reversed) {
 		if (rootEl.value) {
 			const container = getScrollContainer(rootEl.value);
