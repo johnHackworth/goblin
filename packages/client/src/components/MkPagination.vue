@@ -289,6 +289,7 @@ const fetchMore = async (): Promise<void> => {
 				console.log('more');
 				for (let i = 0; i < res.length; i++) {
 					const item = res[i];
+					console.log(item.replyId, item.user.host, item.reblogtrail);
 					if(item.replyId && (item.userHost || item.user.host) && !item.reblogtrail) {
 						item.reblogtrail = await bringReblogs(item)
 					}
