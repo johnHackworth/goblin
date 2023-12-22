@@ -84,6 +84,7 @@ import {
 } from "@/scripts/scroll";
 import MkButton from "@/components/MkButton.vue";
 import { i18n } from "@/i18n";
+import { apiUrl } from "@/config";
 
 export type Paging<
 	E extends keyof misskey.Endpoints = keyof misskey.Endpoints,
@@ -155,9 +156,17 @@ const init = async (): Promise<void> => {
 				: (props.pagination.limit || 10) + 1,
 		})
 		.then(
-			(res) => {
+			async (res) => {
 				for (let i = 0; i < res.length; i++) {
 					const item = res[i];
+					if(item.replyId) { console.log(item) };
+					if(item.replyId && item.userHost && !item.reblogtrail) {
+						const reblogtrail = await fetch(`${apiUrl}/note/reblogtrail?noteId=${item.id}`, {
+							method: "GET"
+						});
+						console.log(reblogtrail);
+					}
+
 					if (props.pagination.reversed) {
 						if (i === res.length - 2) item._shouldInsertAd_ = true;
 					} else {
