@@ -27,13 +27,26 @@
 						:key="note._featuredId_ || note._prId_ || note.id"
 						:parentKey="note._featuredId_ || note._prId_ || note.id"
 						class="qtqtichx"
-						:note="note"
-						v-if="!noReplies || !note.replyId"
+						:note="convertRemoteReplyToReblog(note)"
+						v-if="note.replyId && note.user.host"
 						@toggle="toggleNote"
 						:showCloseButton="true"
 						:showNotesCounter="true"
 						:hideTabs="!expandedNotes[ note._featuredId_ || note._prId_ || note.id ]"
 					/>
+					<XNoteDetailed
+						:key="note._featuredId_ || note._prId_ || note.id"
+						:parentKey="note._featuredId_ || note._prId_ || note.id"
+						class="qtqtichx"
+						:note="note"
+						v-else-if="!noReplies || !note.replyId"
+						@toggle="toggleNote"
+						:showCloseButton="true"
+						:showNotesCounter="true"
+						:hideTabs="!expandedNotes[ note._featuredId_ || note._prId_ || note.id ]"
+					/>
+
+
 				</XList>
 			</div>
 		</template>
@@ -61,6 +74,15 @@ const props = defineProps<{
 
 const pagingComponent = ref<InstanceType<typeof MkPagination>>();
 
+function convertRemoteReplyToReblog( note ) {
+	note.renote = note.reply;
+	note.reply = null;
+	note.renoteId = note.replyId;
+	note.replyId = null;
+	note.reblogtrail = [ note.renote ];
+	return note;
+}
+
 function scrollTop() {
 	scroll(tlEl.value, { top: 0, behavior: "smooth" });
 }
@@ -70,6 +92,7 @@ function toggleNote( noteId ) {
 	console.log(expandedNotes);
 }
 defineExpose({
+	convertRemoteReplyToReblog,
 	pagingComponent,
 	scrollTop
 });

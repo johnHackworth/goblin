@@ -248,10 +248,13 @@ let posting = $ref(false);
 let text = $ref(props.initialText ?? "");
 let tags = $ref(props.initialTags ?? []);
 let files = $ref(props.initialFiles ?? []);
-let reblogtrail = $ref(props.renote?.reblogtrail?.length ? props.renote.reblogtrail : []);
+let reblogtrail = $ref([]);
 if(props.renote) {
 	let cloneNote = deepClone(props.renote);
-	delete cloneNote.reblogtrail;
+	if(cloneNote.reblogtrail?.length) {
+		reblogtrail = cloneNote.reblogtrail;
+	}
+	cloneNote.reblogtrail = [];
 	cloneNote.text = removeMeta(cloneNote.text);
 	reblogtrail.push(cloneNote);
 }
