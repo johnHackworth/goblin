@@ -42,18 +42,18 @@ export const paramDef = {
   required: ["noteId"],
 } as const;
 
-const getNoteAncestors = async (note, user, trail) => {
-    const ancestor = await getNote(note.id, user);
+const getNoteAncestors = async (noteId, user, trail) => {
+    const ancestor = await getNote(noteId, user);
     if(ancestor) {
       trail.push(ancestor);
       if(ancestor.reblogtrail && ancestor.reblogtrail.length > 0) {
         return trail.concat(ancestor.reblogtrail);
       }
-      if(ancestor.reply) {
-        return getNoteAncestors(ancestor.reply, user, trail);
+      if(ancestor.replyId) {
+        return getNoteAncestors(ancestor.replyId, user, trail);
       }
-      if(ancestor.renote) {
-        return getNoteAncestors(ancestor.renote, user, trail);
+      if(ancestor.renoteId) {
+        return getNoteAncestors(ancestor.replyId, user, trail);
       }
     }
 
@@ -67,7 +67,7 @@ export default define(meta, paramDef, async (ps, user) => {
     throw err;
   });
 
-  return getNoteAncestors(note, user, []);
+  return getNoteAncestors(ps.noteId, user, []);
 
   /*let query = makePaginationQuery(
     Notes.createQueryBuilder("note"),
