@@ -134,7 +134,7 @@ let tweetExpanded = $ref(props.detail);
 const embedId = `embed${Math.random().toString().replace(/\D/, "")}`;
 let tweetHeight = $ref(150);
 
-const requestUrl = new URL(props.url);
+const requestUrl = new URL(props.url.indexOf('http') === 0 ? props.url : 'https://' + props.url);
 if (!["http:", "https:"].includes(requestUrl.protocol))
 	throw new Error("invalid url");
 
