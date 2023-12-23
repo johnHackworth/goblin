@@ -729,7 +729,7 @@ async function insertNote(
 		data.createdAt = new Date();
 	}
 
-	if(data.reply && user.host) {
+/*	if(data.reply && user.host) {
 		// it's a reply created by a user in other server
 		// so we want to convert it to a reblog format
 		data.renote = data.reply;
@@ -742,7 +742,7 @@ async function insertNote(
 			data.reblogtrail = [ data.renote ]
 		}
 
-	}
+	}*/
 
 	const insert = new Note({
 		id: genId(data.createdAt),

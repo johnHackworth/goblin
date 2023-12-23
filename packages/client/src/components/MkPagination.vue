@@ -140,24 +140,36 @@ const isBackTop = ref(false);
 const empty = computed(() => items.value.length === 0);
 const error = ref(false);
 
+const userCache = {}
+
 const bringReblogs = async (item) => {
 	const reblogtrailResponse = await fetch(`${apiUrl}/note/reblogtrail?noteId=${item.id}`, {
 		method: "GET"
 	});
-	const reblogtrail = await reblogtrailResponse.json();
-	return await reblogtrail.map(async (post) => {
+	let reblogtrail = await reblogtrailResponse.json();
+	for(let i = 0; i < reblogtrail.length; i++) {
+		const post = reblogtrail[i];
 		if(post.replyId) {
-			post.renoteId = post.replyId;
-			post.renote = post.reply;
+			post.replyId = null;;
+			post.reply = null;
 			post.threadId = null;
 		}
 		if(!post.user) {
-			post.user = await os.api("users/show", {
-				userId: post.userId,
-			})
+			if(userCache[post.userId]) {
+				post.user = userCache[post.userId];
+			} else {
+				post.user = await os.api("users/show", {
+					userId: post.userId,
+				})
+				userCache[post.userId] = post.user;
+			}
 		}
-		return post;
-	})
+		if(!post.files) {
+			post.files = [];
+		}
+		reblogtrail[i] = post;
+	}
+	return reblogtrail.reverse();
 }
 
 const init = async (): Promise<void> => {

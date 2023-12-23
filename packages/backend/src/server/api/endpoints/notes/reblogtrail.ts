@@ -67,5 +67,11 @@ export default define(meta, paramDef, async (ps, user) => {
     throw err;
   });
 
-  return getNoteAncestors(ps.noteId, user, []);
+  if(note.replyId) {
+    return getNoteAncestors(note.replyId, user, []);
+  }
+  if(note.renoteId) {
+    return getNoteAncestors(note.renoteId, user, []);
+  }
+  return note.reblogtrail;
 });

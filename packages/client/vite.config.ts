@@ -81,6 +81,7 @@ export default defineConfig(({ command, mode }) => {
 					},
 				},
 			},
+			minify: false,
 			cssCodeSplit: true,
 			assetsInlineLimit: 0,
 			outDir: `${__dirname}/../../built/_client_dist_`,

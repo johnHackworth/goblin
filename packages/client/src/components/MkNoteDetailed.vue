@@ -9,29 +9,6 @@
 		:tabindex="!isDeleted ? '-1' : null"
 		:class="{ renote: isRenote, isClosed: props.hideTabs }"
 	>
-		<MkUserCardMini
-			v-if="tab === 'renotes' && renotes"
-			v-for="item in renotes"
-			:key="item.user.id"
-			:user="item.user"
-			:with-chart="false"
-		/>
-
-		<MkNoteSub
-			v-if="conversation"
-			v-for="note in conversation"
-			:key="note.id"
-			class="reply-to"
-			:note="note"
-			:detailedView="true"
-		/>
-		<MkLoading v-else-if="note.reply" mini />
-		<MkNoteSub
-			v-if="note.reply"
-			:note="note.reply"
-			class="reply-to"
-			:detailedView="true"
-		/>
 		<MkNote
 			ref="noteEl"
 			tabindex="-1"
