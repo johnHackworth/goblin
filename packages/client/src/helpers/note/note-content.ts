@@ -8,7 +8,7 @@ export const getTags = ( content ) => {
 }
 
 export const getNotEmbedFiles = ( note ) => {
-  const hasEmbedImages = note.text.indexOf('<img') >= 0;
+  const hasEmbedImages = note.text? note.text.indexOf('<img') >= 0 : false;
   if( ! note.files || note.files.length < 1) {
     return [];
   }
