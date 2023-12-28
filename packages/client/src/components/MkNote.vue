@@ -139,30 +139,12 @@
 						:count="parentNote.renoteCount"
 						:detailedView="detailedView"
 					/>
-					<XReactionsViewer
-						v-if="enableEmojiReactions"
-						ref="reactionsViewer"
-						:note="parentNote"
-					/>
-					<XStarButtonNoEmoji
-						v-if="!enableEmojiReactions"
-						class="button"
-						:note="parentNote"
-						:count="
-							Object.values(parentNote.reactions).reduce(
-								(partialSum, val) => partialSum + val,
-								0,
-							)
-						"
-						:reacted="parentNote.myReaction != null"
-					/>
+
 					<XStarButton
-						v-if="
-							enableEmojiReactions &&
-							parentNote.myReaction == null
-						"
+						v-if="enableEmojiReactions"
 						ref="starButton"
 						class="button"
+						:isFull="parentNote.myReaction !== null"
 						:note="parentNote"
 					/>
 					<button
