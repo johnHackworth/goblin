@@ -1,30 +1,5 @@
 <template>
 	<p v-if="note.cw != null" class="cw">
-		<MkA
-			v-if="conversation && note.renoteId == parentId"
-			:to="
-				detailedView ? `#${parentId}` : `${notePage(note)}#${parentId}`
-			"
-			behavior="browser"
-			class="reply-icon"
-			@click.stop
-		>
-			<i class="ph-quotes ph-bold ph-lg"></i>
-		</MkA>
-		<MkA
-			v-else-if="!detailed && note.replyId"
-			:to="
-				detailedView
-					? `#${note.replyId}`
-					: `${notePage(note)}#${note.replyId}`
-			"
-			behavior="browser"
-			v-tooltip="i18n.ts.jumpToPrevious"
-			class="reply-icon"
-			@click.stop
-		>
-			<i class="ph-arrow-bend-left-up ph-bold ph-lg"></i>
-		</MkA>
 		<Mfm
 			v-if="note.cw != ''"
 			class="text"
@@ -80,35 +55,6 @@
 				<span v-if="note.deletedAt" style="opacity: 0.5"
 					>({{ i18n.ts.deleted }})</span
 				>
-				<template v-if="!note.cw">
-					<MkA
-						v-if="conversation && note.renoteId == parentId"
-						:to="
-							detailedView
-								? `#${parentId}`
-								: `${notePage(note)}#${parentId}`
-						"
-						behavior="browser"
-						class="reply-icon"
-						@click.stop
-					>
-						<i class="ph-quotes ph-bold ph-lg"></i>
-					</MkA>
-					<MkA
-						v-else-if="!detailed && note.replyId"
-						:to="
-							detailedView
-								? `#${note.replyId}`
-								: `${notePage(note)}#${note.replyId}`
-						"
-						behavior="browser"
-						v-tooltip="i18n.ts.jumpToPrevious"
-						class="reply-icon"
-						@click.stop
-					>
-						<i class="ph-arrow-bend-left-up ph-bold ph-lg"></i>
-					</MkA>
-				</template>
 				<div class="noteText">
           <div v-html="note.text" />
         </div>
@@ -245,18 +191,6 @@ function focusFooter(ev) {
 :deep(button) {
 	position: relative;
 	z-index: 2;
-}
-.reply-icon {
-	display: inline-block;
-	border-radius: 6px;
-	padding: 0.2em 0.2em;
-	margin-right: 0.2em;
-	color: var(--accent);
-	transition: background 0.2s;
-	&:hover,
-	&:focus {
-		background: var(--buttonHoverBg);
-	}
 }
 .cw {
 	cursor: default;
