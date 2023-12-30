@@ -977,7 +977,7 @@ defineExpose({
 	display: flex;
 	color: #555;
 	padding: 0 32px 8px;
-  margin-top: -16px;
+  margin-top: 0;
   border-bottom: 0.5px dotted var(--fgTransparent);
   margin-bottom: 8px;
 	font-size: 12px;
