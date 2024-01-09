@@ -115,7 +115,7 @@ const editor = useEditor({
       placeholder: props.placeholder
     }),
     Link.configure({
-      protocols: ['ftp', 'mailto', 'http', 'https'],
+      protocols: ['ftp', 'http', 'https'],
       autolink: true,
     }),
     Subscript
