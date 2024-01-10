@@ -25,22 +25,25 @@ export const paramDef = {
 };
 
 export default define(meta, paramDef, async (ps)=>{
-  let usersToFech = [];
+  let usersToFetch = [];
   let responses = [];
   if(ps.username) {
     let user = await Users.findOneBy({
       "username": ps.username
     });
     if(user) {
-      usersToFech.push(user);
+      usersToFetch.push(user);
     }
   } else {
-    usersToFech = await getUsersToFetch();
+    usersToFetch = await getUsersToFetch();
   }
-  for(const user of usersToFech) {
+  for(const user of usersToFetch) {
     responses.push(await fetchTumblrFeed(user));
   }
-  return responses;
+  return {
+    responses: responses,
+    users: usersToFetch
+  }
 });
 
 const old = async () =>  {

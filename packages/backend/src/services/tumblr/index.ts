@@ -199,12 +199,23 @@ export async function updateTumblrUser( tumblrUsername: string ) {
     }
 
     const profile = await UserProfiles.findOneByOrFail({ userId: user.id });
-    if(profile && profile.description != blogInfo.description) {
-      profile.description = sanitize(blogInfo.description);
+    if(profile) {
+      let needProfileUpdate = false;
+      if( profile.description != blogInfo.description) {
+        profile.description = sanitize(blogInfo.description);
+        needProfileUpdate = true;
+      }
 
-      await db.transaction(async (transactionalEntityManager) => {
-        await transactionalEntityManager.save(profile);
-      });
+      if( profile.url != 'https://' +  blogInfo.name + '.tumblr.com') {
+        profile.url = 'https://' +  blogInfo.name + '.tumblr.com';
+        needProfileUpdate = true;
+      }
+
+      if(needProfileUpdate) {
+        await db.transaction(async (transactionalEntityManager) => {
+          await transactionalEntityManager.save(profile);
+        });
+      }
     }
   }
   await fetchTumblrFeed(user);
@@ -245,6 +256,7 @@ export async function createNewTumblrUser( username: string ) {
       await transactionalEntityManager.save(
         new UserProfile({
           userId: account.id,
+          url: 'https://' + newUsername,
           autoAcceptFollowed: true,
           password: '',
           description: sanitize(blogInfo.description),
