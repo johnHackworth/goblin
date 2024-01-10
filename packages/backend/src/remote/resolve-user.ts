@@ -7,6 +7,7 @@ import { Users } from "@/models/index.js";
 import { toPuny } from "@/misc/convert-host.js";
 import webFinger from "./webfinger.js";
 import { createPerson, updatePerson } from "./activitypub/models/person.js";
+import { createNewTumblrUser, updateTumblrUser } from "@/services/tumblr/index.js";
 import { remoteLogger } from "./logger.js";
 
 const logger = remoteLogger.createSubLogger("resolve-user");
@@ -16,6 +17,15 @@ export async function resolveUser(
 	host: string | null,
 ): Promise<User> {
 	const usernameLower = username.toLowerCase();
+
+	if (host == null && usernameLower.indexOf('.tumblr.com') >= 1) {
+		logger.info(`return tumblr user: ${usernameLower}`);
+		let user = await Users.findOneBy({ usernameLower, host: IsNull() });
+		const res = user ?
+			await updateTumblrUser(usernameLower.split('.tumblr.com')[0]) :
+			await createNewTumblrUser(usernameLower.split('.tumblr.com')[0]);
+		return res && res.user;
+	}
 
 	if (host == null) {
 		logger.info(`return local user: ${usernameLower}`);

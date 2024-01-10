@@ -109,20 +109,6 @@
 										v-tooltip.noDelay="i18n.ts.isBot"
 										><i class="ph-robot ph-bold ph-lg"></i
 									></span>
-									<span
-										v-if="
-											patrons?.includes(
-												`@${user.username}@${
-													user.host || host
-												}`,
-											)
-										"
-										v-tooltip.noDelay="i18n.ts.isPatron"
-										style="color: var(--badge)"
-										><i
-											class="ph-hand-coins ph-bold ph-lg"
-										></i
-									></span>
 								</div>
 							</div>
 						</div>
@@ -201,18 +187,6 @@
 									v-tooltip.noDelay="i18n.ts.isBot"
 									><i class="ph-robot ph-bold ph-lg"></i
 								></span>
-								<span
-									v-if="
-										patrons?.includes(
-											`@${user.username}@${
-												user.host || host
-											}`,
-										)
-									"
-									v-tooltip.noDelay="i18n.ts.isPatron"
-									style="color: var(--badge)"
-									><i class="ph-hand-coins ph-bold ph-lg"></i
-								></span>
 							</div>
 						</div>
 						<div class="follow-container">
@@ -227,18 +201,9 @@
 								/>
 							</div>
 						</div>
+
 						<div class="description">
-							<Mfm
-								v-if="user.description"
-								:text="user.description"
-								:is-note="false"
-								:author="user"
-								:i="$i"
-								:custom-emojis="user.emojis"
-							/>
-							<p v-else class="empty">
-								{{ i18n.ts.noAccountDescription }}
-							</p>
+							<span v-html="user.description" />
 						</div>
 						<div class="fields system">
 							<dl v-if="user.location" class="field">
@@ -466,10 +431,6 @@ const timeForThem = $computed(() => {
 
 	return "";
 });
-
-let patrons = [];
-const patronsResp = await os.api("patrons");
-patrons = patronsResp.patrons;
 
 function parallaxLoop() {
 	parallaxAnimationId = window.requestAnimationFrame(parallaxLoop);

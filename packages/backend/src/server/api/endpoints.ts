@@ -290,7 +290,6 @@ import * as ep___pinnedUsers from "./endpoints/pinned-users.js";
 import * as ep___customMOTD from "./endpoints/custom-motd.js";
 import * as ep___customSplashIcons from "./endpoints/custom-splash-icons.js";
 import * as ep___latestVersion from "./endpoints/latest-version.js";
-import * as ep___patrons from "./endpoints/patrons.js";
 import * as ep___release from "./endpoints/release.js";
 import * as ep___promo_read from "./endpoints/promo/read.js";
 import * as ep___requestResetPassword from "./endpoints/request-reset-password.js";
@@ -343,12 +342,17 @@ import * as ep___users_stats from "./endpoints/users/stats.js";
 import * as ep___fetchRss from "./endpoints/fetch-rss.js";
 import * as ep___admin_driveCapOverride from "./endpoints/admin/drive-capacity-override.js";
 
+import * as ep___users_tumblr from "./endpoints/users/tumblr.js";
+import * as ep___users_tumblr_feed from "./endpoints/notes/tumblr.js";
+
 //Firefish Move
 import * as ep___i_move from "./endpoints/i/move.js";
 import * as ep___i_known_as from "./endpoints/i/known-as.js";
 
 const getEps = [
   ["note/reblogtrail", ep___notes_reblogtrail],
+  ["tumblr/user", ep___users_tumblr],
+  ["tumblr/feed", ep___users_tumblr_feed],
 ];
 
 const postEps = [
@@ -648,7 +652,6 @@ const postEps = [
 	["custom-motd", ep___customMOTD],
 	["custom-splash-icons", ep___customSplashIcons],
 	["latest-version", ep___latestVersion],
-	["patrons", ep___patrons],
 	["release", ep___release],
 	["promo/read", ep___promo_read],
 	["request-reset-password", ep___requestResetPassword],

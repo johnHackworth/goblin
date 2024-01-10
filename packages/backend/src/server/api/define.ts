@@ -28,7 +28,7 @@ const ajv = new Ajv({
 	useDefaults: true,
 });
 
-ajv.addFormat("misskey:id", /^[a-zA-Z0-9]+$/);
+ajv.addFormat("misskey:id", /^[a-zA-Z0-9:_\-]+$/);
 
 export default function <T extends IEndpointMeta, Ps extends Schema>(
 	meta: T,

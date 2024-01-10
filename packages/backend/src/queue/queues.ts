@@ -29,6 +29,8 @@ export const webhookDeliverQueue = initializeQueue<WebhookDeliverJobData>(
 );
 export const backgroundQueue = initializeQueue<Record<string, unknown>>("bg");
 
+export const tumblrQueue = initializeQueue<Record<string, unknown>>("tumblr");
+
 export const queues = [
 	systemQueue,
 	endedPollNotificationQueue,
@@ -38,4 +40,5 @@ export const queues = [
 	objectStorageQueue,
 	webhookDeliverQueue,
 	backgroundQueue,
+	tumblrQueue,
 ];

@@ -6,7 +6,8 @@ export const params = {
       "figure","hr","li","main","ol","p","pre","ul","a","abbr","b","bdi","bdo","br",
       "cite","code","data","dfn","em","i","kbd","mark","q","rb","rp","rt","rtc","ruby",
       "s","samp","small","span","strong","sub","sup","time","u","var","wbr","caption",
-      "col","colgroup","table","tbody","td","tfoot","th","thead","tr", "img", "iframe"
+      "col","colgroup","table","tbody","td","tfoot","th","thead","tr", "img", "iframe",
+      "video", "source"
   ],
   "disallowedTagsMode": "discard",
   "allowedAttributes": {
@@ -16,7 +17,27 @@ export const params = {
       'enableiframeapi', 'endtime', 'ivloadpolicy', 'loop', 'modestbranding', 'origin',
       'playlist', 'src', 'start'
     ],
-    "span": ["style"]
+    "span": ["style"],
+    "video": [
+      "controls",
+      "poster"
+    ],
+    "source": [
+      "src",
+      "type"
+    ],
+    "figure": [
+      "data-orig-height",
+      "data-orig-width",
+      "class",
+      "src",
+      "srcset",
+      "alt",
+      "title",
+      "width",
+      "height",
+      "loading"
+    ],
   },
   "selfClosing": ["img","br","hr","area","base","basefont","input","link","meta"],
   "allowedSchemes": ["http","https","ftp","mailto","tel"],

@@ -211,7 +211,6 @@ router.get("/signin/tumblr", async (ctx) => {
 
 router.get("/tb/cb", async (ctx) => {
   const userToken = getUserToken(ctx);
-apiLogger.warn('11');
   const tbAuth = await getTbAuth();
 
   if (userToken == null) {

@@ -9,7 +9,7 @@ const _dirname = dirname(_filename);
 
 export const meta = {
 	tags: ["meta"],
-	description: "Get Firefish patrons",
+	description: "Get Goblin patrons",
 
 	requireCredential: false,
 	requireCredentialPrivateMode: false,

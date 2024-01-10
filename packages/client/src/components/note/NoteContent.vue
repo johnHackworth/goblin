@@ -391,4 +391,58 @@ function focusFooter(ev) {
     }
   }
 }
+
+.tumblrTitle {
+  background: #e1e1e1;
+  padding: 16px;
+  border-radius: 4px;
+}
+
+.tumblrPost {
+  width: calc(100% + 64px);
+  margin-left: -32px;
+
+  .postRoot {
+    padding: 0 32px;
+  }
+
+  .reblogTrailItem {
+    padding: 0 32px;
+    border-bottom: 1px solid var(--accent);
+
+    .reblogContent {
+      padding: 0;
+    }
+  }
+
+  .reblogContent {
+    padding: 0 32px;
+
+    figure {
+      margin: 16px 0;
+      max-width: 100%;
+
+      video {
+        width: 100%;
+      }
+    }
+  }
+  .reblogHeader {
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+
+    a {
+      padding: 0 8px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
 </style>

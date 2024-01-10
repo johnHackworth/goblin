@@ -87,7 +87,7 @@ export async function getResponse(args: {
 }
 
 const cache = new CacheableLookup({
-	maxTtl: 3600, // 1hours
+	maxTtl: 60, // 1min
 	errorTtl: 30, // 30secs
 	lookup: false, // nativeのdns.lookupにfallbackしない
 });

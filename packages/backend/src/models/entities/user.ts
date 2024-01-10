@@ -265,6 +265,19 @@ export class User {
 	})
 	public driveCapacityOverrideMb: number | null;
 
+	@Column("varchar", {
+		length: 32,
+		comment: "The tumblr uuid of the User.",
+	})
+	public tumblrUUID: string | null;
+
+	@Column("timestamp with time zone", {
+		nullable: true,
+		comment: "The updated date of a tumblr User.",
+	})
+	public feedUpdatedAt: Date | null;
+
+
 	constructor(data: Partial<User>) {
 		if (data == null) return;
 
