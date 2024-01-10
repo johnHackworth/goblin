@@ -284,7 +284,7 @@ export async function fetchTumblrFeed( user: User ) {
     const blogInfo = await getTumblrProfile(user.tumblrUUID);
     let posts = await getTumblrPosts(blogInfo.name, 0);
     posts = posts.reverse()
-    const lastUserUpdate = user.feedUpdatedAt;
+    const lastUserUpdate = user.updatedAt;
     const transforms = []
 
     for(const post of posts) {
