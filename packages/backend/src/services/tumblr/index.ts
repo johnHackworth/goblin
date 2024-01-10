@@ -289,8 +289,6 @@ export async function fetchTumblrFeed( user: User ) {
 
     for(const post of posts) {
         const postDate = new Date(post.isoDate);
-
-        apiLogger.warn('updating ' + user.username + ', last update: ' + lastUserUpdate + ' with a post created at: ' + postDate);
         if (!lastUserUpdate || !user.feedUpdatedAt || postDate > lastUserUpdate) {
           responses.new.push(post);
           let title = '';
