@@ -301,18 +301,17 @@ export async function fetchTumblrFeed( user: User ) {
 
     for(const post of posts) {
         const postDate = new Date(post.isoDate);
-        if (!lastUserUpdate || !user.feedUpdatedAt || postDate > lastUserUpdate) {
+     //   if (!lastUserUpdate || !user.feedUpdatedAt || postDate > lastUserUpdate) {
           responses.new.push(post);
           let title = '';
           if(post.title) {
-            const titleSansEllipsis = title.split('…')[0];
+            const titleSansEllipsis = post.title.split('…')[0];
             if( !post.content || post.content.indexOf(titleSansEllipsis) < 0) {
               title = '<div class="tumblrTitle">' + sanitize(post.title) + '</div>';
             } else {
               title = '';
             }
           }
-
           let { reblogTrail, postContent } = await transformToReblogs(post.content)
           transforms.push( await transformToReblogs(post.content))
 
@@ -326,13 +325,13 @@ export async function fetchTumblrFeed( user: User ) {
             createdAt: new Date(),
             text:
               '<div class="tumblrPost">'+
-                title+
                 reblogTrailBlock +
+                title+
                 postContent +
               "</div>",
             apHashtags: post.categories
           });
-        }
+        //}
     };
 
     await Users.update(user.id, { feedUpdatedAt: new Date() });
