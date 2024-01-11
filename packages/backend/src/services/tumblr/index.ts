@@ -301,7 +301,7 @@ export async function fetchTumblrFeed( user: User ) {
 
     for(const post of posts) {
         const postDate = new Date(post.isoDate);
-     //   if (!lastUserUpdate || !user.feedUpdatedAt || postDate > lastUserUpdate) {
+        if (!lastUserUpdate || !user.feedUpdatedAt || postDate > lastUserUpdate) {
           responses.new.push(post);
           let title = '';
           if(post.title) {
@@ -331,7 +331,7 @@ export async function fetchTumblrFeed( user: User ) {
               "</div>",
             apHashtags: post.categories
           });
-        //}
+        }
     };
 
     await Users.update(user.id, { feedUpdatedAt: new Date() });
