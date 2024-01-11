@@ -40,7 +40,7 @@ export const params = {
     ],
   },
   "selfClosing": ["img","br","hr","area","base","basefont","input","link","meta"],
-  "allowedSchemes": ["http","https","ftp","mailto","tel"],
+  "allowedSchemes": ["http","https","ftp" ],
   "allowedSchemesByTag": {},
   "allowedSchemesAppliedToAttributes": ["href","src","cite"],
   "allowProtocolRelative": true,
