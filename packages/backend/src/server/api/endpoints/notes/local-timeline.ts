@@ -46,7 +46,7 @@ export const meta = {
 export const paramDef = {
 	type: "object",
 	properties: {
-		onlyBot: {
+		onlyBots: {
 			type: "boolean",
 			default: false,
 			description: "Only show notes from bot users.",
@@ -85,7 +85,7 @@ export default define(meta, paramDef, async (ps, user) => {
 		}
 	}
 
-	const onlyBots = ps.onlyBot;
+	const onlyBots = ps.onlyBots;
 	//#region Construct query
 	const query = makePaginationQuery(
 		Notes.createQueryBuilder("note"),
