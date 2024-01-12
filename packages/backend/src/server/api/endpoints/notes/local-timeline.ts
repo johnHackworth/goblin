@@ -46,6 +46,11 @@ export const meta = {
 export const paramDef = {
 	type: "object",
 	properties: {
+		onlyBot: {
+			type: "boolean",
+			default: false,
+			description: "Only show notes from bot users.",
+		},
 		withFiles: {
 			type: "boolean",
 			default: false,
@@ -80,6 +85,7 @@ export default define(meta, paramDef, async (ps, user) => {
 		}
 	}
 
+	const onlyBots = ps.onlyBot;
 	//#region Construct query
 	const query = makePaginationQuery(
 		Notes.createQueryBuilder("note"),
@@ -88,7 +94,7 @@ export default define(meta, paramDef, async (ps, user) => {
 		ps.sinceDate,
 		ps.untilDate,
 	)
-		.andWhere("(note.visibility = 'public') AND (note.userHost IS NULL)")
+		.andWhere("(note.visibility = 'public') AND (note.userHost IS NULL) AND (user.isBot != " + onlyBots +  ") ")
 		.innerJoinAndSelect("note.user", "user")
 		.leftJoinAndSelect("user.avatar", "avatar")
 		.leftJoinAndSelect("user.banner", "banner")

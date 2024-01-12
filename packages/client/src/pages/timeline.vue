@@ -87,6 +87,8 @@ if (defaultStore.reactiveState.tutorial.value !== -1) {
 const isLocalTimelineAvailable =
 	!instance.disableLocalTimeline ||
 	($i != null && ($i.isModerator || $i.isAdmin));
+const isBotsTimelineAvailable =
+	($i != null && ($i.isModerator || $i.isAdmin));
 const isRecommendedTimelineAvailable = !instance.disableRecommendedTimeline;
 const isGlobalTimelineAvailable =
 	!instance.disableGlobalTimeline ||
@@ -99,6 +101,9 @@ let timelines = ["home"];
 
 if (isLocalTimelineAvailable) {
 	timelines.push("local");
+}
+if (isBotsTimelineAvailable) {
+	timelines.push("bots");
 }
 if (isLocalTimelineAvailable) {
 	timelines.push("social");
@@ -179,7 +184,7 @@ async function chooseAntenna(ev: MouseEvent) {
 }
 
 function saveSrc(
-	newSrc: "home" | "local" | "social" | "recommended" | "global",
+	newSrc: "home" | "local" | "social" | "bots" | "recommended" | "global",
 ): void {
 	defaultStore.set("tl", {
 		...defaultStore.state.tl,
@@ -243,6 +248,16 @@ const headerTabs = $computed(() => [
 	...(isLocalTimelineAvailable
 		? [
 				{
+					key: "bots",
+					title: "bots",
+					icon: "ph-robot ph-bold ph-lg",
+					iconOnly: true,
+				},
+		  ]
+		: []),
+	...(isLocalTimelineAvailable
+		? [
+				{
 					key: "social",
 					title: i18n.ts._timelines.social,
 					icon: "ph-handshake ph-bold ph-lg",
@@ -280,6 +295,8 @@ definePageMetadata(
 				? "ph-users ph-bold ph-lg"
 				: src === "social"
 				? "ph-handshake ph-bold ph-lg"
+				: src === "bots"
+				? "ph-robot ph-bold ph-lg"
 				: src === "recommended"
 				? "ph-thumbs-up ph-bold ph-lg"
 				: src === "global"
