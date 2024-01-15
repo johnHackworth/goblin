@@ -649,8 +649,8 @@ function clear() {
 	quoteId = null;
 }
 
-function onEditorPostClick() {
-	post();
+function onEditorPostClick(props) {
+	post(props);
 }
 
 function onKeydown(ev: KeyboardEvent) {
@@ -753,7 +753,8 @@ function deleteDraft() {
 	localStorage.setItem("drafts", JSON.stringify(draftData));
 }
 
-async function post() {
+async function post(postProps = {}) {
+
 	let processedText = preprocess(removeMeta(text));
 
 	if(
@@ -803,10 +804,13 @@ async function post() {
 		return note;
 	}
 
-	// if we are replying a reply, we set the parent as the original post if there's one.
 	let replyId = props.reply ?
-		getOriginalPost(props.reply).id
+		props.reply.id
 		: undefined;
+
+	if(postProps.replyId) {
+		replyId = postProps.replyId;
+	}
 
 	let postData = {
 		editId: props.editId ? props.editId : undefined,

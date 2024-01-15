@@ -76,6 +76,8 @@ const props = withDefaults(
   },
 );
 
+let replyId = null;
+
 onMounted(() => {
   globalEvents.on('reply', initFromReply);
 });
@@ -91,6 +93,7 @@ const update = ( { editor } ) => {
 }
 
 const initFromReply = ( { note } ) => {
+  replyId = note.id;
   let mention = '@' + note.user.username;
   if(note.user.host) {
     mention += '@' + note.user.host
@@ -99,7 +102,11 @@ const initFromReply = ( { note } ) => {
 }
 
 const post = ( ev ) => {
-  emit('post');
+  const props = {}
+  if(replyId) {
+    props.replyId = replyId;
+  }
+  emit('post', props);
   setTimeout(() => { editor.value.commands.clearContent(true); }, 100);
 }
 

@@ -345,11 +345,13 @@ const onPosted = () => {
 }
 
 const updateNoteChildren = () => {
+	directReplies = [];
 	os.api("notes/children", {
 		noteId: note.reply? note.reply.id : note.renote ? note.renote.id : note.id,
 		limit: 30,
 		depth: 12,
 	}).then((res) => {
+		const parentId = note.id;
 		res = res.reduce((acc, resNote) => {
 			if (resNote.userId == note.userId) {
 				return [...acc, resNote];
@@ -358,7 +360,7 @@ const updateNoteChildren = () => {
 		}, []);
 		replies.value = res;
 		directReplies = res
-			.filter( (note) => !!note.replyId )
+			.filter( (note) => note.replyId === parentId )
 			.reverse();
 		directQuotes = res.filter( (note) => !!note.renoteId );
 	});
