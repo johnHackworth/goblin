@@ -20,6 +20,7 @@ import { registerOrFetchInstanceDoc } from "../register-or-fetch-instance-doc.js
 import { extractMentions } from "@/misc/extract-mentions.js";
 import { extractCustomEmojisFromMfm } from "@/misc/extract-custom-emojis-from-mfm.js";
 import { extractHashtags } from "@/misc/extract-hashtags.js";
+import { getRootAncestor } from "@/misc/note/ancestors.js";
 import type { IMentionedRemoteUsers } from "@/models/entities/note.js";
 import { Note } from "@/models/entities/note.js";
 import {
@@ -67,6 +68,9 @@ import { shouldSilenceInstance } from "@/misc/should-block-instance.js";
 import meilisearch from "../../db/meilisearch.js";
 import { redisClient } from "@/db/redis.js";
 import { Mutex } from "redis-semaphore";
+import Logger from "../logger.js";
+
+const logger = new Logger("notes-create");
 
 const mutedWordsCache = new Cache<
 	{ userId: UserProfile["userId"]; mutedWords: UserProfile["mutedWords"] }[]
@@ -157,6 +161,36 @@ type Option = {
 	app?: App | null;
 };
 
+
+const processReply = async (reply, nmRelatedPromises, nm, user, note) => {
+	// Fetch watchers
+	nmRelatedPromises.push(notifyToWatchersOfReplyee(reply, user, nm));
+	if (reply.userHost === null) {
+		const threadMuted = await NoteThreadMutings.findOneBy({
+			userId: reply.userId,
+			threadId: reply.threadId || reply.id,
+		});
+
+		if (!threadMuted) {
+			nm.push(reply.userId, "reply");
+
+			const packedReply = await Notes.pack(note, {
+				id: reply.userId,
+			});
+			publishMainStream( reply.userId, "reply", packedReply);
+
+			const webhooks = (await getActiveWebhooks()).filter(
+				(x) => x.userId === reply!.userId && x.on.includes("reply"),
+			);
+			for (const webhook of webhooks) {
+				webhookDeliver(webhook, "reply", {
+					note: packedReply,
+				});
+			}
+		}
+	}
+}
+
 export default async (
 	user: {
 		id: User["id"];
@@ -174,6 +208,11 @@ export default async (
 	new Promise<Note>(async (res, rej) => {
 		const dontFederateInitially =
 			data.localOnly || data.visibility === "hidden";
+
+		let rootPost = null;
+		if (data.reply) {
+			rootPost = await getRootAncestor(data.reply);
+		}
 
 		// If you reply outside the channel, match the scope of the target.
 		// TODO (I think it's a process that could be done on the client side, but it's server side for now.)
@@ -404,9 +443,11 @@ export default async (
 				},
 			);
 		}
-
 		if (data.reply) {
 			saveReply(data.reply, note);
+		}
+		if (data.reply && rootPost) {
+			saveReply(rootPost, note);
 		}
 
 		// この投稿を除く指定したユーザーによる指定したノートのリノートが存在しないとき
@@ -527,33 +568,9 @@ export default async (
 
 			// If has in reply to note
 			if (data.reply) {
-				// Fetch watchers
-				nmRelatedPromises.push(notifyToWatchersOfReplyee(data.reply, user, nm));
-
-				// 通知
-				if (data.reply.userHost === null) {
-					const threadMuted = await NoteThreadMutings.findOneBy({
-						userId: data.reply.userId,
-						threadId: data.reply.threadId || data.reply.id,
-					});
-
-					if (!threadMuted) {
-						nm.push(data.reply.userId, "reply");
-
-						const packedReply = await Notes.pack(note, {
-							id: data.reply.userId,
-						});
-						publishMainStream(data.reply.userId, "reply", packedReply);
-
-						const webhooks = (await getActiveWebhooks()).filter(
-							(x) => x.userId === data.reply!.userId && x.on.includes("reply"),
-						);
-						for (const webhook of webhooks) {
-							webhookDeliver(webhook, "reply", {
-								note: packedReply,
-							});
-						}
-					}
+				processReply(data.reply, nmRelatedPromises, nm, user, note);
+				if(rootPost.id !== data.reply.id ) {
+					processReply(rootPost, nmRelatedPromises, nm, user, note);
 				}
 			}
 
@@ -961,6 +978,7 @@ async function createMentionedEvents(
 }
 
 function saveReply(reply: Note, note: Note) {
+	logger.info('saving reply for ' + reply.id);
 	Notes.increment({ id: reply.id }, "repliesCount", 1);
 }
 

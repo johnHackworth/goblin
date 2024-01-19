@@ -1,6 +1,6 @@
 <template>
   <div class="block-editor reply" >
-    <div class="editor-area">
+    <div class="editor-area" ref="editorRef">
       <div v-if="editor">
         <editor-content :editor="editor" />
       </div>
@@ -21,6 +21,7 @@
 
 <script lang="ts" setup>
 import {
+  ref,
   onBeforeUnmount,
   onMounted,
 } from "vue";
@@ -78,6 +79,8 @@ const props = withDefaults(
 
 let replyId = null;
 
+const editorRef = ref<HTMLElement>();
+
 onMounted(() => {
   globalEvents.on('reply', initFromReply);
 });
@@ -98,7 +101,12 @@ const initFromReply = ( { note } ) => {
   if(note.user.host) {
     mention += '@' + note.user.host
   }
-  editor.value.chain().insertContent(mention + ': ').focus().run();
+  editor.value.chain().setContent(mention + ': ').focus().run();
+  editorRef.value.scrollIntoView({
+      behavior: 'auto',
+      block: 'center',
+      inline: 'center'
+  });
 }
 
 const post = ( ev ) => {
@@ -107,7 +115,7 @@ const post = ( ev ) => {
     props.replyId = replyId;
   }
   emit('post', props);
-  setTimeout(() => { editor.value.commands.clearContent(true); }, 100);
+  setTimeout(() => { editor.value.commands.clearContent(true); replyId = null;}, 100);
 }
 
 const editor = useEditor({

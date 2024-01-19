@@ -1,10 +1,10 @@
 {
-	"name": "firefish",
-	"version": "1.0.3",
-	"codename": "aqua",
+	"name": "Goblin",
+	"version": "0.0.1",
+	"codename": "gobbo",
 	"repository": {
 		"type": "git",
-		"url": "https://git.joinfirefish.org/firefish/firefish.git"
+		"url": "https://github.com/johnhackworth/goblin.git"
 	},
 	"packageManager": "pnpm@8.6.9",
 	"private": true,

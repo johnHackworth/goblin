@@ -475,10 +475,6 @@ onUnmounted(() => {
 	transition: box-shadow 0.1s ease;
 	contain: content;
 
-	&.isClosed {
-		padding-bottom: 16px;
-	}
-
 	&:focus-visible {
 		outline: none;
 
@@ -505,6 +501,14 @@ onUnmounted(() => {
 		}
 	}
 
+	:deep(.note-container) {
+		padding-top: 8px;
+	}
+
+	:deep(.note-container.renote) {
+		padding-top: 2px;
+	}
+
 	> .reply-to {
 		margin-bottom: -16px;
 		padding-bottom: 16px;
@@ -512,7 +516,6 @@ onUnmounted(() => {
 
 	> :deep(.note-container) {
 		padding-block: 28px 0;
-		padding-top: 12px;
 		font-size: 1.1rem;
 		overflow: clip;
 		outline: none;
