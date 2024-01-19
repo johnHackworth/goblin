@@ -121,7 +121,12 @@ router.get("/avatar/@:acct", async (ctx) => {
 	if (user) {
 		ctx.redirect(Users.getAvatarUrlSync(user));
 	} else {
-		ctx.redirect("/static-assets/user-unknown.png");
+		if (username.indexOf('.tumblr.com') > 0) {
+			const tumblrUsername = username.split('.tumblr.com')[0];
+			ctx.redirect("https://api.tumblr.com/v2/blog/"+ tumblrUsername +"/avatar");
+		} else {
+			ctx.redirect("/static-assets/user-unknown.png");
+		}
 	}
 });
 
