@@ -1,5 +1,7 @@
 <template>
-	<div v-if="isRedirecting"></div>
+	<div v-if="!! note.replyId">
+		<ReplyView :note="note" :parentNote="parentNote" />
+	</div>
 	<div v-else>
 		<div
 			:aria-label="accessibleLabel"
@@ -205,6 +207,7 @@ import XStarButtonNoEmoji from "@/components/MkStarButtonNoEmoji.vue";
 import XQuoteButton from "@/components/MkQuoteButton.vue";
 import MkUrlPreview from "@/components/MkUrlPreview.vue";
 import MkVisibility from "@/components/MkVisibility.vue";
+import ReplyView from "./note/ReplyView.vue";
 import ReblogIcon from "@/components/icons/reblog.vue";
 import copyToClipboard from "@/scripts/copy-to-clipboard";
 import { url } from "@/config";
@@ -224,6 +227,8 @@ import { notePage } from "@/filters/note";
 import { deepClone } from "@/scripts/clone";
 import { getNoteSummary } from "@/scripts/get-note-summary";
 
+import { getParentNote } from "@/helpers/note/parent";
+
 const router = useRouter();
 
 const props = defineProps<{
@@ -241,12 +246,6 @@ const inChannel = inject("inChannel", null);
 let detailedView = $ref(props.detailedView);
 
 let note = $ref(deepClone(props.note));
-
-const isRedirecting = $ref(!! note.replyId && window.location.pathname === '/notes/' + note.id);
-
-if(note.replyId && window.location.pathname === '/notes/' + note.id) {
-	window.location.href = '/notes/' + note.replyId + '?reply=' + note.id;
-}
 
 const getPlainText = (text) => {
 	const div = document.createElement("div");
@@ -300,15 +299,6 @@ let appearNote = $computed(() =>
 	isRenote ? (note.renote as misskey.entities.Note) : note,
 );
 
-const getParentNote = ( note ) => {
-	return note.renote ?
-		getParentNote( note.renote ) :
-		note.reply ?
-		getParentNote( note.reply ) :
-		note;
-}
-
-
 let parentNote = $computed(() => getParentNote(note));
 
 let reactionCount = 0;
@@ -348,6 +338,7 @@ useNoteCapture({
 
 function reply(viaKeyboard = false): void {
 	pleaseLogin();
+	window.location.hash="replyTo="+appearNote.id;
 	if(props.showCloseButton) {
 		document.getElementById(appearNote.id).parentElement.querySelector('.tiptap').focus();
 	} else {
@@ -521,8 +512,6 @@ function noteLink(e) {
 }
 
 function noteClick(e) {
-	console.log(props.key);
-	console.log(props)
 	emit('toggle', props.parentKey)
 }
 

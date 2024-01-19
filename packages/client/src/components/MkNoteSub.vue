@@ -3,14 +3,16 @@
 		v-if="!muted.muted || muted.what === 'reply'"
 		ref="el"
 		v-size="{ max: [450, 500] }"
-		class="wrpstxzv"
+		class="wrpstxzv noteSub"
 		:id="detailedView ? appearNote.id : null"
 		tabindex="-1"
 		:class="{
 			children: depth > 1,
 			singleStart: replies.length == 1,
 			firstColumn: depth == 1 && conversation,
+			selected: selectedNoteId == appearNote.id
 		}"
+
 	>
 		<div v-if="conversation && depth > 1" class="line"></div>
 		<div
@@ -35,6 +37,9 @@
 						:conversation="conversation"
 						:detailedView="detailedView"
 						@focusfooter="footerEl.focus()"
+						:class="{
+							selected: selectedNoteId == note.id
+						}"
 					/>
 					<div v-if="translating || translation" class="translation">
 						<MkLoading v-if="translating" mini />
@@ -60,6 +65,7 @@
 						v-tooltip.noDelay.bottom="i18n.ts.reply"
 						class="button _button"
 						@click.stop="reply()"
+						:class="selectedNoteId == note.id ? 'selectedReplyButton': null"
 					>
 						<i class="ph-arrow-u-up-left ph-bold ph-lg"></i>
 						<template v-if="appearNote.repliesCount > 0">
@@ -90,6 +96,7 @@
 				:replyLevel="replyLevel + 1"
 				:parentId="appearNote.reply ? appearNote.reply.id : appearNote.id"
 				:detailedView="detailedView"
+				:selectedNoteId="selectedNoteId"
 			/>
 			<div v-else-if="replies.length > 0" class="more">
 				<div class="line"></div>
@@ -119,7 +126,7 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, ref } from "vue";
+import { inject, ref, onMounted } from "vue";
 import type { Ref } from "vue";
 import * as misskey from "firefish-js";
 import XNoteHeader from "@/components/MkNoteHeader.vue";
@@ -154,6 +161,7 @@ const props = withDefaults(
 		depth?: number;
 		// the actual reply level of this note within the conversation thread
 		replyLevel?: number;
+		selectedNoteId?: string;
 	}>(),
 	{
 		depth: 1,
@@ -181,6 +189,7 @@ const isRenote =
 
 const el = ref<HTMLElement>();
 const footerEl = ref<HTMLElement>();
+const selectedReply = ref<HTMLElement>();
 const menuButton = ref<HTMLElement>();
 const starButton = ref<InstanceType<typeof XStarButton>>();
 const renoteButton = ref<InstanceType<typeof XRenoteButton>>();
@@ -212,7 +221,6 @@ useNoteCapture({
 function reply(viaKeyboard = false): void {
 	pleaseLogin();
 	globalEvents.emit('reply', { note: appearNote })
-	console.log('emit', { note: appearNote })
 }
 
 function react(viaKeyboard = false): void {
@@ -336,6 +344,16 @@ function blur() {
 	el.value.blur();
 }
 
+const focusSelected = () => {
+	if(note.id === props.selectedNoteId) {
+	  setTimeout( () => {
+	  	document.querySelector('.noteSub.selected').scrollIntoView();
+	  }, 250);
+  }
+};
+
+onMounted(focusSelected);
+
 function noteClick(e) {
 	if (document.getSelection().type === "Range" || !expandOnNoteClick) {
 		e.stopPropagation();
@@ -347,6 +365,13 @@ function noteClick(e) {
 .wrpstxzv {
 	padding: 16px 32px;
 	outline: none;
+
+	&.selected .main {
+		background: #efefef;
+		padding-top: 16px;
+		padding-bottom: 16px;
+	}
+
 	&.children {
 		padding: 10px 0 0 var(--indent);
 		padding-left: var(--indent) !important;

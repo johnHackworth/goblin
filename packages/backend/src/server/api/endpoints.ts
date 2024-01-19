@@ -254,6 +254,7 @@ import * as ep___notes_localTimeline from "./endpoints/notes/local-timeline.js";
 import * as ep___notes_recommendedTimeline from "./endpoints/notes/recommended-timeline.js";
 import * as ep___notes_mentions from "./endpoints/notes/mentions.js";
 import * as ep___notes_reblogtrail from "./endpoints/notes/reblogtrail.js";
+import * as ep___notes_ancestors from "./endpoints/notes/ancestors.js";
 import * as ep___notes_polls_recommendation from "./endpoints/notes/polls/recommendation.js";
 import * as ep___notes_polls_vote from "./endpoints/notes/polls/vote.js";
 import * as ep___notes_reactions from "./endpoints/notes/reactions.js";
@@ -353,6 +354,7 @@ const getEps = [
   ["note/reblogtrail", ep___notes_reblogtrail],
   ["tumblr/user", ep___users_tumblr],
   ["tumblr/feed", ep___users_tumblr_feed],
+  ["note/ancestors", ep___notes_ancestors],
 ];
 
 const postEps = [

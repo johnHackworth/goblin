@@ -7,16 +7,18 @@
 		v-size="{ max: [500, 350, 300] }"
 		class="lxwezrsl _block"
 		:tabindex="!isDeleted ? '-1' : null"
-		:class="{ renote: isRenote, isClosed: props.hideTabs }"
+		:class="{ renote: isRenote, isClosed: hideTabs }"
 	>
+		<ReplyView v-if="!! note.replyId" :note="note" ref="noteEl" />
 		<MkNote
+			v-else
 			ref="noteEl"
 			tabindex="-1"
 			:note="note"
 			detailedView
 			@toggle="toggle"
 			:hideNotesCounter="!props.showNotesCounter"
-			:showCloseButton="!props.hideTabs"
+			:showCloseButton="!hideTabs"
 		></MkNote>
 		<div class="bottomSection" v-if="!hideTabs">
 			<div class="separator" />
@@ -59,9 +61,11 @@
 				:key="note.id"
 				:note="note"
 				class="reply"
+				:class="note.id === currentNoteId ? 'selected' : null"
 				:conversation="replies"
 				:detailedView="true"
 				:parentId="note.id"
+				:selectedNoteId="currentNoteId"
 			/>
 			<MkLoading v-else-if="tab === 'replies' && repliesCount > 0" />
 
@@ -145,6 +149,7 @@ import XRenoteButton from "@/components/MkRenoteButton.vue";
 import MkPagination from "@/components/MkPagination.vue";
 import MkUserCardMini from "@/components/MkUserCardMini.vue";
 import MkReactedUsers from "@/components/MkReactedUsers.vue";
+import ReplyView from "./note/ReplyView.vue";
 import { pleaseLogin } from "@/scripts/please-login";
 import { getWordSoftMute } from "@/scripts/check-word-mute";
 import { userPage } from "@/filters/user";
@@ -160,6 +165,8 @@ import { stream } from "@/stream";
 import { NoteUpdatedEvent } from "firefish-js/built/streaming.types";
 import appear from "@/directives/appear";
 
+import { getParentNote, populateFullReply } from "@/helpers/note/parent";
+
 import XPostForm from "@/components/MkPostForm.vue";
 
 const props = defineProps<{
@@ -173,9 +180,8 @@ const props = defineProps<{
 }>();
 
 let tab = $ref("replies");
-
-let note = $ref(deepClone(props.note));
-
+let note = $ref(await populateFullReply(deepClone(props.note)));
+const currentNoteId = $ref(note.id);
 const emit = defineEmits(['toggle']);
 
 const toggle = (noteId) => {
@@ -224,15 +230,8 @@ let isScrolling;
 let rootNote = $ref<misskye.entities.Note>();
 let noteToReplyTo = $ref<misskye.entities.Note>();
 
-if(note.reply) {
-	rootNote = note.reply;
-} else if (note.renote) {
-	rootNote = note.renote;
-} else {
-	rootNote = note;
-}
-noteToReplyTo = rootNote
-
+rootNote  = getParentNote(note);
+noteToReplyTo = rootNote;
 
 let repliesCount = $ref(rootNote.repliesCount);
 let renoteCount = $ref(rootNote.renoteCount);
@@ -347,11 +346,11 @@ const onPosted = () => {
 const updateNoteChildren = () => {
 	directReplies = [];
 	os.api("notes/children", {
-		noteId: note.reply? note.reply.id : note.renote ? note.renote.id : note.id,
-		limit: 30,
+		noteId: rootNote.id,
+		limit: 100,
 		depth: 12,
 	}).then((res) => {
-		const parentId = note.id;
+		const parentId = rootNote.id;
 		res = res.reduce((acc, resNote) => {
 			if (resNote.userId == note.userId) {
 				return [...acc, resNote];
