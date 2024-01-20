@@ -9,6 +9,7 @@
 		:tabindex="!isDeleted ? '-1' : null"
 		:class="{ renote: isRenote, isClosed: hideTabs }"
 	>
+
 		<ReplyView v-if="!! note.replyId" :note="note" ref="noteEl" />
 		<MkNote
 			v-else

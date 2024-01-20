@@ -20,9 +20,10 @@ export const populateFullReply = async ( note ) => {
 
 
 export const getParentNote = ( note ) => {
-  return note.renote ?
-    getParentNote( note.renote ) :
-    note.reply ?
-    getParentNote( note.reply ) :
-    note;
+  if ( note.reply ) {
+    return getParentNote( note.reply)
+  } else if(note.renote) {
+    return getParentNote( note.renote);
+  }
+  return note;
 }

@@ -6,7 +6,7 @@
     :ref="el"
     v-hotkey="keymap"
     v-size="{ max: [500, 350] }"
-    class="tkcbzcuz note-container"
+    class="replyView tkcbzcuz note-container"
     :tabindex="!isDeleted ? '-1' : 10"
     :class="{ renote: isRenote }"
     :data-visibility="note.visibility"
@@ -168,6 +168,7 @@ const emit = defineEmits(['toggle']);
 const inChannel = inject("inChannel", null);
 let detailedView = $ref(props.detailedView);
 let note = $ref(await populateFullReply(deepClone(props.note)));
+console.log('full reply', reply);
 const getPlainText = (text) => {
   const div = document.createElement("div");
   div.innerHTML = text;
