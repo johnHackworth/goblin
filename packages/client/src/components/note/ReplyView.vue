@@ -168,7 +168,6 @@ const emit = defineEmits(['toggle']);
 const inChannel = inject("inChannel", null);
 let detailedView = $ref(props.detailedView);
 let note = $ref(await populateFullReply(deepClone(props.note)));
-console.log('full reply', note);
 const getPlainText = (text) => {
   const div = document.createElement("div");
   div.innerHTML = text;

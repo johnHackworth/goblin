@@ -10,7 +10,7 @@
 		:class="{ renote: isRenote, isClosed: hideTabs }"
 	>
 
-		<ReplyView v-if="!! note.replyId" :note="note" ref="noteEl" />
+		<ReplyView v-if="!! note.replyId" :note="rootNote" ref="noteEl" />
 		<MkNote
 			v-else
 			ref="noteEl"
