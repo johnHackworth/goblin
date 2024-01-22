@@ -6,7 +6,7 @@ import type { User } from "@/models/entities/user.js";
 import define from "../../define.js";
 import { apiLogger } from "../../logger.js";
 import { ApiError } from "../../error.js";
-import { fetchTumblrFeed } from "@/services/tumblr/index.js";
+import { fetchTumblrFeed, updateTumblrUser } from "@/services/tumblr/index.js";
 
 export const meta = {
 	tags: ["users"],
