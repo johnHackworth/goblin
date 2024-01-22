@@ -18,12 +18,12 @@ export async function resolveUser(
 ): Promise<User> {
 	const usernameLower = username.toLowerCase();
 
-	if (host == null && usernameLower.indexOf('.tumblr.com') >= 1) {
+	if (host == null && usernameLower.indexOf('_at_tumblr_com') >= 1) {
 		logger.info(`return tumblr user: ${usernameLower}`);
 		let user = await Users.findOneBy({ usernameLower, host: IsNull() });
 		const res = user ?
-			await updateTumblrUser(usernameLower.split('.tumblr.com')[0]) :
-			await createNewTumblrUser(usernameLower.split('.tumblr.com')[0]);
+			await updateTumblrUser(usernameLower.split('_at_tumblr_com')[0]) :
+			await createNewTumblrUser(usernameLower.split('_at_tumblr_com')[0]);
 		return res && res.user;
 	}
 

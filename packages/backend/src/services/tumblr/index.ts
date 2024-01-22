@@ -99,8 +99,8 @@ export async function transformToReblogs( post: string ) {
 const formatReblogItem = (reblog) => {
   return '<div class="reblogTrailItem">' +
     '<div class="reblogHeader">' +
-      '<img class="imageReblogTumblr" src="/avatar/@' + reblog.blog + '.tumblr.com" />' +
-      '<a href="/@' + reblog.blog + '.tumblr.com">@' + reblog.blog + '.tumblr.com</a>' +
+      '<img class="imageReblogTumblr" src="/avatar/@' + reblog.blog + '_at_tumblr_com" />' +
+      '<a href="/@' + reblog.blog + '_at_tumblr_com">@' + reblog.blog + '_at_tumblr_com</a>' +
       '<a href="' + reblog.link + '">[source]</a>' +
     '</div>' +
     '<div class="reblogContent">' +
@@ -146,7 +146,7 @@ export async function updateTumblrUser( tumblrUsername: string ) {
   apiLogger.warn("updating tumblr user "+ tumblrUsername);
   let blogInfo;
   let user = await Users.findOneBy({
-    "username": tumblrUsername + '.tumblr.com'
+    "username": tumblrUsername + '_at_tumblr_com'
   });
   if(!user) {
     return null;
@@ -159,7 +159,7 @@ export async function updateTumblrUser( tumblrUsername: string ) {
     }
 
     let userNeedsUpdate = false;
-    const newUsername = blogInfo.name + '.tumblr.com';
+    const newUsername = blogInfo.name + '_at_tumblr_com';
     apiLogger.warn(newUsername + ' comparing with ' + user.username);
     if(newUsername != user.username) {
       user.username = newUsername;
@@ -237,7 +237,7 @@ export async function createNewTumblrUser( username: string ) {
   }
 
   let account: User | null = null;
-  const newUsername = blogInfo.name + '.tumblr.com';
+  const newUsername = blogInfo.name + '_at_tumblr_com';
   user = new User({
     id: blogInfo.uuid,
     tumblrUUID: blogInfo.uuid,
