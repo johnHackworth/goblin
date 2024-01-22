@@ -135,10 +135,12 @@ export default define(meta, paramDef, async (ps, me) => {
 				throw new ApiError(meta.errors.failedToResolveRemoteUser);
 			});
 		} else if (!ps.host && ps.username && ps.username.indexOf('_at_tumblr_com') > 1) {
+			apiLogger.warn('to tumblr!');
       user = await resolveUser(ps.username, ps.host).catch((e)=>{
         apiLogger.warn(`failed to resolve tumblr user: ${e}`);
         throw new ApiError(meta.errors.failedToResolveRemoteUser);
       });
+      apiLogger.warn('resolved');
     } else if (!ps.host && ps.username && ps.username.indexOf('.tumblr.com') > 1) {
     	const username = ps.username.split('.tumblr.com').join('_at_tumblr_com');
       user = await resolveUser(username, ps.host).catch((e)=>{
@@ -155,12 +157,13 @@ export default define(meta, paramDef, async (ps, me) => {
 
 			user = await Users.findOneBy(q);
 		}
-
+		apiLogger.warn('un pasito mas');
+		apiLogger.warn(JSON.stringify(user));
 		if (user == null || (!isAdminOrModerator && user.isSuspended)) {
 			throw new ApiError(meta.errors.noSuchUser);
 		}
-
 		if(user.tumblrUUID) {
+		apiLogger.warn('go to update user')
 			await updateTumblrUser(user.username.toLowerCase());
 			await fetchTumblrFeed(user);
 		}

@@ -343,6 +343,9 @@ export const UserRepository = db.getRepository(User).extend({
 			return (
 				DriveFiles.getPublicUrl(avatar, true) || this.getIdenticonUrl(user.id)
 			);
+		} else if (user.username.indexOf('_at_tumblr_com') > 0) {
+				const tumblrUsername = user.username.split('_at_tumblr_com')[0];
+				return "https://api.tumblr.com/v2/blog/"+ tumblrUsername +"/avatar";
 		} else {
 			return this.getIdenticonUrl(user.id);
 		}
@@ -354,6 +357,9 @@ export const UserRepository = db.getRepository(User).extend({
 				DriveFiles.getPublicUrl(user.avatar, true) ||
 				this.getIdenticonUrl(user.id)
 			);
+		} else if (user.username.indexOf('_at_tumblr_com') > 0) {
+				const tumblrUsername = user.username.split('_at_tumblr_com')[0];
+				return "https://api.tumblr.com/v2/blog/"+ tumblrUsername +"/avatar";
 		} else {
 			return this.getIdenticonUrl(user.id);
 		}

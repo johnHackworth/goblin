@@ -118,7 +118,7 @@ router.get("/avatar/@:acct", async (ctx) => {
 		relations: ["avatar"],
 	});
 
-	if (user) {
+	if (user && user.avatarId) {
 		ctx.redirect(Users.getAvatarUrlSync(user));
 	} else {
 		if (username.indexOf('_at_tumblr_com') > 0) {

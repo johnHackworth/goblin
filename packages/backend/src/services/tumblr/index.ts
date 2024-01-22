@@ -101,7 +101,7 @@ const formatReblogItem = (reblog) => {
   return '<div class="reblogTrailItem">' +
     '<div class="reblogHeader">' +
       '<img class="imageReblogTumblr" src="/avatar/@' + reblog.blog + '_at_tumblr_com" />' +
-      '<a href="/@' + reblog.blog + '_at_tumblr_com">@' + reblog.blog + '_at_tumblr_com</a>' +
+      '<a href="' + config.url + '/@' + reblog.blog + '_at_tumblr_com">@' + reblog.blog + '_at_tumblr_com</a>' +
       '<a href="' + reblog.link + '">[source]</a>' +
     '</div>' +
     '<div class="reblogContent">' +
@@ -265,21 +265,7 @@ export async function createNewTumblrUser( username: string ) {
       usersChart.update(account, true);
     }
   });
-  if(account) {
-    const avatarFile = await uploadFromUrl({
-      url: blogInfo.avatar[0].url,
-      user: account,
-    });
-    const bannerFile = await uploadFromUrl({
-      url: blogInfo.theme.header_image,
-      user: account,
-    });
-    (account as User).avatarId = avatarFile.id;
-    (account as User).bannerId = bannerFile.id;
-    await db.transaction(async (transactionalEntityManager) => {
-      account = await transactionalEntityManager.save(account);
-    });
-  }
+  apiLogger.warn('user created');
   return {user: user, account: account, blogInfo: blogInfo};
 }
 
