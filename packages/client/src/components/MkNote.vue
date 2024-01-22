@@ -1,189 +1,184 @@
 <template>
-	<div v-if="!! note.replyId">
-		<ReplyView :note="note" :parentNote="parentNote" />
-	</div>
-	<div v-else>
+	<div
+		:aria-label="accessibleLabel"
+		v-if="!muted.muted"
+		v-show="!isDeleted"
+		:ref="el"
+		v-hotkey="keymap"
+		v-size="{ max: [500, 350] }"
+		class="tkcbzcuz note-container"
+		:tabindex="!isDeleted ? '-1' : 10"
+		:class="{ renote: isRenote }"
+		:data-visibility="note.visibility"
+		:id="appearNote.id"
+	>
+		<MkNoteSub
+			v-if="appearNote.reply && !detailedView && !collapsedReply"
+			:note="appearNote.reply"
+			class="reply-to"
+		/>
 		<div
-			:aria-label="accessibleLabel"
-			v-if="!muted.muted"
-			v-show="!isDeleted"
-			:ref="el"
-			v-hotkey="keymap"
-			v-size="{ max: [500, 350] }"
-			class="tkcbzcuz note-container"
-			:tabindex="!isDeleted ? '-1' : 10"
-			:class="{ renote: isRenote }"
-			:data-visibility="note.visibility"
-			:id="appearNote.id"
+			v-if="!detailedView"
+			class="note-context"
+			:class="{
+				collapsedReply: collapsedReply && appearNote.reply,
+			}"
 		>
-			<MkNoteSub
-				v-if="appearNote.reply && !detailedView && !collapsedReply"
-				:note="appearNote.reply"
-				class="reply-to"
-			/>
-			<div
-				v-if="!detailedView"
-				class="note-context"
-				:class="{
-					collapsedReply: collapsedReply && appearNote.reply,
-				}"
-			>
-				<div class="line"></div>
-				<div v-if="appearNote._prId_" class="info">
-					<i class="ph-megaphone-simple-bold ph-lg"></i>
-					{{ i18n.ts.promotion
-					}}<button class="_textButton hide" @click.stop="readPromo()">
-						{{ i18n.ts.hideThisNote }}
-						<i class="ph-x ph-bold ph-lg"></i>
-					</button>
-				</div>
-				<div v-if="appearNote._featuredId_" class="info">
-					<i class="ph-lightning ph-bold ph-lg"></i>
-					{{ i18n.ts.featured }}
-				</div>
-				<div v-if="pinned" class="info">
-					<i class="ph-push-pin ph-bold ph-lg"></i
-					>{{ i18n.ts.pinnedNote }}
-				</div>
+			<div class="line"></div>
+			<div v-if="appearNote._prId_" class="info">
+				<i class="ph-megaphone-simple-bold ph-lg"></i>
+				{{ i18n.ts.promotion
+				}}<button class="_textButton hide" @click.stop="readPromo()">
+					{{ i18n.ts.hideThisNote }}
+					<i class="ph-x ph-bold ph-lg"></i>
+				</button>
+			</div>
+			<div v-if="appearNote._featuredId_" class="info">
+				<i class="ph-lightning ph-bold ph-lg"></i>
+				{{ i18n.ts.featured }}
+			</div>
+			<div v-if="pinned" class="info">
+				<i class="ph-push-pin ph-bold ph-lg"></i
+				>{{ i18n.ts.pinnedNote }}
+			</div>
 
-				<div v-if="collapsedReply && appearNote.reply" class="info">
-					<MkAvatar class="avatar" :user="appearNote.reply.user" />
-					<MkUserName
-						class="username"
-						:user="appearNote.reply.user"
-					></MkUserName>
-					<Mfm
-						class="summary"
-						:text="getNoteSummary(appearNote.reply)"
-						:plain="true"
-						:nowrap="true"
-						:custom-emojis="note.emojis"
+			<div v-if="collapsedReply && appearNote.reply" class="info">
+				<MkAvatar class="avatar" :user="appearNote.reply.user" />
+				<MkUserName
+					class="username"
+					:user="appearNote.reply.user"
+				></MkUserName>
+				<Mfm
+					class="summary"
+					:text="getNoteSummary(appearNote.reply)"
+					:plain="true"
+					:nowrap="true"
+					:custom-emojis="note.emojis"
+				/>
+			</div>
+		</div>
+		<article
+			class="article"
+		>
+			<div class="main">
+				<div v-if="renotedBy" class="renoteHeader">
+					<MkA
+					:to="`/@${renotedBy.username}`">
+						{{ renotedBy.username }} <ReblogIcon /> reblogged (<MkTime :time="note.createdAt" />)
+					</MkA>
+				</div>
+				<div class="header-container" @click="noteLink">
+					<MkAvatar class="avatar" :user="appearNote.user" />
+					<XNoteHeader class="header" :note="appearNote" />
+				</div>
+				<div class="body">
+					<NoteContent
+						class="text"
+						:note="appearNote"
+						:detailed="true"
+						:detailedView="detailedView"
+						:parentId="appearNote.parentId"
+						@push="(e) => router.push(notePage(e))"
+						@expanded="(e) => setPostExpanded(e)"
+					></NoteContent>
+				</div>
+				<div
+					v-if="detailedView || (appearNote.channel && !inChannel)"
+					class="info"
+				>
+					<MkA
+						v-if="appearNote.channel && !inChannel"
+						class="channel"
+						:to="`/channels/${appearNote.channel.id}`"
+						@click.stop
+						><i class="ph-television ph-bold"></i>
+						{{ appearNote.channel.name }}</MkA
+					>
+				</div>
+				<div class="previews" v-if="urls && urls.length > 0">
+					<MkUrlPreview
+						v-for="url in urls"
+						:key="url"
+						:url="url"
+						detail="true"
+						class="urlPreview"
 					/>
 				</div>
+				<footer ref="footerEl" class="footer" tabindex="-1">
+					<button
+						ref="menuButton"
+						v-tooltip.noDelay.bottom="Notes"
+						class="button _button noteCount"
+						v-if="!props.hideNotesCounter"
+						@click="noteClick"
+					>
+						<template v-if="props.showCloseButton">
+							<i class="ph-x-circle ph-bold ph-lg"></i> Close notes
+						</template>
+						<template v-else>
+							<b>{{noteCount}}</b> Notes
+						</template>
+					</button>
+
+					<button
+						v-tooltip.noDelay.bottom="i18n.ts.reply"
+						class="button _button"
+						@click.stop="reply()"
+					>
+						<i class="ph-arrow-u-up-left ph-bold ph-lg"></i>
+						<template
+							v-if="parentNote.repliesCount > 0 && !detailedView"
+						>
+							<p class="count">{{ parentNote.repliesCount }}</p>
+						</template>
+					</button>
+					<XRenoteButton
+						ref="renoteButton"
+						class="button"
+						:note="appearNote"
+						:count="parentNote.renoteCount"
+						:detailedView="detailedView"
+					/>
+
+					<XStarButton
+						v-if="enableEmojiReactions"
+						ref="starButton"
+						class="button"
+						:isFull="parentNote.myReaction !== null"
+						:note="parentNote"
+					/>
+					<button
+						ref="menuButton"
+						v-tooltip.noDelay.bottom="i18n.ts.more"
+						class="button _button"
+						@click.stop="menu()"
+					>
+						<i class="ph-dots-three-outline ph-bold ph-lg"></i>
+					</button>
+				</footer>
 			</div>
-			<article
-				class="article"
-			>
-				<div class="main">
-					<div v-if="renotedBy" class="renoteHeader">
-						<MkA
-						:to="`/@${renotedBy.username}`">
-							{{ renotedBy.username }} <ReblogIcon /> reblogged (<MkTime :time="note.createdAt" />)
-						</MkA>
-					</div>
-					<div class="header-container" @click="noteLink">
-						<MkAvatar class="avatar" :user="appearNote.user" />
-						<XNoteHeader class="header" :note="appearNote" />
-					</div>
-					<div class="body">
-						<NoteContent
-							class="text"
-							:note="appearNote"
-							:detailed="true"
-							:detailedView="detailedView"
-							:parentId="appearNote.parentId"
-							@push="(e) => router.push(notePage(e))"
-							@expanded="(e) => setPostExpanded(e)"
-						></NoteContent>
-					</div>
-					<div
-						v-if="detailedView || (appearNote.channel && !inChannel)"
-						class="info"
-					>
-						<MkA
-							v-if="appearNote.channel && !inChannel"
-							class="channel"
-							:to="`/channels/${appearNote.channel.id}`"
-							@click.stop
-							><i class="ph-television ph-bold"></i>
-							{{ appearNote.channel.name }}</MkA
-						>
-					</div>
-					<div class="previews" v-if="urls && urls.length > 0">
-						<MkUrlPreview
-							v-for="url in urls"
-							:key="url"
-							:url="url"
-							detail="true"
-							class="urlPreview"
-						/>
-					</div>
-					<footer ref="footerEl" class="footer" tabindex="-1">
-						<button
-							ref="menuButton"
-							v-tooltip.noDelay.bottom="Notes"
-							class="button _button noteCount"
-							v-if="!props.hideNotesCounter"
-							@click="noteClick"
-						>
-							<template v-if="props.showCloseButton">
-								<i class="ph-x-circle ph-bold ph-lg"></i> Close notes
-							</template>
-							<template v-else>
-								<b>{{noteCount}}</b> Notes
-							</template>
-						</button>
-
-						<button
-							v-tooltip.noDelay.bottom="i18n.ts.reply"
-							class="button _button"
-							@click.stop="reply()"
-						>
-							<i class="ph-arrow-u-up-left ph-bold ph-lg"></i>
-							<template
-								v-if="parentNote.repliesCount > 0 && !detailedView"
-							>
-								<p class="count">{{ parentNote.repliesCount }}</p>
-							</template>
-						</button>
-						<XRenoteButton
-							ref="renoteButton"
-							class="button"
-							:note="appearNote"
-							:count="parentNote.renoteCount"
-							:detailedView="detailedView"
-						/>
-
-						<XStarButton
-							v-if="enableEmojiReactions"
-							ref="starButton"
-							class="button"
-							:isFull="parentNote.myReaction !== null"
-							:note="parentNote"
-						/>
-						<button
-							ref="menuButton"
-							v-tooltip.noDelay.bottom="i18n.ts.more"
-							class="button _button"
-							@click.stop="menu()"
-						>
-							<i class="ph-dots-three-outline ph-bold ph-lg"></i>
-						</button>
-					</footer>
-				</div>
-			</article>
-		</div>
-		<button
-			v-else
-			class="muted _button"
-			@click="muted.muted = false"
-		>
-			<I18n :src="softMuteReasonI18nSrc(muted.what)" tag="small">
-				<template #name>
-					<MkA
-						v-user-preview="note.userId"
-						class="name"
-						:to="userPage(note.user)"
-					>
-						<MkUserName :user="note.user" />
-					</MkA>
-				</template>
-				<template #reason>
-					<b class="_blur_text">{{ muted.matched.join(", ") }}</b>
-				</template>
-			</I18n>
-		</button>
+		</article>
 	</div>
+	<button
+		v-else
+		class="muted _button"
+		@click="muted.muted = false"
+	>
+		<I18n :src="softMuteReasonI18nSrc(muted.what)" tag="small">
+			<template #name>
+				<MkA
+					v-user-preview="note.userId"
+					class="name"
+					:to="userPage(note.user)"
+				>
+					<MkUserName :user="note.user" />
+				</MkA>
+			</template>
+			<template #reason>
+				<b class="_blur_text">{{ muted.matched.join(", ") }}</b>
+			</template>
+		</I18n>
+	</button>
 </template>
 
 <script lang="ts" setup>
