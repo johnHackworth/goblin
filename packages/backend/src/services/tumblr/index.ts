@@ -237,7 +237,6 @@ export async function createNewTumblrUser( username: string ) {
   let account: User | null = null;
   const newUsername = blogInfo.name + '_at_tumblr_com';
   user = new User({
-    id: blogInfo.uuid,
     tumblrUUID: blogInfo.uuid,
     createdAt: new Date(),
     username: newUsername,
