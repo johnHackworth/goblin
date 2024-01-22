@@ -161,7 +161,7 @@ export default define(meta, paramDef, async (ps, me) => {
 		}
 
 		if(user.tumblrUUID) {
-			await updateTumblrUser(user.usernameLower);
+			await updateTumblrUser(user.username.toLowerCase());
 			await fetchTumblrFeed(user);
 		}
 

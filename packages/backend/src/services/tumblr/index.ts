@@ -283,6 +283,7 @@ export async function createNewTumblrUser( username: string ) {
 }
 
 export async function fetchTumblrFeed( user: User ) {
+  apiLogger.warn('fetching tumblr user '+ user.username + ' with UUID ' + user.tumblrUUID);
   if(user.tumblrUUID) {
     const responses = {
       user: user.username,
@@ -290,6 +291,7 @@ export async function fetchTumblrFeed( user: User ) {
     }
     const blogInfo = await getTumblrProfile(user.tumblrUUID);
     if(!blogInfo) {
+      apiLogger.warn('user not found');
       return;
     }
     let posts = await getTumblrPosts(blogInfo.name, 0);
