@@ -6,6 +6,7 @@ import type { User } from "@/models/entities/user.js";
 import define from "../../define.js";
 import { apiLogger } from "../../logger.js";
 import { ApiError } from "../../error.js";
+import { fetchTumblrFeed } from "@/services/tumblr/index.js";
 
 export const meta = {
 	tags: ["users"],
@@ -138,6 +139,12 @@ export default define(meta, paramDef, async (ps, me) => {
         apiLogger.warn(`failed to resolve tumblr user: ${e}`);
         throw new ApiError(meta.errors.failedToResolveRemoteUser);
       });
+    } else if (!ps.host && ps.username && ps.username.indexOf('.tumblr.com') > 1) {
+    	const username = ps.username.split('.tumblr.com').join('_at_tumblr_com');
+      user = await resolveUser(username, ps.host).catch((e)=>{
+        apiLogger.warn(`failed to resolve tumblr user: ${e}`);
+        throw new ApiError(meta.errors.failedToResolveRemoteUser);
+      });
     } else {
 			const q: FindOptionsWhere<User> =
 				ps.userId != null
@@ -151,6 +158,11 @@ export default define(meta, paramDef, async (ps, me) => {
 
 		if (user == null || (!isAdminOrModerator && user.isSuspended)) {
 			throw new ApiError(meta.errors.noSuchUser);
+		}
+
+		if(user.tumblrUUID) {
+			await updateTumblrUser(user.usernameLower);
+			await fetchTumblrFeed(user);
 		}
 
 		return await Users.pack(user, me, {

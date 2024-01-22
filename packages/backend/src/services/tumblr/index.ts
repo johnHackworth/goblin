@@ -218,8 +218,6 @@ export async function updateTumblrUser( tumblrUsername: string ) {
       }
     }
   }
-  await fetchTumblrFeed(user);
-
   return {user: user, blogInfo: blogInfo};
 }
 
@@ -280,9 +278,6 @@ export async function createNewTumblrUser( username: string ) {
     await db.transaction(async (transactionalEntityManager) => {
       account = await transactionalEntityManager.save(account);
     });
-
-    // we populate the feed of the user
-    await fetchTumblrFeed(account);
   }
   return {user: user, account: account, blogInfo: blogInfo};
 }
@@ -294,6 +289,9 @@ export async function fetchTumblrFeed( user: User ) {
       new: []
     }
     const blogInfo = await getTumblrProfile(user.tumblrUUID);
+    if(!blogInfo) {
+      return;
+    }
     let posts = await getTumblrPosts(blogInfo.name, 0);
     posts = posts.reverse()
     const lastUserUpdate = user.updatedAt;
