@@ -8,6 +8,7 @@ import config from "@/config/index.js";
 import { UserProfiles, Users } from "@/models/index.js";
 import { User } from "@/models/entities/user.js";
 import { DriveFiles } from "@/models/index.js";
+import { genId } from "@/misc/gen-id.js";
 
 import generateUserToken from "@/server/api/common/generate-native-user-token.js";
 
@@ -237,6 +238,7 @@ export async function createNewTumblrUser( username: string ) {
   let account: User | null = null;
   const newUsername = blogInfo.name + '_at_tumblr_com';
   user = new User({
+    id: genId(),
     tumblrUUID: blogInfo.uuid,
     createdAt: new Date(),
     username: newUsername,
