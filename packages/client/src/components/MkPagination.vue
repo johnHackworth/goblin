@@ -146,7 +146,16 @@ const bringReblogs = async (item) => {
 	const reblogtrailResponse = await fetch(`${apiUrl}/note/reblogtrail?noteId=${item.id}`, {
 		method: "GET"
 	});
+
+	if(!reblogtrailResponse || !reblogtrailResponse.json) {
+		return [];
+	}
+
 	let reblogtrail = await reblogtrailResponse.json();
+	if(!reblogtrail || reblogtrail.length ) {
+		return [];
+	}
+
 	for(let i = 0; i < reblogtrail.length; i++) {
 		const post = reblogtrail[i];
 		if(post.replyId) {
