@@ -152,7 +152,7 @@ const bringReblogs = async (item) => {
 	}
 
 	let reblogtrail = await reblogtrailResponse.json();
-	if(!reblogtrail || reblogtrail.length ) {
+	if(!reblogtrail || reblogtrail.error || !reblogtrail.length ) {
 		return [];
 	}
 
