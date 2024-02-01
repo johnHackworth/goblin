@@ -1,4 +1,5 @@
 import { apiGet } from "@/os";
+import { deepClone } from "@/scripts/clone";
 
 const getNoteAncestors = async ( noteId ) => {
   return await apiGet("note/ancestors", {
@@ -26,4 +27,14 @@ export const getParentNote = ( note ) => {
     return getParentNote( note.renote);
   }
   return note;
+}
+
+export const getAncestorsAsTrail = ( note, ancestors = [] ) => {
+  const thisNote = deepClone(note);
+  thisNote.reply = {}
+  ancestors.unshift( thisNote);
+  if(note.reply) {
+    return getAncestorsAsTrail
+  }
+  return ancestors;
 }

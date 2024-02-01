@@ -33,6 +33,7 @@
 						:showCloseButton="true"
 						:showNotesCounter="true"
 						:hideTabs="!expandedNotes[ note._featuredId_ || note._prId_ || note.id ]"
+						useReplyTrail="true"
 					/>
 					<XNoteDetailed
 						:key="note._featuredId_ || note._prId_ || note.id"

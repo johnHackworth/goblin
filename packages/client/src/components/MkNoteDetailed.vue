@@ -10,7 +10,7 @@
 		:class="{ renote: isRenote, isClosed: hideTabs }"
 	>
 
-		<ReplyView v-if="!! note.replyId" :note="rootNote" ref="noteEl" />
+		<ReplyView v-if="!! note.replyId" :note="rootNote" ref="noteEl" :useReplyTrail="props.useReplyTrail" />
 		<MkNote
 			v-else
 			ref="noteEl"
@@ -178,6 +178,7 @@ const props = defineProps<{
 	hideTabs?: boolean;
 	showCloseButton?: boolean;
 	showNotesCounter?: boolean;
+	useReplyTrail?: boolean;
 }>();
 
 let tab = $ref("replies");

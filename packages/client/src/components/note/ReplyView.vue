@@ -155,13 +155,13 @@ import { useNoteCapture } from "@/scripts/use-note-capture";
 import { notePage } from "@/filters/note";
 import { deepClone } from "@/scripts/clone";
 import { getNoteSummary } from "@/scripts/get-note-summary";
-import { getParentNote, populateFullReply } from "@/helpers/note/parent";
+import { getParentNote, populateFullReply, getAncestorsAsTrail } from "@/helpers/note/parent";
 
 const router = useRouter();
 
 const props = defineProps<{
   note: misskey.entities.Note;
-  parentNote: misskey.entities.Note;
+  useReplyTrain: boolean;
 }>();
 const emit = defineEmits(['toggle']);
 
@@ -216,12 +216,15 @@ const starButton = ref<InstanceType<typeof XStarButton>>();
 const renoteButton = ref<InstanceType<typeof XRenoteButton>>();
 const renoteTime = ref<HTMLElement>();
 const reactButton = ref<HTMLElement>();
-let appearNote = $computed(() =>
-  isRenote ? (note.renote as misskey.entities.Note) : note,
-);
-
-
 let parentNote = $computed(() => getParentNote(note));
+if(note.replyId && props.useReplyTrail) {
+  note.reblogtrail = getAncestorsAsTrail(note);
+  note.replyId = null;
+  note.reply = null;
+}
+let appearNote = $computed(() =>
+  isRenote ? (note.renote as misskey.entities.Note) : note;
+);
 
 let reactionCount = 0;
 for(let reaction in parentNote.reactions) {
