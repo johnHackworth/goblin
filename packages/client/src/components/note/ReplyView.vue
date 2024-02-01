@@ -223,7 +223,7 @@ if(note.replyId && props.useReplyTrail) {
   note.reply = null;
 }
 let appearNote = $computed(() =>
-  isRenote ? (note.renote as misskey.entities.Note) : note;
+  isRenote ? (note.renote as misskey.entities.Note) : note
 );
 
 let reactionCount = 0;
