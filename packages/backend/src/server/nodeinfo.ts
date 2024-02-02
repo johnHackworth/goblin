@@ -28,16 +28,18 @@ const nodeinfo2 = async () => {
 	const [meta, total, activeHalfyear, activeMonth, localPosts] =
 		await Promise.all([
 			fetchMeta(true),
-			Users.count({ where: { host: IsNull() } }),
+			Users.count({ where: { host: IsNull(), tumblrUUID: IsNull() } }),
 			Users.count({
 				where: {
 					host: IsNull(),
+					tumblrUUID: IsNull(),
 					lastActiveDate: MoreThan(new Date(now - 15552000000)),
 				},
 			}),
 			Users.count({
 				where: {
 					host: IsNull(),
+					tumblrUUID: IsNull(),
 					lastActiveDate: MoreThan(new Date(now - 2592000000)),
 				},
 			}),
