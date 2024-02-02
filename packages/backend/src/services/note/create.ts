@@ -203,6 +203,7 @@ export default async (
 	},
 	data: Option,
 	silent = false,
+	noMentions = false,
 ) =>
 	// rome-ignore lint/suspicious/noAsyncPromiseExecutor: FIXME
 	new Promise<Note>(async (res, rej) => {
@@ -333,8 +334,10 @@ export default async (
 
 			emojis = data.apEmojis || extractCustomEmojisFromMfm(combinedTokens);
 
-			mentionedUsers =
-				data.apMentions || (await extractMentionedUsers(user, combinedTokens));
+			if(!noMentions) {
+				mentionedUsers =
+					data.apMentions || (await extractMentionedUsers(user, combinedTokens));
+			}
 		}
 
 		tags = tags
@@ -342,6 +345,7 @@ export default async (
 			.splice(0, 32);
 
 		if (
+			!noMentions &&
 			data.reply &&
 			user.id !== data.reply.userId &&
 			!mentionedUsers.some((u) => u.id === data.reply!.userId)
@@ -355,7 +359,7 @@ export default async (
 			if (data.visibleUsers == null) throw new Error("invalid param");
 
 			for (const u of data.visibleUsers) {
-				if (!mentionedUsers.some((x) => x.id === u.id)) {
+				if (!noMentions && !mentionedUsers.some((x) => x.id === u.id)) {
 					mentionedUsers.push(u);
 				}
 			}
@@ -476,7 +480,7 @@ export default async (
 			);
 		}
 
-		if (!silent) {
+		if (!silent && !noMentions) {
 			if (Users.isLocalUser(user)) activeUsersChart.write(user);
 
 			// 未読通知を作成

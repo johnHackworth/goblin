@@ -101,8 +101,7 @@ const formatReblogItem = (reblog) => {
   return '<div class="reblogTrailItem">' +
     '<div class="reblogHeader">' +
       '<img class="imageReblogTumblr" src="/avatar/@' + reblog.blog + '_at_tumblr_com" />' +
-      '<a href="' + config.url + '/@' + reblog.blog + '_at_tumblr_com">@' + reblog.blog + '_at_tumblr_com</a>' +
-      '<a href="' + reblog.link + '">[source]</a>' +
+      '<a href="' + reblog.link + '">@' + reblog.blog + ' (@tumblr.com)</a>' +
     '</div>' +
     '<div class="reblogContent">' +
       sanitize(reblog.content) +
@@ -316,7 +315,8 @@ export async function fetchTumblrFeed( user: User ) {
                 title+
                 postContent +
               "</div>",
-            apHashtags: post.categories
+            apHashtags: post.categories,
+            noMentions: true,
           });
         }
     };
