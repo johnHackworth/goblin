@@ -28,7 +28,13 @@ const nodeinfo2 = async () => {
 	const [meta, total, activeHalfyear, activeMonth, localPosts] =
 		await Promise.all([
 			fetchMeta(true),
-			Users.count({ where: { host: IsNull(), tumblrUUID: IsNull() } }),
+			Users.count({
+				where: {
+					host: IsNull(),
+					tumblrUUID: IsNull(),
+					lastActiveDate: MoreThan(new Date(1)),
+				},
+			}),
 			Users.count({
 				where: {
 					host: IsNull(),
@@ -54,7 +60,7 @@ const nodeinfo2 = async () => {
 		software: {
 			name: "goblin",
 			version: config.version,
-			repository: meta.repositoryUrl,
+			repository: "https://github.com/johnHackworth/goblin",
 			homepage: "https://goblin.band/",
 		},
 		protocols: ["activitypub"],
