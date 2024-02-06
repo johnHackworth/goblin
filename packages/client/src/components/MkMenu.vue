@@ -5,7 +5,7 @@
 		:return-focus-on-deactivate="!noReturnFocus"
 		@deactivate="emit('close')"
 	>
-		<div>
+		<div tabindex="-1">
 			<div
 				ref="itemsEl"
 				class="rrevdjwt _popup _shadow"
