@@ -332,11 +332,11 @@ function menu(viaKeyboard = false): void {
 }
 
 function focus() {
-	noteEl.focus();
+	noteEl && noteEl.focus();
 }
 
 function blur() {
-	noteEl.blur();
+	noteEl && noteEl.blur();
 }
 
 directReplies = null;
@@ -453,12 +453,12 @@ document.addEventListener("wheel", () => {
 onMounted(() => {
 	stream.on("noteUpdated", onNoteUpdated);
 	isScrolling = false;
-	noteEl.scrollIntoView();
+	noteEl && noteEl.scrollIntoView();
 });
 
 onUpdated(() => {
 	if (!isScrolling) {
-		noteEl.scrollIntoView();
+		noteEl && noteEl.scrollIntoView();
 		if (location.hash) {
 			location.replace(location.hash); // Jump to highlighted reply
 		}
