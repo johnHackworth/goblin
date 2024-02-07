@@ -72,11 +72,13 @@ onMounted(() => {
 		limit: 10,
 	}).then((notes) => {
 		for (const note of notes) {
-			for (const file of note.files) {
-				images.push({
-					note,
-					file,
-				});
+			if(note.files) {}
+				for (const file of note.files) {
+					images.push({
+						note,
+						file,
+					});
+				}
 			}
 		}
 		fetching = false;
