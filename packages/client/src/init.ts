@@ -48,7 +48,6 @@ import { search } from "@/scripts/search";
 import { deviceKind } from "@/scripts/device-kind";
 import { initializeSw } from "@/scripts/initialize-sw";
 import { reloadChannel } from "@/scripts/unison-reload";
-import { reactionPicker } from "@/scripts/reaction-picker";
 import { getUrlWithoutLoginId } from "@/scripts/login-id";
 import { getAccountFromId } from "@/scripts/get-account-from-id";
 
@@ -238,8 +237,6 @@ function checkForSplash() {
 	// boot.jsのやつを解除
 	window.onerror = null;
 	window.onunhandledrejection = null;
-
-	reactionPicker.init();
 
 	checkForSplash();
 
