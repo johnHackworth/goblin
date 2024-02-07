@@ -15,7 +15,7 @@
       :class="{
         collapsed,
         isLong,
-        manyImages: note.files.length > 4,
+        manyImages: note.files && note.files.length > 4,
         showContent: note.cw && !showContent,
         animatedMfm: !disableMfm,
       }"
@@ -116,7 +116,7 @@ const isLong =
   ((props.note.text != null &&
     (props.note.text.split("\n").length > 10 ||
       props.note.text.length > 800)) ||
-    props.note.files.length > 4);
+    (props.note.files && props.note.files.length > 4));
 const collapsed = $ref(props.note.cw == null && isLong);
 const urls = props.note.text
   ? extractUrlFromMfm(mfm.parse(props.note.text)).slice(0, 5)
