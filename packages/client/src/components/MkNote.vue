@@ -293,6 +293,9 @@ const reactButton = ref<HTMLElement>();
 let appearNote = $computed(() =>
 	isRenote ? (note.renote as misskey.entities.Note) : note,
 );
+if(!appearNote.user) {
+	console.log(appearNote)
+}
 
 let parentNote = $computed(() => getParentNote(note));
 
