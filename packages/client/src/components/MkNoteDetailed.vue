@@ -453,12 +453,12 @@ document.addEventListener("wheel", () => {
 onMounted(() => {
 	stream.on("noteUpdated", onNoteUpdated);
 	isScrolling = false;
-	noteEl && noteEl.scrollIntoView();
+	noteEl && noteEl.scrollIntoView && noteEl.scrollIntoView();
 });
 
 onUpdated(() => {
 	if (!isScrolling) {
-		noteEl && noteEl.scrollIntoView();
+		noteEl && noteEl.scrollIntoView && noteEl.scrollIntoView();
 		if (location.hash) {
 			location.replace(location.hash); // Jump to highlighted reply
 		}
