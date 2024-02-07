@@ -332,11 +332,11 @@ function menu(viaKeyboard = false): void {
 }
 
 function focus() {
-	noteEl && noteEl.focus();
+	noteEl && noteEl.focus && noteEl.focus();
 }
 
 function blur() {
-	noteEl && noteEl.blur();
+	noteEl && noteEl.blur && noteEl.blur();
 }
 
 directReplies = null;
