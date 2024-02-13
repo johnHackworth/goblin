@@ -27,27 +27,12 @@
 						:key="note._featuredId_ || note._prId_ || note.id"
 						:parentKey="note._featuredId_ || note._prId_ || note.id"
 						class="qtqtichx"
-						:note="convertRemoteReplyToReblog(note)"
-						v-if="note.replyId && note.user.host"
-						@toggle="toggleNote"
-						:showCloseButton="true"
-						:showNotesCounter="true"
-						:hideTabs="!expandedNotes[ note._featuredId_ || note._prId_ || note.id ]"
-						useReplyTrail="true"
-					/>
-					<XNoteDetailed
-						:key="note._featuredId_ || note._prId_ || note.id"
-						:parentKey="note._featuredId_ || note._prId_ || note.id"
-						class="qtqtichx"
 						:note="note"
-						v-else-if="!noReplies || !note.replyId"
 						@toggle="toggleNote"
 						:showCloseButton="true"
 						:showNotesCounter="true"
 						:hideTabs="!expandedNotes[ note._featuredId_ || note._prId_ || note.id ]"
 					/>
-
-
 				</XList>
 			</div>
 		</template>

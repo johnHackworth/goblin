@@ -188,6 +188,7 @@ const emit = defineEmits(['toggle']);
 
 const toggle = (noteId) => {
 	emit('toggle', props.parentKey);
+	updateNoteChildren();
 }
 
 const softMuteReasonI18nSrc = (what?: string) => {
@@ -221,7 +222,6 @@ const isDeleted = ref(false);
 const muted = ref(getWordSoftMute(note, $i, defaultStore.state.mutedWords));
 const translation = ref(null);
 const translating = ref(false);
-let conversation = $ref<null | misskey.entities.Note[]>([]);
 const replies = ref<misskey.entities.Note[]>([]);
 let directReplies = $ref<null | misskey.entities.Note[]>([]);
 let directQuotes = $ref<null | misskey.entities.Note[]>([]);
@@ -368,17 +368,8 @@ const updateNoteChildren = () => {
 }
 
 
-updateNoteChildren();
-
-conversation = null;
-if (note.replyId) {
-	os.api("notes/conversation", {
-		noteId: note.replyId,
-		limit: 30,
-	}).then((res) => {
-		conversation = res.reverse();
-		focus();
-	});
+if(!props.hideTabs) {
+	updateNoteChildren();
 }
 
 const pagination = {
@@ -391,9 +382,9 @@ const pagination = {
 
 const pagingComponent = $ref<InstanceType<typeof MkPagination>>();
 
-renotes = null;
+renotes = [];
 function loadTab() {
-	if (tab === "renotes" && !renotes) {
+	if (!props.hideTabs && tab === "renotes" && !renotes) {
 		os.api("notes/renotes", {
 			noteId: note.id,
 			limit: 100,

@@ -147,6 +147,10 @@ const bringReblogs = async (item) => {
 		method: "GET"
 	});
 
+	if(reblogtrailResponse.status != 200) {
+		return [];
+	}
+
 	if(!reblogtrailResponse || !reblogtrailResponse.json) {
 		return [];
 	}
@@ -201,12 +205,7 @@ const init = async (): Promise<void> => {
 				for (let i = 0; i < res.length; i++) {
 					const item = res[i];
 					if(item.replyId && (item.userHost || item.user.host) && !item.reblogtrail.length) {
-						item.reblogtrail = await bringReblogs(item)
-					}
-					if (props.pagination.reversed) {
-						if (i === res.length - 2) item._shouldInsertAd_ = true;
-					} else {
-						if (i === 3) item._shouldInsertAd_ = true;
+						// item.reblogtrail = await bringReblogs(item)
 					}
 				}
 				if (
@@ -265,7 +264,7 @@ const refresh = async (): void => {
 				for (let i = 0; i < res.length; i++) {
 					const item = res[i];
 					if(item.replyId && (item.userHost || item.user.host) && !item.reblogtrail.length) {
-						item.reblogtrail = await bringReblogs(item)
+						//item.reblogtrail = await bringReblogs(item)
 					}
 					if (!updateItem(item.id, (old) => item)) {
 						append(item);
@@ -320,12 +319,7 @@ const fetchMore = async (): Promise<void> => {
 				for (let i = 0; i < res.length; i++) {
 					const item = res[i];
 					if(item.replyId && (item.userHost || item.user.host) && !item.reblogtrail.length) {
-						item.reblogtrail = await bringReblogs(item)
-					}
-					if (props.pagination.reversed) {
-						if (i === res.length - 9) item._shouldInsertAd_ = true;
-					} else {
-						if (i === 10) item._shouldInsertAd_ = true;
+						// item.reblogtrail = await bringReblogs(item)
 					}
 				}
 				if (res.length > SECOND_FETCH_LIMIT) {
@@ -344,6 +338,7 @@ const fetchMore = async (): Promise<void> => {
 				moreFetching.value = false;
 			},
 			(err) => {
+				console.log(err);
 				moreFetching.value = false;
 			},
 		);
