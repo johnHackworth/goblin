@@ -51,6 +51,7 @@
             ref="menuButton"
             v-tooltip.noDelay.bottom="Notes"
             class="button _button noteCount"
+            @click="noteClick"
           >
             <b>{{noteCount}}</b> Notes
           </button>
@@ -162,6 +163,7 @@ const router = useRouter();
 const props = defineProps<{
   note: misskey.entities.Note;
   useReplyTrail: boolean;
+  parentKey?: string;
 }>();
 const emit = defineEmits(['toggle']);
 
