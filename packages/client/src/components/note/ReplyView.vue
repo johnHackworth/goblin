@@ -161,13 +161,19 @@ const router = useRouter();
 
 const props = defineProps<{
   note: misskey.entities.Note;
-  useReplyTrain: boolean;
+  useReplyTrail: boolean;
 }>();
 const emit = defineEmits(['toggle']);
 
 const inChannel = inject("inChannel", null);
 let detailedView = $ref(props.detailedView);
-let note = $ref(await populateFullReply(deepClone(props.note)));
+let note = $ref(props.note);;
+if(note.reply) {
+  note = await populateFullReply(note);
+} else if (note.renote && note.renote.reply) {
+  note.renote = await populateFullReply(note.renote)
+}
+
 const getPlainText = (text) => {
   const div = document.createElement("div");
   div.innerHTML = text;
@@ -217,11 +223,16 @@ const renoteButton = ref<InstanceType<typeof XRenoteButton>>();
 const renoteTime = ref<HTMLElement>();
 const reactButton = ref<HTMLElement>();
 let parentNote = $computed(() => getParentNote(note));
+
+if(note.renote && note.renote.reply && props.useReplyTrail) {
+  note.renote.reblogtrail = getAncestorsAsTrail(note.renote.reply);
+}
 if(note.replyId && props.useReplyTrail) {
-  note.reblogtrail = getAncestorsAsTrail(note);
+  note.reblogtrail = getAncestorsAsTrail(note.reply);
   note.replyId = null;
   note.reply = null;
 }
+
 let appearNote = $computed(() =>
   isRenote ? (note.renote as misskey.entities.Note) : note
 );

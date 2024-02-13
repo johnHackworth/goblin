@@ -32,6 +32,7 @@
 						:showCloseButton="true"
 						:showNotesCounter="true"
 						:hideTabs="!expandedNotes[ note._featuredId_ || note._prId_ || note.id ]"
+						useReplyTrail="true"
 					/>
 				</XList>
 			</div>
@@ -60,29 +61,15 @@ const props = defineProps<{
 
 const pagingComponent = ref<InstanceType<typeof MkPagination>>();
 
-function convertRemoteReplyToReblog( note ) {
-	if(note.reblogtrail.length) {
-		return note;
-	}
-
-	note.renote = note.reply;
-	note.reply = null;
-	note.renoteId = note.replyId;
-	note.replyId = null;
-	note.reblogtrail = [ note.renote ];
-	return note;
-}
-
 function scrollTop() {
 	scroll(tlEl.value, { top: 0, behavior: "smooth" });
 }
 
 function toggleNote( noteId ) {
 	expandedNotes.value[ noteId ] = !expandedNotes.value[ noteId ]
-	console.log(expandedNotes);
 }
+
 defineExpose({
-	convertRemoteReplyToReblog,
 	pagingComponent,
 	scrollTop
 });

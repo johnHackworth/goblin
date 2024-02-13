@@ -29,12 +29,13 @@ export const getParentNote = ( note ) => {
   return note;
 }
 
-export const getAncestorsAsTrail = ( note, ancestors = [] ) => {
-  const thisNote = deepClone(note);
-  thisNote.reply = {}
-  ancestors.unshift( thisNote);
-  if(note.reply) {
-    return getAncestorsAsTrail
+export const getAncestorsAsTrail = ( note ) => {
+  let currentNote = note;
+  let trail: any[] = [];
+  while(currentNote.reply) {
+    trail.push( { ...currentNote,  reply: null, replyId: null} );
+    currentNote = currentNote.reply;
   }
-  return ancestors;
+  trail.push(currentNote);
+  return trail.reverse();
 }
