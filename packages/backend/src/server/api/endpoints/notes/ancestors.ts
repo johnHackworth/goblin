@@ -42,7 +42,7 @@ const getNoteWithAncestors = async (noteId, user) => {
   if(note) {
     if (note.replyId) {
       const ancestor = await getNoteWithAncestors(note.replyId, user);
-      return { ...note, reply: ancestor } ;
+      return { ...note, user: await Users.pack(note.userId), reply: ancestor } ;
     }
     return { ...note, user: await Users.pack(note.userId) };
 
