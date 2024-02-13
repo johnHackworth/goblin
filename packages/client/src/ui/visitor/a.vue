@@ -57,17 +57,6 @@
 				<main ref="main">
 					<RouterView />
 				</main>
-				<div class="powered-by">
-					<b
-						><MkA to="/">{{ host }}</MkA></b
-					>
-					<small
-						>Powered by
-						<a href="https://joinfirefish.org/" target="_blank"
-							>Firefish</a
-						></small
-					>
-				</div>
 			</div>
 		</div>
 	</div>

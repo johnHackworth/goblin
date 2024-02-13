@@ -19,25 +19,11 @@ export function openHelpMenu_(ev: MouseEvent) {
 				to: "/about",
 			},
 			{
-				type: "link",
-				text: i18n.ts.aboutFirefish,
-				icon: "ph-lightbulb ph-bold ph-lg",
-				to: "/about-firefish",
-			},
-			{
 				type: "button",
 				text: i18n.ts.tos,
 				icon: "ph-scroll ph-bold ph-lg",
 				action: () => {
 					window.open(instance.tosUrl, "_blank");
-				},
-			},
-			{
-				type: "button",
-				text: i18n.ts.apps,
-				icon: "ph-device-mobile ph-bold ph-lg",
-				action: () => {
-					window.open("https://joinfirefish.org/apps", "_blank");
 				},
 			},
 			{

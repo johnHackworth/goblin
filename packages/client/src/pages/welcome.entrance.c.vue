@@ -181,13 +181,6 @@ export default defineComponent({
 							os.pageWindow("/about");
 						},
 					},
-					{
-						text: i18n.ts.aboutFirefish,
-						icon: "ph-info ph-bold ph-lg",
-						action: () => {
-							os.pageWindow("/about-firefish");
-						},
-					},
 				],
 				ev.currentTarget ?? ev.target,
 			);

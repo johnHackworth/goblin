@@ -12,17 +12,6 @@
 				<main>
 					<RouterView />
 				</main>
-				<div v-if="!root" class="powered-by">
-					<b
-						><MkA to="/">{{ host }}</MkA></b
-					>
-					<small
-						>Powered by
-						<a href="https://joinfirefish.org/" target="_blank"
-							>Firefish</a
-						></small
-					>
-				</div>
 			</div>
 		</div>
 

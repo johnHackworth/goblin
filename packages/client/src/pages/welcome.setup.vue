@@ -1,6 +1,6 @@
 <template>
 	<form class="mk-setup" @submit.prevent="submit()">
-		<h1>Welcome to Firefish!</h1>
+		<h1>Goblin welcomes you!</h1>
 		<div class="_formRoot">
 			<p>{{ i18n.ts.intro }}</p>
 			<MkInput

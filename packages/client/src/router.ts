@@ -301,10 +301,6 @@ export const routes = [
 		hash: "initialTab",
 	},
 	{
-		path: "/about-firefish",
-		component: page(() => import("./pages/about-firefish.vue")),
-	},
-	{
 		path: "/theme-editor",
 		component: page(() => import("./pages/theme-editor.vue")),
 		loginRequired: true,

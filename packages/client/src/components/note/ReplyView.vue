@@ -173,6 +173,7 @@ if(note.reply) {
 } else if (note.renote && note.renote.reply) {
   note.renote = await populateFullReply(note.renote)
 }
+let parentNote = $computed(() => getParentNote(note));
 
 const getPlainText = (text) => {
   const div = document.createElement("div");
@@ -222,7 +223,7 @@ const starButton = ref<InstanceType<typeof XStarButton>>();
 const renoteButton = ref<InstanceType<typeof XRenoteButton>>();
 const renoteTime = ref<HTMLElement>();
 const reactButton = ref<HTMLElement>();
-let parentNote = $computed(() => getParentNote(note));
+
 
 if(note.renote && note.renote.reply && props.useReplyTrail) {
   note.renote.reblogtrail = getAncestorsAsTrail(note.renote.reply);

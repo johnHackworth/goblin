@@ -58,16 +58,6 @@
 						</MkKeyValue>
 
 						<FormSection>
-							<MkKeyValue class="_formBlock" :copy="version">
-								<template #key>Firefish</template>
-								<template #value>{{ version }}</template>
-							</MkKeyValue>
-							<FormLink to="/about-firefish">{{
-								i18n.ts.aboutFirefish
-							}}</FormLink>
-						</FormSection>
-
-						<FormSection>
 							<FormSplit>
 								<MkKeyValue class="_formBlock">
 									<template #key>{{
@@ -93,21 +83,6 @@
 								external
 								>{{ i18n.ts.tos }}</FormLink
 							>
-							<FormLink
-								v-if="$instance.donationLink"
-								:to="$instance.donationLink"
-								external
-							>
-								<template #icon
-									><i class="ph-money ph-bold ph-lg"></i
-								></template>
-								{{
-									i18n.t("_aboutFirefish.donateHost", {
-										host: $instance.name || host,
-									})
-								}}
-								<template #suffix>Donate</template>
-							</FormLink>
 						</FormSection>
 
 						<FormSuspense :p="initStats">
