@@ -236,9 +236,7 @@ if(note.replyId && props.useReplyTrail) {
   note.reply = null;
 }
 
-let appearNote = $computed(() =>
-  isRenote ? (note.renote as misskey.entities.Note) : note
-);
+let appearNote = $ref(parentNote);
 
 let reactionCount = 0;
 for(let reaction in parentNote.reactions) {
