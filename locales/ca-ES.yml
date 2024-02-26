@@ -1,7 +1,7 @@
 _lang_: "Català"
 headlineMisskey: "Una xarxa social de codi obert, descentralitzada i gratuïta per
   a sempre! 🚀"
-introMisskey: "Benvinguts! Firefish és una plataforma social de codi obert, descentralitzada
+introMisskey: "Benvinguts! Goblin és una plataforma social de codi obert, descentralitzada
   i gratuïta per a sempre! 🚀"
 monthAndDay: "{day}/{month}"
 search: "Cerca"
@@ -146,9 +146,9 @@ _mfm:
   mention: "Menció"
   quote: "Citar"
   search: "Cercar"
-  dummy: Firefish amplia el món del Fediverse
+  dummy: Goblin amplia el món del Fediverse
   hashtag: Etiqueta
-  intro: MFM és un llenguatge de marques utilitzat a Misskey, Firefish, Akkoma i més
+  intro: MFM és un llenguatge de marques utilitzat a Misskey, Goblin, Akkoma i més
     que es pot utilitzar en molts llocs. Aquí podeu veure una llista de tota la sintaxi
     MFM disponible.
   hashtagDescription: Podeu especificar una etiqueta mitjançant un coixinet i un text.
@@ -796,7 +796,7 @@ flagAsBot: Marca aquest compte com a bot
 flagAsBotDescription: Activa aquesta opció si aquest compte és controlat per un programa.
   Si s'activa, això actuarà com una bandera per a altres desenvolupadors i ajuda a
   prevenir cadenes de interaccions infinites amb altres bots a més d'ajustar els sistemes
-  interns de Firefish per tractar aquest compte com un bot.
+  interns de Goblin per tractar aquest compte com un bot.
 flagAsCat: Ets un gat? 🐱
 flagShowTimelineReplies: Mostra respostes a la línia de temps
 flagAsCatDescription: Guanyaràs unes orelles de gat i parlares com un gat!
@@ -847,7 +847,7 @@ mutedUsers: Usuaris silenciats
 done: Fet
 preview: Vista prèvia
 default: Per defecte
-intro: La instal·lació de Firefish ha acabat! Crea un compte d'usuari d'administració.
+intro: La instal·lació de Goblin ha acabat! Crea un compte d'usuari d'administració.
 processing: S'està processant
 noCustomEmojis: No hi ha cap emoji
 noJobs: No hi ha cap feina
@@ -1227,7 +1227,7 @@ connectedTo: Aquest(s) compte(s) estan connectats
 silenceConfirm: Segur que vols posa en silenci aquest usuari?
 unsilence: Desfés posar en silenci
 unsilenceConfirm: Segur que vols treure el silenci a aquest usuari?
-aboutFirefish: Sobre Firefish
+aboutGoblin: Sobre Goblin
 twoStepAuthentication: Autentificació de dos factors
 moderator: Moderador
 moderation: Moderació
@@ -1380,7 +1380,7 @@ adminCustomCssWarn: Aquesta configuració només s'ha d'utilitzar si sabeu què 
   introducció de valors inadequats pot fer que els clients de TOTS deixin de funcionar
   amb normalitat. Assegureu-vos que el vostre CSS funcioni correctament provant-lo
   a la configuració de l'usuari.
-showUpdates: Mostra una finestra emergent quan Firefish s'actualitzi
+showUpdates: Mostra una finestra emergent quan Goblin s'actualitzi
 recommendedInstances: Servidors recomanats
 recommendedInstancesDescription: Servidors recomanats separats per salts de línia
   que apareixen a la línia de temps recomanada.
@@ -1389,7 +1389,7 @@ splash: Pantalla de Benvinguda
 swipeOnDesktop: Permet lliscar a l'estil del mòbil a l'escriptori
 updateAvailable: Pot ser que hi hagi una actualització disponible!
 logoImageUrl: URL de la imatge del logotip
-showAdminUpdates: Indica que hi ha disponible una versió nova de Firefish (només per
+showAdminUpdates: Indica que hi ha disponible una versió nova de Goblin (només per
   a administradors)
 replayTutorial: Repetició del tutorial
 migration: Migració
@@ -1490,7 +1490,7 @@ _registry:
 silenced: Silenciat
 objectStorageUseSSL: Fes servir SSL
 yourAccountSuspendedTitle: Aquest compte està suspès
-i18nInfo: Firefish està sent traduït a diversos idiomes per voluntaris. Pots ajudar
+i18nInfo: Goblin està sent traduït a diversos idiomes per voluntaris. Pots ajudar
   {link}.
 manageAccessTokens: Administrar tokens d'accés
 accountInfo: Informació del compte
@@ -1551,7 +1551,7 @@ searchResult: Resultats de la cerca
 hashtags: Etiquetes
 troubleshooting: Resolució de problemes
 learnMore: Més informació
-misskeyUpdated: Firefish s'ha actualitzat!
+misskeyUpdated: Goblin s'ha actualitzat!
 translate: Tradueix
 translatedFrom: Traduït per {x}
 aiChanMode: Ai-chan a la interfície d'usuari clàssica
@@ -1591,21 +1591,21 @@ cannotUploadBecauseNoFreeSpace: La pujada ha fallat a causa de la manca d'espai 
 enableAutoSensitive: Marcatge automàtic NSFW
 moveTo: Mou el compte actual al compte nou
 customKaTeXMacro: Macros KaTeX personalitzats
-_aboutFirefish:
+_aboutGoblin:
   contributors: Col·laboradors principals
   allContributors: Tots els col·laboradors
-  donate: Fes una donació a Firefish
+  donate: Fes una donació a Goblin
   source: Codi font
-  translation: Tradueix Firefish
-  about: Firefish és una bifurcació de Misskey feta per ThatOneCalculator, que està
+  translation: Tradueix Goblin
+  about: Goblin és una bifurcació de Misskey feta per ThatOneCalculator, que està
     en desenvolupament des del 2022.
   morePatrons: També agraïm el suport de molts altres ajudants que no figuren aquí.
     Gràcies! 🥰
-  patrons: Mecenes de Firefish
+  patrons: Mecenes de Goblin
   patronsList: Llistats cronològicament, no per la quantitat donada. Fes una donació
     amb l'enllaç de dalt per veure el teu nom aquí!
-  donateTitle: T'agrada Firefish?
-  pleaseDonateToFirefish: Penseu en fer una donació a Firefish per donar suport al seu
+  donateTitle: T'agrada Goblin?
+  pleaseDonateToGoblin: Penseu en fer una donació a Goblin per donar suport al seu
     desenvolupament.
   pleaseDonateToHost: Penseu també en fer una donació a la vostre instància, {host},
     per ajudar-lo a suportar els costos de funcionament.
@@ -1707,7 +1707,7 @@ ascendingOrder: Ascendent
 descendingOrder: Descendent
 scratchpad: Bloc de notes
 scratchpadDescription: El bloc de notes proporciona un entorn per experiments amb
-  AiScript. Pots escriure, executar i comprovar els resultats interactuant amb Firefish.
+  AiScript. Pots escriure, executar i comprovar els resultats interactuant amb Goblin.
 output: Sortida
 script: Script
 disablePagesScript: Desactivar AiScript a les pàgines
@@ -1719,9 +1719,9 @@ accentColor: Color principal
 textColor: Color del text
 value: Valor
 sendErrorReportsDescription: "Quan està activat, quan es produeixi un problema la
-  informació detallada d'errors es compartirà amb Firefish, ajudant a millorar la qualitat
-  de Firefish.\nAixò inclourà informació com la versió del vostre sistema operatiu,
-  quin navegador utilitzeu, la vostra activitat a Firefish, etc."
+  informació detallada d'errors es compartirà amb Goblin, ajudant a millorar la qualitat
+  de Goblin.\nAixò inclourà informació com la versió del vostre sistema operatiu,
+  quin navegador utilitzeu, la vostra activitat a Goblin, etc."
 myTheme: El meu tema
 backgroundColor: Color de fons
 saveAs: Desa com...
@@ -1902,14 +1902,14 @@ _tutorial:
   step6_1: Aleshores, què és aquest lloc?
   step6_4: Ara ves, explora i diverteix-te!
   step1_2: Anem a fer la configuració. Estaràs en funcionament en un tres i no res!
-  title: Com utilitzar Firefish
+  title: Com utilitzar Goblin
   step1_1: Benvingut!
   step2_1: En primer lloc, empleneu el vostre perfil.
   step4_1: Anem a treure't allà fora.
   step5_5: La línea de temps Social {icon} és una combinació de les línies de temps
     d'Inici i Local.
   step6_3: Cada servidor funciona de diferents maneres, i no tots els servidors executen
-    Firefish. Aquest sí que sí! És una mica complicat, però ho aconseguiràs en poc
+    Goblin. Aquest sí que sí! És una mica complicat, però ho aconseguiràs en poc
     temps.
   step2_2: Proporcionar informació sobre qui sou facilitarà que altres puguin saber
     si volen veure les vostres notes o seguir-vos.
@@ -1920,7 +1920,7 @@ _tutorial:
   step4_2: A algunes persones els agrada fer una publicació de {introduction} o un
     senzill "Hola món!"
   step5_1: Línies de temps, línies de temps a tot arreu!
-  step6_2: Bé, no només t'has unit a Firefish. T'has unit a un portal al Fediverse,
+  step6_2: Bé, no només t'has unit a Goblin. T'has unit a un portal al Fediverse,
     una xarxa interconnectada de milers de servidors.
 _permissions:
   "read:account": Consulta la informació del teu compte
@@ -2094,11 +2094,11 @@ _experiments:
   release: Publicà
   title: Experiments
   enablePostImports: Activar l'importació de publicacions
-  postImportsCaption: Permet els usuaris importar publicacions desde comptes a Firefish,
+  postImportsCaption: Permet els usuaris importar publicacions desde comptes a Goblin,
     Misskey, Mastodon, Akkoma i Pleroma. Pot fer que el servidor vagi més lent durant
     la càrrega si tens un coll d'ampolla a la cua.
 noGraze: Si us plau, desactiva l'extensió del navegador "Graze for Mastodon", ja que
-  interfereix amb Firefish.
+  interfereix amb Goblin.
 accessibility: Accessibilitat
 jumpToReply: Vés a la resposta
 newer: Més nou
@@ -2113,7 +2113,7 @@ expandOnNoteClick: Obre la publicació amb un clic
 expandOnNoteClickDesc: Si està desactivat, encara pots obrir les publicacions al menú
   del botó dret o fent clic a la marca de temps.
 channelFederationWarn: Els canals encara no es federen amb altres servidors
-searchPlaceholder: Cerca a Firefish
+searchPlaceholder: Cerca a Goblin
 listsDesc: Les llistes et permeten crear línies de temps amb usuaris específics. Es
   pot accedir des de la pàgina de línies de temps.
 clipsDesc: Els clips són com marcadors categoritzats que es poden compartir. Podeu

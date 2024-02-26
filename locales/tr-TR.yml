@@ -1,5 +1,5 @@
 _lang_: "Türkçe"
-introMisskey: "Hoş geldin! Firefish, sonsuza kadar ücretsiz olan, açık kaynaklı, merkezi
+introMisskey: "Hoş geldin! Goblin, sonsuza kadar ücretsiz olan, açık kaynaklı, merkezi
   olmayan bir sosyal medya platformudur! 🚀"
 monthAndDay: "{month}Ay {day}Gün"
 search: "Arama"
@@ -54,7 +54,7 @@ _mfm:
   play: MFM'i çal
   stop: MFM'i durdur
   cheatSheet: MFM Kopya Kağıdı
-  intro: MFM, Misskey, Firefish, Akkoma ve daha pek çok yerde kullanılabilen bir biçimlendirme
+  intro: MFM, Misskey, Goblin, Akkoma ve daha pek çok yerde kullanılabilen bir biçimlendirme
     dilidir. Burada mevcut tüm MFM sözdiziminin bir listesini görüntüleyebilirsiniz.
   link: Link
   boldDescription: Harfleri kalınlaştırarak vurgular.
@@ -81,7 +81,7 @@ _mfm:
   mentionDescription: Bir et-sembolü (@) ve bir kullanıcı adı kullanarak bir kullanıcı
     belirleyebilirsiniz.
   hashtag: Etiket
-  dummy: Firefish, Fediverse dünyasını genişletiyor
+  dummy: Goblin, Fediverse dünyasını genişletiyor
   hashtagDescription: Sayı işareti ve metin kullanarak bir etiket belirtebilirsiniz.
   url: URL
   urlDescription: URL'ler görüntülenebilir.
@@ -220,7 +220,7 @@ _deck:
   introduction: Sütunları özgürce düzenleyerek sizin için mükemmel arayüzü oluşturun!
   widgetsIntroduction: Lütfen sütun menüsünde "Araç'ları düzenle"yi seçin ve bir widget
     ekleyin.
-searchPlaceholder: Firefish'de Ara
+searchPlaceholder: Goblin'de Ara
 reply: Yanıtla
 jumpToPrevious: Öncekini görüntüle
 deleted: Silindi
@@ -260,7 +260,7 @@ blockedInstancesDescription: Engellemek istediğiniz sunucuların ana bilgisayar
   listeleyin. Listelenen sunucular artık bu sunucularla iletişim kuramayacak.
 blockedUsers: Engellenmiş kullanıcılar
 editProfile: Profilini düzenle
-intro: Firefish'in indirilmesi tamamlandı! Lütfen yönetici hesap oluşturun.
+intro: Goblin'in indirilmesi tamamlandı! Lütfen yönetici hesap oluşturun.
 instanceUsers: Sunucunun kullanıcıları
 changePassword: Şifreyi değiştir
 security: Güvenlik
@@ -700,7 +700,7 @@ invalidValue: Geçersiz değer.
 instanceSecurity: Sunucu Güvenliği
 searchResult: Arama sonuçları
 useBlurEffect: Kullanıcı arayüzünde bulanıklaştırma efektleri kullanın
-misskeyUpdated: Firefish güncellendi!
+misskeyUpdated: Goblin güncellendi!
 lastCommunication: Son iletişim
 itsOn: Etkinleştirilmiş
 emailRequiredForSignup: Kayıt olmak için mail gerekiyor
@@ -829,9 +829,9 @@ low: Düşük
 seperateRenoteQuote: Ayrı destek ve fiyat teklifi düğmeleri
 sent: Gönderildi
 customMOTD: Özel MOTD
-showUpdates: Firefish güncellendiğinde bir açılır pencere göster
+showUpdates: Goblin güncellendiğinde bir açılır pencere göster
 logoImageUrl: Logo resim URL'si
-showAdminUpdates: Yeni bir Firefish sürümünün mevcut olduğunu belirtin (yalnızca yönetici)
+showAdminUpdates: Yeni bir Goblin sürümünün mevcut olduğunu belirtin (yalnızca yönetici)
 newer: asla
 older: daha eski
 exportRequested: Bir dışarı aktarma talebinde bulundunuz. Bu biraz zaman alabilir.
@@ -896,7 +896,7 @@ recaptchaSecretKey: Secret key
 avoidMultiCaptchaConfirm: Birden fazla Captcha sistemi kullanmak aralarında etkileşime
   neden olabilir. Şu anda etkin olan diğer Captcha sistemlerini devre dışı bırakmak
   ister misiniz? Etkin kalmalarını istiyorsanız, iptal düğmesine basın.
-aboutFirefish: Firefish Hakkında
+aboutGoblin: Goblin Hakkında
 popularUsers: Popüler kullanıcılar
 notFoundDescription: Bu URL'ye karşılık gelen sayfa bulunamadı.
 reduceUiAnimation: Arayüz animasyonlarını azalt
@@ -1096,7 +1096,7 @@ instanceTicker: Göndeirlerdeki sunucu bilgisi
 waitingFor: '{x} bekleniyor'
 random: Rastgele
 public: Herkese açık
-i18nInfo: Firefish, gönüllüler tarafından çeşitli dillere çevriliyor. {link} adresinden
+i18nInfo: Goblin, gönüllüler tarafından çeşitli dillere çevriliyor. {link} adresinden
   yardımcı olabilirsiniz.
 disableShowingAnimatedImages: Animasyonlu görüntüleri oynatma
 clips: Ataçlar
@@ -1187,7 +1187,7 @@ cacheRemoteFiles: Uzak dosyaları önbellekle
 flagAsBot: Bu hesabı robot olarak işaretle
 flagAsBotDescription: Bu hesap bir program tarafından kontrol ediliyorsa bu seçeneği
   etkinleştirin. Etkinleştirilirse, diğer geliştiricilerin diğer botlarla sonsuz etkileşim
-  zincirlerini önlemesi ve Firefish'nin dahili sistemlerini bu hesabı bir bot olarak
+  zincirlerini önlemesi ve Goblin'nin dahili sistemlerini bu hesabı bir bot olarak
   ele alacak şekilde ayarlaması için bir bayrak görevi görür.
 clearQueue: Sırayı Temizle
 hiddenTags: Gizlenmiş Etiketler
@@ -1219,7 +1219,7 @@ ascendingOrder: Artan
 tags: Etiketler
 descendingOrder: Azalan
 scratchpadDescription: Karalama defteri, AiScript deneyleri için bir ortam sağlar.
-  İçinde Firefish ile etkileşime girerek sonuçlarını yazabilir, çalıştırabilir ve kontrol
+  İçinde Goblin ile etkileşime girerek sonuçlarını yazabilir, çalıştırabilir ve kontrol
   edebilirsiniz.
 local: Yerel
 remote: Uzak
@@ -1247,8 +1247,8 @@ desktop: Masaüstü
 confirmToUnclipAlreadyClippedNote: Bu gönderi zaten "{name}" atacının bir parçası.
   Bunun yerine onu bu ataçtan kaldırmak istiyor musunuz?
 sendErrorReportsDescription: "Açıldığında, bir sorun oluştuğunda ayrıntılı hata bilgileri
-  Firefish ile paylaşılarak Firefish kalitesinin artırılmasına yardımcı olur.\nBu, işletim
-  sisteminizin sürümü, kullandığınız tarayıcı, Firefish'deki etkinliğiniz vb. bilgileri
+  Goblin ile paylaşılarak Goblin kalitesinin artırılmasına yardımcı olur.\nBu, işletim
+  sisteminizin sürümü, kullandığınız tarayıcı, Goblin'deki etkinliğiniz vb. bilgileri
   içerecektir."
 closeAccount: Hesabı kapat
 markAllAsRead: Okunmuş olarak işaretle
@@ -1298,7 +1298,7 @@ showWithSparkles: Parıltılarla göster
 showPopup: Kullanıcıları pop-up ile bilgilendirin
 silencedWarning: Bu sayfa, bu kullanıcılar yöneticinizin susturduğu sunuculardan olduğu
   için gösteriliyor, bu nedenle potansiyel olarak spam olabilirler.
-isPatron: Firefish Patronu
+isPatron: Goblin Patronu
 youHaveUnreadAnnouncements: Okunmamış duyurularınız var
 donationLink: Bağış sayfası linki
 neverShow: Birdaha gösterme
@@ -1322,7 +1322,7 @@ signupsDisabled: Bu sunucudaki kayıtlar şu anda devre dışı, ancak istediği
   başka bir sunucuya kaydolabilirsiniz! Bu sunucu için bir davet kodunuz varsa, lütfen
   aşağıya girin.
 sendModMail: Moderasyon Bildirimi Gönder
-noGraze: Firefish ile çakıştığı için lütfen "Graze for Mastodon" tarayıcı uzantısını
+noGraze: Goblin ile çakıştığı için lütfen "Graze for Mastodon" tarayıcı uzantısını
   devre dışı bırakın.
 isBot: Bu hesap bir bottur
 _2fa:
@@ -1862,7 +1862,7 @@ _notification:
   youGotMessagingMessageFromUser: '{name} sana bir sohbet mesajı gönderdi'
 _experiments:
   title: Deneyler
-  postImportsCaption: Kullanıcıların geçmiş Firefish, Misskey, Mastodon, Akkoma ve
+  postImportsCaption: Kullanıcıların geçmiş Goblin, Misskey, Mastodon, Akkoma ve
     Pleroma hesaplarından gönderilerini içe aktarmalarına izin verir. Kuyruğunuz tıkanırsa
     yükleme sırasında yavaşlamalara neden olabilir.
   enablePostImports: Gönderi içeri aktarmasını aktif et
@@ -1932,23 +1932,23 @@ _preferencesBackups:
 _aboutMisskey:
   patronsList: Bağış büyüklüğüne göre değil, kronolojik olarak listelenmiştir. Adınızı
     buraya almak için yukarıdaki bağlantıyla bağış yapın!
-  about: Firefish, 2022'den beri geliştirilmekte olan ThatOneCalculator tarafından
+  about: Goblin, 2022'den beri geliştirilmekte olan ThatOneCalculator tarafından
     yapılan bir Misskey çatalıdır.
   allContributors: Tüm katkıda bulunanlar
-  patrons: Firefish patronları
+  patrons: Goblin patronları
   morePatrons: Burada listelenmeyen diğer birçok yardımcının desteğini de takdir ediyoruz.
     Teşekkür ederim! 🥰
-  donate: Firefish'e bağışta bulunun
+  donate: Goblin'e bağışta bulunun
   contributors: Ana katkıda bulunanlar
   source: Kaynak Kodu
-  translation: Firefish'i tercüme et
-  donateTitle: Firefish'den hoşlanıyor musunuz?
-  pleaseDonateToFirefish: Lütfen gelişimini desteklemek için Firefish'e bağış yapmayı
+  translation: Goblin'i tercüme et
+  donateTitle: Goblin'den hoşlanıyor musunuz?
+  pleaseDonateToGoblin: Lütfen gelişimini desteklemek için Goblin'e bağış yapmayı
     düşünün.
   pleaseDonateToHost: İşletme maliyetlerini desteklemek için lütfen ev sunucunuz {host}'a
     bağış yapmayı da düşünün.
   donateHost: '{ev sahibi} için bağış yapın'
-  sponsors: Firefish sponsorları
+  sponsors: Goblin sponsorları
 _weekday:
   saturday: Cumartesi
   sunday: Pazar
@@ -1982,7 +1982,7 @@ _tutorial:
   step5_6: Önerilen {icon} zaman çizelgesi, yöneticilerin önerdiği sunuculardan gelen
     gönderileri görebileceğiniz yerdir.
   step6_1: Peki burası neresi?
-  title: Firefish nasıl kullanılır
+  title: Goblin nasıl kullanılır
   step3_2: "Ev ve sosyal zaman çizelgeleriniz, kimi takip ettiğinize bağlıdır, bu
     nedenle başlamak için birkaç hesabı takip etmeyi deneyin.\nTakip etmek için bir
     profilin sağ üstündeki artı dairesine tıklayın."
@@ -1990,7 +1990,7 @@ _tutorial:
     görebileceğiniz yerdir.
   step5_4: Yerel {icon} zaman çizelgesi, bu sunucudaki diğer herkesin gönderilerini
     görebileceğiniz yerdir.
-  step6_2: Firefish'e öylece katılmadın. Binlerce sunucudan oluşan birbirine bağlı
+  step6_2: Goblin'e öylece katılmadın. Binlerce sunucudan oluşan birbirine bağlı
     bir ağ olan Fediverse'e giden bir portala katıldınız.
   step6_4: Şimdi gidin, keşfedin ve eğlenin!
   step5_7: Global {icon} zaman çizelgesi, bağlı diğer tüm sunuculardan gelen gönderileri
@@ -2002,7 +2002,7 @@ _tutorial:
   step1_1: Hoşgeldin!
   step1_2: Hadi seni hazırlayalım. Kısa sürede kullanmaya başlayacaksınız!
   step5_1: Zaman çizelgeleri, her yerde zaman çizelgeleri!
-  step6_3: Her sunucu farklı şekillerde çalışır ve tüm sunucular Firefish'i çalıştırmaz.
+  step6_3: Her sunucu farklı şekillerde çalışır ve tüm sunucular Goblin'i çalıştırmaz.
     Ama bu sunucu kullanıyor! Biraz karışık ama kısa sürede anlayacaksın.
   step4_1: Seni oradan çıkaralım.
   step5_2: Sunucunuzda etkinleştirilmiş {timelines} farklı zaman çizelgesi var.

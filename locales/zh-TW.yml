@@ -1,6 +1,6 @@
 _lang_: "繁體中文"
 headlineMisskey: "貼文連繫網路"
-introMisskey: "歡迎！ Firefish是一個開源、去中心化且永遠免費的社群網路平台！🚀"
+introMisskey: "歡迎！ Goblin是一個開源、去中心化且永遠免費的社群網路平台！🚀"
 monthAndDay: "{month}月 {day}日"
 search: "搜尋"
 notifications: "通知"
@@ -142,7 +142,7 @@ settingGuide: "推薦設定"
 cacheRemoteFiles: "快取遠端檔案"
 cacheRemoteFilesDescription: "禁用此設定會停止遠端檔案的緩存，從而節省儲存空間，但資料會因直接連線從而產生額外數據花費。"
 flagAsBot: "標記此帳號是機器人"
-flagAsBotDescription: "如果本帳戶是由程式控制，請啟用此選項。啟用後，會作為標示幫助其他開發者防止機器人之間產生無限互動的行為，並會調整Firefish內部系統將本帳戶識別為機器人。"
+flagAsBotDescription: "如果本帳戶是由程式控制，請啟用此選項。啟用後，會作為標示幫助其他開發者防止機器人之間產生無限互動的行為，並會調整Goblin內部系統將本帳戶識別為機器人。"
 flagAsCat: "你是喵咪嗎？w😺"
 flagAsCatDescription: "如果想將本帳戶標示為一隻貓，請開啟此標示！"
 flagShowTimelineReplies: "在時間線上顯示貼文的回覆"
@@ -201,7 +201,7 @@ noUsers: "沒有任何使用者"
 editProfile: "編輯個人檔案"
 noteDeleteConfirm: "確定刪除此貼文嗎？"
 pinLimitExceeded: "不能置頂更多貼文了"
-intro: "Firefish 部署完成！請建立管理員帳戶。"
+intro: "Goblin 部署完成！請建立管理員帳戶。"
 done: "完成"
 processing: "處理中"
 preview: "預覽"
@@ -380,7 +380,7 @@ exploreFediverse: "探索聯邦世界"
 popularTags: "熱門標籤"
 userList: "清單"
 about: "資訊"
-aboutFirefish: "關於 Firefish"
+aboutGoblin: "關於 Goblin"
 administrator: "管理員"
 token: "權杖"
 twoStepAuthentication: "兩階段驗證"
@@ -526,7 +526,7 @@ sort: "排序"
 ascendingOrder: "昇冪"
 descendingOrder: "降冪"
 scratchpad: "暫存記憶體"
-scratchpadDescription: "AiScript控制台為AiScript提供了實驗環境。您可以在此編寫、執行和確認代碼與Firefish互動的结果。"
+scratchpadDescription: "AiScript控制台為AiScript提供了實驗環境。您可以在此編寫、執行和確認代碼與Goblin互動的结果。"
 output: "輸出"
 script: "腳本"
 disablePagesScript: "停用頁面的AiScript腳本"
@@ -651,7 +651,7 @@ createNewClip: "建立新摘錄"
 unclip: "解除摘錄"
 confirmToUnclipAlreadyClippedNote: "此貼文已包含在摘錄「{name}」中。 你想將貼文從這個摘錄中排除嗎？"
 public: "公開"
-i18nInfo: "Firefish已經被志願者們翻譯成各種語言版本，如果想要幫忙的話，可以進入{link}幫助翻譯。"
+i18nInfo: "Goblin已經被志願者們翻譯成各種語言版本，如果想要幫忙的話，可以進入{link}幫助翻譯。"
 manageAccessTokens: "管理存取權杖"
 accountInfo: "帳戶資訊"
 notesCount: "貼文數量"
@@ -702,8 +702,8 @@ onlineUsersCount: "{n}人正在線上"
 nUsers: "{n}用戶"
 nNotes: "{n}貼文"
 sendErrorReports: "傳送錯誤報告"
-sendErrorReportsDescription: "開啟後，錯誤出現時將會與 Firefish 分享詳細紀錄，對於 Firefish 的開發會有非常大的幫助。\n
-  這將包括您的操作系統版本、使用的瀏覽器、您在 Firefish 中的活動等資料。"
+sendErrorReportsDescription: "開啟後，錯誤出現時將會與 Goblin 分享詳細紀錄，對於 Goblin 的開發會有非常大的幫助。\n
+  這將包括您的操作系統版本、使用的瀏覽器、您在 Goblin 中的活動等資料。"
 myTheme: "我的佈景主題"
 backgroundColor: "背景"
 accentColor: "重點色彩"
@@ -794,7 +794,7 @@ hashtags: "#tag"
 troubleshooting: "故障排除"
 useBlurEffect: "在 UI 上使用模糊效果"
 learnMore: "更多資訊"
-misskeyUpdated: "Firefish 更新完成！"
+misskeyUpdated: "Goblin 更新完成！"
 whatIsNew: "顯示更新資訊"
 translate: "翻譯"
 translatedFrom: "從 {x} 翻譯"
@@ -975,19 +975,19 @@ _registry:
   keys: "機碼"
   domain: "域"
   createKey: "新增機碼"
-_aboutFirefish:
-  about: "Firefish是由ThatOneCalculator自2022年起開發的Misskey分支。"
+_aboutGoblin:
+  about: "Goblin是由ThatOneCalculator自2022年起開發的Misskey分支。"
   contributors: "主要貢獻者"
   allContributors: "全體貢獻人員"
   source: "原始碼"
-  translation: "翻譯Firefish"
-  donate: "贊助Firefish"
+  translation: "翻譯Goblin"
+  donate: "贊助Goblin"
   morePatrons: "還有許許多多幫助我們的其他人，非常感謝你們。 🥰"
   patrons: "贊助者"
   patronsList: 按時間順序列出，而不是按贊助規模列出。使用上面的連結贊助，在這裡獲得顯示您名字的機會！
-  sponsors: Firefish 贊助者們
-  donateTitle: 覺得 Firefish 棒嗎?
-  pleaseDonateToFirefish: 請考慮向 Firefish 贊助以支持其發展。
+  sponsors: Goblin 贊助者們
+  donateTitle: 覺得 Goblin 棒嗎?
+  pleaseDonateToGoblin: 請考慮向 Goblin 贊助以支持其發展。
   pleaseDonateToHost: 還請考慮捐贈給您在使用的伺服器 {host}，以支援龐大的運營成本。
   donateHost: 贊助給 {host}
 _nsfw:
@@ -997,7 +997,7 @@ _nsfw:
 _mfm:
   cheatSheet: "MFM代碼小抄"
   intro: "MFM是Misskey專用的標記語言，可以在Misskey中的各個位置使用。 您可以這裏看到MFM可用語法列表。"
-  dummy: "Firefish拓展了Fediverse的世界"
+  dummy: "Goblin拓展了Fediverse的世界"
   mention: "提及"
   mentionDescription: "透過 @+用戶名 來標示特定使用者。"
   hashtag: "#tag"
@@ -1206,7 +1206,7 @@ _time:
   hour: "小時"
   day: "日"
 _tutorial:
-  title: "如何使用Firefish"
+  title: "如何使用Goblin"
   step1_1: "歡迎！"
   step1_2: "讓我們把你安排好。你很快就會啟動並運行！"
   step2_1: "首先，請完成你的個人資料。"
@@ -1223,8 +1223,8 @@ _tutorial:
   step5_6: "推薦 {icon} 時間線是顯示你的伺服器管理員推薦的貼文。"
   step5_7: "全球 {icon} 時間線是顯示來自所有其他連接的伺服器的貼文。"
   step6_1: "那麼，這裡是什麼地方？"
-  step6_2: "你不只是加入Firefish。你已經加入了Fediverse的一個門戶，這是一個由成千上萬台服務器組成的互聯網絡。"
-  step6_3: "每個服務器也有不同，而並不是所有的服務器都運行Firefish。但這個服務器確實是運行Firefish的! 你可能會覺得有點複雜，但你很快就會明白的。"
+  step6_2: "你不只是加入Goblin。你已經加入了Fediverse的一個門戶，這是一個由成千上萬台服務器組成的互聯網絡。"
+  step6_3: "每個服務器也有不同，而並不是所有的服務器都運行Goblin。但這個服務器確實是運行Goblin的! 你可能會覺得有點複雜，但你很快就會明白的。"
   step6_4: "現在開始探索吧！"
 _2fa:
   alreadyRegistered: "你已註冊過一個雙重認證的裝置。"
@@ -1784,7 +1784,7 @@ customMOTDDescription: 每次用戶加載/重新加載頁面時，由換行符�
 privateModeInfo: 啟用後，只有列入白名單的伺服器才能與你的伺服器聯合。所有貼文都將對公眾隱藏。
 adminCustomCssWarn: 除非你知道它的作用，否則請不要使用此設定。 輸入不正確的值可能會導致每個人的客戶端無法正常運行。你可在你的的用戶設定中測試，確保你的
   CSS 正常工作。
-showUpdates: Firefish 更新時顯示彈出視窗
+showUpdates: Goblin 更新時顯示彈出視窗
 recommendedInstances: 建議的伺服器
 caption: 自動字幕
 enterSendsMessage: 在 Messaging 中按 Return 發送消息 (如關閉則是 Ctrl + Return)
@@ -1813,7 +1813,7 @@ customMOTD: 自定義MOTD (網頁載入時顯示的信息)
 customSplashIcons: 啟動畫面圖標 (網址)
 splash: 啟動畫面
 updateAvailable: 可能有可用的更新!
-showAdminUpdates: 表明新的 Firefish 版本可用（只限管理員）
+showAdminUpdates: 表明新的 Goblin 版本可用（只限管理員）
 migration: 遷移
 homeTimeline: 主頁時間軸
 swipeOnDesktop: 允許在桌面上進行手機式滑動
@@ -1827,7 +1827,7 @@ silenced: 已靜音
 _experiments:
   title: 試驗功能
 findOtherInstance: 找找另一個伺服器
-noGraze: 瀏覽器擴展 "Graze for Mastodon" 會與Firefish發生衝突，請停用該擴展。
+noGraze: 瀏覽器擴展 "Graze for Mastodon" 會與Goblin發生衝突，請停用該擴展。
 userSaysSomethingReasonRenote: '{name} 轉傳了包含 {reason} 的貼文'
 pushNotificationNotSupported: 你的瀏覽器或伺服器不支援推送通知
 accessibility: 輔助功能
@@ -1886,7 +1886,7 @@ indexFrom: 從貼文 ID 開始的索引
 isLocked: 該帳戶已獲得以下批准
 isModerator: 板主
 isAdmin: 管理員
-isPatron: Firefish 項目贊助者
+isPatron: Goblin 項目贊助者
 silencedWarning: 顯示此頁面是因為這些使用者來自您伺服器管理員已靜音的伺服器，因此他們可能是垃圾訊息。
 signupsDisabled: 該伺服器上的註冊當前已被禁用，但您隨時可以在另一台伺服器上註冊！或是您有該伺服器的邀請碼，請在下面輸入。
 showPopup: 通過彈出式視窗通知用戶

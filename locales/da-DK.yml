@@ -159,7 +159,7 @@ serverIsDead: Serveren svarer ikke. Vær sød at vente et styk tid og prøv igen
 editWidgetsExit: Færdig
 headlineMisskey: En åben-kildekode, decentraliseret social-media platform som er frit
   forevigt! 🚀
-introMisskey: Velkommen! Firefish er en åbent-kildekode, decentraliseret social-media
+introMisskey: Velkommen! Goblin er en åbent-kildekode, decentraliseret social-media
   platform som er frit forevigt!🚀
 enableEmojiReactions: Aktivere emoji reaktioner
 unsuspendConfirm: Er du sikker på at du vil ikke suspendere denne konto endnu længere?
@@ -178,7 +178,7 @@ cacheRemoteFiles: Cachere fremmed filer
 flagAsBotDescription: Aktivere denne valgmulighed hvis denne konto er kontrolleret
   af en komputerprogram. Hvis den et tændt så vil det signalere til andre udviklere
   som arbejder på komputer-kontrolleret social-media kontoer og det vil også adjustere
-  Firefish's indresystemer til at behandle denne konto som en robot.
+  Goblin's indresystemer til at behandle denne konto som en robot.
 flagAsCat: Er du en kat? 😺
 flagSpeakAsCat: Tale som en kat
 emojiUrl: Emoji URL

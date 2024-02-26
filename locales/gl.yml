@@ -1,5 +1,5 @@
 _lang_: Inglés
-introMisskey: Benvida! Firefish é unha plataforma de medios sociais de código aberto,
+introMisskey: Benvida! Goblin é unha plataforma de medios sociais de código aberto,
   descentralizada e gratuíta para sempre!🚀
 monthAndDay: '{day}/{month}'
 notifications: Notificacións
@@ -11,7 +11,7 @@ noThankYou: Non, grazas
 headlineMisskey: Plataforma de medios sociais de código aberto e descentralizada,
   gratuíta para sempre!🚀
 search: Buscar
-searchPlaceholder: Buscar en Firefish
+searchPlaceholder: Buscar en Goblin
 username: Identificador
 fetchingAsApObject: Descargando desde o Fediverso
 ok: OK

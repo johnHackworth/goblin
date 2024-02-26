@@ -1,6 +1,6 @@
 _lang_: "简体中文"
 headlineMisskey: "一个开源、去中心化的社交媒体平台，永远免费！🚀"
-introMisskey: "欢迎！ Firefish 是一个开源、去中心化的社交媒体平台，永久免费！🚀"
+introMisskey: "欢迎！ Goblin 是一个开源、去中心化的社交媒体平台，永久免费！🚀"
 monthAndDay: "{month} 月 {day} 日"
 search: "搜索"
 notifications: "通知"
@@ -142,7 +142,7 @@ settingGuide: "推荐配置"
 cacheRemoteFiles: "缓存远程文件"
 cacheRemoteFilesDescription: "当禁用此设定时远程文件将直接从远程服务器载入。禁用后会减小储存空间需求，但是会增加流量，因为缩略图不会被生成。"
 flagAsBot: "这是一个机器人账号"
-flagAsBotDescription: "如果此账号由程序控制，请启用此项。启用后，此标志可以帮助其它开发人员防止机器人之间产生无限互动的行为，并让 Firefish
+flagAsBotDescription: "如果此账号由程序控制，请启用此项。启用后，此标志可以帮助其它开发人员防止机器人之间产生无限互动的行为，并让 Goblin
   的内部系统将此账号识别为机器人。"
 flagAsCat: "将这个账号设定为一只猫😺"
 flagAsCatDescription: "您会长出猫耳朵并像猫一样说话！"
@@ -202,7 +202,7 @@ noUsers: "无用户"
 editProfile: "编辑个人资料"
 noteDeleteConfirm: "确定要删除此帖子吗？"
 pinLimitExceeded: "无法置顶更多帖子了"
-intro: "Firefish 安装完成！请创建一个管理员用户。"
+intro: "Goblin 安装完成！请创建一个管理员用户。"
 done: "完成"
 processing: "正在处理"
 preview: "预览"
@@ -381,7 +381,7 @@ exploreFediverse: "探索联邦宇宙"
 popularTags: "热门标签"
 userList: "列表"
 about: "关于"
-aboutFirefish: "关于 Firefish"
+aboutGoblin: "关于 Goblin"
 administrator: "管理员"
 token: "令牌"
 twoStepAuthentication: "两步验证"
@@ -529,7 +529,7 @@ sort: "排序"
 ascendingOrder: "升序"
 descendingOrder: "降序"
 scratchpad: "AiScript 控制台"
-scratchpadDescription: "AiScript 控制台为 AiScript 提供了实验环境。您可以编写代码以与 Firefish 交互，运行它并查看结果。"
+scratchpadDescription: "AiScript 控制台为 AiScript 提供了实验环境。您可以编写代码以与 Goblin 交互，运行它并查看结果。"
 output: "输出"
 script: "脚本"
 disablePagesScript: "在页面中禁用 AiScript"
@@ -654,7 +654,7 @@ createNewClip: "新建便签"
 unclip: "移除便签"
 confirmToUnclipAlreadyClippedNote: "本帖已包含在便签 \"{name}\" 里。您想要将本帖从该便签中移除吗？"
 public: "公开"
-i18nInfo: "Firefish 已经被志愿者们翻译成了各种语言。如果您也有兴趣，可以通过 {link} 帮助翻译。"
+i18nInfo: "Goblin 已经被志愿者们翻译成了各种语言。如果您也有兴趣，可以通过 {link} 帮助翻译。"
 manageAccessTokens: "管理访问令牌"
 accountInfo: "账号信息"
 notesCount: "帖子数量"
@@ -705,8 +705,8 @@ onlineUsersCount: "{n} 人在线"
 nUsers: "{n} 用户"
 nNotes: "{n} 帖子"
 sendErrorReports: "发送错误报告"
-sendErrorReportsDescription: "启用后，如果出现问题，可以与 Firefish 共享详细的错误信息，从而帮助提高软件的质量。\n这将包括您的操作系统版本、您使用的浏览器、您在
-  Firefish 中的活动等信息。"
+sendErrorReportsDescription: "启用后，如果出现问题，可以与 Goblin 共享详细的错误信息，从而帮助提高软件的质量。\n这将包括您的操作系统版本、您使用的浏览器、您在
+  Goblin 中的活动等信息。"
 myTheme: "我的主题"
 backgroundColor: "背景色"
 accentColor: "强调色"
@@ -797,7 +797,7 @@ hashtags: "话题标签"
 troubleshooting: "故障排除"
 useBlurEffect: "在 UI 上使用模糊效果"
 learnMore: "更多信息"
-misskeyUpdated: "Firefish 更新完成！"
+misskeyUpdated: "Goblin 更新完成！"
 whatIsNew: "显示更新信息"
 translate: "翻译"
 translatedFrom: "从 {x} 翻译"
@@ -978,15 +978,15 @@ _registry:
   keys: "键"
   domain: "域"
   createKey: "创建键"
-_aboutFirefish:
-  about: "Firefish 是由 ThatOneCalculator 创建的 Misskey 的一个分支，自 2022 年开始开发。"
+_aboutGoblin:
+  about: "Goblin 是由 ThatOneCalculator 创建的 Misskey 的一个分支，自 2022 年开始开发。"
   contributors: "主要贡献者"
   allContributors: "全体贡献者"
   source: "源代码"
-  translation: "翻译 Firefish"
-  donate: "赞助 Firefish"
+  translation: "翻译 Goblin"
+  donate: "赞助 Goblin"
   morePatrons: "还有很多其它的人也在支持我们，非常感谢🥰"
-  patrons: "Firefish 赞助者"
+  patrons: "Goblin 赞助者"
   patronsList: 按时间顺序而不是捐赠金额排列。通过上面的链接捐款，让您的名字出现在这里！
   sponsors: Calckey 赞助者们
   donateTitle: 喜欢 Calckey 吗？
@@ -999,8 +999,8 @@ _nsfw:
   force: "总是隐藏内容"
 _mfm:
   cheatSheet: "MFM 代码速查表"
-  intro: "MFM 是一种在 Misskey、Firefish、Akkoma 中使用的标记语言，可以在很多地方使用。您可以在此处查看所有可用的 MFM 语法的列表。"
-  dummy: "通过 Firefish 扩展联邦宇宙的世界"
+  intro: "MFM 是一种在 Misskey、Goblin、Akkoma 中使用的标记语言，可以在很多地方使用。您可以在此处查看所有可用的 MFM 语法的列表。"
+  dummy: "通过 Goblin 扩展联邦宇宙的世界"
   mention: "提及"
   mentionDescription: "可以使用 @+用户名 来指示特定用户。"
   hashtag: "话题标签"
@@ -1219,7 +1219,7 @@ _time:
   hour: "小时"
   day: "日"
 _tutorial:
-  title: "如何使用 Firefish"
+  title: "如何使用 Goblin"
   step1_1: "欢迎！"
   step1_2: "让我们帮您设置一下。您很快就能开始畅游联邦宇宙！"
   step2_1: "首先，请完成您的个人资料。"
@@ -1236,8 +1236,8 @@ _tutorial:
   step5_6: "推荐 {icon} 时间线是您可以看到管理员推荐服务器的帖子的时间线。"
   step5_7: "全球 {icon} 时间线是您可以看到来自其它所有互联服务器的帖子的时间线。"
   step6_1: "那么，这里是什么地方？"
-  step6_2: "好吧，您不只是加入 Firefish。您已经加入了 Fediverse 的一个门户，这是一个由成千上万台服务器组成的互联网络。"
-  step6_3: "每个服务器的工作方式不同，并不是所有的服务器都运行 Firefish。但这个服务器是的! 这有点复杂，但您很快就会明白的。"
+  step6_2: "好吧，您不只是加入 Goblin。您已经加入了 Fediverse 的一个门户，这是一个由成千上万台服务器组成的互联网络。"
+  step6_3: "每个服务器的工作方式不同，并不是所有的服务器都运行 Goblin。但这个服务器是的! 这有点复杂，但您很快就会明白的。"
   step6_4: "现在，去吧，去探索，去享受乐趣吧!"
 _2fa:
   alreadyRegistered: "您已经注册了两步验证设备。"
@@ -1818,7 +1818,7 @@ _messaging:
 migration: 迁移
 _experiments:
   title: 实验性功能
-  postImportsCaption: 允许用户从过去的 Firefish、Misskey、Mastodon、Akkoma 和 Pleroma 账号导入帖子。如果您的队列出现拥堵，则可能会导致加载速度减慢。
+  postImportsCaption: 允许用户从过去的 Goblin、Misskey、Mastodon、Akkoma 和 Pleroma 账号导入帖子。如果您的队列出现拥堵，则可能会导致加载速度减慢。
   enablePostImports: 启用帖子导入
 license: 许可证
 flagSpeakAsCatDescription: 在猫模式下您的帖子会喵化
@@ -1838,14 +1838,14 @@ customSplashIconsDescription: 用换行符隔开的自定义启动屏幕图标�
   URL 上，最好全部调整为 192x192 的大小。
 recommendedInstancesDescription: 推荐的服务器一行一个，它们将出现在推荐时间线中。
 splash: 启动画面
-showUpdates: Firefish 更新后显示弹出窗口
+showUpdates: Goblin 更新后显示弹出窗口
 selectInstance: 选择服务器
 silencedInstances: 禁言的服务器
 antennaInstancesDescription: 列出服务器主机名，一行一个
 pushNotification: 推送通知
 subscribePushNotification: 启用推送通知
-showAdminUpdates: 提示新的 Firefish 版本可用（仅对于管理员）
-searchPlaceholder: 搜索 Firefish
+showAdminUpdates: 提示新的 Goblin 版本可用（仅对于管理员）
+searchPlaceholder: 搜索 Goblin
 addInstance: 添加服务器
 jumpToPrevious: 跳转到上一个
 silenceThisInstance: 禁言此服务器
@@ -1921,7 +1921,7 @@ moveAccountDescription: 这个过程是不可逆的。在迁移之前，请确�
 moveFromLabel: 您要迁移出的旧账号：
 preventAiLearning: 阻止 AI 机器人抓取
 preventAiLearningDescription: 请求第三方人工智能语言模型不要研究您上传的内容，例如帖子和图像。
-noGraze: 请禁用 "Graze for Mastodon" 浏览器扩展，因为它会干扰 Firefish。
+noGraze: 请禁用 "Graze for Mastodon" 浏览器扩展，因为它会干扰 Goblin。
 moveTo: 将当前账号迁移至新账号
 moveToLabel: 您要迁移到的目标账号：
 moveAccount: 迁移账号！
@@ -1943,7 +1943,7 @@ _filters:
   fromUser: 来自用户
   followersOnly: 仅关注者
 reactionPickerSkinTone: 首选的表情符号肤色
-isPatron: Firefish 赞助
+isPatron: Goblin 赞助
 _dialog:
   charactersExceeded: 超出了最大字符数！当前：{current} / 限制：{max}
   charactersBelow: 没有足够的字符！当前：{current} / 限制：{min}

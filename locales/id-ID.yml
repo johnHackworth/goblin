@@ -1,6 +1,6 @@
 _lang_: "Bahasa Indonesia"
 headlineMisskey: "Jaringan terhubung melalui catatan"
-introMisskey: "Selamat datang! Firefish adalah perangkat mikroblog tercatu bersifat\
+introMisskey: "Selamat datang! Goblin adalah perangkat mikroblog tercatu bersifat\
   \ sumber terbuka.\nMulailah menuliskan catatan, bagikan peristiwa terkini, serta\
   \ ceritakan segala tentangmu.\U0001F4E1\nTunjukkan juga reaksimu pada catatan pengguna\
   \ lain.\U0001F44D\nMari jelajahi dunia baru\U0001F680"
@@ -152,7 +152,7 @@ cacheRemoteFilesDescription: "Ketika pengaturan ini dinonaktifkan, berkas luar a
 flagAsBot: "Atur akun ini sebagai Bot"
 flagAsBotDescription: "Jika akun ini dikendalikan oleh program, tetapkanlah opsi ini.\
   \ Jika diaktifkan, ini akan berfungsi sebagai tanda bagi pengembang lain untuk mencegah\
-  \ interaksi berantai dengan bot lain dan menyesuaikan sistem internal Firefish untuk\
+  \ interaksi berantai dengan bot lain dan menyesuaikan sistem internal Goblin untuk\
   \ memperlakukan akun ini sebagai bot."
 flagAsCat: "Atur akun ini sebagai kucing"
 flagAsCatDescription: "Nyalakan tanda ini untuk menandai akun ini sebagai kucing."
@@ -222,7 +222,7 @@ noUsers: "Tidak ada pengguna"
 editProfile: "Sunting profil"
 noteDeleteConfirm: "Apakah kamu yakin ingin menghapus catatan ini?"
 pinLimitExceeded: "Kamu tidak dapat menyematkan catatan lagi"
-intro: "Instalasi Firefish telah selesai! Mohon untuk membuat pengguna admin."
+intro: "Instalasi Goblin telah selesai! Mohon untuk membuat pengguna admin."
 done: "Selesai"
 processing: "Memproses"
 preview: "Pratinjau"
@@ -409,7 +409,7 @@ exploreFediverse: "Jelajahi Fediverse"
 popularTags: "Tag populer"
 userList: "Daftar"
 about: "Informasi"
-aboutFirefish: "Tentang Firefish"
+aboutGoblin: "Tentang Goblin"
 administrator: "Admin"
 token: "Token"
 twoStepAuthentication: "Otentikasi dua faktor"
@@ -567,7 +567,7 @@ descendingOrder: "Urutkan menurun"
 scratchpad: "Scratchpad"
 scratchpadDescription: "Scratchpad menyediakan lingkungan eksperimen untuk AiScript.\
   \ Kamu  bisa menulis, mengeksuksi, serta mengecek hasil yang berinteraksi dengan\
-  \ Firefish."
+  \ Goblin."
 output: "Keluaran"
 script: "Script"
 disablePagesScript: "Nonaktifkan script pada halaman"
@@ -705,7 +705,7 @@ unclip: "Batalkan klip"
 confirmToUnclipAlreadyClippedNote: "Catatan ini sudah disertakan di klip \"{name}\"\
   . Yakin ingin membatalkan catatan dari klip ini?"
 public: "Publik"
-i18nInfo: "Firefish diterjemahkan ke dalam banyak bahasa oleh sukarelawan. Kamu dapat\
+i18nInfo: "Goblin diterjemahkan ke dalam banyak bahasa oleh sukarelawan. Kamu dapat\
   \ ikut membantu di {link}."
 manageAccessTokens: "Kelola access token"
 accountInfo: "Informasi akun"
@@ -764,7 +764,7 @@ nUsers: "{n} Pengguna"
 nNotes: "{n} Catatan"
 sendErrorReports: "Kirim laporan kesalahan"
 sendErrorReportsDescription: "Ketika dinyalakan, informasi kesalahan rinci akan dibagikan\
-  \ dengan Firefish ketika masalah terjadi, hal ini untuk membantu kualitas Firefish.\
+  \ dengan Goblin ketika masalah terjadi, hal ini untuk membantu kualitas Goblin.\
   \ Fitur ini memungkinkan memuat informasi seperti sistem operasi yang kamu gunakan\
   \ dan versinya, aplikasi peramban yang kamu gunakan, riwayat aktivitas kamu, dll."
 myTheme: "Tema saya"
@@ -861,7 +861,7 @@ hashtags: "Tagar"
 troubleshooting: "Penyelesaian Masalah"
 useBlurEffect: "Gunakan efek blur pada antarmuka"
 learnMore: "Pelajari lebih lanjut"
-misskeyUpdated: "Firefish telah dimutakhirkan!"
+misskeyUpdated: "Goblin telah dimutakhirkan!"
 whatIsNew: "Lihat perubahan pemutakhiran"
 translate: "Terjemahkan"
 translatedFrom: "Terjemahkan dari {x}"
@@ -988,14 +988,14 @@ _registry:
   keys: "Kunci"
   domain: "Domain"
   createKey: "Buat kunci"
-_aboutFirefish:
-  about: "Firefish adalah perangkat lunak sumber terbuka yang sedang dikembangkan oleh\
+_aboutGoblin:
+  about: "Goblin adalah perangkat lunak sumber terbuka yang sedang dikembangkan oleh\
     \ syuilo sejak 2014."
   contributors: "Kontributor utama"
   allContributors: "Seluruh kontributor"
   source: "Sumber kode"
-  translation: "Terjemahkan Firefish"
-  donate: "Donasi ke Firefish"
+  translation: "Terjemahkan Goblin"
+  donate: "Donasi ke Goblin"
   morePatrons: "Kami sangat mengapresiasi dukungan dari banyak penolong lain yang\
     \ tidak tercantum disini. Terima kasih! \U0001F970"
   patrons: "Pendukung"
@@ -1005,9 +1005,9 @@ _nsfw:
   force: "Sembunyikan semua media"
 _mfm:
   cheatSheet: "Contekan MFM"
-  intro: "MFM adalah Firefish-exclusive Markup Language yang dapat digunakan di banyak\
+  intro: "MFM adalah Goblin-exclusive Markup Language yang dapat digunakan di banyak\
     \ tempat. Berikut kamu bisa melihat daftar dari syntax MFM yang ada."
-  dummy: "Firefish membentangkan dunia Fediverse"
+  dummy: "Goblin membentangkan dunia Fediverse"
   mention: "Sebut"
   mentionDescription: "Kamu dapat menentukan pengguna tertentu dengan menggunakan\
     \ simbol-At dan nama engguna mereka."
@@ -1215,7 +1215,7 @@ _time:
   hour: "jam"
   day: "hari"
 _tutorial:
-  title: "Cara menggunakan Firefish"
+  title: "Cara menggunakan Goblin"
   step1_1: "Selamat datang!"
   step1_2: "Halaman ini disebut \"linimasa\". Halaman ini menampilkan \"catatan\"\
     \ yang diurutkan secara kronologis dari orang-orang yang kamu \"ikuti\"."
@@ -1248,8 +1248,8 @@ _tutorial:
     \ dengan cepat."
   step6_3: "Untuk memberikan \"reaksi\", tekan tanda \"+\" pada catatan pengguna lain\
     \ dan pilih emoji yang kamu suka untuk memberikan reaksimu kepada mereka."
-  step7_1: "Yay, Selamat! Kamu sudah menyelesaikan tutorial dasar Firefish."
-  step7_2: "Jika kamu ingin mempelajari lebih lanjut tentang Firefish, cobalah berkunjung\
+  step7_1: "Yay, Selamat! Kamu sudah menyelesaikan tutorial dasar Goblin."
+  step7_2: "Jika kamu ingin mempelajari lebih lanjut tentang Goblin, cobalah berkunjung\
     \ ke bagian {help}."
   step7_3: "Semoga berhasil dan bersenang-senanglah! \U0001F680"
 _2fa:

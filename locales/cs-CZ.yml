@@ -1,6 +1,6 @@
 _lang_: "Čeština"
 headlineMisskey: "Síť propojená poznámkami"
-introMisskey: "Vítejte! Firefish je otevřený a decentralizovaný microblogový servis.\n\
+introMisskey: "Vítejte! Goblin je otevřený a decentralizovaný microblogový servis.\n\
   \"Poznámkami\" můžete sdílet co se zrovna děje se všemi ve Vašem okolí. \U0001F4E1\
   \nPomocí \"reakcí\" můžete sdílet své názory a pocity na ostatní poznámky. \U0001F44D\
   \nPojďte objevovat nový svět! \U0001F680"
@@ -147,7 +147,7 @@ cacheRemoteFilesDescription: "Zakázání tohoto nastavení způsobí, že vzdá
 flagAsBot: "Tento účet je bot"
 flagAsBotDescription: "Pokud je tento účet kontrolován programem zaškrtněte tuto možnost.\
   \ To označí tento účet jako bot pro ostatní vývojáře a zabrání tak nekonečným interakcím\
-  \ s ostatními boty a upraví Firefish systém aby se choval k tomuhle účtu jako bot."
+  \ s ostatními boty a upraví Goblin systém aby se choval k tomuhle účtu jako bot."
 flagAsCat: "Tenhle účet je kočka"
 flagAsCatDescription: "Vyberte tuto možnost aby tento účet byl označen jako kočka."
 flagShowTimelineReplies: "Zobrazovat odpovědi na časové ose"
@@ -203,7 +203,7 @@ blockedInstances: "Blokované instance"
 noUsers: "Žádní uživatelé"
 editProfile: "Upravit můj profil"
 pinLimitExceeded: "Nemůžete připnout další poznámky."
-intro: "Instalace Firefish byla dokončena! Prosím vytvořte admina."
+intro: "Instalace Goblin byla dokončena! Prosím vytvořte admina."
 done: "Hotovo"
 processing: "Zpracovávám"
 preview: "Náhled"
@@ -347,7 +347,7 @@ recentlyUpdatedUsers: "Nedávno aktívni uživatelé"
 popularTags: "Populární tagy"
 userList: "Seznamy"
 about: "Informace"
-aboutFirefish: "O Firefish"
+aboutGoblin: "O Goblin"
 administrator: "Administrátor"
 token: "Token"
 twoStepAuthentication: "Dvoufaktorová autentikace"
@@ -646,7 +646,7 @@ _registry:
   keys: "Klíče"
   domain: "Doména"
   createKey: "Vytvořit klíč"
-_aboutFirefish:
+_aboutGoblin:
   allContributors: "Všichni přispěvatelé"
   source: "Zdrojový kód"
 _mfm:

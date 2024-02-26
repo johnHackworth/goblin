@@ -1,7 +1,7 @@
 _lang_: "Polski"
 headlineMisskey: "Otwartoźródłowa, zdecentralizowana sieć społecznościowa, która zawsze
   będzie darmowa! 🚀"
-introMisskey: "Hej! Firefish to otwartoźródłowa oraz zdecentralizowana sieć społecznościowa,
+introMisskey: "Hej! Goblin to otwartoźródłowa oraz zdecentralizowana sieć społecznościowa,
   która zawsze będzie darmowa! 🚀"
 monthAndDay: "{month}-{day}"
 search: "Szukaj"
@@ -150,7 +150,7 @@ flagAsBot: "To konto jest botem"
 flagAsBotDescription: "Jeżeli ten kanał jest kontrolowany przez jakiś program, ustaw
   tę opcję. Jeżeli włączona, będzie działać jako flaga informująca innych programistów,
   aby zapobiegać nieskończonej interakcji z różnymi botami i dostosowywać wewnętrzne
-  systemy Firefish, traktując konto jako bota."
+  systemy Goblin, traktując konto jako bota."
 flagAsCat: "Czy jesteś kotem? 😺"
 flagAsCatDescription: "Dostaniesz kocie uszka, oraz będziesz mówić jak kot!"
 flagShowTimelineReplies: "Pokazuj odpowiedzi na osi czasu"
@@ -211,7 +211,7 @@ noUsers: "Brak użytkowników"
 editProfile: "Edytuj profil"
 noteDeleteConfirm: "Czy na pewno chcesz usunąć ten wpis?"
 pinLimitExceeded: "Nie możesz przypiąć więcej wpisów"
-intro: "Zakończono instalację Firefish! Utwórz konto administratora."
+intro: "Zakończono instalację Goblin! Utwórz konto administratora."
 done: "Gotowe"
 processing: "Przetwarzanie"
 preview: "Podgląd"
@@ -396,7 +396,7 @@ exploreFediverse: "Eksploruj Fediwersum"
 popularTags: "Tagi na czasie"
 userList: "Listy"
 about: "Informacje"
-aboutFirefish: "O Firefish"
+aboutGoblin: "O Goblin"
 administrator: "Admin"
 token: "Token"
 twoStepAuthentication: "Uwierzytelnianie dwuskładnikowe"
@@ -547,7 +547,7 @@ ascendingOrder: "Rosnąco"
 descendingOrder: "Malejąco"
 scratchpad: "Brudnopis"
 scratchpadDescription: "Brudnopis to środowisko dla eksperymentów z AiScript. Możesz
-  pisać, wykonywać i sprawdzać wyniki interakcji skryptu z Firefish."
+  pisać, wykonywać i sprawdzać wyniki interakcji skryptu z Goblin."
 output: "Wyjście"
 script: "Skrypt"
 disablePagesScript: "Wyłącz AiScript na Stronach"
@@ -674,7 +674,7 @@ unclip: "Odczep"
 confirmToUnclipAlreadyClippedNote: "Ten wpis jest już częścią klipu \"{name}\". Czy
   chcesz ją usunąć z tego klipu?"
 public: "Publiczny"
-i18nInfo: "Firefish jest tłumaczone na wiele języków przez wolontariuszy. Możesz pomóc
+i18nInfo: "Goblin jest tłumaczone na wiele języków przez wolontariuszy. Możesz pomóc
   na {link}."
 manageAccessTokens: "Zarządzaj tokenami dostępu"
 accountInfo: "Informacje o koncie"
@@ -825,7 +825,7 @@ hashtags: "Hashtag"
 troubleshooting: "Rozwiązywanie problemów"
 useBlurEffect: "Użyj efektów rozmycia w UI"
 learnMore: "Dowiedz się więcej"
-misskeyUpdated: "Firefish zostało zaktualizowane!"
+misskeyUpdated: "Goblin zostało zaktualizowane!"
 whatIsNew: "Pokaż zmiany"
 translate: "Przetłumacz"
 translatedFrom: "Przetłumaczone z {x}"
@@ -987,14 +987,14 @@ _registry:
   keys: "Klucz"
   domain: "Domena"
   createKey: "Utwórz klucz"
-_aboutFirefish:
-  about: "Firefish jest forkiem Misskey utworzonym przez ThatOneCalculator, rozwijanym
+_aboutGoblin:
+  about: "Goblin jest forkiem Misskey utworzonym przez ThatOneCalculator, rozwijanym
     od 2022."
   contributors: "Główni twórcy"
   allContributors: "Wszyscy twórcy"
   source: "Kod źródłowy"
-  translation: "Tłumacz Firefish"
-  donate: "Przekaż darowiznę na Firefish"
+  translation: "Tłumacz Goblin"
+  donate: "Przekaż darowiznę na Goblin"
   morePatrons: "Naprawdę doceniam wsparcie ze strony wielu niewymienionych tu osób.
     Dziękuję! 🥰"
   patrons: "Wspierający"
@@ -1004,10 +1004,10 @@ _nsfw:
   force: "Ukrywaj wszystkie media"
 _mfm:
   cheatSheet: "Ściąga MFM"
-  intro: "MFM jest językiem składniowym używanym przez m.in. Firefish, forki *key (w
-    tym Firefish), oraz Akkomę, który może być użyty w wielu miejscach. Tu znajdziesz
+  intro: "MFM jest językiem składniowym używanym przez m.in. Goblin, forki *key (w
+    tym Goblin), oraz Akkomę, który może być użyty w wielu miejscach. Tu znajdziesz
     listę wszystkich możliwych elementów składni MFM."
-  dummy: "Firefish rozszerza świat Fediwersum"
+  dummy: "Goblin rozszerza świat Fediwersum"
   mention: "Wspomnij"
   mentionDescription: "Używając znaku @ i nazwy użytkownika, możesz określić danego
     użytkownika."
@@ -1224,7 +1224,7 @@ _time:
   hour: "godz."
   day: "dzień"
 _tutorial:
-  title: "Jak korzystać z Firefish"
+  title: "Jak korzystać z Goblin"
   step1_1: "Witamy!"
   step1_2: "Pozwól, że Cię skonfigurujemy. Będziesz działać w mgnieniu oka!"
   step2_1: "Najpierw, proszę wypełnij swój profil."
@@ -1252,9 +1252,9 @@ _tutorial:
   step5_7: "Globalna {icon} oś czasu to miejsce, gdzie możesz zobaczyć posty z każdej
     innej połączonej instancji."
   step6_1: "Więc, czym to jest to miejsce?"
-  step6_2: "Cóż, nie dołączył*ś po prostu do Firefish. Dołączył*ś do portalu do Fediverse,
+  step6_2: "Cóż, nie dołączył*ś po prostu do Goblin. Dołączył*ś do portalu do Fediverse,
     połączonej sieci tysięcy serwerów, zwanych instancjami."
-  step6_3: "Każdy serwer działa w inny sposób, i nie wszystkie serwery używają Firefish.
+  step6_3: "Każdy serwer działa w inny sposób, i nie wszystkie serwery używają Goblin.
     Ten jednak używa! Jest to trochę skomplikowane, ale w krótkim czasie załapiesz
     o co chodzi."
   step6_4: "A teraz idź, odkrywaj i baw się dobrze!"
@@ -1848,7 +1848,7 @@ moveAccountDescription: Ten proces jest nieodwracalny. Upewnij się, że utworzy
   w formacie @osoba@serwer.com
 moveFrom: Przejdź ze starego konta na obecne
 moveFromLabel: 'Konto które przenosisz:'
-showUpdates: Pokaż pop-up po aktualizacji Firefish
+showUpdates: Pokaż pop-up po aktualizacji Goblin
 swipeOnDesktop: Zezwól na przeciąganie w stylu mobilnym na desktopie
 moveFromDescription: To utworzy alias twojego starego konta, w celu umożliwienia migracji
   z tamtego konta na to. Zrób to ZANIM rozpoczniesz przenoszenie się z tamtego konta.
@@ -1915,9 +1915,9 @@ objectStorageBaseUrlDesc: "URL stosowany jako odniesienie. Podaj URL twojego CDN
   albo proxy, jeśli używasz któregokolwiek.\nDla S3 użyj 'https://<bucket>.s3.amazonaws.com',
   a dla GCS i jego odpowiedników użyj 'https://storage.googleapis.com/<bucket>', itd."
 sendErrorReportsDescription: "Gdy ta opcja jest włączona, szczegółowe informacje o
-  błędach będą udostępnianie z Firefish gdy wystąpi problem, pomagając w ulepszaniu
-  Firefish.\nZawrze to informacje takie jak wersja twojego systemu operacyjnego, przeglądarki,
-  Twoja aktywność na Firefish itd."
+  błędach będą udostępnianie z Goblin gdy wystąpi problem, pomagając w ulepszaniu
+  Goblin.\nZawrze to informacje takie jak wersja twojego systemu operacyjnego, przeglądarki,
+  Twoja aktywność na Goblin itd."
 privateModeInfo: Gdy ta opcja jest włączona, tylko serwery z białej listy mogą federować
   się z twoim serwerem. Wszystkie posty będą ukryte publicznie.
 oneHour: Godzina
@@ -1970,7 +1970,7 @@ caption: Auto opis
 splash: Splash screen
 updateAvailable: Może być dostępna aktualizacja!
 logoImageUrl: URL grafiki loga
-showAdminUpdates: Wskaż, że jest dostępna nowa wersja Firefish (tylko dla adminów)
+showAdminUpdates: Wskaż, że jest dostępna nowa wersja Goblin (tylko dla adminów)
 hiddenTags: Ukryte hashtagi
 userSaysSomethingReason: '{name} powiedział* {reason}'
 customKaTeXMacroDescription: 'Skonfiguruj makra, aby łatwo pisać wyrażenia matematyczne!
@@ -2014,7 +2014,7 @@ silencedInstancesDescription: Wypisz nazwy hostów serwerów, które chcesz wyci
 cannotUploadBecauseExceedsFileSizeLimit: Ten plik nie mógł być przesłany, ponieważ
   jego wielkość przekracza dozwolony limit.
 sendModMail: Wyślij Powiadomienie Moderacyjne
-searchPlaceholder: Szukaj Firefish
+searchPlaceholder: Szukaj Goblin
 jumpToPrevious: Przejdź do poprzedniej sekcji
 listsDesc: Listy umożliwiają tworzenie osi czasu z określonymi użytkownikami. Dostęp
   do nich można uzyskać na stronie osi czasu.

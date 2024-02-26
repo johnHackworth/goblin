@@ -8,7 +8,7 @@ profile: Profil
 timeline: Tidslinje
 save: Lagre
 addToList: Legg til liste
-searchPlaceholder: Søk Firefish
+searchPlaceholder: Søk Goblin
 username: Brukernavn
 password: Passord
 notifications: Meldinger
@@ -65,7 +65,7 @@ openInWindow: Åpne i vindu
 basicSettings: Grunnleggende innstillinger
 headlineMisskey: En desentralisert sosialt media-plattform, basert på åpen kildekode,
   som alltid vil være gratis! 🚀
-introMisskey: Velkommen! Firefish er en desentralisert sosialt media-plattform, basert
+introMisskey: Velkommen! Goblin er en desentralisert sosialt media-plattform, basert
   på åpen kildekode, som alltid vil være gratis! 🚀
 exportRequested: Du har bedt om en eksportering. Dette vil ta litt tid. Den vil bli
   lagt til på disken din når den er ferdig.

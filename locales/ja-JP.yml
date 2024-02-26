@@ -1,6 +1,6 @@
 _lang_: "日本語"
 headlineMisskey: "ずっと無料でオープンソースの非中央集権型ソーシャルメディアプラットフォーム🚀"
-introMisskey: "ようこそ！Firefishは、オープンソースの非中央集権型ソーシャルメディアプラットフォームです。\nいま起こっていることを共有したり、あなたについて皆に発信しましょう📡\n\
+introMisskey: "ようこそ！Goblinは、オープンソースの非中央集権型ソーシャルメディアプラットフォームです。\nいま起こっていることを共有したり、あなたについて皆に発信しましょう📡\n\
   「リアクション」機能で、皆の投稿に素早く反応を追加できます👍\n新しい世界を探検しよう🚀"
 monthAndDay: "{month}月 {day}日"
 search: "検索"
@@ -146,7 +146,7 @@ settingGuide: "おすすめ設定"
 cacheRemoteFiles: "リモートのファイルをキャッシュする"
 cacheRemoteFilesDescription: "この設定を無効にすると、リモートファイルをキャッシュせず直リンクします。サーバーのストレージを節約できますが、サムネイルが生成されないので通信量が増加します。"
 flagAsBot: "Botとして設定"
-flagAsBotDescription: "このアカウントがBotである場合は、この設定をオンにします。オンにすると、反応の連鎖を防ぐためのフラグとして他の開発者に役立ったり、Firefishのシステム上での扱いがBotに合ったものになります。"
+flagAsBotDescription: "このアカウントがBotである場合は、この設定をオンにします。オンにすると、反応の連鎖を防ぐためのフラグとして他の開発者に役立ったり、Goblinのシステム上での扱いがBotに合ったものになります。"
 flagAsCat: "あなたは…猫？😺"
 flagAsCatDescription: "このアカウントが猫であることを示す猫モードを有効にするには、このフラグをオンにします。"
 flagSpeakAsCat: "猫語で話す"
@@ -213,7 +213,7 @@ noInstances: "サーバーがありません"
 editProfile: "プロフィールを編集"
 noteDeleteConfirm: "この投稿を削除しますか？"
 pinLimitExceeded: "これ以上ピン留めできません"
-intro: "Firefishのインストールが完了しました！管理者アカウントを作成しましょう。"
+intro: "Goblinのインストールが完了しました！管理者アカウントを作成しましょう。"
 done: "完了"
 processing: "処理中"
 preview: "プレビュー"
@@ -396,7 +396,7 @@ exploreFediverse: "Fediverseを探索"
 popularTags: "人気のタグ"
 userList: "リスト"
 about: "情報"
-aboutFirefish: "Firefishについて"
+aboutGoblin: "Goblinについて"
 administrator: "管理者"
 token: "トークン"
 twoStepAuthentication: "二段階認証"
@@ -543,7 +543,7 @@ sort: "ソート"
 ascendingOrder: "昇順"
 descendingOrder: "降順"
 scratchpad: "スクラッチパッド"
-scratchpadDescription: "スクラッチパッドは、AiScriptの実験環境を提供します。Firefishと対話するコードの記述、実行、結果の確認ができます。"
+scratchpadDescription: "スクラッチパッドは、AiScriptの実験環境を提供します。Goblinと対話するコードの記述、実行、結果の確認ができます。"
 output: "出力"
 script: "スクリプト"
 disablePagesScript: "ページのスクリプトを無効にする"
@@ -672,7 +672,7 @@ createNewClip: "新しいクリップを作成"
 unclip: "クリップ解除"
 confirmToUnclipAlreadyClippedNote: "この投稿はすでにクリップ「{name}」に含まれています。投稿をこのクリップから除外しますか？"
 public: "公開"
-i18nInfo: "Firefishは有志によって様々な言語に翻訳されています。{link}で翻訳に協力できます。"
+i18nInfo: "Goblinは有志によって様々な言語に翻訳されています。{link}で翻訳に協力できます。"
 manageAccessTokens: "アクセストークンの管理"
 accountInfo: "アカウント情報"
 notesCount: "投稿の数"
@@ -723,7 +723,7 @@ onlineUsersCount: "{n}人がオンライン"
 nUsers: "{n}ユーザー"
 nNotes: "{n}投稿"
 sendErrorReports: "エラーリポートを送信"
-sendErrorReportsDescription: "オンにすると、問題が発生したときにエラーの詳細情報がFirefishに共有され、ソフトウェアの品質向上に役立てられます。\n\
+sendErrorReportsDescription: "オンにすると、問題が発生したときにエラーの詳細情報がGoblinに共有され、ソフトウェアの品質向上に役立てられます。\n\
   エラー情報には、OSのバージョン、ブラウザの種類、行動履歴などが含まれます。"
 myTheme: "マイテーマ"
 backgroundColor: "背景"
@@ -824,7 +824,7 @@ hashtags: "ハッシュタグ"
 troubleshooting: "トラブルシューティング"
 useBlurEffect: "UIにぼかし効果を使用"
 learnMore: "詳しく"
-misskeyUpdated: "Firefishが更新されました！"
+misskeyUpdated: "Goblinが更新されました！"
 whatIsNew: "更新情報を見る"
 translate: "翻訳"
 translatedFrom: "{x}から翻訳"
@@ -944,7 +944,7 @@ customMOTDDescription: "ユーザがページをロード/リロードするた�
 customSplashIcons: "カスタムスプラッシュスクリーンアイコン"
 customSplashIconsDescription: "ユーザがページをロード/リロードするたびにランダムに表示される、改行で区切られたカスタムスプラッシュスクリーンアイコンの
   URL。画像は静的なURLで、できればすべて192x192にリサイズしてください。"
-showUpdates: "Firefishの更新時にポップアップを表示する"
+showUpdates: "Goblinの更新時にポップアップを表示する"
 recommendedInstances: "おすすめサーバー"
 recommendedInstancesDescription: "おすすめタイムラインに表示するサーバーを改行区切りで入力してください。"
 caption: "自動キャプション"
@@ -952,7 +952,7 @@ splash: "スプラッシュスクリーン"
 updateAvailable: "アップデートがありますよ！"
 swipeOnDesktop: "デスクトップでモバイルスタイルのスワイプを可能にする"
 logoImageUrl: "ロゴのURL"
-showAdminUpdates: "新しいFirefishのバージョンが利用可能なときに通知する(管理者のみ)"
+showAdminUpdates: "新しいGoblinのバージョンが利用可能なときに通知する(管理者のみ)"
 replayTutorial: "もう一度チュートリアルを見る"
 migration: "アカウントの引っ越し"
 moveTo: "このアカウントを新しいアカウントに引っ越す"
@@ -977,7 +977,7 @@ customKaTeXMacroDescription: "数式入力を楽にするためのマクロを�
 enableCustomKaTeXMacro: "カスタムKaTeXマクロを有効にする"
 preventAiLearning: "AIによる学習を防止"
 preventAiLearningDescription: "投稿したノート、添付した画像などのコンテンツを学習の対象にしないようAIに要求します。これはnoaiフラグをHTMLレスポンスに含めることによって実現されます。"
-noGraze: "ブラウザの拡張機能「Graze for Mastodon」は、Firefishの動作を妨げるため、無効にしてください。"
+noGraze: "ブラウザの拡張機能「Graze for Mastodon」は、Goblinの動作を妨げるため、無効にしてください。"
 enableServerMachineStats: "サーバーのマシン情報を公開する"
 enableIdenticonGeneration: "ユーザーごとのIdenticon生成を有効にする"
 showPopup: "ポップアップを表示してユーザーに知らせる"
@@ -1060,28 +1060,28 @@ _registry:
   keys: "キー"
   domain: "ドメイン"
   createKey: "キーを作成"
-_aboutFirefish:
-  about: "Firefishは、2022年に生まれたThatOneCalculatorによるMisskeyのforkです。"
+_aboutGoblin:
+  about: "Goblinは、2022年に生まれたThatOneCalculatorによるMisskeyのforkです。"
   contributors: "主なコントリビューター"
   allContributors: "全てのコントリビューター"
   source: "ソースコード"
-  translation: "Firefishを翻訳"
-  donate: "Firefishに寄付"
+  translation: "Goblinを翻訳"
+  donate: "Goblinに寄付"
   morePatrons: "他にも多くの方が支援してくれています。ありがとうございます！ 🥰"
   patrons: "支援者"
   patronsList: 寄付額ではなく時系列順に並んでいます。上記のリンクから寄付を行ってここにあなたのIDを載せましょう！
-  pleaseDonateToFirefish: Firefish開発への寄付をご検討ください。
+  pleaseDonateToGoblin: Goblin開発への寄付をご検討ください。
   pleaseDonateToHost: また、このサーバー {host} の運営者への寄付もご検討ください。
   donateHost: '{host} に寄付する'
-  donateTitle: Firefishを気に入りましたか？
+  donateTitle: Goblinを気に入りましたか？
 _nsfw:
   respect: "閲覧注意のメディアは隠す"
   ignore: "閲覧注意のメディアを隠さない"
   force: "常にメディアを隠す"
 _mfm:
   cheatSheet: "MFMチートシート"
-  intro: "MFMは、MisskeyやFirefish、Akkomaなどの様々な場所で使用できるマークアップ言語です。ここでは、MFMで使用可能な構文一覧が確認できます。"
-  dummy: "FirefishでFediverseの世界が広がります"
+  intro: "MFMは、MisskeyやGoblin、Akkomaなどの様々な場所で使用できるマークアップ言語です。ここでは、MFMで使用可能な構文一覧が確認できます。"
+  dummy: "GoblinでFediverseの世界が広がります"
   mention: "メンション"
   mentionDescription: "アットマーク + ユーザー名で、特定のユーザーを示せます。"
   hashtag: "ハッシュタグ"
@@ -1303,7 +1303,7 @@ _time:
   hour: "時間"
   day: "日"
 _tutorial:
-  title: "Firefishの使い方"
+  title: "Goblinの使い方"
   step1_1: "ようこそ！"
   step1_2: "使い始める前に、いくつか設定を済ませましょう。すぐできますよ！"
   step2_1: "最初に、あなたのプロフィールを作りましょう。"
@@ -1321,8 +1321,8 @@ _tutorial:
   step5_6: "おすすめ{icon}タイムラインでは、管理人がおすすめするサーバーの投稿を見られます。"
   step5_7: "グローバル{icon}タイムラインでは、接続している他のすべてのサーバーからの投稿を見られます。"
   step6_1: "じゃあ、ここはどんな場所なの？"
-  step6_2: "実は、あなたはただFirefishに参加しただけではありません。ここは、何千もの相互接続されたサーバーが構成する Fediverse への入口です。"
-  step6_3: "それぞれのサーバーでは必ずしもFirefishが使われているわけではなく、異なる動作をするサーバーもあります。しかし、あなたは他のサーバーのアカウントもフォローしたり、返信・ブーストができます。一見難しそうですが大丈夫！すぐ慣れます。"
+  step6_2: "実は、あなたはただGoblinに参加しただけではありません。ここは、何千もの相互接続されたサーバーが構成する Fediverse への入口です。"
+  step6_3: "それぞれのサーバーでは必ずしもGoblinが使われているわけではなく、異なる動作をするサーバーもあります。しかし、あなたは他のサーバーのアカウントもフォローしたり、返信・ブーストができます。一見難しそうですが大丈夫！すぐ慣れます。"
   step6_4: "これで完了です。お楽しみください！"
 _2fa:
   alreadyRegistered: "既に設定は完了しています。"
@@ -1902,7 +1902,7 @@ apps: "アプリ"
 _experiments:
   title: 試験的な機能
   postImportsCaption: 
-    ユーザーが過去の投稿をFirefish・Misskey・Mastodon・Akkoma・Pleromaからインポートすることを許可します。キューが溜まっているときにインポートするとサーバーに負荷がかかる可能性があります。
+    ユーザーが過去の投稿をGoblin・Misskey・Mastodon・Akkoma・Pleromaからインポートすることを許可します。キューが溜まっているときにインポートするとサーバーに負荷がかかる可能性があります。
   enablePostImports: 投稿のインポートを有効にする
 sendModMail: モデレーション通知を送る
 deleted: 削除済み
@@ -1917,7 +1917,7 @@ accessibility: アクセシビリティ
 jumpToPrevious: 前に戻る
 cw: 閲覧注意
 silencedWarning: スパムの可能性があるため、これらのユーザーが所属するサーバーは管理者によりサイレンスされています。
-searchPlaceholder: Firefishを検索
+searchPlaceholder: Goblinを検索
 channelFederationWarn: 現時点では、チャンネルは他のサーバーへ連合しません
 listsDesc: リストでは指定したユーザーだけのタイムラインを作れます。リストには「タイムライン」のページからアクセスできます。
 antennasDesc: "アンテナでは指定した条件に合致する投稿が表示されます。\nアンテナには「タイムライン」のページからアクセスできます。"
@@ -1942,7 +1942,7 @@ video: 動画
 isBot: このアカウントはBotです
 isLocked: このアカウントのフォローは承認制です
 isAdmin: 管理者
-isPatron: Firefish 後援者
+isPatron: Goblin 後援者
 _skinTones:
   light: ペールオレンジ
   mediumLight: ミディアムライト

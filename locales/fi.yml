@@ -127,7 +127,7 @@ cacheRemoteFiles: Taltioi etätiedostot välimuistiin
 flagAsBot: Merkitse tili botiksi
 flagAsBotDescription: Ota tämä vaihtoehto käyttöön, jos tätä tiliä ohjaa ohjelma.
   Jos se on käytössä, se toimii lippuna muille kehittäjille, jotta estetään loputtomat
-  vuorovaikutusketjut muiden bottien kanssa ja säädetään Firefishn sisäiset järjestelmät
+  vuorovaikutusketjut muiden bottien kanssa ja säädetään Goblinn sisäiset järjestelmät
   käsittelemään tätä tiliä botina.
 flagAsCat: Oletko kissa? 🐱
 flagAsCatDescription: Saat kissan korvat ja puhut kuin kissa!
@@ -214,7 +214,7 @@ perDay: Päivässä
 version: Versio
 statistics: Tilastot
 clearQueueConfirmTitle: Oletko varma, että haluat tyhjentää jonon?
-introMisskey: Tervetuloa! Firefish on avoimen lähdekoodin, hajautettu sosiaalisen median
+introMisskey: Tervetuloa! Goblin on avoimen lähdekoodin, hajautettu sosiaalisen median
   alusta, joka on ikuisesti ilmainen! 🚀
 clearQueueConfirmText: Mitkään välittämättömät lähetykset, jotka ovat jonossa, eivät
   federoidu. Yleensä tätä toimintoa ei tarvita.
@@ -251,7 +251,7 @@ noInstances: Ei yhtään instanssia
 editProfile: Muokkaa profiilia
 noteDeleteConfirm: Oletko varma, että haluat poistaa tämän viestin?
 pinLimitExceeded: Et voi kiinnittää enempää viestejä
-intro: Firefish -asennus valmis! Ole hyvä ja luo admin-käyttäjä.
+intro: Goblin -asennus valmis! Ole hyvä ja luo admin-käyttäjä.
 done: Valmis
 processing: Suorittaa
 preview: Esikatselu
@@ -472,7 +472,7 @@ silence: Hiljennä
 popularTags: Suositut tagit
 userList: Listat
 about: Tietoja
-aboutFirefish: Tietoja Firefishstä
+aboutGoblin: Tietoja Goblinstä
 exploreFediverse: Tutustu fediverseen
 recentlyUpdatedUsers: Vastikään lisätyt käyttäjät
 recentlyRegisteredUsers: Uudet liittyneet jäyttäjät
@@ -618,7 +618,7 @@ sort: Järjestä
 ascendingOrder: Nousevasti
 scratchpadDescription: Raaputusalusta tarjoaa ympäristön AiScript-kokeiluja varten.
   Voit kirjoittaa, suorittaa ja tarkistaa sen tulokset vuorovaikutuksessa siinä olevan
-  Firefishn kanssa.
+  Goblinn kanssa.
 script: Skripti
 disablePagesScript: Poista AiScript käytöstä sivuilla
 updateRemoteUser: Päivitä etäkäyttäjän tiedot
@@ -800,14 +800,14 @@ smtpSecure: Käytä implisiittistä SSL/TLS:ää SMTP-yhteyksissä
 useGlobalSettingDesc: Jos se on päällä, käytetään tilisi ilmoitusasetuksia. Jos se
   on pois päältä, voit tehdä yksilöllisiä asetuksia.
 public: Julkinen
-i18nInfo: Vapaaehtoiset kääntävät Firefishta eri kielille. Voit auttaa osoitteessa
+i18nInfo: Vapaaehtoiset kääntävät Goblinta eri kielille. Voit auttaa osoitteessa
   {link}.
 lockedAccountInfo: Ellet aseta postauksen näkyvyydeksi "Vain seuraajille", postauksesi
   näkyvät kaikille, vaikka vaatisitkin seuraajilta manuaalista hyväksyntää.
 sendErrorReportsDescription: "Kun tämä on päällä, yksityiskohtaiset virhetiedot jaetaan\
-  \ Firefishn kanssa ongelman ilmetessä, mikä auttaa parantamaan Firefishn laatua.\n\
+  \ Goblinn kanssa ongelman ilmetessä, mikä auttaa parantamaan Goblinn laatua.\n\
   Näihin tietoihin sisältyy esimerkiksi käyttöjärjestelmäversio, käyttämäsi selain,\
-  \ toimintasi Firefishssä jne."
+  \ toimintasi Goblinssä jne."
 createdAt: Luotu
 youAreRunningUpToDateClient: Käytössäsi on asiakasohjelman uusin versio.
 needReloadToApply: Uudelleenlataus vaaditaan, jotta tämä näkyy.
@@ -882,7 +882,7 @@ squareAvatars: Näytä neliön malliset kuvakkeet
 seperateRenoteQuote: Erilliset buustaa ja lainaa -napit
 sent: Lähetetty
 useBlurEffect: Käytä blur-efektejä käyttöliittymässä
-misskeyUpdated: Firefish on päivitetty!
+misskeyUpdated: Goblin on päivitetty!
 whatIsNew: Näytä muutokset
 translate: Käännä
 translatedFrom: Käännetty kielestä {x}
