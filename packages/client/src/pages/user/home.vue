@@ -293,6 +293,7 @@
 							</MkA>
 							<MkA
 								v-click-anime
+								v-if="number(user.followingCount) > 0"
 								:to="userPage(user, 'following')"
 								:class="{ active: page === 'following' }"
 							>
@@ -301,6 +302,7 @@
 							</MkA>
 							<MkA
 								v-click-anime
+								v-if="number(user.followersCount) > 0"
 								:to="userPage(user, 'followers')"
 								:class="{ active: page === 'followers' }"
 							>
