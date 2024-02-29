@@ -8,7 +8,7 @@
 				:display-my-avatar="true"
 			/>
 		</template>
-		<MkSpacer :content-max="800">
+		<MkSpacer :content-max="640">
 			<div ref="rootEl" v-hotkey.global="keymap" class="cmuxhskf">
 				<XPostForm
 					v-if="$store.reactiveState.showFixedPostForm.value"

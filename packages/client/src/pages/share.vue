@@ -3,7 +3,7 @@
 		<template #header
 			><MkPageHeader :actions="headerActions" :tabs="headerTabs"
 		/></template>
-		<MkSpacer :content-max="800">
+		<MkSpacer :content-max="640">
 			<XPostForm
 				v-if="state === 'writing'"
 				fixed

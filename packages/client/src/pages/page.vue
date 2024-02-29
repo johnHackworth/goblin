@@ -6,7 +6,7 @@
 				:tabs="headerTabs"
 				:display-back-button="true"
 		/></template>
-		<MkSpacer :content-max="800">
+		<MkSpacer :content-max="640">
 			<transition
 				:name="$store.state.animation ? 'fade' : ''"
 				mode="out-in"

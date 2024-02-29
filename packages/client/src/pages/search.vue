@@ -7,7 +7,7 @@
 				:tabs="headerTabs"
 				:display-back-button="true"
 		/></template>
-		<MkSpacer :content-max="800">
+		<MkSpacer :content-max="640">
 			<swiper
 				:round-lengths="true"
 				:touch-angle="25"

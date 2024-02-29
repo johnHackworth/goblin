@@ -7,7 +7,7 @@
 				:display-back-button="true"
 				:to="`#${noteId}`"
 		/></template>
-		<MkSpacer :content-max="800" :marginMin="6">
+		<MkSpacer :content-max="640" :marginMin="6">
 			<div class="fcuexfpr">
 				<transition
 					:name="$store.state.animation ? 'fade' : ''"
