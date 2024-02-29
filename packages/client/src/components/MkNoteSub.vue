@@ -61,7 +61,16 @@
 					</div>
 				</div>
 				<footer ref="footerEl" class="footer" tabindex="-1">
+					<XRenoteButton
+						v-if="quoteMode"
+						ref="renoteButton"
+						class="button"
+						:note="note"
+						:count="note.renoteCount"
+						:detailedView="detailedView"
+					/>
 					<button
+						v-if="!quoteMode"
 						v-tooltip.noDelay.bottom="i18n.ts.reply"
 						class="button _button"
 						@click.stop="reply()"
@@ -72,6 +81,8 @@
 							<p class="count">{{ appearNote.repliesCount }}</p>
 						</template>
 					</button>
+
+
 					<button
 						ref="menuButton"
 						v-tooltip.noDelay.bottom="i18n.ts.more"
@@ -130,6 +141,7 @@ import { inject, ref, onMounted } from "vue";
 import type { Ref } from "vue";
 import * as misskey from "firefish-js";
 import XNoteHeader from "@/components/MkNoteHeader.vue";
+import XRenoteButton from "@/components/MkRenoteButton.vue";
 import MkSubNoteContent from "@/components/MkSubNoteContent.vue";
 import copyToClipboard from "@/scripts/copy-to-clipboard";
 import { url } from "@/config";
@@ -156,7 +168,7 @@ const props = withDefaults(
 		conversation?: misskey.entities.Note[];
 		parentId?;
 		detailedView?;
-
+		quoteMode?;
 		// how many notes are in between this one and the note being viewed in detail
 		depth?: number;
 		// the actual reply level of this note within the conversation thread
@@ -365,6 +377,10 @@ function noteClick(e) {
 .wrpstxzv {
 	padding: 16px 32px;
 	outline: none;
+
+	&.reply {
+		border-top: 1px solid var(--X11);
+	}
 
 	&.selected .main {
 		background: #efefef;

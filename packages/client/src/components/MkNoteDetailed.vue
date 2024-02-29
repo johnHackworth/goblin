@@ -76,9 +76,10 @@
 				:key="note.id"
 				:note="note"
 				class="reply"
-				:conversation="replies"
+				:conversation="directQuotes"
 				:detailedView="true"
 				:parentId="note.id"
+				:quoteMode="true"
 			/>
 			<MkLoading v-else-if="tab === 'quotes' && directQuotes.length > 0" />
 
@@ -379,8 +380,8 @@ if(!props.hideTabs) {
 const pagination = {
 	endpoint: "notes/renotes",
 	params: {
-		noteId: note.id,
-		limit: 10,
+		noteId: rootNote.id,
+		limit: 100,
 	}
 };
 
@@ -390,7 +391,7 @@ renotes = [];
 function loadTab() {
 	if (!props.hideTabs && tab === "renotes" && !renotes) {
 		os.api("notes/renotes", {
-			noteId: note.id,
+			noteId: rootNote.id,
 			limit: 100,
 		}).then((res) => {
 			renotes = res;

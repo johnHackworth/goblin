@@ -63,7 +63,7 @@
 			<div class="main">
 				<div v-if="renotedBy" class="renoteHeader">
 					<MkA
-					:to="`/@${renotedBy.username}`">
+					:to="`/@${renotedBy.username + ( renotedBy.host ? '@' + renotedBy.host : '' )}`">
 						{{ renotedBy.username }} <ReblogIcon /> reblogged (<MkTime :time="note.createdAt" />)
 					</MkA>
 				</div>
@@ -835,11 +835,11 @@ defineExpose({
 				z-index: 2;
 				display: flex;
 				flex-wrap: wrap;
-				margin: 8px 16px 0;
+				margin: 8px 16px 8px;
 				justify-content: flex-end;
 
 				@media (max-width: 500px) {
-					margin: 8px 4px 0;
+					margin: 8px 4px 8px;
 				}
 
 				> :deep(.button) {

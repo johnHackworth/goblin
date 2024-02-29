@@ -774,11 +774,11 @@ defineExpose({
         z-index: 2;
         display: flex;
         flex-wrap: wrap;
-        margin: 8px 16px 0;
+        margin: 8px 16px 8px;
         justify-content: flex-end;
 
         @media (max-width: 500px) {
-          margin: 8px 4px 0;
+          margin: 8px 4px 8px;
         }
 
         > :deep(.button) {
