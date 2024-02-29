@@ -63,8 +63,8 @@
 			<div class="main">
 				<div v-if="renotedBy" class="renoteHeader">
 					<MkA
-					:to="`/@${renotedBy.username + ( renotedBy.host ? '@' + renotedBy.host : '' )}`">
-						{{ renotedBy.username }} <ReblogIcon /> reblogged (<MkTime :time="note.createdAt" />)
+					:to="`/@${renotedBy}`">
+						{{ renotedBy }} <ReblogIcon /> reblogged (<MkTime :time="note.createdAt" />)
 					</MkA>
 				</div>
 				<div class="header-container" @click="noteLink">
@@ -308,7 +308,14 @@ for(let reaction in parentNote.reactions) {
 let noteCount = ref(0);
 noteCount = parentNote.repliesCount + parentNote.renoteCount + reactionCount;
 
-const renotedBy = isRenote ? note.user : null;
+
+let renotedBy = null;
+if (isRenote && note.user) {
+	renotedBy = note.user.username;
+	if(note.user.host) {
+		renotedBy += '@' + note.user.host;
+	}
+}
 const isMyRenote = $i && $i.id === note.userId;
 const showContent = ref(false);
 const isDeleted = ref(false);
