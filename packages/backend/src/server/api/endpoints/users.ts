@@ -61,7 +61,7 @@ export const paramDef = {
 export default define(meta, paramDef, async (ps, me) => {
 	const query = Users.createQueryBuilder("user");
 	query.where("user.isExplorable = TRUE");
-
+	query.where("user.tumblrUUID IS NULL");
 	switch (ps.state) {
 		case "admin":
 			query.andWhere("user.isAdmin = TRUE");
