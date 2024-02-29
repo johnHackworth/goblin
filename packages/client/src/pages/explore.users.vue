@@ -256,6 +256,7 @@ os.api("hashtags/list", {
 .vxjfqztj {
 	> * {
 		margin-right: 16px;
+		color: var('--panelHighlight');
 
 		&.local {
 			font-weight: bold;

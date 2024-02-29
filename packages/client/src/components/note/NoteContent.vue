@@ -364,20 +364,20 @@ function focusFooter(ev) {
     }
 
     img {
-      width: calc(100% + 64px);
-      margin-left: -32px;
+      width: calc(96% + 64px);
+      margin-left: calc(2% - 32px);
     }
   }
 
   .noteFiles {
     img {
-      max-width: 100%;
-      margin: 8px 0;
+      max-width: 96%;
+      margin: 8px 2%;
     }
 
     video {
-      width: 100%;
-      margin: 8px 0;
+      width: 96%;
+      margin: 8px 2%;
     }
   }
 
