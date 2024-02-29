@@ -527,7 +527,7 @@ onUnmounted(() => {
 			padding-bottom: 0;
 		}
 		&:first-child {
-			padding-top: 28px;
+			padding-top: 8px;
 		}
 	}
 
