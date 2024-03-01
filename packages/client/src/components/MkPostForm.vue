@@ -221,13 +221,11 @@ const props = withDefaults(
 		initialNote?: misskey.entities.Note;
 		instant?: boolean;
 		fixed?: boolean;
-		autofocus?: boolean;
 		showMfmCheatSheet?: boolean;
 		editId?: misskey.entities.Note["id"];
 	}>(),
 	{
 		initialVisibleUsers: () => [],
-		autofocus: true,
 		showMfmCheatSheet: true,
 	},
 );
@@ -245,9 +243,9 @@ const visibilityButton = $ref<HTMLElement | null>(null);
 const tumblrBlogSelector = $ref<HTMLElement | null>(null);
 
 let posting = $ref(false);
-let text = $ref(props.initialText ?? "");
-let tags = $ref(props.initialTags ?? []);
-let files = $ref(props.initialFiles ?? []);
+let text = $ref(props.initialText ?? props.initialNote ? props.initialNote.text : '');
+let tags = $ref(props.initialTags ?? props.initialNote ? props.initialNote.tags : []);
+let files = $ref(props.initialFiles ?? props.initialNote ? props.initialNote.files : []);
 let reblogtrail = $ref([]);
 if(props.renote) {
 	let cloneNote = deepClone(props.renote);
@@ -292,24 +290,6 @@ let hasNotSpecifiedMentions = $ref(false);
 let canPost = $ref(false);
 let recentHashtags = $ref(JSON.parse(localStorage.getItem("hashtags") || "[]"));
 let imeText = $ref("");
-
-const draftKey = $computed((): string => {
-	if (props.editId) {
-		return `edit:${props.editId}`;
-	}
-
-	let key = props.channel ? `channel:${props.channel.id}` : "";
-
-	if (props.renote) {
-		key += `renote:${props.renote.id}`;
-	} else if (props.reply) {
-		key += `reply:${props.reply.id}`;
-	} else {
-		key += "note";
-	}
-
-	return key;
-});
 
 const enableContentWarning = () => {
 	useCw = true;
@@ -482,16 +462,6 @@ if (defaultStore.state.keepCw && props.reply && props.reply.cw) {
 	cw = props.reply.cw;
 }
 
-function watchForDraft() {
-	watch($$(text), () => saveDraft());
-	watch($$(useCw), () => saveDraft());
-	watch($$(cw), () => saveDraft());
-	watch($$(poll), () => saveDraft());
-	watch($$(files), () => saveDraft(), { deep: true });
-	watch($$(visibility), () => saveDraft());
-	watch($$(localOnly), () => saveDraft());
-}
-
 function checkMissingMention() {
 	if (visibility === "specified") {
 		const ast = mfm.parse(text);
@@ -543,16 +513,6 @@ function togglePoll() {
 
 function addTag(tag: string) {
 	insertTextAtCursor(textareaEl, ` #${tag} `);
-}
-
-function focus() {
-	if (textareaEl) {
-		textareaEl.focus();
-		textareaEl.setSelectionRange(
-			textareaEl.value.length,
-			textareaEl.value.length,
-		);
-	}
 }
 
 function onEditorImageAdd(file) {
@@ -726,37 +686,8 @@ function onDrop(ev): void {
 	//#endregion
 }
 
-function saveDraft() {
-	const draftData = JSON.parse(localStorage.getItem("drafts") || "{}");
-
-	draftData[draftKey] = {
-		updatedAt: new Date(),
-		data: {
-			text: text,
-			useCw: useCw,
-			cw: cw,
-			visibility: visibility,
-			localOnly: localOnly,
-			files: files,
-			poll: poll,
-		},
-	};
-
-	localStorage.setItem("drafts", JSON.stringify(draftData));
-}
-
-function deleteDraft() {
-	const draftData = JSON.parse(localStorage.getItem("drafts") || "{}");
-
-	delete draftData[draftKey];
-
-	localStorage.setItem("drafts", JSON.stringify(draftData));
-}
-
 async function post(postProps = {}) {
-
 	let processedText = preprocess(removeMeta(text));
-
 	if(
 		(!processedText || processedText=== '') &&
 		tags.length > 0 ) {
@@ -769,7 +700,6 @@ async function post(postProps = {}) {
 			renoteId: props.renote.id,
 			visibility: visibility,
 		});
-		deleteDraft();
 		emit("posted");
 		return;
 	}
@@ -812,6 +742,10 @@ async function post(postProps = {}) {
 		replyId = postProps.replyId;
 	}
 
+	const filteredTags = tags.map( (tag) => {
+		return tag.split(`\n`).join('').trim()
+	}).filter( tag => tag && tag != '');
+
 	let postData = {
 		editId: props.editId ? props.editId : undefined,
 		text: processedText === "" ? undefined : processedText,
@@ -822,7 +756,7 @@ async function post(postProps = {}) {
 		poll: poll,
 		cw: useCw ? cw || "" : undefined,
 		localOnly: localOnly,
-		tags: tags,
+		tags: filteredTags,
 		visibility: visibility,
 		visibleUserIds:
 			visibility === "specified"
@@ -854,7 +788,6 @@ async function post(postProps = {}) {
 		.then(() => {
 			clear();
 			nextTick(() => {
-				deleteDraft();
 				emit("posted");
 
 				if (postData.text && postData.text !== "") {
@@ -959,41 +892,7 @@ function openAccountMenu(ev: MouseEvent) {
 }
 
 onMounted(() => {
-	if (props.autofocus) {
-		focus();
-
-		nextTick(() => {
-			focus();
-		});
-	}
-
-	// TODO: detach when unmount
-	new Autocomplete(textareaEl, $$(text));
-	new Autocomplete(cwInputEl, $$(cw));
-	new Autocomplete(hashtagsInputEl, $$(hashtags));
-
 	nextTick(() => {
-		// 書きかけの投稿を復元
-		if (!props.instant && !props.mention && !props.specified) {
-			const draft = JSON.parse(localStorage.getItem("drafts") || "{}")[
-				draftKey
-			];
-			if (draft) {
-				text = draft.data.text;
-				useCw = draft.data.useCw;
-				cw = draft.data.cw;
-				visibility = draft.data.visibility;
-				localOnly = draft.data.localOnly;
-				files = (draft.data.files || []).filter(
-					(draftFile) => draftFile,
-				);
-				if (draft.data.poll) {
-					poll = draft.data.poll;
-				}
-			}
-		}
-
-		// 削除して編集
 		if (props.initialNote) {
 			const init = props.initialNote;
 			text = init.text ? init.text : "";
@@ -1012,8 +911,6 @@ onMounted(() => {
 			localOnly = init.localOnly;
 			quoteId = init.renote ? init.renote.id : null;
 		}
-
-		nextTick(() => watchForDraft());
 	});
 });
 </script>

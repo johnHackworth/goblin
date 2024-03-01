@@ -160,6 +160,7 @@ export const paramDef = {
 		text: { type: "string", maxLength: MAX_NOTE_TEXT_LENGTH, nullable: true },
 		cw: { type: "string", nullable: true, maxLength: 250 },
 		localOnly: { type: "boolean", default: false },
+		tags: { type: "array", items: { type: "string" } },
 		noExtractMentions: { type: "boolean", default: false },
 		noExtractHashtags: { type: "boolean", default: false },
 		noExtractEmojis: { type: "boolean", default: false },
@@ -360,7 +361,6 @@ export default define(meta, paramDef, async (ps, user) => {
 		ps.text = null;
 	}
 
-	let tags = [];
 	let emojis = [];
 	let mentionedUsers = [];
 
@@ -372,16 +372,9 @@ export default define(meta, paramDef, async (ps, user) => {
 
 	const combinedTokens = tokens.concat(cwTokens).concat(choiceTokens);
 
-	tags = extractHashtags(combinedTokens);
-
 	emojis = extractCustomEmojisFromMfm(combinedTokens);
 
 	mentionedUsers = await extractMentionedUsers(user, combinedTokens);
-
-	tags = [...new Set(tags)]
-		.sort()
-		.filter((tag) => Array.from(tag || "").length <= 128)
-		.splice(0, 32);
 
 	emojis = [...new Set(emojis)].sort();
 
@@ -551,8 +544,8 @@ export default define(meta, paramDef, async (ps, user) => {
 	if (!unorderedEqual(emojis, note.emojis)) {
 		update.emojis = emojis;
 	}
-	if (!unorderedEqual(tags, note.tags)) {
-		update.tags = tags;
+	if (!unorderedEqual(ps.tags, note.tags)) {
+		update.tags = ps.tags;
 	}
 	if (!unorderedEqual(ps.fileIds || [], note.fileIds)) {
 		update.fileIds = fileIds || undefined;

@@ -3,10 +3,9 @@
     <div class="editor-area">
       <div v-if="editor">
         <editor-content :editor="editor" />
-        <div class="tagsContainer">        <div class="currentTags">
-            <span contenteditable class="tag" v-for="(tag, index) in tags" :key="index" @blur="updateTag" :data-index="index">
-              {{ tag }}
-            </span>
+        <div class="tagsContainer">
+          <div class="currentTags">
+            <span contenteditable class="tag" v-for="(tag, index) in tags" :key="index" @blur="updateTag" :data-index="index">{{ tag }}</span>
           </div>
 
           <div class="tagEditor">
@@ -61,19 +60,19 @@
       </span>
       <button
         class="_button quote"
-        @click="editor.chain().focus().toggleBlockquote().run()" :class="{ 'is-active': editor.isActive('blockquote') }"
+        @click="editor.chain().focus().toggleBlockquote().run()" :class="{ 'is-active': editor && editor.isActive('blockquote') }"
       >
         <QuoteIcon />
       </button>
       <button
         class="_button bullet-list"
-        @click="editor.chain().focus().toggleBulletList().run()" :class="{ 'is-active': editor.isActive('bulletList') }"
+        @click="editor.chain().focus().toggleBulletList().run()" :class="{ 'is-active': editor && editor.isActive('bulletList') }"
       >
         <BulletListIcon />
       </button>
       <button
         class="_button ordered-list"
-        @click="editor.chain().focus().toggleOrderedList().run()" :class="{ 'is-active': editor.isActive('orderedList') }"
+        @click="editor.chain().focus().toggleOrderedList().run()" :class="{ 'is-active': editor && editor.isActive('orderedList') }"
       >
         <OrderedListIcon />
       </button>
@@ -217,7 +216,6 @@ const post = ( ev ) => {
 }
 
 const applyColor = ( color ) => {
-  console.log(color);
   editor.value.can().chain().focus()
     .extendMarkRange('link').setColor(color).run()
 }
@@ -296,6 +294,7 @@ const editor = useEditor({
   ],
   onUpdate: update,
   onSelectionUpdate: selectionChange,
+  autofocus: 'end',
 })
 
 const addImage = (ev) => {
@@ -303,7 +302,6 @@ const addImage = (ev) => {
     (files_) => {
       for (const file of files_) {
         if(file.url) {
-          console.log('emitint', file)
           emit('addedImage', file);
           editor.value.chain().focus().setImage({ src: file.url }).createParagraphNear().run();
         }

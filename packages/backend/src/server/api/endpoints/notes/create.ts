@@ -112,6 +112,7 @@ export const paramDef = {
 		text: { type: "string", maxLength: MAX_NOTE_TEXT_LENGTH, nullable: true },
 		cw: { type: "string", nullable: true, maxLength: 100 },
 		localOnly: { type: "boolean", default: false },
+		tags: { type: "array", items: { type: "string" } },
 		noExtractMentions: { type: "boolean", default: false },
 		noExtractHashtags: { type: "boolean", default: false },
 		noExtractEmojis: { type: "boolean", default: false },
