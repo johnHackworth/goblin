@@ -7,11 +7,15 @@
   >
     <img class="pfp-image" :src="user.avatarUrl" decoding="async" />
   </a>
-  <img
+  <span
     v-else
-    class="pfp-image"
-    src="/static-assets/user-unknown.png"
-  />
+    class="pfp"
+  >
+    <img
+      class="pfp-image"
+      src="/static-assets/user-unknown.png"
+    />
+  </span>
  </template>
 
 <script lang="ts" setup>
