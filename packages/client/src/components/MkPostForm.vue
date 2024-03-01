@@ -796,8 +796,6 @@ async function post(postProps = {}) {
 		.then(() => {
 			clear();
 			nextTick(() => {
-				emit("posted");
-
 				if (postData.text && postData.text !== "") {
 					const hashtags_ = mfm
 						.parse(postData.text)
@@ -817,6 +815,8 @@ async function post(postProps = {}) {
 					globalEvents.emit('postedByKeyboard')
 					replyingTo = '';
 					replyId = null;
+				} else {
+					emit("posted");
 				}
 			});
 		})
