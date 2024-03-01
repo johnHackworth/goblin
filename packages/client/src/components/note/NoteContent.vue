@@ -369,6 +369,12 @@ function focusFooter(ev) {
     }
   }
 
+  .reblog-item-content & {
+    .noteText {
+      padding: 0;
+    }
+  }
+
   .noteFiles {
     img {
       max-width: 96%;

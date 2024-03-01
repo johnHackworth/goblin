@@ -77,6 +77,7 @@ onMounted(() => {
 	display: flex;
 	gap: 8px;
 	flex-wrap: wrap;
+	margin: 8px 16px 0;
 }
 
 .tab {
