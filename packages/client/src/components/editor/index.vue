@@ -299,11 +299,15 @@ const editor = useEditor({
 
 const addImage = (ev) => {
   selectFiles(ev.currentTarget ?? ev.target, i18n.ts.attachFile).then(
-    (files_) => {
-      for (const file of files_) {
-        if(file.url) {
-          emit('addedImage', file);
-          editor.value.chain().focus().setImage({ src: file.url }).createParagraphNear().run();
+    (files) => {
+      if(typeof files === 'string') {
+        editor.value.chain().focus().setImage({ src: files }).createParagraphNear().run();
+      } else {
+        for (const file of files) {
+          if(file.url) {
+            emit('addedImage', file);
+            editor.value.chain().focus().setImage({ src: file.url }).createParagraphNear().run();
+          }
         }
       }
     },

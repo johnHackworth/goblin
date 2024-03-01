@@ -60,28 +60,9 @@ function select(
 				type: "url",
 				placeholder: i18n.ts.uploadFromUrlDescription,
 			}).then(({ canceled, result: url }) => {
-				if (canceled) return;
 
-				const marker = Math.random().toString(); // TODO: UUIDとか使う
+				res(url);
 
-				const connection = stream.useChannel("main");
-				connection.on("urlUploadFinished", (urlResponse) => {
-					if (urlResponse.marker === marker) {
-						res(multiple ? [urlResponse.file] : urlResponse.file);
-						connection.dispose();
-					}
-				});
-
-				os.api("drive/files/upload-from-url", {
-					url: url,
-					folderId: defaultStore.state.uploadFolder,
-					marker,
-				});
-
-				os.alert({
-					title: i18n.ts.uploadFromUrlRequested,
-					text: i18n.ts.uploadFromUrlMayTakeTime,
-				});
 			});
 		};
 
