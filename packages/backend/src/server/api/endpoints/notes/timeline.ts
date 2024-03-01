@@ -173,7 +173,10 @@ export default define(meta, paramDef, async (ps, user) => {
 	try {
 		while (found.length < ps.limit) {
 			const notes = await query.take(take).skip(skip).getMany();
-			found.push(...(await Notes.packMany(notes, user)));
+			const packedNotes = await Notes.packMany(notes, user);
+			found.push(...packedNotes.filter( (note) => {
+				return ! note.replyId || note.user.host;
+			}));
 			skip += take;
 			if (notes.length < take) break;
 		}

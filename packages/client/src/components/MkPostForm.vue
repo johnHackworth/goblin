@@ -112,18 +112,25 @@
 				placeholder="Add your content warning here"
 				@keydown="onKeydown"
 			/>
-			<ReplyEditor
-				v-if="isReply"
-				@update="updateTiptap"
-				@post="onEditorPostClick"
-				ref="textareaEl"
-				v-model="text"
-				data-cy-post-form-text
-				@keydown="onKeydown"
-				:submitText="submitText"
-				:canPost="canPost"
-				:reply="true"
-			/>
+			<div class="replyEditor" v-if="isReply">
+				<div class="replyingTo" v-if="replyId">
+					replying to {{ replyingTo }}
+					<button class="cancel _button" @click="cancelReply">
+						<i class="ph-x-circle ph-fill ph-lg" :aria-label="i18n.t('cancel reply')"></i>
+					</button>
+				</div>
+				<ReplyEditor
+					@update="updateTiptap"
+					@post="onEditorPostClick"
+					ref="textareaEl"
+					v-model="text"
+					data-cy-post-form-text
+					@keydown="onKeydown"
+					:submitText="submitText"
+					:canPost="canPost"
+					:reply="true"
+				/>
+			</div>
 			<Tiptap
 				v-else
 				@update="updateTiptap"
@@ -153,7 +160,7 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, watch, nextTick, onMounted, defineAsyncComponent } from "vue";
+import { inject, watch, nextTick, onMounted, onBeforeUnmount, defineAsyncComponent } from "vue";
 import Tiptap from '@/components/editor/index.vue';
 import ReplyEditor from '@/components/editor/reply.vue'
 import * as mfm from "mfm-js";
@@ -193,6 +200,7 @@ import { deepClone } from "@/scripts/clone";
 import XCheatSheet from "@/components/MkCheatSheetDialog.vue";
 import { preprocess } from "@/scripts/preprocess";
 import { removeMeta, getTags } from "@/helpers/note/note-content"
+import { globalEvents } from "@/events";
 
 const getDefaultTumblrBlog = () => {
 	const stored = localStorage.getItem("defaultTumblrBlog-" + $i.username);
@@ -247,6 +255,9 @@ let text = $ref(props.initialText ?? props.initialNote ? props.initialNote.text 
 let tags = $ref(props.initialTags ?? props.initialNote ? props.initialNote.tags : []);
 let files = $ref(props.initialFiles ?? props.initialNote ? props.initialNote.files : []);
 let reblogtrail = $ref([]);
+let replyId = $ref(null);
+let replyingTo = $ref('');
+
 if(props.renote) {
 	let cloneNote = deepClone(props.renote);
 	if(cloneNote.reblogtrail?.length) {
@@ -734,13 +745,7 @@ async function post(postProps = {}) {
 		return note;
 	}
 
-	let replyId = props.reply ?
-		props.reply.id
-		: undefined;
-
-	if(postProps.replyId) {
-		replyId = postProps.replyId;
-	}
+	let noteToReplyTo = replyId;
 
 	const filteredTags = tags.map( (tag) => {
 		return tag.split(`\n`).join('').trim()
@@ -750,7 +755,7 @@ async function post(postProps = {}) {
 		editId: props.editId ? props.editId : undefined,
 		text: processedText === "" ? undefined : processedText,
 		fileIds: usedFiles.length > 0 ? usedFiles.map((f) => f.id) : undefined,
-		replyId: replyId,
+		replyId: noteToReplyTo,
 		renoteId: renoteId,
 		channelId: props.channel ? props.channel.id : undefined,
 		poll: poll,
@@ -805,6 +810,11 @@ async function post(postProps = {}) {
 				}
 				posting = false;
 				postAccount = null;
+				if(replyId) {
+					globalEvents.emit('postedByKeyboard')
+					replyingTo = '';
+					replyId = null;
+				}
 			});
 		})
 		.catch((err) => {
@@ -891,6 +901,19 @@ function openAccountMenu(ev: MouseEvent) {
 	);
 }
 
+const cancelReply = () => {
+	replyId = null;
+	replyingTo = '';
+}
+
+const initFromReply = ( { note } ) => {
+  replyId = note.id;
+  replyingTo = '@' + note.user.username;
+  if(note.user.host) {
+    replyingTo += '@' + note.user.host
+  }
+}
+
 onMounted(() => {
 	nextTick(() => {
 		if (props.initialNote) {
@@ -911,7 +934,17 @@ onMounted(() => {
 			localOnly = init.localOnly;
 			quoteId = init.renote ? init.renote.id : null;
 		}
+		if(props.isReply) {
+			globalEvents.on('reply', initFromReply);
+		}
 	});
+});
+
+
+onBeforeUnmount(() => {
+	if(props.isReply) {
+  	globalEvents.off('reply', initFromReply);
+  }
 });
 </script>
 
@@ -1295,5 +1328,20 @@ onMounted(() => {
 			display: none;
 		}
 	}
+}
+
+.replyingTo {
+	font-size: 0.8em;
+  font-weight: lighter;
+  display: flex;
+  margin: 4px 0 -12px 24px;
+  color: var(--renote);
+  justify-content: flex-start;
+  align-items: center;
+
+  > button {
+  	margin-left: 4px;
+  	color: var(--infoBg);
+  }
 }
 </style>

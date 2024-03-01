@@ -77,16 +77,16 @@ const props = withDefaults(
   },
 );
 
-let replyId = null;
-
 const editorRef = ref<HTMLElement>();
 
 onMounted(() => {
   globalEvents.on('reply', initFromReply);
+  globalEvents.on('postedByKeyboard', clearContent);
 });
 
 onBeforeUnmount(() => {
   globalEvents.off('reply', initFromReply);
+  globalEvents.off('postedByKeyboard', clearContent);
 });
 
 const emit = defineEmits(['update', 'post'])
@@ -95,27 +95,24 @@ const update = ( { editor } ) => {
   emit('update', editor.getHTML());
 }
 
-const initFromReply = ( { note } ) => {
-  replyId = note.id;
-  let mention = '@' + note.user.username;
-  if(note.user.host) {
-    mention += '@' + note.user.host
-  }
-  editor.value.chain().setContent(mention + ': ').focus().run();
+const initFromReply = () => {
   editorRef.value.scrollIntoView({
       behavior: 'auto',
       block: 'center',
       inline: 'center'
   });
+  editor.value.commands.focus('end')
+
+}
+
+const clearContent = () => {
+  editor.value.commands.clearContent(true);
 }
 
 const post = ( ev ) => {
   const props = {}
-  if(replyId) {
-    props.replyId = replyId;
-  }
   emit('post', props);
-  setTimeout(() => { editor.value.commands.clearContent(true); replyId = null;}, 100);
+  setTimeout(() => { clearContent}, 100);
 }
 
 const editor = useEditor({
