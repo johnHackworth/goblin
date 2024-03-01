@@ -746,6 +746,9 @@ async function post(postProps = {}) {
 	}
 
 	let noteToReplyTo = replyId;
+	if( !noteToReplyTo && props.reply ) {
+		noteToReplyTo = props.reply.id;
+	}
 
 	const filteredTags = tags.map( (tag) => {
 		return tag.split(`\n`).join('').trim()
@@ -810,7 +813,7 @@ async function post(postProps = {}) {
 				}
 				posting = false;
 				postAccount = null;
-				if(replyId) {
+				if(replyId || props.reply) {
 					globalEvents.emit('postedByKeyboard')
 					replyingTo = '';
 					replyId = null;
