@@ -1,11 +1,17 @@
 <template>
   <a
+    v-if="user"
     class="pfp"
     :title="acct(user)"
     :href="userPage(user)"
   >
     <img class="pfp-image" :src="user.avatarUrl" decoding="async" />
   </a>
+  <img
+    v-else
+    class="pfp-image"
+    src="/static-assets/user-unknown.png"
+  />
  </template>
 
 <script lang="ts" setup>
@@ -19,6 +25,7 @@ const props = withDefaults(
   {
   },
 );
+
 </script>
 
 <style lang="scss" scoped>

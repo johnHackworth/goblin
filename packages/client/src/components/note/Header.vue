@@ -1,6 +1,9 @@
 <template>
   <div class="header">
-    <div class="user"><a :href="userPage(note.user)">{{note.user.username}}</a></div>
+    <div class="user">
+      <a v-if="note.user" :href="userPage(note.user)">{{note.user.username}}</a>
+      <a v-else :href="note.url">{{note.url}}</a>
+    </div>
     <div class="time">
       <MkA class="created-at" :to="notePage(note)">
         <MkTime :time="note.createdAt" />
