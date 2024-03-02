@@ -331,7 +331,7 @@ const getSubmitText = () => {
 		return i18n.ts.edit;
 	}
 	else if(props.renote) {
-		return isEditorEmpty? "Reblog" : i18.ts.quote;
+		return isEditorEmpty? "Reblog" : i18n.ts.quote;
 	}
 	else if(props.reply) {
 		return i18n.ts.reply;
