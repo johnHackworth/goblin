@@ -109,7 +109,7 @@
 						ref="menuButton"
 						v-tooltip.noDelay.bottom="Notes"
 						class="button _button noteCount"
-						v-if="!props.hideNotesCounter"
+						v-if="!props.hideNotesCounter && !isRss"
 						@click="noteClick"
 					>
 						<template v-if="props.showCloseButton">
@@ -120,7 +120,16 @@
 						</template>
 					</button>
 
+					<div
+						class="rssSource"
+						v-if="isRss"
+					>
+						<span class="rssLabel"><i class="ph-bold ph-rss"></i> rss</span>
+						<a :href="note.url" target="_blank">{{ i18n.ts.originalPost || "Original Post" }} <i class="ph-bold ph-arrow-square-out"></i></a>
+					</div>
+
 					<button
+						v-if="!isRss"
 						v-tooltip.noDelay.bottom="i18n.ts.reply"
 						class="button _button"
 						@click.stop="reply()"
@@ -132,16 +141,18 @@
 							<p class="count">{{ parentNote.repliesCount }}</p>
 						</template>
 					</button>
+
 					<XRenoteButton
 						ref="renoteButton"
 						class="button"
 						:note="appearNote"
 						:count="parentNote.renoteCount"
 						:detailedView="detailedView"
+						:alwaysDirectRenote="isRss"
 					/>
 
 					<XStarButton
-						v-if="enableEmojiReactions"
+						v-if="enableEmojiReactions && !isRss"
 						ref="starButton"
 						class="button"
 						:isFull="parentNote.myReaction !== null"
@@ -298,6 +309,7 @@ if(!appearNote.user) {
 }
 
 let parentNote = $computed(() => getParentNote(note));
+const isRss = ref(parentNote.user.fromRSS);
 
 let reactionCount = 0;
 for(let reaction in parentNote.reactions) {
@@ -887,6 +899,13 @@ defineExpose({
 						color: var(--fgHighlighted);
 					}
 
+					&.rssSource {
+						margin-right: auto;
+						padding: 0 16px;
+						border-radius: 32px;
+						margin-left: 0;
+					}
+
 					&.noteCount {
 						margin-right: auto;
 						padding: 0 16px;
@@ -1020,5 +1039,22 @@ defineExpose({
 .noteCount {
 	margin-right: auto;
 	margin-left: 8px;
+}
+
+.rssSource {
+	margin-right: auto;
+	margin-left: 8px;
+	display: flex;
+	font-size: 0.95em;
+	align-items: center;
+
+	.rssLabel {
+		margin-right: 16px;
+		color: var(--acrylicBg);
+	}
+
+	a {
+		color: var(--accentDarken);
+	}
 }
 </style>

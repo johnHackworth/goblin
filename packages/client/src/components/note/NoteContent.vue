@@ -400,7 +400,8 @@ function focusFooter(ev) {
 
 .tumblrTitle {
   background: #e1e1e1;
-  padding: 16px;
+  margin: 16px 32px;
+  padding: 24px;
   border-radius: 4px;
 }
 

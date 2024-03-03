@@ -37,6 +37,7 @@ const props = defineProps<{
 	note: misskey.entities.Note;
 	count: number;
 	detailedView?;
+	alwaysDirectRenote?;
 }>();
 
 const buttonRef = ref<HTMLElement>();
@@ -73,7 +74,8 @@ useTooltip(buttonRef, async (showing) => {
 let hasRenotedBefore = $ref(false);
 
 const renote = (viaKeyboard = false, ev?: MouseEvent) => {
-	if(ev && ev.ctrlKey) {
+	if(props.alwaysDirectRenote || ( ev && ev.ctrlKey) ) {
+		pleaseLogin();
 		return directRenote(viaKeyboard, ev);
 	} else {
 		pleaseLogin();

@@ -292,7 +292,8 @@ export async function fetchTumblrFeed( user: User ) {
           let title = '';
           if(post.title) {
             const titleSansEllipsis = post.title.split('…')[0];
-            if( !post.content || post.content.indexOf(titleSansEllipsis) < 0) {
+            const strippedContent = post.content ? post.content.replace(/(<([^>]+)>)/gi, '') : null;
+            if( !strippedContent || strippedContent.indexOf(titleSansEllipsis) < 0) {
               title = '<div class="tumblrTitle">' + sanitize(post.title) + '</div>';
             } else {
               title = '';
@@ -317,6 +318,7 @@ export async function fetchTumblrFeed( user: User ) {
               "</div>",
             apHashtags: post.categories,
             noMentions: true,
+            url: post.link,
           });
         }
     };

@@ -453,6 +453,7 @@ export const UserRepository = db.getRepository(User).extend({
 			name: user.name,
 			username: user.username,
 			host: user.host,
+			fromRSS: !! user.tumblrUUID,
 			avatarUrl: this.getAvatarUrlSync(user),
 			avatarBlurhash: user.avatar?.blurhash || null,
 			avatarColor: null, // 後方互換性のため
