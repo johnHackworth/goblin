@@ -1,6 +1,6 @@
 {
-	"short_name": "Firefish",
-	"name": "Firefish",
+	"short_name": "Goblin",
+	"name": "Goblin",
 	"description": "An open source, decentralized social media platform that's free forever!",
 	"start_url": "/",
 	"display": "standalone",

@@ -23,7 +23,7 @@ export interface IObject {
 	href?: string;
 	tag?: IObject | IObject[];
 	sensitive?: boolean;
-	reblogtrail?: string[];
+	reblogtrail?: any[];
 }
 
 /**

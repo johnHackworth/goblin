@@ -370,6 +370,32 @@ export async function createNote(
 		}
 	}
 
+	if(note.reblogtrail && note.reblogtrail[0]) {
+		for(var i = 0; i < note.reblogtrail.length; i++) {
+			const trailRoot = note.reblogtrail[i];
+			if(trailRoot.user && trailRoot.user.host) {
+				const url = 'https://' + trailRoot.user.host  + '/@' + trailRoot.user.username + '/notes/' + trailRoot.id;
+				note.reblogtrail[i].uri = url;
+				const rootNote = await Notes.findOne({
+					where: [
+						{
+							uri: url,
+						},
+						{
+							url:url,
+						},
+					],
+				});
+				if(rootNote) {
+					note.reblogtrail[i].id = rootNote.id;
+				} else {
+					const newRootNote = await createNote(url, resolver, true);
+					note.reblogtrail[i] = newRootNote;
+				}
+			}
+		}
+	}
+
 	return await post(
 		actor,
 		{
