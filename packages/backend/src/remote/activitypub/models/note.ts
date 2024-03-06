@@ -375,6 +375,7 @@ export async function createNote(
 	logger.debug(`Note trail: ${JSON.stringify(note.reblogtrail, null, 2)}`);
 	if(note.reblogtrail && note.reblogtrail[0]) {
 
+		const originHost = actor.host;
 		logger.warn(
 				"Note has reblog trail",
 			);
@@ -384,10 +385,12 @@ export async function createNote(
 
 			logger.warn("processing " + i);
 			const trailRoot = note.reblogtrail[i];
-
+			if(! trailRoot.user.host) {
+				trailRoot.user.host = originHost;
+			}
 
 	    logger.debug(`Note trail: ${JSON.stringify(trailRoot, null, 2)}`);
-			if(trailRoot.user && trailRoot.user.host) {
+			if(trailRoot.user) {
 
 			  logger.debug('2');
 				const url = 'https://' + trailRoot.user.host  + '/@' + trailRoot.user.username + '/notes/' + trailRoot.id;
