@@ -415,11 +415,17 @@ export async function createNote(
 					logger.warn("found ");
 					note.reblogtrail[i].id = rootNote.id;
 					note.reblogtrail[i].user = rootNote.user;
+					note.reblogtrail[i].userId = rootNote.userId;
 				} else {
 					logger.warn("NOT found ");
 					const newRootNote = await createNote(url, resolver, true);
 					if(newRootNote) {
+
+
+	    			logger.debug(`Note trail: ${JSON.stringify(newRootNote, null, 2)}`);
 						note.reblogtrail[i].id = newRootNote.id;
+						note.reblogtrail[i].userId = newRootNote.userId;
+						note.reblogtrail[i].user = newRootNote.user;
 					}
 				}
 			}
