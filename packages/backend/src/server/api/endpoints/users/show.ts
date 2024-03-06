@@ -157,8 +157,6 @@ export default define(meta, paramDef, async (ps, me) => {
 
 			user = await Users.findOneBy(q);
 		}
-		apiLogger.warn('un pasito mas');
-		apiLogger.warn(JSON.stringify(user));
 		if (user == null || (!isAdminOrModerator && user.isSuspended)) {
 			throw new ApiError(meta.errors.noSuchUser);
 		}

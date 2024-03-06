@@ -374,14 +374,14 @@ export async function createNote(
 	if(note.reblogtrail && note.reblogtrail[0]) {
 		for(var i = 0; i < note.reblogtrail.length; i++) {
 
-	logger.debug(`1`);
+	logger.debug('1');
 			const trailRoot = note.reblogtrail[i];
 
 
-	logger.debug(`Note trail: ${JSON.stringify(trailRoot, null, 2)}`);
+	    logger.debug(`Note trail: ${JSON.stringify(trailRoot, null, 2)}`);
 			if(trailRoot.user && trailRoot.user.host) {
 
-	logger.debug(`2`);
+			  logger.debug('2');
 				const url = 'https://' + trailRoot.user.host  + '/@' + trailRoot.user.username + '/notes/' + trailRoot.id;
 				note.reblogtrail[i].uri = url;
 				note.reblogtrail[i].url = url;
@@ -397,7 +397,7 @@ export async function createNote(
 				});
 				logger.debug('3');
 
-	logger.debug(`Note trail: ${JSON.stringify(rootNote, null, 2)}`);
+				logger.debug(`Note trail: ${JSON.stringify(rootNote, null, 2)}`);
 				if(rootNote) {
 					logger.debug('4');
 					note.reblogtrail[i].id = rootNote.id;

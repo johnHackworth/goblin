@@ -57,10 +57,11 @@ export default class Logger {
 		store = true,
 	): void {
 		if (envOption.quiet) return;
+		if (level === "info") return;
 		if (!this.store) store = false;
 		if (level === "debug") store = false;
 
-		if (this.parentLogger) {
+		if (this. ) {
 			this.parentLogger.log(
 				level,
 				message,
