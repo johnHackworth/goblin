@@ -374,9 +374,15 @@ export async function createNote(
 
 	logger.debug(`Note trail: ${JSON.stringify(note.reblogtrail, null, 2)}`);
 	if(note.reblogtrail && note.reblogtrail[0]) {
+
+		logger.warn(
+				"Note has reblog trail",
+			);
+
+		logger.warn(`Trail: ${JSON.stringify(note.reblogtrail, null, 2)}`);
 		for(var i = 0; i < note.reblogtrail.length; i++) {
 
-	logger.debug('1');
+			logger.warn("processing " + i);
 			const trailRoot = note.reblogtrail[i];
 
 
@@ -387,6 +393,7 @@ export async function createNote(
 				const url = 'https://' + trailRoot.user.host  + '/@' + trailRoot.user.username + '/notes/' + trailRoot.id;
 				note.reblogtrail[i].uri = url;
 				note.reblogtrail[i].url = url;
+				logger.warn("searching for " + url);
 				const rootNote = await Notes.findOne({
 					where: [
 						{
@@ -397,14 +404,13 @@ export async function createNote(
 						},
 					],
 				});
-				logger.debug('3');
-
-				logger.debug(`Note trail: ${JSON.stringify(rootNote, null, 2)}`);
+				logger.warn(`result: ${JSON.stringify(rootNote, null, 2)}`);
 				if(rootNote) {
-					logger.debug('4');
+
+					logger.warn("found ");
 					note.reblogtrail[i].id = rootNote.id;
 				} else {
-					logger.debug('5');
+					logger.warn("NOT found ");
 					const newRootNote = await createNote(url, resolver, true);
 					note.reblogtrail[i] = newRootNote;
 				}
