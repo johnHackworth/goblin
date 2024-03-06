@@ -408,6 +408,7 @@ export async function createNote(
 					],
 				});
 				logger.warn(`result: ${JSON.stringify(rootNote, null, 2)}`);
+				logger.warn("searching for " + trailNote.user.username + ' ' + trailNote.user.host );
 				const user = await Users.findOne({
 					where: [
 						{
@@ -419,6 +420,7 @@ export async function createNote(
 					],
 				});
 
+	    	logger.debug(`Note trail: ${JSON.stringify(user, null, 2)}`);
 				if(rootNote) {
 					logger.warn("found ");
 					note.reblogtrail[i].id = rootNote.id;
