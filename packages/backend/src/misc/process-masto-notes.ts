@@ -53,7 +53,7 @@ function processMastoFile(fn: string, path: string, dir: string, uid: string) {
 				}
 				for (const attachment of note.object.attachment) {
 					const url = attachment.url.replaceAll("..", "");
-					if (url.indexOf("\0") !== -1) {
+					if (url.includes("\0")) {
 						logger.error(`Found Poison Null Bytes Attack: ${url}`);
 						reject();
 						return;

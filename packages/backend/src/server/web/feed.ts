@@ -140,7 +140,7 @@ export default async function (
 			outstr += ` <span class="${
 				note.renoteId ? "renote_note" : note.replyId ? "reply_note" : "new_note"
 			} ${
-				fileEle.indexOf("img src") !== -1 ? "with_img" : "without_img"
+				fileEle.includes("img src") ? "with_img" : "without_img"
 			}"></span>`;
 		}
 		return outstr;

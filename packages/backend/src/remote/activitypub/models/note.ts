@@ -374,7 +374,7 @@ export async function createNote(
 		for(var i = 0; i < note.reblogtrail.length; i++) {
 			const trailRoot = note.reblogtrail[i];
 			if(trailRoot.user && trailRoot.user.host) {
-				const url = 'https://' + trailRoot.user.host  + '/@' + trailRoot.user.username + '/notes/' + trailRoot.id;
+				const url = `https://${trailRoot.user.host}/@${trailRoot.user.username}/notes/${trailRoot.id}`;
 				note.reblogtrail[i].uri = url;
 				const rootNote = await Notes.findOne({
 					where: [

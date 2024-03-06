@@ -720,7 +720,7 @@ async function post(postProps = {}) {
 
 	files.forEach( (file) => {
 		if(file.url) {
-			if(processedText.indexOf(file.url)>=0) {
+			if(processedText.includes(file.url)) {
 				usedFiles.push(file);
 			}
 		}

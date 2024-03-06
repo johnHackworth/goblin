@@ -51,7 +51,7 @@
           </div>
           <div v-if="notEmbedFiles.length" class="noteFiles">
             <div v-for="(file, index) in notEmbedFiles" :key="index">
-              <span v-if="!note.text || note.text.indexOf(file.url) <0">
+              <span v-if="!note.text || !note.text.includes(file.url)">
                 <div v-if="file.type.startsWith('image')" class="noteImage">
                   <img :src="file.url" :alt="file.comment"/>
                 </div>

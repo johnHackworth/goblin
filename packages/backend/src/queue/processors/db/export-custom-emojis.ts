@@ -90,7 +90,7 @@ export async function exportCustomEmojis(
 			downloaded: downloaded,
 			emoji: emoji,
 		});
-		const isFirst = customEmojis.indexOf(emoji) === 0;
+		const isFirst = customEmojis.startsWith(emoji);
 
 		await writeMeta(isFirst ? content : ",\n" + content);
 	}

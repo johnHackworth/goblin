@@ -153,9 +153,9 @@ export function removeColumn(id: Column["id"]) {
 }
 
 export function swapColumn(a: Column["id"], b: Column["id"]) {
-	const aX = deckStore.state.layout.findIndex((ids) => ids.indexOf(a) !== -1);
+	const aX = deckStore.state.layout.findIndex((ids) => ids.includes(a));
 	const aY = deckStore.state.layout[aX].findIndex((id) => id === a);
-	const bX = deckStore.state.layout.findIndex((ids) => ids.indexOf(b) !== -1);
+	const bX = deckStore.state.layout.findIndex((ids) => ids.includes(b));
 	const bY = deckStore.state.layout[bX].findIndex((id) => id === b);
 	const layout = deepClone(deckStore.state.layout);
 	layout[aX][aY] = b;

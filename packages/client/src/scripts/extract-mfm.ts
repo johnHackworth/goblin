@@ -14,7 +14,7 @@ const animatedMfm = [
 
 export function extractMfmWithAnimation(nodes: mfm.MfmNode[]): string[] {
 	const mfmNodes = mfm.extract(nodes, (node) => {
-		return node.type === "fn" && animatedMfm.indexOf(node.props.name) > -1;
+		return node.type === "fn" && animatedMfm.includes(node.props.name);
 	});
 	const mfms = mfmNodes.map((x) => x.props.fn);
 

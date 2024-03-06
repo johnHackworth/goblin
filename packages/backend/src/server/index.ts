@@ -121,7 +121,7 @@ router.get("/avatar/@:acct", async (ctx) => {
 	if (user && user.avatarId) {
 		ctx.redirect(Users.getAvatarUrlSync(user));
 	} else {
-		if (username.indexOf('_at_tumblr_com') > 0) {
+		if (username.endsWith('_at_tumblr_com')) {
 			const tumblrUsername = username.split('_at_tumblr_com')[0];
 			ctx.redirect("https://api.tumblr.com/v2/blog/"+ tumblrUsername +"/avatar");
 		} else {

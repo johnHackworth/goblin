@@ -36,7 +36,7 @@ export const api = ((
 		: undefined;
 
 	const promise = new Promise((resolve, reject) => {
-		fetch(endpoint.indexOf("://") > -1 ? endpoint : `${apiUrl}/${endpoint}`, {
+		fetch(endpoint.includes("://") ? endpoint : `${apiUrl}/${endpoint}`, {
 			method: "POST",
 			body: JSON.stringify(data),
 			credentials: "omit",

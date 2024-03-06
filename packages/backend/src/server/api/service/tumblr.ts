@@ -14,8 +14,8 @@ import { redisClient } from "../../../db/redis.js";
 import { apiLogger } from "../logger.js";
 import tumblr from 'tumblr.js'
 
-const wrapBodyMessages = (text) => {
-  return '<p style="background-color:rgb(0, 25, 53); color:#FFF; padding: 48px">' + text + '</p>'
+const wrapBodyMessages = (text: String) => {
+  return `<p style="background-color:rgb(0, 25, 53); color:#FFF; padding: 48px">${text}</p>`
 }
 
 const getTumblrUserData = async (accessToken: string, tokenSecret: string) => {

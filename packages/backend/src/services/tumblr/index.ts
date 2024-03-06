@@ -67,7 +67,7 @@ export async function getTumblrProfile( tumblrBlog: string ) {
 }
 
 export async function transformToReblogs( post: string ) {
-  const $ = cheerio.load('<div class="postRoot">' + post + '</div>');
+  const $ = cheerio.load(`<div class="postRoot">${post}</div>`);
 
   const linksToReblogs = $('p:has(+ blockquote) a').get().reverse();
   const reblogTrail = linksToReblogs.map( (link) => {
@@ -98,20 +98,22 @@ export async function transformToReblogs( post: string ) {
 }
 
 const formatReblogItem = (reblog) => {
-  return '<div class="reblogTrailItem">' +
-    '<div class="reblogHeader">' +
-      '<img class="imageReblogTumblr" src="/avatar/@' + reblog.blog + '_at_tumblr_com" />' +
-      '<a href="' + reblog.link + '">@' + reblog.blog + ' (@tumblr.com)</a>' +
-    '</div>' +
-    '<div class="reblogContent">' +
-      sanitize(reblog.content) +
-    '</div>' +
-  '</div>';
+  [
+    '<div class="reblogTrailItem">',
+      '<div class="reblogHeader">',
+        `<img class="imageReblogTumblr" src="/avatar/@${reblog.blog}_at_tumblr_com" />`,
+        `<a href="${reblog.link}">@${reblog.blog} (@tumblr.com)</a>`,
+      '</div>',
+      '<div class="reblogContent">',
+        sanitize(reblog.content),
+      '</div>',
+    '</div>'
+  ].join('');
 }
 
 export async function getTumblrPosts( tumblrBlog: string, offset: number) {
 
-  const feedUrl = 'https://' + tumblrBlog + '.tumblr.com/rss?cache-buster='+ Date.now();
+  const feedUrl = `https://${tumblrBlog}.tumblr.com/rss?cache-buster=${Date.now()}`;
 //  const postsResponse = await fetch(getPostsUrl(tumblrBlog, offset));
 //  const posts = await postsResponse.json();
   const res = await fetch(feedUrl, {
@@ -206,8 +208,9 @@ export async function updateTumblrUser( tumblrUsername: string ) {
         needProfileUpdate = true;
       }
 
-      if( profile.url != 'https://' +  blogInfo.name + '.tumblr.com') {
-        profile.url = 'https://' +  blogInfo.name + '.tumblr.com';
+      // `https://${blogInfo.name}.tumblr.com`
+      if( profile.url != `https://${blogInfo.name}.tumblr.com`) {
+        profile.url = `https://${blogInfo.name}.tumblr.com`;
         needProfileUpdate = true;
       }
 
@@ -293,8 +296,8 @@ export async function fetchTumblrFeed( user: User ) {
           if(post.title) {
             const titleSansEllipsis = post.title.split('…')[0];
             const strippedContent = post.content ? post.content.replace(/(<([^>]+)>)/gi, '') : null;
-            if( !strippedContent || strippedContent.indexOf(titleSansEllipsis) < 0) {
-              title = '<div class="tumblrTitle">' + sanitize(post.title) + '</div>';
+            if( !strippedContent || !strippedContent.includes(titleSansEllipsis)) {
+              title = `<div class="tumblrTitle">${sanitize(post.title)}</div>`;
             } else {
               title = '';
             }
