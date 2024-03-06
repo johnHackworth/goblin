@@ -25,6 +25,7 @@ import {
 	Notes,
 	NoteEdits,
 	DriveFiles,
+	Users,
 } from "@/models/index.js";
 import type { IMentionedRemoteUsers, Note } from "@/models/entities/note.js";
 import type { IObject, IPost } from "../type.js";
@@ -419,7 +420,6 @@ export async function createNote(
 					const newRootNote = await createNote(url, resolver, true);
 					if(newRootNote) {
 						note.reblogtrail[i].id = newRootNote.id;
-						note.reblogtrail[i].user = newRootNote.user;
 					}
 				}
 			}
