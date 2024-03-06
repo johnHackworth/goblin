@@ -393,7 +393,7 @@ export async function createNote(
 			if(trailRoot.user) {
 
 			  logger.debug('2');
-				const url = 'https://' + trailRoot.user.host  + '/@' + trailRoot.user.username + '/notes/' + trailRoot.id;
+				const url = 'https://' + trailRoot.user.host  + '/notes/' + trailRoot.id;
 				note.reblogtrail[i].uri = url;
 				note.reblogtrail[i].url = url;
 				logger.warn("searching for " + url);
