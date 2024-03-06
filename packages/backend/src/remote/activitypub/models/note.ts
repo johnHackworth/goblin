@@ -305,7 +305,9 @@ export async function createNote(
 
 	// Text parsing
 	let text: string | null = null;
-	if (
+	if (typeof note._goblin_content !== "undefined") {
+		text = note._goblin_content;
+	} else if (
 		note.source?.mediaType === "text/x.misskeymarkdown" &&
 		typeof note.source?.content === "string"
 	) {
@@ -608,7 +610,10 @@ export async function updateNote(value: string | IObject, resolver?: Resolver) {
 
 	// Text parsing
 	let text: string | null = null;
-	if (
+
+	if (typeof post._goblin_content !== "undefined") {
+		text = post._goblin_content;
+	} else if (
 		post.source?.mediaType === "text/x.misskeymarkdown" &&
 		typeof post.source?.content === "string"
 	) {
