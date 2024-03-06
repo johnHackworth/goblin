@@ -61,7 +61,7 @@ export default class Logger {
 		if (!this.store) store = false;
 		if (level === "debug") store = false;
 
-		if (this. ) {
+		if (this.parentLogger) {
 			this.parentLogger.log(
 				level,
 				message,
