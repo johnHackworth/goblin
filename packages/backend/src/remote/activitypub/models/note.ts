@@ -412,9 +412,7 @@ export async function createNote(
 				const user = await Users.findOne({
 					where: [
 						{
-							username: trailNote.user.username
-						},
-						{
+							username: trailNote.user.username,
 							host: trailNote.user.host
 						},
 					],
