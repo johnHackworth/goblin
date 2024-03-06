@@ -420,12 +420,14 @@ export async function createNote(
 					],
 				});
 
+
+
 	    	logger.debug(`Note trail: ${JSON.stringify(user, null, 2)}`);
 				if(rootNote) {
 					logger.warn("found ");
 					note.reblogtrail[i].id = rootNote.id;
 					if(user) {
-						note.reblogtrail[i].user = user;
+						note.reblogtrail[i].user = await Users.pack( user.id );;
 						note.reblogtrail[i].userId = user.id;
 					} else {
 						note.reblogtrail[i].userId = rootNote.userId;
@@ -437,7 +439,7 @@ export async function createNote(
 	    			logger.debug(`Note trail: ${JSON.stringify(newRootNote, null, 2)}`);
 						note.reblogtrail[i].id = newRootNote.id;
 						if(user) {
-							note.reblogtrail[i].user = user;
+							note.reblogtrail[i].user = await Users.pack( user.id );
 							note.reblogtrail[i].userId = user.id;
 						} else {
 							note.reblogtrail[i].userId = newRootNote.userId;
