@@ -392,7 +392,7 @@ export async function createNote(
 				}
 
 			  logger.debug('2');
-				const url = 'https://' + trailNote.user.host  + '/notes/' + trailNote.id;
+				const url = trailNote.uri? trailNote.uri : 'https://' + trailNote.user.host  + '/notes/' + trailNote.id;
 
 				note.reblogtrail[i].uri = url;
 				note.reblogtrail[i].url = url;
