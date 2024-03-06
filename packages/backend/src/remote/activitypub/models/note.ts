@@ -386,8 +386,6 @@ export async function createNote(
 			logger.warn("processing " + i);
 			const trailNote = note.reblogtrail[i];
 
-	    logger.debug(`Note trail: ${JSON.stringify(trailNote, null, 2)}`);
-
 			if(trailNote.user ) {
 				if(!trailNote.user.host) {
 					trailNote.user.host = originHost;
@@ -410,22 +408,38 @@ export async function createNote(
 					],
 				});
 				logger.warn(`result: ${JSON.stringify(rootNote, null, 2)}`);
-				if(rootNote) {
+				const user = await Users.findOne({
+					where: [
+						{
+							username: trailNote.user.username
+						},
+						{
+							host: trailNote.user.host
+						},
+					],
+				});
 
+				if(rootNote) {
 					logger.warn("found ");
 					note.reblogtrail[i].id = rootNote.id;
-					note.reblogtrail[i].user = rootNote.user;
-					note.reblogtrail[i].userId = rootNote.userId;
+					if(user) {
+						note.reblogtrail[i].user = user;
+						note.reblogtrail[i].userId = user.id;
+					} else {
+						note.reblogtrail[i].userId = rootNote.userId;
+					}
 				} else {
 					logger.warn("NOT found ");
 					const newRootNote = await createNote(url, resolver, true);
 					if(newRootNote) {
-
-
 	    			logger.debug(`Note trail: ${JSON.stringify(newRootNote, null, 2)}`);
 						note.reblogtrail[i].id = newRootNote.id;
-						note.reblogtrail[i].userId = newRootNote.userId;
-						note.reblogtrail[i].user = newRootNote.user;
+						if(user) {
+							note.reblogtrail[i].user = user;
+							note.reblogtrail[i].userId = user.id;
+						} else {
+							note.reblogtrail[i].userId = newRootNote.userId;
+						}
 					}
 				}
 			}
