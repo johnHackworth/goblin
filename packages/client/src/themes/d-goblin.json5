@@ -13,7 +13,7 @@
     accentedBg: ':alpha<0.15<@accent',
     focus: ':alpha<0.3<@accent',
     bg: 'rgb(0,25,53)',
-    acrylicBg: ':rgba(255,255,255,0.8)',
+    acrylicBg: 'rgba(255,255,255,0.8)',
     fg: '#000',
     fgTransparentWeak: ':alpha<0.75<@fg',
     fgTransparent: ':alpha<0.5<@fg',
