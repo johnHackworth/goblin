@@ -53,7 +53,7 @@ export const paramDef = {
 		},
 		origin: {
 			type: "string",
-			enum: ["combined", "local", "remote"],
+			enum: ["combined", "local", "remote", "tumblr"],
 			default: "combined",
 		},
 		username: { type: "string", nullable: true, default: null },
@@ -98,10 +98,13 @@ export default define(meta, paramDef, async (ps, me) => {
 
 	switch (ps.origin) {
 		case "local":
-			query.andWhere("user.host IS NULL");
+			query.andWhere("user.host IS NULL AND user.username NOT LIKE '%_at_tumblr_com'");
 			break;
 		case "remote":
 			query.andWhere("user.host IS NOT NULL");
+			break;
+		case "tumblr":
+			query.andWhere("user.host IS NULL AND user.username LIKE '%_at_tumblr_com'")
 			break;
 	}
 

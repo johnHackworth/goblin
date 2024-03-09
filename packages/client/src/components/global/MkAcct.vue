@@ -1,11 +1,11 @@
 <template>
 	<span class="mk-acct">
-		<span class="name">@{{ user.username }}</span>
+		<span class="name">{{ user.username.endsWith('_at_tumblr_com') ? user.username.replace('_at_tumblr_com', '.tumblr.com') : `@${user.username}` }}</span>
 		<span
-			v-if="user.host || detail || $store.state.showFullAcct"
+			v-if="(user.host || detail || $store.state.showFullAcct) && !user.username.endsWith('_at_tumblr_com')"
 			class="host"
-			>@{{ user.host || host }}</span
-		>
+			>@{{ user.host || host }}
+		</span>
 	</span>
 </template>
 
