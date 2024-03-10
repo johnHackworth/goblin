@@ -1,0 +1,264 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: goblin-config
+data:
+  default.yml: |-
+    url: http://localhost:3000
+    port: 3000
+    db:
+      host: goblin-postgres
+      port: 5432
+      db: goblin
+      user: goblin
+      pass: goblin
+    redis:
+      host: goblin-redis
+      port: 6379
+      family: 4
+    #sonic:
+    #  host: localhost
+    #  port: 1491
+    #  auth: SecretPassword
+    #  collection: notes
+    #  bucket: default
+    
+    #elasticsearch:
+    #  host: localhost
+    #  port: 9200
+    #  ssl: false
+    #  user:
+    #  pass:
+    id: 'aid'
+    reservedUsernames:
+      - changes
+      - staff
+      - root
+      - admin
+      - administrator
+      - me
+      - system
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goblin
+  labels:
+    name: goblin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: goblin
+  template:
+    metadata:
+      labels:
+        name: goblin
+    spec:
+      enableServiceLinks: true
+      containers:
+        - name: goblin
+          image: registry.stopdelaying.com/mb/goblin:11
+#          image: '95.217.202.227:32000/goblin:5'
+          command: ["pnpm"]
+          args: ["run", "start"]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 320Mi
+#          livenessProbe:
+#            httpGet:
+#              path: /ping
+#              port: 3000
+#            timeoutSeconds: 5
+#            initialDelaySeconds: 60
+#            successThreshold: 1
+#            failureThreshold: 2
+#            periodSeconds: 10
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          volumeMounts:
+            - name: goblin-uploads
+              mountPath: /goblin/files
+            - name: goblin-cm
+              mountPath: /goblin/.config/default.yml
+              subPath: default.yml
+      volumes:
+        - name: goblin-uploads
+          hostPath:
+            path: /volumes/goblin_uploads
+        - name: goblin-cm
+          configMap:
+            name: goblin-config
+      terminationGracePeriodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: goblin
+  labels:
+    name: goblin
+spec:
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    name: goblin
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goblin-postgres
+  labels:
+    name: goblin-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: goblin-postgres
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: goblin-postgres
+    spec:
+      enableServiceLinks: true
+      containers:
+        - name: goblin-postgres
+          image: 'postgres:16.2-bookworm'
+          env:
+            - name: POSTGRES_PASSWORD
+              value: superadminpassword_changeme
+          resources:
+            requests:
+              cpu: 500m
+              memory: 600Mi
+          livenessProbe:
+            tcpSocket:
+              port: 5432
+            timeoutSeconds: 5
+            initialDelaySeconds: 240
+            successThreshold: 1
+            failureThreshold: 3
+            periodSeconds: 30
+          ports:
+            - name: postgres
+              containerPort: 5432
+              protocol: TCP
+          volumeMounts:
+            - name: goblin-postgres-disk
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: goblin-postgres-disk
+          hostPath:
+            path: /volumes/goblin_postgres
+      terminationGracePeriodSeconds: 45
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: goblin-postgres
+  labels:
+    name: goblin-postgres
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+      protocol: TCP
+      name: postgres
+  selector:
+    name: goblin-postgres
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goblin-redis
+  labels:
+    name: goblin-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: goblin-redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: goblin-redis
+    spec:
+      enableServiceLinks: true
+      containers:
+        - name: goblin-redis
+          image: 'redis:7.2-bookworm'
+          resources:
+            requests:
+              cpu: 100m
+              memory: 80Mi
+          livenessProbe:
+            tcpSocket:
+              port: 6379
+          ports:
+            - name: http
+              containerPort: 6379
+              protocol: TCP
+          volumeMounts:
+            - name: redis-disk
+              mountPath: /data
+      volumes:
+        - name: redis-disk
+          hostPath:
+            path: /volumes/goblin_redis
+      terminationGracePeriodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: goblin-redis
+  labels:
+    name: goblin-redis
+spec:
+  ports:
+    - port: 6379
+      targetPort: 6379
+      protocol: TCP
+      name: redis
+  selector:
+    name: goblin-redis
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/cors-allow-headers: DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,X-Device,
+      X-App, cbAuth, Login_Session_Id, User_Id
+    nginx.ingress.kubernetes.io/cors-allow-origin: '*'
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  labels:
+    app.kubernetes.io/instance: goblin
+    app.kubernetes.io/name: goblin
+  name: goblin
+  namespace: default
+spec:
+  ingressClassName: public
+  rules:
+    - host: goblin.stopdelaying.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: goblin
+                port:
+                  number: 80
+            path: /(?![sp]/)(.*)
+            pathType: Prefix
+status:
+  loadBalancer:
+    ingress:
+      - ip: 127.0.0.1

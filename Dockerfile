@@ -128,6 +128,7 @@ COPY --from=build /goblin/packages/backend/native-utils/built /goblin/packages/b
 RUN corepack enable \
     && corepack install -g pnpm@8.15.4
 ENV NODE_ENV=production
+
 VOLUME "/goblin/files"
-ENTRYPOINT [ "/sbin/bash", "--" ]
-CMD [ "pnpm", "run", "build" ]
+#ENTRYPOINT [ "/bin/bash", "--" ]
+CMD [ "pnpm", "run", "start" ]
