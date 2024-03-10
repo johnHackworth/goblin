@@ -25,7 +25,8 @@ build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
     - echo "Compiling the code..."
-    - pnpm run build
+    - docker build -t registry.stopdelaying.com/mb/goblin:latest
+    - echo "skipping pnpm run build because idk how to install everything on the runner just yet"
     - echo "Compile complete."
 
 unit-test-job:   # This job runs in the test stage.
