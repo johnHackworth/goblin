@@ -1,4 +1,5 @@
 <template>
+	<SpecialEvents />
 	<div
 		class="dkgtipfy"
 		:class="{ wallpaper, isMobile, centered: ui === 'classic' }"
@@ -172,6 +173,7 @@ import { computed, defineAsyncComponent, onMounted, provide, ref } from "vue";
 import * as Acct from "firefish-js/built/acct";
 import type { ComputedRef } from "vue";
 import XCommon from "./_common_/common.vue";
+import SpecialEvents from "../special-events/index.vue";
 import type { PageMetadata } from "@/scripts/page-metadata";
 import { instanceName, ui } from "@/config";
 import XDrawerMenu from "@/ui/_common_/navbar-for-mobile.vue";
