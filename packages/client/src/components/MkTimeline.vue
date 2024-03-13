@@ -23,7 +23,7 @@
 		ref="tlComponent"
 		:no-gap="!$store.state.showGapBetweenNotesInTimeline"
 		:pagination="pagination"
-		noReplies
+		:no-repetition="true"
 		@queue="(x) => (queue = x)"
 	/>
 </template>
