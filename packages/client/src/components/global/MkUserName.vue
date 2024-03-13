@@ -1,7 +1,7 @@
 <template>
 	<Mfm
 		:class="$style.root"
-		:text="(user.username.endsWith('_at_tumblr_com') && user.username.replace('_at_tumblr_com', ' (Tumblr)')) || user.name || user.username"
+		:text="(user.username.endsWith('_at_tumblr_com') && user.username.replace(/_at_tumblr_com$/, ' (Tumblr)')) || user.name || user.username"
 		:plain="true"
 		:nowrap="nowrap"
 		:custom-emojis="user.emojis"

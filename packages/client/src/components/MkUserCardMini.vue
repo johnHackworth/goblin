@@ -16,7 +16,7 @@
 		<div class="body">
 			<span class="name"><MkUserName class="name" :user="user" /></span>
 			<span class="sub">
-				<span v-if="acct(user).endsWith('_at_tumblr_com')" class="acct _monospace">{{ acct(user).replace('_at_tumblr_com', '.tumblr.com') }}</span>
+				<span v-if="acct(user).endsWith('_at_tumblr_com')" class="acct _monospace">{{ acct(user).replace(/_at_tumblr_com$/, '.tumblr.com') }}</span>
 				<span v-else class="acct _monospace">@{{ acct(user) }}</span>
 			</span>
 		</div>
