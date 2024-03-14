@@ -66,6 +66,9 @@
 								<option value="remote">
 									{{ i18n.ts.remote }}
 								</option>
+								<option value="tumblr">
+									{{ i18n.ts.tumblr }}
+								</option>
 							</MkSelect>
 						</div>
 						<div class="inputs">
