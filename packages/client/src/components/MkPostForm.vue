@@ -20,7 +20,7 @@
 				<span class="username">{{ postAccount ? postAccount.username : $i.username }} </span><Caret />
 			</button>
 			<span v-if="$props.renote" class="reblog-header">
-				<Reblog /> <span class="reblog-username">{{ $props.renote.user.username }}</span>
+				<span v-if="$props.editId" class="reblog-username">{{ $props.initialNote.user.username }}</span> <Reblog /> <span class="reblog-username">{{ $props.renote.user.username }}</span>
 			</span>
 			<div class="right">
 				<span class="tumblrIntegration" v-if="$i.integrations.tumblr && !$props.renote && !props.reply && $props.editId==null">
@@ -70,8 +70,8 @@
 				</button>
 			</div>
 		</header>
-		<div class="form" :class="{ fixed }">
-			<div v-for="(trailNote, index) in reblogtrail" :key="index">
+		<div class="form editor-main" :class="{ fixed }">
+			<div v-for="(trailNote, index) in reblogtrail" :key="index" class="reblogs-in-postform">
     		<div class="reblog">
       		<ReblogItem :note="trailNote" />
     		</div>
@@ -259,13 +259,17 @@ let replyId = $ref(null);
 let replyingTo = $ref('');
 
 if(props.renote) {
-	let cloneNote = deepClone(props.renote);
-	if(cloneNote.reblogtrail?.length) {
-		reblogtrail = cloneNote.reblogtrail;
+	if(!props.editId) {
+		let cloneNote = deepClone(props.renote);
+		if(cloneNote.reblogtrail?.length) {
+			reblogtrail = cloneNote.reblogtrail;
+		}
+		cloneNote.reblogtrail = [];
+		cloneNote.text = removeMeta(cloneNote.text);
+		reblogtrail.push(cloneNote);
+	} else {
+		reblogtrail = props.initialNote.reblogtrail;
 	}
-	cloneNote.reblogtrail = [];
-	cloneNote.text = removeMeta(cloneNote.text);
-	reblogtrail.push(cloneNote);
 }
 
 let poll = $ref<{
@@ -701,7 +705,7 @@ async function post(postProps = {}) {
 	let processedText = preprocess(removeMeta(text));
 	if(
 		(!processedText || processedText=== '') &&
-		tags.length > 0 ) {
+		tags && tags.length > 0 ) {
 		canPost = true;
 		processedText = ' ';
 	}
@@ -750,9 +754,12 @@ async function post(postProps = {}) {
 		noteToReplyTo = props.reply.id;
 	}
 
-	const filteredTags = tags.map( (tag) => {
-		return tag.split(`\n`).join('').trim()
-	}).filter( tag => tag && tag != '');
+	const filteredTags = tags ?
+		tags.map( (tag) => {
+			return tag.split(`\n`).join('').trim()
+		}).filter( tag => tag && tag != '')
+	: [];
+
 
 	let postData = {
 		editId: props.editId ? props.editId : undefined,
@@ -977,6 +984,8 @@ onBeforeUnmount(() => {
 		}
 
 		> .reblog-header {
+			margin-left: 16px;
+
 			svg {
 				fill: #555;
 				width: 12px;
@@ -989,7 +998,7 @@ onBeforeUnmount(() => {
 			align-items: center;
 
 			.reblog-username {
-				margin-left: 12px;
+				margin: 0 12px;
 				font-weight: bold;
 			}
 		}
@@ -1346,5 +1355,24 @@ onBeforeUnmount(() => {
   	margin-left: 4px;
   	color: var(--infoBg);
   }
+}
+
+.reblogs-in-postform {
+	.reblog {
+		width: 100%;
+
+		.reblog-item {
+			width: 100%;
+			position: relative;
+
+			img {
+				max-width: 100%;
+			}
+		}
+	}
+}
+
+.editor-main {
+	width: 100%;
 }
 </style>

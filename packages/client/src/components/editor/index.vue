@@ -154,9 +154,9 @@ import OrderedListIcon from "@/components/icons/ordered-list.vue";
 import WarningIcon from "@/components/icons/warning.vue";
 import ColorIcon from "@/components/icons/color.vue";
 import { Gradient } from "./color-gradient.ts";
+import { Iframe } from "./iframe-module.ts";
 
 import ColorMenu from './color-menu.vue';
-
 
 const props = withDefaults(
   defineProps<{
@@ -276,9 +276,13 @@ const editor = useEditor({
   content: props.initialText,
   extensions: [
     StarterKit,
+    Iframe,
     Image,
     Youtube.configure({
       controls: false,
+      nocookie: true,
+      allowFullscreen: true,
+      modestBranding: 'true',
     }),
     Placeholder.configure({
       placeholder: props.placeholder
@@ -368,6 +372,12 @@ const addVideo = (ev) => {
   }
 
   padding-bottom: 16px;
+
+  video, iframe {
+    width: calc(100% + 64px);
+    margin-left: -32px;
+    min-height: 384px;
+  }
 
   img {
     width: calc(100% + 64px);
