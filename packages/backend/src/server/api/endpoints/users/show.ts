@@ -141,7 +141,7 @@ export default define(meta, paramDef, async (ps, me) => {
         throw new ApiError(meta.errors.failedToResolveRemoteUser);
       });
       apiLogger.warn('resolved');
-    } else if (!ps.host && ps.username?.endsWith('.tumblr_com')) {
+    } else if (!ps.host && ps.username?.endsWith('.tumblr.com')) {
     	const username = ps.username.replace('.tumblr.com', '_at_tumblr_com');
       user = await resolveUser(username, ps.host).catch((e)=>{
         apiLogger.warn(`failed to resolve tumblr user: ${e}`);
