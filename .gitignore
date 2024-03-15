@@ -12,10 +12,6 @@ packages/backend/.idea/vcs.xml
 node_modules
 report.*.json
 
-# Cypress
-cypress/screenshots
-cypress/videos
-
 # Coverage
 coverage
 

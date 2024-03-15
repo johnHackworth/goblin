@@ -23,17 +23,20 @@
 					:ad="true"
 					class="notes"
 				>
-					<XNoteDetailed
-						:key="note._featuredId_ || note._prId_ || note.id"
-						:parentKey="note._featuredId_ || note._prId_ || note.id"
-						class="qtqtichx"
-						:note="note"
-						@toggle="toggleNote"
-						:showCloseButton="true"
-						:showNotesCounter="true"
-						:hideTabs="!expandedNotes[ note._featuredId_ || note._prId_ || note.id ]"
-						useReplyTrail="true"
-					/>
+					<div>
+						<XNoteDetailed
+						 	v-if="!noRepetition || !isRepeated(note)"
+							:key="note._featuredId_ || note._prId_ || note.id"
+							:parentKey="note._featuredId_ || note._prId_ || note.id"
+							class="qtqtichx"
+							:note="note"
+							@toggle="toggleNote"
+							:showCloseButton="true"
+							:showNotesCounter="true"
+							:hideTabs="!expandedNotes[ note._featuredId_ || note._prId_ || note.id ]"
+							useReplyTrail="true"
+						/>
+					</div>
 				</XList>
 			</div>
 		</template>
@@ -57,9 +60,39 @@ const props = defineProps<{
 	pagination: Paging;
 	noGap?: boolean;
 	noReplies?: boolean;
+	noRepetition?: boolean;
 }>();
 
 const pagingComponent = ref<InstanceType<typeof MkPagination>>();
+
+const postCache = $ref({});
+
+const isRepeated = ( post ) => {
+	if( ! post.reblogtrail ) {
+		return false;
+	}
+	let result = true;
+	let pointer = postCache;
+	for( let i = 0; i < post.reblogtrail.length; i++ ) {
+		if( !pointer [ post.reblogtrail[ i ].id ] ) {
+			pointer[ post.reblogtrail[ i ].id ] = {};
+			result = false;
+		} else {
+			pointer = pointer[ post.reblogtrail[ i ].id ]
+		}
+	}
+	if( pointer[ post.id ] ) {
+		if( Object.keys( pointer[ post.id ]  ).length === 0 ) {
+			// the current post + timeline has been rendered already but no
+			// downstream reblogs have, so we render the post again
+			result = false;
+		}
+	} else {
+		pointer[ post.id ] = {};
+		result = false;
+	}
+	return result;
+}
 
 function scrollTop() {
 	scroll(tlEl.value, { top: 0, behavior: "smooth" });
