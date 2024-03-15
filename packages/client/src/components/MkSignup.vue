@@ -35,7 +35,7 @@
 				v-model="username"
 				class="_formBlock clear"
 				type="text"
-				pattern="^[a-zA-Z0-9_]{1,20}$"
+				pattern="^[a-zA-Z0-9_]{1,128}$"
 				:spellcheck="false"
 				required
 				data-cy-signup-username
