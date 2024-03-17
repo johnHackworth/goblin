@@ -1,7 +1,7 @@
 {
   id: '356',
 
-  name: 'd-goblin',
+  name: 'Goblin Night',
   author: 'jv',
 
   base: 'dark',
@@ -11,6 +11,7 @@
     accentDarken: ':darken<10<@accent',
     accentLighten: ':lighten<10<@accent',
     accentedBg: ':alpha<0.15<@accent',
+    adminPanelFg: '#000',
     focus: ':alpha<0.3<@accent',
     bg: 'rgb(0,25,53)',
     acrylicBg: 'rgba(255,255,255,0.8)',
