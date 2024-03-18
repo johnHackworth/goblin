@@ -17,3 +17,15 @@ export const getNotEmbedFiles = ( note ) => {
   }
   return note.files;
 }
+
+export const getUserAndHostFromUrl = (url) => {
+  const match = url.match(/https?:\/\/([^/]+)\/@([^/]+)/);
+  if (match) {
+    return {
+      full: '@' + match[2] + '@' + match[1],
+      host: match[1],
+      username: match[2]
+    }
+  }
+  return null;
+}

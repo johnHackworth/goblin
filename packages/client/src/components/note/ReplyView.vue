@@ -1,7 +1,7 @@
 <template>
   <div
     :aria-label="accessibleLabel"
-    v-if="!muted.muted"
+    v-if="!muted.mnoteCuted"
     v-show="!isDeleted"
     :ref="el"
     v-hotkey="keymap"
@@ -53,7 +53,8 @@
             class="button _button noteCount"
             @click="noteClick"
           >
-            <b>{{noteCount}}</b> Notes
+            <span v-if="!props.showCloseButton"><b>{{noteCount}}</b> Notes</span>
+            <span v-else><i class="ph-x-circle ph-bold ph-lg"></i> Close Notes</span>
           </button>
 
           <button
@@ -151,7 +152,7 @@ import { defaultStore, noteViewInterruptors } from "@/store";
 import { reactionPicker } from "@/scripts/reaction-picker";
 import { $i } from "@/account";
 import { i18n } from "@/i18n";
-import { getNoteMenu } from "@/scripts/get-note-menu";
+import { getNoteMenu } from "@/scripts/get-note-menu"
 import { useNoteCapture } from "@/scripts/use-note-capture";
 import { notePage } from "@/filters/note";
 import { deepClone } from "@/scripts/clone";
@@ -164,18 +165,18 @@ const props = defineProps<{
   note: misskey.entities.Note;
   useReplyTrail: boolean;
   parentKey?: string;
+  showCloseButton?: boolean;
 }>();
 const emit = defineEmits(['toggle']);
 
 const inChannel = inject("inChannel", null);
 let detailedView = $ref(props.detailedView);
 let note = $ref(props.note);;
-if(note.reply) {
-  note = await populateFullReply(note);
-} else if (note.renote && note.renote.reply) {
-  note.renote = await populateFullReply(note.renote)
-}
+note = await populateFullReply(note);
+
 let parentNote = $computed(() => getParentNote(note));
+
+let postIsExpanded = ref(false);
 
 const getPlainText = (text) => {
   const div = document.createElement("div");
@@ -228,7 +229,9 @@ const reactButton = ref<HTMLElement>();
 
 
 if(note.renote && note.renote.reply && props.useReplyTrail) {
-  note.renote.reblogtrail = getAncestorsAsTrail(note.renote.reply);
+    note.renote.reblogtrail = getAncestorsAsTrail(note.renote.reply);
+    note.renote.replyId = null;
+    note.renote.reply = null;
 }
 if(note.replyId && props.useReplyTrail) {
   note.reblogtrail = getAncestorsAsTrail(note.reply);
@@ -236,7 +239,10 @@ if(note.replyId && props.useReplyTrail) {
   note.reply = null;
 }
 
-let appearNote = $ref(parentNote);
+let appearNote = $ref(props.useReplyTrail ? note : parentNote);
+if(appearNote.renote) {
+  appearNote = appearNote.renote;
+}
 
 let reactionCount = 0;
 for(let reaction in parentNote.reactions) {
@@ -449,6 +455,7 @@ function noteLink(e) {
 }
 
 function noteClick(e) {
+  setPostExpanded( !postIsExpanded );
   emit('toggle', props.parentKey)
 }
 
@@ -459,7 +466,6 @@ function readPromo() {
   isDeleted.value = true;
 }
 
-let postIsExpanded = ref(false);
 
 function setPostExpanded(val: boolean) {
   postIsExpanded.value = val;
