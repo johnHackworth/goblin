@@ -1,4 +1,4 @@
-import { defaultStore } from "@/store";
+ import { defaultStore } from "@/store";
 import { instance } from "@/instance";
 import { host } from "@/config";
 import * as os from "@/os";
@@ -46,19 +46,6 @@ export function openHelpMenu_(ev: MouseEvent) {
 						to: "/api-console",
 						text: "API Console",
 						icon: "ph-terminal-window ph-bold ph-lg",
-					},
-					{
-						text: i18n.ts.document,
-						icon: "ph-file-doc ph-bold ph-lg",
-						action: () => {
-							window.open("/api-doc", "_blank");
-						},
-					},
-					{
-						type: "link",
-						to: "/scratchpad",
-						text: "AiScript Scratchpad",
-						icon: "ph-scribble-loop ph-bold ph-lg",
 					},
 				],
 			},
