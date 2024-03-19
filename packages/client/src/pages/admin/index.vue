@@ -440,7 +440,6 @@ defineExpose({
 		display: flex;
 		margin: 0 auto;
 		height: 100%;
-		color: #FFF;
 
 		> .nav {
 			width: 32%;
@@ -455,10 +454,16 @@ defineExpose({
 			flex: 1;
 			min-width: 0;
 		}
+
+		> .item._panel {
+			color: var(--adminPanelFg);
+		}
 	}
 
 	> .nav {
 		.lxpfedzu {
+			color: var(--fg);
+
 			> .info {
 				margin: 16px 0;
 			}

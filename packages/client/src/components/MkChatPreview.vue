@@ -103,7 +103,7 @@ function isMe(message): boolean {
 		}
 
 		&:not(.isMe):not(.isRead) {
-			background-color: var(--accentedBg);
+			background-color: var(--panel);
 		}
 
 		&:after {
