@@ -44,7 +44,7 @@
       </button>
 
     </span>
-    <span v-if="!isSelecting" class="formatting">
+    <span v-if="!isSelecting">
       <button
         v-tooltip="i18n.ts.attachFile"
         class="_button photo"
@@ -445,7 +445,7 @@ const addVideo = (ev) => {
   background: white;
   width: calc(100% - 32px);
   margin-left: 16px;
-  min-height: 300px;
+  min-height: 128px;
 
 
   .ProseMirror:focus-visible {
@@ -474,23 +474,6 @@ const addVideo = (ev) => {
       text-decoration: underline;
       color: #226;
     }
-  }
-
-  .tag {
-    background-color: #d1f1d1;
-    display: inline-block;
-    padding: 4px 8px;
-    margin-right: 8px;
-    min-width: 16px;
-    min-height: 16px;
-    margin-top: 4px;
-    border-radius: 8px;
-    outline: none;
-  }
-
-  .tag::before {
-    content: '#';
-    margin-right: 2px;
   }
 }
 </style>
@@ -541,8 +524,7 @@ const addVideo = (ev) => {
 
 .tagsContainer {
   width: calc(100% - 32px);
-  padding-bottom: 16px;
-  padding-left: 16px;
+  padding: 0 16px 16px 16px;
   position: sticky;
   background-color: white;
   bottom: 24px;
@@ -576,17 +558,34 @@ const addVideo = (ev) => {
     margin-top: 4px;
     border-radius: 8px;
   }
+
+  .tag {
+    background-color: #d1f1d1;
+    display: inline-block;
+    padding: 4px 8px;
+    margin-right: 8px;
+    min-width: 16px;
+    min-height: 16px;
+    margin-top: 4px;
+    border-radius: 8px;
+    outline: none;
+  }
+
+  .tag::before {
+    content: '#';
+    margin-right: 2px;
+  }
 }
 
 footer {
-  padding-bottom: 16px;
   position: sticky;
   background-color: white;
   bottom: -30px;
   width: calc(100% - 32px);
   display: flex;
-  padding-left: 16px;
-
+  padding: 0 16px 8px;
+  flex-direction: row;
+  align-items: center;
 
   button._button {
     margin-right: 16px;
@@ -631,11 +630,10 @@ footer {
     fill: RGB(232, 215, 56);
   }
 
-  .submit {
+  button.submit._button {
     display: inline-flex;
     align-items: center;
-    margin: 2px;
-    margin-left: auto;
+    margin: 2px 0 2px auto;
     padding: 8px 32px;
     font-weight: bold;
     vertical-align: center;
