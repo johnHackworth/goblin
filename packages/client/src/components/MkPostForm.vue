@@ -1359,11 +1359,12 @@ onBeforeUnmount(() => {
 
 .reblogs-in-postform {
 	.reblog {
-		width: 100%;
-
+		width: 90%;
+		padding: 0 5%;
 		.reblog-item {
 			width: 100%;
 			position: relative;
+			padding: 0;
 
 			img {
 				max-width: 100%;
