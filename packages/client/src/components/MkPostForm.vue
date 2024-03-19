@@ -23,7 +23,13 @@
 				<span v-if="$props.editId" class="reblog-username">{{ $props.initialNote.user.username }}</span> <Reblog /> <span class="reblog-username">{{ $props.renote.user.username }}</span>
 			</span>
 			<div class="right">
-				<span class="tumblrIntegration" v-if="$i.integrations.tumblr && !$props.renote && !props.reply && $props.editId==null">
+				<span class="tumblrIntegration"
+					v-if="$i.integrations.tumblr &&
+						visibility === 'public' &&
+						!$props.renote &&
+						!props.reply &&
+						$props.editId==null &&
+						!localOnly">
 					xpost to tumblr:
 					<select
 	      		class="blogSelector"
@@ -779,7 +785,7 @@ async function post(postProps = {}) {
 				: undefined,
 	};
 
-	if($i.integrations.tumblr && tumblrBlogSelector && tumblrBlogSelector.value != '') {
+	if($i.integrations.tumblr && tumblrBlogSelector && tumblrBlogSelector.value != '' && visibility === 'public' && !localOnly) {
 		postData.postToTumblr = tumblrBlogSelector.value;
 	}
 
