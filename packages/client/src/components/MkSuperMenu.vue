@@ -80,6 +80,9 @@ export default defineComponent({
 		}
 
 		> .title {
+			color: var(--navFg);
+			font-weight: bold;
+
 			opacity: 0.7;
 			margin: 0 12px 8px;
 			font-size: 0.9em;
@@ -87,6 +90,8 @@ export default defineComponent({
 
 		> .items {
 			> .item {
+				color: var(--navFg);
+
 				display: flex;
 				align-items: center;
 				width: 100%;
@@ -97,15 +102,11 @@ export default defineComponent({
 				margin-bottom: 0.3rem;
 
 				&:hover,
-				&:focus-visible {
-					color: var(--fg);
-					text-decoration: none;
-					background: var(--panelHighlight);
-				}
-
+				&:focus-visible,
 				&.active {
 					color: var(--accent);
 					background: var(--accentedBg);
+					text-decoration: none;
 				}
 
 				&.danger {

@@ -582,6 +582,7 @@ function more(ev: MouseEvent) {
 				}
 
 				> .item {
+					color: var(--navFg);
 					display: block;
 					position: relative;
 					padding: 1.1rem 0;

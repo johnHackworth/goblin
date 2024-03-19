@@ -25,7 +25,7 @@
 			<div class="middle">
 				<MkA
 					v-click-anime
-					class="item index"
+					class="item index _button"
 					active-class="active"
 					to="/"
 					exact
