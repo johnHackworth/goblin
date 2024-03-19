@@ -125,7 +125,7 @@
 						v-if="isRss"
 					>
 						<span class="rssLabel"><i class="ph-bold ph-rss"></i> rss</span>
-						<a :href="note.url" target="_blank">{{ i18n.ts.originalPost || "Original Post" }} <i class="ph-bold ph-arrow-square-out"></i></a>
+						<a :href="appearNote.url" target="_blank">{{ i18n.ts.originalPost || "Original Post" }} <i class="ph-bold ph-arrow-square-out"></i></a>
 					</div>
 
 					<button
