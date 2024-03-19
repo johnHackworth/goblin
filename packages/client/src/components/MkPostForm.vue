@@ -975,6 +975,10 @@ onBeforeUnmount(() => {
 		z-index: 1000;
 		height: 66px;
 		border-bottom: 1px solid #C1C1C1;
+		position: sticky;
+  	top: -30px;
+  	background: white;
+
 
 		> .cancel {
 			padding: 0;
