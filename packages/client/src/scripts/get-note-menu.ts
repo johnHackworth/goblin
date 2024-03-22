@@ -215,38 +215,6 @@ export function getNoteMenu(props: {
 		props.isDeleted.value = true;
 	}
 
-	async function promote(): Promise<void> {
-		const { canceled, result: days } = await os.inputNumber({
-			title: i18n.ts.numberOfDays,
-		});
-
-		if (canceled) return;
-
-		os.apiWithDialog("admin/promo/create", {
-			noteId: appearNote.id,
-			expiresAt: Date.now() + 86400000 * days,
-		});
-	}
-
-	function share(): void {
-		navigator.share({
-			title: i18n.t("noteOf", { user: appearNote.user.name }),
-			text: appearNote.text,
-			url: `${url}/notes/${appearNote.id}`,
-		});
-	}
-
-	async function translate(): Promise<void> {
-		if (props.translation.value != null) return;
-		props.translating.value = true;
-		const res = await os.api("notes/translate", {
-			noteId: appearNote.id,
-			targetLang: localStorage.getItem("lang") || navigator.language,
-		});
-		props.translating.value = false;
-		props.translation.value = res;
-	}
-
 	let menu;
 	if ($i) {
 		const statePromise = os.api("notes/state", {
@@ -309,17 +277,6 @@ export function getNoteMenu(props: {
 							action: () => togglePin(true),
 					  }
 				: undefined,
-			/*
-		...($i.isModerator || $i.isAdmin ? [
-			null,
-			{
-				icon: 'ph-megaphone-simple ph-bold ph-lg',
-				text: i18n.ts.promote,
-				action: promote
-			}]
-			: []
-		),*/
-			null,
 			!isAppearAuthor
 				? {
 						icon: "ph-warning-circle ph-bold ph-lg",
@@ -368,6 +325,15 @@ export function getNoteMenu(props: {
 				: undefined,
 			!isAppearAuthor ? null : undefined,
 		].filter((x) => x !== undefined);
+		if(appearNote.url || appearNote.uri) {
+			menu.push( {
+				icon: "ph-arrow-square-out ph-bold ph-lg",
+				text: i18n.ts.showOnRemote,
+				action: () => {
+					window.open(appearNote.url || appearNote.uri, "_blank");
+				},
+		  } );
+		}
 	} else {
 		menu = [
 			appearNote.url || appearNote.uri
