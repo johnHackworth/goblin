@@ -102,7 +102,7 @@
 					:key="`reblog-$(i)`">
 					<div v-if="reblog.text === null" class="rebloggedBy">
 							<img :src="reblog.user.avatarUrl" />
-							<a :href="'/' + (reblog.user.host ?
+							<a :href="'/@' + (reblog.user.host ?
 								reblog.user.username + '@' + reblog.user.host :
 								reblog.user.username)">
 								@{{ reblog.user.host ?
