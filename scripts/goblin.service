@@ -1,0 +1,15 @@
+[Unit]
+Description=Fediverse server based on Tumblr
+After=network.target
+
+[Service]
+ExecStart=/etc/goblin/scripts/goblin.start.sh
+PIDFile=/run/goblin/goblin.pid
+Restart=always
+User=goblin
+Group=goblin
+StandardOutput=file:/var/log/goblin/log.txt
+StandardError=file:/var/log/goblin/log.error
+
+[Install]
+WantedBy=multi-user.target
