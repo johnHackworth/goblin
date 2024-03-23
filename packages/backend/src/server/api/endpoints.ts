@@ -351,10 +351,10 @@ import * as ep___i_move from "./endpoints/i/move.js";
 import * as ep___i_known_as from "./endpoints/i/known-as.js";
 
 const getEps = [
-  ["note/reblogtrail", ep___notes_reblogtrail],
-  ["tumblr/user", ep___users_tumblr],
-  ["tumblr/feed", ep___users_tumblr_feed],
-  ["note/ancestors", ep___notes_ancestors],
+	["note/reblogtrail", ep___notes_reblogtrail],
+	["tumblr/user", ep___users_tumblr],
+	["tumblr/feed", ep___users_tumblr_feed],
+	["note/ancestors", ep___notes_ancestors],
 ];
 
 const postEps = [
@@ -809,30 +809,31 @@ export interface IEndpoint {
 	exec: any; // TODO: may be obosolete @ThatOneCalculator
 	meta: IEndpointMeta;
 	params: Schema;
-  method: 'POST' | 'GET' | 'PUT' | 'DELETE';
+	method: "POST" | "GET" | "PUT" | "DELETE";
 }
 
-const postEndpoints: IEndpoint[] = (postEps as [string, any]).map(([name, ep]) => {
-	return {
-		name: name,
-		exec: ep.default,
-		meta: ep.meta ?? {},
-		params: ep.paramDef,
-    method: 'POST',
-	};
-});
+const postEndpoints: IEndpoint[] = (postEps as [string, any]).map(
+	([name, ep]) => {
+		return {
+			name: name,
+			exec: ep.default,
+			meta: ep.meta ?? {},
+			params: ep.paramDef,
+			method: "POST",
+		};
+	},
+);
 
-
-const getEndpoints: IEndpoint[] = (getEps as [string, any]).map(([name, ep]) => {
-  return {
-    name: name,
-    exec: ep.default,
-    meta: ep.meta ?? {},
-    params: ep.paramDef,
-    method: 'GET',
-  };
-});
-
-
+const getEndpoints: IEndpoint[] = (getEps as [string, any]).map(
+	([name, ep]) => {
+		return {
+			name: name,
+			exec: ep.default,
+			meta: ep.meta ?? {},
+			params: ep.paramDef,
+			method: "GET",
+		};
+	},
+);
 
 export default postEndpoints.concat(getEndpoints);

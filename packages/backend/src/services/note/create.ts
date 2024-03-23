@@ -161,7 +161,6 @@ type Option = {
 	app?: App | null;
 };
 
-
 const processReply = async (reply, nmRelatedPromises, nm, user, note) => {
 	// Fetch watchers
 	nmRelatedPromises.push(notifyToWatchersOfReplyee(reply, user, nm));
@@ -177,7 +176,7 @@ const processReply = async (reply, nmRelatedPromises, nm, user, note) => {
 			const packedReply = await Notes.pack(note, {
 				id: reply.userId,
 			});
-			publishMainStream( reply.userId, "reply", packedReply);
+			publishMainStream(reply.userId, "reply", packedReply);
 
 			const webhooks = (await getActiveWebhooks()).filter(
 				(x) => x.userId === reply!.userId && x.on.includes("reply"),
@@ -189,7 +188,7 @@ const processReply = async (reply, nmRelatedPromises, nm, user, note) => {
 			}
 		}
 	}
-}
+};
 
 export default async (
 	user: {
@@ -334,9 +333,10 @@ export default async (
 
 			emojis = data.apEmojis || extractCustomEmojisFromMfm(combinedTokens);
 
-			if(!noMentions) {
+			if (!noMentions) {
 				mentionedUsers =
-					data.apMentions || (await extractMentionedUsers(user, combinedTokens));
+					data.apMentions ||
+					(await extractMentionedUsers(user, combinedTokens));
 			}
 		}
 
@@ -455,15 +455,11 @@ export default async (
 		}
 
 		// この投稿を除く指定したユーザーによる指定したノートのリノートが存在しないとき
-		if (
-			data.renote &&
-			!user.isBot
-		) {
+		if (data.renote && !user.isBot) {
 			incRenoteCount(data.renote);
 		}
 
-		if (
-			data.renote && (data.text ) && !user.isBot ) {
+		if (data.renote && data.text && !user.isBot) {
 			incQuoteCount(data.renote);
 		}
 
@@ -573,7 +569,7 @@ export default async (
 			// If has in reply to note
 			if (data.reply) {
 				processReply(data.reply, nmRelatedPromises, nm, user, note);
-				if(rootPost.id !== data.reply.id ) {
+				if (rootPost.id !== data.reply.id) {
 					processReply(rootPost, nmRelatedPromises, nm, user, note);
 				}
 			}
@@ -597,13 +593,13 @@ export default async (
 				nmRelatedPromises.push(
 					notifyToWatchersOfRenotee(data.renote, user, nm, type),
 				);
-				if( data.reblogtrail && data.reblogtrail.length > 1 ) {
-					for(let i = 0; i < data.reblogtrail.length; i++) {
+				if (data.reblogtrail && data.reblogtrail.length > 1) {
+					for (let i = 0; i < data.reblogtrail.length; i++) {
 						const rebloggedPost = data.reblogtrail[i];
 						if (rebloggedPost.user && rebloggedPost.user.host === null) {
 							const threadMuted = await NoteThreadMutings.findOneBy({
 								userId: rebloggedPost.userId,
-								threadId: rebloggedPost.id
+								threadId: rebloggedPost.id,
 							});
 
 							if (!threadMuted) {
@@ -726,7 +722,6 @@ function incRenoteCount(renote: Note) {
 		.execute();
 }
 
-
 function incQuoteCount(renote: Note) {
 	Notes.createQueryBuilder()
 		.update()
@@ -737,7 +732,6 @@ function incQuoteCount(renote: Note) {
 		.where("id = :id", { id: renote.id })
 		.execute();
 }
-
 
 async function insertNote(
 	user: { id: User["id"]; host: User["host"] },
@@ -750,7 +744,7 @@ async function insertNote(
 		data.createdAt = new Date();
 	}
 
-/*	if(data.reply && user.host) {
+	/*	if(data.reply && user.host) {
 		// it's a reply created by a user in other server
 		// so we want to convert it to a reblog format
 		data.renote = data.reply;
@@ -982,7 +976,7 @@ async function createMentionedEvents(
 }
 
 function saveReply(reply: Note, note: Note) {
-	logger.info('saving reply for ' + reply.id);
+	logger.info("saving reply for " + reply.id);
 	Notes.increment({ id: reply.id }, "repliesCount", 1);
 }
 

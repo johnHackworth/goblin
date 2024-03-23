@@ -36,7 +36,9 @@ export async function checkFetch(req: IncomingMessage): Promise<number> {
 		let signature;
 
 		try {
-			signature = httpSignature.parseRequest(req, { headers: ["(request-target)", "host", "date"] });
+			signature = httpSignature.parseRequest(req, {
+				headers: ["(request-target)", "host", "date"],
+			});
 		} catch (e) {
 			return 401;
 		}
@@ -138,21 +140,38 @@ export async function getSignatureUser(req: IncomingMessage): Promise<{
 	return await dbResolver.getAuthUserFromApId(getApId(keyId.toString()));
 }
 
-export function verifySignature(sig: IParsedSignature, key: UserPublickey): boolean {
-	if (!['hs2019', 'rsa-sha256'].includes(sig.algorithm.toLowerCase())) return false;
+export function verifySignature(
+	sig: IParsedSignature,
+	key: UserPublickey,
+): boolean {
+	if (!["hs2019", "rsa-sha256"].includes(sig.algorithm.toLowerCase()))
+		return false;
 	try {
-		return verify('rsa-sha256', Buffer.from(sig.signingString, 'utf8'), key.keyPem, Buffer.from(sig.params.signature, 'base64'));
-	}
-	catch {
+		return verify(
+			"rsa-sha256",
+			Buffer.from(sig.signingString, "utf8"),
+			key.keyPem,
+			Buffer.from(sig.params.signature, "base64"),
+		);
+	} catch {
 		// Algo not supported
 		return false;
 	}
 }
 
-export function verifyDigest(body: string, digest: string | string[] | undefined): boolean {
+export function verifyDigest(
+	body: string,
+	digest: string | string[] | undefined,
+): boolean {
 	digest = toSingle(digest);
-	if (body == null || digest == null || !digest.toLowerCase().startsWith('sha-256='))
+	if (
+		body == null ||
+		digest == null ||
+		!digest.toLowerCase().startsWith("sha-256=")
+	)
 		return false;
 
-	return createHash('sha256').update(body).digest('base64') === digest.substring(8);
+	return (
+		createHash("sha256").update(body).digest("base64") === digest.substring(8)
+	);
 }
