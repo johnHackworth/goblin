@@ -1982,7 +1982,6 @@ socialTimeline: Timeline Sociale
 requireAdminForView: Vous avez besoin d'un compte d'administration pour voir cela.
 isSystemAccount: Un compte créé et géré automatiquement par le système.
 typeToConfirm: Entrer {x} pour confirmer
-statusbar: Barre d'état
 sensitiveMediaDetection: Détection des médias sensibles (NSFW)
 cannotUploadBecauseInappropriate: Ce fichier n'a pas pu être mis en ligne, car il
   a été détecté comme potentiellement sensible (NSFW).

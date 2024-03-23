@@ -458,7 +458,6 @@ tenMinutes: 10 dakika
 recentNDays: Son {n} gün
 noEmailServerWarning: Mail sunucusu ayarlanmadı.
 thereIsUnresolvedAbuseReportWarning: Çözülmemiş raporlar var.
-statusbar: Durum çubuğu
 pleaseSelect: Bir seçenek seçin
 lastActiveDate: Son kullanılan
 reverse: Tersi

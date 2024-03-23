@@ -7,9 +7,6 @@
 		<XSidebar v-if="!isMobile" />
 
 		<MkStickyContainer class="contents">
-			<template #header
-				><XStatusBars :class="$style.statusbars"
-			/></template>
 			<main
 				id="maincontent"
 				style="min-width: 0"
@@ -191,9 +188,6 @@ import {
 import { deviceKind } from "@/scripts/device-kind";
 
 const XWidgets = defineAsyncComponent(() => import("./universal.widgets.vue"));
-const XStatusBars = defineAsyncComponent(
-	() => import("@/ui/_common_/statusbars.vue"),
-);
 
 const DESKTOP_THRESHOLD = 1100;
 const MOBILE_THRESHOLD = 500;
@@ -798,13 +792,5 @@ console.log(mainRouter.currentRoute.value.name);
 			}
 		}
 	}
-}
-</style>
-
-<style lang="scss" module>
-.statusbars {
-	position: sticky;
-	top: 0;
-	left: 0;
 }
 </style>
