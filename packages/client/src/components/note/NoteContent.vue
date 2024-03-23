@@ -363,7 +363,7 @@ function focusFooter(ev) {
       text-decoration: underline;
     }
 
-    img {
+    img, video, iframe {
       width: calc(96% + 64px);
       margin-left: calc(2% - 32px);
     }

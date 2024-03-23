@@ -1,5 +1,4 @@
 import { apiGet } from "@/os";
-import { deepClone } from "@/scripts/clone";
 
 const getNoteAncestors = async ( noteId ) => {
   return await apiGet("note/ancestors", {
@@ -16,11 +15,21 @@ export const populateFullReply = async ( note ) => {
       return { ...note, reply: await getNoteAncestors(note.replyId) }
     }
   }
+  if(note.renoteId) {
+    if(note.renote) {
+      const fullReply = await populateFullReply(note.renote)
+      return { ...note, renote: fullReply }
+    } else {
+      return { ...note, renote: await getNoteAncestors(note.renoteId) }
+    }
+  }
   return note;
 }
 
-
 export const getParentNote = ( note ) => {
+  if (note.reblogtrail && note.reblogtrail.length ) {
+    return getParentNote(note.reblogtrail[0]);
+  }
   if ( note.reply ) {
     return getParentNote( note.reply)
   } else if(note.renote) {
@@ -29,11 +38,12 @@ export const getParentNote = ( note ) => {
   return note;
 }
 
-export const getAncestorsAsTrail = ( note ) => {
+export const getAncestorsAsTrail =  ( note ) => {
   let currentNote = note;
   let trail: any[] = [];
-  while(currentNote.reply) {
-    trail.push( { ...currentNote,  reply: null, replyId: null} );
+
+  while(currentNote.replyId) {
+    trail.push( currentNote );
     currentNote = currentNote.reply;
   }
   trail.push(currentNote);

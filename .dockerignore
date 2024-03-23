@@ -10,10 +10,6 @@ report.*.json
 # Rust
 packages/backend/native-utils/target
 
-# Cypress
-cypress/screenshots
-cypress/videos
-
 # Developer stuff
 .git
 Dockerfile

@@ -2,7 +2,7 @@
   <div class="header">
     <div class="user">
       <a v-if="note.user" :href="userPage(note.user)">{{note.user.username}}</a>
-      <a v-else :href="note.url">{{note.url}}</a>
+      <a v-else :href="note.url">{{ syntheticUser.user }}</a>
     </div>
     <div class="time">
       <MkA class="created-at" :to="notePage(note)">
@@ -35,11 +35,19 @@ import MkVisibility from "@/components/MkVisibility.vue";
 import { notePage } from "@/filters/note";
 import { userPage } from "@/filters/user";
 import { i18n } from "@/i18n";
+import { getUserAndHostFromUrl } from "@/helpers/note/note-content"
 
 const props = defineProps<{
   note: misskey.entities.Note;
   pinned?: boolean;
 }>();
+
+let syntheticUser = $ref(null);
+if(!props.note.user) {
+  syntheticUser = getUserAndHostFromUrl(props.note.url);
+}
+
+
 </script>
 
 <style lang="scss" scoped>

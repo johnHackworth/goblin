@@ -9,7 +9,7 @@
 			:custom-emojis="note.emojis"
 		/>
 	</p>
-	<div class="wrmlmaaaau">
+	<div class="wrmlmaau">
 		<div
 			class="content"
 			:class="{
@@ -57,6 +57,9 @@
 				>
 				<div class="noteText">
           <div v-html="note.text" />
+        </div>
+        <div v-if="note.tags" class="noteTags">
+          <a class="noteTag" v-for="tag in note.tags" :href="`/tag/${tag}`">#{{tag}}</a>
         </div>
 				<XPoll v-if="note.poll" :note="note" class="poll" />
 
@@ -343,9 +346,17 @@ function focusFooter(ev) {
 	}
 	.noteText {
 		img {
-      width: calc(100% + 64px);
-      margin-left: -32px;
+      max-width: 100%;
     }
 	}
+  .noteTags {
+    padding: 0 32px;
+    margin-top: 16px;
+    .noteTag {
+      color: #09A;
+      font-weight: 600;
+      margin-right: 16px;
+    }
+  }
 }
 </style>

@@ -2,7 +2,7 @@
   <div v-size="{ min: [350, 500] }" class="reblog-item" :data-debug="JSON.stringify(note)">
     <div class="reblog-item-header">
       <div class="avatar">
-        <Pfp :user="note.user" />
+        <Pfp :user="note.user" :url="note.url" />
       </div>
       <div class="data">
         <Header :note="note" />

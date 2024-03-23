@@ -1,123 +1,122 @@
-  <template>
+<template>
   <div class="block-editor" :onPaste="handlePaste" >
     <div class="editor-area">
       <div v-if="editor">
         <editor-content :editor="editor" />
-        <div class="tagsContainer">
-          <div class="currentTags">
-            <span contenteditable class="tag" v-for="(tag, index) in tags" :key="index" @blur="updateTag" :data-index="index">{{ tag }}</span>
-          </div>
-
-          <div class="tagEditor">
-            <div class="tagInput"
-              :class="{ hasTags: tags.length > 0 }"
-              ref="tagsElement"
-              contenteditable
-              @keydown.enter="validateTag" />
-          </div>
-        </div>
       </div>
     </div>
-    <footer>
-      <span v-if="isSelecting && isColorMenuVisible" class="formatting">
-        <ColorMenu @close="toggleColorMenu" :editor="editor" @color="applyColor" />
-      </span>
-      <span v-if="isSelecting && !isColorMenuVisible" class="formatting">
-        <button @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().chain().focus().toggleBold().run()" class="_button"  :class="{ 'is-active': editor.isActive('bold') }">
-        <BoldIcon />
-        </button>
-        <button @click="editor.chain().focus().toggleItalic().run()" :disabled="!editor.can().chain().focus().toggleItalic().run()"   class="_button" :class="{ 'is-active': editor.isActive('italic') }">
-          <ItalicIcon />
-        </button>
-        <button @click="editor.chain().focus().toggleStrike().run()" :disabled="!editor.can().chain().focus().toggleStrike().run()"  class="_button" :class="{ 'is-active': editor.isActive('strike') }">
-          <StrikeIcon />
-        </button>
-        <button @click="setLink" class="_button" :class="{ 'is-active': editor.isActive('link') }">
-          <LinkIcon />
-        </button>
-        <button @click="editor.chain().focus().toggleSubscript().run()" class="_button" :class="{ 'is-active': editor.isActive('link') }">
-          <SmallIcon />
-        </button>
-        <button @click="toggleColorMenu" class="_button" :class="{ 'is-active': isColorMenuVisible }">
-          <ColorIcon />
-        </button>
-
-      </span>
-      <span v-if="!isSelecting" class="formatting">
-        <button
-          v-tooltip="i18n.ts.attachFile"
-          class="_button photo"
-          @click="addImage"
-        >
-          <PhotoIcon />
-        </button>
-        <button
-          class="_button video"
-          @click="addVideo"
-        >
-          <VideoIcon />
-        </button>
-      </span>
-      <button
-        class="_button quote"
-        @click="editor.chain().focus().toggleBlockquote().run()" :class="{ 'is-active': editor && editor.isActive('blockquote') }"
-      >
-        <QuoteIcon />
-      </button>
-      <button
-        class="_button bullet-list"
-        @click="editor.chain().focus().toggleBulletList().run()" :class="{ 'is-active': editor && editor.isActive('bulletList') }"
-      >
-        <BulletListIcon />
-      </button>
-      <button
-        class="_button ordered-list"
-        @click="editor.chain().focus().toggleOrderedList().run()" :class="{ 'is-active': editor && editor.isActive('orderedList') }"
-      >
-        <OrderedListIcon />
-      </button>
-
-      <button
-        v-if="!isSelecting"
-        v-tooltip="i18n.ts.useCw"
-        class="_button content-warning"
-        :class="{ active: useCw }"
-        @click="onEnableContentWarning"
-      >
-        <WarningIcon />
-      </button>
-      <div v-if="postFormActions">
-        <button
-          v-if="postFormActions.length > 0"
-          v-tooltip="i18n.ts.plugin"
-          class="_button"
-          @click="showActions"
-        >
-          <i class="ph-plug ph-bold ph-lg"></i>
-        </button>
-      </div>
-
-
-      <button
-        class="_button submit"
-        :disabled="!props.canPost"
-        data-cy-open-post-form-submit
-        @click="post"
-      >
-        {{ props.submitText }}<i
-          :class="
-            props.reply ?
-              'ph-arrow-u-up-left ph-bold ph-lg' :
-              props.renote ?
-              isEmpty ?
-              'ph-repeat ph-bold ph-lg' :
-              'ph-quotes ph-bold ph-lg'
-              : 'ph-paper-plane-tilt ph-bold ph-lg'
-          "
-        ></i>
-      </button>
-    </footer>
   </div>
+  <div class="tagsContainer">
+    <div class="currentTags">
+      <span contenteditable class="tag" v-for="(tag, index) in tags" :key="index" @blur="updateTag" :data-index="index">{{ tag }}</span>
+    </div>
+
+    <div class="tagEditor">
+      <div class="tagInput"
+        :class="{ hasTags: tags.length > 0 }"
+        ref="tagsElement"
+        contenteditable
+        @keydown.enter="validateTag" />
+    </div>
+  </div>
+  <footer>
+    <span v-if="isSelecting && isColorMenuVisible" class="formatting">
+      <ColorMenu @close="toggleColorMenu" :editor="editor" @color="applyColor" />
+    </span>
+    <span v-if="isSelecting && !isColorMenuVisible" class="formatting">
+      <button @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().chain().focus().toggleBold().run()" class="_button"  :class="{ 'is-active': editor.isActive('bold') }">
+      <BoldIcon />
+      </button>
+      <button @click="editor.chain().focus().toggleItalic().run()" :disabled="!editor.can().chain().focus().toggleItalic().run()"   class="_button" :class="{ 'is-active': editor.isActive('italic') }">
+        <ItalicIcon />
+      </button>
+      <button @click="editor.chain().focus().toggleStrike().run()" :disabled="!editor.can().chain().focus().toggleStrike().run()"  class="_button" :class="{ 'is-active': editor.isActive('strike') }">
+        <StrikeIcon />
+      </button>
+      <button @click="setLink" class="_button" :class="{ 'is-active': editor.isActive('link') }">
+        <LinkIcon />
+      </button>
+      <button @click="editor.chain().focus().toggleSubscript().run()" class="_button" :class="{ 'is-active': editor.isActive('link') }">
+        <SmallIcon />
+      </button>
+      <button @click="toggleColorMenu" class="_button" :class="{ 'is-active': isColorMenuVisible }">
+        <ColorIcon />
+      </button>
+
+    </span>
+    <span v-if="!isSelecting">
+      <button
+        v-tooltip="i18n.ts.attachFile"
+        class="_button photo"
+        @click="addImage"
+      >
+        <PhotoIcon />
+      </button>
+      <button
+        class="_button video"
+        @click="addVideo"
+      >
+        <VideoIcon />
+      </button>
+    </span>
+    <button
+      class="_button quote"
+      @click="editor.chain().focus().toggleBlockquote().run()" :class="{ 'is-active': editor && editor.isActive('blockquote') }"
+    >
+      <QuoteIcon />
+    </button>
+    <button
+      class="_button bullet-list"
+      @click="editor.chain().focus().toggleBulletList().run()" :class="{ 'is-active': editor && editor.isActive('bulletList') }"
+    >
+      <BulletListIcon />
+    </button>
+    <button
+      class="_button ordered-list"
+      @click="editor.chain().focus().toggleOrderedList().run()" :class="{ 'is-active': editor && editor.isActive('orderedList') }"
+    >
+      <OrderedListIcon />
+    </button>
+
+    <button
+      v-if="!isSelecting"
+      v-tooltip="i18n.ts.useCw"
+      class="_button content-warning"
+      :class="{ active: useCw }"
+      @click="onEnableContentWarning"
+    >
+      <WarningIcon />
+    </button>
+    <div v-if="postFormActions">
+      <button
+        v-if="postFormActions.length > 0"
+        v-tooltip="i18n.ts.plugin"
+        class="_button"
+        @click="showActions"
+      >
+        <i class="ph-plug ph-bold ph-lg"></i>
+      </button>
+    </div>
+    <button
+      class="_button submit"
+      :disabled="!props.canPost"
+      data-cy-open-post-form-submit
+      @click="post"
+    >
+      {{ props.submitText }}<i
+        :class="
+          props.reply ?
+            'ph-arrow-u-up-left ph-bold ph-lg' :
+            props.renote ?
+            isEmpty ?
+            'ph-repeat ph-bold ph-lg' :
+            'ph-quotes ph-bold ph-lg'
+            : 'ph-paper-plane-tilt ph-bold ph-lg'
+        "
+      ></i>
+    </button>
+  </footer>
+
 </template>
 
 
@@ -154,9 +153,9 @@ import OrderedListIcon from "@/components/icons/ordered-list.vue";
 import WarningIcon from "@/components/icons/warning.vue";
 import ColorIcon from "@/components/icons/color.vue";
 import { Gradient } from "./color-gradient.ts";
+import { Iframe } from "./iframe-module.ts";
 
 import ColorMenu from './color-menu.vue';
-
 
 const props = withDefaults(
   defineProps<{
@@ -276,9 +275,13 @@ const editor = useEditor({
   content: props.initialText,
   extensions: [
     StarterKit,
+    Iframe,
     Image,
     Youtube.configure({
       controls: false,
+      nocookie: true,
+      allowFullscreen: true,
+      modestBranding: 'true',
     }),
     Placeholder.configure({
       placeholder: props.placeholder
@@ -369,6 +372,12 @@ const addVideo = (ev) => {
 
   padding-bottom: 16px;
 
+  video, iframe {
+    width: calc(100% + 64px);
+    margin-left: -32px;
+    min-height: 384px;
+  }
+
   img {
     width: calc(100% + 64px);
     margin-left: -32px;
@@ -434,11 +443,17 @@ const addVideo = (ev) => {
 
 .block-editor {
   background: white;
-  width: 600px;
-  min-height: 300px;
+  width: calc(100% - 32px);
+  margin-left: 16px;
+  min-height: 128px;
 
-  .editor-area {
-    margin-bottom: 80px;
+
+  .ProseMirror:focus-visible {
+    outline: none;
+  }
+
+  &:disabled {
+    opacity: 0.5;
   }
 
   svg {
@@ -446,84 +461,6 @@ const addVideo = (ev) => {
     height: 20px;
   }
 
-  footer {
-    padding-bottom: 16px;
-    position: absolute;
-    bottom: 0px;
-    width: calc( 100% - 32px);
-    display: flex;
-
-    button {
-      margin-right: 16px;
-    }
-
-    svg {
-      width: 28px;
-      height: 28px;
-
-    }
-
-    .formatting {
-      ._button {
-        svg {
-          width: 24px;
-          height: 24px;
-        }
-
-        &.is-active {
-          svg {
-            --icon-color-primary: RGB(0, 184, 255);
-          }
-        }
-      }
-    }
-
-    .photo svg {
-      fill: rgb(255, 73, 48);
-    }
-    .video svg {
-      fill: RGB(255, 98, 206);
-    }
-    .quote svg {
-      fill: RGB(124, 92, 255);
-    }
-    .bullet-list svg {
-      fill: rgb(0, 184, 255);
-    }
-    .ordered-list svg {
-      fill: RGB(0, 207, 53);
-    }
-    .content-warning svg {
-      fill: RGB(232, 215, 56);
-    }
-  }
-
-  .ProseMirror:focus-visible {
-    outline: none;
-  }
-
-  .submit {
-    display: inline-flex;
-    align-items: center;
-    margin: 2px;
-    margin-left: auto;
-    padding: 8px 32px;
-    font-weight: bold;
-    vertical-align: center;
-    border-radius: 32px;
-    font-size: 0.9em;
-    float: right;
-    background-color: rgb(0, 184, 255);
-    color: #FFF;
-
-    &:disabled {
-      opacity: 0.5;
-    }
-
-    > i {
-      margin-left: 6px;
-    }
-  }
   .tiptap p.is-editor-empty:first-child::before {
     content: attr(data-placeholder);
     float: left;
@@ -538,56 +475,10 @@ const addVideo = (ev) => {
       color: #226;
     }
   }
-
-  .tag {
-    background-color: #d1f1d1;
-    display: inline-block;
-    padding: 4px 8px;
-    margin-right: 8px;
-    min-width: 16px;
-    min-height: 16px;
-    margin-top: 4px;
-    border-radius: 8px;
-    outline: none;
-  }
-
-  .tag::before {
-    content: '#';
-    margin-right: 2px;
-  }
-
-  .currentTags {
-    width: 100%;
-    margin-bottom: 8px;
-    min-height: 32px;
-  }
-
-  .tagEditor {
-    width: 100%;
-    margin-bottom: 8px;
-    outline: none;
-  }
-
-  .tagInput:empty:before {
-    content: "#Tag or talk or tag and talk";
-  }
-
-  .tagInput.hasTags:empty:before {
-    content: "#anything else?"
-  }
-
-  .tagInput {
-    outline: none;
-    background-color: #f1f1f1;
-    color: #555;
-    display: inline-block;
-    padding: 4px 8px;
-    margin-right: 8px;
-    min-height: 16px;
-    margin-top: 4px;
-    border-radius: 8px;
-  }
 }
+</style>
+
+<style lang="scss" scoped>
 .bubble-menu {
   display: flex;
   background-color: #0D0D0D;
@@ -627,6 +518,134 @@ const addVideo = (ev) => {
     &:hover,
     &.is-active {
       opacity: 1;
+    }
+  }
+}
+
+.tagsContainer {
+  width: calc(100% - 32px);
+  padding: 0 16px 16px 16px;
+  position: sticky;
+  background-color: white;
+  bottom: 24px;
+  .currentTags {
+    width: 100%;
+    min-height: 32px;
+  }
+
+  .tagEditor {
+    width: 100%;
+    margin-bottom: 8px;
+    outline: none;
+  }
+
+  .tagInput:empty:before {
+    content: "#Tag or talk or tag and talk";
+  }
+
+  .tagInput.hasTags:empty:before {
+    content: "#anything else?"
+  }
+
+  .tagInput {
+    outline: none;
+    background-color: #f1f1f1;
+    color: #555;
+    display: inline-block;
+    padding: 4px 8px;
+    margin-right: 8px;
+    min-height: 16px;
+    margin-top: 4px;
+    border-radius: 8px;
+  }
+
+  .tag {
+    background-color: #d1f1d1;
+    display: inline-block;
+    padding: 4px 8px;
+    margin-right: 8px;
+    min-width: 16px;
+    min-height: 16px;
+    margin-top: 4px;
+    border-radius: 8px;
+    outline: none;
+  }
+
+  .tag::before {
+    content: '#';
+    margin-right: 2px;
+  }
+}
+
+footer {
+  position: sticky;
+  background-color: white;
+  bottom: -30px;
+  width: calc(100% - 32px);
+  display: flex;
+  padding: 0 16px 8px;
+  flex-direction: row;
+  align-items: center;
+
+  button._button {
+    margin-right: 16px;
+  }
+
+  svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .formatting {
+    ._button {
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      &.is-active {
+        svg {
+          --icon-color-primary: RGB(0, 184, 255);
+        }
+      }
+    }
+  }
+
+  .photo svg {
+    fill: rgb(255, 73, 48);
+  }
+  .video svg {
+    fill: RGB(255, 98, 206);
+  }
+  .quote svg {
+    fill: RGB(124, 92, 255);
+  }
+  .bullet-list svg {
+    fill: rgb(0, 184, 255);
+  }
+  .ordered-list svg {
+    fill: RGB(0, 207, 53);
+  }
+  .content-warning svg {
+    fill: RGB(232, 215, 56);
+  }
+
+  button.submit._button {
+    display: inline-flex;
+    align-items: center;
+    margin: 2px 0 2px auto;
+    padding: 8px 32px;
+    font-weight: bold;
+    vertical-align: center;
+    border-radius: 32px;
+    font-size: 0.9em;
+    float: right;
+    background-color: rgb(0, 184, 255);
+    color: #FFF;
+
+
+    > i {
+      margin-left: 6px;
     }
   }
 }
