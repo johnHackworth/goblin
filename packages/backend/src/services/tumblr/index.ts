@@ -290,29 +290,29 @@ export async function fetchTumblrFeed( user: User ) {
         if (!lastUserUpdate || !user.feedUpdatedAt || postDate > lastUserUpdate) {
           responses.new.push(post);
           let title = '';
-          apiLogger.warn(
-            sanitize(post.title)
-          )
-          apiLogger.warn(
-            sanitize(post.content)
-          )
-          apiLogger.warn(sanitize(post.content).includes(sanitize(post.title?.replace('&hellip;', ''))));
-          if(post?.title && !sanitize(post.content).includes(sanitize(post.title.replace('&hellip;', '')))) {
-            const titleSansEllipsis = post.title.split('…')[0];
-            const strippedContent = post.content ? post.content.replace(/(<([^>]+)>)/gi, '') : null;
-            if( !strippedContent || strippedContent.indexOf(titleSansEllipsis) < 0) {
-              title = '<div class="tumblrTitle">' + sanitize(post.title) + '</div>';
-            } else {
-              title = '';
-            }
+
+          /*
+           * This peels out the reblog trail from post titles.
+           *
+           * "goblin: kobold: the hellcloud" -> "the hellcloud"
+           * "goblin social: the hellcloud" -> "goblin social: the hellcloud"
+           * "the hellcloud…" -> "the hellcloud"
+           *
+           * "Some people, when confronted with a problem, think 'I know, I'll use
+           * regular expressions.' Now they have two problems." - Jamie Zawinski
+           */
+          const sanitizedTitle = sanitize(post.title)?.match(/^([\w-]+: ?)*(.*)/)?.[2].split('…')[0] || '';
+          const defangedContent = sanitize(post.content).replace(/(<([^>]+)>)/gi, '') || '';
+
+          if(sanitizedTitle && defangedContent && !defangedContent.startsWith(sanitizedTitle)) {
+            title = `<div class="tumblrTitle">${sanitizedTitle}</div>`;
           }
+
           let { reblogTrail, postContent } = await transformToReblogs(post.content)
           transforms.push( await transformToReblogs(post.content))
 
           const reblogTrailBlock = reblogTrail.length?
-            '<div class="reblogTrail">' +
-              reblogTrail.map(formatReblogItem).join('<hr/>') +
-            '</div>' :
+            `<div class="reblogTrail">${reblogTrail.map(formatReblogItem).join('<hr/>')}</div>` :
             '';
 
           const note = await create(user, {
