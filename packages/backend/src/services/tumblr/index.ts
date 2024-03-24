@@ -28,10 +28,6 @@ const getInfoUrl = (blogname: string) => {
   return `https://api.tumblr.com/v2/blog/${blogname}/info?api_key=${config.tumblr.key}`;
 }
 
-const getPostsUrl = (blogname: string, offset: number) => {
-  return `https://api.tumblr.com/v2/blog/${blogname}/posts?api_key=${config.tumblr.key}&offset=${offset}`;
-}
-
 export async function postToTumblr(user, note, tumblrBlog) {
   const profile = await UserProfiles.findOneByOrFail({ userId: user.id });
   if(profile.integrations.tumblr) {
@@ -301,10 +297,10 @@ export async function fetchTumblrFeed( user: User ) {
            * "Some people, when confronted with a problem, think 'I know, I'll use
            * regular expressions.' Now they have two problems." - Jamie Zawinski
            */
-          const sanitizedTitle = sanitize(post.title)?.match(/^([\w-]+: ?)*(.*)/)?.[2].split('…')[0] || '';
+          const sanitizedTitle = sanitize(post?.title)?.match(/^([\w-]+: ?)*(.*)/)?.[2].replace('&hellip;', '').replace('…', '') || '';
           const defangedContent = sanitize(post.content).replace(/(<([^>]+)>)/gi, '').replace(/^([\w-]+:)+/, '') || '';
 
-          if(sanitizedTitle && defangedContent && !defangedContent.startsWith(sanitizedTitle)) {
+          if (sanitizedTitle && !defangedContent.includes(sanitizedTitle)) {
             title = `<div class="tumblrTitle">${sanitizedTitle}</div>`;
           }
 
