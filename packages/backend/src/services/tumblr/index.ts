@@ -302,7 +302,7 @@ export async function fetchTumblrFeed( user: User ) {
            * regular expressions.' Now they have two problems." - Jamie Zawinski
            */
           const sanitizedTitle = sanitize(post.title)?.match(/^([\w-]+: ?)*(.*)/)?.[2].split('…')[0] || '';
-          const defangedContent = sanitize(post.content).replace(/(<([^>]+)>)/gi, '') || '';
+          const defangedContent = sanitize(post.content).replace(/(<([^>]+)>)/gi, '').replace(/^([\w-]+:)+/, '') || '';
 
           if(sanitizedTitle && defangedContent && !defangedContent.startsWith(sanitizedTitle)) {
             title = `<div class="tumblrTitle">${sanitizedTitle}</div>`;
@@ -317,12 +317,7 @@ export async function fetchTumblrFeed( user: User ) {
 
           const note = await create(user, {
             createdAt: new Date(),
-            text:
-              '<div class="tumblrPost">'+
-                reblogTrailBlock +
-                title+
-                postContent +
-              "</div>",
+            text: `<div class="tumblrPost">${reblogTrailBlock}${title}${postContent}</div>`,
             apHashtags: post.categories,
             noMentions: true,
             url: post.link,
