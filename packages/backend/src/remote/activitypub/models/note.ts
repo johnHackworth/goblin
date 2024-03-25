@@ -25,6 +25,7 @@ import {
 	Notes,
 	NoteEdits,
 	DriveFiles,
+	Users,
 } from "@/models/index.js";
 import type { IMentionedRemoteUsers, Note } from "@/models/entities/note.js";
 import type { IObject, IPost } from "../type.js";
@@ -305,7 +306,9 @@ export async function createNote(
 
 	// Text parsing
 	let text: string | null = null;
-	if (
+	if (typeof note._goblin_content !== "undefined") {
+		text = note._goblin_content;
+	} else if (
 		note.source?.mediaType === "text/x.misskeymarkdown" &&
 		typeof note.source?.content === "string"
 	) {
@@ -370,12 +373,22 @@ export async function createNote(
 		}
 	}
 
-	if(note.reblogtrail && note.reblogtrail[0]) {
+	if(note.reblogtrail && note.reblogtrail.length) {
+		const originHost = actor.host;
+
 		for(var i = 0; i < note.reblogtrail.length; i++) {
-			const trailRoot = note.reblogtrail[i];
-			if(trailRoot.user && trailRoot.user.host) {
-				const url = 'https://' + trailRoot.user.host  + '/@' + trailRoot.user.username + '/notes/' + trailRoot.id;
+
+			const trailNote = note.reblogtrail[i];
+
+			if(trailNote.user ) {
+				if(!trailNote.user.host) {
+					trailNote.user.host = originHost;
+				}
+
+				const url = trailNote.uri? trailNote.uri : 'https://' + trailNote.user.host  + '/notes/' + trailNote.id;
+
 				note.reblogtrail[i].uri = url;
+				note.reblogtrail[i].url = url;
 				const rootNote = await Notes.findOne({
 					where: [
 						{
@@ -386,11 +399,36 @@ export async function createNote(
 						},
 					],
 				});
+				const user = await Users.findOne({
+					where: [
+						{
+							username: trailNote.user.username,
+							host: trailNote.user.host
+						},
+					],
+				});
+
+
+
 				if(rootNote) {
 					note.reblogtrail[i].id = rootNote.id;
+					if(user) {
+						note.reblogtrail[i].user = await Users.pack( user.id );;
+						note.reblogtrail[i].userId = user.id;
+					} else {
+						note.reblogtrail[i].userId = rootNote.userId;
+					}
 				} else {
 					const newRootNote = await createNote(url, resolver, true);
-					note.reblogtrail[i] = newRootNote;
+					if(newRootNote) {
+						note.reblogtrail[i].id = newRootNote.id;
+						if(user) {
+							note.reblogtrail[i].user = await Users.pack( user.id );
+							note.reblogtrail[i].userId = user.id;
+						} else {
+							note.reblogtrail[i].userId = newRootNote.userId;
+						}
+					}
 				}
 			}
 		}
@@ -594,7 +632,10 @@ export async function updateNote(value: string | IObject, resolver?: Resolver) {
 
 	// Text parsing
 	let text: string | null = null;
-	if (
+
+	if (typeof post._goblin_content !== "undefined") {
+		text = post._goblin_content;
+	} else if (
 		post.source?.mediaType === "text/x.misskeymarkdown" &&
 		typeof post.source?.content === "string"
 	) {

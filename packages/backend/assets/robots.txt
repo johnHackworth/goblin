@@ -1,4 +1,39 @@
-user-agent: *
-allow: /
+# Common Crawl's crawler
+User-agent: GPTBot
+Disallow: /
 
-# todo: sitemap
+# Common Crawl's crawler
+User-agent: *
+Disallow: /
+
+# SentiBot's crawler
+User-agent: sentibot
+Disallow: /
+
+# Google Bard's crawler
+User-agent: Google-Extended
+Disallow: /
+
+# Facebook's crawler
+User-agent: FacebookBot
+Disallow: /
+
+# webz.io's crawler
+User-agent: omgili
+Disallow: /
+
+# webz.io's crawler
+User-agent: omgilibot
+Disallow: /
+
+# Amazon's crawler
+User-agent: Amazonbot
+Disallow: /
+
+# ClaudeBot's crawler
+User-agent: ClaudeBot
+Disallow: /
+
+# anthropic-ai's crawler
+User-agent: anthropic-ai
+Disallow: /

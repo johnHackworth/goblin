@@ -56,7 +56,7 @@
 			}}</template>
 		</FormTextarea>
 
-		<FormInput v-model="profile.location" manual-save class="_formBlock">
+		<FormInput v-if="!props.basicSettings" v-model="profile.location" manual-save class="_formBlock">
 			<template #label>{{ i18n.ts.location }}</template>
 			<template #prefix
 				><i class="ph-map-pin ph-bold ph-lg"></i
@@ -67,6 +67,7 @@
 		</FormInput>
 
 		<FormInput
+			v-if="!props.basicSettings"
 			v-model="profile.birthday"
 			type="date"
 			manual-save
@@ -76,14 +77,16 @@
 			<template #prefix><i class="ph-cake ph-bold ph-lg"></i></template>
 		</FormInput>
 
-		<FormSelect v-model="profile.lang" class="_formBlock">
+		<FormSelect
+			v-if="!props.basicSettings"
+			v-model="profile.lang" class="_formBlock">
 			<template #label>{{ i18n.ts.language }}</template>
 			<option v-for="x in Object.keys(langmap)" :key="x" :value="x">
 				{{ langmap[x].nativeName }}
 			</option>
 		</FormSelect>
 
-		<FormSlot class="_formBlock">
+		<FormSlot class="_formBlock" v-if="!props.basicSettings">
 			<FormFolder>
 				<template #icon
 					><i class="ph-table ph-bold ph-lg"></i
@@ -149,7 +152,7 @@
 				i18n.ts.flagSpeakAsCatDescription
 			}}</template></FormSwitch
 		>
-		<FormSwitch v-model="profile.isBot" class="_formBlock"
+		<FormSwitch v-if="!props.basicSettings" v-model="profile.isBot" class="_formBlock"
 			>{{ i18n.ts.flagAsBot
 			}}<template #caption>{{
 				i18n.ts.flagAsBotDescription
@@ -193,6 +196,7 @@ const profile = reactive({
 const props = withDefaults(
 	defineProps<{
 		saveButton?: boolean;
+		basicSettings?: boolean;
 	}>(),
 	{},
 );
@@ -313,6 +317,7 @@ definePageMetadata({
 	border: solid 1px var(--divider);
 	border-radius: 10px;
 	overflow: clip;
+	background-color: antiquewhite;
 
 	> .avatar {
 		display: inline-block;

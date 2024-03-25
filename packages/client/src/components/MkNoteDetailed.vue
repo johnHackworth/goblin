@@ -10,7 +10,14 @@
 		:class="{ renote: isRenote, isClosed: hideTabs }"
 	>
 
-		<ReplyView v-if="isReplyOrReplyReblog" :note="note" ref="noteEl" :useReplyTrail="props.useReplyTrail" :parentKey="props.parentKey"/>
+		<ReplyView
+			v-if="isReplyOrReplyReblog"
+			:note="note" ref="noteEl"
+			:useReplyTrail="props.useReplyTrail"
+			:parentKey="props.parentKey"
+			@toggle="toggle"
+			:showCloseButton="!hideTabs"
+		/>
 		<MkNote
 			v-else
 			ref="noteEl"
@@ -95,7 +102,7 @@
 					:key="`reblog-$(i)`">
 					<div v-if="reblog.text === null" class="rebloggedBy">
 							<img :src="reblog.user.avatarUrl" />
-							<a :href="'/' + (reblog.user.host ?
+							<a :href="'/@' + (reblog.user.host ?
 								reblog.user.username + '@' + reblog.user.host :
 								reblog.user.username)">
 								@{{ reblog.user.host ?
@@ -230,14 +237,15 @@ let clips = $ref();
 let renotes = $ref();
 let isScrolling;
 let isReplyOrReplyReblog = ref( !!note.replyId)
-if( note.renote && note.renote.replyId ) { isReplyOrReplyReblog = true; }
+if( note.renote && note.renote.replyId ) {
+	isReplyOrReplyReblog = true;
+}
 
 let rootNote = $ref<misskye.entities.Note>();
 let noteToReplyTo = $ref<misskye.entities.Note>();
 
 rootNote  = getParentNote(note);
 noteToReplyTo = rootNote;
-
 let repliesCount = $ref(rootNote.repliesCount);
 let renoteCount = $ref(rootNote.renoteCount);
 

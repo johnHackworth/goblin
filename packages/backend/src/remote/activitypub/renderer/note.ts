@@ -154,6 +154,7 @@ export default async function renderNote(
 		summary,
 		content,
 		reblogtrail: note.reblogtrail,
+		_goblin_content: note.text,
 		_misskey_content: text,
 		source: {
 			content: text,
