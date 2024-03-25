@@ -11,7 +11,7 @@ These are the steps I followed to create a _local_, _non-federated_ dev server f
 
 ## A note about shell commands
 
-Each block of shell commands is be stand-alone. If you want to just do everything as the `goblin` user (which we're going to create in a moment) you can omit the `sudo -u goblin bash` lines.
+Each block of shell commands is meant to be stand-alone. If you want to just do everything as the `goblin` user (which we're going to create in a moment) you can omit the `sudo -u goblin bash` lines.
 
 ## Storage
 
@@ -23,10 +23,10 @@ An external SSD and an enclosure for it costs less money than you'd spend buying
 
 ## Dependencies
 
-Here's the list of dependencies that I _think_ are necessary to get things up and running. It probably doesn't include dependencies that I already had installed from other stuff I've been doing on my system. (Ask me how much I want to spin up a completely new Raspbian install to verify this.)
+Here's a partial list of apt dependencies to get things up and running. It doesn't include dependencies that I already had installed thanks to other things running on the . (Ask me how much I want to spin up a completely new Raspbian install to verify this.)
 
 ```sh
-sudo apt install gcc-core g++ libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb redis postgresql
+sudo apt install gcc-core g++ libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb redis postgresql nginx
 npm i -g pnpm
 ```
 
@@ -38,6 +38,7 @@ We are going to install the app into `/etc/goblin` to isolate it from the rest o
 
 ```sh
 sudo adduser goblin
+sudo bash
 cd /etc
 sudo git clone https://github.com/johnHackworth/goblin.git
 sudo chown -R goblin:goblin goblin
@@ -68,8 +69,6 @@ async getRealArch() {
 
 Cypress will download a binary that isn't compatible with your Pi, which means you won't be able to run any tests. But you'll at least have succeeded installing pnpm.
 
-Cypress will download a binary that isn't compatible with your Pi, which means you won't be able to run any tests. But you'll at least have succeeded installing pnpm.
-
 ## Installing Rust
 
 The `packages/backend/native-utils/` directory contains, well, some native code. It needs `cargo` to be installed. The `cargo` from Raspbian isn't a recent enough version to build with, so you're going to need to install it via the Rust website. We'll install it just for the `goblin` user rather than system-wide for the moment.
@@ -94,7 +93,7 @@ pnpm run build
 
 Now let's get the database set up. We're going to go with `goblin` for everything (database name, username, password).
 
-**DO NOT DO THIS IN PRODUCTION**. Even if you think you know your Postgres is nailed down to prevent outside connections. Hope you enjoy your Postgres install housing the metadata for North Korean hacking teams.
+**DO NOT DO THIS IN PRODUCTION**. Even if you _think_ you know your Postgres is nailed down to prevent outside connections. Hope you enjoy your Postgres install housing the metadata for North Korean hacking teams.
 
 ```sql
 CREATE USER goblin WITH PASSWORD 'goblin';
@@ -114,10 +113,10 @@ pnpm run migrate
 
 There are a few cleanup steps you should undertake, but we'll skip past them for the moment:
 
-1. Revoke unneeded privs on the `goblin` postgres user.
+1. Revoke unneeded privs on the `goblin` postgres user. Once you've created the schema, you should only need to update it again when doing migrations. Day-to-day you won't need to `CREATE TABLE`, `ALTER TABLE`, etc.
 2. (...anything else?)
 
-## And now the moment...
+## And now the moment you've been waiting for...
 
 ```sh
 sudo -u goblin bash
