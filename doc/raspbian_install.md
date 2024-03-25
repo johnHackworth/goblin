@@ -23,7 +23,7 @@ An external SSD and an enclosure for it costs less money than you'd spend buying
 
 ## Dependencies
 
-Here's a partial list of apt dependencies to get things up and running. It doesn't include dependencies that I already had installed thanks to other things running on the . (Ask me how much I want to spin up a completely new Raspbian install to verify this.)
+Here's a partial list of apt dependencies to get things up and running. It doesn't include dependencies that I already had installed thanks to other things running on my Pi. (Ask me how much I want to spin up a completely new Raspbian install to verify this.)
 
 ```sh
 sudo apt install gcc-core g++ libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb redis postgresql nginx
@@ -86,6 +86,7 @@ Time to build!
 sudo -u goblin bash
 cd /etc/goblin
 source /home/goblin/.cargo/env
+pnpm run init
 pnpm run build
 ```
 
