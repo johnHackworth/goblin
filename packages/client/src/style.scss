@@ -630,6 +630,12 @@ hr {
 		margin-bottom: 16px;
 		border-radius: 16px;
 	}
+
+	.small & {
+		> img {
+			height: 160px;
+		}
+	}
 }
 
 ._keyValue {

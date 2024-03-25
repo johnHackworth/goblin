@@ -4,7 +4,7 @@
 
 		<MkError v-else-if="error" @retry="init()" />
 
-		<div v-else-if="empty" key="_empty_" class="empty">
+		<div v-else-if="empty" key="_empty_" :class="`empty ${props.small ? 'small': ''}`">
 			<slot name="empty">
 				<div class="_fullinfo">
 					<img
@@ -116,6 +116,7 @@ const props = withDefaults(
 		pagination: Paging;
 		disableAutoLoad?: boolean;
 		displayLimit?: number;
+		small?: boolean;
 	}>(),
 	{
 		displayLimit: 30,
