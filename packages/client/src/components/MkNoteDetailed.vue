@@ -74,6 +74,7 @@
 				:detailedView="true"
 				:parentId="note.id"
 				:selectedNoteId="currentNoteId"
+				:showFullConversations="isReplyOrReplyReblog"
 			/>
 			<MkLoading v-else-if="tab === 'replies' && repliesCount > 0" />
 

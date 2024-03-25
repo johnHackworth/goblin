@@ -96,7 +96,7 @@
 		</div>
 		<template v-if="conversation">
 			<MkNoteSub
-				v-if="replyLevel < 11 && depth < 5"
+				v-if="!!props.showFullConversations || (replyLevel < 11 && depth < 5)"
 				v-for="reply in replies"
 				:key="reply.id"
 				:note="reply"
@@ -108,6 +108,7 @@
 				:parentId="appearNote.reply ? appearNote.reply.id : appearNote.id"
 				:detailedView="detailedView"
 				:selectedNoteId="selectedNoteId"
+				:showFullConversations="props.showFullConversations"
 			/>
 			<div v-else-if="replies.length > 0" class="more">
 				<div class="line"></div>
@@ -174,6 +175,7 @@ const props = withDefaults(
 		// the actual reply level of this note within the conversation thread
 		replyLevel?: number;
 		selectedNoteId?: string;
+		showFullConversations?: boolean;
 	}>(),
 	{
 		depth: 1,
