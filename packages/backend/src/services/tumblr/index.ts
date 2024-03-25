@@ -108,8 +108,6 @@ const formatReblogItem = (reblog) => {
 export async function getTumblrPosts( tumblrBlog: string, offset: number) {
 
   const feedUrl = 'https://' + tumblrBlog + '.tumblr.com/rss?cache-buster='+ Date.now();
-//  const postsResponse = await fetch(getPostsUrl(tumblrBlog, offset));
-//  const posts = await postsResponse.json();
   const res = await fetch(feedUrl, {
     method: "GET",
     headers: Object.assign({
