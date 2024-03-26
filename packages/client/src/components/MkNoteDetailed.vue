@@ -241,7 +241,7 @@ let isReplyOrReplyReblog = ref( !!note.replyId)
 if( note.renote && note.renote.replyId ) {
 	isReplyOrReplyReblog = true;
 }
-
+console.log('aa', props);
 let rootNote = $ref<misskye.entities.Note>();
 let noteToReplyTo = $ref<misskye.entities.Note>();
 
@@ -375,7 +375,7 @@ const updateNoteChildren = () => {
 		}, []);
 		replies.value = res;
 		directReplies = res
-			.filter( (note) => note.replyId === parentId )
+			.filter( (note) => !! note.replyId )
 			.reverse();
 		directQuotes = res.filter( (note) => !!note.renoteId );
 	});
