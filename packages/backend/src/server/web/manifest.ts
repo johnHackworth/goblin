@@ -14,10 +14,13 @@ export const manifestHandler = async (ctx: Koa.Context) => {
 	res.name = instance.name || "Goblin";
 	if (instance.themeColor) res.theme_color = instance.themeColor;
 	for (const icon of res.icons) {
-		icon.src = `${icon.src}?v=${config.version.replace(/[^0-9]/g, '')}`;
+		icon.src = `${icon.src}?v=${config.version.replace(/[^0-9]/g, "")}`;
 	}
 	for (const screenshot of res.screenshots) {
-		screenshot.src = `${screenshot.src}?v=${config.version.replace(/[^0-9]/g, '')}`;
+		screenshot.src = `${screenshot.src}?v=${config.version.replace(
+			/[^0-9]/g,
+			"",
+		)}`;
 	}
 	ctx.set("Cache-Control", "max-age=300");
 	ctx.body = res;

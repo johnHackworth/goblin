@@ -94,7 +94,11 @@ export default define(meta, paramDef, async (ps, user) => {
 		ps.sinceDate,
 		ps.untilDate,
 	)
-		.andWhere("(note.visibility = 'public') AND (note.userHost IS NULL) AND (user.isBot = " + onlyBots +  ") ")
+		.andWhere(
+			"(note.visibility = 'public') AND (note.userHost IS NULL) AND (user.isBot = " +
+				onlyBots +
+				") ",
+		)
 		.innerJoinAndSelect("note.user", "user")
 		.leftJoinAndSelect("user.avatar", "avatar")
 		.leftJoinAndSelect("user.banner", "banner")

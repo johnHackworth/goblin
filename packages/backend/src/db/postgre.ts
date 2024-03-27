@@ -222,14 +222,14 @@ export const db = new DataSource({
 export async function initDb(force = false) {
 	const nativeInitDatabase = () => {
 		const client = new pg.Client({
-  		host: config.db.host,
-  		port: config.db.port,
-  		database: config.db.db,
-  		user: config.db.user,
-  		password: config.db.pass,
-		})
+			host: config.db.host,
+			port: config.db.port,
+			database: config.db.db,
+			user: config.db.user,
+			password: config.db.pass,
+		});
 		return client.connect();
-	}
+	};
 
 	if (force) {
 		if (db.isInitialized) {

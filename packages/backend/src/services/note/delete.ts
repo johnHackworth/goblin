@@ -36,17 +36,12 @@ export default async function (
 	const deletedAt = new Date();
 
 	// この投稿を除く指定したユーザーによる指定したノートのリノートが存在しないとき
-	if (
-		note.renoteId
-	) {
+	if (note.renoteId) {
 		Notes.decrement({ id: note.renoteId }, "renoteCount", 1);
 		Notes.decrement({ id: note.renoteId }, "score", 1);
 	}
 
-	if (
-		note.renoteId &&
-		note.text
-	) {
+	if (note.renoteId && note.text) {
 		Notes.decrement({ id: note.renoteId }, "quoteCount", 1);
 		Notes.decrement({ id: note.renoteId }, "score", 1);
 	}

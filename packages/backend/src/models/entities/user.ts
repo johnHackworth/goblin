@@ -277,7 +277,6 @@ export class User {
 	})
 	public feedUpdatedAt: Date | null;
 
-
 	constructor(data: Partial<User>) {
 		if (data == null) return;
 

@@ -1,7 +1,7 @@
 const filters = {
-  onlyText( content ) {
-    let regex = /(<([^>]+)>)/ig;
-    return content.replace(regex, "");
-  }
-}
+	onlyText(content) {
+		let regex = /(<([^>]+)>)/gi;
+		return content.replace(regex, "");
+	},
+};
 export default filters;

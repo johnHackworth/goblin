@@ -343,9 +343,9 @@ export const UserRepository = db.getRepository(User).extend({
 			return (
 				DriveFiles.getPublicUrl(avatar, true) || this.getIdenticonUrl(user.id)
 			);
-		} else if (user.username.endsWith('_at_tumblr_com')) {
-				const tumblrUsername = user.username.replace(/_at_tumblr_com$/, '') ;
-				return `https://api.tumblr.com/v2/blog/${tumblrUsername}/avatar`;
+		} else if (user.username.endsWith("_at_tumblr_com")) {
+			const tumblrUsername = user.username.replace(/_at_tumblr_com$/, "");
+			return `https://api.tumblr.com/v2/blog/${tumblrUsername}/avatar`;
 		} else {
 			return this.getIdenticonUrl(user.id);
 		}
@@ -357,9 +357,9 @@ export const UserRepository = db.getRepository(User).extend({
 				DriveFiles.getPublicUrl(user.avatar, true) ||
 				this.getIdenticonUrl(user.id)
 			);
-		} else if (user.username.endsWith('_at_tumblr_com')) {
-				const tumblrUsername = user.username.replace(/_at_tumblr_com$/, '') ;
-				return `https://api.tumblr.com/v2/blog/${tumblrUsername}/avatar`;
+		} else if (user.username.endsWith("_at_tumblr_com")) {
+			const tumblrUsername = user.username.replace(/_at_tumblr_com$/, "");
+			return `https://api.tumblr.com/v2/blog/${tumblrUsername}/avatar`;
 		} else {
 			return this.getIdenticonUrl(user.id);
 		}
@@ -453,7 +453,7 @@ export const UserRepository = db.getRepository(User).extend({
 			name: user.name,
 			username: user.username,
 			host: user.host,
-			fromRSS: !! user.tumblrUUID,
+			fromRSS: !!user.tumblrUUID,
 			avatarUrl: this.getAvatarUrlSync(user),
 			avatarBlurhash: user.avatar?.blurhash || null,
 			avatarColor: null, // 後方互換性のため

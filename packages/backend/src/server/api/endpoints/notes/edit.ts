@@ -508,7 +508,7 @@ export default define(meta, paramDef, async (ps, user) => {
 
 	const update: Partial<Note> = {};
 	if (ps.text !== note.text) {
-		update.text = ps.text ? sanitize(ps.text) : '';
+		update.text = ps.text ? sanitize(ps.text) : "";
 	}
 	if (ps.cw !== note.cw || (ps.cw && !note.cw)) {
 		update.cw = ps.cw;

@@ -18,7 +18,7 @@ import { ApiError } from "../../error.js";
 import define from "../../define.js";
 import { HOUR } from "@/const.js";
 import { getNote } from "../../common/getters.js";
-import { postToTumblr }  from "@/services/tumblr/index.js";
+import { postToTumblr } from "@/services/tumblr/index.js";
 
 export const meta = {
 	tags: ["notes"],
@@ -296,7 +296,7 @@ export default define(meta, paramDef, async (ps, user) => {
 					expiresAt: ps.poll.expiresAt ? new Date(ps.poll.expiresAt) : null,
 			  }
 			: undefined,
-			text: ps.text ? sanitize(ps.text) : undefined,
+		text: ps.text ? sanitize(ps.text) : undefined,
 		reblogtrail: ps.reblogtrail,
 		reply,
 		renote,
@@ -312,7 +312,7 @@ export default define(meta, paramDef, async (ps, user) => {
 
 	const newNote = await Notes.pack(note, user);
 
-	if(ps.postToTumblr) {
+	if (ps.postToTumblr) {
 		postToTumblr(user, note, ps.postToTumblr);
 	}
 

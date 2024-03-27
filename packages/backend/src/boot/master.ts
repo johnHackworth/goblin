@@ -32,17 +32,17 @@ function greet() {
 		//#region Firefish logo
 		const v = `v${meta.version}`;
 
-console.log(themeColor('     ^    ^  '));
-console.log(themeColor('🗡    |\\~~~/|  '));
-console.log(themeColor('  \\  (·   ·) '));
-console.log(themeColor('   \\  \\ w / '));
-console.log(themeColor('    \\_~~~___🛡 '));
-console.log('')
-console.log('')
-console.log(" building Goblin!!");
-console.log('')
-console.log('')
-console.log('')
+		console.log(themeColor("     ^    ^  "));
+		console.log(themeColor("🗡    |\\~~~/|  "));
+		console.log(themeColor("  \\  (·   ·) "));
+		console.log(themeColor("   \\  \\ w / "));
+		console.log(themeColor("    \\_~~~___🛡 "));
+		console.log("");
+		console.log("");
+		console.log(" building Goblin!!");
+		console.log("");
+		console.log("");
+		console.log("");
 		console.log("");
 		console.log(
 			chalkTemplate`--- ${os.hostname()} {gray (PID: ${process.pid.toString()})} ---`,
