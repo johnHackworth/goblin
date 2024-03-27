@@ -1820,7 +1820,6 @@ numberOfPageCacheDescription: L'augment d'aquest nombre millorarà la comoditat 
   usuaris, però provocarà més càrrega del servidor i utilitzarà més memòria.
 logoutConfirm: Vols tancar la sessió?
 lastActiveDate: Data d'últim ús
-statusbar: Barra d'estat
 pleaseSelect: Selecciona una opció
 colored: Color
 refreshInterval: "Interval d'actualització "

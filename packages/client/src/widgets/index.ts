@@ -18,14 +18,6 @@ export default function (app: App) {
 		defineAsyncComponent(() => import("./calendar.vue")),
 	);
 	app.component(
-		"MkwRss",
-		defineAsyncComponent(() => import("./rss.vue")),
-	);
-	app.component(
-		"MkwRssTicker",
-		defineAsyncComponent(() => import("./rss-ticker.vue")),
-	);
-	app.component(
 		"MkwTrends",
 		defineAsyncComponent(() => import("./trends.vue")),
 	);

@@ -165,12 +165,6 @@ const menuDef = computed(() => [
 				active: currentPage?.route.name === "navbar",
 			},
 			{
-				icon: "ph-traffic-signal ph-bold ph-lg",
-				text: i18n.ts.statusbar,
-				to: "/settings/statusbar",
-				active: currentPage?.route.name === "statusbar",
-			},
-			{
 				icon: "ph-speaker-high ph-bold ph-lg",
 				text: i18n.ts.sounds,
 				to: "/settings/sounds",

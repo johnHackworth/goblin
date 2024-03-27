@@ -3,7 +3,6 @@
 		<XSidebar v-if="!isMobile" />
 
 		<div class="main">
-			<XStatusBars class="statusbars" />
 			<div
 				ref="columnsEl"
 				class="columns"
@@ -210,9 +209,6 @@ import { $i } from "@/account";
 import { i18n } from "@/i18n";
 import { mainRouter } from "@/router";
 import { unisonReload } from "@/scripts/unison-reload";
-const XStatusBars = defineAsyncComponent(
-	() => import("@/ui/_common_/statusbars.vue"),
-);
 
 mainRouter.navHook = (path, flag): boolean => {
 	if (flag === "forcePage") return false;

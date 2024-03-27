@@ -963,7 +963,6 @@ numberOfPageCacheDescription: "Das Erhöhen dieses Caches führt zu einer angene
   Nutzererfahrung, erhöht aber Serverlast und Arbeitsspeicherauslastung."
 logoutConfirm: "Wirklich abmelden?"
 lastActiveDate: "Zuletzt verwendet am"
-statusbar: "Statusleiste"
 pleaseSelect: "Wähle eine Option"
 reverse: "Umkehren"
 colored: "Farbig"

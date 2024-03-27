@@ -76,7 +76,6 @@ const defaultStoreSaveKeys: (keyof (typeof defaultStore)["state"])[] = [
 	"menu",
 	"visibility",
 	"localOnly",
-	"statusbars",
 	"widgets",
 	"tl",
 	"overridedDeviceKind",
