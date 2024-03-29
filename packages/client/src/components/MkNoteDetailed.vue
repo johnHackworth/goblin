@@ -69,7 +69,7 @@
 				:key="note.id"
 				:note="note"
 				class="reply"
-				:class="note.id === currentNoteId ? 'selected' : null"
+				:class="getSubnoteClass( note )"
 				:conversation="replies"
 				:detailedView="true"
 				:parentId="note.id"
@@ -209,6 +209,22 @@ const softMuteReasonI18nSrc = (what?: string) => {
 	// I don't think here is reachable, but just in case
 	return i18n.ts.userSaysSomething;
 };
+
+const getSubnoteClass = ( note ) => {
+	let className = [];
+	if ( note.id === currentNoteId ) {
+		className.push( 'selected' );
+	}
+	console.log(props);
+	console.log(note.replyId, currentNoteId)
+	if ( note.replyId === currentNoteId) {
+		className.push( 'firstOrder' )
+	} else {
+		className.push( 'nestedReply' );
+	}
+
+	return className.join(' ');
+}
 
 // plugin
 if (noteViewInterruptors.length > 0) {
@@ -367,17 +383,23 @@ const updateNoteChildren = () => {
 		depth: 12,
 	}).then((res) => {
 		const parentId = rootNote.id;
-		res = res.reduce((acc, resNote) => {
+		res = res.reduce( (acc, resNote) => {
 			if (resNote.userId == note.userId) {
 				return [...acc, resNote];
 			}
 			return [resNote, ...acc];
 		}, []);
 		replies.value = res;
-		directReplies = res
-			.filter( (note) => !! note.replyId )
-			.reverse();
-		directQuotes = res.filter( (note) => !!note.renoteId );
+		directReplies = res.filter( (note) => {
+			if(! note.replyId ) {
+				// if this is note a reply, it can't be a direct replies, obvs
+				return false;
+			} else {
+				// if this is a reply to another children we just fetched, it's a reply, but not a direct one. if it's a reply to a reblog, it's also a direct reply
+				return ! replies.value.some(	( item ) => note.replyId === item.id && !! item.replyId )
+			}
+	  } ).reverse();
+		directQuotes = res.filter( (note) => !! note.renoteId );
 	});
 }
 
