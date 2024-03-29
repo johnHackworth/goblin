@@ -195,5 +195,31 @@
        inkscape:export-ydpi="96" />
   </g>
 </svg>
+<span class="logoSubhead"><slot></slot></span>
 
 </template>
+
+<style lang="scss" scoped>
+   .logoSubhead {
+      position: absolute;
+      top: 110px;
+      left: 250px;
+      font-family: "TeX Gyre Bonum";
+      color: white;
+      font-size: 2em;
+      font-weight: bold;
+   }
+</style>
+
+<style lang="scss" scoped>
+svg {
+      width: 300px;
+      height: 100px;
+      --logo-color: white;
+      --logo-line: transparenet;
+      z-index: 999999;
+      position: absolute;
+      left: 190px;
+      top: 40px;
+   }
+</style>

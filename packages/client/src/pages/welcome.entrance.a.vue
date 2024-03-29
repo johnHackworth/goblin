@@ -6,7 +6,10 @@
 			<div class="shape1"></div>
 			<div class="shape2"></div>
 			<div class="logo">
-				<Logo />
+				<Logo>{{ hostname }}</Logo>
+			</div>
+			<div v-if="meta.logoImageUrl" class="logo-image">
+				<LogoImage :logoImageUrl="meta.logoImageUrl" />
 			</div>
 			<div class="main">
 				<button class="_button _acrylic menu" @click="showMenu">
@@ -73,18 +76,16 @@
 
 <script lang="ts" setup>
 import {} from "vue";
-import { toUnicode } from "punycode/";
 import XTimeline from "./welcome.timeline.vue";
 import MarqueeText from "@/components/MkMarquee.vue";
 import XSigninDialog from "@/components/MkSigninDialog.vue";
 import XSignupDialog from "@/components/MkSignupDialog.vue";
 import MkButton from "@/components/MkButton.vue";
-import XNote from "@/components/MkNote.vue";
 import Logo from "@/components/icons/logo.vue";
+import LogoImage from "@/components/icons/logo.image.vue";
 import MkFeaturedPhotos from "@/components/MkFeaturedPhotos.vue";
-import { host, instanceName } from "@/config";
+import { hostname, instanceName } from "@/config";
 import * as os from "@/os";
-import number from "@/filters/number";
 import { i18n } from "@/i18n";
 
 let meta = $ref();
@@ -160,14 +161,21 @@ function showMenu(ev) {
 <style lang="scss" scoped>
 .rsqzvsbo {
 	.logo svg {
-		width: 300px;
+	  width: 300px;
 	  height: 100px;
 	  --logo-color: white;
 	  --logo-line: transparenet;
 	  z-index: 999999;
 	  position: absolute;
-	  left: 216px;
-	  top: 80px;
+	  left: 200px;
+	  top: 50px;
+	}
+	
+	.logo-image {
+		position: relative;
+		top: 120px;
+  		left: 275px;
+  		z-index: 20;
 	}
 
 	> .top {
