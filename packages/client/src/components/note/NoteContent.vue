@@ -47,7 +47,7 @@
             <div v-html="removeMeta(note.text)" />
           </div>
           <div v-if="!props.hideTags && note.tags" class="noteTags">
-            <a class="noteTag" v-for="tag in note.tags" :href="`/tag/${tag}`">#{{tag}}</a>
+            <a class="noteTag" v-for="tag in note.tags" :href="`/tags/${tag}`">#{{tag}}</a>
           </div>
           <div v-if="notEmbedFiles.length" class="noteFiles">
             <div v-for="(file, index) in notEmbedFiles" :key="index">

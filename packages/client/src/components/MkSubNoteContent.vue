@@ -59,7 +59,7 @@
           <div v-html="note.text" />
         </div>
         <div v-if="note.tags" class="noteTags">
-          <a class="noteTag" v-for="tag in note.tags" :href="`/tag/${tag}`">#{{tag}}</a>
+          <a class="noteTag" v-for="tag in note.tags" :href="`/tags/${tag}`">#{{tag}}</a>
         </div>
 				<XPoll v-if="note.poll" :note="note" class="poll" />
 
