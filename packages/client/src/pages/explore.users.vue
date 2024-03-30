@@ -77,20 +77,53 @@
 				>
 
 				<div class="vxjfqztj">
-					<MkA
-						v-for="tag in tagsLocal"
-						:key="'local:' + tag.tag"
-						:to="`/tags/${tag.tag}`"
-						:class="`local ${tag.popularity}`"
-						>{{ tag.tag }}</MkA
-					>
-					<MkA
-						v-for="tag in tagsRemote"
-						:key="'remote:' + tag.tag"
-						:to="`/tags/${tag.tag}`"
-						:class="`${tag.popularity}`"
-						>{{ tag.tag }}</MkA
-					>
+					<span v-for="tag in tagsLocal">
+						<MkA
+                                                v-if="tag.mostPopular"
+                                                :key="'local:mostPopular:' + tag.tag"
+                                                :to="`/tags/${tag.tag}`"
+                                                class="local mostPopular"
+                                                >{{ tag.tag }}</MkA
+                                        >
+						<MkA
+                                                v-else-if="tag.popular"
+                                                :key="'local:popular:' + tag.tag"
+                                                :to="`/tags/${tag.tag}`"
+                                                class="local popular"
+                                                >{{ tag.tag }}</MkA
+                                        >
+						<MkA
+                                                v-else
+                                                :key="'local:normal:' + tag.tag"
+                                                :to="`/tags/${tag.tag}`"
+                                                class="local"
+                                                >{{ tag.tag }}</MkA
+                                        >
+					</span>
+					
+					<span v-for="tag in tagsRemote">
+						<MkA
+                                                v-if="tag.mostPopular"
+                                                :key="'remote:mostPopular:' + tag.tag"
+                                                :to="`/tags/${tag.tag}`"
+                                                class="remote mostPopular"
+                                                >{{ tag.tag }}</MkA
+								>
+						<MkA
+                                                v-else-if="tag.popular"
+                                                :key="'remote:popular:' + tag.tag"
+                                                :to="`/tags/${tag.tag}`"
+                                                class="remote popular"
+                                                >{{ tag.tag }}</MkA
+                                        >
+						<MkA
+                                                v-else
+                                                :key="'remote:normal:' + tag.tag"
+                                                :to="`/tags/${tag.tag}`"
+                                                class="remote"
+                                                >{{ tag.tag }}</MkA
+                                        >
+					</span>
 				</div>
 			</MkFolder>
 
@@ -168,10 +201,10 @@ watch(
 
 const calculateDistribution = (tags, field) => {
 	if (tags.length === 0) {
-		return {}
+		return { mean: 0, max: 0 }
 	} else {
 		return {
-			mean: tags.map(x => x[field]).reduce((i, a) => i + a),
+			mean: tags.map(x => x[field]).reduce((i, a) => i + a) / tags.length,
 			max: tags.map(x => x[field]).reduce((i, a) => Math.max(i, a))
 		}
 	}
@@ -251,14 +284,14 @@ os.api("hashtags/list", {
 	attachedToLocalUserOnly: true,
 	limit: 30,
 }).then((tags) => {
-	const dist = calculateDistribution(tags, "attachedLocalUsers");
+	const dist = calculateDistribution(tags, "attachedLocalUsersCount");
 	tagsLocal = tags
 		.sort((a, b) => a.tag < b.tag ? -1 : 1)
 		.map(x => {
 			return {
 				...x,
-				popularity: x.attachedLocalUsers > dist.mean ?
-				  x.attachedLocalUsers === dist.max ? 'mostPopular' : 'popular' : ''
+				popular: x.attachedLocalUsersCount > dist.mean,
+				mostPopular: x.attachedLocalUsersCount === dist.max,
 			}
 		});
 	});
@@ -267,14 +300,14 @@ os.api("hashtags/list", {
 	attachedToRemoteUserOnly: true,
 	limit: 30,
 }).then((tags) => {
-	const dist = calculateDistribution(tags, "attachedRemoteUsers");
-	tagsLocal = tags
+	const dist = calculateDistribution(tags, "attachedRemoteUsersCount");
+	tagsRemote = tags
 		.sort((a, b) => a.tag < b.tag ? -1 : 1)
 		.map(x => {
 			return {
 				...x,
-				popularity: x.attachedRemoteUsers > dist.mean ?
-				  x.attachedRemoteUsers === dist.max ? 'mostPopular' : 'popular' : ''
+				popular: x.attachedRemoteUsersCount > dist.mean,
+				mostPopular: x.attachedRemoteUsersCount === dist.max
 			}
 		});
 	});
@@ -285,18 +318,12 @@ os.api("hashtags/list", {
 	> * {
 		margin-right: 16px;
 		color: var(--panelHighlight);
+	}
 
-		&.local {
-			font-weight: bold;
-		}
-
-		&.popular {
-			font-size: 150%;
-		}
-
-		&.mostPopular {
-			font-size: 200%;
-		}
+	a {
+			&.local { font-weight: bold; }
+			&.popular { font-size: 150%; }
+			&.mostPopular { font-size: 200%; }
 	}
 }
 </style>
