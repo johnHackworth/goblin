@@ -81,13 +81,14 @@
 						v-for="tag in tagsLocal"
 						:key="'local:' + tag.tag"
 						:to="`/tags/${tag.tag}`"
-						class="local"
+						class="`local ${tag.popularity}`"
 						>{{ tag.tag }}</MkA
 					>
 					<MkA
 						v-for="tag in tagsRemote"
 						:key="'remote:' + tag.tag"
 						:to="`/tags/${tag.tag}`"
+						class="`${tag.popularity}`"
 						>{{ tag.tag }}</MkA
 					>
 				</div>
@@ -141,15 +142,13 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, watch } from "vue";
+import { watch } from "vue";
 import XUserList from "@/components/MkUserList.vue";
 import MkFolder from "@/components/MkFolder.vue";
 import MkTab from "@/components/MkTab.vue";
-import number from "@/filters/number";
 import * as os from "@/os";
 import { i18n } from "@/i18n";
 import { $i } from "@/account";
-import { instance } from "@/instance";
 
 const props = defineProps<{
 	tag?: string;
@@ -166,6 +165,17 @@ watch(
 		if (tagsEl) tagsEl.toggleContent(props.tag == null);
 	},
 );
+
+const calculateDistribution = (tags, field) => {
+	if (tags.length === 0) {
+		return {}
+	} else {
+		return {
+			mean: tags.map(x => x[field]).reduce((i, a) => i + a),
+			max: tags.map(x => x[field]).reduce((i, a) => Math.max(i, a))
+		}
+	}
+}
 
 const tagUsers = $computed(() => ({
 	endpoint: "hashtags/users" as const,
@@ -241,15 +251,33 @@ os.api("hashtags/list", {
 	attachedToLocalUserOnly: true,
 	limit: 30,
 }).then((tags) => {
-	tagsLocal = tags;
-});
+	const dist = calculateDistribution(tags, "attachedLocalUsers");
+	tagsLocal = tags
+		.sort((a, b) => a.tag < b.tag ? -1 : 1)
+		.map(x => {
+			return {
+				...x,
+				popularity: x.attachedLocalUsers > dist.mean ?
+				  x.attachedLocalUsers === dist.max ? 'mostPopular' : 'popular' : ''
+			}
+		});
+	});
 os.api("hashtags/list", {
 	sort: "+attachedRemoteUsers",
 	attachedToRemoteUserOnly: true,
 	limit: 30,
 }).then((tags) => {
-	tagsRemote = tags;
-});
+	const dist = calculateDistribution(tags, "attachedRemoteUsers");
+	tagsLocal = tags
+		.sort((a, b) => a.tag < b.tag ? -1 : 1)
+		.map(x => {
+			return {
+				...x,
+				popularity: x.attachedRemoteUsers > dist.mean ?
+				  x.attachedRemoteUsers === dist.max ? 'mostPopular' : 'popular' : ''
+			}
+		});
+	});
 </script>
 
 <style lang="scss" scoped>
@@ -260,6 +288,14 @@ os.api("hashtags/list", {
 
 		&.local {
 			font-weight: bold;
+		}
+
+		&.popular {
+			font-size: 150%;
+		}
+
+		&.mostPopular {
+			font-size: 200%;
 		}
 	}
 }
