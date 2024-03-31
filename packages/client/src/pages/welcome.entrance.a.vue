@@ -175,6 +175,25 @@ function showMenu(ev) {
 		box-sizing: border-box;
 		padding: 16px;
 
+		:deep(.logo) {
+			svg {
+				width: 300px;
+				height: 100px;
+				z-index: 999999;
+				position: absolute;
+				left: 200px;
+				top: 50px;
+			}
+
+			.logo-subhead {
+				position: absolute;
+				top: 10px;
+				left: 260px;
+				font-size: 2em;
+				font-weight: bold;
+			}
+		}
+
 		> .bg {
 			position: absolute;
 			top: 0;
@@ -360,28 +379,5 @@ function showMenu(ev) {
 		margin-right: 5px;
 		border-radius: 999px;
 	}
-}
-</style>
-
-<style lang="scss">
-.logo svg {
-	width: 300px;
-	height: 100px;
-	--logo-color: white;
-	--logo-line: transparenet;
-	z-index: 999999;
-	position: absolute;
-	left: 200px;
-	top: 50px;
-}
-
-.logoSubhead {
-	position: absolute;
-	top: 10px;
-	left: 260px;
-	font-family: "TeX Gyre Bonum";
-	color: white;
-	font-size: 2em;
-	font-weight: bold;
 }
 </style>

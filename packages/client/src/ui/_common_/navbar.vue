@@ -280,6 +280,21 @@ function more(ev: MouseEvent) {
 				position: relative;
 				z-index: 1;
 				padding: 2rem 0;
+
+				:deep(.logo) {
+					text-align: center;
+					margin: -24px auto 32px;
+					padding-top: 16px;
+					border-bottom: 0.5px solid var(--divider);
+					border-right: 0.5px solid var(--divider);
+
+					svg {
+						width: 60px;
+						margin-bottom: 8px;
+						height: 20px;
+					}
+				}
+
 				> .banner {
 					position: absolute;
 					top: 0;
@@ -655,19 +670,4 @@ function more(ev: MouseEvent) {
 </style>
 
 <style lang="scss">
-.logo {
-	text-align: center;
-	margin: -24px auto 32px;
-	padding-top: 16px;
-	border-bottom: 0.5px solid var(--divider);
-	border-right: 0.5px solid var(--divider);
-
-	svg {
-		width: 60px;
-		margin-bottom: 8px;
-		height: 20px;
-		--logo-color: white;
-		--logo-line: transparenet;
-	}
-}
 </style>
