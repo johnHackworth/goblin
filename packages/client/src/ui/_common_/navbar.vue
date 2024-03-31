@@ -290,6 +290,9 @@ function more(ev: MouseEvent) {
 					background-position: center center;
 					-webkit-mask-image: linear-gradient(var(--gradient));
 					mask-image: linear-gradient(var(--gradient));
+
+					z-index: -1;
+					opacity: 0.7;
 				}
 
 				> .account {
@@ -648,21 +651,23 @@ function more(ev: MouseEvent) {
 			outline: auto;
 		}
 	}
+}
+</style>
 
-	.logo {
-		text-align: center;
-		margin: -24px auto 32px;
-		padding-top: 16px;
-		border-bottom: 0.5px solid var(--divider);
-		border-right: 0.5px solid var(--divider);
+<style lang="scss">
+.logo {
+	text-align: center;
+	margin: -24px auto 32px;
+	padding-top: 16px;
+	border-bottom: 0.5px solid var(--divider);
+	border-right: 0.5px solid var(--divider);
 
-		svg {
-			width: 60px;
-		  margin-bottom: 8px;
-		  height: 20px;
-			--logo-color: white;
-  		--logo-line: transparenet;
-		}
+	svg {
+		width: 60px;
+		margin-bottom: 8px;
+		height: 20px;
+		--logo-color: white;
+		--logo-line: transparenet;
 	}
 }
 </style>

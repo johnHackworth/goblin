@@ -7,9 +7,3 @@ const props = defineProps<{
 	logoImageUrl: string;
 }>();
 </script>
-
-<style lang="scss" scoped>
-.logo-image {
-  z-index: 20;
-}
-</style>

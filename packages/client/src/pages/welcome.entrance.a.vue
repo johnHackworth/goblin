@@ -160,22 +160,12 @@ function showMenu(ev) {
 
 <style lang="scss" scoped>
 .rsqzvsbo {
-	.logo svg {
-	  width: 300px;
-	  height: 100px;
-	  --logo-color: white;
-	  --logo-line: transparenet;
-	  z-index: 999999;
-	  position: absolute;
-	  left: 200px;
-	  top: 50px;
-	}
-	
 	.logo-image {
-		position: relative;
-		top: 120px;
-  		left: 275px;
-  		z-index: 20;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		z-index: 20;
+		width: 200px;
 	}
 
 	> .top {
@@ -370,5 +360,28 @@ function showMenu(ev) {
 		margin-right: 5px;
 		border-radius: 999px;
 	}
+}
+</style>
+
+<style lang="scss">
+.logo svg {
+	width: 300px;
+	height: 100px;
+	--logo-color: white;
+	--logo-line: transparenet;
+	z-index: 999999;
+	position: absolute;
+	left: 200px;
+	top: 50px;
+}
+
+.logoSubhead {
+	position: absolute;
+	top: 10px;
+	left: 260px;
+	font-family: "TeX Gyre Bonum";
+	color: white;
+	font-size: 2em;
+	font-weight: bold;
 }
 </style>
