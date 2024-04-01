@@ -77,53 +77,41 @@
 				>
 
 				<div class="vxjfqztj">
-					<span v-for="tag in tagsLocal">
+					<template v-for="tag in tagsLocal" :key="tag.tag">
 						<MkA
-                                                v-if="tag.mostPopular"
-                                                :key="'local:mostPopular:' + tag.tag"
-                                                :to="`/tags/${tag.tag}`"
-                                                class="local mostPopular"
-                                                >{{ tag.tag }}</MkA
-                                        >
+							v-if="tag.mostPopular"
+							:to="`/tags/${tag.tag}`"
+							class="local mostPopular"
+							>{{ tag.tag }}</MkA>
 						<MkA
-                                                v-else-if="tag.popular"
-                                                :key="'local:popular:' + tag.tag"
-                                                :to="`/tags/${tag.tag}`"
-                                                class="local popular"
-                                                >{{ tag.tag }}</MkA
-                                        >
+							v-else-if="tag.popular"
+							:to="`/tags/${tag.tag}`"
+							class="local popular"
+							>{{ tag.tag }}</MkA>
 						<MkA
-                                                v-else
-                                                :key="'local:normal:' + tag.tag"
-                                                :to="`/tags/${tag.tag}`"
-                                                class="local"
-                                                >{{ tag.tag }}</MkA
-                                        >
-					</span>
+							v-else
+							:to="`/tags/${tag.tag}`"
+							class="local"
+							>{{ tag.tag }}</MkA>
+					</template>
 					
-					<span v-for="tag in tagsRemote">
+					<template v-for="tag in tagsRemote" :key="tag.tag">
 						<MkA
-                                                v-if="tag.mostPopular"
-                                                :key="'remote:mostPopular:' + tag.tag"
-                                                :to="`/tags/${tag.tag}`"
-                                                class="remote mostPopular"
-                                                >{{ tag.tag }}</MkA
-								>
+							v-if="tag.mostPopular"
+							:to="`/tags/${tag.tag}`"
+							class="remote mostPopular"
+							>{{ tag.tag }}</MkA>
 						<MkA
-                                                v-else-if="tag.popular"
-                                                :key="'remote:popular:' + tag.tag"
-                                                :to="`/tags/${tag.tag}`"
-                                                class="remote popular"
-                                                >{{ tag.tag }}</MkA
-                                        >
+							v-else-if="tag.popular"
+							:to="`/tags/${tag.tag}`"
+							class="remote popular"
+							>{{ tag.tag }}</MkA>
 						<MkA
-                                                v-else
-                                                :key="'remote:normal:' + tag.tag"
-                                                :to="`/tags/${tag.tag}`"
-                                                class="remote"
-                                                >{{ tag.tag }}</MkA
-                                        >
-					</span>
+							v-else
+							:to="`/tags/${tag.tag}`"
+							class="remote"
+							>{{ tag.tag }}</MkA>
+					</template>
 				</div>
 			</MkFolder>
 
