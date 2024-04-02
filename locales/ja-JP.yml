@@ -579,8 +579,6 @@ describeFile: "説明を付ける"
 enterFileDescription: "説明を入力"
 author: "作者"
 leaveConfirm: "未保存の変更があります。破棄しますか？"
-manage: "管理"
-plugins: "プラグイン"
 preferencesBackups: "設定のバックアップ"
 deck: "デッキ"
 undeck: "デッキ解除"
@@ -1031,10 +1029,6 @@ _email:
     title: "フォローされました"
   _receiveFollowRequest:
     title: "フォローリクエストを受け取りました"
-_plugin:
-  install: "プラグインのインストール"
-  installWarn: "信頼できないプラグインはインストールしないでください。"
-  manage: "プラグインの管理"
 _preferencesBackups:
   list: "作成したバックアップ"
   saveNew: "新規保存"

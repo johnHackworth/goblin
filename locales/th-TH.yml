@@ -559,8 +559,6 @@ describeFile: "เพิ่มแคปชั่น"
 enterFileDescription: "ใส่แคปชั่น"
 author: "ผู้เขียน"
 leaveConfirm: "คุณมีการเปลี่ยนแปลงที่ไม่ได้บันทึกนะ นายต้องการทิ้งการเปลี่ยนแปลงเหล่านั้นหรอ?"
-manage: "การจัดการ"
-plugins: "ปลั๊กอิน"
 preferencesBackups: "ตั้งค่าการสำรองข้อมูล"
 deck: "เด็ค"
 undeck: "ออกจากเด็ค"
@@ -936,10 +934,6 @@ _email:
     title: "ได้ติดตามคุณ"
   _receiveFollowRequest:
     title: "คุณได้รับคำขอติดตาม"
-_plugin:
-  install: "ติดตั้งปลั๊กอิน"
-  installWarn: "กรุณาอย่าติดตั้งปลั๊กอินที่ไม่น่าเชื่อถือนะคะ"
-  manage: "จัดการปลั๊กอิน"
 _preferencesBackups:
   list: "สร้างการสำรองข้อมูล"
   saveNew: "บันทึกใหม่"

@@ -418,8 +418,6 @@ installedDate: Yetkilendirilme tarihi
 scratchpad: Karalama Defteri
 deleteAllFiles: Tüm dosyaları isl
 useCw: İçeriği gizle
-plugins: Eklentiler
-manage: Yönetmek
 preferencesBackups: Tercih yedekleri
 generateAccessToken: Erişim tokeni oluştur
 enableEmail: E-posta dağıtımını etkinleştir
@@ -2104,10 +2102,6 @@ _skinTones:
   dark: Karanlık
   yellow: Sarı
   mediumDark: Orta Karanlık
-_plugin:
-  install: Eklenti indir
-  installWarn: Lütfen güvenli olmayan eklentiler kurmayınız.
-  manage: Eklentileri yönet
 _instanceTicker:
   remote: Uzak kullanıcılar için göster
   always: Her zaman göster

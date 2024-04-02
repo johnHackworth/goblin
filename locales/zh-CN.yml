@@ -565,8 +565,6 @@ describeFile: "添加标题"
 enterFileDescription: "输入标题"
 author: "作者"
 leaveConfirm: "存在未保存的更改。要放弃更改吗？"
-manage: "管理"
-plugins: "插件"
 preferencesBackups: "备份设置"
 deck: "Deck"
 undeck: "取消 Deck"
@@ -949,10 +947,6 @@ _email:
     title: "您有新的关注者"
   _receiveFollowRequest:
     title: "您收到了关注请求"
-_plugin:
-  install: "安装插件"
-  installWarn: "请不要安装不可信的插件。"
-  manage: "管理插件"
 _preferencesBackups:
   list: "已创建的备份"
   saveNew: "另存为"
