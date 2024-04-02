@@ -192,7 +192,7 @@ import { Autocomplete } from "@/scripts/autocomplete";
 import * as os from "@/os";
 import { stream } from "@/stream";
 import { selectFiles } from "@/scripts/select-file";
-import { defaultStore, notePostInterruptors, postFormActions } from "@/store";
+import { defaultStore } from "@/store";
 import MkInfo from "@/components/MkInfo.vue";
 import { i18n } from "@/i18n";
 import { instance } from "@/instance";
@@ -874,27 +874,6 @@ async function insertEmoji(ev: MouseEvent) {
 
 async function openCheatSheet(ev: MouseEvent) {
 	os.popup(XCheatSheet, {}, {}, "closed");
-}
-
-function showActions(ev) {
-	os.popupMenu(
-		postFormActions.map((action) => ({
-			text: action.title,
-			action: () => {
-				action.handler(
-					{
-						text: text,
-					},
-					(key, value) => {
-						if (key === "text") {
-							text = value;
-						}
-					},
-				);
-			},
-		})),
-		ev.currentTarget ?? ev.target,
-	);
 }
 
 let postAccount = $ref<misskey.entities.UserDetailed | null>(null);
