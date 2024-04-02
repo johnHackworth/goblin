@@ -3,7 +3,6 @@ import { Storage } from "./pizzax";
 
 export const userActions = [];
 export const noteActions = [];
-export const notePostInterruptors = [];
 
 const menuOptions = [
 	"notifications",

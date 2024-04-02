@@ -789,13 +789,6 @@ async function post(postProps = {}) {
 		postData.postToTumblr = tumblrBlogSelector.value;
 	}
 
-	// plugin
-	if (notePostInterruptors.length > 0) {
-		for (const interruptor of notePostInterruptors) {
-			postData = await interruptor.handler(deepClone(postData));
-		}
-	}
-
 	postData.reblogtrail = reblogtrail;
 	let token = undefined;
 
