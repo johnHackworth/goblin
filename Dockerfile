@@ -1,5 +1,5 @@
 ## Install dev and compilation dependencies, build files
-FROM debian:bookworm-20240211 AS build
+FROM debian:bookworm-20240311 AS build
 
 # Install compilation dependencies
 RUN apt update && apt install -y --no-install-recommends \
@@ -78,7 +78,7 @@ RUN pnpm i --prod --frozen-lockfile \
 
 
 ############################# Runtime container
-FROM debian:bookworm-20240211
+FROM debian:bookworm-20240311
 ENV PATH="${PATH}:/home/goblin/.npm/bin:/home/goblin/nodejs/bin"
 
 WORKDIR /goblin

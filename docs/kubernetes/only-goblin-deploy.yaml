@@ -17,8 +17,7 @@ spec:
       enableServiceLinks: true
       containers:
         - name: goblin
-          image: registry.stopdelaying.com/mb/goblin:11
-          #          image: '95.217.202.227:32000/goblin:5'
+          image: registry.stopdelaying.com/mb/goblin:16
           command: ["pnpm"]
           args: ["run", "start"]
           resources:
@@ -38,6 +37,17 @@ spec:
             - name: http
               containerPort: 3000
               protocol: TCP
+          volumeMounts:
+            - name: goblin-uploads
+              mountPath: /goblin/files
+            - name: goblin-cm
+              mountPath: /goblin/.config/default.yml
+              subPath: default.yml
+      initContainers:
+        - name: init-goblin
+          image: registry.stopdelaying.com/mb/goblin:16
+          command: ["pnpm"]
+          args: ["run", "init"]
           volumeMounts:
             - name: goblin-uploads
               mountPath: /goblin/files

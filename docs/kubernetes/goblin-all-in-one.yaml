@@ -3,32 +3,21 @@ apiVersion: v1
 metadata:
   name: goblin-config
 data:
+# CHANGE VALUES BELOW AS NEEDED
   default.yml: |-
-    url: http://localhost:3000
+    url: http://your-public-server.example.com:3000
     port: 3000
     db:
       host: goblin-postgres
       port: 5432
       db: goblin
       user: goblin
-      pass: goblin
+      pass: goblin_BUT_CHANGE_THIS
     redis:
       host: goblin-redis
       port: 6379
       family: 4
-    #sonic:
-    #  host: localhost
-    #  port: 1491
-    #  auth: SecretPassword
-    #  collection: notes
-    #  bucket: default
-    
-    #elasticsearch:
-    #  host: localhost
-    #  port: 9200
-    #  ssl: false
-    #  user:
-    #  pass:
+
     id: 'aid'
     reservedUsernames:
       - changes
@@ -39,61 +28,7 @@ data:
       - me
       - system
 ---
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: goblin
-  labels:
-    name: goblin
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      name: goblin
-  template:
-    metadata:
-      labels:
-        name: goblin
-    spec:
-      enableServiceLinks: true
-      containers:
-        - name: goblin
-          image: registry.stopdelaying.com/mb/goblin:11
-#          image: '95.217.202.227:32000/goblin:5'
-          command: ["pnpm"]
-          args: ["run", "start"]
-          resources:
-            requests:
-              cpu: 100m
-              memory: 320Mi
-#          livenessProbe:
-#            httpGet:
-#              path: /ping
-#              port: 3000
-#            timeoutSeconds: 5
-#            initialDelaySeconds: 60
-#            successThreshold: 1
-#            failureThreshold: 2
-#            periodSeconds: 10
-          ports:
-            - name: http
-              containerPort: 3000
-              protocol: TCP
-          volumeMounts:
-            - name: goblin-uploads
-              mountPath: /goblin/files
-            - name: goblin-cm
-              mountPath: /goblin/.config/default.yml
-              subPath: default.yml
-      volumes:
-        - name: goblin-uploads
-          hostPath:
-            path: /volumes/goblin_uploads
-        - name: goblin-cm
-          configMap:
-            name: goblin-config
-      terminationGracePeriodSeconds: 10
----
+# END OF CHANGES THAT YOU SHOULD REASONABLY NEED
 apiVersion: v1
 kind: Service
 metadata:
@@ -133,7 +68,9 @@ spec:
           image: 'postgres:16.2-bookworm'
           env:
             - name: POSTGRES_PASSWORD
+# ALSO CHANGE THE LINE BELOW
               value: superadminpassword_changeme
+# CHANGE THE LINE ABOVE
           resources:
             requests:
               cpu: 500m

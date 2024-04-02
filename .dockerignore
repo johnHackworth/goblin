@@ -41,6 +41,3 @@ files
 # I don't see why this should be ignored - m.
 # packages/backend/assets/instance.css
 
-
-# temp development
-goblin*.tar

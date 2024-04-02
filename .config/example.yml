@@ -7,7 +7,7 @@
 #   ┌─────┐
 #───┘ URL └─────────────────────────────────────────────────────
 
-# Final accessible URL seen by a user.
+# Final accessible URL seen by the users.
 url: https://example.com/
 
 #   ┌───────────────────────┐
@@ -133,7 +133,8 @@ reservedUsernames: [
   'admin',
   'administrator',
   'me',
-  'system'
+  'system',
+  'staff'
 ]
 
 # Whether disable HSTS
