@@ -195,5 +195,18 @@
        inkscape:export-ydpi="96" />
   </g>
 </svg>
+<span class="logo-subhead"><slot></slot></span>
 
 </template>
+
+<style lang="scss" scoped>
+svg {
+      --logo-color: white;
+      --logo-line: transparenet;
+}
+
+.logo-subhead {
+   font-family: "TeX Gyre Bonum";
+   color: white;
+}
+</style>

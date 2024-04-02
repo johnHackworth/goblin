@@ -27,10 +27,6 @@ const getInfoUrl = (blogname: string) => {
 	return `https://api.tumblr.com/v2/blog/${blogname}/info?api_key=${config.tumblr.key}`;
 };
 
-const getPostsUrl = (blogname: string, offset: number) => {
-	return `https://api.tumblr.com/v2/blog/${blogname}/posts?api_key=${config.tumblr.key}&offset=${offset}`;
-};
-
 export async function postToTumblr(user, note, tumblrBlog) {
 	const profile = await UserProfiles.findOneByOrFail({ userId: user.id });
 	if (profile.integrations.tumblr) {
@@ -122,8 +118,6 @@ const formatReblogItem = (reblog) => {
 export async function getTumblrPosts(tumblrBlog: string, offset: number) {
 	const feedUrl =
 		"https://" + tumblrBlog + ".tumblr.com/rss?cache-buster=" + Date.now();
-	//  const postsResponse = await fetch(getPostsUrl(tumblrBlog, offset));
-	//  const posts = await postsResponse.json();
 	const res = await fetch(feedUrl, {
 		method: "GET",
 		headers: Object.assign({
@@ -304,40 +298,45 @@ export async function fetchTumblrFeed(user: User) {
 			if (!lastUserUpdate || !user.feedUpdatedAt || postDate > lastUserUpdate) {
 				responses.new.push(post);
 				let title = "";
-				if (post.title) {
-					const titleSansEllipsis = post.title.split("…")[0];
-					const strippedContent = post.content
-						? post.content.replace(/(<([^>]+)>)/gi, "")
-						: null;
-					if (
-						!strippedContent ||
-						strippedContent.indexOf(titleSansEllipsis) < 0
-					) {
-						title =
-							'<div class="tumblrTitle">' + sanitize(post.title) + "</div>";
-					} else {
-						title = "";
-					}
+
+				/*
+				 * This peels out the reblog trail from post titles.
+				 *
+				 * "goblin: kobold: the hellcloud" -> "the hellcloud"
+				 * "goblin social: the hellcloud" -> "goblin social: the hellcloud"
+				 * "the hellcloud…" -> "the hellcloud"
+				 *
+				 * "Some people, when confronted with a problem, think 'I know, I'll use
+				 * regular expressions.' Now they have two problems." - Jamie Zawinski
+				 */
+				const sanitizedTitle =
+					sanitize(post?.title)
+						?.match(/^([\w-]+: ?)*(.*)/)?.[2]
+						.replace("&hellip;", "")
+						.replace("…", "") || "";
+				const defangedContent =
+					sanitize(post.content)
+						.replace(/(<([^>]+)>)/gi, "")
+						.replace(/^([\w-]+:)+/, "") || "";
+
+				if (sanitizedTitle && !defangedContent.includes(sanitizedTitle)) {
+					title = `<div class="tumblrTitle">${sanitizedTitle}</div>`;
 				}
+
 				let { reblogTrail, postContent } = await transformToReblogs(
 					post.content,
 				);
 				transforms.push(await transformToReblogs(post.content));
 
 				const reblogTrailBlock = reblogTrail.length
-					? '<div class="reblogTrail">' +
-					  reblogTrail.map(formatReblogItem).join("<hr/>") +
-					  "</div>"
+					? `<div class="reblogTrail">${reblogTrail
+							.map(formatReblogItem)
+							.join("<hr/>")}</div>`
 					: "";
 
 				const note = await create(user, {
 					createdAt: new Date(),
-					text:
-						'<div class="tumblrPost">' +
-						reblogTrailBlock +
-						title +
-						postContent +
-						"</div>",
+					text: `<div class="tumblrPost">${reblogTrailBlock}${title}${postContent}</div>`,
 					apHashtags: post.categories,
 					noMentions: true,
 					url: post.link,

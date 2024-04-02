@@ -86,8 +86,9 @@ definePageMetadata({
 
 <style lang="scss" scoped>
 .mjndxjch {
-	padding: 32px;
+	padding: 0px 32px;
 	text-align: center;
+	color: white;
 
 	> p {
 		margin: 0 0 12px 0;
@@ -99,7 +100,7 @@ definePageMetadata({
 
 	> img {
 		vertical-align: bottom;
-		height: 128px;
+		height: 600px;
 		margin-bottom: 24px;
 		border-radius: 16px;
 	}

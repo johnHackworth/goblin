@@ -620,14 +620,21 @@ hr {
 }
 
 ._fullinfo {
-	padding: 64px 32px;
+	padding: 0px 32px;
 	text-align: center;
+	color: white;
 
 	> img {
 		vertical-align: bottom;
-		height: 128px;
+		height: 600px;
 		margin-bottom: 16px;
 		border-radius: 16px;
+	}
+
+	.small & {
+		> img {
+			height: 160px;
+		}
 	}
 }
 

@@ -120,23 +120,12 @@
 
 <script lang="ts" setup>
 import { computed, inject, onMounted, onUnmounted, reactive, ref } from "vue";
-import { mainRouter } from "@/router";
-import * as mfm from "mfm-js";
 import type { Ref } from "vue";
 import type * as misskey from "firefish-js";
-import MkNoteSub from "@/components/MkNoteSub.vue";
 import NoteContent from "./NoteContent.vue";
 import XNoteHeader from "@/components/MkNoteHeader.vue";
-import XNoteSimple from "@/components/MkNoteSimple.vue";
-import XMediaList from "@/components/MkMediaList.vue";
-import XNoteDetailed from "@/components/MkNoteDetailed.vue";
-import XCwButton from "@/components/MkCwButton.vue";
-import XPoll from "@/components/MkPoll.vue";
 import XRenoteButton from "@/components/MkRenoteButton.vue";
-import XReactionsViewer from "@/components/MkReactionsViewer.vue";
 import XStarButton from "@/components/MkStarButton.vue";
-import XStarButtonNoEmoji from "@/components/MkStarButtonNoEmoji.vue";
-import XQuoteButton from "@/components/MkQuoteButton.vue";
 import MkUrlPreview from "@/components/MkUrlPreview.vue";
 import MkVisibility from "@/components/MkVisibility.vue";
 import ReblogIcon from "@/components/icons/reblog.vue";

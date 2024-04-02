@@ -37,32 +37,6 @@
 							{{ i18n.ts.login }}
 						</button>
 					</div>
-					<div class="announcements panel">
-						<header>{{ i18n.ts.announcements }}</header>
-						<MkPagination
-							v-slot="{ items }"
-							:pagination="announcements"
-							class="list"
-						>
-							<section
-								v-for="announcement in items"
-								:key="announcement.id"
-								class="item"
-							>
-								<div class="title">
-									{{ announcement.title }}
-								</div>
-								<div class="content">
-									<Mfm :text="announcement.text" />
-									<img
-										v-if="announcement.imageUrl"
-										:src="announcement.imageUrl"
-										alt="announcement image"
-									/>
-								</div>
-							</section>
-						</MkPagination>
-					</div>
 				</template>
 			</div>
 		</div>
@@ -263,6 +237,13 @@ export default defineComponent({
 					max-height: 300px;
 					overflow: auto;
 
+					&.empty {
+						 > ._fullinfo {
+						 		> img {
+						 			height: 160px;
+						 		}
+						 }
+					}
 					> .item {
 						padding: 12px 16px;
 

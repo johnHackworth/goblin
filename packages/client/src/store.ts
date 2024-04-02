@@ -122,17 +122,6 @@ export const defaultStore = markRaw(
 			where: "deviceAccount",
 			default: false,
 		},
-		statusbars: {
-			where: "deviceAccount",
-			default: [] as {
-				name: string;
-				id: string;
-				type: string;
-				size: "verySmall" | "small" | "medium" | "large" | "veryLarge";
-				black: boolean;
-				props: Record<string, any>;
-			}[],
-		},
 		widgets: {
 			where: "deviceAccount",
 			default: [] as {

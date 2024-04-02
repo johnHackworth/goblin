@@ -24,8 +24,9 @@ import { i18n } from "@/i18n";
 
 <style lang="scss" scoped>
 .mjndxjcg {
-	padding: 32px;
+	padding: 0px 32px;
 	text-align: center;
+	color: white;
 
 	> p {
 		margin: 0 0 8px 0;
@@ -37,7 +38,7 @@ import { i18n } from "@/i18n";
 
 	> img {
 		vertical-align: bottom;
-		height: 128px;
+		height: 600px;
 		margin-bottom: 16px;
 		border-radius: 16px;
 	}

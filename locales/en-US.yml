@@ -995,7 +995,6 @@ numberOfPageCacheDescription: "Increasing this number will improve convenience f
   users but cause more server load as well as more memory to be used."
 logoutConfirm: "Really log out?"
 lastActiveDate: "Last used at"
-statusbar: "Status bar"
 pleaseSelect: "Select an option"
 reverse: "Reverse"
 colored: "Colored"

@@ -77,19 +77,41 @@
 				>
 
 				<div class="vxjfqztj">
-					<MkA
-						v-for="tag in tagsLocal"
-						:key="'local:' + tag.tag"
-						:to="`/tags/${tag.tag}`"
-						class="local"
-						>{{ tag.tag }}</MkA
-					>
-					<MkA
-						v-for="tag in tagsRemote"
-						:key="'remote:' + tag.tag"
-						:to="`/tags/${tag.tag}`"
-						>{{ tag.tag }}</MkA
-					>
+					<template v-for="tag in tagsLocal" :key="tag.tag">
+						<MkA
+							v-if="tag.mostPopular"
+							:to="`/tags/${tag.tag}`"
+							class="local mostPopular"
+							>{{ tag.tag }}</MkA>
+						<MkA
+							v-else-if="tag.popular"
+							:to="`/tags/${tag.tag}`"
+							class="local popular"
+							>{{ tag.tag }}</MkA>
+						<MkA
+							v-else
+							:to="`/tags/${tag.tag}`"
+							class="local"
+							>{{ tag.tag }}</MkA>
+					</template>
+					
+					<template v-for="tag in tagsRemote" :key="tag.tag">
+						<MkA
+							v-if="tag.mostPopular"
+							:to="`/tags/${tag.tag}`"
+							class="remote mostPopular"
+							>{{ tag.tag }}</MkA>
+						<MkA
+							v-else-if="tag.popular"
+							:to="`/tags/${tag.tag}`"
+							class="remote popular"
+							>{{ tag.tag }}</MkA>
+						<MkA
+							v-else
+							:to="`/tags/${tag.tag}`"
+							class="remote"
+							>{{ tag.tag }}</MkA>
+					</template>
 				</div>
 			</MkFolder>
 
@@ -141,15 +163,13 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, watch } from "vue";
+import { watch } from "vue";
 import XUserList from "@/components/MkUserList.vue";
 import MkFolder from "@/components/MkFolder.vue";
 import MkTab from "@/components/MkTab.vue";
-import number from "@/filters/number";
 import * as os from "@/os";
 import { i18n } from "@/i18n";
 import { $i } from "@/account";
-import { instance } from "@/instance";
 
 const props = defineProps<{
 	tag?: string;
@@ -166,6 +186,17 @@ watch(
 		if (tagsEl) tagsEl.toggleContent(props.tag == null);
 	},
 );
+
+const calculateDistribution = (tags, field) => {
+	if (tags.length === 0) {
+		return { mean: 0, max: 0 }
+	} else {
+		return {
+			mean: tags.map(x => x[field]).reduce((i, a) => i + a) / tags.length,
+			max: tags.map(x => x[field]).reduce((i, a) => Math.max(i, a))
+		}
+	}
+}
 
 const tagUsers = $computed(() => ({
 	endpoint: "hashtags/users" as const,
@@ -241,15 +272,33 @@ os.api("hashtags/list", {
 	attachedToLocalUserOnly: true,
 	limit: 30,
 }).then((tags) => {
-	tagsLocal = tags;
-});
+	const dist = calculateDistribution(tags, "attachedLocalUsersCount");
+	tagsLocal = tags
+		.sort((a, b) => a.tag < b.tag ? -1 : 1)
+		.map(x => {
+			return {
+				...x,
+				popular: x.attachedLocalUsersCount > dist.mean,
+				mostPopular: x.attachedLocalUsersCount === dist.max,
+			}
+		});
+	});
 os.api("hashtags/list", {
 	sort: "+attachedRemoteUsers",
 	attachedToRemoteUserOnly: true,
 	limit: 30,
 }).then((tags) => {
-	tagsRemote = tags;
-});
+	const dist = calculateDistribution(tags, "attachedRemoteUsersCount");
+	tagsRemote = tags
+		.sort((a, b) => a.tag < b.tag ? -1 : 1)
+		.map(x => {
+			return {
+				...x,
+				popular: x.attachedRemoteUsersCount > dist.mean,
+				mostPopular: x.attachedRemoteUsersCount === dist.max
+			}
+		});
+	});
 </script>
 
 <style lang="scss" scoped>
@@ -257,10 +306,12 @@ os.api("hashtags/list", {
 	> * {
 		margin-right: 16px;
 		color: var(--panelHighlight);
+	}
 
-		&.local {
-			font-weight: bold;
-		}
+	a {
+			&.local { font-weight: bold; }
+			&.popular { font-size: 150%; }
+			&.mostPopular { font-size: 200%; }
 	}
 }
 </style>
