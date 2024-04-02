@@ -64,7 +64,7 @@ function checkForSplash() {
 }
 
 (async () => {
-	console.info(`Firefish v${version}`);
+	console.info(`Goblin v${version}`);
 
 	if (_DEV_) {
 		console.warn("Development mode!!!");
@@ -217,7 +217,7 @@ function checkForSplash() {
 	// https://github.com/misskey-dev/misskey/pull/8575#issuecomment-1114239210
 	// なぜかinit.tsの内容が2回実行されることがあるため、mountするdivを1つに制限する
 	const rootEl = (() => {
-		const MISSKEY_MOUNT_DIV_ID = "firefish_app";
+		const MISSKEY_MOUNT_DIV_ID = "goblin_app";
 
 		const currentEl = document.getElementById(MISSKEY_MOUNT_DIV_ID);
 

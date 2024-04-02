@@ -22,7 +22,7 @@
 					><i class="ph-upload-simple ph-bold ph-lg"></i
 				></template>
 				<FormRadios v-model="importType" class="_formBlock">
-					<option value="firefish">Firefish/Misskey</option>
+					<option value="firefish">Goblin/Firefish/Misskey</option>
 					<option value="mastodon">Mastodon/Akkoma/Pleroma</option>
 					<option :disabled="true" value="twitter">
 						Twitter (soon)

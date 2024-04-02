@@ -24,13 +24,13 @@
 </template>
 
 <script lang="ts" setup>
-import * as firefish from "firefish-js";
+import * as goblin from "firefish-js";
 import MkMiniChart from "@/components/MkMiniChart.vue";
 import * as os from "@/os";
 import { getProxiedImageUrlNullable } from "@/scripts/media-proxy";
 
 const props = defineProps<{
-	instance: firefish.entities.Instance;
+	instance: goblin.entities.Instance;
 }>();
 
 let chartValues = $ref<number[] | null>(null);
