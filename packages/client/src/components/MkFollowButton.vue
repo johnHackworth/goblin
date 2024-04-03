@@ -59,7 +59,7 @@
 		</template>
 	</button>
 	<button
-		v-else
+		v-else-if="!$i"
 		class="kpoogebi _button follow-button"
 		:class="{
 			full,
