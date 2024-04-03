@@ -174,7 +174,7 @@ function onFollowChange(user: Misskey.entities.UserDetailed) {
 async function onFollowRemote() {
 	let url = '';
 	let remote = remoteServer.value.trim();
-	if(remote.startsWith('http://') || remote.startsWith('http://')) {
+	if(remote.startsWith('http://') || remote.startsWith('https://')) {
 		url = `${remote}/authorize-follow?acct=@${props.user.username}@${host}`;
 	} else {
 		url = `https://${remote}/authorize-follow?acct=@${props.user.username}@${host}`;
