@@ -169,13 +169,7 @@ const menuDef = computed(() => [
 				text: i18n.ts.sounds,
 				to: "/settings/sounds",
 				active: currentPage?.route.name === "sounds",
-			},
-			{
-				icon: "ph-plug ph-bold ph-lg",
-				text: i18n.ts.plugins,
-				to: "/settings/plugin",
-				active: currentPage?.route.name === "plugin",
-			},
+			}
 		],
 	},
 	{

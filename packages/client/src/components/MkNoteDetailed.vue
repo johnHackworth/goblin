@@ -164,7 +164,7 @@ import { pleaseLogin } from "@/scripts/please-login";
 import { getWordSoftMute } from "@/scripts/check-word-mute";
 import { userPage } from "@/filters/user";
 import * as os from "@/os";
-import { defaultStore, noteViewInterruptors } from "@/store";
+import { defaultStore } from "@/store";
 import { reactionPicker } from "@/scripts/reaction-picker";
 import { $i } from "@/account";
 import { i18n } from "@/i18n";
@@ -224,17 +224,6 @@ const getSubnoteClass = ( note ) => {
 	}
 
 	return className.join(' ');
-}
-
-// plugin
-if (noteViewInterruptors.length > 0) {
-	onMounted(async () => {
-		let result = deepClone(note);
-		for (const interruptor of noteViewInterruptors) {
-			result = await interruptor.handler(result);
-		}
-		note = result;
-	});
 }
 
 const el = ref<HTMLElement>();

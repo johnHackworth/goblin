@@ -137,7 +137,7 @@ import { getWordSoftMute } from "@/scripts/check-word-mute";
 import { useRouter } from "@/router";
 import { userPage } from "@/filters/user";
 import * as os from "@/os";
-import { defaultStore, noteViewInterruptors } from "@/store";
+import { defaultStore } from "@/store";
 import { reactionPicker } from "@/scripts/reaction-picker";
 import { $i } from "@/account";
 import { i18n } from "@/i18n";
@@ -190,17 +190,6 @@ const softMuteReasonI18nSrc = (what?: string) => {
   // I don't think here is reachable, but just in case
   return i18n.ts.userSaysSomething;
 };
-
-// plugin
-if (noteViewInterruptors.length > 0) {
-  onMounted(async () => {
-    let result = deepClone(note);
-    for (const interruptor of noteViewInterruptors) {
-      result = await interruptor.handler(result);
-    }
-    note = result;
-  });
-}
 
 const isRenote =
   note.renote != null &&

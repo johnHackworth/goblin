@@ -409,14 +409,6 @@ function checkForSplash() {
 		//store.commit('instance/set', );
 	});
 
-	for (const plugin of ColdDeviceStorage.get("plugins").filter(
-		(p) => p.active,
-	)) {
-		import("./plugin").then(({ install }) => {
-			install(plugin);
-		});
-	}
-
 	const hotkeys = {
 		d: (): void => {
 			defaultStore.set("darkMode", !defaultStore.state.darkMode);

@@ -482,7 +482,6 @@ deletedNote: "Odstraněné příspěvky"
 invisibleNote: "Skryté příspěvky"
 description: "Popis"
 author: "Autor"
-manage: "Administrace"
 width: "Šířka"
 height: "Výška"
 large: "Velké"
@@ -633,9 +632,6 @@ _gallery:
 _email:
   _follow:
     title: "Máte nového následovníka"
-_plugin:
-  install: "Instalovat plugin"
-  manage: "Správce pluginů"
 _preferencesBackups:
   list: "Vytvořit backup"
   loadFile: "Načíst ze souboru"

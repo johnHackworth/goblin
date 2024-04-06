@@ -160,16 +160,6 @@ export const routes = [
 				component: page(() => import("./pages/settings/sounds.vue")),
 			},
 			{
-				path: "/plugin/install",
-				name: "plugin",
-				component: page(() => import("./pages/settings/plugin.install.vue")),
-			},
-			{
-				path: "/plugin",
-				name: "plugin",
-				component: page(() => import("./pages/settings/plugin.vue")),
-			},
-			{
 				path: "/import-export",
 				name: "import-export",
 				component: page(() => import("./pages/settings/import-export.vue")),

@@ -559,8 +559,6 @@ describeFile: "キャプションを付ける"
 enterFileDescription: "キャプションを入力"
 author: "作者"
 leaveConfirm: "未保存の変更があるで！ほかしてええか？"
-manage: "管理"
-plugins: "プラグイン"
 deck: "デッキ"
 undeck: "デッキ解除"
 useBlurEffectForModal: "モーダルにぼかし効果を使用"
@@ -856,10 +854,6 @@ _email:
     title: "フォローされたで"
   _receiveFollowRequest:
     title: "フォローリクエストを受け取ったで"
-_plugin:
-  install: "プラグインのインストール"
-  installWarn: "信頼できへんプラグインはインストールせんとってな"
-  manage: "プラグインの管理"
 _registry:
   scope: "スコープ"
   key: "キー"
