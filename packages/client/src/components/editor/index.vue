@@ -87,16 +87,6 @@
     >
       <WarningIcon />
     </button>
-    <div v-if="postFormActions">
-      <button
-        v-if="postFormActions.length > 0"
-        v-tooltip="i18n.ts.plugin"
-        class="_button"
-        @click="showActions"
-      >
-        <i class="ph-plug ph-bold ph-lg"></i>
-      </button>
-    </div>
     <button
       class="_button submit"
       :disabled="!props.canPost"

@@ -562,8 +562,6 @@ describeFile: "添加標題"
 enterFileDescription: "輸入標題"
 author: "作者"
 leaveConfirm: "有未保存的更改。要放棄嗎？"
-manage: "管理"
-plugins: "外掛"
 preferencesBackups: "備份設定檔"
 deck: "多欄模式"
 undeck: "取消多欄模式"
@@ -946,10 +944,6 @@ _email:
     title: "您有新的追隨者"
   _receiveFollowRequest:
     title: "收到追隨請求"
-_plugin:
-  install: "安裝外掛組件"
-  installWarn: "請不要安裝來源不明的外掛組件。"
-  manage: "管理外掛"
 _preferencesBackups:
   list: "已備份的設定檔"
   saveNew: "另存新檔"

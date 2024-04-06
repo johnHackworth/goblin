@@ -58,10 +58,61 @@
 			><i class="ph-circle-notch ph-bold ph-lg fa-pulse ph-fw ph-lg"></i>
 		</template>
 	</button>
+	<button
+		v-else-if="!$i"
+		class="kpoogebi _button follow-button"
+		:class="{
+			full,
+			large,
+			blocking: isBlocking,
+		}"
+		:disabled="wait"
+		@click.stop="onClickNotLogged"
+		:aria-label="`${state} ${user.name || user.username}`"
+		v-tooltip="full ? null : `${state} ${user.name || user.username}`"
+	>
+		<template v-if="!wait">
+			<template v-if="user.isLocked">
+				<span>{{ (state = i18n.ts.followRequest) }}</span
+				><i class="ph-lock-open ph-bold ph-lg"></i>
+			</template>
+			<template v-else>
+				<span>{{ (state = i18n.ts.follow) }}</span
+				><i class="ph-plus ph-bold ph-lg"></i>
+			</template>
+		</template>
+	</button>
+	<div class="follow-modal" v-if="followRemoteDialogVisible">
+		<XModalWindow
+			:prefer-type="'dialog'"
+			@click="cancelModal"
+			@close="cancelModal"
+			@closed="emit('closed')"
+			ref="dialog"
+			:width="370"
+		>
+			<div class="follow-remote">
+					<h4 class="follow-title">{{ `Follow ${user.username }` }} </h4>
+					<div class="follow-text">
+						You need to have a Goblin account to follow this user. Where is your account hosted?
+					</div>
+					<div class="follow-where">
+						<input class="follow-server" v-model="remoteServer"/>
+						<button class="follow-go" @click="onFollowRemote">go!</button>
+					</div>
+					<div class="follow-tip">Tip: That's the website where you signed up, like goblin.band, kobold.page, etc.</div>
+					<div class="follow-login">
+						{{ `If you already have an account in ${host} or wish to create one, ` }}
+						<a :href="`https://${host}`">click here</a>
+					</div>
+			</div>
+		</XModalWindow>
+	</div>
 </template>
 
 <script lang="ts" setup>
-import { computed, onBeforeUnmount, onMounted } from "vue";
+import { ref, computed, onBeforeUnmount, onMounted } from "vue";
+import XModalWindow from "@/components/MkModalWindow.vue";
 import type * as Misskey from "firefish-js";
 import * as os from "@/os";
 import { stream } from "@/stream";
@@ -69,6 +120,7 @@ import { i18n } from "@/i18n";
 import { $i } from "@/account";
 import { getUserMenu } from "@/scripts/get-user-menu";
 import { useRouter } from "@/router";
+import { host } from "@/config";
 
 const router = useRouter();
 
@@ -85,6 +137,15 @@ const props = withDefaults(
 		large: false,
 	},
 );
+
+const remoteServer = ref("");
+const followRemoteDialogVisible = ref(false);
+
+
+const cancelModal = () => {
+	followRemoteDialogVisible.value = false;
+}
+
 
 const isBlocking = computed(() => props.user.isBlocking);
 
@@ -108,6 +169,21 @@ function onFollowChange(user: Misskey.entities.UserDetailed) {
 		isFollowing = user.isFollowing;
 		hasPendingFollowRequestFromYou = user.hasPendingFollowRequestFromYou;
 	}
+}
+
+async function onFollowRemote() {
+	let url = '';
+	let remote = remoteServer.value.trim();
+	if(remote.startsWith('http://') || remote.startsWith('https://')) {
+		url = `${remote}/authorize-follow?acct=@${props.user.username}@${host}`;
+	} else {
+		url = `https://${remote}/authorize-follow?acct=@${props.user.username}@${host}`;
+	}
+	window.location.href = url;
+}
+
+async function onClickNotLogged() {
+	followRemoteDialogVisible.value = true;
 }
 
 async function onClick() {
@@ -271,5 +347,61 @@ onBeforeUnmount(() => {
 .blocking {
 	background-color: var(--bg) !important;
 	border: none;
+}
+
+.follow-modal {
+	z-index: 99999;
+	.follow-remote {
+		padding: 0 16px 32px;
+
+		.follow-tip {
+			margin-top: 8px;
+			font-size: 0.8em;
+		}
+
+		.follow-where {
+			display: flex;
+			width: 100&;
+			justify-content: space-between;
+			margin-top: 16px;
+
+			.follow-go {
+				display: block;
+				min-width: 100px;
+				min-height: 35px;
+				padding: 8px 16px;
+				text-align: center;
+				font-weight: normal;
+				font-size: max(12px, 1em);
+				background: var(--buttonBg);
+				border-radius: 5px;
+				box-sizing: border-box;
+				transition: background 0.1s ease;
+				margin-right: 0.2rem;
+				margin-left: 0.2rem;
+				font-weight: bold;
+				color: var(--fgOnAccent) !important;
+				background: var(--accent);
+			}
+
+			.follow-server {
+				color: var(--fg);
+	  		background: var(--panel);
+	  		border: solid 1px var(--X8);
+	  		border-color: var(--X8) !important;
+				padding: 8px 16px;
+				font-size: max(12px, 1em);
+				flex-grow: 2;
+			}
+		}
+
+		.follow-login {
+			margin-top: 16px;
+
+			a {
+				color: var(--accent);
+			}
+		}
+	}
 }
 </style>

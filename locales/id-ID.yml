@@ -606,8 +606,6 @@ describeFile: "Tambahkan keterangan"
 enterFileDescription: "Masukkan keterangan"
 author: "Pembuat"
 leaveConfirm: "Ada perubahan yang belum disimpan. Apakah kamu ingin membuangnya?"
-manage: "Manajemen"
-plugins: "Plugin"
 deck: "Dek"
 undeck: "Keluar dari dek"
 useBlurEffectForModal: "Gunakan efek buram untuk modal"
@@ -978,10 +976,6 @@ _email:
     title: "Mengikuti kamu"
   _receiveFollowRequest:
     title: "Kamu menerima permintaan mengikuti"
-_plugin:
-  install: "Memasang plugin"
-  installWarn: "Mohon jangan memasang plugin yang tidak dapat dipercayai."
-  manage: "Manajemen plugin"
 _registry:
   scope: "Lingkup"
   key: "Kunci"

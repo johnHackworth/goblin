@@ -52,7 +52,7 @@ const props = defineProps<{
   }
 
   .reblog-item-content {
-    margin: 16px 0;
+    margin: 0;
 
       img {
         max-width: 500px !important;

@@ -539,8 +539,6 @@ describeFile: "أضف تعليقًا توضيحيًا"
 enterFileDescription: "أدخل تعليقًا توضيحيًا"
 author: "الكاتب"
 leaveConfirm: "لديك تغييرات غير محفوظة. أتريد المتابعة دون حفظها؟"
-manage: "إدارة "
-plugins: "الإضافات"
 useFullReactionPicker: "استخدم الحجم الكامل لمنتقي التفاعلات"
 width: "العرض"
 height: "الإرتفاع"
@@ -845,10 +843,6 @@ _email:
     title: "يتابعك"
   _receiveFollowRequest:
     title: "استلمت طلب متابعة"
-_plugin:
-  install: "ثبّت إضافات"
-  installWarn: "رجاءً لا تثبت إضافات غير موثوقة."
-  manage: "إدارة الإضافات"
 _registry:
   scope: "الحيّز"
   key: "مفتاح"

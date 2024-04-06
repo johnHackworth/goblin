@@ -424,7 +424,6 @@ poll: Kysely
 enablePlayer: Avaa videotoistimeen
 enterFileDescription: Syötä tiedostokuvaus
 author: Kirjoittaja
-manage: Hallinta
 description: Kuvaus
 describeFile: Lisää tiedostokuvaus
 height: Korkeus
@@ -646,7 +645,6 @@ disablePlayer: Sulje videotoistin
 expandTweet: Laajenna twiittiä
 themeEditor: Teemaeditori
 leaveConfirm: Tallentamattomia muutoksia olemassa. Hylätäänkö ne?
-plugins: Liitännäiset
 preferencesBackups: Asetusten varmuuskopiot
 deck: Kansi
 undeck: Jätä kansi

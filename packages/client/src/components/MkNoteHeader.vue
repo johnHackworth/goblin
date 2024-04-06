@@ -49,7 +49,7 @@
 <script lang="ts" setup>
 import {} from "vue";
 import type * as misskey from "firefish-js";
-import { defaultStore, noteViewInterruptors } from "@/store";
+import { defaultStore } from "@/store";
 import MkVisibility from "@/components/MkVisibility.vue";
 import MkInstanceTicker from "@/components/MkInstanceTicker.vue";
 import { notePage } from "@/filters/note";

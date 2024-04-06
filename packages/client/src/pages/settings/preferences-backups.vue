@@ -120,7 +120,6 @@ const coldDeviceStorageSaveKeys: (keyof typeof ColdDeviceStorage.default)[] = [
 	"lightTheme",
 	"darkTheme",
 	"syncDeviceDarkMode",
-	"plugins",
 	"mediaVolume",
 	"sound_masterVolume",
 	"sound_note",

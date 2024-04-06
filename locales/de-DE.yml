@@ -615,8 +615,6 @@ describeFile: "Beschreibung hinzufügen"
 enterFileDescription: "Beschreibung eingeben"
 author: "Autor"
 leaveConfirm: "Es gibt unspeicherte Änderungen. Möchtest du diese verwerfen?"
-manage: "Verwaltung"
-plugins: "Plugins"
 preferencesBackups: "Einstellungsbackups"
 deck: "Deck"
 undeck: "Deck verlassen"
@@ -1053,10 +1051,6 @@ _email:
     title: "Du hast einen neuen Follower"
   _receiveFollowRequest:
     title: "Du hast eine Follow-Anfrage erhalten"
-_plugin:
-  install: "Plugins installieren"
-  installWarn: "Bitte nur vertrauenswürdige Plugins installieren."
-  manage: "Plugins verwalten"
 _preferencesBackups:
   list: "Erstellte Backups"
   saveNew: "Neu erstellen"

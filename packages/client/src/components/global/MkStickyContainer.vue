@@ -68,7 +68,7 @@ onUnmounted(() => {
 	> div:first-child {
 		position: sticky;
 		top: var(--stickyTop, 0);
-		z-index: 1000;
+		z-index: 99;
 	}
 	> div:last-child {
 		display: flex;
