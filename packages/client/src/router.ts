@@ -322,18 +322,6 @@ export const routes = [
 		loginRequired: true,
 	},
 	{
-		path: "/mfm-cheat-sheet",
-		component: page(() => import("./pages/mfm-cheat-sheet.vue")),
-	},
-	{
-		path: "/scratchpad",
-		component: page(() => import("./pages/scratchpad.vue")),
-	},
-	{
-		path: "/preview",
-		component: page(() => import("./pages/preview.vue")),
-	},
-	{
 		path: "/auth/:token",
 		component: page(() => import("./pages/auth.vue")),
 	},
