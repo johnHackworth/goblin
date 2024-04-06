@@ -8,24 +8,21 @@ import config from "@/config/index.js";
 const logger = queueLogger.createSubLogger("tumblr feed");
 
 export async function fetchTumblrFeeds(
-  job: Bull.Job<Record<string, unknown>>,
-  done: any,
+	job: Bull.Job<Record<string, unknown>>,
+	done: any,
 ): Promise<void> {
-  logger.info("Fetching tumblr feeds...");
+	logger.info("Fetching tumblr feeds...");
 
-  const usersToFetch = await getUsersToFetch()
-  if(usersToFetch) {
-    for(let i = 0; i<usersToFetch.length; i++) {
-    }
-  }
+	const usersToFetch = await getUsersToFetch();
+	if (usersToFetch) {
+		for (let i = 0; i < usersToFetch.length; i++) {}
+	}
 
-  let usersToFech = await getUsersToFetch();
+	let usersToFech = await getUsersToFetch();
 
-  for(const user of usersToFech) {
-    await fetchTumblrFeed(user);
-  }
+	for (const user of usersToFech) {
+		await fetchTumblrFeed(user);
+	}
 
-  done();
+	done();
 }
-
-

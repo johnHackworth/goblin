@@ -1,7 +1,5 @@
-# Visual Studio Code
+# IDEs
 .vscode
-
-# Intelij-IDEA
 .idea
 
 # Node.js
@@ -12,29 +10,34 @@ report.*.json
 # Rust
 packages/backend/native-utils/target
 
-# Coverage
+# Developer stuff
+.git
+Dockerfile
+docker-compose.yml
 coverage
-
-# config
-/.config
-
-# misskey
-built
-db
-elasticsearch
-redis
+chart
+doc
+dev
 npm-debug.log
 *.pem
 run.bat
 api-docs.json
 *.log
 *.code-workspace
+*.md
+
+# config
+/.config
+ormconfig.json
+
+# misskey
+built
+db
+elasticsearch
+redis
 .DS_Store
 files
-ormconfig.json
-packages/backend/assets/instance.css
 
-# dockerignore custom
-.git
-Dockerfile
-docker-compose.yml
+# I don't see why this should be ignored - m.
+# packages/backend/assets/instance.css
+

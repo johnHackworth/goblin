@@ -147,7 +147,7 @@ for (const endpoint of [...endpoints, ...compatibility]) {
 		);
 	} else {
 		// 後方互換性のため
-		if (endpoint.method === 'POST') {
+		if (endpoint.method === "POST") {
 			if (endpoint.name.includes("-")) {
 				router.post(
 					`/${endpoint.name.replace(/-/g, "_")}`,
@@ -175,7 +175,7 @@ for (const endpoint of [...endpoints, ...compatibility]) {
 					ctx.status = 405;
 				});
 			}
-		} else if (endpoint.method === 'GET') {
+		} else if (endpoint.method === "GET") {
 			// first step to start migrating endpoints here
 			router.get(`/${endpoint.name}`, handler.bind(null, endpoint));
 		}

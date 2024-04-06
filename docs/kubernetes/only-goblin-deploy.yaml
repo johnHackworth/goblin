@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goblin
+  labels:
+    name: goblin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: goblin
+  template:
+    metadata:
+      labels:
+        name: goblin
+    spec:
+      enableServiceLinks: true
+      containers:
+        - name: goblin
+          image: registry.stopdelaying.com/mb/goblin:16
+          command: ["pnpm"]
+          args: ["run", "start"]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 320Mi
+          #          livenessProbe:
+          #            httpGet:
+          #              path: /ping
+          #              port: 3000
+          #            timeoutSeconds: 5
+          #            initialDelaySeconds: 60
+          #            successThreshold: 1
+          #            failureThreshold: 2
+          #            periodSeconds: 10
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          volumeMounts:
+            - name: goblin-uploads
+              mountPath: /goblin/files
+            - name: goblin-cm
+              mountPath: /goblin/.config/default.yml
+              subPath: default.yml
+      initContainers:
+        - name: init-goblin
+          image: registry.stopdelaying.com/mb/goblin:16
+          command: ["pnpm"]
+          args: ["run", "init"]
+          volumeMounts:
+            - name: goblin-uploads
+              mountPath: /goblin/files
+            - name: goblin-cm
+              mountPath: /goblin/.config/default.yml
+              subPath: default.yml
+      volumes:
+        - name: goblin-uploads
+          hostPath:
+            path: /volumes/goblin_uploads
+        - name: goblin-cm
+          configMap:
+            name: goblin-config
+      terminationGracePeriodSeconds: 10

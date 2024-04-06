@@ -11,15 +11,19 @@
 			"decoratorMetadata": true
 		},
 		"experimental": {
-			"keepImportAssertions": true
+			"keepImportAssertions": true,
+			"emitAssertForImportAttributes": true
 		},
-		"baseUrl": ".",
+		"baseUrl": "src",
 		"paths": {
-			"@/*": [
-				"./src/*"
-			]
+			"@/*": ["*"]
 		},
 		"target": "es2022"
 	},
-	"minify": false
+	"minify": false,
+	"module": {
+		"type": "es6",
+		"strict": true,
+		"resolveFully": true
+	}
 }
