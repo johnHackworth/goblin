@@ -308,6 +308,9 @@ export async function createNote(
 	let text: string | null = null;
 	if (typeof note._goblin_content !== "undefined") {
 		text = note._goblin_content;
+	}
+  else if (typeof note.content === "string") {
+		text = note.content; // htmlToMfm(note.content, note.tag);
 	} else if (
 		note.source?.mediaType === "text/x.misskeymarkdown" &&
 		typeof note.source?.content === "string"
@@ -315,8 +318,6 @@ export async function createNote(
 		text = note.source.content;
 	} else if (typeof note._misskey_content !== "undefined") {
 		text = note._misskey_content;
-	} else if (typeof note.content === "string") {
-		text = note.content; // htmlToMfm(note.content, note.tag);
 	}
 
 	// vote
