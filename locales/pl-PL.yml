@@ -585,8 +585,6 @@ describeFile: "Dodaj podpis"
 enterFileDescription: "Wprowadź napis"
 author: "Autor"
 leaveConfirm: "Są niezapisane zmiany. Czy chcesz je odrzucić?"
-manage: "Zarządzanie"
-plugins: "Wtyczki"
 deck: "Tablica"
 useBlurEffectForModal: "Używaj efektu rozmycia w modalach"
 useFullReactionPicker: "Używaj pełnowymiarowego wybornika reakcji"
@@ -955,10 +953,6 @@ _email:
     title: "Zaobserwował* Cię"
   _receiveFollowRequest:
     title: "Otrzymano prośbę o możliwość obserwacji"
-_plugin:
-  install: "Zainstaluj wtyczki"
-  installWarn: "Nie instaluj niezaufanych wtyczek."
-  manage: "Zarządzanie wtyczkami"
 _preferencesBackups:
   list: "Utworzone kopie zapasowe"
   saveNew: "Zapisz nową kopię zapasową"

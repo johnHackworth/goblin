@@ -1,20 +1,14 @@
 import { markRaw, ref } from "vue";
 import { Storage } from "./pizzax";
-import { Theme } from "./scripts/theme";
 
-export const postFormActions = [];
 export const userActions = [];
 export const noteActions = [];
-export const noteViewInterruptors = [];
-export const notePostInterruptors = [];
 
 const menuOptions = [
 	"notifications",
 	"followRequests",
 	"messaging",
 	"explore",
-	//"favorites",
-	//"channels",
 	"search",
 ];
 
@@ -338,15 +332,6 @@ export const defaultStore = markRaw(
 
 const PREFIX = "miux:";
 
-type Plugin = {
-	id: string;
-	name: string;
-	active: boolean;
-	configData: Record<string, any>;
-	token: string;
-	ast: any[];
-};
-
 /**
  * 常にメモリにロードしておく必要がないような設定情報を保管するストレージ(非リアクティブ)
  */
@@ -358,7 +343,6 @@ export class ColdDeviceStorage {
 		lightTheme,
 		darkTheme,
 		syncDeviceDarkMode: true,
-		plugins: [] as Plugin[],
 		mediaVolume: 0.5,
 		sound_masterVolume: 0.3,
 		sound_note: { type: "none", volume: 0 },

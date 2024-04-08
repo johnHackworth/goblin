@@ -559,8 +559,6 @@ describeFile: "Pridať nadpis"
 enterFileDescription: "Zadajte nadpis"
 author: "Autor"
 leaveConfirm: "Máte neuložené zmeny. Chcete ich zahodiť?"
-manage: "Administrácia"
-plugins: "Pluginy"
 preferencesBackups: "Zálohy nastavení"
 deck: "Deck"
 useBlurEffectForModal: "Použiť efekt rozmazania na okná"
@@ -931,10 +929,6 @@ _email:
     title: "Máte nového sledujúceho"
   _receiveFollowRequest:
     title: "Dostali ste žiadosť o sledovanie"
-_plugin:
-  install: "Inštalova pluginy"
-  installWarn: "Prosím neinštalujte nedôveryhodné pluginy."
-  manage: "Spravovanie pluginov"
 _preferencesBackups:
   list: "Vytvorené zálohy"
   saveNew: "Uložiť novú"

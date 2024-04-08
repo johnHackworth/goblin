@@ -603,8 +603,6 @@ describeFile: "Añade una descripción"
 enterFileDescription: "Introducir un título"
 author: "Autor"
 leaveConfirm: "Hay modificaciones sin guardar. ¿Desea descartarlas?"
-manage: "Administrar"
-plugins: "Plugins"
 preferencesBackups: "Respaldo de preferencias"
 deck: "Deck"
 undeck: "Quitar deck"
@@ -1030,10 +1028,6 @@ _email:
     title: "te ha seguido"
   _receiveFollowRequest:
     title: "Has recibido una solicitud de seguimiento"
-_plugin:
-  install: "Instalar plugins"
-  installWarn: "Por favor no instale plugins que no son de confianza"
-  manage: "Gestionar plugins"
 _preferencesBackups:
   list: "Respaldos creados"
   saveNew: "Guardar nuevo respaldo"

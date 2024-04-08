@@ -1147,8 +1147,6 @@ expandTweet: Amplia el tuit
 themeEditor: Editor de temes
 description: Descripció
 leaveConfirm: Hi han canvis que no s'han desat. Els vols descartar?
-manage: Administració
-plugins: Afegits
 preferencesBackups: Preferències de còpies de seguretat
 undeck: Treure el Taulell
 useBlurEffectForModal: Fes servir efectes de difuminació en les finestres modals
@@ -1455,10 +1453,6 @@ _forgotPassword:
     en contacte amb l'administrador del servidor.
   enterEmail: Introduïu l'adreça de correu electrònic que heu utilitzat per registrar-vos.
     A continuació, se li enviarà un enllaç amb el qual podeu restablir la vostra contrasenya.
-_plugin:
-  install: Instal·leu connectors
-  installWarn: Si us plau, no instal·leu connectors que no siguin fiables.
-  manage: Gestionar els connectors
 _preferencesBackups:
   saveNew: Desa una còpia de seguretat nova
   apply: Aplicar a aquest dispositiu

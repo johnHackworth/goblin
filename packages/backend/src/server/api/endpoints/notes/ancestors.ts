@@ -39,6 +39,7 @@ export const paramDef = {
 
 const getNoteWithAncestors = async (noteId, user) => {
   const note = await getNote(noteId, user);
+
   if(note) {
     if (note.replyId) {
       const ancestor = await getNoteWithAncestors(note.replyId, user);
@@ -60,6 +61,8 @@ export default define(meta, paramDef, async (ps, user) => {
 
   if(note.replyId) {
     return { ...note, reply: await getNoteWithAncestors(note.replyId, user) };
+  } else if (!note.user) {
+    return { ...note, user: await Users.pack(note.userId) };
   }
 
   return note;

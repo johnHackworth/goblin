@@ -160,16 +160,6 @@ export const routes = [
 				component: page(() => import("./pages/settings/sounds.vue")),
 			},
 			{
-				path: "/plugin/install",
-				name: "plugin",
-				component: page(() => import("./pages/settings/plugin.install.vue")),
-			},
-			{
-				path: "/plugin",
-				name: "plugin",
-				component: page(() => import("./pages/settings/plugin.vue")),
-			},
-			{
 				path: "/import-export",
 				name: "import-export",
 				component: page(() => import("./pages/settings/import-export.vue")),
@@ -330,18 +320,6 @@ export const routes = [
 		path: "/api-console",
 		component: page(() => import("./pages/api-console.vue")),
 		loginRequired: true,
-	},
-	{
-		path: "/mfm-cheat-sheet",
-		component: page(() => import("./pages/mfm-cheat-sheet.vue")),
-	},
-	{
-		path: "/scratchpad",
-		component: page(() => import("./pages/scratchpad.vue")),
-	},
-	{
-		path: "/preview",
-		component: page(() => import("./pages/preview.vue")),
 	},
 	{
 		path: "/auth/:token",

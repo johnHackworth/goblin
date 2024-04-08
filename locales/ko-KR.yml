@@ -559,8 +559,6 @@ describeFile: "캡션 추가"
 enterFileDescription: "캡션 입력"
 author: "작성자"
 leaveConfirm: "저장하지 않은 변경사항이 있습니다. 취소하시겠습니까?"
-manage: "관리"
-plugins: "플러그인"
 preferencesBackups: "환경설정 백업"
 deck: "덱"
 undeck: "덱 해제"
@@ -936,10 +934,6 @@ _email:
     title: "새로운 팔로워가 있습니다"
   _receiveFollowRequest:
     title: "팔로우 요청을 받았습니다"
-_plugin:
-  install: "플러그인 설치"
-  installWarn: "신뢰할 수 없는 플러그인은 설치하지 않는 것이 좋습니다."
-  manage: "플러그인 관리"
 _preferencesBackups:
   list: "생성한 백업"
   saveNew: "새 백업 만들기"

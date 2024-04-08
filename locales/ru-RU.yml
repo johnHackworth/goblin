@@ -600,8 +600,6 @@ describeFile: "Добавить подпись"
 enterFileDescription: "Введите подпись"
 author: "Автор"
 leaveConfirm: "Вы не сохранили изменения. Хотите выйти и потерять их?"
-manage: "Управление"
-plugins: "Расширения"
 preferencesBackups: "Резервная копия"
 deck: "Пульт"
 undeck: "Покинуть пульт"
@@ -972,10 +970,6 @@ _email:
     title: "Новый подписчик"
   _receiveFollowRequest:
     title: "Новый запрос на подписку"
-_plugin:
-  install: "Установка расширений"
-  installWarn: "Пожалуйста, не устанавливайте расширения, которым не доверяете."
-  manage: "Управление расширениями"
 _registry:
   scope: "Область"
   key: "Ключ"
