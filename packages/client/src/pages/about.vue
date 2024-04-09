@@ -208,11 +208,6 @@ let theTabs = [
 		icon: "ph-map-trifold ph-bold ph-lg",
 	},
 	{
-		key: "emojis",
-		title: i18n.ts.customEmojis,
-		icon: "ph-smiley ph-bold ph-lg",
-	},
-	{
 		key: "charts",
 		title: i18n.ts.charts,
 		icon: "ph-chart-bar ph-bold ph-lg",
