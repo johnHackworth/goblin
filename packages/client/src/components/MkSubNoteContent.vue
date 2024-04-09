@@ -213,7 +213,7 @@ function focusFooter(ev) {
 		> .body {
 			transition: filter 0.1s;
 			> * {
-				padding: 0px 32px;
+				padding: 0px 16px;
 			}
 
 			> .rp {
@@ -251,7 +251,7 @@ function focusFooter(ev) {
 
 				> * {
 
-					padding: 8px 32px 8px 32px;
+					padding: 8px 16px;
 					border: 0px;
 					border-bottom: solid 1px var(--renote);
 					border-radius: 0px;
@@ -350,7 +350,7 @@ function focusFooter(ev) {
     }
 	}
   .noteTags {
-    padding: 0 32px;
+    padding: 0 16px;
     margin-top: 16px;
     .noteTag {
       color: #09A;

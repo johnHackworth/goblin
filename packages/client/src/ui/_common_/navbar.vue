@@ -490,6 +490,10 @@ function more(ev: MouseEvent) {
 		flex: 0 0 $nav-icon-only-width;
 		width: $nav-icon-only-width;
 
+		.logo {
+			display: none;
+		}
+
 		> .body {
 			width: $nav-icon-only-width;
 
