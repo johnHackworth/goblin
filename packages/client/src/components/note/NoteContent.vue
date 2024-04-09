@@ -406,11 +406,11 @@ function focusFooter(ev) {
 }
 
 .tumblrPost {
-  width: calc(100% + 64px);
+  width: calc(100% + 32px);
   margin-left: -16px;
 
   .postRoot {
-    padding: 0 16x;
+    padding: 0 16px;
   }
 
   .reblogTrailItem {

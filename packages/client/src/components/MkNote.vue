@@ -1032,7 +1032,6 @@ defineExpose({
 
 .rssSource {
 	margin-right: auto;
-	margin-left: 8px;
 	display: flex;
 	font-size: 0.95em;
 	align-items: center;
