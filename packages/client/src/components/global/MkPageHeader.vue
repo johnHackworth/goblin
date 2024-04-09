@@ -71,7 +71,7 @@
 				v-if="hasTabs"
 				ref="tabsEl"
 				class="tabs"
-				:class="{ collapse: hasTabs && tabs.length > 3 }"
+				:class="{ collapse: hasTabs && tabs.length > 8 }"
 			>
 				<button
 					v-for="tab in tabs"
@@ -484,6 +484,7 @@ onUnmounted(() => {
 	}
 
 	> .tabs {
+		min-width: 640px;
 		position: relative;
 		font-size: 1em;
 		overflow-x: auto;
@@ -547,7 +548,7 @@ onUnmounted(() => {
 
 			&.active {
 				opacity: 1;
-				color: var(--accent);
+				color: var(--navFg);
 				font-weight: 600;
 				width: var(--width);
 				min-width: var(--width) !important;
