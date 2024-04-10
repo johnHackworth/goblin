@@ -2,6 +2,7 @@ import { In } from "typeorm";
 import * as mfm from "mfm-js";
 import { Note } from "@/models/entities/note.js";
 import type { User } from "@/models/entities/user.js";
+
 import {
 	Users,
 	PollVotes,
@@ -94,7 +95,6 @@ async function populateMyReaction(
 
 	return undefined;
 }
-
 export const NoteRepository = db.getRepository(Note).extend({
 	async isVisibleForMe(note: Note, meId: User["id"] | null): Promise<boolean> {
 		// This code must always be synchronized with the checks in generateVisibilityQuery.
@@ -237,6 +237,7 @@ export const NoteRepository = db.getRepository(Note).extend({
 			mentions: note.mentions.length > 0 ? note.mentions : undefined,
 			uri: note.uri || undefined,
 			url: note.url || undefined,
+			slug: note.slug || undefined,
 			updatedAt: note.updatedAt?.toISOString() || undefined,
 			poll: note.hasPoll ? populatePoll(note, meId) : undefined,
 			...(meId

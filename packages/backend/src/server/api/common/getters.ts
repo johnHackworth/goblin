@@ -4,6 +4,8 @@ import type { Note } from "@/models/entities/note.js";
 import { Notes, Users } from "@/models/index.js";
 import { generateVisibilityQuery } from "./generate-visibility-query.js";
 
+import { apiLogger } from "../logger.js";
+
 /**
  * Get note for API processing, taking into account visibility.
  */
@@ -19,6 +21,34 @@ export async function getNote(
 
 	const note = await query.getOne();
 
+	if (note == null) {
+		throw new IdentifiableError(
+			"9725d0ce-ba28-4dde-95a7-2cbb2c15de24",
+			"No such note.",
+		);
+	}
+
+	return note;
+}
+
+/**
+ * Get note for API processing, taking into account visibility.
+ */
+export async function getNoteBySlug(
+	slug: Note["slug"],
+	userId: string,
+	me: { id: User["id"] } | null,
+) {
+	const query = Notes.createQueryBuilder("note");
+	query.where("note.slug = :slug", {
+		slug: slug
+	});
+	query.andWhere("note.userId = :userId", {
+		userId: userId,
+	});
+
+	generateVisibilityQuery(query, me);
+	const note = await query.getOne();
 	if (note == null) {
 		throw new IdentifiableError(
 			"9725d0ce-ba28-4dde-95a7-2cbb2c15de24",

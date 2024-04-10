@@ -21,6 +21,7 @@ import { extractMentions } from "@/misc/extract-mentions.js";
 import { extractCustomEmojisFromMfm } from "@/misc/extract-custom-emojis-from-mfm.js";
 import { extractHashtags } from "@/misc/extract-hashtags.js";
 import { getRootAncestor } from "@/misc/note/ancestors.js";
+import { getNoteSlug } from "@/misc/note/noteSlug.js";
 import type { IMentionedRemoteUsers } from "@/models/entities/note.js";
 import { Note } from "@/models/entities/note.js";
 import {
@@ -69,6 +70,7 @@ import meilisearch from "../../db/meilisearch.js";
 import { redisClient } from "@/db/redis.js";
 import { Mutex } from "redis-semaphore";
 import Logger from "../logger.js";
+import { getNoteSummary } from "@/misc/get-note-summary.js";
 
 const logger = new Logger("notes-create");
 
@@ -158,6 +160,7 @@ type Option = {
 	apEmojis?: string[] | null;
 	uri?: string | null;
 	url?: string | null;
+	slug?: string | null;
 	app?: App | null;
 };
 
@@ -372,6 +375,13 @@ export default async (
 					await Users.findOneByOrFail({ id: data.reply!.userId }),
 				);
 			}
+		}
+
+		data.slug = await getNoteSlug(data as Note)
+		logger.info('created slug: ' + data.slug);
+		if(user.username && data.slug) {
+			const host = user.host ? '@' + user.host : '';
+			data.url = `${config.url}/@${user.username}${host}/${data.slug}`;
 		}
 
 		const note = await insertNote(user, data, tags, emojis, mentionedUsers);
@@ -780,6 +790,7 @@ async function insertNote(
 		reblogtrail: data.reblogtrail,
 		name: data.name,
 		text: data.text,
+		slug: data.slug,
 		hasPoll: data.poll != null,
 		cw: data.cw == null ? null : data.cw,
 		tags: tags.map((tag) => normalizeForSearch(tag)),

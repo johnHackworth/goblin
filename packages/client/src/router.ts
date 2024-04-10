@@ -3,18 +3,6 @@ import { Router } from "@/nirax";
 import { $i, iAmModerator } from "@/account";
 import MkLoading from "@/pages/_loading_.vue";
 import MkError from "@/pages/_error_.vue";
-import { api } from "@/os";
-import { ui } from "@/config";
-
-function getGuestTimelineStatus() {
-	api("meta", {
-		detail: false,
-	}).then((meta) => {
-		return meta.enableGuestTimeline;
-	});
-}
-
-const guestTimeline = getGuestTimelineStatus();
 
 const page = (loader: AsyncComponentLoader<any>) =>
 	defineAsyncComponent({
@@ -41,8 +29,12 @@ export const routes = [
 		component: page(() => import("./pages/user/followers.vue")),
 	},
 	{
+		path: "/@:acct/posts/:slug",
+		component: page(() => import("./pages/note/bySlug.vue")),
+	},
+	{
 		name: "user",
-		path: "/@:acct/:page?",
+		path: "/@:acct/:slug?",
 		component: page(() => import("./pages/user/index.vue")),
 	},
 	{

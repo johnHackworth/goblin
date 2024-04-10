@@ -185,6 +185,11 @@ export const packedNoteSchema = {
 			optional: false,
 			nullable: false,
 		},
+		slug: {
+			type: "string",
+			optional: true,
+			nullable: true,
+		},
 		uri: {
 			type: "string",
 			optional: true,

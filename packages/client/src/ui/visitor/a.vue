@@ -47,13 +47,6 @@
 
 		<div class="main">
 			<div ref="contents" class="contents" :class="{ wallpaper }">
-				<header
-					v-show="mainRouter.currentRoute?.name !== 'index'"
-					ref="header"
-					class="header"
-				>
-					<XHeader :info="pageInfo" />
-				</header>
 				<main ref="main">
 					<RouterView />
 				</main>

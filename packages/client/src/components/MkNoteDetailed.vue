@@ -55,7 +55,7 @@
 			</MkTab>
 
 			<div class="editor" v-if="tab === 'replies'"	>
-				<XPostForm
+				<MkPostForm
 					class="post-form _block"
 					:reply="noteToReplyTo"
 					@posted="onPosted"
@@ -63,8 +63,11 @@
 					isReply
 				/>
 			</div>
+			<div class="noReplies" v-if="directReplies && tab === 'replies' && directReplies.length === 0">
+				No Replies
+			</div>
 			<MkNoteSub
-				v-if="directReplies && tab === 'replies'"
+				v-else-if="directReplies && tab === 'replies'"
 				v-for="note in directReplies"
 				:key="note.id"
 				:note="note"
@@ -177,7 +180,7 @@ import appear from "@/directives/appear";
 
 import { getParentNote, populateFullReply } from "@/helpers/note/parent";
 
-import XPostForm from "@/components/MkPostForm.vue";
+import MkPostForm from "@/components/MkPostForm.vue";
 
 const props = defineProps<{
 	key?: string;
@@ -745,5 +748,11 @@ onUnmounted(() => {
 	background: rgb(2,0,36);
 	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(19,55,73,1) 49%, rgba(28,66,36,1) 62%, rgba(146,161,23,1) 76%, rgba(255,255,255,1) 100%);
 	opacity: 0.5;
+}
+
+.noReplies {
+	padding: 64px 0;
+	text-align: center;
+
 }
 </style>
