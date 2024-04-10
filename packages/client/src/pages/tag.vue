@@ -25,7 +25,10 @@
 				@slide-change="onSlideChange"
 			>
 				<swiper-slide>
-					<XNotes ref="notes" :pagination="notesPagination" />
+					<div>
+						<XHashtagSummary :tag="pageHashtag" />
+						<XNotes ref="notes" :pagination="notesPagination" />
+					</div>
 				</swiper-slide>
 				<swiper-slide>
 					<XUserList
@@ -43,6 +46,7 @@
 import { computed, watch, onMounted } from "vue";
 import { Virtual } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/vue";
+import XHashtagSummary from "@/components/MkHashtagSummary.vue";
 import XNotes from "@/components/MkNotes.vue";
 import XUserList from "@/components/MkUserList.vue";
 import { i18n } from "@/i18n";
@@ -72,6 +76,8 @@ const usersPagination = {
 		origin: "combined",
 	})),
 };
+
+const pageHashtag = props.tag;
 
 const tabs = ["notes", "users"];
 let tab = $ref(tabs[0]);

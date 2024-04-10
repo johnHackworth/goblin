@@ -168,6 +168,10 @@ import * as ep___hashtags_search from "./endpoints/hashtags/search.js";
 import * as ep___hashtags_show from "./endpoints/hashtags/show.js";
 import * as ep___hashtags_trend from "./endpoints/hashtags/trend.js";
 import * as ep___hashtags_users from "./endpoints/hashtags/users.js";
+import * as ep___hashtags_follow from "./endpoints/hashtags/follow.js";
+import * as ep___hashtags_unfollow from "./endpoints/hashtags/unfollow.js";
+import * as ep___hashtags_block from "./endpoints/hashtags/block.js";
+import * as ep___hashtags_unblock from "./endpoints/hashtags/unblock.js";
 import * as ep___i from "./endpoints/i.js";
 import * as ep___i_2fa_done from "./endpoints/i/2fa/done.js";
 import * as ep___i_2fa_keyDone from "./endpoints/i/2fa/key-done.js";
@@ -350,10 +354,10 @@ import * as ep___i_move from "./endpoints/i/move.js";
 import * as ep___i_known_as from "./endpoints/i/known-as.js";
 
 const getEps = [
-  ["note/reblogtrail", ep___notes_reblogtrail],
-  ["tumblr/user", ep___users_tumblr],
-  ["tumblr/feed", ep___users_tumblr_feed],
-  ["note/ancestors", ep___notes_ancestors],
+	["note/reblogtrail", ep___notes_reblogtrail],
+	["tumblr/user", ep___users_tumblr],
+	["tumblr/feed", ep___users_tumblr_feed],
+	["note/ancestors", ep___notes_ancestors],
 ];
 
 const postEps = [
@@ -531,6 +535,10 @@ const postEps = [
 	["hashtags/show", ep___hashtags_show],
 	["hashtags/trend", ep___hashtags_trend],
 	["hashtags/users", ep___hashtags_users],
+	["hashtags/follow", ep___hashtags_follow],
+	["hashtags/unfollow", ep___hashtags_unfollow],
+	["hashtags/block", ep___hashtags_block],
+	["hashtags/unblock", ep___hashtags_unblock],
 	["i", ep___i],
 	["i/known-as", ep___i_known_as],
 	["i/move", ep___i_move],
@@ -807,30 +815,31 @@ export interface IEndpoint {
 	exec: any; // TODO: may be obosolete @ThatOneCalculator
 	meta: IEndpointMeta;
 	params: Schema;
-  method: 'POST' | 'GET' | 'PUT' | 'DELETE';
+	method: "POST" | "GET" | "PUT" | "DELETE";
 }
 
-const postEndpoints: IEndpoint[] = (postEps as [string, any]).map(([name, ep]) => {
-	return {
-		name: name,
-		exec: ep.default,
-		meta: ep.meta ?? {},
-		params: ep.paramDef,
-    method: 'POST',
-	};
-});
+const postEndpoints: IEndpoint[] = (postEps as [string, any]).map(
+	([name, ep]) => {
+		return {
+			name: name,
+			exec: ep.default,
+			meta: ep.meta ?? {},
+			params: ep.paramDef,
+			method: "POST",
+		};
+	},
+);
 
-
-const getEndpoints: IEndpoint[] = (getEps as [string, any]).map(([name, ep]) => {
-  return {
-    name: name,
-    exec: ep.default,
-    meta: ep.meta ?? {},
-    params: ep.paramDef,
-    method: 'GET',
-  };
-});
-
-
+const getEndpoints: IEndpoint[] = (getEps as [string, any]).map(
+	([name, ep]) => {
+		return {
+			name: name,
+			exec: ep.default,
+			meta: ep.meta ?? {},
+			params: ep.paramDef,
+			method: "GET",
+		};
+	},
+);
 
 export default postEndpoints.concat(getEndpoints);

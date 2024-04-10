@@ -130,6 +130,24 @@ export class User {
 	})
 	public tags: string[];
 
+	@Index()
+	@Column("varchar", {
+		length: 128,
+		array: true,
+		default: "{}",
+		comment: "Hashtags that will appear in the User's timeline."
+	})
+	public followedHashtags: string[];
+
+	@Index()
+	@Column("varchar", {
+		length: 128,
+		array: true,
+		default: "{}",
+		comment: "Hashtags that will be blocked from the User's timeline, taking precedence over follow."
+	})
+	public blockedHashtags: string[];
+
 	@Column("boolean", {
 		default: false,
 		comment: "Whether the User is suspended.",
