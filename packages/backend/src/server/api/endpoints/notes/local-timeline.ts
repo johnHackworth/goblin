@@ -1,4 +1,4 @@
-import { Brackets } from "typeorm";
+import { Brackets, SelectQueryBuilder } from "typeorm";
 import { fetchMeta } from "@/misc/fetch-meta.js";
 import { Notes, Users } from "@/models/index.js";
 import { activeUsersChart } from "@/services/chart/index.js";
@@ -106,6 +106,11 @@ export default define(meta, paramDef, async (ps, user) => {
 		.leftJoinAndSelect("renote.user", "renoteUser")
 		.leftJoinAndSelect("renoteUser.avatar", "renoteUserAvatar")
 		.leftJoinAndSelect("renoteUser.banner", "renoteUserBanner");
+
+	if (user) {
+		query.innerJoinAndSelect("user", "me", "me.id = :meId", { meId: user.id });
+		query.andWhere("NOT (note.tags && me.blockedHashtags)");
+	}
 
 	generateChannelQuery(query, user);
 	generateRepliesQuery(query, ps.withReplies, user);

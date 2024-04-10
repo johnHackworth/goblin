@@ -6,5 +6,6 @@ namespace Entity {
 		url: string;
 		history: Array<History> | null;
 		following?: boolean;
+		blocking?: boolean;
 	};
 }

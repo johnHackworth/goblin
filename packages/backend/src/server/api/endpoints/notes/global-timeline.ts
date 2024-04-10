@@ -94,6 +94,9 @@ export default define(meta, paramDef, async (ps, user) => {
 
 	generateRepliesQuery(query, ps.withReplies, user);
 	if (user) {
+		query.innerJoinAndSelect("user", "me", "me.id = :meId", { meId: user.id });
+		query.andWhere("NOT (note.tags && me.blockedHashtags)");
+
 		generateMutedUserQuery(query, user);
 		generateMutedNoteQuery(query, user);
 		generateBlockedUserQuery(query, user);
