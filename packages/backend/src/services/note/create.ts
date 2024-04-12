@@ -214,7 +214,7 @@ export default async (
 			data.localOnly || data.visibility === "hidden";
 
 		let rootPost = null;
-		if (data.reply) {
+		if (data.reply && ( data.reply.replyId || data.reply.renoteId)) {
 			rootPost = await getRootAncestor(data.reply);
 		}
 
@@ -458,10 +458,10 @@ export default async (
 			);
 		}
 		if (data.reply) {
-			saveReply(data.reply, note);
+			saveReply(data.reply);
 		}
-		if (data.reply && rootPost) {
-			saveReply(rootPost, note);
+		if (data.reply && rootPost && rootPost.id != data.reply.id) {
+			saveReply(rootPost);
 		}
 
 		// この投稿を除く指定したユーザーによる指定したノートのリノートが存在しないとき
@@ -992,7 +992,7 @@ async function createMentionedEvents(
 	}
 }
 
-function saveReply(reply: Note, note: Note) {
+function saveReply(reply: Note) {
 	logger.info('saving reply for ' + reply.id);
 	Notes.increment({ id: reply.id }, "repliesCount", 1);
 }
