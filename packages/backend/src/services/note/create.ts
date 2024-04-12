@@ -464,18 +464,17 @@ export default async (
 			saveReply(rootPost);
 		}
 
-		// この投稿を除く指定したユーザーによる指定したノートのリノートが存在しないとき
 		if (
+			data.renote && (data.text || (tags && tags.length)) && !user.isBot ) {
+			incQuoteCount(data.renote);
+		} else if (
 			data.renote &&
 			!user.isBot
 		) {
 			incRenoteCount(data.renote);
 		}
 
-		if (
-			data.renote && (data.text ) && !user.isBot ) {
-			incQuoteCount(data.renote);
-		}
+
 
 		if (data.poll?.expiresAt) {
 			const delay = data.poll.expiresAt.getTime() - Date.now();
