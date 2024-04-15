@@ -57,7 +57,7 @@ export default define(meta, paramDef, async (ps, user) => {
 		)
 		.andWhere("NOT (note.tags && me.blockedHashtags)")
 		.innerJoinAndSelect("note.user", "user")
-		.innerJoinAndSelect("me", "user", "user.id = :meId", { meId: user.id })
+		.innerJoinAndSelect("user", "me", "user.id = :meId", { meId: user.id })
 		.leftJoinAndSelect("user.avatar", "avatar")
 		.leftJoinAndSelect("user.banner", "banner")
 		.leftJoinAndSelect("note.reply", "reply")
