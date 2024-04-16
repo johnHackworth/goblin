@@ -10,6 +10,7 @@
     :tabindex="!isDeleted ? '-1' : 10"
     :class="{ renote: isRenote }"
     :data-visibility="note.visibility"
+    :data-localOnly="note.localOnly"
     :id="appearNote.id"
   >
     <article
