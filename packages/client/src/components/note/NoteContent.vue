@@ -50,10 +50,10 @@
             <a class="noteTag" v-for="tag in note.tags" :href="`/tags/${tag}`">#{{tag}}</a>
           </div>
           <div v-if="notEmbedFiles.length" class="noteFiles">
-            <div v-for="(file, index) in notEmbedFiles" :key="index">
+            <div v-for="(file, index) in notEmbedFiles" class="noteFile" :key="index">
               <span v-if="!note.text || note.text.indexOf(file.url) <0">
                 <div v-if="file.type.startsWith('image')" class="noteImage">
-                  <img :src="file.url" :alt="file.comment"/>
+                  <MkNoteImage :file="file" />
                 </div>
                 <div v-else-if="file.type.startsWith('video')" class="noteImage">
                   <video width="100%" controls :src="file.url" :type="file.type" />
@@ -81,9 +81,8 @@ import * as misskey from "firefish-js";
 import * as mfm from "mfm-js";
 import * as os from "@/os";
 import XCwButton from "@/components/MkCwButton.vue";
-import MkButton from "@/components/MkButton.vue";
+import MkNoteImage from "@/components/note/NoteImage.vue";
 import NoteHeader from "@/components/note/Header.vue";
-import { notePage } from "@/filters/note";
 import { extractUrlFromMfm } from "@/scripts/extract-url-from-mfm";
 import { extractMfmWithAnimation } from "@/scripts/extract-mfm";
 import { i18n } from "@/i18n";
@@ -376,6 +375,10 @@ function focusFooter(ev) {
   }
 
   .noteFiles {
+    .noteFile {
+      position: relative;
+    }
+
     img {
       max-width: 96%;
       margin: 8px 2%;
