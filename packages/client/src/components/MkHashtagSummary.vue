@@ -1,22 +1,21 @@
 <template>
 	<div class="hashtag-summary">
 		<div class="name">
-			#{{ props.tag }}
+			#{{ tag }}
 		</div>
-        <MkFollowHashtagButton :tag="followableHashtag" />
+        <MkFollowHashtagButton :tag="tag" />
+        <MkBlockHashtagButton :tag="tag" />
     </div>
 </template>
 
 <script lang="ts" setup>
 import {} from "vue";
-import * as misskey from "firefish-js";
 import MkFollowHashtagButton from "@/components/MkFollowHashtagButton.vue";
+import MkBlockHashtagButton from "@/components/MkBlockHashtagButton.vue";
 
 const props = defineProps<({
     tag: string;
 })>();
-
-const followableHashtag = props.tag;
 </script>
 
 <style type="text/scss" scoped>
@@ -34,5 +33,13 @@ const followableHashtag = props.tag;
     border-radius: 10px;
     padding: 1em;
     margin-bottom: 0.4em;
+
+    .name {
+        flex-grow: 2;
+    }
+
+    button {
+        margin-left: 15px;
+    }
 }
 </style>

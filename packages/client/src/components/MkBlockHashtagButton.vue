@@ -1,8 +1,8 @@
 <template>
 	<button
-		class="kpoogebi _button follow-button"
+		class="kpoogebi _button block-button"
 		:class="{
-			active: isFollowing
+			active: isBlocking
 		}"
 		:disabled="wait"
 		@click.stop="onClick"
@@ -10,13 +10,13 @@
 		v-tooltip="`Follow #${props.tag}`"
 		v-if="$i != null"
 	>
-		<template v-if="isFollowing">
-			<span>{{ i18n.ts.unfollow }}</span>
+		<template v-if="isBlocking">
+			<span>{{ i18n.ts.unblock }}</span>
 			<span x-if="isShort">#{{ tag }}</span>
 			<i class="ph-lock-open ph-bold ph-lg"></i>
 		</template>
 		<template v-else>
-			<span>{{ i18n.ts.follow }}</span>
+			<span>{{ i18n.ts.block }}</span>
 			<span v-if="isShort">#{{ tag }}</span>
 			<i class="ph-plus ph-bold ph-lg"></i>
 		</template>
@@ -34,26 +34,26 @@ const props = defineProps<{
 }>();
 
 let wait = $ref(false);
-let isFollowing = $ref($i?.followedHashtags.includes(props.tag));
+let isBlocking = $ref($i?.blockedHashtags.includes(props.tag));
 
 let isShort = $ref(props.tag.length < 15);
 
-function onFollowChange(newValue) {
-	isFollowing = newValue;
+function onBlockChange(newValue) {
+	isBlocking = newValue;
 }
 
 async function onClick() {
 	wait = true;
 
 	try {
-		if (isFollowing) {
-			await os.api("hashtags/unfollow", {
+		if (isBlocking) {
+			await os.api("hashtags/unblock", {
 				hashtag: props.tag,
-			}).then(onFollowChange(false));
+			}).then(onBlockChange(false));
 		} else {
-			await os.api("hashtags/follow", {
+			await os.api("hashtags/block", {
 				hashtag: props.tag,
-			}).then(onFollowChange(true));
+			}).then(onBlockChange(true));
 		}
 		emit("refresh");
 	} catch (err) {
@@ -65,14 +65,14 @@ async function onClick() {
 </script>
 
 <style lang="scss" scoped>
-.follow-button {
+.block-button {
 	position: relative;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	font-weight: bold;
-	color: var(--accent);
-	border: solid 1px var(--accent);
+	color: darkred;
+	border: solid 1px red;
 	padding: 0;
 	font-size: 16px;
 	width: 2em;
@@ -114,17 +114,17 @@ async function onClick() {
 	}
 
 	&.active {
-		color: var(--fgOnAccent);
-		background: var(--accent);
+		color: white;
+		background: darkred;
 
 		&:hover {
-			background: var(--accentLighten);
-			border-color: var(--accentLighten);
+			background: red;
+			border-color: darkred;
 		}
 
 		&:active {
-			background: var(--accentDarken);
-			border-color: var(--accentDarken);
+			background: red;
+			border-color: darkred;
 		}
 	}
 
