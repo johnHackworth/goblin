@@ -39,9 +39,7 @@
       <button @click="editor.chain().focus().toggleSubscript().run()" class="_button" :class="{ 'is-active': editor.isActive('subscript') }">
         <SmallIcon />
       </button>
-      <button @click="editor.isActive('big') ?
-        editor.chain().focus().unsetBig().run() :
-        editor.chain().focus().setBig('1.5em').run() " class="_button" :class="{ 'is-active': editor.isActive('fontSize') }">
+      <button @click="editor.chain().focus().toggleBig('1.5em').run() " class="_button" :class="{ 'is-active': editor.isActive('textStyle', { fontSize: '1.5em'}) }">
         <span class="big-icon">
           <i class="ph-caret-left ph-bold ph-lg"></i>
           <i class="ph-tumblr-logo ph-bold ph-lg"></i>
@@ -300,7 +298,7 @@ const editor = useEditor({
   onSelectionUpdate: selectionChange,
   autofocus: 'end',
 })
-
+window.editor = editor;
 const addImage = (ev) => {
   selectFiles(ev.currentTarget ?? ev.target, i18n.ts.attachFile).then(
     (files) => {
@@ -622,6 +620,9 @@ footer {
       &.is-active {
         svg {
           --icon-color-primary: RGB(0, 184, 255);
+        }
+        span {
+          color: RGB(0, 184, 255);
         }
       }
     }

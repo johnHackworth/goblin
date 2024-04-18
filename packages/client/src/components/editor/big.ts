@@ -33,7 +33,14 @@ export const Big = Extension.create<BigOptions>({
 
           fontSize: {
             default: null,
-            parseHTML: element => element.style.fontSize?.replace(/['"]+/g, ''),
+            parseHTML: () => {
+              return [
+              {
+                style: 'font-size',
+                getAttrs: node => !!node.style.fontSize && null,
+              }
+              ]
+            },
             renderHTML: attributes => {
               if (!attributes.fontSize) {
                 return {}
