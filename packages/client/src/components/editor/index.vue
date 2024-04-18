@@ -36,8 +36,17 @@
       <button @click="setLink" class="_button" :class="{ 'is-active': editor.isActive('link') }">
         <LinkIcon />
       </button>
-      <button @click="editor.chain().focus().toggleSubscript().run()" class="_button" :class="{ 'is-active': editor.isActive('link') }">
+      <button @click="editor.chain().focus().toggleSubscript().run()" class="_button" :class="{ 'is-active': editor.isActive('subscript') }">
         <SmallIcon />
+      </button>
+      <button @click="editor.isActive('big') ?
+        editor.chain().focus().unsetBig().run() :
+        editor.chain().focus().setBig('1.5em').run() " class="_button" :class="{ 'is-active': editor.isActive('fontSize') }">
+        <span class="big-icon">
+          <i class="ph-caret-left ph-bold ph-lg"></i>
+          <i class="ph-tumblr-logo ph-bold ph-lg"></i>
+          <i class="ph-caret-right ph-bold ph-lg"></i>
+        </span>
       </button>
       <button @click="toggleColorMenu" class="_button" :class="{ 'is-active': isColorMenuVisible }">
         <ColorIcon />
@@ -143,6 +152,7 @@ import OrderedListIcon from "@/components/icons/ordered-list.vue";
 import WarningIcon from "@/components/icons/warning.vue";
 import ColorIcon from "@/components/icons/color.vue";
 import { Gradient } from "./color-gradient.ts";
+import { Big } from "./big.ts";
 import { Iframe } from "./iframe-module.ts";
 
 import ColorMenu from './color-menu.vue';
@@ -283,7 +293,8 @@ const editor = useEditor({
     Subscript,
     TextStyle,
     Color,
-    Gradient
+    Gradient,
+    Big
   ],
   onUpdate: update,
   onSelectionUpdate: selectionChange,
@@ -587,6 +598,21 @@ footer {
   }
 
   .formatting {
+    display: flex;
+
+    .big-icon {
+      width: 30px;
+      display: flex;
+      height: 100%;
+      padding: 2px 0;
+      margin-left: -4px;
+
+      i {
+        flex: 0 1 auto;
+        width: 10px;
+      }
+    }
+
     ._button {
       svg {
         width: 24px;
