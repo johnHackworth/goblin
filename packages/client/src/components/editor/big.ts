@@ -11,6 +11,7 @@ declare module '@tiptap/core' {
     big: {
       setBig: (size) => ReturnType,
       unsetBig: () => ReturnType,
+      toggleBig: (size) => ReturnType,
     }
   }
 }
@@ -32,7 +33,7 @@ export const Big = Extension.create<BigOptions>({
 
           fontSize: {
             default: null,
-            parseHTML: element => element.style.background?.replace(/['"]+/g, ''),
+            parseHTML: element => element.style.fontSize?.replace(/['"]+/g, ''),
             renderHTML: attributes => {
               if (!attributes.fontSize) {
                 return {}
@@ -50,6 +51,13 @@ export const Big = Extension.create<BigOptions>({
 
   addCommands() {
     return {
+      toggleBig: (size) => ({ chain }) => {
+        return chain()
+          .toggleMark('textStyle', {
+            fontSize: size
+          })
+          .run()
+      },
       setBig: (size) => ({ chain }) => {
         return chain()
           .setMark('textStyle', {
