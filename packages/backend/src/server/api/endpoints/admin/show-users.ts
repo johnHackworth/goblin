@@ -104,7 +104,7 @@ export default define(meta, paramDef, async (ps, me) => {
 			query.andWhere("user.host IS NOT NULL");
 			break;
 		case "tumblr":
-			query.andWhere("user.host IS NULL AND user.tumblrUUID IS NOT NULL")
+			query.andWhere("user.host IS NULL AND user.tumblrUUID IS NOT NULL");
 			break;
 	}
 

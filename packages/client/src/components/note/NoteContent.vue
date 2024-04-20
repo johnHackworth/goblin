@@ -50,10 +50,10 @@
             <a class="noteTag" v-for="tag in note.tags" :href="`/tags/${tag}`">#{{tag}}</a>
           </div>
           <div v-if="notEmbedFiles.length" class="noteFiles">
-            <div v-for="(file, index) in notEmbedFiles" :key="index">
+            <div v-for="(file, index) in notEmbedFiles" class="noteFile" :key="index">
               <span v-if="!note.text || note.text.indexOf(file.url) <0">
                 <div v-if="file.type.startsWith('image')" class="noteImage">
-                  <img :src="file.url" :alt="file.comment"/>
+                  <MkNoteImage :file="file" />
                 </div>
                 <div v-else-if="file.type.startsWith('video')" class="noteImage">
                   <video width="100%" controls :src="file.url" :type="file.type" />
@@ -81,9 +81,8 @@ import * as misskey from "firefish-js";
 import * as mfm from "mfm-js";
 import * as os from "@/os";
 import XCwButton from "@/components/MkCwButton.vue";
-import MkButton from "@/components/MkButton.vue";
+import MkNoteImage from "@/components/note/NoteImage.vue";
 import NoteHeader from "@/components/note/Header.vue";
-import { notePage } from "@/filters/note";
 import { extractUrlFromMfm } from "@/scripts/extract-url-from-mfm";
 import { extractMfmWithAnimation } from "@/scripts/extract-mfm";
 import { i18n } from "@/i18n";
@@ -327,7 +326,7 @@ function focusFooter(ev) {
   display: flex;
   position: relative;
   z-index: 2;
-  padding: 0 32px 16px;
+  padding: 0 16px 16px;
 
   @media (max-width: 500px) {
     padding: 0 8px 16px;
@@ -352,7 +351,7 @@ function focusFooter(ev) {
 <style lang="scss">
 .noteContent {
   .noteText {
-    padding: 0 32px;
+    padding: 0 16px;
 
     @media (max-width: 500px) {
       padding: 0 4px;
@@ -364,8 +363,8 @@ function focusFooter(ev) {
     }
 
     img, video, iframe {
-      width: calc(96% + 64px);
-      margin-left: calc(2% - 32px);
+      width: calc(96% + 32px);
+      margin-left: calc(2% - 16px);
     }
   }
 
@@ -376,6 +375,10 @@ function focusFooter(ev) {
   }
 
   .noteFiles {
+    .noteFile {
+      position: relative;
+    }
+
     img {
       max-width: 96%;
       margin: 8px 2%;
@@ -388,7 +391,7 @@ function focusFooter(ev) {
   }
 
   .noteTags {
-    padding: 0 32px;
+    padding: 0 16px;
 
     .noteTag {
       color: #09A;
@@ -400,21 +403,21 @@ function focusFooter(ev) {
 
 .tumblrTitle {
   background: #e1e1e1;
-  margin: 16px 32px;
+  margin: 16px 16px;
   padding: 24px;
   border-radius: 4px;
 }
 
 .tumblrPost {
-  width: calc(100% + 64px);
-  margin-left: -32px;
+  width: calc(100% + 32px);
+  margin-left: -16px;
 
   .postRoot {
-    padding: 0 32px;
+    padding: 0 16px;
   }
 
   .reblogTrailItem {
-    padding: 0 32px;
+    padding: 0 16px;
     border-bottom: 1px solid var(--accent);
 
     .reblogContent {
@@ -423,7 +426,7 @@ function focusFooter(ev) {
   }
 
   .reblogContent {
-    padding: 0 32px;
+    padding: 0 16px;
 
     figure {
       margin: 16px 0;
@@ -437,7 +440,7 @@ function focusFooter(ev) {
   .reblogHeader {
     display: flex;
     align-items: center;
-    padding: 0 32px;
+    padding: 0 16px;
 
     a {
       padding: 0 8px;

@@ -15,7 +15,7 @@
 			:width="width"
 			:max-height="maxHeight"
 			:as-drawer="type === 'drawer'"
-			class="sfhdhdhq"
+			class="sfhdhdhq clear"
 			:class="{ drawer: type === 'drawer' }"
 			:no-return-focus="noReturnFocus"
 			@close="modal?.close()"

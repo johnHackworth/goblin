@@ -139,6 +139,8 @@ export interface IPost extends IObject {
 	quoteUrl?: string;
 	quoteUri?: string;
 	_misskey_talk: boolean;
+	_goblin_content?: string;
+	_misskey_content?: string;
 }
 
 export interface IQuestion extends IObject {

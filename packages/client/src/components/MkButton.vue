@@ -129,11 +129,11 @@ function onMousedown(evt: MouseEvent): void {
 	margin-left: 0.2rem;
 
 	&:not(:disabled):hover {
-		background: var(--buttonHoverBg);
+		background: var(--shadow);
 	}
 
 	&:not(:disabled):active {
-		background: var(--buttonHoverBg);
+		background: var(--shadow);
 	}
 
 	&.full {

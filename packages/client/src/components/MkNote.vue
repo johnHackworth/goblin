@@ -10,6 +10,7 @@
 		:tabindex="!isDeleted ? '-1' : 10"
 		:class="{ renote: isRenote }"
 		:data-visibility="note.visibility"
+		:data-localOnly="note.localOnly"
 		:id="appearNote.id"
 	>
 		<MkNoteSub
@@ -577,6 +578,10 @@ defineExpose({
 	contain: content;
 	-webkit-tap-highlight-color: transparent;
 
+	&[data-localOnly="true"] {
+		background-image: linear-gradient(to bottom, #b3b3f8, #d3c6f9, #ebdaf6, #f9edf6, #ffffff, #ffffff, #ffffff);
+	}
+
 	&[data-visibility="specified"] {
 		background-image: linear-gradient(to bottom, #f8b3b3, #f9c6d3, #f6daeb, #f6edf9, #ffffff, #ffffff, #ffffff);
 	}
@@ -781,7 +786,7 @@ defineExpose({
 			display: flex;
 			position: relative;
 			z-index: 2;
-			padding: 0 32px 16px;
+			padding: 0 16px 16px;
 			cursor: pointer;
 
 			border-bottom: 0.5px solid var(--accent);
@@ -978,7 +983,7 @@ defineExpose({
 .renoteHeader {
 	display: flex;
 	color: #555;
-	padding: 0 32px 8px;
+	padding: 0 16px 8px;
   margin-top: 0;
   border-bottom: 0.5px dotted var(--fgTransparent);
   margin-bottom: 8px;
@@ -1032,7 +1037,6 @@ defineExpose({
 
 .rssSource {
 	margin-right: auto;
-	margin-left: 8px;
 	display: flex;
 	font-size: 0.95em;
 	align-items: center;

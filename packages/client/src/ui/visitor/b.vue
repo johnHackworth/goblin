@@ -1,14 +1,11 @@
 <template>
 	<div class="mk-app">
-		<div v-if="!narrow && !root" class="side">
-			<XKanban class="kanban" full />
+		<div v-if="!narrow && !root" class="loginView">
+			<LoginForm  />
 		</div>
 
 		<div class="main">
-			<XKanban v-if="narrow && !root" class="banner" :powered-by="root" />
-
 			<div class="contents">
-				<XHeader v-if="!root" class="header" :info="pageInfo" />
 				<main>
 					<RouterView />
 				</main>
@@ -62,8 +59,7 @@
 <script lang="ts" setup>
 import type { ComputedRef } from "vue";
 import { onMounted, provide } from "vue";
-import XHeader from "./header.vue";
-import XKanban from "./kanban.vue";
+import LoginForm from "./login.vue";
 import { host, instanceName } from "@/config";
 import { search } from "@/scripts/search";
 import * as os from "@/os";

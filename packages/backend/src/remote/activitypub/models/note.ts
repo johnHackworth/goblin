@@ -10,6 +10,7 @@ import type {
 	ILocalUser,
 	CacheableRemoteUser,
 } from "@/models/entities/user.js";
+import { sanitize } from "@/misc/html/index.js";
 import { htmlToMfm } from "../misc/html-to-mfm.js";
 import { extractApHashtags } from "./tag.js";
 import { unique, toArray, toSingle } from "@/prelude/array.js";
@@ -308,6 +309,8 @@ export async function createNote(
 	let text: string | null = null;
 	if (typeof note._goblin_content !== "undefined") {
 		text = note._goblin_content;
+	} else if (typeof note.content === "string") {
+		text = note.content; // htmlToMfm(note.content, note.tag);
 	} else if (
 		note.source?.mediaType === "text/x.misskeymarkdown" &&
 		typeof note.source?.content === "string"
@@ -315,9 +318,8 @@ export async function createNote(
 		text = note.source.content;
 	} else if (typeof note._misskey_content !== "undefined") {
 		text = note._misskey_content;
-	} else if (typeof note.content === "string") {
-		text = note.content; // htmlToMfm(note.content, note.tag);
 	}
+	text = sanitize(text);
 
 	// vote
 	if (reply?.hasPoll) {
@@ -631,9 +633,10 @@ export async function updateNote(value: string | IObject, resolver?: Resolver) {
 
 	// Text parsing
 	let text: string | null = null;
-
 	if (typeof post._goblin_content !== "undefined") {
 		text = post._goblin_content;
+	} else if (typeof post.content === "string") {
+		text = post.content; // htmlToMfm(note.content, note.tag);
 	} else if (
 		post.source?.mediaType === "text/x.misskeymarkdown" &&
 		typeof post.source?.content === "string"
@@ -641,9 +644,8 @@ export async function updateNote(value: string | IObject, resolver?: Resolver) {
 		text = post.source.content;
 	} else if (typeof post._misskey_content !== "undefined") {
 		text = post._misskey_content;
-	} else if (typeof post.content === "string") {
-		text = htmlToMfm(post.content, post.tag);
 	}
+	text = sanitize(text);
 
 	const cw = post.sensitive && post.summary;
 

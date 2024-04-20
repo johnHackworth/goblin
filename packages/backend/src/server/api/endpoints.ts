@@ -168,6 +168,10 @@ import * as ep___hashtags_search from "./endpoints/hashtags/search.js";
 import * as ep___hashtags_show from "./endpoints/hashtags/show.js";
 import * as ep___hashtags_trend from "./endpoints/hashtags/trend.js";
 import * as ep___hashtags_users from "./endpoints/hashtags/users.js";
+import * as ep___hashtags_follow from "./endpoints/hashtags/follow.js";
+import * as ep___hashtags_unfollow from "./endpoints/hashtags/unfollow.js";
+import * as ep___hashtags_block from "./endpoints/hashtags/block.js";
+import * as ep___hashtags_unblock from "./endpoints/hashtags/unblock.js";
 import * as ep___i from "./endpoints/i.js";
 import * as ep___i_2fa_done from "./endpoints/i/2fa/done.js";
 import * as ep___i_2fa_keyDone from "./endpoints/i/2fa/key-done.js";
@@ -531,6 +535,10 @@ const postEps = [
 	["hashtags/show", ep___hashtags_show],
 	["hashtags/trend", ep___hashtags_trend],
 	["hashtags/users", ep___hashtags_users],
+	["hashtags/follow", ep___hashtags_follow],
+	["hashtags/unfollow", ep___hashtags_unfollow],
+	["hashtags/block", ep___hashtags_block],
+	["hashtags/unblock", ep___hashtags_unblock],
 	["i", ep___i],
 	["i/known-as", ep___i_known_as],
 	["i/move", ep___i_move],

@@ -258,6 +258,7 @@ function more(ev: MouseEvent) {
 		box-sizing: border-box;
 		overflow: auto;
 		overflow-x: clip;
+		border-right: 0.5px solid var(--divider);
 		#firefish_app > :not(.wallpaper) & {
 			background: var(--navBg);
 		}
@@ -285,13 +286,10 @@ function more(ev: MouseEvent) {
 					text-align: center;
 					margin: -24px auto 32px;
 					padding-top: 16px;
-					border-bottom: 0.5px solid var(--divider);
-					border-right: 0.5px solid var(--divider);
-
 					svg {
-						width: 60px;
-						margin-bottom: 8px;
-						height: 20px;
+						width: 72px;
+						margin-bottom: 4px;
+						height: 24px;
 					}
 				}
 
@@ -491,6 +489,10 @@ function more(ev: MouseEvent) {
 	&.iconOnly {
 		flex: 0 0 $nav-icon-only-width;
 		width: $nav-icon-only-width;
+
+		.logo {
+			display: none;
+		}
 
 		> .body {
 			width: $nav-icon-only-width;

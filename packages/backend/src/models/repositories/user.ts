@@ -514,6 +514,8 @@ export const UserRepository = db.getRepository(User).extend({
 						fields: profile!.fields,
 						followersCount: followersCount || 0,
 						followingCount: followingCount || 0,
+						followedHashtags: user.followedHashtags || [],
+						blockedHashtags: user.blockedHashtags || [],
 						notesCount: user.notesCount,
 						pinnedNoteIds: pins.map((pin) => pin.noteId),
 						pinnedNotes: Notes.packMany(

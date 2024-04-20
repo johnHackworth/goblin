@@ -87,14 +87,19 @@ export default define(meta, paramDef, async (ps, user) => {
 		ps.sinceDate,
 		ps.untilDate,
 	)
+
+		.andWhere("NOT (note.tags && me.blockedHashtags)")
 		.andWhere(
 			new Brackets((qb) => {
 				qb.where(
 					`((note.userId IN (${followingQuery.getQuery()})) OR (note.userId = :meId))`,
 					{ meId: user.id },
-				).orWhere("(note.visibility = 'public') AND (note.userHost IS NULL)");
+				);
+				qb.orWhere("(note.tags && me.followedHashtags)");
+				qb.orWhere("(note.visibility = 'public') AND (note.userHost IS NULL)");
 			}),
 		)
+		.innerJoinAndSelect("user", "me", "me.id = :meId", { meId: user.id })
 		.innerJoinAndSelect("note.user", "user")
 		.leftJoinAndSelect("user.avatar", "avatar")
 		.leftJoinAndSelect("user.banner", "banner")

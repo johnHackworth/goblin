@@ -38,14 +38,16 @@ export const paramDef = {
 } as const;
 
 const getNoteWithAncestors = async (noteId, user) => {
-  const note = await getNote(noteId, user);
+	const note = await getNote(noteId, user);
 
-  if(note) {
-    if (note.replyId) {
-      const ancestor = await getNoteWithAncestors(note.replyId, user);
-      return { ...note, user: await Users.pack(note.userId), reply: ancestor } ;
-    }
-    return { ...note, user: await Users.pack(note.userId) };
+	if (note) {
+		if (note.replyId) {
+			const ancestor = await getNoteWithAncestors(note.replyId, user);
+			return { ...note, user: await Users.pack(note.userId), reply: ancestor };
+		}
+		return { ...note, user: await Users.pack(note.userId) };
+	}
+
 	return null;
 };
 
@@ -56,11 +58,11 @@ export default define(meta, paramDef, async (ps, user) => {
 		throw err;
 	});
 
-  if(note.replyId) {
-    return { ...note, reply: await getNoteWithAncestors(note.replyId, user) };
-  } else if (!note.user) {
-    return { ...note, user: await Users.pack(note.userId) };
-  }
+	if (note.replyId) {
+		return { ...note, reply: await getNoteWithAncestors(note.replyId, user) };
+	} else if (!note.user) {
+		return { ...note, user: await Users.pack(note.userId) };
+	}
 
 	return note;
 });

@@ -21,6 +21,7 @@ import { extractMentions } from "@/misc/extract-mentions.js";
 import { extractCustomEmojisFromMfm } from "@/misc/extract-custom-emojis-from-mfm.js";
 import { extractHashtags } from "@/misc/extract-hashtags.js";
 import { getRootAncestor } from "@/misc/note/ancestors.js";
+import { getNoteSlug } from "@/misc/note/noteSlug.js";
 import type { IMentionedRemoteUsers } from "@/models/entities/note.js";
 import { Note } from "@/models/entities/note.js";
 import {
@@ -69,6 +70,7 @@ import meilisearch from "../../db/meilisearch.js";
 import { redisClient } from "@/db/redis.js";
 import { Mutex } from "redis-semaphore";
 import Logger from "../logger.js";
+import { getNoteSummary } from "@/misc/get-note-summary.js";
 
 const logger = new Logger("notes-create");
 
@@ -158,6 +160,7 @@ type Option = {
 	apEmojis?: string[] | null;
 	uri?: string | null;
 	url?: string | null;
+	slug?: string | null;
 	app?: App | null;
 };
 
@@ -210,7 +213,7 @@ export default async (
 			data.localOnly || data.visibility === "hidden";
 
 		let rootPost = null;
-		if (data.reply) {
+		if (data.reply && (data.reply.replyId || data.reply.renoteId)) {
 			rootPost = await getRootAncestor(data.reply);
 		}
 
@@ -374,6 +377,13 @@ export default async (
 			}
 		}
 
+		data.slug = await getNoteSlug(data as Note);
+		logger.info("created slug: " + data.slug);
+		if (user.username && data.slug && !data.url) {
+			const host = user.host ? "@" + user.host : "";
+			data.url = `${config.url}/@${user.username}${host}/${data.slug}`;
+		}
+
 		const note = await insertNote(user, data, tags, emojis, mentionedUsers);
 
 		res(note);
@@ -448,19 +458,16 @@ export default async (
 			);
 		}
 		if (data.reply) {
-			saveReply(data.reply, note);
+			saveReply(data.reply);
 		}
-		if (data.reply && rootPost) {
-			saveReply(rootPost, note);
-		}
-
-		// この投稿を除く指定したユーザーによる指定したノートのリノートが存在しないとき
-		if (data.renote && !user.isBot) {
-			incRenoteCount(data.renote);
+		if (data.reply && rootPost && rootPost.id != data.reply.id) {
+			saveReply(rootPost);
 		}
 
-		if (data.renote && data.text && !user.isBot) {
+		if (data.renote && (data.text || (tags && tags.length)) && !user.isBot) {
 			incQuoteCount(data.renote);
+		} else if (data.renote && !user.isBot) {
+			incRenoteCount(data.renote);
 		}
 
 		if (data.poll?.expiresAt) {
@@ -774,6 +781,7 @@ async function insertNote(
 		reblogtrail: data.reblogtrail,
 		name: data.name,
 		text: data.text,
+		slug: data.slug,
 		hasPoll: data.poll != null,
 		cw: data.cw == null ? null : data.cw,
 		tags: tags.map((tag) => normalizeForSearch(tag)),
@@ -975,7 +983,7 @@ async function createMentionedEvents(
 	}
 }
 
-function saveReply(reply: Note, note: Note) {
+function saveReply(reply: Note) {
 	logger.info("saving reply for " + reply.id);
 	Notes.increment({ id: reply.id }, "repliesCount", 1);
 }

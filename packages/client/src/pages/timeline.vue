@@ -249,18 +249,8 @@ const headerTabs = $computed(() => [
 		? [
 				{
 					key: "bots",
-					title: "bots",
-					icon: "ph-robot ph-bold ph-lg",
-					iconOnly: true,
-				},
-		  ]
-		: []),
-	...(isLocalTimelineAvailable
-		? [
-				{
-					key: "social",
-					title: i18n.ts._timelines.social,
-					icon: "ph-handshake ph-bold ph-lg",
+					title: "RSS",
+					icon: "ph-tumblr-logo ph-bold ph-lg",
 					iconOnly: true,
 				},
 		  ]
@@ -269,8 +259,8 @@ const headerTabs = $computed(() => [
 		? [
 				{
 					key: "recommended",
-					title: i18n.ts._timelines.recommended,
-					icon: "ph-thumbs-up ph-bold ph-lg",
+					title: "Friends of friends",
+					icon: "ph-beach-ball ph-bold ph-lg",
 					iconOnly: true,
 				},
 		  ]

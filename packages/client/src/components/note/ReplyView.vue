@@ -10,6 +10,7 @@
     :tabindex="!isDeleted ? '-1' : 10"
     :class="{ renote: isRenote }"
     :data-visibility="note.visibility"
+    :data-localOnly="note.localOnly"
     :id="appearNote.id"
   >
     <article
@@ -696,7 +697,7 @@ defineExpose({
       display: flex;
       position: relative;
       z-index: 2;
-      padding: 0 32px 16px;
+      padding: 0 16px 16px;
       cursor: pointer;
 
       border-bottom: 0.5px solid var(--accent);
@@ -886,7 +887,7 @@ defineExpose({
 .renoteHeader {
   display: flex;
   color: #555;
-  padding: 0 32px 8px;
+  padding: 0 16px 8px;
   margin-top: 0;
   border-bottom: 0.5px dotted var(--fgTransparent);
   margin-bottom: 8px;

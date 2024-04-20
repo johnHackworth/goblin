@@ -469,7 +469,7 @@ console.log(mainRouter.currentRoute.value.name);
 	}
 	&:not(.isMobile) {
 		> .contents {
-			border-right: 0.5px solid var(--divider);
+			border-left: 0.5px solid var(--divider);
 		}
 	}
 	&.wallpaper {
