@@ -54,8 +54,6 @@ export default define(meta, paramDef, async (ps, user) => {
 	await q.execute();
 
 	return {
-		hashtag,
-		following: false,
-		blocking: false,
+		hashtag
 	};
 });

@@ -6,18 +6,18 @@
 		}"
 		:disabled="wait"
 		@click.stop="onClick"
-		:aria-label="`Follow #${props.tag}`"
-		v-tooltip="`Follow #${props.tag}`"
+		:aria-label="`Block #${tag.tag}`"
+		v-tooltip="`Block #${tag.tag}`"
 		v-if="$i != null"
 	>
 		<template v-if="isBlocking">
 			<span>{{ i18n.ts.unblock }}</span>
-			<span x-if="isShort">#{{ tag }}</span>
+			<span x-if="isShort">#{{ tag.tag }}</span>
 			<i class="ph-lock-open ph-bold ph-lg"></i>
 		</template>
 		<template v-else>
 			<span>{{ i18n.ts.block }}</span>
-			<span v-if="isShort">#{{ tag }}</span>
+			<span v-if="isShort">#{{ tag.tag }}</span>
 			<i class="ph-plus ph-bold ph-lg"></i>
 		</template>
 	</button>
@@ -30,13 +30,12 @@ import { $i } from "@/account";
 
 const emit = defineEmits(["refresh"]);
 const props = defineProps<{
-	tag: string;
+	tag: object;
 }>();
 
 let wait = $ref(false);
-let isBlocking = $ref($i?.blockedHashtags.includes(props.tag));
-
-let isShort = $ref(props.tag.length < 15);
+let isShort = $ref(props.tag.tag.length < 15);
+let isBlocking = $ref($i.blockedHashtags.includes(props.tag.tag));
 
 function onBlockChange(newValue) {
 	isBlocking = newValue;
@@ -48,11 +47,11 @@ async function onClick() {
 	try {
 		if (isBlocking) {
 			await os.api("hashtags/unblock", {
-				hashtag: props.tag,
+				hashtag: props.tag.tag,
 			}).then(onBlockChange(false));
 		} else {
 			await os.api("hashtags/block", {
-				hashtag: props.tag,
+				hashtag: props.tag.tag,
 			}).then(onBlockChange(true));
 		}
 		emit("refresh");
@@ -71,7 +70,7 @@ async function onClick() {
 	align-items: center;
 	justify-content: center;
 	font-weight: bold;
-	color: darkred;
+	color: red;
 	border: solid 1px red;
 	padding: 0;
 	font-size: 16px;

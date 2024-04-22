@@ -17,7 +17,11 @@ export const paramDef = {
 } as const;
 
 export default define(meta, paramDef, async (ps, user) => {
-	return await Hashtags.createQueryBuilder()
-		.where("name IN (:...hashtags)", { hashtags: user.blockedHashtags })
-		.getMany()
+	const hashtags = await Hashtags.createQueryBuilder("h")
+		.where("array_position(me.blockedHashtags, h.name) IS NOT NULL")
+		.innerJoin("user", "me", "me.id = :meId", { meId: user.id })
+		.cache(false)
+		.getMany();
+
+	return Hashtags.packMany(hashtags);
 });

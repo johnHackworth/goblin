@@ -6,18 +6,18 @@
 		}"
 		:disabled="wait"
 		@click.stop="onClick"
-		:aria-label="`Follow #${props.tag}`"
-		v-tooltip="`Follow #${props.tag}`"
+		:aria-label="`Follow #${tag.tag}`"
+		v-tooltip="`Follow #${tag.tag}`"
 		v-if="$i != null"
 	>
 		<template v-if="isFollowing">
 			<span>{{ i18n.ts.unfollow }}</span>
-			<span x-if="isShort">#{{ tag }}</span>
+			<span x-if="isShort">#{{ tag.tag }}</span>
 			<i class="ph-lock-open ph-bold ph-lg"></i>
 		</template>
 		<template v-else>
 			<span>{{ i18n.ts.follow }}</span>
-			<span v-if="isShort">#{{ tag }}</span>
+			<span v-if="isShort">#{{ tag.tag }}</span>
 			<i class="ph-plus ph-bold ph-lg"></i>
 		</template>
 	</button>
@@ -30,13 +30,12 @@ import { $i } from "@/account";
 
 const emit = defineEmits(["refresh"]);
 const props = defineProps<{
-	tag: string;
+	tag: object;
 }>();
 
 let wait = $ref(false);
-let isFollowing = $ref($i?.followedHashtags.includes(props.tag));
-
-let isShort = $ref(props.tag.length < 15);
+let isShort = $ref(props.tag.tag.length < 15);
+let isFollowing = $ref($i.followedHashtags.includes(props.tag.tag));
 
 function onFollowChange(newValue) {
 	isFollowing = newValue;
@@ -48,11 +47,11 @@ async function onClick() {
 	try {
 		if (isFollowing) {
 			await os.api("hashtags/unfollow", {
-				hashtag: props.tag,
+				hashtag: props.tag.tag,
 			}).then(onFollowChange(false));
 		} else {
 			await os.api("hashtags/follow", {
-				hashtag: props.tag,
+				hashtag: props.tag.tag,
 			}).then(onFollowChange(true));
 		}
 		emit("refresh");
