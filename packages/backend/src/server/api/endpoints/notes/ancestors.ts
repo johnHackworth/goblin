@@ -7,6 +7,7 @@ import { generateMutedUserQuery } from "../../common/generate-muted-user-query.j
 import { makePaginationQuery } from "../../common/make-pagination-query.js";
 import { generateBlockedUserQuery } from "../../common/generate-block-query.js";
 import { Users } from "@/models/index.js";
+import { getNoteWithAncestors } from "@/misc/note/ancestors.js"
 
 export const meta = {
   tags: ["notes"],
@@ -37,33 +38,10 @@ export const paramDef = {
   required: ["noteId"],
 } as const;
 
-const getNoteWithAncestors = async (noteId, user) => {
-  const note = await getNote(noteId, user);
-
-  if(note) {
-    if (note.replyId) {
-      const ancestor = await getNoteWithAncestors(note.replyId, user);
-      return { ...note, user: await Users.pack(note.userId), reply: ancestor } ;
-    }
-    return { ...note, user: await Users.pack(note.userId) };
-
-  }
-
-  return null;
-}
-
 export default define(meta, paramDef, async (ps, user) => {
-  const note = await getNote(ps.noteId, user).catch((err) => {
-    if (err.id === "9725d0ce-ba28-4dde-95a7-2cbb2c15de24")
-      throw new ApiError(meta.errors.noSuchNote);
-    throw err;
-  });
-
-  if(note.replyId) {
-    return { ...note, reply: await getNoteWithAncestors(note.replyId, user) };
-  } else if (!note.user) {
-    return { ...note, user: await Users.pack(note.userId) };
+  const note = await getNoteWithAncestors(ps.noteId, user);
+  if( !note ) {
+    throw new ApiError(meta.errors.noSuchNote);
   }
-
   return note;
 });

@@ -154,6 +154,7 @@ export const NoteRepository = db.getRepository(Note).extend({
 		me?: { id: User["id"] } | null | undefined,
 		options?: {
 			detail?: boolean;
+			detailRecursion?: integer;
 			_hint_?: {
 				myReactions: Map<Note["id"], NoteReaction | null>;
 			};
@@ -250,14 +251,16 @@ export const NoteRepository = db.getRepository(Note).extend({
 				? {
 						reply: note.replyId
 							? this.pack(note.reply || note.replyId, me, {
-									detail: false,
+									detail: !!opts.detailRecursion,
+									detailRecursion: opts.detailRecursion ? opts.detailRecursion -1 : false,
 									_hint_: options?._hint_,
 							  })
 							: undefined,
 
 						renote: note.renoteId
 							? this.pack(note.renote || note.renoteId, me, {
-									detail: true,
+									detail: !!opts.detailRecursion,
+									detailRecursion: opts.detailRecursion ? opts.detailRecursion -1 : false,
 									_hint_: options?._hint_,
 							  })
 							: undefined,
