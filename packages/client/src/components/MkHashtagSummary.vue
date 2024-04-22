@@ -47,5 +47,12 @@ defineProps<({
             margin-left: 20px;
         }
     }
+
+    @media (max-width: 500px) {
+        .kpoogebi {
+            flex-basis: 100%;
+        }       
+    }
+
 }
 </style>
