@@ -8,6 +8,7 @@ const menuOptions = [
 	"notifications",
 	"followRequests",
 	"messaging",
+	"hashtags",
 	"explore",
 	"search",
 ];

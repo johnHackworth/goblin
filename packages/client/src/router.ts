@@ -527,6 +527,11 @@ export const routes = [
 		loginRequired: true,
 	},
 	{
+		path: "/my/hashtags",
+		component: page(() => import("./pages/hashtags.vue")),
+		loginRequired: true,
+	},
+	{
 		path: "/my/favorites",
 		component: page(() => import("./pages/favorites.vue")),
 		loginRequired: true,

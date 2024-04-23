@@ -18,6 +18,12 @@ export const navbarItemDef = reactive({
 		indicated: computed(() => $i?.hasUnreadNotification),
 		to: "/my/notifications",
 	},
+	hashtags: {
+		title: "hashtags",
+		icon: "ph-hash ph-bold ph-lg",
+		show: computed(() => $i != null),
+		to: "/my/hashtags"
+	},
 	messaging: {
 		title: "messaging",
 		icon: "ph-chats-teardrop ph-bold ph-lg",
@@ -60,52 +66,11 @@ export const navbarItemDef = reactive({
 		show: computed(() => $i != null),
 		to: "/my/lists",
 	},
-	/*
-	groups: {
-		title: 'groups',
-		icon: 'ph-users-three ph-bold ph-lg',
-		show: computed(() => $i != null),
-		to: '/my/groups',
-	},
-	*/
-	/* antennas: {
-		title: "antennas",
-		icon: "ph-flying-saucer ph-bold ph-lg",
-		show: computed(() => $i != null),
-		to: "/my/antennas",
-	},*/
-	/* favorites: {
-		title: "favorites",
-		icon: "ph-bookmark-simple ph-bold ph-lg",
-		show: computed(() => $i != null),
-		to: "/my/favorites",
-	},*/
 	pages: {
 		title: "pages",
 		icon: "ph-file-text ph-bold ph-lg",
 		to: "/pages",
 	},
-	/*  gallery: {
-		title: "gallery",
-		icon: "ph-image-square ph-bold ph-lg",
-		to: "/gallery",
-	},
-	clips: {
-		title: "clips",
-		icon: "ph-paperclip ph-bold ph-lg",
-		show: computed(() => $i != null),
-		to: "/my/clips",
-	}, */
-	/* channels: {
-		title: "channel",
-		icon: "ph-television ph-bold ph-lg",
-		to: "/channels",
-	},
-	/* groups: {
-		title: "groups",
-		icon: "ph-users-three ph-bold ph-lg",
-		to: "/my/groups",
-	},*/
 	ui: {
 		title: "switchUi",
 		icon: "ph-layout ph-bold ph-lg",

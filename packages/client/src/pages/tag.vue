@@ -26,11 +26,12 @@
 			>
 				<swiper-slide>
 					<div>
-						<XHashtagSummary :tag="pageHashtag" />
+						<XHashtagSummary :tag="tag" />
 						<XNotes ref="notes" :pagination="notesPagination" />
 					</div>
 				</swiper-slide>
 				<swiper-slide>
+					<XHashtagSummary :tag="tag" />
 					<XUserList
 						ref="users"
 						class="_gap"
@@ -44,6 +45,8 @@
 
 <script lang="ts" setup>
 import { computed, watch, onMounted } from "vue";
+import * as os from "@/os";
+
 import { Virtual } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import XHashtagSummary from "@/components/MkHashtagSummary.vue";
@@ -59,6 +62,10 @@ import "swiper/scss/virtual";
 const props = defineProps<{
 	tag: string;
 }>();
+
+const tag = await os.api("hashtags/show", {
+	tag: props.tag
+});
 
 const notesPagination = {
 	endpoint: "notes/search-by-tag" as const,
@@ -76,8 +83,6 @@ const usersPagination = {
 		origin: "combined",
 	})),
 };
-
-const pageHashtag = props.tag;
 
 const tabs = ["notes", "users"];
 let tab = $ref(tabs[0]);

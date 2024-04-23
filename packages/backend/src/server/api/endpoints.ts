@@ -172,6 +172,8 @@ import * as ep___hashtags_follow from "./endpoints/hashtags/follow.js";
 import * as ep___hashtags_unfollow from "./endpoints/hashtags/unfollow.js";
 import * as ep___hashtags_block from "./endpoints/hashtags/block.js";
 import * as ep___hashtags_unblock from "./endpoints/hashtags/unblock.js";
+import * as ep___hashtags_blocking from "./endpoints/hashtags/blocking.js";
+import * as ep___hashtags_following from "./endpoints/hashtags/following.js";
 import * as ep___i from "./endpoints/i.js";
 import * as ep___i_2fa_done from "./endpoints/i/2fa/done.js";
 import * as ep___i_2fa_keyDone from "./endpoints/i/2fa/key-done.js";
@@ -539,6 +541,8 @@ const postEps = [
 	["hashtags/unfollow", ep___hashtags_unfollow],
 	["hashtags/block", ep___hashtags_block],
 	["hashtags/unblock", ep___hashtags_unblock],
+	["hashtags/blocking", ep___hashtags_blocking],
+	["hashtags/following", ep___hashtags_following],
 	["i", ep___i],
 	["i/known-as", ep___i_known_as],
 	["i/move", ep___i_move],
