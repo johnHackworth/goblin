@@ -6,15 +6,13 @@ export const meta = {
 	requireCredentialPrivateMode: true,
 
 	res: {
-		type: "array"
+		type: "array",
 	},
 
-	errors: {
-	},
+	errors: {},
 } as const;
 
-export const paramDef = {
-} as const;
+export const paramDef = {} as const;
 
 export default define(meta, paramDef, async (ps, user) => {
 	const hashtags = await Hashtags.createQueryBuilder("h")
