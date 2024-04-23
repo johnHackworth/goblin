@@ -10,6 +10,8 @@ import { generateMutedNoteQuery } from "../../common/generate-muted-note-query.j
 import { generateChannelQuery } from "../../common/generate-channel-query.js";
 import { generateBlockedUserQuery } from "../../common/generate-block-query.js";
 import { generateMutedUserRenotesQueryForNotes } from "../../common/generated-muted-renote-query.js";
+import { cropRepeats } from './helpers/timeline-enhacers.js'
+import { apiLogger } from "../../logger.js";
 import { ApiError } from "../../error.js";
 
 export const meta = {
@@ -169,20 +171,25 @@ export default define(meta, paramDef, async (ps, user) => {
 		activeUsersChart.read(user);
 	});
 
+	const populateResponse = async (found, take, skip) => {
+		const notes = await query.take(take).skip(skip).getMany();
+		const packedNotes = await Notes.packMany(notes, user, { detail: true, detailRecursion: 10 });
+		return packedNotes.filter( (note) => {
+			return ! note.replyId || note.user.host;
+		});
+	}
+
 	// We fetch more than requested because some may be filtered out, and if there's less than
 	// requested, the pagination stops.
-	const found = [];
-	const take = Math.floor(ps.limit * 1.5);
+	let found = [];
+	const take = Math.floor(ps.limit * 2);
 	let skip = 0;
 	try {
 		while (found.length < ps.limit) {
-			const notes = await query.take(take).skip(skip).getMany();
-			const packedNotes = await Notes.packMany(notes, user);
-			found.push(...packedNotes.filter( (note) => {
-				return ! note.replyId || note.user.host;
-			}));
-			skip += take;
-			if (notes.length < take) break;
+			const moreNotes = await populateResponse(found, take, skip);
+			found.push(...moreNotes);
+			found = cropRepeats(found);
+			if (moreNotes.length < take) break;
 		}
 	} catch (error) {
 		throw new ApiError(meta.errors.queryError);

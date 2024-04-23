@@ -23,3 +23,25 @@ export const getRootAncestor = async (note) => {
     return getRootAncestor(ancestor);
   }
 }
+
+export const getSignature = (note) => {
+  let signature = note.id;
+  let pointer = note;
+  while( pointer ) {
+    if( pointer.reply ) {
+      pointer = pointer.reply;
+      signature = pointer.id + '-' + signature;
+    } else if ( pointer.renote ) {
+      pointer = pointer.renote;
+      if( pointer.text ) {
+        signature = pointer.id + '-' + signature;
+      }
+    } else {
+      pointer = null;
+    }
+  }
+
+  return signature;
+
+
+}

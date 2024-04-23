@@ -249,7 +249,6 @@ let isReplyOrReplyReblog = ref( !!note.replyId)
 if( note.renote && note.renote.replyId ) {
 	isReplyOrReplyReblog = true;
 }
-console.log('aa', props);
 let rootNote = $ref<misskye.entities.Note>();
 let noteToReplyTo = $ref<misskye.entities.Note>();
 

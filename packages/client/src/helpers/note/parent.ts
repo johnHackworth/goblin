@@ -1,5 +1,25 @@
 import { apiGet } from "@/os";
 
+const needsAncestorsFetching = ( note ) => {
+  let pointer = note;
+  while ( pointer ) {
+    if(pointer.replyId) {
+      if(!pointer.reply) {
+        return true;
+      }
+      pointer = pointer.reply;
+    } else if(pointer.renoteId) {
+      if(!pointer.renote) {
+        return true;
+      }
+      pointer = pointer.renote;
+    } else {
+      pointer = null;
+    }
+  }
+  return false;
+}
+
 const getNoteAncestors = async ( noteId ) => {
   return await apiGet("note/ancestors", {
     noteId: noteId
@@ -7,6 +27,10 @@ const getNoteAncestors = async ( noteId ) => {
 }
 
 export const populateFullReply = async ( note ) => {
+  if( !needsAncestorsFetching( note ) ) {
+    return note;
+  }
+
   if(note.replyId) {
     if(note.reply) {
       const fullReply = await populateFullReply(note.reply)
