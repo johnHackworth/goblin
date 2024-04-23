@@ -41,5 +41,11 @@ export default define(meta, paramDef, async (ps, user) => {
 		throw new ApiError(meta.errors.noSuchHashtag);
 	}
 
-	return await Hashtags.pack(hashtag);
+	return {
+		...( user ? {
+			following: user.followedHashtags.includes(hashtag.name),
+			blocking: user.blockedHashtags.includes(hashtag.name)
+		} : {}),
+		...(await Hashtags.pack(hashtag))
+	};
 });

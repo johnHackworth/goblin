@@ -89,9 +89,8 @@ export default define(meta, paramDef, async (ps, me) => {
 	let user;
 
 	const isAdminOrModerator = me && (me.isAdmin || me.isModerator);
-	apiLogger.warn("USERS/SHOW");
+
 	if (ps.userIds) {
-		apiLogger.warn("USERS/SHOW user ids");
 		if (ps.userIds.length === 0) {
 			return [];
 		}
@@ -127,27 +126,24 @@ export default define(meta, paramDef, async (ps, me) => {
 			),
 		);
 	} else {
-		apiLogger.warn("USERS/SHOW no user ids: " + ps.username);
 		// Lookup user
 		if (typeof ps.host === "string" && typeof ps.username === "string") {
 			user = await resolveUser(ps.username, ps.host).catch((e) => {
 				apiLogger.warn(`failed to resolve remote user: ${e}`);
 				throw new ApiError(meta.errors.failedToResolveRemoteUser);
 			});
-		} else if (!ps.host && ps.username?.endsWith("_at_tumblr_com")) {
-			apiLogger.warn("to tumblr!");
-			user = await resolveUser(ps.username, ps.host).catch((e) => {
-				apiLogger.warn(`failed to resolve tumblr user: ${e}`);
-				throw new ApiError(meta.errors.failedToResolveRemoteUser);
-			});
-			apiLogger.warn("resolved");
-		} else if (!ps.host && ps.username?.endsWith(".tumblr.com")) {
-			const username = ps.username.replace(".tumblr.com", "_at_tumblr_com");
-			user = await resolveUser(username, ps.host).catch((e) => {
-				apiLogger.warn(`failed to resolve tumblr user: ${e}`);
-				throw new ApiError(meta.errors.failedToResolveRemoteUser);
-			});
-		} else {
+		} else if (!ps.host && ps.username?.endsWith('_at_tumblr_com')) {
+      user = await resolveUser(ps.username, ps.host).catch((e)=>{
+        apiLogger.warn(`failed to resolve tumblr user: ${e}`);
+        throw new ApiError(meta.errors.failedToResolveRemoteUser);
+      });
+    } else if (!ps.host && ps.username?.endsWith('.tumblr.com')) {
+    	const username = ps.username.replace('.tumblr.com', '_at_tumblr_com');
+      user = await resolveUser(username, ps.host).catch((e)=>{
+        apiLogger.warn(`failed to resolve tumblr user: ${e}`);
+        throw new ApiError(meta.errors.failedToResolveRemoteUser);
+      });
+    } else {
 			const q: FindOptionsWhere<User> =
 				ps.userId != null
 					? ps.userId.startsWith("http")
@@ -160,8 +156,7 @@ export default define(meta, paramDef, async (ps, me) => {
 		if (user == null || (!isAdminOrModerator && user.isSuspended)) {
 			throw new ApiError(meta.errors.noSuchUser);
 		}
-		if (user.tumblrUUID) {
-			apiLogger.warn("go to update user");
+		if(user.tumblrUUID) {
 			await updateTumblrUser(user.username.toLowerCase());
 			await fetchTumblrFeed(user);
 		}

@@ -294,6 +294,7 @@ export const NoteRepository = db.getRepository(Note).extend({
 		me?: { id: User["id"] } | null | undefined,
 		options?: {
 			detail?: boolean;
+			detailRecursion?: integer;
 		},
 	) {
 		if (notes.length === 0) return [];

@@ -1,7 +1,9 @@
+import { generateKeyPair } from "node:crypto";
 import { Not, IsNull, MoreThan } from "typeorm";
 import { parse } from "node-html-parser";
 import Parser from "rss-parser";
 import { getResponse } from "@/misc/fetch.js";
+import { UserKeypair } from "@/models/entities/user-keypair.js";
 
 import tumblr from "tumblr.js";
 import config from "@/config/index.js";
@@ -240,6 +242,27 @@ export async function createNewTumblrUser(username: string) {
 		return await updateTumblrUser(user.username);
 	}
 
+	const keyPair = await new Promise<string[]>((res, rej) =>
+		generateKeyPair(
+			"rsa",
+			{
+				modulusLength: 4096,
+				publicKeyEncoding: {
+					type: "spki",
+					format: "pem",
+				},
+				privateKeyEncoding: {
+					type: "pkcs8",
+					format: "pem",
+					cipher: undefined,
+					passphrase: undefined,
+				},
+			} as any,
+			(err, publicKey, privateKey) =>
+				err ? rej(err) : res([publicKey, privateKey]),
+		),
+	);
+
 	let account: User | null = null;
 	const newUsername = blogInfo.name + "_at_tumblr_com";
 	user = new User({
@@ -268,6 +291,14 @@ export async function createNewTumblrUser(username: string) {
 			);
 
 			usersChart.update(account, true);
+
+			await transactionalEntityManager.save(
+				new UserKeypair({
+					publicKey: keyPair[0],
+					privateKey: keyPair[1],
+					userId: account.id,
+				}),
+			);
 		}
 	});
 	apiLogger.warn("user created");
