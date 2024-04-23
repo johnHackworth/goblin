@@ -55,20 +55,6 @@
 						</template>
 					</MkPagination>
 				</swiper-slide>
-				<swiper-slide>
-					<MkPagination
-						:pagination="popularPagination"
-						class="hashtags">
-						<template #empty>
-							There are no hashtags on this server.
-						</template>
-						<template #default="{ items }">
-							<template v-for="tag in items">
-								<MkHashtagSummary :tag="tag" />
-							</template>	
-						</template>
-					</MkPagination>
-				</swiper-slide>
 			</swiper>
 		</MkSpacer>
 	</MkStickyContainer>
@@ -87,7 +73,7 @@ import { defaultStore } from "@/store";
 import "swiper/scss";
 import "swiper/scss/virtual";
 
-const tabs = ["following", "blocking", "popular"];
+const tabs = ["following", "blocking"];
 let tab = $ref(tabs[0]);
 watch($$(tab), () => syncSlide(tabs.indexOf(tab)));
 
@@ -110,14 +96,6 @@ const blockingPagination = {
 	limit: 10
 };
 
-const popularPagination = {
-	endpoint: "hashtags/list" as const,
-	params: {
-		limit: 20,
-		sort: '+attachedUsers'
-	}
-};
-
 const headerActions = $computed(() =>
 	[]
 );
@@ -132,11 +110,6 @@ const headerTabs = $computed(() => [
 		key: "blocking",
 		title: i18n.ts.blocked,
 		icon: "ph-circle-wavy-warning ph-bold ph-lg",
-	},
-	{
-		key: "popular",
-		title: "Popular",
-		icon: "ph-globe ph-bold ph-lg"
 	}
 ]);
 
