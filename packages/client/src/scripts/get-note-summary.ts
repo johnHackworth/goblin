@@ -59,6 +59,5 @@ export const getNoteSummary = (note: misskey.entities.Note): string => {
 	}
 
 	*/
-
-	return summary.trim();
+	return summary.split(' ').slice(0, 15).join(' ').trim() + '...'
 };

@@ -398,7 +398,7 @@ const getRenoteText = (note) => {
 		if(note.tags && note.tags.length) {
 			content += ' #' + note.tags.join(' #');
 		}
-		return filters.onlyText(content);
+		return filters.onlyText(content).split(' ').slice(0, 30).join(' ').trim() + '...';
 	}
 	return getNoteSummary(note.renote);
 }
