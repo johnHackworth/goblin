@@ -78,7 +78,7 @@ async function fetch() {
 fetch();
 
 function invite() {
-	os.selectLocalUser().then((user) => {
+	os.selectUser().then((user) => {
 		os.apiWithDialog("users/groups/invite", {
 			groupId: group.value.id,
 			userId: user.id,
