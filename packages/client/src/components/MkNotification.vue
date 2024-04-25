@@ -22,7 +22,7 @@
 					:src="notification.icon"
 					alt=""
 				/>
-				<div class="sub-icon" :class="notification.type">
+				<div class="sub-icon" :class="renoteHasComment(notification.note) ? 'renoteWithComment' : notification.type">
 					<i
 						v-if="notification.type === 'follow'"
 						class="ph-hand-waving ph-bold"
@@ -125,7 +125,36 @@
 					<i class="ph-quotes ph-fill ph-lg"></i>
 				</MkA>
 				<MkA
-					v-if="notification.type === 'renote'"
+					v-if="notification.type === 'renote' && renoteHasComment(notification.note)"
+					class="text multi"
+					:to="notePage(notification.note)"
+					:title="getRenoteText(notification.note)"
+				>
+					<div>
+						<span>{{ i18n.ts._notification.renoted }}</span>
+						<i class="ph-quotes ph-fill ph-lg"></i>
+						<Mfm
+							:text="getNoteSummary(notification.note.renote)"
+							:plain="true"
+							:nowrap="!full"
+							:custom-emojis="notification.note.renote.emojis"
+						/>
+						<i class="ph-quotes ph-fill ph-lg"></i>
+					</div>
+					<div>
+						<span>{{ i18n.ts._notification.renotedAndCommented }}</span>
+						<i class="ph-quotes ph-fill ph-lg"></i>
+						<Mfm
+							:text="getRenoteText(notification.note)"
+							:plain="true"
+							:nowrap="!full"
+							:custom-emojis="notification.note.renote.emojis"
+						/>
+						<i class="ph-quotes ph-fill ph-lg"></i>
+					</div>
+				</MkA>
+				<MkA
+					v-else-if="notification.type === 'renote'"
 					class="text"
 					:to="notePage(notification.note)"
 					:title="getNoteSummary(notification.note.renote)"
@@ -168,16 +197,32 @@
 				</MkA>
 				<MkA
 					v-if="notification.type === 'quote'"
-					class="text"
+					class="text multi"
 					:to="notePage(notification.note)"
-					:title="getNoteSummary(notification.note)"
+					:title="getRenoteText(notification.note)"
 				>
-					<Mfm
-						:text="getNoteSummary(notification.note)"
-						:plain="true"
-						:nowrap="!full"
-						:custom-emojis="notification.note.emojis"
-					/>
+					<div>
+						<span>{{ i18n.ts._notification.renoted }}</span>
+						<i class="ph-quotes ph-fill ph-lg"></i>
+						<Mfm
+							:text="getNoteSummary(notification.note.renote)"
+							:plain="true"
+							:nowrap="!full"
+							:custom-emojis="notification.note.renote.emojis"
+						/>
+						<i class="ph-quotes ph-fill ph-lg"></i>
+					</div>
+					<div>
+						<span>{{ i18n.ts._notification.renotedAndCommented }}</span>
+						<i class="ph-quotes ph-fill ph-lg"></i>
+						<Mfm
+							:text="getRenoteText(notification.note)"
+							:plain="true"
+							:nowrap="!full"
+							:custom-emojis="notification.note.renote.emojis"
+						/>
+						<i class="ph-quotes ph-fill ph-lg"></i>
+					</div>
 				</MkA>
 				<MkA
 					v-if="notification.type === 'pollVote'"
@@ -275,6 +320,7 @@
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted, watch } from "vue";
 import * as misskey from "firefish-js";
+import filters from '@/filters';
 import XReactionIcon from "@/components/MkReactionIcon.vue";
 import MkFollowButton from "@/components/MkFollowButton.vue";
 import XReactionTooltip from "@/components/MkReactionTooltip.vue";
@@ -341,6 +387,21 @@ onUnmounted(() => {
 
 const followRequestDone = ref(false);
 const groupInviteDone = ref(false);
+
+const renoteHasComment = (note) => {
+	return note && note.renoteId && ( note.text || (note.tags && note.tags.length) );
+}
+
+const getRenoteText = (note) => {
+	if(note.text || (note.tags && note.tags.length) ) {
+		let content = note.text ? note.text : '';
+		if(note.tags && note.tags.length) {
+			content += ' #' + note.tags.join(' #');
+		}
+		return filters.onlyText(content);
+	}
+	return getNoteSummary(note.renote);
+}
 
 const acceptFollowRequest = () => {
 	followRequestDone.value = true;
@@ -463,7 +524,8 @@ useTooltip(reactionRef, (showing) => {
 				pointer-events: none;
 			}
 
-			&.reply {
+			&.reply,
+			&.renoteWithComment {
 				padding: 3px;
 				background: #c4a7e7;
 				pointer-events: none;
@@ -519,27 +581,40 @@ useTooltip(reactionRef, (showing) => {
 			overflow: hidden;
 			text-overflow: ellipsis;
 
-			> span:first-child {
+			&.multi {
+				display: flex;
+				flex-direction: column;
+
+				>	div:first-child {
+					margin-bottom: 0.5em;
+				}
+			}
+
+			span:first-child {
 				opacity: 0.7;
 				&::after {
 					content: ": ";
 				}
 			}
 
-			> i {
+			i {
 				vertical-align: super;
 				font-size: 50%;
 				opacity: 0.5;
 			}
 
-			> i:first-child {
+			i:first-child {
 				margin-right: 4px;
 			}
 
-			> i:last-child {
+			i:last-child {
 				margin-left: 4px;
 			}
 		}
+	}
+
+	.renoteWithComment {
+
 	}
 }
 </style>

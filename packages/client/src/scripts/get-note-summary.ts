@@ -1,5 +1,4 @@
 import * as misskey from "firefish-js";
-import { i18n } from "@/i18n";
 import filters from '@/filters';
 
 /**
@@ -15,11 +14,17 @@ export const getNoteSummary = (note: misskey.entities.Note): string => {
 
 	let summary = "";
 
+
+	let noteContent = note.text;
+	if(note.tags && (note.tags && note.tags.length) ) {
+		noteContent += ' #' + note.tags.join(' #');
+	}
+
 	// 本文
 	if (note.cw != null) {
 		summary += note.cw;
 	} else {
-		summary += note.text ? filters.onlyText( note.text ) : "";
+		summary += noteContent ? filters.onlyText( noteContent ) : "";
 	}
 
 	// ファイルが添付されているとき
