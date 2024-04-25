@@ -94,7 +94,7 @@ export default define(meta, paramDef, async (ps, user) => {
 				if (hasFollowing) {
 					qb.orWhere(`note.userId IN (${followingQuery.getQuery()})`);
 				}
-			})
+			}),
 		)
 		.innerJoinAndSelect("note.user", "user")
 		.innerJoinAndSelect("user", "me", "me.id = :meId", { meId: user.id })

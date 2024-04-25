@@ -309,8 +309,7 @@ export async function createNote(
 	let text: string | null = null;
 	if (typeof note._goblin_content !== "undefined") {
 		text = note._goblin_content;
-	}
-  else if (typeof note.content === "string") {
+	} else if (typeof note.content === "string") {
 		text = note.content; // htmlToMfm(note.content, note.tag);
 	} else if (
 		note.source?.mediaType === "text/x.misskeymarkdown" &&
@@ -376,19 +375,20 @@ export async function createNote(
 		}
 	}
 
-	if(note.reblogtrail && note.reblogtrail.length) {
+	if (note.reblogtrail && note.reblogtrail.length) {
 		const originHost = actor.host;
 
-		for(var i = 0; i < note.reblogtrail.length; i++) {
-
+		for (var i = 0; i < note.reblogtrail.length; i++) {
 			const trailNote = note.reblogtrail[i];
 
-			if(trailNote.user ) {
-				if(!trailNote.user.host) {
+			if (trailNote.user) {
+				if (!trailNote.user.host) {
 					trailNote.user.host = originHost;
 				}
 
-				const url = trailNote.uri? trailNote.uri : 'https://' + trailNote.user.host  + '/notes/' + trailNote.id;
+				const url = trailNote.uri
+					? trailNote.uri
+					: "https://" + trailNote.user.host + "/notes/" + trailNote.id;
 
 				note.reblogtrail[i].uri = url;
 				note.reblogtrail[i].url = url;
@@ -398,7 +398,7 @@ export async function createNote(
 							uri: url,
 						},
 						{
-							url:url,
+							url: url,
 						},
 					],
 				});
@@ -406,27 +406,25 @@ export async function createNote(
 					where: [
 						{
 							username: trailNote.user.username,
-							host: trailNote.user.host
+							host: trailNote.user.host,
 						},
 					],
 				});
 
-
-
-				if(rootNote) {
+				if (rootNote) {
 					note.reblogtrail[i].id = rootNote.id;
-					if(user) {
-						note.reblogtrail[i].user = await Users.pack( user.id );;
+					if (user) {
+						note.reblogtrail[i].user = await Users.pack(user.id);
 						note.reblogtrail[i].userId = user.id;
 					} else {
 						note.reblogtrail[i].userId = rootNote.userId;
 					}
 				} else {
 					const newRootNote = await createNote(url, resolver, true);
-					if(newRootNote) {
+					if (newRootNote) {
 						note.reblogtrail[i].id = newRootNote.id;
-						if(user) {
-							note.reblogtrail[i].user = await Users.pack( user.id );
+						if (user) {
+							note.reblogtrail[i].user = await Users.pack(user.id);
 							note.reblogtrail[i].userId = user.id;
 						} else {
 							note.reblogtrail[i].userId = newRootNote.userId;
@@ -637,8 +635,7 @@ export async function updateNote(value: string | IObject, resolver?: Resolver) {
 	let text: string | null = null;
 	if (typeof post._goblin_content !== "undefined") {
 		text = post._goblin_content;
-	}
-  else if (typeof post.content === "string") {
+	} else if (typeof post.content === "string") {
 		text = post.content; // htmlToMfm(note.content, note.tag);
 	} else if (
 		post.source?.mediaType === "text/x.misskeymarkdown" &&

@@ -22,7 +22,7 @@ export const navbarItemDef = reactive({
 		title: "hashtags",
 		icon: "ph-hash ph-bold ph-lg",
 		show: computed(() => $i != null),
-		to: "/my/hashtags"
+		to: "/my/hashtags",
 	},
 	messaging: {
 		title: "messaging",

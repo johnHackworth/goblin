@@ -41,7 +41,7 @@ export async function getNoteBySlug(
 ) {
 	const query = Notes.createQueryBuilder("note");
 	query.where("note.slug = :slug", {
-		slug: slug
+		slug: slug,
 	});
 	query.andWhere("note.userId = :userId", {
 		userId: userId,

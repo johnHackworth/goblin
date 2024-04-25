@@ -252,7 +252,9 @@ export const NoteRepository = db.getRepository(Note).extend({
 						reply: note.replyId
 							? this.pack(note.reply || note.replyId, me, {
 									detail: !!opts.detailRecursion,
-									detailRecursion: opts.detailRecursion ? opts.detailRecursion -1 : false,
+									detailRecursion: opts.detailRecursion
+										? opts.detailRecursion - 1
+										: false,
 									_hint_: options?._hint_,
 							  })
 							: undefined,
@@ -260,7 +262,9 @@ export const NoteRepository = db.getRepository(Note).extend({
 						renote: note.renoteId
 							? this.pack(note.renote || note.renoteId, me, {
 									detail: !!opts.detailRecursion,
-									detailRecursion: opts.detailRecursion ? opts.detailRecursion -1 : false,
+									detailRecursion: opts.detailRecursion
+										? opts.detailRecursion - 1
+										: false,
 									_hint_: options?._hint_,
 							  })
 							: undefined,

@@ -1514,7 +1514,7 @@ export default class Misskey implements MegalodonInterface {
 		if (status.quote != null)
 			status.quote = await this.addMentionsToStatus(status.quote, cache);
 
-		const idx = status.account.acct.indexOf('@');
+		const idx = status.account.acct.indexOf("@");
 		const origin = idx < 0 ? null : status.account.acct.substring(idx + 1);
 
 		status.mentions = (
@@ -1523,22 +1523,25 @@ export default class Misskey implements MegalodonInterface {
 		for (const m of status.mentions.filter(
 			(value, index, array) => array.indexOf(value) === index,
 		)) {
-			const regexFull = new RegExp(`(?<=^|\\s|>)@${m.acct}(?=[^a-zA-Z0-9]|$)`, 'gi');
-			const regexLocalUser = 	new RegExp(`(?<=^|\\s|>)@${m.acct}@${this.baseUrlToHost(this.baseUrl)}(?=[^a-zA-Z0-9]|$)`, 'gi');
-			const regexRemoteUser = 	new RegExp(`(?<=^|\\s|>)@${m.username}(?=[^a-zA-Z0-9@]|$)`, 'gi');
+			const regexFull = new RegExp(
+				`(?<=^|\\s|>)@${m.acct}(?=[^a-zA-Z0-9]|$)`,
+				"gi",
+			);
+			const regexLocalUser = new RegExp(
+				`(?<=^|\\s|>)@${m.acct}@${this.baseUrlToHost(
+					this.baseUrl,
+				)}(?=[^a-zA-Z0-9]|$)`,
+				"gi",
+			);
+			const regexRemoteUser = new RegExp(
+				`(?<=^|\\s|>)@${m.username}(?=[^a-zA-Z0-9@]|$)`,
+				"gi",
+			);
 
 			if (m.acct == m.username) {
-				status.content = status.content.replace(
-					regexLocalUser,
-					`@${m.acct}`,
-				);
-			}
-
-			else if (!status.content.match(regexFull)) {
-				status.content = status.content.replace(
-					regexRemoteUser,
-					`@${m.acct}`,
-				);
+				status.content = status.content.replace(regexLocalUser, `@${m.acct}`);
+			} else if (!status.content.match(regexFull)) {
+				status.content = status.content.replace(regexRemoteUser, `@${m.acct}`);
 			}
 
 			status.content = status.content.replace(
@@ -2980,7 +2983,9 @@ export default class Misskey implements MegalodonInterface {
 				}
 
 				try {
-					const match = q.match(/^@(?<user>[a-zA-Z0-9_]+)(?:@(?<host>[a-zA-Z0-9-.]+\.[a-zA-Z0-9-]+)|)$/);
+					const match = q.match(
+						/^@(?<user>[a-zA-Z0-9_]+)(?:@(?<host>[a-zA-Z0-9-.]+\.[a-zA-Z0-9-]+)|)$/,
+					);
 					if (match) {
 						const lookupQuery = {
 							username: match.groups?.user,

@@ -49,18 +49,19 @@ export const paramDef = {
 	],
 } as const;
 
-
-
 export default define(meta, paramDef, async (ps, user) => {
 	let note = null;
-	if(ps.noteId) {
+	if (ps.noteId) {
 		note = await getNote(ps.noteId, user).catch((err) => {
 			if (err.id === "9725d0ce-ba28-4dde-95a7-2cbb2c15de24")
 				throw new ApiError(meta.errors.noSuchNote);
 			throw err;
 		});
 	} else if (ps.slug) {
-		const noteUser = await resolveUser(ps.username, ps.host !== 'null' ? ps.host : null).catch((err) => {
+		const noteUser = await resolveUser(
+			ps.username,
+			ps.host !== "null" ? ps.host : null,
+		).catch((err) => {
 			throw err;
 		});
 		note = await getNoteBySlug(ps.slug, noteUser.id, user).catch((err) => {
@@ -69,7 +70,7 @@ export default define(meta, paramDef, async (ps, user) => {
 			throw err;
 		});
 	}
-	if(note) {
+	if (note) {
 		return await Notes.pack(note, user, {
 			// FIXME: packing with detail may throw an error if the reply or renote is not visible (#8774)
 			detail: true,

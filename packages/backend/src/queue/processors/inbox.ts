@@ -116,7 +116,8 @@ export default async (job: Bull.Job<InboxJobData>): Promise<string> => {
 	}
 
 	if (httpSignatureValidated) {
-		if (!verifySignature(signature, authUser.key)) return `skip: Invalid HTTP signature`;
+		if (!verifySignature(signature, authUser.key))
+			return `skip: Invalid HTTP signature`;
 	}
 
 	// また、signatureのsignerは、activity.actorと一致する必要がある

@@ -60,7 +60,7 @@ export type Source = {
 	tumblr: {
 		key: string;
 		secret: string;
-	}
+	};
 
 	proxy?: string;
 	proxySmtp?: string;

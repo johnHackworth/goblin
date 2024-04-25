@@ -135,7 +135,7 @@ export class User {
 		length: 128,
 		array: true,
 		default: "{}",
-		comment: "Hashtags that will appear in the User's timeline."
+		comment: "Hashtags that will appear in the User's timeline.",
 	})
 	public followedHashtags: string[];
 
@@ -144,7 +144,8 @@ export class User {
 		length: 128,
 		array: true,
 		default: "{}",
-		comment: "Hashtags that will be blocked from the User's timeline, taking precedence over follow."
+		comment:
+			"Hashtags that will be blocked from the User's timeline, taking precedence over follow.",
 	})
 	public blockedHashtags: string[];
 
@@ -294,7 +295,6 @@ export class User {
 		comment: "The updated date of a tumblr User.",
 	})
 	public feedUpdatedAt: Date | null;
-
 
 	constructor(data: Partial<User>) {
 		if (data == null) return;

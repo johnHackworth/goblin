@@ -89,11 +89,12 @@ export default define(meta, paramDef, async (ps, user) => {
 	)
 
 		.andWhere("NOT (note.tags && me.blockedHashtags)")
-		.andWhere(new Brackets((qb) => {
+		.andWhere(
+			new Brackets((qb) => {
 				qb.where(
 					`((note.userId IN (${followingQuery.getQuery()})) OR (note.userId = :meId))`,
 					{ meId: user.id },
-				)
+				);
 				qb.orWhere("(note.tags && me.followedHashtags)");
 				qb.orWhere("(note.visibility = 'public') AND (note.userHost IS NULL)");
 			}),

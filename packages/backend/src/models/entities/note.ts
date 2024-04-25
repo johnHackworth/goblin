@@ -112,7 +112,6 @@ export class Note {
 	})
 	public quoteCount: number;
 
-
 	@Column("smallint", {
 		default: 0,
 	})
@@ -122,7 +121,6 @@ export class Note {
 		default: {},
 	})
 	public reactions: Record<string, number>;
-
 
 	@Column("json", {
 		default: [],
