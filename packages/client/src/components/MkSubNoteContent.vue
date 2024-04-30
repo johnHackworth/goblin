@@ -210,6 +210,11 @@ function focusFooter(ev) {
 .wrmlmaau {
 	.content {
 		overflow-wrap: break-word;
+
+		img {
+			max-width: 100%;;
+		}
+
 		> .body {
 			transition: filter 0.1s;
 			> * {
@@ -345,7 +350,7 @@ function focusFooter(ev) {
 		}
 	}
 	.noteText {
-		img {
+		:deep(img) {
       max-width: 100%;
     }
 	}
