@@ -94,7 +94,7 @@ export default defineComponent({
 .loginContainer {
   max-width: 380px;
   width: 20%;
-  top: 32px;
+  top: 96px;
   position: fixed;
   left: 20px;
   z-index: 99;
