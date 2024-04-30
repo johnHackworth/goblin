@@ -19,6 +19,7 @@ import define from "../../define.js";
 import { HOUR } from "@/const.js";
 import { getNote } from "../../common/getters.js";
 import { postToTumblr } from "@/services/tumblr/index.js";
+import { isNoteOp } from "@/misc/note/ancestors.js";
 
 export const meta = {
 	tags: ["notes"],
@@ -227,7 +228,7 @@ export default define(meta, paramDef, async (ps, user) => {
 		}
 
 		// Check blocking
-		if (renote.userId !== user.id) {
+		if ( ! isNoteOp( renote, user.id ) ) {
 			const isBlocked = await Blockings.exist({
 				where: {
 					blockerId: renote.userId,
@@ -254,7 +255,7 @@ export default define(meta, paramDef, async (ps, user) => {
 		}
 
 		// Check blocking
-		if (reply.userId !== user.id) {
+		if ( ! isNoteOp( renote, user.id ) ) {
 			const isBlocked = await Blockings.exist({
 				where: {
 					blockerId: reply.userId,

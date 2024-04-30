@@ -4,6 +4,7 @@ import { makePaginationQuery } from "../../common/make-pagination-query.js";
 import { generateVisibilityQuery } from "../../common/generate-visibility-query.js";
 import { generateMutedUserQuery } from "../../common/generate-muted-user-query.js";
 import { generateBlockedUserQuery } from "../../common/generate-block-query.js";
+import { isNoteOpById } from "@/misc/note/ancestors.js";
 
 export const meta = {
 	tags: ["notes"],
@@ -53,8 +54,11 @@ export default define(meta, paramDef, async (ps, user) => {
 
 	generateVisibilityQuery(query, user);
 	if (user) {
-		generateMutedUserQuery(query, user);
-		generateBlockedUserQuery(query, user);
+		const isOp = await isNoteOpById( ps.noteId, user.id );
+		if( !isOp ) {
+			generateMutedUserQuery(query, user);
+			generateBlockedUserQuery(query, user);
+		}
 	}
 
 	const notes = await query.getMany();
