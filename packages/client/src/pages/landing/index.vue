@@ -179,8 +179,8 @@ export default defineComponent({
     padding: 16px;
 
     @media (max-width: 1200px) {
+      max-width: 700px;
       position: absolute;
-      margin-left: 120px;
     }
 
     > .bg {
@@ -338,10 +338,14 @@ export default defineComponent({
   }
 
   @media (max-width: 1200px) {
-    top: 500px;
+    top: 450px;
     right: inherit;
     left: 10px;
     margin-right: 0;
+  }
+
+  @media (max-width: 700px) {
+    left: 0px;
   }
 
 }
