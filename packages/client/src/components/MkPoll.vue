@@ -146,6 +146,8 @@ const vote = async (id) => {
 
 <style lang="scss" scoped>
 .tivcixzd {
+	padding: 16px;
+
 	> ul {
 		display: block;
 		margin: 0;

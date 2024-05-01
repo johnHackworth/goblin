@@ -141,6 +141,7 @@
 				v-else
 				@update="updateTiptap"
 				@updateTags="updateTiptapTags"
+				@updatePoll="updateTiptapPoll"
 				@post="onEditorPostClick"
 				@addedImage="onEditorImageAdd"
 				ref="textareaEl"
@@ -159,7 +160,6 @@
 				:initialTags="props.initialNote ? props.initialNote.tags : []"
 				:initialText="props.initialNote ? removeMeta(props.initialNote.text) : ''"
 			/>
-			<XPollEditor v-if="poll" v-model="poll" @destroyed="poll = null" />
 			<XNotePreview v-if="showPreview" class="preview" :text="text" />
 		</div>
 	</section>
@@ -519,17 +519,8 @@ function addMissingMention() {
 	}
 }
 
-function togglePoll() {
-	if (poll) {
-		poll = null;
-	} else {
-		poll = {
-			choices: ["", ""],
-			multiple: false,
-			expiresAt: null,
-			expiredAfter: null,
-		};
-	}
+function updateTiptapPoll( updatedPoll ) {
+	poll = updatedPoll;
 }
 
 function addTag(tag: string) {
@@ -842,7 +833,6 @@ function updateTiptap( editorValue ) {
 	} else {
 		isEditorEmpty = false;
 	}
-
 	submitText = getSubmitText();
 }
 

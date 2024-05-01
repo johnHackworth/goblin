@@ -6,11 +6,16 @@
       </div>
     </div>
   </div>
+  <XPollEditor
+    v-if="poll"
+    v-model="poll"
+    @destroyed="poll = null"
+  />
+
   <div class="tagsContainer">
     <div class="currentTags">
       <span contenteditable class="tag" v-for="(tag, index) in tags" :key="index" @blur="updateTag" :data-index="index">{{ tag }}</span>
     </div>
-
     <div class="tagEditor">
       <div class="tagInput"
         :class="{ hasTags: tags.length > 0 }"
@@ -95,6 +100,16 @@
       <WarningIcon />
     </button>
     <button
+      v-if="!isSelecting"
+      class="_button pollButton"
+      :class="{ active: poll }"
+      @click="togglePoll"
+    >
+      <span class="big-icon">
+        <i class="ph-chart-bar ph-fill ph-bold ph-2x"></i>
+      </span>
+    </button>
+    <button
       class="_button submit"
       :disabled="!props.canPost"
       data-cy-open-post-form-submit
@@ -118,7 +133,7 @@
 
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import StarterKit from '@tiptap/starter-kit';
 import { useEditor, EditorContent } from '@tiptap/vue-3';
 import Youtube from '@tiptap/extension-youtube'
@@ -149,6 +164,7 @@ import BulletListIcon from "@/components/icons/bullet-list.vue";
 import OrderedListIcon from "@/components/icons/ordered-list.vue";
 import WarningIcon from "@/components/icons/warning.vue";
 import ColorIcon from "@/components/icons/color.vue";
+import XPollEditor from "@/components/MkPollEditor.vue";
 import { Gradient } from "./color-gradient.ts";
 import { Big } from "./big.ts";
 import { Iframe } from "./iframe-module.ts";
@@ -181,13 +197,21 @@ const props = withDefaults(
 );
 
 let tags = $ref(props.initialTags)
+let poll = ref(null);
 const tagsElement = $ref(null)
 
 let isSelecting = $ref(false);
 let isEmpty = $ref(true);
 let isColorMenuVisible = $ref(false);
 
-const emit = defineEmits(['update', 'updateTags', 'post', 'addedImage', 'enableContentWarning'])
+const emit = defineEmits(['update', 'updatePoll', 'updateTags', 'post', 'addedImage', 'enableContentWarning'])
+window.poll = poll;
+watch(
+  poll,
+  () => {
+    emit("updatePoll", poll.value);
+  }
+);
 
 const update = ( { editor } ) => {
   const editorValue = editor.getHTML();
@@ -236,6 +260,21 @@ const handlePaste = async (ev) => {
     }
   }
 }
+
+function togglePoll() {
+  if (poll.value) {
+    poll.value = null;
+  } else {
+    poll.value = {
+      choices: ["", ""],
+      multiple: false,
+      expiresAt: null,
+      expiredAfter: null,
+    };
+  }
+}
+
+
 
 const toggleColorMenu = () => {
   isColorMenuVisible = !isColorMenuVisible;
@@ -298,7 +337,7 @@ const editor = useEditor({
   onSelectionUpdate: selectionChange,
   autofocus: 'end',
 })
-window.editor = editor;
+
 const addImage = (ev) => {
   selectFiles(ev.currentTarget ?? ev.target, i18n.ts.attachFile).then(
     (files) => {
@@ -645,6 +684,9 @@ footer {
   }
   .content-warning svg {
     fill: RGB(232, 215, 56);
+  }
+  .pollButton i {
+    color: rgb(255, 73, 48);
   }
 
   button.submit._button {

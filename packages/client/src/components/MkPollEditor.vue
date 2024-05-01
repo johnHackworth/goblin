@@ -23,18 +23,22 @@
 				</button>
 			</li>
 		</ul>
-		<MkButton v-if="choices.length < 10" class="add" @click="add">{{
-			i18n.ts.add
-		}}</MkButton>
-		<MkButton v-else class="add" disabled>{{
-			i18n.ts._poll.noMore
-		}}</MkButton>
-		<MkSwitch v-model="multiple">{{
-			i18n.ts._poll.canMultipleVote
-		}}</MkSwitch>
-		<section>
+		<div class="singleLine">
+			<i
+				class="add ph-plus-square ph-fill ph-bold ph-3x"
+				v-if="choices.length < 10"
+				@click="add"
+			></i>
+			<MkButton v-else class="add" disabled>{{
+				i18n.ts._poll.noMore
+			}}</MkButton>
+			<MkSwitch v-model="multiple" class="clearBackground"> {{
+				i18n.ts._poll.canMultipleVote
+			}}</MkSwitch>
+		</div>
+		<section class="expiration">
 			<div>
-				<MkSelect v-model="expiration" small>
+				<MkSelect v-model="expiration" small class="clearBackground">
 					<template #label>{{ i18n.ts._poll.expiration }}</template>
 					<option value="infinite">
 						{{ i18n.ts._poll.infinite }}
@@ -188,6 +192,31 @@ watch(
 .zmdxowus {
 	padding: 8px 16px;
 
+	.expiration {
+		width: 100%;
+		display: flex;
+  	justify-content: flex-start;
+  	align-items: baseline;
+
+		:deep(.input) {
+			border: 1px solid var(--accent);
+
+			&.matxzzsk {
+				border: 0;
+			}
+		}
+
+		:deep(.label) {
+			color: var(--fg);
+			margin-right: 8px;
+		}
+	}
+
+	._button {
+		background: var(--accent);
+		color: white;
+	}
+
 	> .caution {
 		margin: 0 0 8px 0;
 		font-size: 0.8em;
@@ -212,6 +241,7 @@ watch(
 
 			> .input {
 				flex: 1;
+				border: 1px solid var(--accent);
 			}
 
 			> button {
@@ -221,9 +251,20 @@ watch(
 		}
 	}
 
-	> .add {
-		margin: 8px 0;
+	.singleLine {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.add {
 		z-index: 1;
+		color: var(--accent);
+		cursor: pointer;
+
+		&:hover {
+			color: var(--fg);
+		}
 	}
 
 	> section {
