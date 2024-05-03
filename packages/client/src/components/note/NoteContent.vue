@@ -49,6 +49,7 @@
           <div v-if="!props.hideTags && note.tags" class="noteTags">
             <a class="noteTag" v-for="tag in note.tags" :href="`/tags/${tag}`">#{{tag}}</a>
           </div>
+          <XPoll v-if="note.poll" :note="note" class="poll" />
           <div v-if="notEmbedFiles.length" class="noteFiles">
             <div v-for="(file, index) in notEmbedFiles" class="noteFile" :key="index">
               <span v-if="!note.text || note.text.indexOf(file.url) <0">
@@ -81,6 +82,7 @@ import * as misskey from "firefish-js";
 import * as mfm from "mfm-js";
 import * as os from "@/os";
 import XCwButton from "@/components/MkCwButton.vue";
+import XPoll from "@/components/MkPoll.vue";
 import MkNoteImage from "@/components/note/NoteImage.vue";
 import NoteHeader from "@/components/note/Header.vue";
 import { extractUrlFromMfm } from "@/scripts/extract-url-from-mfm";

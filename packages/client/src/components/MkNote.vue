@@ -96,7 +96,6 @@
 						{{ appearNote.channel.name }}</MkA
 					>
 				</div>
-				<XPoll v-if="appearNote.poll" :note="appearNote" class="poll" />
 				<div class="previews" v-if="urls && urls.length > 0">
 					<MkUrlPreview
 						v-for="url in urls"
