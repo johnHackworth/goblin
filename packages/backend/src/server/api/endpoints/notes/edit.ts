@@ -193,7 +193,7 @@ export const paramDef = {
 					uniqueItems: true,
 					minItems: 2,
 					maxItems: 10,
-					items: { type: "string", minLength: 1, maxLength: 50 },
+					items: { type: "string", minLength: 1, maxLength: 128 },
 				},
 				multiple: { type: "boolean", default: false },
 				expiresAt: { type: "integer", nullable: true },

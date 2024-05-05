@@ -9,6 +9,7 @@
 				<MkInput
 					class="input"
 					small
+					maxLength="128"
 					:model-value="choice"
 					:placeholder="i18n.t('_poll.choiceN', { n: i + 1 })"
 					@update:modelValue="onInput(i, $event)"
