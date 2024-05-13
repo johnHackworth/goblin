@@ -17,7 +17,8 @@ export const getNoteSlug = async (note: Note) => {
 			.trim()
 			.split(" ")
 			.slice(0, 8)
-			.join(" ");
+			.join(" ")
+			.substr(0, 96);
 		const slug = slugify(onlyText, slugOptions);
 		const foundNote = await Notes.findOneBy({
 			slug: slug,
@@ -32,5 +33,8 @@ export const getNoteSlug = async (note: Note) => {
 			);
 		}
 	}
-	return slugify(Date(), slugOptions);
+	return slugify(
+		`${ Date().split(' ').slice(0,4).join(' ') } ${Math.floor(Math.random() * 100000)}`,
+		slugOptions
+	);
 };
