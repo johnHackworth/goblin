@@ -533,7 +533,7 @@ export default function () {
 		"fetchTumblrFeeds",
 		{},
 		{
-			repeat: { cron: "*/5  * * * * " },
+			repeat: { cron: "*/1  * * * * " },
 			removeOnComplete: true,
 		},
 	);
