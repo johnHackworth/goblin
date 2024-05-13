@@ -163,6 +163,7 @@ export async function updateTumblrUser(tumblrUsername: string) {
 	) {
 		blogInfo = await getTumblrProfile(tumblrUsername);
 		if (!blogInfo) {
+			await Users.update(user.id, { feedUpdatedAt: new Date() });
 			return null;
 		}
 
@@ -316,7 +317,8 @@ export async function fetchTumblrFeed(user: User) {
 		};
 		const blogInfo = await getTumblrProfile(user.tumblrUUID);
 		if (!blogInfo) {
-			apiLogger.warn("user not found");
+			await Users.update(user.id, { feedUpdatedAt: new Date() });
+			apiLogger.warn("remote tumblr user not found");
 			return;
 		}
 		let posts = await getTumblrPosts(blogInfo.name, 0);
