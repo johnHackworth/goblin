@@ -8,6 +8,11 @@
 				:display-my-avatar="true"
 			/>
 		</template>
+		<div class="subheader" v-if="tab === 'all'">
+				<MkSwitch class="reverse" v-model="followingOnly">
+					only from people you follow
+				</MkSwitch>
+		</div>
 		<MkSpacer :content-max="800">
 			<swiper
 				:round-lengths="true"
@@ -30,6 +35,7 @@
 						class="notifications"
 						:include-types="includeTypes"
 						:unread-only="false"
+						:following="followingOnly"
 					/>
 				</swiper-slide>
 				<swiper-slide>
@@ -61,6 +67,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { notificationTypes } from "firefish-js";
 import XNotifications from "@/components/MkNotifications.vue";
 import XNotes from "@/components/MkNotes.vue";
+import MkSwitch from "@/components/form/switch.vue";
 import * as os from "@/os";
 import { i18n } from "@/i18n";
 import { definePageMetadata } from "@/scripts/page-metadata";
@@ -73,6 +80,7 @@ const tabs = ["all", "unread", "mentions", "directNotes"];
 let tab = $ref(tabs[0]);
 watch($$(tab), () => syncSlide(tabs.indexOf(tab)));
 
+let followingOnly = $ref(false);
 let includeTypes = $ref<string[] | null>(null);
 let unreadOnly = $computed(() => tab === "unread");
 os.api("notifications/mark-all-as-read");
@@ -198,3 +206,13 @@ function syncSlide(index) {
 	swiperRef.slideTo(index);
 }
 </script>
+
+<style lang="scss" scoped>
+.subheader {
+	max-width: 800px;
+  margin: 1em auto 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+</style>
