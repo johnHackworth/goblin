@@ -10,7 +10,6 @@
 			<div class="knob"></div>
 		</div>
 		<span class="label">
-			<!-- TODO: 無名slotの方は廃止 -->
 			<span class="internalLabel"><slot name="label"></slot><slot></slot></span>
 			<p class="caption"><slot name="caption"></slot></p>
 		</span>
@@ -114,6 +113,15 @@ function toggle(x) {
 			&:empty {
 				display: none;
 			}
+		}
+	}
+
+	&.reverse {
+		flex-direction: row-reverse;
+
+		> .label {
+			margin-left: 0px;
+			margin-right: 12px;
 		}
 	}
 
