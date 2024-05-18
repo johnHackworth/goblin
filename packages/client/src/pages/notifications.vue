@@ -40,7 +40,11 @@
 					/>
 				</swiper-slide>
 				<swiper-slide>
-					<XNotes :pagination="mentionsPagination" />
+					<XNotifications
+						class="notifications"
+						:include-types="[ 'mention' ]"
+						:unread-only="false"
+					/>
 				</swiper-slide>
 				<swiper-slide>
 					<XNotes :pagination="directNotesPagination" />
@@ -83,15 +87,22 @@ window.addEventListener("resize", () => {
 });
 
 const mentionsPagination = {
-	endpoint: "notes/mentions" as const,
+	endpoint: "notifications" as const,
 	limit: 10,
+	params: {
+		includeTypes: [ "mention" ],
+		unreadOnly: false
+	}
 };
 
 const directNotesPagination = {
-	endpoint: "notes/mentions" as const,
+	endpoint: "i/notifications" as const,
 	limit: 10,
 	params: {
+		includeTypes: [ "mention" ],
 		visibility: "specified",
+		notesOnly: true,
+		unreadOnly: false
 	},
 };
 

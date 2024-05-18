@@ -46,6 +46,8 @@ export const paramDef = {
 		following: { type: "boolean", default: false },
 		unreadOnly: { type: "boolean", default: false },
 		markAsRead: { type: "boolean", default: true },
+		notesOnly: { type: "boolean", default: false },
+		visibility: { type: "string" },
 		includeTypes: {
 			type: "array",
 			items: {
@@ -158,6 +160,10 @@ export default define(meta, paramDef, async (ps, user) => {
 		});
 	}
 
+	if (ps.visibility) {
+		query.andWhere("note.visibility = :visibility", { visibility: ps.visibility });
+	}
+
 	if (ps.unreadOnly) {
 		query.andWhere("notification.isRead = false");
 	}
@@ -182,5 +188,14 @@ export default define(meta, paramDef, async (ps, user) => {
 		read(user.id, notes);
 	}
 
-	return await Notifications.packMany(notifications, user.id);
+	const output = await Notifications.packMany(notifications, user.id);
+
+	if(ps.notesOnly) {
+		return output.map( (notification) => {
+			return notification.note;
+		} );
+	} else {
+		return output;
+	}
+
 });
