@@ -10,7 +10,7 @@ import MkTab from "@/components/MkTab.vue";
 import { i18n } from "@/i18n";
 
 const paginationForLocal = {
-  endpoint: "notes/featured" as const,
+  endpoint: "notes/local-timeline" as const,
   limit: 10,
   origin: "local",
   offsetMode: true,
