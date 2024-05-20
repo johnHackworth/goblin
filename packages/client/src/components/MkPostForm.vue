@@ -1337,6 +1337,7 @@ onBeforeUnmount(() => {
 			width: 100%;
 			position: relative;
 			padding: 0;
+			margin-top: 16px;
 
 			img {
 				max-width: 100%;

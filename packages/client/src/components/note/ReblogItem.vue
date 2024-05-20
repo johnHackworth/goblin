@@ -1,5 +1,5 @@
 <template>
-  <div v-size="{ min: [350, 500] }" class="reblog-item" :data-debug="JSON.stringify(note)">
+  <div v-if="isVisible" v-size="{ min: [350, 500] }" class="reblog-item">
     <div class="reblog-item-header">
       <div class="avatar">
         <Pfp :user="note.user" :url="note.url" />
@@ -10,7 +10,6 @@
     </div>
     <div class="reblog-item-content">
       <NoteContent
-        class="welcomeNote"
         :note="note"
         :detailed="false"
         :parentId="note.parentId"
@@ -21,22 +20,27 @@
 </template>
 
 <script lang="ts" setup>
-import {} from "vue";
+import { ref } from "vue";
 import * as misskey from "firefish-js";
 import Pfp from "@/components/note/Pfp.vue";
 import Header from "@/components/note/Header.vue";
 import NoteContent from "@/components/note/NoteContent.vue";
+import { shouldShowInReblogs } from "@/helpers/note/note-content"
 
 const props = defineProps<{
   note: misskey.entities.Note;
   pinned?: boolean;
 }>();
+
+const isVisible = $computed(() =>
+  shouldShowInReblogs(props.note)
+);
 </script>
 
 <style lang="scss">
 .reblog-item {
   margin: 0;
-  padding: 8px 16px;
+  padding: 0px 16px 16px;
   width: calc(100% - 32px);;
   display: flex;
   flex-direction: column;

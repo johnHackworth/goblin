@@ -398,7 +398,7 @@ function focusFooter(ev) {
   }
 
   .noteTags {
-    padding: 0 16px;
+    padding: 16px 16px 0;
 
     .noteTag {
       color: #09A;

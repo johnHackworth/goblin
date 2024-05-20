@@ -1,5 +1,5 @@
 <template>
-  <div v-for="(trailNote, index) in reblogtrail" :key="index">
+  <div class="reblogTrail" v-for="(trailNote, index) in reblogtrail" :key="index">
     <div class="reblog">
       <ReblogItem :note="trailNote" />
     </div>
@@ -21,7 +21,7 @@ const props = defineProps<{
   .reblog {
     border-bottom: 0.5px solid rgb(0, 25, 53);
     width: 100%;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
   }
 
 </style>

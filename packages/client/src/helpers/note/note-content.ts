@@ -18,6 +18,10 @@ export const getNotEmbedFiles = ( note ) => {
   return note.files;
 }
 
+export const shouldShowInReblogs = (note) => {
+  return !!note.cw || !!note.text || !!note.poll || (note.files && note.files.length > 0);
+}
+
 export const getUserAndHostFromUrl = (url) => {
   const match = url.match(/https?:\/\/([^/]+)\/@([^/]+)/);
   if (match) {
