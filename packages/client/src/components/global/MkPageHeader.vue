@@ -2,7 +2,7 @@
 	<header
 		v-if="show"
 		ref="el"
-		class="fdidabkb"
+		class="fdidabkb clear"
 		:class="{ thin: thin_, tabs: tabs?.length > 0 }"
 		:style="{ background: bg }"
 		@click="onClick"
@@ -109,7 +109,7 @@
 				<button
 					v-tooltip.noDelay="action.text"
 					class="_buttonIcon button"
-					:class="{ highlighted: action.highlighted }"
+					:class="{ selected: action.highlighted }"
 					@click.stop="action.handler"
 					@touchstart="preventDrag"
 				>
@@ -574,6 +574,25 @@ onUnmounted(() => {
 			transition-timing-function: cubic-bezier(0, 0, 0, 1.2);
 			pointer-events: none;
 		}
+	}
+
+	.selected {
+		color: var(--accent);
+	}
+
+	._buttonIcon:before {
+		background: transparent;
+	}
+
+	._buttonIcon:hover {
+		&:before {
+			background: transparent;
+		}
+
+		transition:
+			color 0.2s;
+		transition-timing-function: cubic-bezier(0, 0, 0, 1.2);
+		color: var(--accentLighten);
 	}
 }
 </style>
