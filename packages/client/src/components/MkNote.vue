@@ -83,19 +83,6 @@
 						@expanded="(e) => setPostExpanded(e)"
 					></NoteContent>
 				</div>
-				<div
-					v-if="detailedView || (appearNote.channel && !inChannel)"
-					class="info"
-				>
-					<MkA
-						v-if="appearNote.channel && !inChannel"
-						class="channel"
-						:to="`/channels/${appearNote.channel.id}`"
-						@click.stop
-						><i class="ph-television ph-bold"></i>
-						{{ appearNote.channel.name }}</MkA
-					>
-				</div>
 				<div class="previews" v-if="urls && urls.length > 0">
 					<MkUrlPreview
 						v-for="url in urls"
