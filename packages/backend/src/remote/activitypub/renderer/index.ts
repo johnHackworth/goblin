@@ -47,7 +47,7 @@ export const renderActivity = (x: any): IActivity | null => {
 					// vcard
 					vcard: "http://www.w3.org/2006/vcard/ns#",
 					// Goblin
-					_goblin_content: "misskey:_misskey_content",
+					_goblin_content: "as:content",
 				},
 			],
 		},
