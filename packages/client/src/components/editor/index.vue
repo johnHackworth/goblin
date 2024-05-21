@@ -111,7 +111,7 @@
     </button>
     <button
       class="_button submit"
-      :disabled="!props.canPost"
+      :disabled="postButtonDisabled"
       data-cy-open-post-form-submit
       @click="post"
     >
@@ -196,6 +196,7 @@ const props = withDefaults(
   },
 );
 
+let postButtonDisabled = $ref( !props.canPost);
 let tags = $ref(props.initialTags)
 let poll = ref(null);
 const tagsElement = $ref(null)
@@ -232,6 +233,7 @@ const updateTags = () => {
 }
 
 const post = ( ev ) => {
+  postButtonDisabled = true;
   validateTag()
   setTimeout(() => { emit('post') }, 100);
 }
