@@ -12,7 +12,7 @@
 					v-for="announcement in announcements"
 					class="_card _gap announcements"
 				>
-					<div class="_content announcement">
+					<div class="_content announcement clear">
 						<MkInput v-model="announcement.title">
 							<template #label>{{ i18n.ts.title }}</template>
 						</MkInput>
