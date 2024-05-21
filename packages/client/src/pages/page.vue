@@ -461,6 +461,8 @@ definePageMetadata(
 		margin: var(--margin) 0 var(--margin) 0;
 		font-size: 85%;
 		opacity: 0.75;
+
+		color: var(--accent);
 	}
 }
 </style>

@@ -21,7 +21,7 @@
 					v-if="!readonly"
 					inline
 					primary
-					class="button"
+					class="button save"
 					@click="save"
 					><i class="ph-floppy-disk-back ph-bold ph-lg"></i>
 					{{ i18n.ts.save }}</MkButton
@@ -108,7 +108,7 @@
 			</div>
 
 			<div v-else-if="tab === 'contents'">
-				<div>
+				<div class="contents">
 					<XBlocks v-model="content" class="content" :hpml="hpml" />
 					<MkButton v-if="!readonly" @click="add()"
 						><i class="ph-plus ph-bold ph-lg"></i
@@ -559,6 +559,17 @@ definePageMetadata(
 			margin: 4px;
 		}
 	}
+
+}
+
+.contents {
+	> * {
+		margin-top: 1em;
+	}
+}
+
+.save {
+	margin-bottom: 1em;
 }
 
 .gwbmwxkm {
