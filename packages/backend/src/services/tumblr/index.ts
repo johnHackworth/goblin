@@ -113,7 +113,7 @@ export async function postToTumblr(user, note, tumblrBlog) {
 					apiLogger.warn(JSON.stringify(tumblrPostInfo));
 					if( tumblrPostInfo ) {
 						let params = getTumblrPostParams( note );
-						params.id = 1 * tumblrPostInfo.id;
+						params.id = tumblrPostInfo.id;
 						params.reblog_key = tumblrPostInfo.reblog_key;
 						params.comment = note.text;
 						const createdPost = await createPostRequest(tumblrBlog, params, client, true, 3 );
