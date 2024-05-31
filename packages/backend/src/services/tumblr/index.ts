@@ -105,7 +105,6 @@ export async function postToTumblr(user, note, tumblrBlog) {
 
 				apiLogger.warn('Posting a reblog to tumblr: ' + renotedPostId + ' found' );
 				const client = getTumblrClient( profile );
-				let params = getTumblrPostParams( rebloggedPost );
 				const noteOp = await Users.findOneBy({ id: rebloggedPost.userId });
 	   		if( noteOp && noteOp.tumblrUUID ) {
 
@@ -113,7 +112,8 @@ export async function postToTumblr(user, note, tumblrBlog) {
 					const tumblrPostInfo = await getTumblrPostData( client, noteOp.tumblrUUID, rebloggedPost.externalId );
 					apiLogger.warn(JSON.stringify(tumblrPostInfo));
 					if( tumblrPostInfo ) {
-						params.id = tumblrPostInfo.id;
+						let params = getTumblrPostParams( note );
+						params.id = 1 * tumblrPostInfo.id;
 						params.reblog_key = tumblrPostInfo.reblog_key;
 						params.comment = note.text;
 						const createdPost = await createPostRequest(tumblrBlog, params, client, true, 3 );
