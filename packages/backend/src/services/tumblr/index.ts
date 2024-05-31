@@ -51,11 +51,13 @@ const getTumblrPostParams = ( note ) => {
 }
 
 const getTumblrPostData = async ( client, tumblrBlog, externalId ) => {
+	apiLogger.warn('requesting tumblr post: ' + tumblrBlog + ' ' + externalId);
 	const tumblrPostInfo = await client.blogPosts(
 		tumblrBlog,
 		{ id: externalId }
 	);
 
+	apiLogger.warn(JSON.stringify(tumblrPostInfo));
 	if( tumblrPostInfo.posts &&
 			tumblrPostInfo.posts.length === 1 &&
 			tumblrPostInfo.posts[0]
