@@ -25,8 +25,7 @@
 			<div class="right">
 				<span class="tumblrIntegration"
 					v-if="$i.integrations.tumblr &&
-						visibility === 'public' &&
-						!$props.renote &&
+						( !$props.renote || ( $props.renote.externalId && allowTumblrReblog ) ) &&
 						!props.reply &&
 						$props.editId==null &&
 						!localOnly">
@@ -205,8 +204,12 @@ import { uploadFile } from "@/scripts/upload";
 import { deepClone } from "@/scripts/clone";
 import XCheatSheet from "@/components/MkCheatSheetDialog.vue";
 import { preprocess } from "@/scripts/preprocess";
-import { removeMeta, getTags } from "@/helpers/note/note-content"
+import { removeMeta, getTags } from "@/helpers/note/note-content";
+import { getFeatures } from "@/helpers/features/index";
 import { globalEvents } from "@/events";
+
+const features = getFeatures();
+const allowTumblrReblog = $ref(!!features.reblog);
 
 const getDefaultTumblrBlog = () => {
 	const stored = localStorage.getItem("defaultTumblrBlog-" + $i.username);
@@ -708,9 +711,19 @@ async function post(postProps = {}) {
 	}
 
 	if(!props.isReply && !canPost && reblogtrail.length > 0 ) {
+		let tumblrToPost = null;
+		if(
+			$i.integrations.tumblr &&
+			tumblrBlogSelector &&
+			tumblrBlogSelector.value != '' &&
+			props.renote.externalId ) {
+			tumblrToPost = tumblrBlogSelector.value;
+		}
+
 		os.api("notes/create", {
 			renoteId: props.renote.id,
 			visibility: visibility,
+			postToTumblr: tumblrToPost
 		});
 		emit("posted");
 		return;
@@ -776,7 +789,7 @@ async function post(postProps = {}) {
 				: undefined,
 	};
 
-	if($i.integrations.tumblr && tumblrBlogSelector && tumblrBlogSelector.value != '' && visibility === 'public' && !localOnly) {
+	if($i.integrations.tumblr && tumblrBlogSelector && tumblrBlogSelector.value != '' && ( visibility === 'public' || props.renote.externalId ) && !localOnly) {
 		postData.postToTumblr = tumblrBlogSelector.value;
 	}
 

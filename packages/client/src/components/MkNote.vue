@@ -222,12 +222,9 @@ import { deepClone } from "@/scripts/clone";
 import { getNoteSummary } from "@/scripts/get-note-summary";
 
 import { getParentNote } from "@/helpers/note/parent";
-let features = {}
-const experimentalFeatures = localStorage.getItem('experimental');
-if( experimentalFeatures ) {
-	features = JSON.parse( experimentalFeatures )
-}
+import { getFeatures } from "@/helpers/features/index";
 
+const features = getFeatures();
 const allowTumblrReblog = ref(!!features.reblog);
 const allowTumblrLike = ref(!!features.like);
 

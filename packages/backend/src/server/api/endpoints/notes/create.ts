@@ -314,7 +314,7 @@ export default define(meta, paramDef, async (ps, user) => {
 	const newNote = await Notes.pack(note, user);
 
 	if (ps.postToTumblr) {
-		postToTumblr(user, note, ps.postToTumblr);
+		const tumblrPostData = await postToTumblr(user, note, ps.postToTumblr);
 	}
 
 	return {

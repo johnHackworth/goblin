@@ -29,30 +29,84 @@ const getInfoUrl = (blogname: string) => {
 	return `https://api.tumblr.com/v2/blog/${blogname}/info?api_key=${config.tumblr.key}`;
 };
 
+const getTumblrClient = ( profile ) => {
+	const { accessToken, accessTokenSecret } = profile.integrations.tumblr;
+	return tumblr.createClient({
+		consumer_key: config.tumblr.key,
+		consumer_secret: config.tumblr.secret,
+		token: accessToken,
+		token_secret: accessTokenSecret,
+	});
+}
+
+const getTumblrPostParams = ( note ) => {
+	return {
+		type: "text",
+		state: "published",
+		tags: note.tags ? note.tags.join(",") : "",
+		format: "html",
+		native_inline_images: true,
+		body: note.text,
+	};
+}
+
+const getTumblrPostData = async ( client, tumblrBlog, externalId ) => {
+	const tumblrPostInfo = await client.blogPosts(
+		tumblrBlog,
+		{ id: externalId }
+	);
+
+	if( tumblrPostInfo.posts &&
+			tumblrPostInfo.posts.length === 1 &&
+			tumblrPostInfo.posts[0]
+	) {
+		return tumblrPostInfo.posts[0];
+	}
+	return null;
+}
+
+
+const createPostRequest = async (tumblrBlog, params, client, isReblog = false, attempts = 3) => {
+	const postingMethod = isReblog? "reblogPost" : "createLegacyPost";
+	try {
+		const createdPost = await client[postingMethod](
+			tumblrBlog,
+			params
+		);
+		apiLogger.warn('Tumblr post created: ' + JSON.stringify(createdPost));
+		return createdPost;
+	} catch (ev) {
+		apiLogger.error("tumblr api call error: " + ev );
+		if( attempts ) {
+			setTimeout( () => {
+				createPostRequest (tumblrBlog, params, client, isReblog, attempts - 1 )
+			}, 10000 );
+		}
+	}
+}
+
 export async function postToTumblr(user, note, tumblrBlog) {
 	const profile = await UserProfiles.findOneByOrFail({ userId: user.id });
 	if (profile.integrations.tumblr) {
-		if (!note.reblogtrail || !note.reblogtrail.length) {
-			const { accessToken, accessTokenSecret } = profile.integrations.tumblr;
-			const client = tumblr.createClient({
-				consumer_key: config.tumblr.key,
-				consumer_secret: config.tumblr.secret,
-				token: accessToken,
-				token_secret: accessTokenSecret,
-			});
-
-			const requestParams = {
-				type: "text",
-				state: "published",
-				tags: note.tags ? note.tags.join(",") : "",
-				format: "html",
-				native_inline_images: true,
-				body: note.text,
-			};
-			const createdPost = await client.createLegacyPost(
-				tumblrBlog,
-				requestParams,
-			);
+		if (note.renote && note.renote.externalId) {
+			const client = getTumblrClient( profile );
+			let params = getTumblrPostParams( note );
+			const noteOP = await Users.findOneBy({ id: note.userId });
+   		if( noteOP && noteOP.tumblrUUID ) {
+   			apiLogger.warn( 'trying to post to tumblr a reblog from a tumblr blog');
+				const tumblrPostInfo = await getTumblrPostData( client, noteOp.tumblrUUID, note.externalId );
+				if( tumblrPostInfo ) {
+					apiLogger.warn( 'trying to post to tumblr a reblog from a tumblr blog and we have the info');
+					params.id = tumblrPostInfo.id;
+					params.reblog_key = tumblrPostInfo.reblog_key;
+					const createdPost = await createPostRequest(tumblrBlog, params, client, true, 3 );
+					return createdPost;
+				}
+			}
+		} else if (!note.reblogtrail || !note.reblogtrail.length) {
+			const client = getTumblrClient( profile );
+			const params = getTumblrPostParams( note );
+			const createdPost = await createPostRequest(tumblrBlog, params, client, false, 3 );
 			return createdPost;
 		}
 	}
@@ -72,16 +126,10 @@ export async function likePostOnTumblr(user, note, tumblrBlog) {
 				token_secret: accessTokenSecret,
 			});
 
-			const tumblrPostInfo = await client.blogPosts(
-				tumblrBlog,
-				{ id: note.externalId }
-			);
+			const tumblrPostInfo = await getTumblrPostData( client, tumblrBlog, note.externalId );
 
-			if( tumblrPostInfo.posts &&
-					tumblrPostInfo.posts.length === 1 &&
-					tumblrPostInfo.posts[0].reblog_key
-			) {
-				const { id, reblog_key } = tumblrPostInfo.posts[0];
+			if( tumblrPostInfo ) {
+				const { id, reblog_key } = tumblrPostInfo;
 				await client.likePost( id, reblog_key );
 			}
 		}
