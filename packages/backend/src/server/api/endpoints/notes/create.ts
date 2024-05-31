@@ -319,7 +319,7 @@ export default define(meta, paramDef, async (ps, user) => {
 			if(tumblrPostData && tumblrPostData.id) {
 				await Notes.update(note.id, { externalId: tumblrPostData.id });
 			}
-		} catch() {
+		} catch( ev ) {
 			// just to avoid failing in your localhost where tumblr api can't be reached
 		}
 	}
