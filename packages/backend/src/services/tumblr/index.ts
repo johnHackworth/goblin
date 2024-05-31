@@ -89,8 +89,11 @@ export async function postToTumblr(user, note, tumblrBlog) {
 	const profile = await UserProfiles.findOneByOrFail({ userId: user.id });
 	if (profile.integrations.tumblr) {
 		if (note.renoteId ) {
-			const rebloggedPost = await Notes.findOneBy( { id: note.renoteId })
-			if( rebloggedPost &&rebloggedPost.externalId) {
+			const renotedPostId = note.reblogtrail && note.reblogtrail.length > 0  ?
+				note.reblogtrail[ note.reblogtrail.length - 1 ].id :
+				note.renoteId;
+			const rebloggedPost = await Notes.findOneBy( { id: renotedPostId})
+			if( rebloggedPost && rebloggedPost.externalId) {
 				const client = getTumblrClient( profile );
 				let params = getTumblrPostParams( rebloggedPost );
 				const noteOp = await Users.findOneBy({ id: rebloggedPost.userId });
