@@ -73,7 +73,6 @@ const createPostRequest = async (tumblrBlog, params, client, isReblog = false, a
 			tumblrBlog,
 			params
 		);
-		apiLogger.warn('Tumblr post created: ' + JSON.stringify(createdPost));
 		return createdPost;
 	} catch (ev) {
 		apiLogger.error("tumblr api call error: " + ev );
@@ -203,14 +202,15 @@ const formatReblogItem = (reblog) => {
 export async function getTumblrPosts(tumblrBlog: string, offset: number) {
 	const feedUrl =
 		"https://" + tumblrBlog + ".tumblr.com/rss?cache-buster=" + Date.now();
-	const res = await fetch(feedUrl, {
-		method: "GET",
-		headers: Object.assign({
-			"User-Agent": config.userAgent,
-			Accept: "application/rss+xml, */*",
-		}),
-	});
+	const res = await getResponse(
+		{
+			url: feedUrl,
+			method: "GET",
+			headers: {}
+		}
+	);
 	const text = await res.text();
+
 	const posts = await rssParser.parseString(text);
 	return posts ? posts.items : []; //.response.posts.reverse();
 }
@@ -405,7 +405,6 @@ export async function fetchTumblrFeed(user: User) {
 		posts = posts.reverse();
 		const lastUserUpdate = user.updatedAt;
 		const transforms = [];
-
 		for (const post of posts) {
 			const postDate = new Date(post.isoDate);
 			if (!lastUserUpdate || !user.feedUpdatedAt || postDate > lastUserUpdate) {
@@ -457,9 +456,7 @@ export async function fetchTumblrFeed(user: User) {
 						apHashtags: post.categories,
 						url: post.link,
 						externalId: externalId
-					},
-					false,
-					true
+					}
 				);
 			}
 		}
