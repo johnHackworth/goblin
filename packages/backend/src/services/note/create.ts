@@ -577,7 +577,7 @@ export default async (
 			// If has in reply to note
 			if (data.reply) {
 				processReply(data.reply, nmRelatedPromises, nm, user, note);
-				if (rootPost.id !== data.reply.id) {
+				if (rootPost && rootPost.id !== data.reply.id) {
 					processReply(rootPost, nmRelatedPromises, nm, user, note);
 				}
 			}
