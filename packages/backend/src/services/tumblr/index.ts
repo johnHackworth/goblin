@@ -88,15 +88,23 @@ export async function postToTumblr(user, note, tumblrBlog) {
 	const profile = await UserProfiles.findOneByOrFail({ userId: user.id });
 	if (profile.integrations.tumblr) {
 		if (note.renoteId ) {
+			apiLogger.warn('Posting a reblog to tumblr');
 			const renotedPostId = note.reblogtrail && note.reblogtrail.length > 0  ?
 				note.reblogtrail[ note.reblogtrail.length - 1 ].id :
 				note.renoteId;
+
+			apiLogger.warn('Posting a reblog to tumblr: ' + renotedPostId );
 			const rebloggedPost = await Notes.findOneBy( { id: renotedPostId})
+			apiLogger.warn(JSON.stringify(rebloggedPost));
 			if( rebloggedPost && rebloggedPost.externalId) {
+
+				apiLogger.warn('Posting a reblog to tumblr: ' + renotedPostId + ' found' );
 				const client = getTumblrClient( profile );
 				let params = getTumblrPostParams( rebloggedPost );
 				const noteOp = await Users.findOneBy({ id: rebloggedPost.userId });
 	   		if( noteOp && noteOp.tumblrUUID ) {
+
+				apiLogger.warn('Posting a reblog to tumblr: ' + renotedPostId + ' user also found');
 					const tumblrPostInfo = await getTumblrPostData( client, noteOp.tumblrUUID, rebloggedPost.externalId );
 					if( tumblrPostInfo ) {
 						params.id = tumblrPostInfo.id;
