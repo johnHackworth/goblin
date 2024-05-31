@@ -69,6 +69,9 @@ const getTumblrPostData = async ( client, tumblrBlog, externalId ) => {
 const createPostRequest = async (tumblrBlog, params, client, isReblog = false, attempts = 3) => {
 	const postingMethod = isReblog? "reblogPost" : "createLegacyPost";
 	try {
+		apiLogger.warn('sending post creation request');
+		apiLogger.warn(tumblrBlog);
+		apiLogger.warn(JSON.stringify(params));
 		const createdPost = await client[postingMethod](
 			tumblrBlog,
 			params
@@ -106,6 +109,7 @@ export async function postToTumblr(user, note, tumblrBlog) {
 
 				apiLogger.warn('Posting a reblog to tumblr: ' + renotedPostId + ' user also found');
 					const tumblrPostInfo = await getTumblrPostData( client, noteOp.tumblrUUID, rebloggedPost.externalId );
+					apiLogger.warn(JSON.stringify(tumblrPostInfo));
 					if( tumblrPostInfo ) {
 						params.id = tumblrPostInfo.id;
 						params.reblog_key = tumblrPostInfo.reblog_key;
