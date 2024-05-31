@@ -83,7 +83,6 @@ export async function likePostOnTumblr(user, note, tumblrBlog) {
 			) {
 				const { id, reblog_key } = tumblrPostInfo.posts[0];
 				await client.likePost( id, reblog_key );
-				}
 			}
 		}
 	}
