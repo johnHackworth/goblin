@@ -15,6 +15,7 @@ import {
 } from "@/models/index.js";
 import { IsNull, Not } from "typeorm";
 import { perUserReactionsChart } from "@/services/chart/index.js";
+import { likePostOnTumblr } from "@/services/tumblr/index.js";
 import { genId } from "@/misc/gen-id.js";
 import { createNotification } from "../../create-notification.js";
 import deleteReaction from "./delete.js";
@@ -92,6 +93,14 @@ export default async (
 		.execute();
 
 	perUserReactionsChart.update(user, note);
+
+	if( note.externalId ) {
+		const noteOP = await Users.findOneBy({ id: note.userId });
+		if( noteOP && noteOP.tumblrUUID ) {
+			likePostOnTumblr( user, note, noteOP.tumblrUUID );
+		}
+	}
+
 
 	// カスタム絵文字リアクションだったら絵文字情報も送る
 	const decodedReaction = decodeReaction(reaction);

@@ -162,6 +162,7 @@ type Option = {
 	url?: string | null;
 	slug?: string | null;
 	app?: App | null;
+	externalId?: string | null;
 };
 
 const processReply = async (reply, nmRelatedPromises, nm, user, note) => {
@@ -596,10 +597,7 @@ export default async (
 						nm.push(data.renote.userId, type);
 					}
 				}
-				// Fetch watchers
-				nmRelatedPromises.push(
-					notifyToWatchersOfRenotee(data.renote, user, nm, type),
-				);
+
 				if (data.reblogtrail && data.reblogtrail.length > 1) {
 					for (let i = 0; i < data.reblogtrail.length; i++) {
 						const rebloggedPost = data.reblogtrail[i];
@@ -615,6 +613,11 @@ export default async (
 						}
 					}
 				}
+
+				// Fetch watchers
+				nmRelatedPromises.push(
+					notifyToWatchersOfRenotee(data.renote, user, nm, type),
+				);
 
 				// Publish event
 				if (user.id !== data.renote.userId && data.renote.userHost === null) {
@@ -751,21 +754,6 @@ async function insertNote(
 		data.createdAt = new Date();
 	}
 
-	/*	if(data.reply && user.host) {
-		// it's a reply created by a user in other server
-		// so we want to convert it to a reblog format
-		data.renote = data.reply;
-		data.reply = null;
-
-		if(data.renote.reblogtrail) {
-			data.reblogtrail = data.renote.reblogtrail;
-			data.reblogtrail.push(data.renote)
-		} else {
-			data.reblogtrail = [ data.renote ]
-		}
-
-	}*/
-
 	const insert = new Note({
 		id: genId(data.createdAt),
 		createdAt: data.createdAt,
@@ -803,6 +791,7 @@ async function insertNote(
 		replyUserHost: data.reply ? data.reply.userHost : null,
 		renoteUserId: data.renote ? data.renote.userId : null,
 		renoteUserHost: data.renote ? data.renote.userHost : null,
+		externalId: data.externalId,
 		userHost: user.host,
 	});
 
@@ -810,7 +799,7 @@ async function insertNote(
 	if (data.url != null) insert.url = data.url;
 
 	// Append mentions data
-	if (mentionedUsers.length > 0) {
+	if (mentionedUsers && mentionedUsers.length > 0) {
 		insert.mentions = mentionedUsers.map((u) => u.id);
 		const profiles = await UserProfiles.findBy({ userId: In(insert.mentions) });
 		insert.mentionedRemoteUsers = JSON.stringify(

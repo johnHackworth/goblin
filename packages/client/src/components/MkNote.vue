@@ -93,11 +93,19 @@
 					/>
 				</div>
 				<footer ref="footerEl" class="footer" tabindex="-1">
+					<div
+						class="rssSource"
+						v-if="isRss"
+					>
+						<span class="rssLabel"><i class="ph-bold ph-rss"></i> rss</span>
+						<a :href="appearNote.url" target="_blank">{{ i18n.ts.originalPost || "Original Post" }} <i class="ph-bold ph-arrow-square-out"></i></a>
+					</div>
+
 					<button
 						ref="menuButton"
 						v-tooltip.noDelay.bottom="Notes"
 						class="button _button noteCount"
-						v-if="!props.hideNotesCounter && !isRss"
+						v-if="!props.hideNotesCounter"
 						@click="noteClick"
 					>
 						<template v-if="props.showCloseButton">
@@ -107,14 +115,6 @@
 							<b>{{noteCount}}</b> Notes
 						</template>
 					</button>
-
-					<div
-						class="rssSource"
-						v-if="isRss"
-					>
-						<span class="rssLabel"><i class="ph-bold ph-rss"></i> rss</span>
-						<a :href="appearNote.url" target="_blank">{{ i18n.ts.originalPost || "Original Post" }} <i class="ph-bold ph-arrow-square-out"></i></a>
-					</div>
 
 					<button
 						v-if="!isRss"
@@ -136,11 +136,11 @@
 						:note="appearNote"
 						:count="parentNote.renoteCount"
 						:detailedView="detailedView"
-						:alwaysDirectRenote="isRss"
+						:alwaysDirectRenote="isRss && ! ( allowTumblrReblog && isConnectedToTumblr && appearNote.externalId )"
 					/>
 
 					<XStarButton
-						v-if="enableEmojiReactions && !isRss"
+						v-if="enableEmojiReactions && ( !isRss || ( allowTumblrLike && isConnectedToTumblr && appearNote.externalId ) )"
 						ref="starButton"
 						class="button"
 						:isFull="parentNote.myReaction !== null"
@@ -222,6 +222,14 @@ import { deepClone } from "@/scripts/clone";
 import { getNoteSummary } from "@/scripts/get-note-summary";
 
 import { getParentNote } from "@/helpers/note/parent";
+let features = {}
+const experimentalFeatures = localStorage.getItem('experimental');
+if( experimentalFeatures ) {
+	features = JSON.parse( experimentalFeatures )
+}
+
+const allowTumblrReblog = ref(!!features.reblog);
+const allowTumblrLike = ref(!!features.like);
 
 const router = useRouter();
 
@@ -306,6 +314,7 @@ if (isRenote && note.user) {
 	}
 }
 const isMyRenote = $i && $i.id === note.userId;
+const isConnectedToTumblr = ref(!! ( $i && $i.integrations && $i.integrations.tumblr ))
 const showContent = ref(false);
 const isDeleted = ref(false);
 const muted = ref(getWordSoftMute(note, $i, defaultStore.state.mutedWords));

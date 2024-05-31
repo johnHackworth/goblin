@@ -154,7 +154,7 @@ export const NoteRepository = db.getRepository(Note).extend({
 		me?: { id: User["id"] } | null | undefined,
 		options?: {
 			detail?: boolean;
-			detailRecursion?: integer;
+			detailRecursion?: number;
 			_hint_?: {
 				myReactions: Map<Note["id"], NoteReaction | null>;
 			};
@@ -239,6 +239,7 @@ export const NoteRepository = db.getRepository(Note).extend({
 			uri: note.uri || undefined,
 			url: note.url || undefined,
 			slug: note.slug || undefined,
+			externalId: note.externalId || undefined,
 			updatedAt: note.updatedAt?.toISOString() || undefined,
 			poll: note.hasPoll ? populatePoll(note, meId) : undefined,
 			...(meId
@@ -298,7 +299,7 @@ export const NoteRepository = db.getRepository(Note).extend({
 		me?: { id: User["id"] } | null | undefined,
 		options?: {
 			detail?: boolean;
-			detailRecursion?: integer;
+			detailRecursion?: number;
 		},
 	) {
 		if (notes.length === 0) return [];

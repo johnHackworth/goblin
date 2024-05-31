@@ -3,7 +3,6 @@ import Router from "@koa/router";
 import { v4 as uuid } from "uuid";
 import { OAuth } from "oauth";
 import { IsNull } from "typeorm";
-import { getJson } from "@/misc/fetch.js";
 import { publishMainStream } from "@/services/stream.js";
 import config from "@/config/index.js";
 import { fetchMeta } from "@/misc/fetch-meta.js";

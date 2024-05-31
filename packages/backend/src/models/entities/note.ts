@@ -274,6 +274,12 @@ export class Note {
 	public updatedAt: Date;
 	//#endregion
 
+	@Column("varchar", {
+		length: 32,
+		nullable: true,
+	})
+	public externalId: string | null;
+
 	constructor(data: Partial<Note>) {
 		if (data == null) return;
 

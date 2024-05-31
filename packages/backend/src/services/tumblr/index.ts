@@ -60,6 +60,37 @@ export async function postToTumblr(user, note, tumblrBlog) {
 	return null;
 }
 
+export async function likePostOnTumblr(user, note, tumblrBlog) {
+	const profile = await UserProfiles.findOneByOrFail({ userId: user.id });
+	if (profile.integrations.tumblr) {
+		if (note.externalId) {
+			const { accessToken, accessTokenSecret } = profile.integrations.tumblr;
+			const client = tumblr.createClient({
+				consumer_key: config.tumblr.key,
+				consumer_secret: config.tumblr.secret,
+				token: accessToken,
+				token_secret: accessTokenSecret,
+			});
+
+			const tumblrPostInfo = await client.blogPosts(
+				tumblrBlog,
+				{ id: note.externalId }
+			);
+
+			if( tumblrPostInfo.posts &&
+					tumblrPostInfo.posts.length === 1 &&
+					tumblrPostInfo.posts[0].reblog_key
+			) {
+				const { id, reblog_key } = tumblrPostInfo.posts[0];
+				await client.likePost( id, reblog_key );
+				}
+			}
+		}
+	}
+
+	return null;
+}
+
 export async function getTumblrProfile(tumblrBlog: string) {
 	const blogInfoResponse = await fetch(getInfoUrl(tumblrBlog));
 	const blogInfo = await blogInfoResponse.json();
@@ -367,13 +398,20 @@ export async function fetchTumblrFeed(user: User) {
 							.join("<hr/>")}</div>`
 					: "";
 
-				const note = await create(user, {
-					createdAt: new Date(),
-					text: `<div class="tumblrPost">${reblogTrailBlock}${title}${postContent}</div>`,
-					apHashtags: post.categories,
-					noMentions: true,
-					url: post.link,
-				});
+				const externalId = post.link? post.link.split('/').pop().slice(0,31) : null;
+
+				const note = await create(
+					user,
+					{
+						createdAt: new Date(),
+						text: `<div class="tumblrPost">${reblogTrailBlock}${title}${postContent}</div>`,
+						apHashtags: post.categories,
+						url: post.link,
+						externalId: externalId
+					},
+					false,
+					true
+				);
 			}
 		}
 
