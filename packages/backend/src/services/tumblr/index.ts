@@ -7,7 +7,7 @@ import { UserKeypair } from "@/models/entities/user-keypair.js";
 
 import tumblr from "tumblr.js";
 import config from "@/config/index.js";
-import { UserProfiles, Users } from "@/models/index.js";
+import { UserProfiles, Users, Notes } from "@/models/index.js";
 import { User } from "@/models/entities/user.js";
 import { DriveFiles } from "@/models/index.js";
 import { genId } from "@/misc/gen-id.js";
@@ -88,19 +88,20 @@ const createPostRequest = async (tumblrBlog, params, client, isReblog = false, a
 export async function postToTumblr(user, note, tumblrBlog) {
 	const profile = await UserProfiles.findOneByOrFail({ userId: user.id });
 	if (profile.integrations.tumblr) {
-		if (note.renote && note.renote.externalId) {
-			const client = getTumblrClient( profile );
-			let params = getTumblrPostParams( note );
-			const noteOP = await Users.findOneBy({ id: note.userId });
-   		if( noteOP && noteOP.tumblrUUID ) {
-   			apiLogger.warn( 'trying to post to tumblr a reblog from a tumblr blog');
-				const tumblrPostInfo = await getTumblrPostData( client, noteOp.tumblrUUID, note.externalId );
-				if( tumblrPostInfo ) {
-					apiLogger.warn( 'trying to post to tumblr a reblog from a tumblr blog and we have the info');
-					params.id = tumblrPostInfo.id;
-					params.reblog_key = tumblrPostInfo.reblog_key;
-					const createdPost = await createPostRequest(tumblrBlog, params, client, true, 3 );
-					return createdPost;
+		if (note.renoteId ) {
+			const rebloggedPost = await Notes.findOneBy( { id: note.renoteId })
+			if( rebloggedPost &&rebloggedPost.externalId) {
+				const client = getTumblrClient( profile );
+				let params = getTumblrPostParams( rebloggedPost );
+				const noteOp = await Users.findOneBy({ id: rebloggedPost.userId });
+	   		if( noteOp && noteOp.tumblrUUID ) {
+					const tumblrPostInfo = await getTumblrPostData( client, noteOp.tumblrUUID, rebloggedPost.externalId );
+					if( tumblrPostInfo ) {
+						params.id = tumblrPostInfo.id;
+						params.reblog_key = tumblrPostInfo.reblog_key;
+						const createdPost = await createPostRequest(tumblrBlog, params, client, true, 3 );
+						return createdPost;
+					}
 				}
 			}
 		} else if (!note.reblogtrail || !note.reblogtrail.length) {
@@ -247,7 +248,6 @@ export async function updateTumblrUser(tumblrUsername: string) {
 
 		let userNeedsUpdate = false;
 		const newUsername = blogInfo.name + "_at_tumblr_com";
-		apiLogger.warn(newUsername + " comparing with " + user.username);
 		if (newUsername != user.username) {
 			user.username = newUsername;
 			user.usernameLower = newUsername.toLowerCase();
@@ -256,7 +256,6 @@ export async function updateTumblrUser(tumblrUsername: string) {
 
 		if (user.avatarId) {
 			const avatarFile = await DriveFiles.findOneBy({ id: user.avatarId });
-			apiLogger.warn("comparing avatar: " + avatarFile.src);
 			if (avatarFile && avatarFile.src != blogInfo.avatar[0].url) {
 				const newAvatarFile = await uploadFromUrl({
 					url: blogInfo.avatar[0].url,
@@ -380,7 +379,6 @@ export async function createNewTumblrUser(username: string) {
 			);
 		}
 	});
-	apiLogger.warn("user created");
 	return { user: user, account: account, blogInfo: blogInfo };
 }
 
