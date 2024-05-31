@@ -99,6 +99,7 @@ export async function postToTumblr(user, note, tumblrBlog) {
 					if( tumblrPostInfo ) {
 						params.id = tumblrPostInfo.id;
 						params.reblog_key = tumblrPostInfo.reblog_key;
+						params.comment = note.text;
 						const createdPost = await createPostRequest(tumblrBlog, params, client, true, 3 );
 						return createdPost;
 					}

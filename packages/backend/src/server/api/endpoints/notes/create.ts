@@ -20,6 +20,7 @@ import { HOUR } from "@/const.js";
 import { getNote } from "../../common/getters.js";
 import { postToTumblr } from "@/services/tumblr/index.js";
 import { isNoteOp } from "@/misc/note/ancestors.js";
+import { apiLogger } from "@/server/api/logger.js";
 
 export const meta = {
 	tags: ["notes"],
@@ -311,11 +312,19 @@ export default define(meta, paramDef, async (ps, user) => {
 		apEmojis: ps.noExtractEmojis ? [] : undefined,
 	});
 
-	const newNote = await Notes.pack(note, user);
 
 	if (ps.postToTumblr) {
-		const tumblrPostData = await postToTumblr(user, note, ps.postToTumblr);
+		try {
+			const tumblrPostData = await postToTumblr(user, note, ps.postToTumblr);
+			if(tumblrPostData && tumblrPostData.id) {
+				await Notes.update(note.id, { externalId: tumblrPostData.id });
+			}
+		} catch() {
+			// just to avoid failing in your localhost where tumblr api can't be reached
+		}
 	}
+
+	const newNote = await Notes.pack(note, user);
 
 	return {
 		createdNote: newNote,
