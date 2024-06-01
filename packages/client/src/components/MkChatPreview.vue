@@ -51,10 +51,7 @@
 					<span v-if="isMe(message)" class="me"
 						>{{ i18n.ts.you }}:
 					</span>
-					<Mfm
-						v-if="message.text != null && message.text.length > 0"
-						:text="message.text"
-					/>
+					<span v-if="message.text != null && message.text.length > 0" v-html="message.text"></span>
 					<span v-else> 📎</span>
 				</p>
 			</div>

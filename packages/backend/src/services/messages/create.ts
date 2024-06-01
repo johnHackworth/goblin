@@ -22,6 +22,7 @@ import renderNote from "@/remote/activitypub/renderer/note.js";
 import renderCreate from "@/remote/activitypub/renderer/create.js";
 import { renderActivity } from "@/remote/activitypub/renderer/index.js";
 import { deliver } from "@/queue/index.js";
+import sanitize from "sanitize-html";
 
 export async function createMessage(
 	user: { id: User["id"]; host: User["host"] },
@@ -37,7 +38,7 @@ export async function createMessage(
 		fileId: file ? file.id : null,
 		recipientId: recipientUser ? recipientUser.id : null,
 		groupId: recipientGroup ? recipientGroup.id : null,
-		text: text ? text.trim() : null,
+		text: text ? sanitize(text.trim()) : null,
 		userId: user.id,
 		isRead: false,
 		reads: [] as any[],
