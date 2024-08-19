@@ -158,8 +158,12 @@ export async function likePostOnTumblr(user, note, tumblrBlog) {
 
 export async function getTumblrProfile(tumblrBlog: string) {
 	const blogInfoResponse = await fetch(getInfoUrl(tumblrBlog));
-	const blogInfo = await blogInfoResponse.json();
-	return blogInfo.response.blog;
+	if( blogInfoResponse.ok ) {
+		const blogInfo = await blogInfoResponse.json();
+		return blogInfo.response.blog;
+	} else {
+		return null;
+	}
 }
 
 export async function transformToReblogs(post: string) {
@@ -419,6 +423,7 @@ export async function fetchTumblrFeed(user: User) {
 		posts = posts.reverse();
 		const lastUserUpdate = user.updatedAt;
 		const transforms = [];
+		apiLogger.warn( JSON.stringify( posts.map( (p)=>p.isoDate )));
 		for (const post of posts) {
 			const postDate = new Date(post.isoDate);
 			if (!lastUserUpdate || !user.feedUpdatedAt || postDate > lastUserUpdate) {
