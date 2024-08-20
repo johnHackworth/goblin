@@ -475,7 +475,9 @@ export async function fetchTumblrFeed(user: User) {
 						apHashtags: post.categories,
 						url: post.link,
 						externalId: externalId
-					}
+					},
+					true,
+					true
 				);
 			}
 		}
