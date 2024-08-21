@@ -375,6 +375,12 @@ function focusFooter(ev) {
     }
   }
 
+  .noteImage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
   .reblog-item-content & {
     .noteText {
       padding: 0;

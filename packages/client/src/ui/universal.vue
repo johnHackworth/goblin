@@ -4,6 +4,7 @@
 		class="dkgtipfy"
 		:class="{ wallpaper, isMobile, centered: ui === 'classic' }"
 	>
+	 <ImageViewer />
 		<XSidebar v-if="!isMobile" />
 
 		<MkStickyContainer class="contents">
@@ -186,6 +187,7 @@ import {
 	setPageMetadata,
 } from "@/scripts/page-metadata";
 import { deviceKind } from "@/scripts/device-kind";
+import ImageViewer from "@/components/ImageViewer/index.vue";
 
 const XWidgets = defineAsyncComponent(() => import("./universal.widgets.vue"));
 

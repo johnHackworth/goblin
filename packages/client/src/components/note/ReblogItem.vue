@@ -57,11 +57,6 @@ const isVisible = $computed(() =>
 
   .reblog-item-content {
     margin: 0;
-
-      img {
-        max-width: 500px !important;
-      }
-
   }
 }
 </style>
