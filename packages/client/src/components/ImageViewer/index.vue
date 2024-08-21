@@ -2,7 +2,7 @@
   <div class="imageViewer">
     <div :class="{ visible: visible }">
       <div class="background" @click="close" />
-      <img src="" />
+      <img src="" @click="openImage"/>
       <button class="cancel _button" @click="close">
         <i class="ph-x ph-bold ph-lg" :aria-label="i18n.t('close')"></i>
       </button>
@@ -16,6 +16,11 @@ import { ref } from 'vue'
 import { i18n } from "@/i18n";
 
 let visible = $ref(false);
+
+const openImage = () => {
+  visible = false;
+  window.open(document.querySelector('.imageViewer img').src, '_blank').focus();
+}
 
 const close = () => {
   visible = false;
