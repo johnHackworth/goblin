@@ -11,6 +11,12 @@ import { host } from "@/config";
 import XTutorial from "@/components/MkTutorialDialog.vue";
 
 export const navbarItemDef = reactive({
+	profile: {
+		title: "profile",
+		icon: "ph-cat ph-bold ph-lg",
+		show: computed(() => $i != null),
+		to: `/@${$i.username}`,
+	},
 	notifications: {
 		title: "notifications",
 		icon: "ph-bell ph-bold ph-lg",

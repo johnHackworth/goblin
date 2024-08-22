@@ -3,6 +3,20 @@
 		<div class="body">
 			<div class="top">
 				<div class="logo">
+					<button
+						v-click-anime
+						v-tooltip.noDelay.right="
+							`${i18n.ts.account}: @${$i.username}`
+						"
+						class="item _button account"
+						@click="openAccountMenu"
+					>
+						<MkAvatar
+							:user="$i"
+							class="icon"
+							disableLink
+						/><!-- <MkAcct class="text" :user="$i"/> -->
+					</button>
 					<Logo />
 				</div>
 				<div
@@ -10,20 +24,7 @@
 					:user="$i"
 					:style="{ backgroundImage: `url(${$i.bannerUrl})` }"
 				></div>
-				<button
-					v-click-anime
-					v-tooltip.noDelay.right="
-						`${i18n.ts.account}: @${$i.username}`
-					"
-					class="item _button account"
-					@click="openAccountMenu"
-				>
-					<MkAvatar
-						:user="$i"
-						class="icon"
-						disableLink
-					/><!-- <MkAcct class="text" :user="$i"/> -->
-				</button>
+
 			</div>
 			<nav class="middle">
 				<MkA
@@ -280,16 +281,33 @@ function more(ev: MouseEvent) {
 			> .top {
 				position: relative;
 				z-index: 1;
-				padding: 2rem 0;
+				padding: 0 0 2rem;
 
 				:deep(.logo) {
 					text-align: center;
-					margin: -24px auto 32px;
 					padding-top: 16px;
+					display: flex;
+					padding-left: 16px;
+					justify-content: flex-start;
 					svg {
+						flex-grow	: 2;
 						width: 72px;
 						margin-bottom: 4px;
 						height: 24px;
+					}
+
+					> .account {
+						position: absolute;
+						display: block;
+						text-align: center;
+						width: 32px;
+						height: 32px;
+
+						> .icon {
+							display: inline-block;
+							width: 32px;
+							aspect-ratio: 1;
+						}
 					}
 				}
 
@@ -308,18 +326,6 @@ function more(ev: MouseEvent) {
 					opacity: 0.7;
 				}
 
-				> .account {
-					position: relative;
-					display: block;
-					text-align: center;
-					width: 100%;
-
-					> .icon {
-						display: inline-block;
-						width: 55px;
-						aspect-ratio: 1;
-					}
-				}
 			}
 
 			> .bottom {

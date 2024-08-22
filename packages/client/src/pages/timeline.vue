@@ -240,7 +240,7 @@ const headerTabs = $computed(() => [
 				{
 					key: "local",
 					title: i18n.ts._timelines.local,
-					icon: "ph-users ph-bold ph-lg",
+					icon: "ph-city ph-bold ph-lg",
 					iconOnly: true,
 				},
 		  ]
@@ -282,7 +282,7 @@ definePageMetadata(
 		title: i18n.ts.timeline,
 		icon:
 			src === "local"
-				? "ph-users ph-bold ph-lg"
+				? "ph-users-three ph-bold ph-lg"
 				: src === "social"
 				? "ph-handshake ph-bold ph-lg"
 				: src === "bots"
@@ -291,7 +291,7 @@ definePageMetadata(
 				? "ph-thumbs-up ph-bold ph-lg"
 				: src === "global"
 				? "ph-planet ph-bold ph-lg"
-				: "ph-house ph-bold ph-lg",
+				: "ph-compass ph-bold ph-lg",
 	})),
 );
 

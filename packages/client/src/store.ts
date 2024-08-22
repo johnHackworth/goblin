@@ -5,6 +5,7 @@ export const userActions = [];
 export const noteActions = [];
 
 const menuOptions = [
+	"profile",
 	"notifications",
 	"followRequests",
 	"messaging",
