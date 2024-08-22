@@ -17,15 +17,13 @@
       class="article"
     >
       <div class="main">
-        <div v-if="renotedBy" class="renoteHeader">
-          <MkA
-          :to="`/@${renotedBy.username}`">
+        <div class="renoteHeader">
+          <MkA v-if="renotedBy" to="`/@${renotedBy.username}`">
             {{ renotedBy.username }} <ReblogIcon /> reblogged (<MkTime :time="note.createdAt" />)
           </MkA>
-        </div>
-        <div class="header-container" @click="noteLink">
-          <MkAvatar class="avatar" :user="appearNote.user" />
-          <XNoteHeader class="header" :note="appearNote" />
+          <a v-else :href="note.url">
+            {{ note.user.username }} replied (<MkTime :time="note.createdAt" />):
+          </a>
         </div>
         <div class="body">
           <NoteContent
