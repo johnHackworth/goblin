@@ -222,6 +222,19 @@
 							:custom-emojis="notification.note.renote.emojis"
 						/>
 						<i class="ph-quotes ph-fill ph-lg"></i>
+						<div v-if="notification.note.files.length" class="noteFiles">
+	            <div v-for="(file, index) in notification.note.files" class="noteFile" :key="index">
+	              <div v-if="file.type.startsWith('image')" class="noteImage">
+	                <MkNoteImage :file="file" />
+	              </div>
+	              <div v-else-if="file.type.startsWith('video')" class="noteImage">
+	                <video width="100%" controls :src="file.url" :type="file.type" />
+	              </div>
+	              <div v-else class="noteFile">
+	                <a :href="file.url">{{ file.name }} {{ file.comment }} </a>
+	              </div>
+	            </div>
+	          </div>
 					</div>
 				</MkA>
 				<MkA
@@ -333,6 +346,7 @@ import { stream } from "@/stream";
 import { useTooltip } from "@/scripts/use-tooltip";
 import { defaultStore } from "@/store";
 import { instance } from "@/instance";
+import MkNoteImage from "@/components/note/NoteImage.vue";
 
 const props = withDefaults(
 	defineProps<{
@@ -358,7 +372,6 @@ const defaultReaction = ["⭐", "👍", "❤️"].includes(instance.defaultReact
 
 let readObserver: IntersectionObserver | undefined;
 let connection;
-
 onMounted(() => {
 	if (!props.notification.isRead) {
 		readObserver = new IntersectionObserver((entries, observer) => {
@@ -615,6 +628,17 @@ useTooltip(reactionRef, (showing) => {
 
 	.renoteWithComment {
 
+	}
+
+	.noteFiles {
+		padding: 0.5em 0;
+
+		.noteImage {
+			margin-right: 8px;
+			img, video {
+				max-height: 50px;
+			}
+		}
 	}
 }
 </style>
