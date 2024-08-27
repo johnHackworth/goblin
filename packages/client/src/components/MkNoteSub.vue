@@ -30,17 +30,12 @@
 			<div class="body">
 				<XNoteHeader class="header" :note="note" :mini="true" />
 				<div class="body">
-					<MkSubNoteContent
-						class="text"
-						:note="note"
-						:parentId="parentId"
-						:conversation="conversation"
-						:detailedView="detailedView"
-						@focusfooter="footerEl.focus()"
-						:class="{
-							selected: selectedNoteId == note.id
-						}"
-					/>
+				<NoteContent
+				    class="text"
+				    :note="note"
+				    :detailed="true"
+				    :parentId="note.parentId"
+				  ></NoteContent>
 					<div v-if="translating || translation" class="translation">
 						<MkLoading v-if="translating" mini />
 						<div v-else class="translated">
@@ -143,7 +138,7 @@ import type { Ref } from "vue";
 import * as misskey from "firefish-js";
 import XNoteHeader from "@/components/MkNoteHeader.vue";
 import XRenoteButton from "@/components/MkRenoteButton.vue";
-import MkSubNoteContent from "@/components/MkSubNoteContent.vue";
+import NoteContent from "@/components/note/NoteContent.vue";
 import copyToClipboard from "@/scripts/copy-to-clipboard";
 import { url } from "@/config";
 import { pleaseLogin } from "@/scripts/please-login";

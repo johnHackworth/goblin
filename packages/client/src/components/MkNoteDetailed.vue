@@ -218,8 +218,6 @@ const getSubnoteClass = ( note ) => {
 	if ( note.id === currentNoteId ) {
 		className.push( 'selected' );
 	}
-	console.log(props);
-	console.log(note.replyId, currentNoteId)
 	if ( note.replyId === currentNoteId) {
 		className.push( 'firstOrder' )
 	} else {

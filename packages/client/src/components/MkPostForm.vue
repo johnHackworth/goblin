@@ -134,6 +134,7 @@
 					:submitText="submitText"
 					:canPost="canPost"
 					:reply="true"
+					:upload="upload"
 				/>
 			</div>
 			<Tiptap

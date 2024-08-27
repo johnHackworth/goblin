@@ -1,5 +1,5 @@
 <template>
-  <div class="block-editor reply" >
+  <div class="block-editor reply" :onPaste="handlePaste" >
     <div class="editor-area" ref="editorRef">
       <div v-if="editor">
         <editor-content :editor="editor" />
@@ -113,6 +113,27 @@ const post = ( ev ) => {
   const props = {}
   emit('post', props);
   setTimeout(() => { clearContent}, 100);
+}
+
+const handlePaste = async (ev) => {
+  debugger;
+  for (const { item, i } of Array.from(ev.clipboardData.items).map(
+    (item, i) => ({ item, i }),
+  )) {
+    if (item.kind === "file") {
+      const file = item.getAsFile();
+      const lio = file.name.lastIndexOf(".");
+      const ext = lio >= 0 ? file.name.slice(lio) : "";
+      const formatted = `${formatTimeString(
+        new Date(file.lastModified),
+        'file',
+      ).replace(/{{number}}/g, `${i + 1}`)}${ext}`;
+      props.upload(file, formatted).then( (res) => {
+        emit('addedImage', res);
+        editor.value.chain().focus().setImage({ src: res.url }).createParagraphNear().run();
+      });
+    }
+  }
 }
 
 const editor = useEditor({

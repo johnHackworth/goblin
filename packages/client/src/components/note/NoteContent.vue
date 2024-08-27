@@ -127,7 +127,7 @@ let showContent = $ref(false);
 const mfms = props.note.text
   ? extractMfmWithAnimation(mfm.parse(props.note.text))
   : null;
-
+console.log(props.note);
 const hasMfm = $ref(mfms && mfms.length > 0);
 
 let disableMfm = $ref(defaultStore.state.animatedMfm);
