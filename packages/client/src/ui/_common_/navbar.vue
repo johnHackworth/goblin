@@ -414,6 +414,7 @@ function more(ev: MouseEvent) {
 
 			> .middle {
 				flex: 0.1;
+				margin-top: 1em;
 
 				> .divider {
 					margin: 16px 16px;
@@ -450,7 +451,7 @@ function more(ev: MouseEvent) {
 
 					> .text {
 						position: relative;
-						font-size: 0.9em;
+						font-size: 1.1em;
 						overflow: hidden;
 						text-overflow: ellipsis;
 					}
@@ -477,13 +478,18 @@ function more(ev: MouseEvent) {
 							display: block;
 							width: calc(100% - 34px);
 							height: 100%;
-							margin: auto;
+							margin: auto 0 auto auto;
+							padding-left: 8px;
 							position: absolute;
 							top: 0;
-							left: 0;
 							right: 0;
 							bottom: 0;
-							border-radius: 999px;
+						}
+					}
+
+					&:hover,
+					&:focus-within {
+						&:before {
 							background: var(--accentedBg);
 						}
 					}
@@ -554,7 +560,6 @@ function more(ev: MouseEvent) {
 					&:focus-within,
 					&.active {
 						&:before {
-							background: var(--accentLighten);
 							transition: all 0.4s ease;
 						}
 					}
@@ -654,8 +659,6 @@ function more(ev: MouseEvent) {
 							left: 0;
 							right: 0;
 							bottom: 0;
-							border-radius: 999px;
-							background: var(--accentedBg);
 						}
 
 						> .icon,

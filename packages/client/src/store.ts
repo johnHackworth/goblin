@@ -5,13 +5,13 @@ export const userActions = [];
 export const noteActions = [];
 
 const menuOptions = [
-	"profile",
 	"notifications",
 	"followRequests",
 	"messaging",
 	"hashtags",
 	"explore",
 	"search",
+	"profile",
 ];
 
 // TODO: それぞれいちいちwhereとかdefaultというキーを付けなきゃいけないの冗長なのでなんとかする(ただ型定義が面倒になりそう)
