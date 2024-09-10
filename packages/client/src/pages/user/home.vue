@@ -203,7 +203,7 @@
 						</div>
 
 						<div class="description">
-							<span v-html="user.description" />
+							<span v-html="user.description.replace(/\n/g, '<br />')" />
 						</div>
 						<div class="fields system">
 							<dl v-if="user.location" class="field">
