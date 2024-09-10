@@ -116,7 +116,6 @@ const post = ( ev ) => {
 }
 
 const handlePaste = async (ev) => {
-  debugger;
   for (const { item, i } of Array.from(ev.clipboardData.items).map(
     (item, i) => ({ item, i }),
   )) {
