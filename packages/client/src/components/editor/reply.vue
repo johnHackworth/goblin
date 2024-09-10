@@ -30,7 +30,7 @@ import { useEditor, EditorContent } from '@tiptap/vue-3';
 import Youtube from '@tiptap/extension-youtube'
 import Document from '@tiptap/extension-document';
 import Dropcursor from '@tiptap/extension-dropcursor';
-import Image from '@tiptap/extension-image';
+import { GoblinImage } from "./image.js";
 import Paragraph from '@tiptap/extension-paragraph';
 import Text from '@tiptap/extension-text';
 import BubbleMenu from '@tiptap/extension-bubble-menu';
@@ -139,7 +139,7 @@ const editor = useEditor({
   content: props.initialText,
   extensions: [
     StarterKit,
-    Image,
+    GoblinImage,
     Youtube.configure({
       controls: false,
     }),

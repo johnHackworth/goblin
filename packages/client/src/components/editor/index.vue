@@ -139,7 +139,6 @@ import { useEditor, EditorContent } from '@tiptap/vue-3';
 import Youtube from '@tiptap/extension-youtube'
 import Document from '@tiptap/extension-document';
 import Dropcursor from '@tiptap/extension-dropcursor';
-import Image from '@tiptap/extension-image';
 import Paragraph from '@tiptap/extension-paragraph';
 import Text from '@tiptap/extension-text';
 import Placeholder from '@tiptap/extension-placeholder';
@@ -168,6 +167,7 @@ import XPollEditor from "@/components/MkPollEditor.vue";
 import { Gradient } from "./color-gradient.ts";
 import { Big } from "./big.ts";
 import { Iframe } from "./iframe-module.ts";
+import { GoblinImage } from "./image.js";
 
 import ColorMenu from './color-menu.vue';
 
@@ -315,7 +315,7 @@ const editor = useEditor({
   extensions: [
     StarterKit,
     Iframe,
-    Image,
+    GoblinImage,
     Youtube.configure({
       controls: false,
       nocookie: true,
