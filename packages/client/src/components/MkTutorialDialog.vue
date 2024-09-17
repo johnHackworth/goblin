@@ -18,17 +18,17 @@
 							>
 								<i class="ph-caret-left ph-bold ph-lg"></i>
 							</button>
-							<span>{{ tutorial + 1 }} / 6</span>
+							<span>{{ tutorial + 1 }} / 7</span>
 							<button
 								class="arrow _button"
-								:disabled="tutorial === 5"
+								:disabled="tutorial === 6"
 								@click="tutorial++"
 							>
 								<i class="ph-caret-right ph-bold ph-lg"></i>
 							</button>
 						</div>
 						<MkButton
-							v-if="tutorial === 5"
+							v-if="tutorial === 6"
 							class="ok"
 							primary
 							@click="close"
@@ -180,6 +180,28 @@
 						<section
 							v-else-if="tutorial === 5"
 							key="6"
+							class="_content tumblr"
+						>
+							<h3>{{ i18n.ts._tutorial.step7_1 }}</h3>
+
+							<div>{{ i18n.ts._tutorial.step7_2 }}</div>
+							<div>{{ i18n.ts._tutorial.step7_3 }}</div>
+							<I18n
+								:src="i18n.ts._tutorial.step7_4"
+								tag="div"
+							>
+								<template #link>
+									<a href='https://goblin.band/@cryptotheism.tumblr.com' target='_blank'>
+										https://goblin.band/@cryptotheism.tumblr.com
+									</a>
+								</template>
+							</I18n>
+							<img src="/client-assets/tumblrFollow.gif" />
+							<div>{{ i18n.ts._tutorial.step7_5 }}</div>
+						</section>
+						<section
+							v-else-if="tutorial === 6"
+							key="7"
 							class="_content"
 						>
 							<h3>{{ i18n.ts._tutorial.step6_1 }}</h3>
@@ -296,6 +318,20 @@ function close(res) {
 	> ._content {
 		> small {
 			opacity: 0.7;
+		}
+
+		&.tumblr {
+			display: flex;
+			flex-direction: column;
+			padding-bottom: 3em;
+
+			img {
+				margin: 2em auto;
+			}
+
+			a {
+				color: var(--accentDarken);
+			}
 		}
 	}
 

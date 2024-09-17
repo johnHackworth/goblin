@@ -1503,6 +1503,12 @@ _tutorial:
     This one does though! It's a bit complicated, but you'll get the hang of it in
     no time."
   step6_4: "Now go, explore, and have fun!"
+  step7_1: "You can also follow blogs from tumblr"
+  step7_2: "You just need to search for the tumblr url, precedeed with an @"
+  step7_3: "For example: @cryptotheism.tumblr.com"
+  step7_4: "Or you can just add it to the goblin url and follow from there: {link}"
+  step7_5: "A caveat: You can only follow public tumblr blogs with open RSS feeds,\
+    so any blog that requires being logged to tumblr to see it can't be followed from Goblin"
 _2fa:
   alreadyRegistered: "You have already registered a 2-factor authentication device."
   registerTOTP: "Register authenticator app"
