@@ -13,11 +13,6 @@ export async function fetchTumblrFeeds(
 ): Promise<void> {
 	logger.info("Fetching tumblr feeds...");
 
-	const usersToFetch = await getUsersToFetch();
-	if (usersToFetch) {
-		for (let i = 0; i < usersToFetch.length; i++) {}
-	}
-
 	let usersToFech = await getUsersToFetch();
 
 	for (const user of usersToFech) {

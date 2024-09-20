@@ -255,75 +255,78 @@ export async function updateTumblrUser(tumblrUsername: string) {
 		username: tumblrUsername + "_at_tumblr_com",
 	});
 	if (!user) {
+		apiLogger.error( ' TUMBLR USER NOT FOUND ' + tumblrUsername );
 		return null;
 	}
 
-	if (
-		!user.updatedAt ||
-		Date.now() - new Date(user.updatedAt) > 10 * 60 * 1000
-	) {
-		blogInfo = await getTumblrProfile(tumblrUsername);
-		if (!blogInfo) {
-			await Users.update(user.id, { feedUpdatedAt: new Date() });
-			return null;
-		}
+	await Users.update(user.id, { feedUpdatedAt: new Date() });
 
-		let userNeedsUpdate = false;
-		const newUsername = blogInfo.name + "_at_tumblr_com";
-		if (newUsername != user.username) {
-			user.username = newUsername;
-			user.usernameLower = newUsername.toLowerCase();
-			userNeedsUpdate = true;
-		}
+	apiLogger.log( 'fetching data for ' + tumblrUsername);
+	blogInfo = await getTumblrProfile(tumblrUsername);
+	if (!blogInfo) {
+		apiLogger.error( 'Cant get to ' + tumblrUsername);
 
-		if (user.avatarId) {
-			const avatarFile = await DriveFiles.findOneBy({ id: user.avatarId });
-			if (avatarFile && avatarFile.src != blogInfo.avatar[0].url) {
-				const newAvatarFile = await uploadFromUrl({
-					url: blogInfo.avatar[0].url,
-					user: user,
-				});
-				user.avatarId = newAvatarFile.id;
-			}
-			userNeedsUpdate = true;
-		}
+		return null;
+	}
 
-		if (user.bannerId) {
-			const bannerFile = await DriveFiles.findOneBy({ id: user.bannerId });
-			if (bannerFile && bannerFile.src != blogInfo.theme.header_image) {
-				const newBannerFile = await uploadFromUrl({
-					url: blogInfo.theme.header_image,
-					user: user,
-				});
-				user.bannerId = newBannerFile.id;
-			}
-			userNeedsUpdate = true;
-		}
+	let userNeedsUpdate = false;
+	const newUsername = blogInfo.name + "_at_tumblr_com";
+	if (newUsername != user.username) {
+		apiLogger.log( 'changing username for ' + tumblrUsername);
+		user.username = newUsername;
+		user.usernameLower = newUsername.toLowerCase();
+		userNeedsUpdate = true;
+	}
 
-		if (userNeedsUpdate) {
-			await db.transaction(async (transactionalEntityManager) => {
-				user = await transactionalEntityManager.save(user);
+	if (user.avatarId) {
+		const avatarFile = await DriveFiles.findOneBy({ id: user.avatarId });
+		if (avatarFile && avatarFile.src != blogInfo.avatar[0].url) {
+			const newAvatarFile = await uploadFromUrl({
+				url: blogInfo.avatar[0].url,
+				user: user,
 			});
+			user.avatarId = newAvatarFile.id;
+		}
+		userNeedsUpdate = true;
+	}
+
+	if (user.bannerId) {
+		const bannerFile = await DriveFiles.findOneBy({ id: user.bannerId });
+		if (bannerFile && bannerFile.src != blogInfo.theme.header_image) {
+			const newBannerFile = await uploadFromUrl({
+				url: blogInfo.theme.header_image,
+				user: user,
+			});
+			user.bannerId = newBannerFile.id;
+		}
+		userNeedsUpdate = true;
+	}
+
+	if (userNeedsUpdate) {
+		apiLogger.log( 'updating data for ' + tumblrUsername);
+		await db.transaction(async (transactionalEntityManager) => {
+			user = await transactionalEntityManager.save(user);
+		});
+	}
+
+	const profile = await UserProfiles.findOneByOrFail({ userId: user.id });
+	if (profile) {
+		apiLogger.log( 'found profile for ' + tumblrUsername);
+		let needProfileUpdate = false;
+		if (profile.description != blogInfo.description) {
+			profile.description = sanitize(blogInfo.description);
+			needProfileUpdate = true;
 		}
 
-		const profile = await UserProfiles.findOneByOrFail({ userId: user.id });
-		if (profile) {
-			let needProfileUpdate = false;
-			if (profile.description != blogInfo.description) {
-				profile.description = sanitize(blogInfo.description);
-				needProfileUpdate = true;
-			}
+		if (profile.url != "https://" + blogInfo.name + ".tumblr.com") {
+			profile.url = "https://" + blogInfo.name + ".tumblr.com";
+			needProfileUpdate = true;
+		}
 
-			if (profile.url != "https://" + blogInfo.name + ".tumblr.com") {
-				profile.url = "https://" + blogInfo.name + ".tumblr.com";
-				needProfileUpdate = true;
-			}
-
-			if (needProfileUpdate) {
-				await db.transaction(async (transactionalEntityManager) => {
-					await transactionalEntityManager.save(profile);
-				});
-			}
+		if (needProfileUpdate) {
+			await db.transaction(async (transactionalEntityManager) => {
+				await transactionalEntityManager.save(profile);
+			});
 		}
 	}
 	return { user: user, blogInfo: blogInfo };
