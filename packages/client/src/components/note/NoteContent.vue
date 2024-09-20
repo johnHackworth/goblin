@@ -383,7 +383,7 @@ function focusFooter(ev) {
 
   .reblog-item-content & {
     .noteText {
-      padding: 0;
+      padding: 8px 0;
     }
   }
 

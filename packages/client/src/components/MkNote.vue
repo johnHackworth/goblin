@@ -64,11 +64,21 @@
 			<div class="main">
 				<div v-if="renotedBy" class="renoteHeader">
 					<MkA
-					:to="`/@${renotedBy}`">
+					:to="`/@${renotedBy}`"
+					v-if="isRenoteWithNoContent"
+					>
 						{{ renotedBy }} <ReblogIcon /> reblogged (<MkTime :time="note.createdAt" />)
+						<MkVisibility :note="note" />
+					</MkA>
+					<MkA
+					:to="`/@${renotedBy}`"
+					v-else
+					>
+						{{ renotedBy }} <ReblogIcon /> reblogged and commented (<MkTime :time="note.createdAt" />)
+						<MkVisibility :note="note" />
 					</MkA>
 				</div>
-				<div class="header-container" @click="noteLink">
+				<div class="header-container" v-if="isRenoteWithNoContent || !isRenote" @click="noteLink">
 					<MkAvatar class="avatar" :user="appearNote.user" />
 					<XNoteHeader class="header" :note="appearNote" />
 				</div>
@@ -271,7 +281,10 @@ const softMuteReasonI18nSrc = (what?: string) => {
 };
 
 const isRenote =
-	note.renote != null &&
+	note.renote != null;
+
+const isRenoteWithNoContent =
+	isRenote &&
 	note.text == null &&
 	note.fileIds.length === 0 &&
 	note.poll == null;
@@ -284,11 +297,8 @@ const renoteButton = ref<InstanceType<typeof XRenoteButton>>();
 const renoteTime = ref<HTMLElement>();
 const reactButton = ref<HTMLElement>();
 let appearNote = $computed(() =>
-	isRenote ? (note.renote as misskey.entities.Note) : note,
+	isRenoteWithNoContent ? (note.renote as misskey.entities.Note) : note,
 );
-if(!appearNote.user) {
-	console.log(appearNote)
-}
 
 let parentNote = $computed(() => getParentNote(note));
 const isRss = ref(parentNote.user.fromRSS);
@@ -986,6 +996,11 @@ defineExpose({
 		display: flex;
 		height: 16px;
 		align-items: center;
+		width: 100%;
+
+		> span {
+			margin-left: auto;
+		}
 	}
 
   time {
