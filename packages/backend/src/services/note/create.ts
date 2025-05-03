@@ -380,7 +380,10 @@ export default async (
 
 		data.slug = await getNoteSlug(data as Note);
 		logger.info("created slug: " + data.slug);
-		if (user.username && data.slug && !data.url) {
+		// Only attach these slug URLs to local notes since they
+		// always reference the local server, not the originating
+		// server
+		if (user.username && data.slug && !data.url && !Users.isRemoteUser(user)) {
 			const host = user.host ? "@" + user.host : "";
 			data.url = `${config.url}/@${user.username}${host}/${data.slug}`;
 		}
