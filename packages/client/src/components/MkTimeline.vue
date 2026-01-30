@@ -42,7 +42,6 @@ import { defaultStore } from "@/store";
 const props = defineProps<{
 	src: string;
 	list?: string;
-	antenna?: string;
 	channel?: string;
 	sound?: boolean;
 }>();
@@ -93,16 +92,7 @@ let connection2;
 let tlHint;
 let tlHintClosed;
 
-if (props.src === "antenna") {
-	endpoint = "antennas/notes";
-	query = {
-		antennaId: props.antenna,
-	};
-	connection = stream.useChannel("antenna", {
-		antennaId: props.antenna,
-	});
-	connection.on("note", prepend);
-} else if (props.src === "home") {
+if (props.src === "home") {
 	endpoint = "notes/timeline";
 	query = {
 		withReplies: false,
