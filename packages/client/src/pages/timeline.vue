@@ -159,30 +159,6 @@ async function chooseList(ev: MouseEvent) {
 	});
 }
 
-const antennas = os.api("antennas/list");
-async function chooseAntenna(ev: MouseEvent) {
-	await antennas.then((res) => {
-		const items = [
-			{
-				type: "link" as const,
-				indicate: false,
-				text: i18n.ts.manageAntennas,
-				icon: "ph-faders-horizontal ph-bold ph-lg",
-				to: "/my/antennas",
-			},
-		].concat(
-			res.map((antenna) => ({
-				type: "link" as const,
-				text: antenna.name,
-				icon: "",
-				indicate: antenna.hasUnreadNote,
-				to: `/timeline/antenna/${antenna.id}`,
-			})),
-		);
-		os.popupMenu(items, ev.currentTarget ?? ev.target);
-	});
-}
-
 function saveSrc(
 	newSrc: "home" | "local" | "social" | "bots" | "recommended" | "global",
 ): void {
@@ -213,13 +189,6 @@ const headerActions = $computed(() => [
 		iconOnly: true,
 		handler: chooseList,
 	}
-	/* {
-		icon: "ph-flying-saucer ph-bold ph-lg",
-		title: i18n.ts.antennas,
-		text: i18n.ts.antennas,
-		iconOnly: true,
-		handler: chooseAntenna,
-	} */
 	 /* **TODO: fix timetravel** {
 	icon: 'ph-calendar-blank ph-bold ph-lg',
 	title: i18n.ts.jumpToSpecifiedDate,

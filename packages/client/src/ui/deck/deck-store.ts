@@ -19,7 +19,6 @@ export type Column = {
 		| "widgets"
 		| "notifications"
 		| "tl"
-		| "antenna"
 		| "channel"
 		| "list"
 		| "mentions"
@@ -29,7 +28,6 @@ export type Column = {
 	widgets?: ColumnWidget[];
 	active?: boolean;
 	flexible?: boolean;
-	antennaId?: string;
 	channelId?: string;
 	listId?: string;
 	includingTypes?: typeof notificationTypes[number][];

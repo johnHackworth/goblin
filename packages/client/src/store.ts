@@ -352,7 +352,6 @@ export class ColdDeviceStorage {
 		sound_notification: { type: "syuilo/pope2", volume: 1 },
 		sound_chat: { type: "syuilo/pope1", volume: 1 },
 		sound_chatBg: { type: "syuilo/waon", volume: 1 },
-		sound_antenna: { type: "syuilo/triple", volume: 1 },
 		sound_channel: { type: "syuilo/square-pico", volume: 1 },
 	};
 

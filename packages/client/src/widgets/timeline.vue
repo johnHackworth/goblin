@@ -27,15 +27,9 @@
 					v-else-if="widgetProps.src === 'list'"
 					class="ph-list-bullets ph-bold ph-lg"
 				></i>
-				<i
-					v-else-if="widgetProps.src === 'antenna'"
-					class="ph-television ph-bold ph-lg"
-				></i>
 				<span style="margin-left: 8px">{{
 					widgetProps.src === "list"
 						? widgetProps.list.name
-						: widgetProps.src === "antenna"
-						? widgetProps.antenna.name
 						: i18n.t("_timelines." + widgetProps.src)
 				}}</span>
 				<i
@@ -54,13 +48,10 @@
 				:key="
 					widgetProps.src === 'list'
 						? `list:${widgetProps.list.id}`
-						: widgetProps.src === 'antenna'
-						? `antenna:${widgetProps.antenna.id}`
 						: widgetProps.src
 				"
 				:src="widgetProps.src"
 				:list="widgetProps.list ? widgetProps.list.id : null"
-				:antenna="widgetProps.antenna ? widgetProps.antenna.id : null"
 			/>
 		</div>
 	</MkContainer>
@@ -97,11 +88,6 @@ const widgetPropsDef = {
 		default: "home",
 		hidden: true,
 	},
-	antenna: {
-		type: "object" as const,
-		default: null,
-		hidden: true,
-	},
 	list: {
 		type: "object" as const,
 		default: null,
@@ -133,18 +119,7 @@ const setSrc = (src) => {
 
 const choose = async (ev) => {
 	menuOpened.value = true;
-	const [antennas, lists] = await Promise.all([
-		os.api("antennas/list"),
-		os.api("users/lists/list"),
-	]);
-	const antennaItems = antennas.map((antenna) => ({
-		text: antenna.name,
-		icon: "ph-flying-saucer ph-bold ph-lg",
-		action: () => {
-			widgetProps.antenna = antenna;
-			setSrc("antenna");
-		},
-	}));
+	const lists = await os.api("users/lists/list");
 	const listItems = lists.map((list) => ({
 		text: list.name,
 		icon: "ph-list-bullets ph-bold ph-lg",
@@ -183,8 +158,6 @@ const choose = async (ev) => {
 					setSrc("global");
 				},
 			},
-			antennaItems.length > 0 ? null : undefined,
-			...antennaItems,
 			listItems.length > 0 ? null : undefined,
 			...listItems,
 		],

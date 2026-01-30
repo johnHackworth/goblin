@@ -256,7 +256,6 @@ const addColumn = async (ev) => {
 		"widgets",
 		"notifications",
 		"tl",
-		"antenna",
 		"list",
 		"channel",
 		"mentions",
