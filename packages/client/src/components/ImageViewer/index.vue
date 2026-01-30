@@ -12,20 +12,48 @@
 
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { i18n } from "@/i18n";
 
 let visible = $ref(false);
+let originalViewport = '';
+
+const enableZoom = () => {
+  const viewportMeta = document.querySelector('meta[name="viewport"]');
+  if (viewportMeta) {
+    originalViewport = viewportMeta.getAttribute('content') || '';
+    // Allow user scaling for image viewing on mobile
+    viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes');
+  }
+};
+
+const restoreZoom = () => {
+  const viewportMeta = document.querySelector('meta[name="viewport"]');
+  if (viewportMeta && originalViewport) {
+    viewportMeta.setAttribute('content', originalViewport);
+  }
+};
 
 const openImage = () => {
   visible = false;
+  restoreZoom();
   window.open(document.querySelector('.imageViewer img').src, '_blank').focus();
 }
 
 const close = () => {
   visible = false;
+  restoreZoom();
   document.querySelector('.imageViewer img').src = "";
 }
+
+// Watch visible changes to enable/disable zoom
+watch(() => visible, (newVisible) => {
+  if (newVisible) {
+    enableZoom();
+  } else {
+    restoreZoom();
+  }
+});
 
 document.addEventListener( "click", ( e ) => {
   if( e.target.nodeName === "IMG" &&

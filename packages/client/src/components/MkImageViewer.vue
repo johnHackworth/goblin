@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-import {} from "vue";
+import { onMounted, onBeforeUnmount } from "vue";
 import type * as misskey from "firefish-js";
 import bytes from "@/filters/bytes";
 import number from "@/filters/number";
@@ -44,6 +44,27 @@ const emit = defineEmits<{
 }>();
 
 const modal = $ref<InstanceType<typeof MkModal>>();
+
+// Store original viewport content to restore later
+let originalViewport = '';
+
+// Enable zooming on mobile when image modal opens
+onMounted(() => {
+	const viewportMeta = document.querySelector('meta[name="viewport"]');
+	if (viewportMeta) {
+		originalViewport = viewportMeta.getAttribute('content') || '';
+		// Allow user scaling for image viewing
+		viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes');
+	}
+});
+
+// Restore original viewport when modal closes
+onBeforeUnmount(() => {
+	const viewportMeta = document.querySelector('meta[name="viewport"]');
+	if (viewportMeta && originalViewport) {
+		viewportMeta.setAttribute('content', originalViewport);
+	}
+});
 </script>
 
 <style lang="scss" scoped>
