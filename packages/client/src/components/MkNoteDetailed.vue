@@ -408,7 +408,35 @@ const pagination = {
 const pagingComponent = $ref<InstanceType<typeof MkPagination>>();
 
 renotes = [];
-function loadTab() {
+async function loadTab() {
+	// Force-fetch from original server if this is a remote note
+	if (rootNote.user.host != null && rootNote.uri) {
+		try {
+			const freshNote = await os.api("notes/refresh", {
+				noteId: rootNote.id,
+			});
+
+			// Update engagement counts with fresh data from origin server
+			repliesCount = freshNote.repliesCount || 0;
+			renoteCount = freshNote.renoteCount || 0;
+
+			// Update root note with fresh data
+			rootNote.repliesCount = freshNote.repliesCount;
+			rootNote.renoteCount = freshNote.renoteCount;
+			rootNote.reactions = freshNote.reactions;
+			rootNote.reactionCount = freshNote.reactionCount;
+
+			// Refresh children if we're on replies tab
+			if (tab === "replies") {
+				updateNoteChildren();
+			}
+		} catch (err) {
+			// Silently fail if remote fetch fails - we still have local data
+			console.warn("Failed to refresh note from origin server:", err);
+		}
+	}
+
+	// Load renotes if on renotes tab
 	if (!props.hideTabs && tab === "renotes" && !renotes) {
 		os.api("notes/renotes", {
 			noteId: rootNote.id,
