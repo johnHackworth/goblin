@@ -5,7 +5,7 @@
     :title="acct(user)"
     :href="userPage(user)"
   >
-    <img class="pfp-image" :src="user.avatarUrl" decoding="async" />
+    <img class="pfp-image" :src="user.avatarUrl" decoding="async" @error="handleAvatarImageError" />
   </a>
   <a
     v-else-if="syntheticUser"
@@ -13,7 +13,7 @@
     :title="syntheticUser.user"
     :href="props.url"
   >
-    <img class="pfp-image" :src="getSyntheticUrl()" decoding="async" />
+    <img class="pfp-image" :src="getSyntheticUrl()" decoding="async" @error="handleAvatarImageError" />
   </a>
   <span
     v-else
@@ -22,6 +22,7 @@
     <img
       class="pfp-image"
       src="/static-assets/user-unknown.png"
+      @error="handleAvatarImageError"
     />
   </span>
  </template>
@@ -29,7 +30,8 @@
 <script lang="ts" setup>
 import type * as misskey from "firefish-js";
 import { acct, userPage } from "@/filters/user";
-import { getUserAndHostFromUrl } from "@/helpers/note/note-content"
+import { getUserAndHostFromUrl } from "@/helpers/note/note-content";
+import { handleAvatarImageError } from "@/scripts/avatar-fallback";
 
 const props = withDefaults(
   defineProps<{
@@ -50,7 +52,6 @@ const getSyntheticUrl = () => {
   }
   return '/avatar/' + syntheticUser.full;
 }
-
 
 </script>
 

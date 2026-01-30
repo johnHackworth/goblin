@@ -12,7 +12,7 @@
 				@click="complete(type, user)"
 				@keydown="onKeydown"
 			>
-				<img class="avatar" :src="user.avatarUrl" />
+				<img class="avatar" :src="user.avatarUrl" @error="handleAvatarImageError" />
 				<span class="name">
 					<MkUserName :key="user.id" :user="user" />
 				</span>
@@ -101,6 +101,7 @@ import { defaultStore } from "@/store";
 import { addSkinTone, emojilist } from "@/scripts/emojilist";
 import { instance } from "@/instance";
 import { i18n } from "@/i18n";
+import { handleAvatarImageError } from "@/scripts/avatar-fallback";
 
 interface EmojiDef {
 	emoji: string;

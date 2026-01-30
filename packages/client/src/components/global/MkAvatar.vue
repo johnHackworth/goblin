@@ -8,7 +8,7 @@
 		:title="acct(user)"
 		@click="onClick"
 	>
-		<img class="inner" :src="url" decoding="async" />
+		<img class="inner" :src="url" decoding="async" @error="handleAvatarImageError" />
 		<MkUserOnlineIndicator
 			v-if="showIndicator && user.instance == null"
 			class="indicator"
@@ -26,7 +26,7 @@
 		:target="target"
 		@click.stop
 	>
-		<img class="inner" :src="url" decoding="async" />
+		<img class="inner" :src="url" decoding="async" @error="handleAvatarImageError" />
 		<MkUserOnlineIndicator
 			v-if="showIndicator && user.instance == null"
 			class="indicator"
@@ -43,6 +43,7 @@ import { extractAvgColorFromBlurhash } from "@/scripts/extract-avg-color-from-bl
 import { acct, userPage } from "@/filters/user";
 import MkUserOnlineIndicator from "@/components/MkUserOnlineIndicator.vue";
 import { defaultStore } from "@/store";
+import { handleAvatarImageError } from "@/scripts/avatar-fallback";
 
 const props = withDefaults(
 	defineProps<{

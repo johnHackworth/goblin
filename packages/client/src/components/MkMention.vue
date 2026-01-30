@@ -7,7 +7,7 @@
 		:to="url"
 		@click.stop
 	>
-		<img class="icon" :src="`/avatar/@${username}@${host}`" alt="" />
+		<img class="icon" :src="`/avatar/@${username}@${host}`" alt="" @error="handleAvatarImageError" />
 		<span class="main">
 			<span class="username">@{{ username }}</span>
 			<span
@@ -38,6 +38,7 @@ import { toUnicode } from "punycode";
 import {} from "vue";
 import { host as localHost } from "@/config";
 import { $i } from "@/account";
+import { handleAvatarImageError } from "@/scripts/avatar-fallback";
 
 const props = defineProps<{
 	username: string;
