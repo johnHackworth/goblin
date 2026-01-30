@@ -133,7 +133,7 @@
 
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import StarterKit from '@tiptap/starter-kit';
 import { useEditor, EditorContent } from '@tiptap/vue-3';
 import Youtube from '@tiptap/extension-youtube'
@@ -170,6 +170,9 @@ import { Iframe } from "./iframe-module.ts";
 import { GoblinImage } from "./image.js";
 
 import ColorMenu from './color-menu.vue';
+
+// LocalStorage key for draft
+const DRAFT_STORAGE_KEY = 'goblin-post-draft';
 
 const props = withDefaults(
   defineProps<{
@@ -211,6 +214,10 @@ watch(
   poll,
   () => {
     emit("updatePoll", poll.value);
+    // Save draft when poll changes
+    if (editor.value) {
+      saveDraft(editor.value.getHTML());
+    }
   }
 );
 
@@ -222,6 +229,56 @@ const update = ( { editor } ) => {
   } else {
     isEmpty = false;
   }
+
+  // Save draft to localStorage
+  saveDraft(editorValue);
+}
+
+// Save draft to localStorage
+const saveDraft = (content: string) => {
+  try {
+    const draft = {
+      content,
+      tags: tags,
+      poll: poll.value,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(draft));
+  } catch (error) {
+    console.error('Failed to save draft:', error);
+  }
+}
+
+// Load draft from localStorage
+const loadDraft = () => {
+  try {
+    const savedDraft = localStorage.getItem(DRAFT_STORAGE_KEY);
+    if (savedDraft) {
+      const draft = JSON.parse(savedDraft);
+      // Only restore if there's actual content (not just empty paragraph)
+      if (draft.content && draft.content !== '<p></p>') {
+        editor.value?.commands.setContent(draft.content);
+        if (draft.tags && Array.isArray(draft.tags)) {
+          tags = draft.tags;
+          updateTags();
+        }
+        if (draft.poll) {
+          poll.value = draft.poll;
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Failed to load draft:', error);
+  }
+}
+
+// Clear draft from localStorage
+const clearDraft = () => {
+  try {
+    localStorage.removeItem(DRAFT_STORAGE_KEY);
+  } catch (error) {
+    console.error('Failed to clear draft:', error);
+  }
 }
 
 const onEnableContentWarning = () => {
@@ -230,11 +287,17 @@ const onEnableContentWarning = () => {
 
 const updateTags = () => {
   emit('updateTags', tags);
+  // Save draft when tags change
+  if (editor.value) {
+    saveDraft(editor.value.getHTML());
+  }
 }
 
 const post = ( ev ) => {
   postButtonDisabled = true;
   validateTag()
+  // Clear draft when posting
+  clearDraft();
   setTimeout(() => { emit('post') }, 100);
 }
 
@@ -398,6 +461,26 @@ const addVideo = (ev) => {
     height: 480,
   })
 };
+
+// Load draft when component mounts
+onMounted(() => {
+  // Wait for editor to be ready before loading draft
+  if (editor.value) {
+    loadDraft();
+  } else {
+    // If editor not ready yet, wait a bit
+    setTimeout(() => {
+      if (editor.value) {
+        loadDraft();
+      }
+    }, 100);
+  }
+});
+
+// Clear draft when component unmounts (editor closed without posting)
+onBeforeUnmount(() => {
+  clearDraft();
+});
 
 </script>
 
