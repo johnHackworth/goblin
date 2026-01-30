@@ -96,6 +96,14 @@ export default define(meta, paramDef, async (ps, user) => {
 				}
 			}),
 		)
+		// Filter out local replies at SQL level to avoid wasting packing time
+		// Keep: non-replies OR remote user replies
+		.andWhere(
+			new Brackets((qb) => {
+				qb.where("note.replyId IS NULL");
+				qb.orWhere("note.userHost IS NOT NULL");
+			}),
+		)
 		.innerJoinAndSelect("note.user", "user")
 		.innerJoinAndSelect("user", "me", "me.id = :meId", { meId: user.id })
 		.leftJoinAndSelect("user.avatar", "avatar")
@@ -173,16 +181,19 @@ export default define(meta, paramDef, async (ps, user) => {
 
 	const populateResponse = async (found, take, skip) => {
 		const notes = await query.take(take).skip(skip).getMany();
-		const packedNotes = await Notes.packMany(notes, user, { detail: true, detailRecursion: 10 });
+		// Reduced detailRecursion from 10 to 2 to prevent exponential query explosion
+		// This reduces recursive packing from 2^10 (1024) to 2^2 (4) calls per note
+		const packedNotes = await Notes.packMany(notes, user, { detail: true, detailRecursion: 2 });
+		// Filter moved to SQL WHERE clause (line ~91), keeping this as safety net
 		return packedNotes.filter( (note) => {
 			return ! note.replyId || note.user.host;
 		});
 	}
 
-	// We fetch more than requested because some may be filtered out, and if there's less than
-	// requested, the pagination stops.
+	// We fetch slightly more than requested because some may be filtered out
+	// Reduced from 2x to 1.2x to minimize over-fetching and wasted packing
 	let found = [];
-	const take = Math.floor(ps.limit * 2);
+	const take = Math.floor(ps.limit * 1.2);
 	let skip = 0;
 	try {
 		while (found.length < ps.limit) {

@@ -114,16 +114,26 @@ class NotificationManager {
 	}
 
 	public async deliver() {
-		for (const x of this.queue) {
-			// ミュート情報を取得
-			const mentioneeMutes = await Mutings.findBy({
-				muterId: x.target,
-			});
+		// Batch load all muting data to avoid N+1 queries
+		const allTargets = this.queue.map((x) => x.target);
+		const allMutings = await Mutings.findBy({
+			muterId: In(allTargets),
+		});
 
-			const mentioneesMutedUserIds = mentioneeMutes.map((m) => m.muteeId);
+		// Build a map of muter -> mutee IDs for O(1) lookups
+		const mutingsMap = new Map<string, Set<string>>();
+		for (const muting of allMutings) {
+			if (!mutingsMap.has(muting.muterId)) {
+				mutingsMap.set(muting.muterId, new Set());
+			}
+			mutingsMap.get(muting.muterId)!.add(muting.muteeId);
+		}
+
+		for (const x of this.queue) {
+			const mutedUserIds = mutingsMap.get(x.target);
 
 			// 通知される側のユーザーが通知する側のユーザーをミュートしていない限りは通知する
-			if (!mentioneesMutedUserIds.includes(this.notifier.id)) {
+			if (!mutedUserIds || !mutedUserIds.has(this.notifier.id)) {
 				createNotification(x.target, x.reason, {
 					notifierId: this.notifier.id,
 					noteId: this.note.id,
@@ -450,16 +460,28 @@ export default async (
 
 		// Channel
 		if (note.channelId) {
-			ChannelFollowings.findBy({ followeeId: note.channelId }).then(
-				(followings) => {
-					for (const following of followings) {
-						insertNoteUnread(following.followerId, note, {
-							isSpecified: false,
-							isMentioned: false,
-						});
+			ChannelFollowings.findBy({ followeeId: note.channelId })
+				.then((followings) => {
+					// Batch insert unreads for better performance
+					const unreads = followings.map((following) => ({
+						id: genId(),
+						noteId: note.id,
+						userId: following.followerId,
+						isSpecified: false,
+						isMentioned: false,
+						noteChannelId: note.channelId,
+						noteUserId: note.userId,
+					}));
+
+					if (unreads.length > 0) {
+						// Import NoteUnreads repository for batch insert
+						const { NoteUnreads } = require("@/models/index.js");
+						return NoteUnreads.insert(unreads);
 					}
-				},
-			);
+				})
+				.catch((err) => {
+					logger.error("Failed to insert channel follower note unreads:", err);
+				});
 		}
 		if (data.reply) {
 			saveReply(data.reply);
@@ -589,29 +611,50 @@ export default async (
 			if (data.renote) {
 				const type = data.text ? "quote" : "renote";
 
-				// Notify
+				// Collect all thread IDs to check for muting in one query
+				const threadChecks: Array<{ userId: string; threadId: string }> = [];
+
 				if (data.renote.userHost === null) {
-					const threadMuted = await NoteThreadMutings.findOneBy({
+					threadChecks.push({
 						userId: data.renote.userId,
 						threadId: data.renote.threadId || data.renote.id,
 					});
+				}
 
-					if (!threadMuted) {
+				if (data.reblogtrail && data.reblogtrail.length > 1) {
+					for (const post of data.reblogtrail) {
+						if (post.user && post.user.host === null) {
+							threadChecks.push({
+								userId: post.userId,
+								threadId: post.id,
+							});
+						}
+					}
+				}
+
+				// Batch load muting status
+				const threadMutes = await NoteThreadMutings.find({
+					where: threadChecks,
+				});
+				const mutedSet = new Set(
+					threadMutes.map((m) => `${m.userId}:${m.threadId}`),
+				);
+
+				// Notify renote author
+				if (data.renote.userHost === null) {
+					const key = `${data.renote.userId}:${data.renote.threadId || data.renote.id}`;
+					if (!mutedSet.has(key)) {
 						nm.push(data.renote.userId, type);
 					}
 				}
 
+				// Notify reblog trail
 				if (data.reblogtrail && data.reblogtrail.length > 1) {
-					for (let i = 0; i < data.reblogtrail.length; i++) {
-						const rebloggedPost = data.reblogtrail[i];
-						if (rebloggedPost.user && rebloggedPost.user.host === null) {
-							const threadMuted = await NoteThreadMutings.findOneBy({
-								userId: rebloggedPost.userId,
-								threadId: rebloggedPost.id,
-							});
-
-							if (!threadMuted) {
-								nm.push(rebloggedPost.userId, type);
+					for (const post of data.reblogtrail) {
+						if (post.user && post.user.host === null) {
+							const key = `${post.userId}:${post.id}`;
+							if (!mutedSet.has(key)) {
+								nm.push(post.userId, type);
 							}
 						}
 					}
@@ -939,13 +982,18 @@ async function createMentionedEvents(
 	note: Note,
 	nm: NotificationManager,
 ) {
-	for (const u of mentionedUsers.filter((u) => Users.isLocalUser(u))) {
-		const threadMuted = await NoteThreadMutings.findOneBy({
-			userId: u.id,
-			threadId: note.threadId || note.id,
-		});
+	const localUsers = mentionedUsers.filter((u) => Users.isLocalUser(u));
 
-		if (threadMuted) {
+	// Batch load thread muting status for all mentioned local users
+	const threadId = note.threadId || note.id;
+	const threadMutes = await NoteThreadMutings.findBy({
+		userId: In(localUsers.map((u) => u.id)),
+		threadId: threadId,
+	});
+	const mutedUserIds = new Set(threadMutes.map((m) => m.userId));
+
+	for (const u of localUsers) {
+		if (mutedUserIds.has(u.id)) {
 			continue;
 		}
 

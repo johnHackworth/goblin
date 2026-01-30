@@ -25,6 +25,12 @@ export default async function (
 		followingChannels: Set<Channel["id"]>;
 	},
 ) {
+	// Load following/channel following data if not provided
+	// Note: These queries load all followings into memory as Sets for O(1) lookup.
+	// For users with very large following lists (100k+), consider:
+	// 1. Caching these Sets with TTL
+	// 2. Using a different data structure (bloom filter)
+	// 3. Only loading followings for notes that need the check
 	const following = info?.following
 		? info.following
 		: new Set<string>(
@@ -100,37 +106,35 @@ export default async function (
 			]),
 		});
 
-		// TODO: ↓まとめてクエリしたい
+		// Batch count queries to check if all unreads are cleared
+		// This replaces 3 separate count queries with 1 optimized query
+		const countResults = await NoteUnreads.createQueryBuilder("unread")
+			.select([
+				'SUM(CASE WHEN "isMentioned" = true THEN 1 ELSE 0 END)', "mentionsCount",
+			])
+			.addSelect([
+				'SUM(CASE WHEN "isSpecified" = true THEN 1 ELSE 0 END)', "specifiedCount",
+			])
+			.addSelect([
+				'SUM(CASE WHEN "noteChannelId" IS NOT NULL THEN 1 ELSE 0 END)', "channelCount",
+			])
+			.where("unread.userId = :userId", { userId })
+			.getRawOne();
 
-		NoteUnreads.countBy({
-			userId: userId,
-			isMentioned: true,
-		}).then((mentionsCount) => {
-			if (mentionsCount === 0) {
-				// 全て既読になったイベントを発行
-				publishMainStream(userId, "readAllUnreadMentions");
-			}
-		});
+		const mentionsCount = parseInt(countResults?.mentionsCount || "0", 10);
+		const specifiedCount = parseInt(countResults?.specifiedCount || "0", 10);
+		const channelNoteCount = parseInt(countResults?.channelCount || "0", 10);
 
-		NoteUnreads.countBy({
-			userId: userId,
-			isSpecified: true,
-		}).then((specifiedCount) => {
-			if (specifiedCount === 0) {
-				// 全て既読になったイベントを発行
-				publishMainStream(userId, "readAllUnreadSpecifiedNotes");
-			}
-		});
-
-		NoteUnreads.countBy({
-			userId: userId,
-			noteChannelId: Not(IsNull()),
-		}).then((channelNoteCount) => {
-			if (channelNoteCount === 0) {
-				// 全て既読になったイベントを発行
-				publishMainStream(userId, "readAllChannels");
-			}
-		});
+		// Publish "all read" events if counts are zero
+		if (mentionsCount === 0) {
+			publishMainStream(userId, "readAllUnreadMentions");
+		}
+		if (specifiedCount === 0) {
+			publishMainStream(userId, "readAllUnreadSpecifiedNotes");
+		}
+		if (channelNoteCount === 0) {
+			publishMainStream(userId, "readAllChannels");
+		}
 
 		readNotificationByQuery(userId, {
 			noteId: In([
