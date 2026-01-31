@@ -746,8 +746,10 @@ export default async (
 			});
 		}
 
-		// Register to search database
-		await index(note, false);
+		// Register to search database (non-blocking to avoid hanging the response)
+		index(note, false).catch((err) => {
+			logger.error("Failed to index note:", err);
+		});
 	});
 
 async function renderNoteOrRenoteActivity(data: Option, note: Note) {
