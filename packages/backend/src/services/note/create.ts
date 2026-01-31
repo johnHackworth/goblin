@@ -71,6 +71,7 @@ import { redisClient } from "@/db/redis.js";
 import { Mutex } from "redis-semaphore";
 import Logger from "../logger.js";
 import { getNoteSummary } from "@/misc/get-note-summary.js";
+import { stripHtml } from "@/misc/strip-html.js";
 
 const logger = new Logger("notes-create");
 
@@ -335,10 +336,11 @@ export default async (
 
 		// Parse MFM if needed
 		if (!(tags && emojis && mentionedUsers)) {
-			const tokens = data.text ? mfm.parse(data.text)! : [];
-			const cwTokens = data.cw ? mfm.parse(data.cw)! : [];
+			const textForParsing = data.text ? stripHtml(data.text) : "";
+		const tokens = textForParsing ? mfm.parse(textForParsing)! : [];
+			const cwTokens = data.cw ? mfm.parse(stripHtml(data.cw))! : [];
 			const choiceTokens = data.poll?.choices
-				? concat(data.poll.choices.map((choice) => mfm.parse(choice)!))
+				? concat(data.poll.choices.map((choice) => mfm.parse(stripHtml(choice))!))
 				: [];
 
 			const combinedTokens = tokens.concat(cwTokens).concat(choiceTokens);
