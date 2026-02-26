@@ -45,15 +45,16 @@ export async function createNoteFromRssItem(
 }
 
 function formatRssItemAsNote(item: RssItem): string {
-	let text = item.title || "Untitled";
+	const link = item.link || "";
+	let text = `RSS post: See the original at <a href="${link}" rel="noopener" target="_blank">${link}</a>`;
+
+	if (item.title) {
+		text += "\n\n" + item.title;
+	}
 
 	if (item.content || item.description) {
 		const content = item.content || item.description || "";
 		text += "\n\n" + content;
-	}
-
-	if (item.link) {
-		text += "\n\n" + item.link;
 	}
 
 	return text;
