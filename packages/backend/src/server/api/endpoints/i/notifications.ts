@@ -161,7 +161,9 @@ export default define(meta, paramDef, async (ps, user) => {
 	}
 
 	if (ps.visibility) {
-		query.andWhere("note.visibility = :visibility", { visibility: ps.visibility });
+		query.andWhere("note.visibility = :visibility", {
+			visibility: ps.visibility,
+		});
 	}
 
 	if (ps.unreadOnly) {
@@ -190,12 +192,11 @@ export default define(meta, paramDef, async (ps, user) => {
 
 	const output = await Notifications.packMany(notifications, user.id);
 
-	if(ps.notesOnly) {
-		return output.map( (notification) => {
+	if (ps.notesOnly) {
+		return output.map((notification) => {
 			return notification.note;
-		} );
+		});
 	} else {
 		return output;
 	}
-
 });

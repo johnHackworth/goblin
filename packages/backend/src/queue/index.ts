@@ -15,6 +15,7 @@ import processSystemQueue from "./processors/system/index.js";
 import processWebhookDeliver from "./processors/webhook-deliver.js";
 import processBackground from "./processors/background/index.js";
 import processTumblr from "./processors/tumblr/index.js";
+import { processRssFetch } from "./processors/rss/index.js";
 
 import { endedPollNotification } from "./processors/ended-poll-notification.js";
 import { queueLogger } from "./logger.js";
@@ -29,6 +30,7 @@ import {
 	webhookDeliverQueue,
 	backgroundQueue,
 	tumblrQueue,
+	rssQueue,
 } from "./queues.js";
 import type { ThinUser } from "./types.js";
 
@@ -528,6 +530,17 @@ export default function () {
 	processObjectStorage(objectStorageQueue);
 	processBackground(backgroundQueue);
 	processTumblr(tumblrQueue);
+
+	rssQueue.process(10, processRssFetch);
+
+	rssQueue.add(
+		"fetchRssFeeds",
+		{},
+		{
+			repeat: { cron: "*/15 * * * *" },
+			removeOnComplete: true,
+		},
+	);
 
 	tumblrQueue.add(
 		"fetchTumblrFeeds",

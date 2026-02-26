@@ -4,7 +4,8 @@
 
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
+import yaml from "js-yaml";
 import Koa from "koa";
 import Router from "@koa/router";
 import send from "koa-send";
@@ -46,6 +47,18 @@ const swAssets = `${_dirname}/../../../../../built/_sw_dist_/`;
 
 // Init app
 const app = new Koa();
+
+// Load languages with display names
+const localesDir = `${_dirname}/../../../../../locales`;
+const langs = readdirSync(localesDir)
+	.filter((f: string) => f.endsWith(".yml"))
+	.map((f: string) => {
+		const localeCode = f.replace(".yml", "");
+		const localeData = yaml.load(
+			readFileSync(`${localesDir}/${f}`, "utf-8"),
+		) as { _lang_?: string };
+		return [localeCode, localeData._lang_ || localeCode];
+	});
 
 //#region Bull Dashboard
 const bullBoardPath = "/queue";
@@ -93,6 +106,7 @@ app.use(
 								"utf-8",
 							),
 					  )["src/init.ts"],
+			getLangs: () => langs,
 			config,
 		},
 	}),

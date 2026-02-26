@@ -29,7 +29,7 @@ const getInfoUrl = (blogname: string) => {
 	return `https://api.tumblr.com/v2/blog/${blogname}/info?api_key=${config.tumblr.key}`;
 };
 
-const getTumblrClient = ( profile ) => {
+const getTumblrClient = (profile) => {
 	const { accessToken, accessTokenSecret } = profile.integrations.tumblr;
 	return tumblr.createClient({
 		consumer_key: config.tumblr.key,
@@ -37,9 +37,9 @@ const getTumblrClient = ( profile ) => {
 		token: accessToken,
 		token_secret: accessTokenSecret,
 	});
-}
+};
 
-const getTumblrPostParams = ( note ) => {
+const getTumblrPostParams = (note) => {
 	return {
 		type: "text",
 		state: "published",
@@ -48,83 +48,102 @@ const getTumblrPostParams = ( note ) => {
 		native_inline_images: true,
 		body: note.text,
 	};
-}
+};
 
-const getTumblrPostData = async ( client, tumblrBlog, externalId ) => {
-	apiLogger.warn('requesting tumblr post: ' + tumblrBlog + ' ' + externalId);
-	const tumblrPostInfo = await client.blogPosts(
-		tumblrBlog,
-		{ id: externalId }
-	);
+const getTumblrPostData = async (client, tumblrBlog, externalId) => {
+	apiLogger.warn("requesting tumblr post: " + tumblrBlog + " " + externalId);
+	const tumblrPostInfo = await client.blogPosts(tumblrBlog, { id: externalId });
 
 	apiLogger.warn(JSON.stringify(tumblrPostInfo));
-	if( tumblrPostInfo.posts &&
-			tumblrPostInfo.posts.length === 1 &&
-			tumblrPostInfo.posts[0]
+	if (
+		tumblrPostInfo.posts &&
+		tumblrPostInfo.posts.length === 1 &&
+		tumblrPostInfo.posts[0]
 	) {
 		return tumblrPostInfo.posts[0];
 	}
 	return null;
-}
+};
 
-
-const createPostRequest = async (tumblrBlog, params, client, isReblog = false, attempts = 3) => {
-	const postingMethod = isReblog? "reblogPost" : "createLegacyPost";
+const createPostRequest = async (
+	tumblrBlog,
+	params,
+	client,
+	isReblog = false,
+	attempts = 3,
+) => {
+	const postingMethod = isReblog ? "reblogPost" : "createLegacyPost";
 	try {
-		apiLogger.warn('sending post creation request');
+		apiLogger.warn("sending post creation request");
 		apiLogger.warn(tumblrBlog);
 		apiLogger.warn(JSON.stringify(params));
-		const createdPost = await client[postingMethod](
-			tumblrBlog,
-			params
-		);
+		const createdPost = await client[postingMethod](tumblrBlog, params);
 		return createdPost;
 	} catch (ev) {
-		apiLogger.error("tumblr api call error: " + ev );
-		if( attempts ) {
-			setTimeout( () => {
-				createPostRequest (tumblrBlog, params, client, isReblog, attempts - 1 )
-			}, 10000 );
+		apiLogger.error("tumblr api call error: " + ev);
+		if (attempts) {
+			setTimeout(() => {
+				createPostRequest(tumblrBlog, params, client, isReblog, attempts - 1);
+			}, 10000);
 		}
 	}
-}
+};
 
 export async function postToTumblr(user, note, tumblrBlog) {
 	const profile = await UserProfiles.findOneByOrFail({ userId: user.id });
 	if (profile.integrations.tumblr) {
-		if (note.renoteId ) {
-			apiLogger.warn('Posting a reblog to tumblr');
-			const renotedPostId = note.reblogtrail && note.reblogtrail.length > 0  ?
-				note.reblogtrail[ note.reblogtrail.length - 1 ].id :
-				note.renoteId;
+		if (note.renoteId) {
+			apiLogger.warn("Posting a reblog to tumblr");
+			const renotedPostId =
+				note.reblogtrail && note.reblogtrail.length > 0
+					? note.reblogtrail[note.reblogtrail.length - 1].id
+					: note.renoteId;
 
-			apiLogger.warn('Posting a reblog to tumblr: ' + renotedPostId );
-			const rebloggedPost = await Notes.findOneBy( { id: renotedPostId})
+			apiLogger.warn("Posting a reblog to tumblr: " + renotedPostId);
+			const rebloggedPost = await Notes.findOneBy({ id: renotedPostId });
 			apiLogger.warn(JSON.stringify(rebloggedPost));
-			if( rebloggedPost && rebloggedPost.externalId) {
-
-				apiLogger.warn('Posting a reblog to tumblr: ' + renotedPostId + ' found' );
-				const client = getTumblrClient( profile );
+			if (rebloggedPost && rebloggedPost.externalId) {
+				apiLogger.warn(
+					"Posting a reblog to tumblr: " + renotedPostId + " found",
+				);
+				const client = getTumblrClient(profile);
 				const noteOp = await Users.findOneBy({ id: rebloggedPost.userId });
-	   		if( noteOp && noteOp.tumblrUUID ) {
-
-				apiLogger.warn('Posting a reblog to tumblr: ' + renotedPostId + ' user also found');
-					const tumblrPostInfo = await getTumblrPostData( client, noteOp.tumblrUUID, rebloggedPost.externalId );
+				if (noteOp && noteOp.tumblrUUID) {
+					apiLogger.warn(
+						"Posting a reblog to tumblr: " + renotedPostId + " user also found",
+					);
+					const tumblrPostInfo = await getTumblrPostData(
+						client,
+						noteOp.tumblrUUID,
+						rebloggedPost.externalId,
+					);
 					apiLogger.warn(JSON.stringify(tumblrPostInfo));
-					if( tumblrPostInfo ) {
-						let params = getTumblrPostParams( note );
+					if (tumblrPostInfo) {
+						let params = getTumblrPostParams(note);
 						params.id = tumblrPostInfo.id;
 						params.reblog_key = tumblrPostInfo.reblog_key;
 						params.comment = note.text;
-						const createdPost = await createPostRequest(tumblrBlog, params, client, true, 3 );
+						const createdPost = await createPostRequest(
+							tumblrBlog,
+							params,
+							client,
+							true,
+							3,
+						);
 						return createdPost;
 					}
 				}
 			}
 		} else if (!note.reblogtrail || !note.reblogtrail.length) {
-			const client = getTumblrClient( profile );
-			const params = getTumblrPostParams( note );
-			const createdPost = await createPostRequest(tumblrBlog, params, client, false, 3 );
+			const client = getTumblrClient(profile);
+			const params = getTumblrPostParams(note);
+			const createdPost = await createPostRequest(
+				tumblrBlog,
+				params,
+				client,
+				false,
+				3,
+			);
 			return createdPost;
 		}
 	}
@@ -144,11 +163,15 @@ export async function likePostOnTumblr(user, note, tumblrBlog) {
 				token_secret: accessTokenSecret,
 			});
 
-			const tumblrPostInfo = await getTumblrPostData( client, tumblrBlog, note.externalId );
+			const tumblrPostInfo = await getTumblrPostData(
+				client,
+				tumblrBlog,
+				note.externalId,
+			);
 
-			if( tumblrPostInfo ) {
+			if (tumblrPostInfo) {
 				const { id, reblog_key } = tumblrPostInfo;
-				await client.likePost( id, reblog_key );
+				await client.likePost(id, reblog_key);
 			}
 		}
 	}
@@ -158,7 +181,7 @@ export async function likePostOnTumblr(user, note, tumblrBlog) {
 
 export async function getTumblrProfile(tumblrBlog: string) {
 	const blogInfoResponse = await fetch(getInfoUrl(tumblrBlog));
-	if( blogInfoResponse.ok ) {
+	if (blogInfoResponse.ok) {
 		const blogInfo = await blogInfoResponse.json();
 		return blogInfo.response.blog;
 	} else {
@@ -220,13 +243,11 @@ const formatReblogItem = (reblog) => {
 export async function getTumblrPosts(tumblrBlog: string, offset: number) {
 	const feedUrl =
 		"https://" + tumblrBlog + ".tumblr.com/rss?cache-buster=" + Date.now();
-	const res = await getResponse(
-		{
-			url: feedUrl,
-			method: "GET",
-			headers: {}
-		}
-	);
+	const res = await getResponse({
+		url: feedUrl,
+		method: "GET",
+		headers: {},
+	});
 	const text = await res.text();
 
 	const posts = await rssParser.parseString(text);
@@ -255,16 +276,16 @@ export async function updateTumblrUser(tumblrUsername: string) {
 		username: tumblrUsername + "_at_tumblr_com",
 	});
 	if (!user) {
-		apiLogger.error( ' TUMBLR USER NOT FOUND ' + tumblrUsername );
+		apiLogger.error(" TUMBLR USER NOT FOUND " + tumblrUsername);
 		return null;
 	}
 
 	await Users.update(user.id, { feedUpdatedAt: new Date() });
 
-	apiLogger.log( 'fetching data for ' + tumblrUsername);
+	apiLogger.log("fetching data for " + tumblrUsername);
 	blogInfo = await getTumblrProfile(tumblrUsername);
 	if (!blogInfo) {
-		apiLogger.error( 'Cant get to ' + tumblrUsername);
+		apiLogger.error("Cant get to " + tumblrUsername);
 
 		return null;
 	}
@@ -272,7 +293,7 @@ export async function updateTumblrUser(tumblrUsername: string) {
 	let userNeedsUpdate = false;
 	const newUsername = blogInfo.name + "_at_tumblr_com";
 	if (newUsername != user.username) {
-		apiLogger.log( 'changing username for ' + tumblrUsername);
+		apiLogger.log("changing username for " + tumblrUsername);
 		user.username = newUsername;
 		user.usernameLower = newUsername.toLowerCase();
 		userNeedsUpdate = true;
@@ -303,7 +324,7 @@ export async function updateTumblrUser(tumblrUsername: string) {
 	}
 
 	if (userNeedsUpdate) {
-		apiLogger.log( 'updating data for ' + tumblrUsername);
+		apiLogger.log("updating data for " + tumblrUsername);
 		await db.transaction(async (transactionalEntityManager) => {
 			user = await transactionalEntityManager.save(user);
 		});
@@ -311,7 +332,7 @@ export async function updateTumblrUser(tumblrUsername: string) {
 
 	const profile = await UserProfiles.findOneByOrFail({ userId: user.id });
 	if (profile) {
-		apiLogger.log( 'found profile for ' + tumblrUsername);
+		apiLogger.log("found profile for " + tumblrUsername);
 		let needProfileUpdate = false;
 		if (profile.description != blogInfo.description) {
 			profile.description = sanitize(blogInfo.description);
@@ -426,7 +447,7 @@ export async function fetchTumblrFeed(user: User) {
 		posts = posts.reverse();
 		const lastUserUpdate = user.updatedAt;
 		const transforms = [];
-		apiLogger.warn( JSON.stringify( posts.map( (p)=>p.isoDate )));
+		apiLogger.warn(JSON.stringify(posts.map((p) => p.isoDate)));
 		for (const post of posts) {
 			const postDate = new Date(post.isoDate);
 			if (!lastUserUpdate || !user.feedUpdatedAt || postDate > lastUserUpdate) {
@@ -468,7 +489,9 @@ export async function fetchTumblrFeed(user: User) {
 							.join("<hr/>")}</div>`
 					: "";
 
-				const externalId = post.link? post.link.split('/').pop().slice(0,31) : null;
+				const externalId = post.link
+					? post.link.split("/").pop().slice(0, 31)
+					: null;
 
 				const note = await create(
 					user,
@@ -477,10 +500,10 @@ export async function fetchTumblrFeed(user: User) {
 						text: `<div class="tumblrPost">${reblogTrailBlock}${title}${postContent}</div>`,
 						apHashtags: post.categories,
 						url: post.link,
-						externalId: externalId
+						externalId: externalId,
 					},
 					true,
-					true
+					true,
 				);
 			}
 		}

@@ -34,7 +34,9 @@ export const getNoteSlug = async (note: Note) => {
 		}
 	}
 	return slugify(
-		`${ Date().split(' ').slice(0,4).join(' ') } ${Math.floor(Math.random() * 100000)}`,
-		slugOptions
+		`${Date().split(" ").slice(0, 4).join(" ")} ${Math.floor(
+			Math.random() * 100000,
+		)}`,
+		slugOptions,
 	);
 };

@@ -63,6 +63,7 @@ html
 		script.
 			var VERSION = "#{version}";
 			var CLIENT_ENTRY = "#{clientEntry.file}";
+			var LANGS = !{JSON.stringify(getLangs())};
 
 		script
 			include ../boot.js

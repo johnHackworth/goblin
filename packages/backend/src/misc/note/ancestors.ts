@@ -44,12 +44,12 @@ export const getSignature = (note) => {
 	return signature;
 };
 
-export const isNoteOpById = async ( noteId, userId ) => {
+export const isNoteOpById = async (noteId, userId) => {
 	const note = await Notes.findOneBy({ id: noteId });
-	return await isNoteOp( note, userId );
-}
+	return await isNoteOp(note, userId);
+};
 
-export const isNoteOp = async ( note, userId ) => {
+export const isNoteOp = async (note, userId) => {
 	const root = await getRootAncestor(note);
 	return root.userId === userId;
-}
+};

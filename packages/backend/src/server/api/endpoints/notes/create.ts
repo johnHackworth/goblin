@@ -229,7 +229,7 @@ export default define(meta, paramDef, async (ps, user) => {
 		}
 
 		// Check blocking
-		if ( ! isNoteOp( renote, user.id ) ) {
+		if (!isNoteOp(renote, user.id)) {
 			const isBlocked = await Blockings.exist({
 				where: {
 					blockerId: renote.userId,
@@ -256,7 +256,7 @@ export default define(meta, paramDef, async (ps, user) => {
 		}
 
 		// Check blocking
-		if ( ! isNoteOp( renote, user.id ) ) {
+		if (!isNoteOp(renote, user.id)) {
 			const isBlocked = await Blockings.exist({
 				where: {
 					blockerId: reply.userId,
@@ -312,14 +312,13 @@ export default define(meta, paramDef, async (ps, user) => {
 		apEmojis: ps.noExtractEmojis ? [] : undefined,
 	});
 
-
 	if (ps.postToTumblr) {
 		try {
 			const tumblrPostData = await postToTumblr(user, note, ps.postToTumblr);
-			if(tumblrPostData && tumblrPostData.id) {
+			if (tumblrPostData && tumblrPostData.id) {
 				await Notes.update(note.id, { externalId: tumblrPostData.id });
 			}
-		} catch( ev ) {
+		} catch (ev) {
 			// just to avoid failing in your localhost where tumblr api can't be reached
 		}
 	}

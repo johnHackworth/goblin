@@ -35,6 +35,7 @@ import {
 	UserNotePinings,
 	UserProfiles,
 	UserSecurityKeys,
+	RssFeeds,
 } from "../index.js";
 import type { Instance } from "../entities/instance.js";
 

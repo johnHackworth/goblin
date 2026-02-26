@@ -31,6 +31,8 @@ export const backgroundQueue = initializeQueue<Record<string, unknown>>("bg");
 
 export const tumblrQueue = initializeQueue<Record<string, unknown>>("tumblr");
 
+export const rssQueue = initializeQueue<Record<string, unknown>>("rss");
+
 export const queues = [
 	systemQueue,
 	endedPollNotificationQueue,
@@ -41,4 +43,5 @@ export const queues = [
 	webhookDeliverQueue,
 	backgroundQueue,
 	tumblrQueue,
+	rssQueue,
 ];

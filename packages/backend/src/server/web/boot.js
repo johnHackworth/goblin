@@ -26,12 +26,16 @@
 	const v = localStorage.getItem("v") || VERSION;
 
 	const supportedLangs = LANGS;
+	const supportedLangCodes = supportedLangs.map((x) => x[0]);
 	let lang = localStorage.getItem("lang");
-	if (lang == null || !supportedLangs.includes(lang)) {
-		if (supportedLangs.includes(navigator.language)) {
+	if (lang == null || !supportedLangCodes.includes(lang)) {
+		if (supportedLangCodes.includes(navigator.language)) {
 			lang = navigator.language;
 		} else {
-			lang = supportedLangs.find((x) => x.split("-")[0] === navigator.language);
+			const found = supportedLangs.find(
+				(x) => x[0].split("-")[0] === navigator.language,
+			);
+			lang = found ? found[0] : null;
 
 			// Fallback
 			if (lang == null) lang = "en-US";
