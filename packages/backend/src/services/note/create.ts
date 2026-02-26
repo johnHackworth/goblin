@@ -337,10 +337,12 @@ export default async (
 		// Parse MFM if needed
 		if (!(tags && emojis && mentionedUsers)) {
 			const textForParsing = data.text ? stripHtml(data.text) : "";
-		const tokens = textForParsing ? mfm.parse(textForParsing)! : [];
+			const tokens = textForParsing ? mfm.parse(textForParsing)! : [];
 			const cwTokens = data.cw ? mfm.parse(stripHtml(data.cw))! : [];
 			const choiceTokens = data.poll?.choices
-				? concat(data.poll.choices.map((choice) => mfm.parse(stripHtml(choice))!))
+				? concat(
+						data.poll.choices.map((choice) => mfm.parse(stripHtml(choice))!),
+				  )
 				: [];
 
 			const combinedTokens = tokens.concat(cwTokens).concat(choiceTokens);
@@ -644,7 +646,9 @@ export default async (
 
 				// Notify renote author
 				if (data.renote.userHost === null) {
-					const key = `${data.renote.userId}:${data.renote.threadId || data.renote.id}`;
+					const key = `${data.renote.userId}:${
+						data.renote.threadId || data.renote.id
+					}`;
 					if (!mutedSet.has(key)) {
 						nm.push(data.renote.userId, type);
 					}

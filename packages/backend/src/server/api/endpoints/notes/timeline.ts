@@ -10,7 +10,7 @@ import { generateMutedNoteQuery } from "../../common/generate-muted-note-query.j
 import { generateChannelQuery } from "../../common/generate-channel-query.js";
 import { generateBlockedUserQuery } from "../../common/generate-block-query.js";
 import { generateMutedUserRenotesQueryForNotes } from "../../common/generated-muted-renote-query.js";
-import { cropRepeats } from './helpers/timeline-enhacers.js'
+import { cropRepeats } from "./helpers/timeline-enhacers.js";
 import { apiLogger } from "../../logger.js";
 import { ApiError } from "../../error.js";
 
@@ -183,12 +183,15 @@ export default define(meta, paramDef, async (ps, user) => {
 		const notes = await query.take(take).skip(skip).getMany();
 		// Reduced detailRecursion from 10 to 2 to prevent exponential query explosion
 		// This reduces recursive packing from 2^10 (1024) to 2^2 (4) calls per note
-		const packedNotes = await Notes.packMany(notes, user, { detail: true, detailRecursion: 2 });
-		// Filter moved to SQL WHERE clause (line ~91), keeping this as safety net
-		return packedNotes.filter( (note) => {
-			return ! note.replyId || note.user.host;
+		const packedNotes = await Notes.packMany(notes, user, {
+			detail: true,
+			detailRecursion: 2,
 		});
-	}
+		// Filter moved to SQL WHERE clause (line ~91), keeping this as safety net
+		return packedNotes.filter((note) => {
+			return !note.replyId || note.user.host;
+		});
+	};
 
 	// We fetch slightly more than requested because some may be filtered out
 	// Reduced from 2x to 1.2x to minimize over-fetching and wasted packing

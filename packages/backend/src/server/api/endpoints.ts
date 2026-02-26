@@ -49,6 +49,10 @@ import * as ep___admin_queue_stats from "./endpoints/admin/queue/stats.js";
 import * as ep___admin_relays_add from "./endpoints/admin/relays/add.js";
 import * as ep___admin_relays_list from "./endpoints/admin/relays/list.js";
 import * as ep___admin_relays_remove from "./endpoints/admin/relays/remove.js";
+import * as ep___rss_add from "./endpoints/rss/add.js";
+import * as ep___rss_list from "./endpoints/rss/list.js";
+import * as ep___rss_unfollow from "./endpoints/rss/unfollow.js";
+import * as ep___admin_rss_list from "./endpoints/admin/rss/list.js";
 import * as ep___admin_resetPassword from "./endpoints/admin/reset-password.js";
 import * as ep___admin_resolveAbuseUserReport from "./endpoints/admin/resolve-abuse-user-report.js";
 import * as ep___admin_search_indexAll from "./endpoints/admin/search/index-all.js";
@@ -276,6 +280,7 @@ import * as ep___notes_state from "./endpoints/notes/state.js";
 import * as ep___notes_threadMuting_create from "./endpoints/notes/thread-muting/create.js";
 import * as ep___notes_threadMuting_delete from "./endpoints/notes/thread-muting/delete.js";
 import * as ep___notes_timeline from "./endpoints/notes/timeline.js";
+import * as ep___notes_rssTimeline from "./endpoints/notes/rss-timeline.js";
 import * as ep___notes_translate from "./endpoints/notes/translate.js";
 import * as ep___notes_unrenote from "./endpoints/notes/unrenote.js";
 import * as ep___notes_userListTimeline from "./endpoints/notes/user-list-timeline.js";
@@ -642,6 +647,7 @@ const postEps = [
 	["notes/thread-muting/create", ep___notes_threadMuting_create],
 	["notes/thread-muting/delete", ep___notes_threadMuting_delete],
 	["notes/timeline", ep___notes_timeline],
+	["notes/rss-timeline", ep___notes_rssTimeline],
 	["notes/translate", ep___notes_translate],
 	["notes/unrenote", ep___notes_unrenote],
 	["notes/user-list-timeline", ep___notes_userListTimeline],
@@ -654,6 +660,10 @@ const postEps = [
 	["pages/create", ep___pages_create],
 	["pages/delete", ep___pages_delete],
 	["pages/featured", ep___pages_featured],
+	["rss/add", ep___rss_add],
+	["rss/list", ep___rss_list],
+	["rss/unfollow", ep___rss_unfollow],
+	["admin/rss/list", ep___admin_rss_list],
 	["pages/like", ep___pages_like],
 	["pages/show", ep___pages_show],
 	["pages/unlike", ep___pages_unlike],

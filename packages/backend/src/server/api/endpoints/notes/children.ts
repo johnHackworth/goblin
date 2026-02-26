@@ -54,8 +54,8 @@ export default define(meta, paramDef, async (ps, user) => {
 
 	generateVisibilityQuery(query, user);
 	if (user) {
-		const isOp = await isNoteOpById( ps.noteId, user.id );
-		if( !isOp ) {
+		const isOp = await isNoteOpById(ps.noteId, user.id);
+		if (!isOp) {
 			generateMutedUserQuery(query, user);
 			generateBlockedUserQuery(query, user);
 		}

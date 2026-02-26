@@ -67,6 +67,9 @@ import { InstanceRepository } from "./repositories/instance.js";
 import { Webhook } from "./entities/webhook.js";
 import { UserIp } from "./entities/user-ip.js";
 import { NoteEdit } from "./entities/note-edit.js";
+import { RssFeed } from "./entities/rss-feed.js";
+import { RssFeedFollowing } from "./entities/rss-feed-following.js";
+import { RssFeedItem } from "./entities/rss-feed-item.js";
 
 export const Announcements = db.getRepository(Announcement);
 export const AnnouncementReads = db.getRepository(AnnouncementRead);
@@ -133,3 +136,6 @@ export const RegistryItems = db.getRepository(RegistryItem);
 export const Webhooks = db.getRepository(Webhook);
 export const Ads = db.getRepository(Ad);
 export const PasswordResetRequests = db.getRepository(PasswordResetRequest);
+export const RssFeeds = db.getRepository(RssFeed);
+export const RssFeedFollowings = db.getRepository(RssFeedFollowing);
+export const RssFeedItems = db.getRepository(RssFeedItem);

@@ -132,18 +132,18 @@ export default define(meta, paramDef, async (ps, me) => {
 				apiLogger.warn(`failed to resolve remote user: ${e}`);
 				throw new ApiError(meta.errors.failedToResolveRemoteUser);
 			});
-		} else if (!ps.host && ps.username?.endsWith('_at_tumblr_com')) {
-      user = await resolveUser(ps.username, ps.host).catch((e)=>{
-        apiLogger.warn(`failed to resolve tumblr user: ${e}`);
-        throw new ApiError(meta.errors.failedToResolveRemoteUser);
-      });
-    } else if (!ps.host && ps.username?.endsWith('.tumblr.com')) {
-    	const username = ps.username.replace('.tumblr.com', '_at_tumblr_com');
-      user = await resolveUser(username, ps.host).catch((e)=>{
-        apiLogger.warn(`failed to resolve tumblr user: ${e}`);
-        throw new ApiError(meta.errors.failedToResolveRemoteUser);
-      });
-    } else {
+		} else if (!ps.host && ps.username?.endsWith("_at_tumblr_com")) {
+			user = await resolveUser(ps.username, ps.host).catch((e) => {
+				apiLogger.warn(`failed to resolve tumblr user: ${e}`);
+				throw new ApiError(meta.errors.failedToResolveRemoteUser);
+			});
+		} else if (!ps.host && ps.username?.endsWith(".tumblr.com")) {
+			const username = ps.username.replace(".tumblr.com", "_at_tumblr_com");
+			user = await resolveUser(username, ps.host).catch((e) => {
+				apiLogger.warn(`failed to resolve tumblr user: ${e}`);
+				throw new ApiError(meta.errors.failedToResolveRemoteUser);
+			});
+		} else {
 			const q: FindOptionsWhere<User> =
 				ps.userId != null
 					? ps.userId.startsWith("http")
@@ -156,7 +156,7 @@ export default define(meta, paramDef, async (ps, me) => {
 		if (user == null || (!isAdminOrModerator && user.isSuspended)) {
 			throw new ApiError(meta.errors.noSuchUser);
 		}
-		if(user.tumblrUUID) {
+		if (user.tumblrUUID) {
 			await updateTumblrUser(user.username.toLowerCase());
 			await fetchTumblrFeed(user);
 		}

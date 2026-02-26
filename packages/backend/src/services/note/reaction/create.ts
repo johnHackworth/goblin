@@ -94,13 +94,12 @@ export default async (
 
 	perUserReactionsChart.update(user, note);
 
-	if( note.externalId ) {
+	if (note.externalId) {
 		const noteOP = await Users.findOneBy({ id: note.userId });
-		if( noteOP && noteOP.tumblrUUID ) {
-			likePostOnTumblr( user, note, noteOP.tumblrUUID );
+		if (noteOP && noteOP.tumblrUUID) {
+			likePostOnTumblr(user, note, noteOP.tumblrUUID);
 		}
 	}
-
 
 	// カスタム絵文字リアクションだったら絵文字情報も送る
 	const decodedReaction = decodeReaction(reaction);

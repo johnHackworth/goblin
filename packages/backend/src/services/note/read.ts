@@ -110,13 +110,16 @@ export default async function (
 		// This replaces 3 separate count queries with 1 optimized query
 		const countResults = await NoteUnreads.createQueryBuilder("unread")
 			.select([
-				'SUM(CASE WHEN "isMentioned" = true THEN 1 ELSE 0 END)', "mentionsCount",
+				'SUM(CASE WHEN "isMentioned" = true THEN 1 ELSE 0 END)',
+				"mentionsCount",
 			])
 			.addSelect([
-				'SUM(CASE WHEN "isSpecified" = true THEN 1 ELSE 0 END)', "specifiedCount",
+				'SUM(CASE WHEN "isSpecified" = true THEN 1 ELSE 0 END)',
+				"specifiedCount",
 			])
 			.addSelect([
-				'SUM(CASE WHEN "noteChannelId" IS NOT NULL THEN 1 ELSE 0 END)', "channelCount",
+				'SUM(CASE WHEN "noteChannelId" IS NOT NULL THEN 1 ELSE 0 END)',
+				"channelCount",
 			])
 			.where("unread.userId = :userId", { userId })
 			.getRawOne();
