@@ -382,6 +382,10 @@ export const routes = [
 		component: page(() => import("./pages/channels.vue")),
 	},
 	{
+		path: "/rss",
+		component: page(() => import("./pages/rss.vue")),
+	},
+	{
 		path: "/registry/keys/system/:path(*)?",
 		component: page(() => import("./pages/registry.keys.vue")),
 	},
