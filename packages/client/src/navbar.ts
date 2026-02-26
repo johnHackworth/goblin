@@ -77,6 +77,11 @@ export const navbarItemDef = reactive({
 		icon: "ph-file-text ph-bold ph-lg",
 		to: "/pages",
 	},
+	rss: {
+		title: "rss",
+		icon: "ph-rss ph-bold ph-lg",
+		to: "/rss",
+	},
 	ui: {
 		title: "switchUi",
 		icon: "ph-layout ph-bold ph-lg",

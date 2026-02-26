@@ -1612,6 +1612,21 @@ _widgets:
   button: "Button"
   onlineUsers: "Online Users"
   jobQueue: "Job Queue"
+
+rssFeedInfo: "RSS feeds will be posted as notes from a bot account. The posts will federate to other instances."
+rss: "RSS"
+rssReader: "RSS Reader"
+rssYourFeeds: "Your Feeds"
+rssAddFeed: "Add RSS Feed"
+rssFeedNotFound: "We couldn't find any RSS feed in the URL you entered!"
+rssFeedUrlPlaceholder: "https://example.com/feed.xml"
+rssNoFeeds: "You haven't added any RSS feeds yet."
+rssLastFetched: "Last fetched"
+rssDisabled: "Disabled"
+rssAddFailed: "Failed to add RSS feed"
+rssUnfollowFailed: "Failed to unfollow RSS feed"
+
+_serverMetric:
   serverMetric: "Server Metrics"
   aiscript: "AiScript Console"
   userList: "User List"

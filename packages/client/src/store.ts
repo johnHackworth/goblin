@@ -9,6 +9,7 @@ const menuOptions = [
 	"followRequests",
 	"messaging",
 	"hashtags",
+	"rss",
 	"explore",
 	"search",
 	"profile",
