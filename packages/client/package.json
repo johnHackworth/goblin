@@ -6,9 +6,16 @@
 		"build": "pnpm vite build",
 		"lint": "pnpm rome check **/*.ts --apply && pnpm run lint:vue",
 		"lint:vue": "pnpm paralint --ext .vue --fix '**/*.vue' --cache",
-		"format": "pnpm rome format * --write && pnpm prettier --write '**/*.{scss,vue}' --cache --cache-strategy metadata"
+		"format": "pnpm rome format * --write && pnpm prettier --write '**/*.{scss,vue}' --cache --cache-strategy metadata",
+		"mocha": "cross-env NODE_ENV=test node node_modules/mocha/bin/mocha.js --require tsx 'test/**/*.ts'",
+		"test": "pnpm run mocha"
 	},
 	"devDependencies": {
+		"@types/mocha": "9.1.1",
+		"jsdom": "20.0.3",
+		"@types/jsdom": "21.1.1",
+		"ts-node": "10.9.1",
+		"tsx": "4.7.0",
 		"@discordapp/twemoji": "14.1.2",
 		"@eslint-sets/eslint-config-vue3": "^5.12.0",
 		"@eslint-sets/eslint-config-vue3-ts": "^3.3.0",
@@ -75,6 +82,7 @@
 		"seedrandom": "3.0.5",
 		"start-server-and-test": "1.15.2",
 		"strict-event-emitter-types": "2.0.0",
+		"mocha": "10.2.0",
 		"stringz": "2.1.0",
 		"swiper": "10.0.4",
 		"syuilo-password-strength": "0.0.1",

@@ -1,5 +1,6 @@
 {
 	"extension": ["ts","js","cjs","mjs"],
+	"spec": ["test/**/*.ts"],
 	"node-option": [
 		"experimental-specifier-resolution=node",
 		"loader=./test/loader.js"

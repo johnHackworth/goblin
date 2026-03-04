@@ -38,6 +38,7 @@
 		"@bull-board/ui": "5.6.0",
 		"@napi-rs/cli": "^2.18.2",
 		"@tensorflow/tfjs": "^3.21.0",
+		"form-data": "^4.0.0",
 		"js-yaml": "^4.1.0",
 		"seedrandom": "^3.0.5"
 	},
