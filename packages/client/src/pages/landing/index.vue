@@ -168,19 +168,34 @@ export default defineComponent({
   }
 }
 .rsqzvsbo {
+  display: flex;
+  min-height: 100vh;
+  
   > .left {
+    flex: 0 0 450px;
+    min-width: 320px;
     max-width: 450px;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
+    height: 100vh;
     display: flex;
     text-align: center;
     box-sizing: border-box;
     padding: 16px;
+    z-index: 10;
 
     @media (max-width: 1200px) {
-      max-width: 700px;
-      position: absolute;
+      position: sticky;
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 450px) {
+      position: relative;
+      min-width: 0;
     }
 
     > .bg {
@@ -327,25 +342,25 @@ export default defineComponent({
   }
 }
 .right {
-  position: absolute;
-  top: 0;
-  right: 50%;
-  margin-right: -320px;
-
-  @media (max-width: 1600px) {
-    right: 0;
-    margin-right: 10px;
-  }
+  flex: 1;
+  min-width: 0;
+  margin-left: 450px;
+  padding-top: 16px;
+  padding-right: 16px;
 
   @media (max-width: 1200px) {
-    top: 450px;
-    right: inherit;
-    left: 10px;
-    margin-right: 0;
+    margin-left: 0;
+    margin-top: 500px;
+    padding: 16px;
   }
 
   @media (max-width: 700px) {
-    left: 0px;
+    margin-top: 480px;
+  }
+
+  @media (max-width: 450px) {
+    margin-top: 0;
+    padding: 8px;
   }
 
 }
