@@ -191,10 +191,11 @@ export default defineComponent({
       width: 100%;
       max-width: 100%;
       height: auto;
+      border-bottom: 1px solid var(--divider);
     }
 
     @media (max-width: 450px) {
-      position: relative;
+      position: sticky;
       min-width: 0;
     }
 
@@ -234,10 +235,40 @@ export default defineComponent({
       width: min(460px, 100%);
       margin: auto;
 
+      @media (max-width: 1200px) {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 16px;
+        gap: 16px;
+      }
+
+      @media (max-width: 700px) {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+
 
       > .form {
         position: relative;
         box-shadow: 0 12px 32px rgb(0 0 0 / 25%);
+
+        @media (max-width: 1200px) {
+          box-shadow: none;
+          background: transparent;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+
+        @media (max-width: 700px) {
+          flex-wrap: wrap;
+          justify-content: center;
+          width: 100%;
+        }
 
         > .bg {
           position: absolute;
