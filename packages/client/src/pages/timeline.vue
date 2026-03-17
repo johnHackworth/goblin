@@ -87,8 +87,6 @@ if (defaultStore.reactiveState.tutorial.value !== -1) {
 const isLocalTimelineAvailable =
 	!instance.disableLocalTimeline ||
 	($i != null && ($i.isModerator || $i.isAdmin));
-const isBotsTimelineAvailable =
-	($i != null && ($i.isModerator || $i.isAdmin));
 const isRecommendedTimelineAvailable = !instance.disableRecommendedTimeline;
 const isGlobalTimelineAvailable =
 	!instance.disableGlobalTimeline ||
@@ -102,8 +100,8 @@ let timelines = ["home"];
 if (isLocalTimelineAvailable) {
 	timelines.push("local");
 }
-if (isBotsTimelineAvailable) {
-	timelines.push("bots");
+if (isLocalTimelineAvailable) {
+	timelines.push("rss");
 }
 if (isLocalTimelineAvailable) {
 	timelines.push("social");
@@ -160,7 +158,7 @@ async function chooseList(ev: MouseEvent) {
 }
 
 function saveSrc(
-	newSrc: "home" | "local" | "social" | "bots" | "recommended" | "global",
+	newSrc: "home" | "local" | "social" | "rss" | "recommended" | "global",
 ): void {
 	defaultStore.set("tl", {
 		...defaultStore.state.tl,
@@ -217,9 +215,9 @@ const headerTabs = $computed(() => [
 	...(isLocalTimelineAvailable
 		? [
 				{
-					key: "bots",
+					key: "rss",
 					title: "RSS",
-					icon: "ph-tumblr-logo ph-bold ph-lg",
+					icon: "ph-rss-simple ph-bold ph-lg",
 					iconOnly: true,
 				},
 		  ]
@@ -254,7 +252,7 @@ definePageMetadata(
 				? "ph-users-three ph-bold ph-lg"
 				: src === "social"
 				? "ph-handshake ph-bold ph-lg"
-				: src === "bots"
+				: src === "rss"
 				? "ph-robot ph-bold ph-lg"
 				: src === "recommended"
 				? "ph-thumbs-up ph-bold ph-lg"

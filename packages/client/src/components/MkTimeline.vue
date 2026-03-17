@@ -120,15 +120,9 @@ if (props.src === "home") {
 
 	tlHint = i18n.ts._tutorial.step5_4;
 	tlHintClosed = defaultStore.state.tlLocalHintClosed;
-} else if (props.src === "bots") {
-	endpoint = "notes/local-timeline";
-	query = {
-		onlyBots: true,
-	};
-	connection = stream.useChannel("botsTimeline", {
-		onlyBot: true,
-	});
-	connection.on("note", prepend);
+} else if (props.src === "rss") {
+	endpoint = "notes/rss-timeline";
+	query = {};
 } else if (props.src === "recommended") {
 	endpoint = "notes/recommended-timeline";
 	query = {
@@ -230,7 +224,7 @@ const pagination = {
 };
 
 onUnmounted(() => {
-	connection.dispose();
+	if (connection) connection.dispose();
 	if (connection2) connection2.dispose();
 });
 
