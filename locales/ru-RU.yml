@@ -977,8 +977,7 @@ _registry:
   domain: "Домен"
   createKey: "Новый ключ"
 _aboutMisskey:
-  about: "Goblin это форк Goblin, сделанный ThatOneCalculator, разработка которого
-    началась с 2022."
+  about: "Goblin это форк Firefish, который является форком Misskey, сделанным ThatOneCalculator, разработка которого началась с 2022."
   contributors: "Основные соавторы"
   allContributors: "Все соавторы"
   source: "Исходный код"

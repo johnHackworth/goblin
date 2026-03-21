@@ -1079,8 +1079,7 @@ _registry:
   domain: "Domain"
   createKey: "Schlüssel erstellen"
 _aboutGoblin:
-  about: "Goblin ist ein Fork von Misskey, der seit 2022 von ThatOneCalculator entwickelt
-    wird."
+  about: "Goblin ist ein Fork von Firefish, der ein Fork von Misskey ist, der seit 2022 von ThatOneCalculator entwickelt wird."
   contributors: "Hauptmitwirkende"
   allContributors: "Alle Mitwirkenden"
   source: "Quellcode"

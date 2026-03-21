@@ -972,7 +972,7 @@ _registry:
   domain: "域"
   createKey: "创建键"
 _aboutGoblin:
-  about: "Goblin 是由 ThatOneCalculator 创建的 Misskey 的一个分支，自 2022 年开始开发。"
+  about: "Goblin 是由 Firefish 分支的分支，Firefish 是由 ThatOneCalculator 创建的 Misskey 的一个分支，自 2022 年开始开发。"
   contributors: "主要贡献者"
   allContributors: "全体贡献者"
   source: "源代码"

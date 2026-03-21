@@ -1211,7 +1211,7 @@ _registry:
   domain: "Domain"
   createKey: "Create key"
 _aboutGoblin:
-  about: "Goblin is a fork of Misskey made by ThatOneCalculator, which has been in
+  about: "Goblin is a fork of Firefish which is a fork of Misskey made by ThatOneCalculator, which has been in
     development since 2022."
   contributors: "Main contributors"
   allContributors: "All contributors"

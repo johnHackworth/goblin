@@ -969,7 +969,7 @@ _registry:
   domain: "域"
   createKey: "新增機碼"
 _aboutGoblin:
-  about: "Goblin是由ThatOneCalculator自2022年起開發的Misskey分支。"
+  about: "Goblin是由Firefish分支的分支，Firefish是由ThatOneCalculator自2022年起開發的Misskey分支。"
   contributors: "主要貢獻者"
   allContributors: "全體貢獻人員"
   source: "原始碼"

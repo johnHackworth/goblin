@@ -1929,8 +1929,7 @@ _preferencesBackups:
 _aboutMisskey:
   patronsList: Bağış büyüklüğüne göre değil, kronolojik olarak listelenmiştir. Adınızı
     buraya almak için yukarıdaki bağlantıyla bağış yapın!
-  about: Goblin, 2022'den beri geliştirilmekte olan ThatOneCalculator tarafından
-    yapılan bir Misskey çatalıdır.
+  about: Goblin, 2022'den beri geliştirilmekte olan ThatOneCalculator tarafından yapılan Misskey çatalı Firefish'in çatalıdır.
   allContributors: Tüm katkıda bulunanlar
   patrons: Goblin patronları
   morePatrons: Burada listelenmeyen diğer birçok yardımcının desteğini de takdir ediyoruz.

@@ -1056,8 +1056,7 @@ _registry:
   domain: "Dominio"
   createKey: "Crear una llave"
 _aboutGoblin:
-  about: "Goblin es una bifurcación de Misskey creada por ThatOneCalculator, que
-    ha estado en desarrollo desde el 2022."
+  about: "Goblin es una bifurcación de Firefish, que es una bifurcación de Misskey creada por ThatOneCalculator, que ha estado en desarrollo desde el 2022."
   contributors: "Principales colaboradores"
   allContributors: "Todos los colaboradores"
   source: "Código fuente"

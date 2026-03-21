@@ -1054,7 +1054,7 @@ _registry:
   domain: "ドメイン"
   createKey: "キーを作成"
 _aboutGoblin:
-  about: "Goblinは、2022年に生まれたThatOneCalculatorによるMisskeyのforkです。"
+  about: "Goblinは、2022年に生まれたThatOneCalculatorによるMisskeyのforkであるFirefishのforkです。"
   contributors: "主なコントリビューター"
   allContributors: "全てのコントリビューター"
   source: "ソースコード"
