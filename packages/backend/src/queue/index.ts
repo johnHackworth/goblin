@@ -531,7 +531,7 @@ export default function () {
 	processBackground(backgroundQueue);
 	processTumblr(tumblrQueue);
 
-	rssQueue.process(10, processRssFetch);
+	rssQueue.process("fetchRssFeeds", 10, processRssFetch);
 
 	rssQueue.add(
 		"fetchRssFeeds",
