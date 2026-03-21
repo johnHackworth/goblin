@@ -205,6 +205,10 @@ export default defineComponent({
       left: 0;
       width: 100%;
       height: 100%;
+
+      @media (max-width: 1200px) {
+        display: none;
+      }
     }
 
     > .fade {
@@ -214,6 +218,10 @@ export default defineComponent({
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.25);
+
+      @media (max-width: 1200px) {
+        display: none;
+      }
     }
 
     > .emojis {
@@ -280,6 +288,10 @@ export default defineComponent({
           background-size: cover;
           opacity: 0.75;
 
+          @media (max-width: 1200px) {
+            display: none;
+          }
+
           > .fade {
             position: absolute;
             bottom: 0;
@@ -291,6 +303,10 @@ export default defineComponent({
               var(--panel),
               var(--X15)
             );
+
+            @media (max-width: 1200px) {
+              display: none;
+            }
           }
         }
 
@@ -298,11 +314,34 @@ export default defineComponent({
           position: relative;
           z-index: 1;
 
+          @media (max-width: 1200px) {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+          }
+
+          @media (max-width: 700px) {
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+
           > h1 {
             display: block;
             margin: 0;
             padding: 32px 32px 24px 32px;
             font-size: 16px;
+
+            @media (max-width: 1200px) {
+              padding: 8px;
+              display: flex;
+              align-items: center;
+            }
+
+            @media (max-width: 700px) {
+              width: 100%;
+              justify-content: center;
+            }
 
             > .logo {
               vertical-align: bottom;
@@ -312,10 +351,27 @@ export default defineComponent({
 
           > .about {
             padding: 0 32px;
+
+            @media (max-width: 1200px) {
+              padding: 8px;
+              flex: 1;
+              min-width: 200px;
+            }
+
+            @media (max-width: 700px) {
+              width: 100%;
+              text-align: center;
+            }
           }
 
           > .action {
             padding: 32px;
+
+            @media (max-width: 1200px) {
+              padding: 8px;
+              display: flex;
+              gap: 8px;
+            }
 
             > * {
               line-height: 28px;
@@ -326,6 +382,10 @@ export default defineComponent({
             border-top: solid 0.5px var(--divider);
             padding: 0 32px 16px;
             font-size: 90%;
+
+            @media (max-width: 1200px) {
+              display: none;
+            }
 
             > div {
               > span:not(:last-child) {
@@ -365,6 +425,10 @@ export default defineComponent({
         text-shadow: 0 0 8px black;
         font-size: 0.9em;
 
+        @media (max-width: 1200px) {
+          display: none;
+        }
+
         > *:not(:last-child) {
           margin-right: 1.5em;
         }
@@ -381,17 +445,13 @@ export default defineComponent({
 
   @media (max-width: 1200px) {
     margin-left: 0;
-    margin-top: 500px;
-    padding: 16px;
+    padding-top: 16px;
   }
 
   @media (max-width: 700px) {
-    margin-top: 480px;
-  }
-
-  @media (max-width: 450px) {
-    margin-top: 0;
+    margin-left: 0;
     padding: 8px;
+    width: 100%;
   }
 
 }
