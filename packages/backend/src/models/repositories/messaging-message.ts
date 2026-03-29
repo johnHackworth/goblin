@@ -3,6 +3,7 @@ import { MessagingMessage } from "@/models/entities/messaging-message.js";
 import { Users, DriveFiles, UserGroups } from "../index.js";
 import type { Packed } from "@/misc/schema.js";
 import type { User } from "@/models/entities/user.js";
+import sanitize from "sanitize-html";
 
 export const MessagingMessageRepository = db
 	.getRepository(MessagingMessage)
@@ -26,7 +27,7 @@ export const MessagingMessageRepository = db
 			return {
 				id: message.id,
 				createdAt: message.createdAt.toISOString(),
-				text: message.text,
+				text: message.text ? sanitize(message.text) : null,
 				userId: message.userId,
 				user: await Users.pack(message.user || message.userId, me),
 				recipientId: message.recipientId,
