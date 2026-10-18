@@ -69,7 +69,7 @@ export default defineConfig(({ command, mode }) => {
 		},
 
 		build: {
-			target: ["chrome87", "firefox78", "safari14", "es2017"],
+			target: ["chrome87", "firefox78", "safari14", "es2020"],
 			manifest: "manifest.json",
 			rollupOptions: {
 				input: {

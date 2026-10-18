@@ -27,7 +27,7 @@ import {
 	version as vueVersion,
 	defineAsyncComponent,
 } from "vue";
-import { initializeDatadogRUM } from "@/datadog-rum";
+import { initializeDatadogRUM, updateDatadogUser } from "@/datadog-rum";
 import { compareVersions } from "compare-versions";
 
 import widgets from "@/widgets";
@@ -512,14 +512,9 @@ function checkForSplash() {
 		});
 	}
 
-	// Initialize Datadog RUM
-	initializeDatadogRUM();
+	// shortcut
+	document.addEventListener("keydown", makeHotkey(hotkeys));
 
-		// shortcut
-		document.addEventListener("keydown", makeHotkey(hotkeys));
-		
-		// Make sure user context is updated after any login/logout
-		if ($i) {
-			updateDatadogUser();
-		}
+	// Make sure user context is updated after any login/logout
+	updateDatadogUser();
 })();
