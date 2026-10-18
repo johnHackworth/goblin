@@ -292,3 +292,5 @@ export async function openAccountMenu(
 		);
 	}
 }
+
+export { updateDatadogUser } from "@/datadog-rum";

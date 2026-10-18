@@ -41,7 +41,7 @@ import { i18n } from "@/i18n";
 import { confirm, alert, post, popup, toast, api } from "@/os";
 import { stream } from "@/stream";
 import * as sound from "@/scripts/sound";
-import { $i, refreshAccount, login, updateAccount, signout, updateDatadogUser } from "@/account";
+import { $i, refreshAccount, login, updateAccount, signout } from "@/account";
 import { defaultStore, ColdDeviceStorage } from "@/store";
 import { fetchInstance, instance } from "@/instance";
 import { makeHotkey } from "@/scripts/hotkey";
