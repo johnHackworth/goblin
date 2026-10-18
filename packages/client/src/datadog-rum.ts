@@ -5,7 +5,16 @@
 
 import { datadogRum } from "@datadog/browser-rum";
 import type { RumEvent } from "@datadog/browser-rum";
-import { $i } from "@/account";
+
+// Structural type for the current account — kept dependency-free so this
+// module never imports @/account (that would create an import cycle that
+// breaks $i initialization order at startup)
+export type RumUser = {
+	id: string;
+	isAdmin?: boolean | null;
+	isModerator?: boolean | null;
+	createdAt?: string;
+} | null;
 
 /**
  * Scrub PII from URLs, headers, and other sensitive data
@@ -49,20 +58,20 @@ function scrubPII(event: RumEvent): void {
  * Add user context to RUM events
  * Modifies event in place
  */
-function addUserContext(event: RumEvent): void {
+function addUserContext(event: RumEvent, user: RumUser): void {
 	// Only add user context if user is logged in
-	if ($i) {
+	if (user) {
 		// Add non-PII user identifiers
 		event.context = {
 			...event.context,
 			user: {
 				// Use user ID instead of username/email
-				id: $i.id,
+				id: user.id,
 				// Add role information (useful for debugging permission issues)
-				isAdmin: $i.isAdmin || false,
-				isModerator: $i.isModerator || false,
+				isAdmin: user.isAdmin || false,
+				isModerator: user.isModerator || false,
 				// Add account creation date (helps identify new vs. old users)
-				createdAt: $i.createdAt,
+				createdAt: user.createdAt,
 				// DO NOT include: username, name, email, or any other PII
 			},
 		};
@@ -72,7 +81,7 @@ function addUserContext(event: RumEvent): void {
 /**
  * Initialize Datadog RUM with privacy-first configuration
  */
-export function initializeDatadogRUM() {
+export function initializeDatadogRUM(user: RumUser = null) {
 	datadogRum.init({
 		applicationId: "faef8ab5-aa18-4312-bc37-75695281aa9a",
 		clientToken: "pub7a73df8b6d006ba062ca946e052a611c",
@@ -94,7 +103,7 @@ export function initializeDatadogRUM() {
 		beforeSend: (event) => {
 			try {
 				// Add user context (modifies event in place)
-				addUserContext(event);
+				addUserContext(event, user);
 				// Scrub any PII that might have leaked through (modifies event in place)
 				scrubPII(event);
 				// Return true to send the event
@@ -112,9 +121,9 @@ export function initializeDatadogRUM() {
 
 	// Update user context when user logs in/out
 	// This will be automatically picked up by the beforeSend hook
-	if ($i) {
+	if (user) {
 		datadogRum.setUser({
-			id: $i.id,
+			id: user.id,
 		});
 	}
 }
@@ -123,10 +132,10 @@ export function initializeDatadogRUM() {
  * Update user context after login
  * Call this function after successful login
  */
-export function updateDatadogUser() {
-	if ($i) {
+export function updateDatadogUser(user: RumUser) {
+	if (user) {
 		datadogRum.setUser({
-			id: $i.id,
+			id: user.id,
 		});
 	} else {
 		// Clear user context on logout

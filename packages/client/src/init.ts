@@ -236,7 +236,7 @@ function checkForSplash() {
 	app.mount(rootEl);
 
 	// Initialize Datadog RUM
-	initializeDatadogRUM();
+	initializeDatadogRUM($i);
 
 	// boot.jsのやつを解除
 	window.onerror = null;
@@ -516,5 +516,5 @@ function checkForSplash() {
 	document.addEventListener("keydown", makeHotkey(hotkeys));
 
 	// Make sure user context is updated after any login/logout
-	updateDatadogUser();
+	updateDatadogUser($i);
 })();
