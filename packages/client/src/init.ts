@@ -27,6 +27,7 @@ import {
 	version as vueVersion,
 	defineAsyncComponent,
 } from "vue";
+import { initializeDatadogRUM } from "@/datadog-rum";
 import { compareVersions } from "compare-versions";
 
 import widgets from "@/widgets";
@@ -40,7 +41,7 @@ import { i18n } from "@/i18n";
 import { confirm, alert, post, popup, toast, api } from "@/os";
 import { stream } from "@/stream";
 import * as sound from "@/scripts/sound";
-import { $i, refreshAccount, login, updateAccount, signout } from "@/account";
+import { $i, refreshAccount, login, updateAccount, signout, updateDatadogUser } from "@/account";
 import { defaultStore, ColdDeviceStorage } from "@/store";
 import { fetchInstance, instance } from "@/instance";
 import { makeHotkey } from "@/scripts/hotkey";
@@ -233,6 +234,9 @@ function checkForSplash() {
 	})();
 
 	app.mount(rootEl);
+
+	// Initialize Datadog RUM
+	initializeDatadogRUM();
 
 	// boot.jsのやつを解除
 	window.onerror = null;
@@ -508,6 +512,14 @@ function checkForSplash() {
 		});
 	}
 
-	// shortcut
-	document.addEventListener("keydown", makeHotkey(hotkeys));
+	// Initialize Datadog RUM
+	initializeDatadogRUM();
+
+		// shortcut
+		document.addEventListener("keydown", makeHotkey(hotkeys));
+		
+		// Make sure user context is updated after any login/logout
+		if ($i) {
+			updateDatadogUser();
+		}
 })();

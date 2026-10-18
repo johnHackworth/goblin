@@ -14,7 +14,6 @@ import processObjectStorage from "./processors/object-storage/index.js";
 import processSystemQueue from "./processors/system/index.js";
 import processWebhookDeliver from "./processors/webhook-deliver.js";
 import processBackground from "./processors/background/index.js";
-import processTumblr from "./processors/tumblr/index.js";
 import { processRssFetch } from "./processors/rss/index.js";
 
 import { endedPollNotification } from "./processors/ended-poll-notification.js";
@@ -529,7 +528,6 @@ export default function () {
 	processDb(dbQueue);
 	processObjectStorage(objectStorageQueue);
 	processBackground(backgroundQueue);
-	processTumblr(tumblrQueue);
 
 	rssQueue.process("fetchRssFeeds", 10, processRssFetch);
 
@@ -538,15 +536,6 @@ export default function () {
 		{},
 		{
 			repeat: { cron: "*/15 * * * *" },
-			removeOnComplete: true,
-		},
-	);
-
-	tumblrQueue.add(
-		"fetchTumblrFeeds",
-		{},
-		{
-			repeat: { cron: "*/1  * * * * " },
 			removeOnComplete: true,
 		},
 	);

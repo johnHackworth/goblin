@@ -74,10 +74,13 @@ function addUserContext(event: RumEvent): void {
  */
 export function initializeDatadogRUM() {
 	datadogRum.init({
-		applicationId: "f1848258-6d09-4b8e-8ea7-1c6505e4efcc",
-		clientToken: "pub27683dfd2b81f24d71148f67bafaec63",
+		applicationId: "faef8ab5-aa18-4312-bc37-75695281aa9a",
+		clientToken: "pub7a73df8b6d006ba062ca946e052a611c",
 		site: "datadoghq.com",
 		service: "goblin",
+		remoteConfiguration: {
+			id: 'ebe7460f-1fe0-4125-b6e9-53cf369ab29f',
+		},
 		env: _DEV_ ? "development" : "production",
 		version: _VERSION_,
 		sessionSampleRate: 100,
