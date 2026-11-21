@@ -213,8 +213,8 @@ mastoRouter.post("/oauth/token", async (ctx) => {
 });
 
 // Register router
-app.use(mastoRouter.routes());
 app.use(router.routes());
+app.use(mastoRouter.routes());
 
 app.use(mount(webServer));
 
