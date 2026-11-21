@@ -1,6 +1,4 @@
 import Router from "@koa/router";
-import json from "koa-json-body";
-import httpSignature from "@peertube/http-signature";
 
 import { In, IsNull, Not } from "typeorm";
 import { renderActivity } from "@/remote/activitypub/renderer/index.js";
@@ -33,26 +31,12 @@ import Following from "./activitypub/following.js";
 import Followers from "./activitypub/followers.js";
 import Outbox, { packActivity } from "./activitypub/outbox.js";
 import { serverLogger } from "./index.js";
+import { createInboxRouter } from "./activitypub/inbox.js";
 
 // Init router
 const router = new Router();
 
 //#region Routing
-
-function inbox(ctx: Router.RouterContext) {
-	let signature;
-
-	try {
-		signature = httpSignature.parseRequest(ctx.req, { headers: [] });
-	} catch (e) {
-		ctx.status = 401;
-		return;
-	}
-
-	processInbox(ctx.request.body, signature);
-
-	ctx.status = 202;
-}
 
 const ACTIVITY_JSON = "application/activity+json; charset=utf-8";
 const LD_JSON =
@@ -74,8 +58,7 @@ export function setResponseType(ctx: Router.RouterContext) {
 }
 
 // inbox
-router.post("/inbox", json(), inbox);
-router.post("/users/:user/inbox", json(), inbox);
+router.use(createInboxRouter(processInbox).routes());
 
 // note
 router.get("/notes/:note", async (ctx, next) => {
