@@ -21,20 +21,17 @@ export function createInboxRouter(
 	function inbox(ctx: Router.RouterContext) {
 		let signature;
 		try {
-			// A digest header alone is insufficient: the signature must cover it.
 			signature = httpSignature.parseRequest(ctx.req, { headers: ["digest"] });
 		} catch {
 			ctx.status = 401;
 			return;
 		}
 
-		// Hash the original JSON, preserving whitespace and Unicode encoding.
 		if (!verifyDigest(ctx.request.rawBody, ctx.req.headers.digest)) {
 			ctx.status = 401;
 			return;
 		}
 
-		// Cryptographic signature verification remains in the inbox worker.
 		enqueue(ctx.request.body, signature);
 		ctx.status = 202;
 	}

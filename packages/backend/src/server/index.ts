@@ -213,7 +213,6 @@ mastoRouter.post("/oauth/token", async (ctx) => {
 });
 
 // Register router
-// ActivityPub must read the signed body before OAuth body parsing/query merging.
 app.use(router.routes());
 app.use(mastoRouter.routes());
 

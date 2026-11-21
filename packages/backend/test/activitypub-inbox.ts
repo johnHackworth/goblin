@@ -18,7 +18,6 @@ describe("ActivityPub inbox digest validation", () => {
 		keyId: "https://example.com/actor#key",
 		privateKeyPem: keypair.privateKey,
 	};
-	// Formatting and non-ASCII text ensure we hash the raw body, not JSON.stringify(body).
 	const body =
 		'{\n  "type": "Create", "actor": "https://example.com/actor",\n  "object": { "content": "こんにちは 🐈" }\n}\n';
 	let server: http.Server;
