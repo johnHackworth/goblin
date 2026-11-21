@@ -213,8 +213,9 @@ mastoRouter.post("/oauth/token", async (ctx) => {
 });
 
 // Register router
-app.use(mastoRouter.routes());
+// ActivityPub must read the signed body before OAuth body parsing/query merging.
 app.use(router.routes());
+app.use(mastoRouter.routes());
 
 app.use(mount(webServer));
 
@@ -228,13 +229,13 @@ export const startServer = () => {
 
 	initializeStreamingServer(server);
 
-	server.listen({ port: config.port, host: config.address });
+	server.listen(config.port);
 
 	return server;
 };
 
 export default () =>
-	new Promise<void>((resolve) => {
+	new Promise((resolve) => {
 		const server = createServer();
 
 		initializeStreamingServer(server);
@@ -264,5 +265,6 @@ export default () =>
 			}
 		});
 
-		server.listen({ port: config.port, host: config.address }, resolve);
+		// @ts-ignore
+		server.listen(config.port, resolve);
 	});

@@ -29,11 +29,6 @@ url: https://example.com/
 # The port that your Firefish server should listen on.
 port: 3000
 
-# Bind to loopback when the reverse proxy runs on the same machine.
-# If omitted, the server listens on all interfaces.
-# For Docker or a proxy on another machine, use '0.0.0.0' instead.
-address: '127.0.0.1'
-
 #   ┌──────────────────────────┐
 #───┘ PostgreSQL configuration └────────────────────────────────
 

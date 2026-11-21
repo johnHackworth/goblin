@@ -11,9 +11,7 @@ services:
       - redis
 #      - es
     ports:
-      # Use address: '0.0.0.0' in .config/default.yml inside the container.
-      # Change the host binding if your reverse proxy is on another machine.
-      - "127.0.0.1:3000:3000"
+      - "3000:3000"
     networks:
       - network
 #      - web
