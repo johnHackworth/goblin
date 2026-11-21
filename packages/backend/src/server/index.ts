@@ -228,13 +228,13 @@ export const startServer = () => {
 
 	initializeStreamingServer(server);
 
-	server.listen(config.port);
+	server.listen({ port: config.port, host: config.address });
 
 	return server;
 };
 
 export default () =>
-	new Promise((resolve) => {
+	new Promise<void>((resolve) => {
 		const server = createServer();
 
 		initializeStreamingServer(server);
@@ -264,6 +264,5 @@ export default () =>
 			}
 		});
 
-		// @ts-ignore
-		server.listen(config.port, resolve);
+		server.listen({ port: config.port, host: config.address }, resolve);
 	});
