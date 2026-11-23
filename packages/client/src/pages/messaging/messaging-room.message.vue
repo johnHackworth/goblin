@@ -20,13 +20,7 @@
 					></i>
 				</button>
 				<div v-if="!message.isDeleted" class="content">
-					<Mfm
-						v-if="message.text"
-						ref="text"
-						class="text"
-						:text="message.text"
-						:i="$i"
-					/>
+					<div class="text" v-html="message.text"></div>
 				</div>
 				<div v-else class="content">
 					<p class="is-deleted">{{ i18n.ts.deleted }}</p>
